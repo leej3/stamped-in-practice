@@ -1,0 +1,18 @@
+[workspace]
+name = "narps-study"
+channels = ["conda-forge"]
+platforms = [{ platform = "osx-arm64", macos = "14.0" }, "linux-64"]
+
+[dependencies]
+python = ">=3.11,<3.14"
+git = "*"
+pre-commit = "*"
+
+[pypi-dependencies]
+datalad = "*"
+git-annex = "*"
+
+[tasks]
+check-input = { cmd = "python scripts/inputs.py --metadata-only", description = "Check the frozen input manifest and lazy annex links" }
+get-input = { cmd = "python scripts/inputs.py", description = "Retrieve the frozen participant maps from CON Hub and verify their hashes" }
+verify-input = { cmd = "python scripts/inputs.py --verify-only", description = "Verify local input bytes without downloading or running analysis" }
