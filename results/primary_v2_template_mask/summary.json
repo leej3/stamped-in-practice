@@ -1,0 +1,845 @@
+{
+  "analysis": "one-sample random-effects t; one-sided positive whole-brain max-T sign-flip permutation",
+  "n_participants": 54,
+  "excluded_participants": [],
+  "n_map_voxels_common_nonzero_support": 186192,
+  "participant_metadata": {
+    "group": "equalIndifference",
+    "age_mean": 26.055555555555557,
+    "age_sd": 3.0493838948818466,
+    "age_range": [
+      21,
+      37
+    ],
+    "gender_counts_as_recorded": {
+      "F": 30,
+      "M": 24
+    }
+  },
+  "permutations": 9999,
+  "seed": 20261016,
+  "familywise_alpha": 0.05,
+  "whole_brain_positive_fwe_voxels": 24,
+  "max_t_voxel": {
+    "ijk": [
+      35,
+      15,
+      31
+    ],
+    "mni_mm": [
+      -26.0,
+      -102.0,
+      -3.6
+    ],
+    "t": 6.61717324630224,
+    "raw_one_sided_p": 9.311564027968546e-09,
+    "maxT_fwe_p": 0.0006,
+    "fwe_p_mc_resolution": 0.0001
+  },
+  "vmPFC_definition": "MNI box |x|<=10, y=20..60, z=-20..20 mm, intersected with final analysis mask",
+  "vmPFC_voxels": 3683,
+  "vmPFC_group_mean_effect": -0.0026102965114294724,
+  "vmPFC_group_sd": 0.07084479325642089,
+  "vmPFC_group_se": 0.009640755245066546,
+  "vmPFC_mean_95ci": [
+    -0.021947202736061436,
+    0.01672660971320249
+  ],
+  "vmPFC_descriptive_t": -0.2707564340216226,
+  "vmPFC_descriptive_one_sided_p_uncorrected": 0.6061849769168852,
+  "vmPFC_peak_t": 4.1918477635940805,
+  "vmPFC_peak_mni_mm": [
+    -2.0,
+    24.0,
+    -18.0
+  ],
+  "vmPFC_peak_maxT_fwe_p": 0.7742,
+  "global_map_value_range": [
+    -5.6671142578125,
+    4.776952743530273
+  ],
+  "participant_map_mean_range": [
+    -0.12559821942933624,
+    0.10198566892401734
+  ],
+  "max_mean_map_sd": 1.0005457724030198,
+  "mask_definition": "MNI152NLin2009cAsym res-02 brain mask (nearest-neighbor resampled to the supplied grid), intersected with finite nonzero support in every participant map",
+  "template_brain_mask_voxels_resampled": 196466,
+  "analysis_mask_coverage_of_template_brain": 0.9477059643907851,
+  "template_brain_mask": {
+    "path": "external/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz",
+    "url": "https://templateflow.s3.amazonaws.com/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz",
+    "sha256": "7a71e9ce99d2af7b68bb5c163908c8e25f4c7a198806fb0893a5c1759b480ecd"
+  },
+  "template_t1": {
+    "path": "external/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz",
+    "url": "https://templateflow.s3.amazonaws.com/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz",
+    "sha256": "7c4e551ae8150ac1f468595bd62074aa15aed747cd334fce6d177182972b6220"
+  },
+  "geometry": {
+    "shape": [
+      97,
+      115,
+      81
+    ],
+    "affine": [
+      [
+        2.0,
+        0.0,
+        0.0,
+        -96.0
+      ],
+      [
+        0.0,
+        2.0,
+        0.0,
+        -132.0
+      ],
+      [
+        0.0,
+        0.0,
+        2.4000000953674316,
+        -78.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "zooms_mm": [
+      2.0,
+      2.0,
+      2.4000000953674316
+    ]
+  },
+  "independent_scipy_check": {
+    "max_t_t": 6.617173246302241,
+    "max_t_raw_p": 9.311564027968496e-09,
+    "permutation_maxima_recomputed_full_brain": 10,
+    "permutation_maxima_match": true,
+    "max_t_fwe_p_direct_count": 0.0006,
+    "passed": true
+  },
+  "software": {
+    "python": "3.13.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6",
+    "nibabel": "5.4.2",
+    "matplotlib": "3.11.2",
+    "nilearn": "0.14.1"
+  },
+  "provenance": {
+    "analysis_script_sha256": "a881abeea818018c57b767504d18472867da80fac8b13dd8a93d34d2a457dde2",
+    "protocol_sha256": "fd82723ae27072a2dc5c3077756192457bcbc11e9b9a80eb378c33af0a9541c3",
+    "source_manifest_sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+    "command": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/analyze.py"
+  },
+  "inputs": [
+    {
+      "participant_id": "sub-001",
+      "path": "input/data/sub-001_hypo1_cope.nii.gz",
+      "bytes": 1794522,
+      "sha256": "baf3440fbc7f5f59dea28d231e9c5eb9cf00a15b6924342f4b79e7faf56a929a",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225441
+    },
+    {
+      "participant_id": "sub-003",
+      "path": "input/data/sub-003_hypo1_cope.nii.gz",
+      "bytes": 1762018,
+      "sha256": "a8c9b6276d1597bc43695516c9ac5b2893a8d8408cd053161ceaddbd42dafb20",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221352
+    },
+    {
+      "participant_id": "sub-005",
+      "path": "input/data/sub-005_hypo1_cope.nii.gz",
+      "bytes": 1847315,
+      "sha256": "415383874c65fd9e10bb03bf2aa59bfcd1d10650bc5d0560a249e85d52b7b205",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 232390
+    },
+    {
+      "participant_id": "sub-009",
+      "path": "input/data/sub-009_hypo1_cope.nii.gz",
+      "bytes": 1737182,
+      "sha256": "33af129d8ba13cd4b6175089706c531471be1e0bd7ccd43ece10751c8cc3254c",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 218048
+    },
+    {
+      "participant_id": "sub-011",
+      "path": "input/data/sub-011_hypo1_cope.nii.gz",
+      "bytes": 1828116,
+      "sha256": "6f74dd449eefa6eff40ec00eb046ec7e8bb13c0b7c2ac1874155a9c166692352",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 229790
+    },
+    {
+      "participant_id": "sub-013",
+      "path": "input/data/sub-013_hypo1_cope.nii.gz",
+      "bytes": 1760573,
+      "sha256": "bfa79b82f931d81d6387e82b8413f1f889a06f36275ba510554669c84a3c026f",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221025
+    },
+    {
+      "participant_id": "sub-015",
+      "path": "input/data/sub-015_hypo1_cope.nii.gz",
+      "bytes": 1805181,
+      "sha256": "5d98f6d74823516768659967f95ef43728584eab024c58af30987783515d7694",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 226823
+    },
+    {
+      "participant_id": "sub-017",
+      "path": "input/data/sub-017_hypo1_cope.nii.gz",
+      "bytes": 1791857,
+      "sha256": "dca9eac4d6f0ef4e2a3e631b2d10f89c5362863698cec4a7c7b9b14128ae96d9",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225122
+    },
+    {
+      "participant_id": "sub-019",
+      "path": "input/data/sub-019_hypo1_cope.nii.gz",
+      "bytes": 1788203,
+      "sha256": "f9df911028e0ee06d230b097d8c7011b3c09f34df436e8854cd959145777533d",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224562
+    },
+    {
+      "participant_id": "sub-021",
+      "path": "input/data/sub-021_hypo1_cope.nii.gz",
+      "bytes": 1821886,
+      "sha256": "7dd60d722e243f429633f1c63c9a810afd73d1ffd0e0e68fcdd2bf3790d78db1",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 229096
+    },
+    {
+      "participant_id": "sub-025",
+      "path": "input/data/sub-025_hypo1_cope.nii.gz",
+      "bytes": 1805994,
+      "sha256": "545945b0a5f7e51d65e2828e76e776fffcbb33b1635bb7272bc0948bfbc6b7b4",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 226896
+    },
+    {
+      "participant_id": "sub-027",
+      "path": "input/data/sub-027_hypo1_cope.nii.gz",
+      "bytes": 1814109,
+      "sha256": "dffa472f8cfe30b9c2025470924fceb23d30fb881db6b893d436faa8d8dcef2f",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 228009
+    },
+    {
+      "participant_id": "sub-029",
+      "path": "input/data/sub-029_hypo1_cope.nii.gz",
+      "bytes": 1792367,
+      "sha256": "0ed1be0ce40d1becaec5cf18487670822b8cb5fcbc5ad0ec2cb34d9a3ed7071b",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225063
+    },
+    {
+      "participant_id": "sub-033",
+      "path": "input/data/sub-033_hypo1_cope.nii.gz",
+      "bytes": 1765631,
+      "sha256": "04778467af0a6c93d531d30f73c5492384be59044ebd7be3e95862700e2e9117",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221734
+    },
+    {
+      "participant_id": "sub-035",
+      "path": "input/data/sub-035_hypo1_cope.nii.gz",
+      "bytes": 1768719,
+      "sha256": "211fd859f33d69891531ad3e5dd66fe0c0891b20c58e6ef8aa21b4d49ff030c9",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221985
+    },
+    {
+      "participant_id": "sub-037",
+      "path": "input/data/sub-037_hypo1_cope.nii.gz",
+      "bytes": 1807410,
+      "sha256": "a4d76561e8ba1848572a474afce754310f4ee101cfd99276eb3105289cc0934b",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 227148
+    },
+    {
+      "participant_id": "sub-039",
+      "path": "input/data/sub-039_hypo1_cope.nii.gz",
+      "bytes": 1775163,
+      "sha256": "744df860cfb8410aae16bcb1742e7390c51306c66959bb19da9f5b57206bba7b",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222992
+    },
+    {
+      "participant_id": "sub-041",
+      "path": "input/data/sub-041_hypo1_cope.nii.gz",
+      "bytes": 1801691,
+      "sha256": "f93eeadcd3f57239e4c32c5df2ca2c4013bf424978701bd5beec535ace24669f",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 226375
+    },
+    {
+      "participant_id": "sub-043",
+      "path": "input/data/sub-043_hypo1_cope.nii.gz",
+      "bytes": 1776243,
+      "sha256": "520f19805c6c4358bc56e9bba290b9b79a80c14385bc7be90e4bd81b3e37e771",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 223099
+    },
+    {
+      "participant_id": "sub-045",
+      "path": "input/data/sub-045_hypo1_cope.nii.gz",
+      "bytes": 1812100,
+      "sha256": "3826c6daf5a7be7b03ae552847c4a8709a1b86c2498735e6ce80768cd5d0b88e",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 227897
+    },
+    {
+      "participant_id": "sub-047",
+      "path": "input/data/sub-047_hypo1_cope.nii.gz",
+      "bytes": 1762249,
+      "sha256": "8585e8be8eebe84dd316eeb1f86090a8123f88a8b5d275bc2c39049a3bf4bf34",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221275
+    },
+    {
+      "participant_id": "sub-049",
+      "path": "input/data/sub-049_hypo1_cope.nii.gz",
+      "bytes": 1821174,
+      "sha256": "e01dacebea8fa444b7696e90a53e9ab0b3543b0da780ba430875b3fde117e084",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 228901
+    },
+    {
+      "participant_id": "sub-051",
+      "path": "input/data/sub-051_hypo1_cope.nii.gz",
+      "bytes": 1755787,
+      "sha256": "74e2887ed9eb4252357cdce98eb53b5b8ab2620ee5ee57aee1bc677c0099b2ca",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 220605
+    },
+    {
+      "participant_id": "sub-053",
+      "path": "input/data/sub-053_hypo1_cope.nii.gz",
+      "bytes": 1760465,
+      "sha256": "a3b3509a0240c5b12a9c63f94f2913e69eeb7fab4fbe92ac1adc62eb45bdd0ba",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 221057
+    },
+    {
+      "participant_id": "sub-055",
+      "path": "input/data/sub-055_hypo1_cope.nii.gz",
+      "bytes": 1790638,
+      "sha256": "136983cd89668779e26eba6847653f1d765452f8a2d5675fce037f751edb0ea8",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225194
+    },
+    {
+      "participant_id": "sub-057",
+      "path": "input/data/sub-057_hypo1_cope.nii.gz",
+      "bytes": 1815775,
+      "sha256": "aafa1a371d72e690f737d2507c9d7bbd20c620377cd294d44555c856a0566496",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 228370
+    },
+    {
+      "participant_id": "sub-059",
+      "path": "input/data/sub-059_hypo1_cope.nii.gz",
+      "bytes": 1785421,
+      "sha256": "0fa3da37a11640705014665f546ba86735472a8a2b7fdf1b37177a55abd0a65a",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224454
+    },
+    {
+      "participant_id": "sub-061",
+      "path": "input/data/sub-061_hypo1_cope.nii.gz",
+      "bytes": 1783701,
+      "sha256": "cb8bc3bf4264fe156348d3c171335b84978eb8d32b0fd331db9f4661dad2bdff",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224052
+    },
+    {
+      "participant_id": "sub-063",
+      "path": "input/data/sub-063_hypo1_cope.nii.gz",
+      "bytes": 1786231,
+      "sha256": "2a5458eb314441b01dacfa1bcea9e9a95f983d2994aa6b853ebe1a20b017a467",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224365
+    },
+    {
+      "participant_id": "sub-067",
+      "path": "input/data/sub-067_hypo1_cope.nii.gz",
+      "bytes": 1774136,
+      "sha256": "9977321f1f775f04dab881d740ea5cc491dadda07405f2380c61c50e5c3a01fc",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222751
+    },
+    {
+      "participant_id": "sub-069",
+      "path": "input/data/sub-069_hypo1_cope.nii.gz",
+      "bytes": 1769792,
+      "sha256": "bd22905ebe789319f082b0fdb6ba7cd5aaf6590fd8424d6c396cd54c0602a318",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222268
+    },
+    {
+      "participant_id": "sub-071",
+      "path": "input/data/sub-071_hypo1_cope.nii.gz",
+      "bytes": 1790405,
+      "sha256": "7286639323904bfe851588ce06c68396d535fad2f7ac5de0de1b73c4c17494f4",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224937
+    },
+    {
+      "participant_id": "sub-073",
+      "path": "input/data/sub-073_hypo1_cope.nii.gz",
+      "bytes": 1786224,
+      "sha256": "67086bf1f48b14bc095999f6535656649d01da82d1327715c5b3ab89ea6c5f7b",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224251
+    },
+    {
+      "participant_id": "sub-075",
+      "path": "input/data/sub-075_hypo1_cope.nii.gz",
+      "bytes": 1774130,
+      "sha256": "b9151e72e3a8a609a23ac73dbd3d6ba8423f271ddd72149cf27c04e25bf9f980",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222801
+    },
+    {
+      "participant_id": "sub-077",
+      "path": "input/data/sub-077_hypo1_cope.nii.gz",
+      "bytes": 1754444,
+      "sha256": "79aaf5add3d475590cb7fd82a7fbd32517dbde2cb859824864a2b10d6fafb9ed",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 220288
+    },
+    {
+      "participant_id": "sub-079",
+      "path": "input/data/sub-079_hypo1_cope.nii.gz",
+      "bytes": 1770837,
+      "sha256": "d505691fdcfa43ad709fca3803c954069afe4e2f2dc865edb5b0812562d1eb8c",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222348
+    },
+    {
+      "participant_id": "sub-081",
+      "path": "input/data/sub-081_hypo1_cope.nii.gz",
+      "bytes": 1809179,
+      "sha256": "a8a342b5e333dbff9776b5a4847929737144dc8029830036636eb86c566f4f76",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 227369
+    },
+    {
+      "participant_id": "sub-083",
+      "path": "input/data/sub-083_hypo1_cope.nii.gz",
+      "bytes": 1770805,
+      "sha256": "76a526c303c406342487da0e5deee5a6ca6b345e9b6ccb052149c4c32f0833ae",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222305
+    },
+    {
+      "participant_id": "sub-085",
+      "path": "input/data/sub-085_hypo1_cope.nii.gz",
+      "bytes": 1733793,
+      "sha256": "74b1af4e4b667a70c79b54a10294be744da5538b814057186eae48710520b65a",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 217625
+    },
+    {
+      "participant_id": "sub-087",
+      "path": "input/data/sub-087_hypo1_cope.nii.gz",
+      "bytes": 1826169,
+      "sha256": "7ecb372d1249cd5368121b1e7b7f7ee33ef5430575097431dcd3f27dcdad7b04",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 229502
+    },
+    {
+      "participant_id": "sub-089",
+      "path": "input/data/sub-089_hypo1_cope.nii.gz",
+      "bytes": 1742479,
+      "sha256": "3b380ae44cdbf0171d9ec12ff9ecdb47227496cda5ccd5b5cfb09164c5d91846",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 218802
+    },
+    {
+      "participant_id": "sub-093",
+      "path": "input/data/sub-093_hypo1_cope.nii.gz",
+      "bytes": 1784075,
+      "sha256": "7802aea70713a4be7683921188b92a563d86f221f191a8bac4ee9c4decb33a1c",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224204
+    },
+    {
+      "participant_id": "sub-095",
+      "path": "input/data/sub-095_hypo1_cope.nii.gz",
+      "bytes": 1735309,
+      "sha256": "291760d6479e336093a651e33df20deab99e434cba5afbf31fc019c8d1fe816e",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 217907
+    },
+    {
+      "participant_id": "sub-099",
+      "path": "input/data/sub-099_hypo1_cope.nii.gz",
+      "bytes": 1823271,
+      "sha256": "30b063515e6b538183fe37c561e87e47681756876a8f6a8a607839d8d3de0e42",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 229550
+    },
+    {
+      "participant_id": "sub-103",
+      "path": "input/data/sub-103_hypo1_cope.nii.gz",
+      "bytes": 1814013,
+      "sha256": "a088633f18ac3e35fc2512e9dc21ec3d92efd06749d4027338ccb448a635919c",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 227891
+    },
+    {
+      "participant_id": "sub-105",
+      "path": "input/data/sub-105_hypo1_cope.nii.gz",
+      "bytes": 1795447,
+      "sha256": "12a1b50eaa5be6983990c5e77f985f9750340204eaa3fff7e70829f07707e6a2",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225633
+    },
+    {
+      "participant_id": "sub-107",
+      "path": "input/data/sub-107_hypo1_cope.nii.gz",
+      "bytes": 1804121,
+      "sha256": "4580aade93323d0d14f9a3a1932a428004a2f657980b5669f9274102bb370802",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 226602
+    },
+    {
+      "participant_id": "sub-109",
+      "path": "input/data/sub-109_hypo1_cope.nii.gz",
+      "bytes": 1788268,
+      "sha256": "931ba1128720bbaa99e7fce8f036a331581d6d07e00212a1f402eae7959299cb",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 224659
+    },
+    {
+      "participant_id": "sub-113",
+      "path": "input/data/sub-113_hypo1_cope.nii.gz",
+      "bytes": 1819506,
+      "sha256": "e5f81435ddc2d5703fa4ea37d6597601e71b50f8c53fb6047fb0067c17282c65",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 229014
+    },
+    {
+      "participant_id": "sub-115",
+      "path": "input/data/sub-115_hypo1_cope.nii.gz",
+      "bytes": 1797041,
+      "sha256": "5046f7c2fa1c5d1be6237d38f631beca13df8a3a8ded11121082838a533a44bf",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 225894
+    },
+    {
+      "participant_id": "sub-117",
+      "path": "input/data/sub-117_hypo1_cope.nii.gz",
+      "bytes": 1741472,
+      "sha256": "711159acfa23c45ab82903f658cafe0fa539f39e077e451f6b0728fdb359445f",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 218740
+    },
+    {
+      "participant_id": "sub-119",
+      "path": "input/data/sub-119_hypo1_cope.nii.gz",
+      "bytes": 1752220,
+      "sha256": "01738a10e34e46c5ea1a4a192b9484595ee352d62375095b76726347455aabd7",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 220064
+    },
+    {
+      "participant_id": "sub-121",
+      "path": "input/data/sub-121_hypo1_cope.nii.gz",
+      "bytes": 1766758,
+      "sha256": "94357665b89cfa1b9157e71aab10f78b49585a790a4a01d9e4693698e185d892",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 222043
+    },
+    {
+      "participant_id": "sub-123",
+      "path": "input/data/sub-123_hypo1_cope.nii.gz",
+      "bytes": 1745649,
+      "sha256": "1219377e08c306753c1e382d431b1e7a55c7143cdc5f800fb65e92fa7e72f888",
+      "shape": [
+        97,
+        115,
+        81
+      ],
+      "finite_voxels": 903555,
+      "nonzero_voxels": 219315
+    }
+  ],
+  "whole_brain_fwe_cluster_count_26conn_descriptive": 3
+}
