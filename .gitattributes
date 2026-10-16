@@ -1,2 +1,6 @@
 * annex.backend=MD5E
 **/.git* annex.largefiles=nothing
+
+# Coordinator records stay in Git; authoritative delivery bytes use annex.
+coordinator/** annex.largefiles=nothing
+coordinator/delivery-01/delivery.tar.gz annex.largefiles=anything annex.backend=SHA256E
