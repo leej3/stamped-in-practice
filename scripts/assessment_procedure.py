@@ -6,15 +6,18 @@ manifest before use and retain its digest with the comparison's registration.
 Skills may change between rounds; the task, controls and assessment may not.
 """
 import argparse
+import copy
 import hashlib
 import json
+import os
+import shutil
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import tomllib
 
 from research_conditions import CONDITIONS, assignment
-from study_seed import blob, entries, git, study_pin
+from study_seed import blob, entries, git, study_pin, NEUTRAL_PROTOCOL, NEUTRAL_COMMON
 
 ROOT = Path(__file__).resolve().parents[1]
 FIXED_FILES = (
@@ -30,6 +33,41 @@ REPLAY = {"scope": "inspection-remote-retrieval-one-fresh-replay",
           "maximum_attempts": 1, "source": "exact-local-result-commit",
           "entrypoint": "object-documented", "remove_shipped_outputs": True,
           "rtol": 1e-6, "timeout_seconds": 7200, "max_get_gb": 5.0}
+NEUTRAL_JUDGE = "prompts/neutral-judge.md"
+NEUTRAL_FILES = tuple(name for name in FIXED_FILES if name != "judge-prompt.md") + (
+    NEUTRAL_COMMON, NEUTRAL_JUDGE, "scripts/delivery_snapshot.py")
+NEUTRAL_REPLAY = dict(REPLAY, source="original-complete-delivery",
+                      scope="inspection-retrieval-conditional-complete-delivery-replay",
+                      unsupported_capture_replay="not-checked; never substitute HEAD",
+                      environment="complete stopped delivery; no automatic repair",
+                      outputs="explicit documented generated files; protect supplied inputs")
+NEUTRAL_THREAD_ENV = {name: "1" for name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS")}
+
+def neutral_environment(manifest, inherited, role):
+    environment = inherited.copy()
+    binary = Path(manifest).resolve().parent / ".pixi/envs/default/bin"
+    if not (binary / "python").is_file():
+        raise SystemExit("Prepared common resource environment is unavailable")
+    pixi = shutil.which("pixi", path=inherited.get("PATH"))
+    paths = [str(binary)] + ([str(Path(pixi).absolute().parent)] if pixi else []) + os.defpath.split(os.pathsep)
+    environment["PATH"] = os.pathsep.join(dict.fromkeys(paths))
+    environment.update(NEUTRAL_THREAD_ENV)
+    if role == "judge":
+        environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1")
+    return environment
+
+def duct_identity(executable):
+    if not executable or not Path(executable).is_file():
+        raise SystemExit("Requested outer execution capture requires --duct-executable")
+    path = Path(executable).resolve()
+    version = subprocess.check_output([str(path), "--version"], text=True).strip()
+    return {"sha256": sha256(path.read_bytes()), "version": version,
+            "scope": "outer local native session; detached/remote work may be unmeasured"}
+
+
+def judge_template_name(manifest):
+    return NEUTRAL_JUDGE if manifest.get("version") == 3 else "judge-prompt.md"
 
 
 def sha256(content):
@@ -204,22 +242,28 @@ def load_procedure(path, expected_sha256):
         raise SystemExit("Formal mode requires --procedure-sha256 from the registered seal")
     require_equal(sha256(content), expected_sha256, "procedure manifest SHA-256")
     manifest = json.loads(content)
-    if manifest.get("version") not in (1, 2) or manifest.get("status") != "sealed":
+    if manifest.get("version") not in (1, 2, 3) or manifest.get("status") != "sealed":
         raise SystemExit("Formal mode requires a supported sealed procedure")
     require_equal(manifest["conditions"], list(CONDITIONS), "four research conditions")
-    require_equal(manifest["replay"], REPLAY, "supported replay scope")
-    expected = set(FIXED_FILES) | {relative_path(manifest["resources"]["path"])}
+    neutral = manifest["version"] == 3
+    require_equal(manifest["replay"], NEUTRAL_REPLAY if neutral else REPLAY, "supported replay scope")
+    expected = set(NEUTRAL_FILES if neutral else FIXED_FILES) | {relative_path(manifest["resources"]["path"])}
     require_equal(set(manifest["fixed_files"]), expected, "complete fixed-file boundary")
     if manifest["version"] == 2:
         research_procedure(manifest)
     elif "assessment_amendment" in manifest:
         raise SystemExit("Assessment amendments require a version 2 seal")
+    if neutral:
+        require_equal(manifest.get("protocol"), NEUTRAL_PROTOCOL, "neutral protocol identity")
+        require_equal(set(manifest["role_hosts"]), {"research", "judge"}, "role-specific host identities")
+        if not re.fullmatch(r"[0-9a-f]{64}", manifest.get("common_resources_sha256", "")):
+            raise SystemExit("Neutral procedure requires frozen common resource content")
     return manifest
 
 
 def research_procedure(manifest):
     """Resolve the exact original research seal in an assessment-only amendment."""
-    if manifest.get("version") == 1:
+    if manifest.get("version") in (1, 3):
         return manifest
     amendment = manifest.get("assessment_amendment", {})
     require_equal(amendment.get("scope"), "assessment-only", "amendment scope")
@@ -267,11 +311,11 @@ def check_worker_sources(manifest, coordinator, study, base):
     """Validate old research identities without pretending old code is executing."""
     original = research_procedure(manifest)
     check_sources(original, coordinator, study, base,
-                  validate_working=manifest.get("version") == 1)
+                  validate_working=manifest.get("version") in (1, 3))
 
 
 def check_retained_target(manifest, seed, seed_commit, result_commit, stop_receipt):
-    if manifest.get("version") == 1:
+    if manifest.get("version") in (1, 3):
         return
     research_procedure(manifest)
     for item in manifest["assessment_amendment"]["retained_objects"]:
@@ -331,6 +375,21 @@ def check_sources(manifest, coordinator, study, base=None, *, validate_working=T
 
 
 def check_host(manifest, args):
+    if manifest.get("version") == 3:
+        role = getattr(args, "role", "research")
+        require_equal(host_identity(args), manifest["role_hosts"][role]["identity"],
+                      role + " native runtime/profile/hook resources")
+        for name, path in (("pixi.toml", args.env_manifest),
+                           ("pixi.lock", Path(args.env_manifest).with_name("pixi.lock"))):
+            require_equal(sha256(Path(path).read_bytes()), manifest["role_hosts"][role]["environment"][name],
+                          role + " prepared resource environment " + name)
+        require_equal(manifest["role_hosts"][role]["thread_environment"], NEUTRAL_THREAD_ENV, "common thread settings")
+        require_equal(duct_identity(getattr(args, "duct_executable", None)) if args.capture_execution else None,
+                      manifest["role_hosts"][role]["duct"], "outer execution capture")
+        if role == "research":
+            require_equal(sha256(Path(args.common_resources).read_bytes()),
+                          manifest["common_resources_sha256"], "common optional resources")
+        return
     require_equal(host_identity(args), manifest["host_identity"], "native runtime/profile/hook resources")
     environment = manifest["starting_environment"]
     for name, path in (("pixi.toml", args.env_manifest),
@@ -356,19 +415,27 @@ def check_readiness(manifest, path):
     return receipt
 
 
-def check_native(manifest, cli, profile):
-    require_equal(sha256(cli.read_bytes()), manifest["host_identity"]["cli_sha256"], "native CLI")
-    require_equal(profile_digest(profile), manifest["host_identity"]["profile_settings_sha256"],
+def check_native(manifest, cli, profile, role="research"):
+    identity = manifest["role_hosts"][role]["identity"] if manifest.get("version") == 3 else manifest["host_identity"]
+    require_equal(sha256(cli.read_bytes()), identity["cli_sha256"], "native CLI")
+    require_equal(profile_digest(profile), identity["profile_settings_sha256"],
                   "native profile settings")
-    expected = manifest["host_identity"]["model_contract"]
+    expected = identity["model_contract"]
     require_equal(model_contract(profile, expected["model"]), expected, "native model contract")
 
 
 def check_seed(manifest, seed):
     require_equal(seed.get("study_path"), manifest["study"]["path"], "worker study identity")
     require_equal(seed.get("study_input_tree"), manifest["study"]["input_tree"], "worker input tree")
-    require_equal(seed.get("source_manifest_sha256"), manifest["fixed_files"]["pixi.toml"],
-                  "worker starting environment declarations")
+    if manifest.get("version") == 3:
+        require_equal(seed.get("protocol"), NEUTRAL_PROTOCOL, "worker protocol")
+        require_equal(seed.get("common_prompt_sha256"), manifest["fixed_files"][NEUTRAL_COMMON],
+                      "neutral common instructions")
+        require_equal(seed.get("common_resources_sha256"), manifest["common_resources_sha256"],
+                      "neutral common resources")
+    else:
+        require_equal(seed.get("source_manifest_sha256"), manifest["fixed_files"]["pixi.toml"],
+                      "worker starting environment declarations")
     selected = seed.get("assignment", {})
     require_equal(selected.get("config_sha256"), manifest["fixed_files"]["conditions.json"],
                   "worker condition instructions")
@@ -379,9 +446,10 @@ def check_seed(manifest, seed):
 def retain_inputs(manifest, coordinator, study, destination):
     """Materialize verified Git blobs; relative guidance links stay in this copy."""
     destination.mkdir(parents=True, exist_ok=False)
-    for name in ("judge-prompt.md", "assessment-version.json"):
+    for name in (judge_template_name(manifest), "assessment-version.json"):
         content = committed_file(coordinator, manifest["coordinator_commit"], name)
         require_equal(sha256(content), manifest["fixed_files"][name], name)
+        (destination / name).parent.mkdir(parents=True, exist_ok=True)
         (destination / name).write_bytes(content)
     for name, expected in manifest["study"]["guidance_objects"].items():
         content = guidance_content(study, manifest["study"]["commit"], name, expected)
@@ -393,6 +461,13 @@ def retain_inputs(manifest, coordinator, study, destination):
 
 
 def replay_instruction(manifest):
+    if manifest.get("version") == 3:
+        return ("\nFrozen captured-delivery replay scope: " + json.dumps(manifest["replay"], sort_keys=True) +
+                "\nUse fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" --entry from the original documentation "
+                "with explicit --outputs for generated files and --workdir/--output under STAMPED_JUDGE_OUTPUT. "
+                "One attempt copies the complete stopped delivery, removes only selected outputs, and uses "
+                "the documented entrypoint without repair. Unsupported external pointers or unsafe output "
+                "selection are not-checked; never substitute a Git-only clone or infer scientific failure.\n")
     return ("\nFrozen formal replay scope: " + json.dumps(manifest["replay"], sort_keys=True) +
             "\nUse fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" with an explicit --entry from the "
             "object's documentation, and --workdir and --output under STAMPED_JUDGE_OUTPUT. "
@@ -417,8 +492,9 @@ def seal(args):
     requirements = json.loads(committed_file(coordinator, base, resources))
     if requirements.get("schema_version") != 1 or not requirements.get("requirements"):
         raise SystemExit("--resources requires the public readiness requirements JSON")
+    neutral = getattr(args, "protocol", "legacy") == NEUTRAL_PROTOCOL
     files = {name: sha256(committed_file(coordinator, base, name))
-             for name in (*FIXED_FILES, resources)}
+             for name in (*(NEUTRAL_FILES if neutral else FIXED_FILES), resources)}
     for condition in CONDITIONS:
         assignment(blob(coordinator, base, "conditions.json"), condition)
     selected_guidance = {name for name in (args.rubric, args.reference, *args.guidance_dependency) if name}
@@ -455,6 +531,30 @@ def seal(args):
         "settings": {"research": settings, "judge": dict(settings, capture_execution=False)},
         "replay": REPLAY,
     }
+    if neutral:
+        if not getattr(args, "common_resources", None):
+            raise SystemExit("Neutral sealing requires --common-resources")
+        judge_args = copy.copy(args)
+        if getattr(args, "judge_host_config", None):
+            values = json.loads(Path(args.judge_host_config).read_text())
+            allowed = {"cli", "approved_hooks", "trust_sync", "resolver", "codex_home", "env_manifest",
+                       "model", "effort", "seconds", "review_seconds", "capture_execution", "duct_executable"}
+            if set(values) - allowed:
+                raise SystemExit("Judge host config contains unsupported fields")
+            for key, value in values.items():
+                setattr(judge_args, key, value)
+        hosts = {}
+        for role, selected in (("research", args), ("judge", judge_args)):
+            hosts[role] = {"identity": host_identity(selected), "environment": {
+                name: sha256(Path(selected.env_manifest).with_name(name).read_bytes())
+                for name in ("pixi.toml", "pixi.lock")},
+                "thread_environment": NEUTRAL_THREAD_ENV,
+                "duct": duct_identity(getattr(selected, "duct_executable", None))
+                        if selected.capture_execution else None}
+        manifest.update(version=3, protocol=NEUTRAL_PROTOCOL, role_hosts=hosts,
+                        common_resources_sha256=sha256(Path(args.common_resources).read_bytes()),
+                        replay=NEUTRAL_REPLAY)
+        manifest["settings"]["judge"] = launch_settings(judge_args)
     if getattr(args, "research_procedure", None):
         original = Path(args.research_procedure).read_bytes()
         load_procedure(args.research_procedure, args.research_procedure_sha256)
@@ -480,7 +580,7 @@ def replay_arguments(manifest, arguments, target, output):
     parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument("--path", type=Path, required=True)
     parser.add_argument("--entry", required=True)
-    parser.add_argument("--outputs", nargs="+")
+    parser.add_argument("--outputs", nargs="+", required=manifest.get("version") == 3)
     parser.add_argument("--in-container")
     parser.add_argument("--workdir", type=Path, required=True)
     parser.add_argument("-o", "--output", type=Path, required=True)
@@ -495,10 +595,16 @@ def replay_arguments(manifest, arguments, target, output):
     for path in (args.workdir, args.output):
         if not path.resolve().is_relative_to(output.resolve()):
             raise SystemExit("Formal replay evidence must stay under STAMPED_JUDGE_OUTPUT")
+    if manifest.get("version") == 3:
+        from delivery_snapshot import validate_capture
+        identity = validate_capture(Path(os.environ["STAMPED_DELIVERY_MANIFEST"]))
+        target_identity = {"target_commit": identity["commit"], "capture": identity["capture"]}
+    else:
+        target_identity = {"target_commit": git(target, "rev-parse", "HEAD")}
     # Exclusive creation counts failures as attempts and resists concurrent calls.
     try:
         with (output / "formal-replay-attempt.json").open("x") as stream:
-            json.dump({"arguments": arguments, "target_commit": git(target, "rev-parse", "HEAD")}, stream)
+            json.dump({"arguments": arguments, **target_identity}, stream)
     except FileExistsError:
         raise SystemExit("Formal replay allowance already consumed; retain this attempt")
     return arguments
@@ -518,6 +624,10 @@ def main():
     parser.add_argument("--procedure", type=Path)
     parser.add_argument("--procedure-sha256")
     parser.add_argument("--comparison-id")
+    parser.add_argument("--protocol", choices=("legacy", NEUTRAL_PROTOCOL), default="legacy")
+    parser.add_argument("--common-resources", type=Path)
+    parser.add_argument("--judge-host-config", type=Path,
+                        help="Neutral protocol only: role-specific public host/settings configuration")
     parser.add_argument("--resources")
     parser.add_argument("--rubric")
     parser.add_argument("--reference")
@@ -539,6 +649,7 @@ def main():
     parser.add_argument("--seconds", type=int, default=0)
     parser.add_argument("--review-seconds", type=int, default=5400)
     parser.add_argument("--capture-execution", action="store_true")
+    parser.add_argument("--duct-executable", type=Path)
     parser.set_defaults(**{k: v for k, v in defaults.items() if k != "repo"})
     args = parser.parse_args()
     amendment_flags = (args.research_procedure, args.research_procedure_sha256, args.retained_objects)

@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 
 import assessment_procedure as procedure
@@ -14,6 +15,146 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def git(*args, cwd=ROOT):
     return subprocess.check_output(["git", *args], cwd=cwd)
+
+
+def captured_replay(arguments, helper):
+    """Replay documented outputs from a verified complete copy, never from HEAD."""
+    import importlib.util
+    import signal
+    import time
+    from delivery_snapshot import materialize_capture, validate_capture
+
+    parser = argparse.ArgumentParser(description=captured_replay.__doc__, allow_abbrev=False)
+    parser.add_argument("--path", type=Path, required=True)
+    parser.add_argument("--entry", required=True)
+    parser.add_argument("--outputs", nargs="+", required=True)
+    parser.add_argument("--workdir", type=Path, required=True)
+    parser.add_argument("-o", "--output", type=Path, required=True)
+    parser.add_argument("--rtol", type=float, default=1e-6)
+    parser.add_argument("--timeout", type=int, default=7200)
+    parser.add_argument("--max-get-gb", type=float, default=5.0)
+    parser.add_argument("--in-container")
+    args = parser.parse_args(arguments)
+    manifest_path = Path(os.environ["STAMPED_DELIVERY_MANIFEST"])
+    receipt = json.loads(Path(os.environ["STAMPED_WORKER_STOP_RECEIPT"]).read_bytes())
+    identity = validate_capture(manifest_path, receipt["capture"]["sha256"])
+    manifest = json.loads(manifest_path.read_bytes())
+    original = manifest_path.parent / manifest["workspace"]
+    procedure.require_equal(args.path.resolve(), original.resolve(), "captured replay source")
+    report = {"probe": "fresh-rerun", "source": str(original), "capture": identity["capture"],
+              "commit": identity["commit"], "captured_at": identity["captured_at"],
+              "scope": "Complete stopped delivery copy; existing environment/cache bytes retained. "
+                       "One documented entrypoint, no repair or automatic retrieval; selected outputs only.",
+              "entry": args.entry, "outputs": args.outputs, "rtol": args.rtol}
+    def finish(status, reason):
+        report.update(status=status, reason=reason)
+        validate_capture(manifest_path, identity["capture"]["sha256"])
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        with args.output.open("x") as stream:
+            json.dump(report, stream, indent=2)
+            stream.write("\n")
+        print(json.dumps(report))
+        return 0
+    observations = [row["path"] for row in manifest.get("declared_artifacts", [])
+                    if isinstance(row.get("declaration"), dict) and
+                    row["declaration"].get("kind") == "native-session-skill-directory"]
+    # Skills installed in the native profile are retained observation evidence,
+    # not scientific execution dependencies. A workspace link to one opts it in.
+    referenced = set()
+    for row in manifest["entries"]:
+        if row["path"].startswith("content/workspace/") and row["kind"] == "symlink":
+            try:
+                target = (manifest_path.parent / row["path"]).resolve()
+                referenced.update(prefix for prefix in observations
+                                  if target.is_relative_to(manifest_path.parent / prefix))
+            except (OSError, RuntimeError):
+                pass
+    observations = [prefix for prefix in observations if prefix not in referenced]
+    def execution_evidence(row):
+        return not any(row["path"] == prefix or row["path"].startswith(prefix + "/")
+                       for prefix in observations)
+    issues = manifest.get("errors", []) + manifest.get("omissions", [])
+    report["observation_only_capture_issues"] = [row for row in issues if not execution_evidence(row)]
+    if any(execution_evidence(row) for row in issues):
+        return finish("not-checked", "Scientific execution capture has explicit omissions or errors; no replay executed.")
+    if args.in_container:
+        return finish("not-checked", "This bounded adapter does not relocate container bindings.")
+    if not args.entry.strip() or any(not value.strip() or Path(value).is_absolute() or
+                                   ".." in Path(value).parts for value in args.outputs):
+        return finish("not-checked", "Entrypoint and repository-relative generated output patterns are required.")
+    if any(execution_evidence(row) for row in manifest.get("git_dependencies", [])):
+        return finish("not-checked", "Original external Git pointers are retained as evidence, not relocated for execution.")
+    for row in manifest["entries"]:
+        if row["kind"] == "symlink" and execution_evidence(row):
+            link = manifest_path.parent / row["path"]
+            try:
+                inside = link.resolve().is_relative_to(manifest_path.parent.resolve())
+            except (OSError, RuntimeError):
+                inside = False
+            if not inside or Path(os.readlink(link)).is_absolute():
+                return finish("not-checked", "Original links outside the captured copy cannot be safely replayed without relocation.")
+    materialized = materialize_capture(manifest_path, args.workdir)
+    clone = Path(materialized["target"])
+    report["workdir"] = str(clone)
+    # Comparison semantics come from the exact frozen assessor, in its runtime.
+    sys.dont_write_bytecode = True
+    spec = importlib.util.spec_from_file_location("frozen_fresh_rerun", helper)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    protected = {row["path"] for row in receipt.get("seed_identities", {}).get("supplied_files", [])}
+    before = module._collect(clone, args.outputs)
+    code_suffixes = {".py", ".sh", ".r", ".m", ".ipynb", ".jl", ".toml", ".lock", ".yaml", ".yml"}
+    for path in before:
+        selected = clone / path
+        if (path in protected or Path(path).parts[0] in ("input", ".git", ".codex", ".entire", ".agents") or
+                selected.suffix.lower() in code_suffixes or selected.name in ("Makefile", "Dockerfile") or
+                not selected.resolve().is_relative_to(clone.resolve())):
+            return finish("not-checked", "Output selection includes supplied inputs, code/configuration, or external content: " + path)
+    if not before or any(digest is None for digest in before.values()):
+        return finish("not-checked", "No complete generated output payload matches the explicit selection.")
+    report["original_output_sha256"] = before
+    for path in before:
+        (clone / path).unlink()
+    report["removed_outputs"] = sorted(before)
+    command = ["sh", "-c", args.entry]
+    started = time.monotonic()
+    with (args.workdir / "replay.stdout").open("xb") as stdout, (args.workdir / "replay.stderr").open("xb") as stderr:
+        environment = os.environ.copy()
+        environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1",
+                           GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="core.hooksPath", GIT_CONFIG_VALUE_0=os.devnull)
+        report["replay_git_overlay"] = {"core.hooksPath": os.devnull,
+            "reason": "Disable original checkout hooks in the replay copy; captured config bytes unchanged"}
+        process = subprocess.Popen(command, cwd=clone, env=environment, stdout=stdout, stderr=stderr,
+                                   start_new_session=True)
+        try:
+            code = process.wait(timeout=args.timeout)
+        except subprocess.TimeoutExpired:
+            os.killpg(process.pid, signal.SIGKILL)
+            process.wait()
+            code = 124
+            report["timed_out"] = True
+    report.update(returncode=code, elapsed_seconds=time.monotonic() - started,
+                  stdout=str(args.workdir / "replay.stdout"), stderr=str(args.workdir / "replay.stderr"))
+    if report.get("timed_out"):
+        return finish("not-checked", "Frozen replay time limit reached; evidence retained, replay incomplete.")
+    if code:
+        return finish("unmet", "Documented entrypoint failed in the complete delivery copy; interpret within the recorded environment scope.")
+    after = module._collect(clone, args.outputs)
+    identical, close, differing, missing = [], [], [], []
+    for path, digest in before.items():
+        if after.get(path) is None:
+            missing.append(path)
+        elif after[path] == digest:
+            identical.append(path)
+        elif path.endswith(module.TABLE_SUFFIXES) and module._numeric_close(original / path, clone / path, args.rtol):
+            close.append(path)
+        else:
+            differing.append(path)
+    report["comparison"] = {"identical": identical, "within_tolerance": close,
+                            "differing": differing, "missing_after_rerun": missing}
+    if differing or missing:
+        return finish("partial" if identical or close else "unmet", "Some selected generated outputs did not reproduce.")
+    return finish("met", "All selected generated outputs were recreated within the frozen comparison tolerance.")
 
 
 def main():
@@ -71,6 +212,13 @@ def main():
         helper = scripts / {"probes": "run_probes.py", "fresh-rerun": "fresh_rerun.py"}[args.action]
     if frozen and args.action == "fresh-rerun":
         target = Path(os.environ["STAMPED_JUDGE_TARGET"])
+        if frozen.get("version") == 3:
+            remaining = procedure.replay_arguments(frozen, remaining, target,
+                                                   Path(os.environ["STAMPED_JUDGE_OUTPUT"]))
+            result = subprocess.run(["pixi", "run", "--locked", "--manifest-path", manifest,
+                "python", Path(__file__).resolve(), "--captured-replay", str(helper),
+                procedure.sha256(helper.read_bytes()), *remaining], cwd=ROOT)
+            raise SystemExit(result.returncode)
         procedure.require_equal(procedure.git(target, "rev-parse", "HEAD"),
                                 os.environ["STAMPED_JUDGE_COMMIT"], "replay target commit")
         remaining = procedure.replay_arguments(frozen, remaining, target,
@@ -81,4 +229,12 @@ def main():
 
 
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["--captured-replay"]:
+        frozen = procedure.load_procedure(os.environ["STAMPED_PROCEDURE"],
+                                          os.environ["STAMPED_PROCEDURE_SHA256"])
+        procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
+                                frozen["fixed_files"]["scripts/assessment.py"], "capture replay adapter")
+        helper = Path(sys.argv[2])
+        procedure.require_equal(procedure.sha256(helper.read_bytes()), sys.argv[3], "frozen replay helper")
+        raise SystemExit(captured_replay(sys.argv[4:], helper))
     main()

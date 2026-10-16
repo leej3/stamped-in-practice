@@ -40,8 +40,18 @@ def _clean(repo, label):
         raise SystemExit(label + " must have no tracked changes or untracked files")
 
 
-def _target_identity(target):
+def _target_identity(target, delivery_capture=None):
     target = Path(target).resolve()
+    if delivery_capture:
+        from delivery_snapshot import validate_capture, capture_reference_limits
+        manifest = Path(delivery_capture).resolve()
+        identity = validate_capture(manifest)
+        if target != manifest.parent / json.loads(manifest.read_text())["workspace"]:
+            raise SystemExit("Judge target must be the original workspace in its delivery capture")
+        return {"schema_version": 2, "target_path": str(target),
+                "target_commit": identity["commit"], "capture": identity["capture"],
+                "captured_at": identity["captured_at"],
+                "reference_limits": capture_reference_limits(manifest)}
     if Path(_output(target, "rev-parse", "--show-toplevel")).resolve() != target:
         raise SystemExit("Judge target must be a Git repository root")
     identity = {"schema_version": 1, "target_path": str(target),
@@ -55,7 +65,8 @@ def validate_target(target: Path, identity: dict) -> None:
     """Recheck the pinned research object without refreshing its Git index."""
     if not isinstance(identity, dict) or type(identity.get("schema_version")) is not int:
         raise SystemExit("Invalid judge target identity")
-    if _target_identity(target) != identity:
+    capture = identity.get("capture", {}).get("uri") if identity.get("schema_version") == 2 else None
+    if _target_identity(target, capture) != identity:
         raise SystemExit("Judge target identity changed")
 
 
@@ -110,19 +121,19 @@ def validate(workspace: Path, target: Path) -> dict:
         raise SystemExit("Invalid judge target receipt") from error
     _clean(workspace, "Judge workspace")
     validate_target(target, identity)
-    if _git(workspace, "cat-file", "-e", identity["target_commit"], check=False).returncode == 0:
+    if identity["target_commit"] and _git(workspace, "cat-file", "-e", identity["target_commit"], check=False).returncode == 0:
         raise SystemExit("Judge workspace contains the research target's Git history")
     return identity
 
 
-def initialize(workspace: Path, target: Path, provenance: Path) -> dict:
+def initialize(workspace: Path, target: Path, provenance: Path, delivery_capture=None) -> dict:
     """Create a fresh seed without copying or fetching the research history."""
     if Path(workspace).is_symlink():
         raise SystemExit("Judge workspace must be a new directory")
     workspace, target = _paths(workspace, target)
     if workspace.exists():
         raise SystemExit("Judge workspace already exists; choose a new directory")
-    identity = _target_identity(target)
+    identity = _target_identity(target, delivery_capture)
     workspace.parent.mkdir(parents=True, exist_ok=True)
     # Empty templates and a local hooks path prevent inherited commit hooks from
     # executing before the coordinator explicitly prepares judge capture.

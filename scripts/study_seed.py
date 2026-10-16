@@ -2,6 +2,7 @@
 import hashlib
 import json
 import os
+import re
 import subprocess
 from pathlib import Path, PurePosixPath
 
@@ -259,4 +260,198 @@ def research_prompt(checkout, capture_execution=False):
         ).encode()
     addition = selected["additional_prompt"] if selected else ""
     return ((checkout / "input/study-task.md").read_bytes() + common +
+            (("\n" + addition + "\n").encode() if addition else b""))
+
+
+NEUTRAL_PROTOCOL = "neutral-v1"
+NEUTRAL_COMMON = "prompts/neutral-worker-common.md"
+
+
+def _write_snapshot_file(destination, mode, content):
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    if mode == "120000":
+        destination.symlink_to(content.decode())
+    elif mode in ("100644", "100755"):
+        destination.write_bytes(content)
+        destination.chmod(0o755 if mode == "100755" else 0o644)
+    else:
+        raise SystemExit("Unsupported snapshot file mode: " + mode)
+
+
+def neutral_inputs(study, revision, checkout):
+    """Copy exact available scientific bytes without giving workers annex links."""
+    sources = json.loads(blob(study, revision, "input/sources.json"))
+    inventory = []
+    for mode, kind, oid, path in entries(study, revision, "input"):
+        if kind != "blob" or ".." in PurePosixPath(path).parts:
+            raise SystemExit("Scientific inputs must be files below input/")
+        content = blob(study, revision, path)
+        row = {"path": path, "git_blob": oid, "source_mode": mode}
+        if mode == "120000":
+            parts = PurePosixPath(content.decode()).parts
+            if not all(p in parts for p in (".git", "annex", "objects")) or parts[-1] != parts[-2]:
+                raise SystemExit("Only annex links are supported in scientific inputs")
+            key = parts[-1]
+            try:
+                location = git(study, "annex", "contentlocation", key)
+            except subprocess.CalledProcessError as error:
+                raise SystemExit("Materialize the pinned input before neutral launch: " + path) from error
+            content = (study / location).read_bytes()
+            match = re.fullmatch(r"(SHA256|MD5)E?-s([0-9]+)--([0-9a-f]+)(?:\..*)?", key)
+            if not match or len(content) != int(match[2]) or hashlib.new(match[1].lower(), content).hexdigest() != match[3]:
+                raise SystemExit("Materialized input differs from its original annex key: " + path)
+            row["annex_key"] = key
+            mode = "100644"
+        expected = sources.get("files", {}).get(path.removeprefix("input/"), {})
+        digest = hashlib.sha256(content).hexdigest()
+        if expected.get("sha256", digest) != digest or expected.get("bytes", len(content)) != len(content):
+            raise SystemExit("Input differs from the scientific source inventory: " + path)
+        _write_snapshot_file(checkout / path, mode, content)
+        row.update(sha256=digest, bytes=len(content), mode=mode)
+        inventory.append(row)
+    if not (checkout / "input/study-task.md").is_file():
+        raise SystemExit("Scientific task is missing")
+    return inventory
+
+
+def snapshot_research_skills(source, revision, destination):
+    """Keep full sibling skill directories, without repository/evaluation history."""
+    files = []
+    for mode, kind, oid, path in entries(source, revision, "skills"):
+        if kind != "blob":
+            raise SystemExit("Research skill snapshot cannot contain submodules")
+        relative = Path(path).relative_to("skills")
+        target = destination / relative
+        content = blob(source, revision, path)
+        _write_snapshot_file(target, mode, content)
+        files.append({"path": relative.as_posix(), "mode": mode, "git_blob": oid,
+                      "sha256": hashlib.sha256(content).hexdigest()})
+    for row in files:
+        target = destination / row["path"]
+        if target.is_symlink() and not target.resolve().is_relative_to(destination.resolve()):
+            raise SystemExit("Skill snapshot link escapes the pinned skill directories")
+    return files
+
+
+def make_neutral_seed(repo, base, study, checkout, branch, condition, provenance,
+                      receipt_path, common_resources, skills_source=None):
+    """Seed native capture with materialized inputs; all assignment data is external."""
+    checkout, receipt_path = Path(checkout).resolve(), Path(receipt_path).resolve()
+    resources = Path(common_resources).resolve()
+    if receipt_path.is_relative_to(checkout) or resources.is_relative_to(checkout):
+        raise SystemExit("Neutral assignment and common resources must stay outside the worker")
+    if checkout.exists() or receipt_path.exists():
+        raise SystemExit("Neutral seed destination exists; preserve the earlier attempt")
+    if any(label in branch.lower() for label in ("baseline", "discover-general", "discover-science", "stamped-explicit")):
+        raise SystemExit("Neutral worker branch must not encode its assigned condition")
+    study_path, revision = study_pin(repo, base, study)
+    selected = assignment(blob(repo, base, "conditions.json"), condition)
+    checkout.mkdir(parents=True)
+    git(checkout, "init", "--template=", "-b", branch)
+    git(checkout, "config", "core.hooksPath", str(checkout / ".git/hooks"))
+    (checkout / ".git/hooks").mkdir(exist_ok=True)
+    (checkout / ".git/info").mkdir(exist_ok=True)
+    (checkout / ".git/info/exclude").write_text(".codex/hooks.json\n.entire/\n")
+    inventory = neutral_inputs(study, revision, checkout)
+    annexed = [row for row in inventory if "annex_key" in row]
+    if annexed:
+        # This supplies input storage only. Do not create an output policy or
+        # ask workers to use annex for their own artifacts.
+        git(checkout, "annex", "init", "coordinator-supplied-inputs")
+        for row in annexed:
+            backend = row["annex_key"].split("-", 1)[0]
+            git(checkout, "annex", "add", "--force", "--backend=" + backend, "--", row["path"])
+            if git(checkout, "annex", "lookupkey", row["path"]) != row["annex_key"]:
+                raise SystemExit("Supplied input annex identity changed: " + row["path"])
+            row.update(mode="120000", link_target=os.readlink(checkout / row["path"]),
+                       storage_attribution="coordinator-supplied-input")
+    git(checkout, "add", "--", "input")
+    trailers = subprocess.check_output([str(provenance)], text=True).strip()
+    git(checkout, "commit", "-m", "chore(study): supply materialized scientific inputs\n\n" + trailers)
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    common = blob(repo, base, NEUTRAL_COMMON)
+    resource_bytes = resources.read_bytes()
+    receipt = {"version": 3, "protocol": NEUTRAL_PROTOCOL, "coordinator_commit": base,
+               "study_path": study_path, "study_commit": revision,
+               "study_input_tree": git(study, "rev-parse", revision + ":input"),
+               "condition": selected["condition"], "assignment": selected,
+               "run": branch.removeprefix("codex/"), "seed_commit": git(checkout, "rev-parse", "HEAD"),
+               "inputs": inventory, "supplied_files": list(inventory),
+               "common_prompt": common.decode(), "common_prompt_sha256": hashlib.sha256(common).hexdigest(),
+               "common_resources": resource_bytes.decode(),
+               "common_resources_sha256": hashlib.sha256(resource_bytes).hexdigest()}
+    if supplied_skills(receipt):
+        source = Path(skills_source) if skills_source else repo / "skills"
+        revision = git(repo, "rev-parse", base + ":skills")
+        destination = receipt_path.parent / "research-skills"
+        destination.mkdir()
+        receipt.update(skills_commit=revision, skills_directory=str(destination),
+                       skill_files=snapshot_research_skills(source, revision, destination))
+        for name in supplied_skills(receipt):
+            if not (destination / name / "SKILL.md").is_file():
+                raise SystemExit("Missing supplied research skill: " + name)
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n")
+    audit_neutral_seed(checkout, receipt_path)
+    return receipt
+
+
+def _neutral_visible_files(checkout):
+    return {p.relative_to(checkout).as_posix(): p for p in checkout.rglob("*")
+            if p.relative_to(checkout).parts[0] != ".git" and (p.is_file() or p.is_symlink())}
+
+
+def retain_neutral_preparation(checkout, receipt_path):
+    """Record native coordinator configuration as supplied, never worker-created."""
+    receipt = json.loads(receipt_path.read_text())
+    supplied = {row["path"] for row in receipt["supplied_files"]}
+    for name, path in _neutral_visible_files(checkout).items():
+        if name in supplied:
+            continue
+        if not name.startswith((".codex/", ".entire/")) or path.is_symlink():
+            raise SystemExit("Unexpected file introduced during neutral native preparation: " + name)
+        content = path.read_bytes()
+        receipt["supplied_files"].append({"path": name, "sha256": hashlib.sha256(content).hexdigest(),
+                                        "bytes": len(content), "mode": "100644",
+                                        "source": "coordinator-native-preparation"})
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n")
+    return audit_neutral_seed(checkout, receipt_path)
+
+
+def audit_neutral_seed(checkout, receipt_path):
+    receipt = json.loads(Path(receipt_path).read_text())
+    if receipt.get("version") != 3 or receipt.get("protocol") != NEUTRAL_PROTOCOL:
+        raise SystemExit("Unsupported neutral input receipt")
+    if Path(receipt_path).resolve().is_relative_to(checkout.resolve()):
+        raise SystemExit("Neutral assignment receipt is inside the worker")
+    if git(checkout, "rev-parse", "HEAD") != receipt["seed_commit"]:
+        raise SystemExit("Neutral input seed commit changed")
+    if git(checkout, "rev-list", "--parents", "-n", "1", "HEAD").split() != [receipt["seed_commit"]]:
+        raise SystemExit("Neutral input seed must have no parent history")
+    if (checkout / ".git/objects/info/alternates").exists():
+        raise SystemExit("Neutral worker shares a Git object store")
+    expected = {row["path"]: row for row in receipt["supplied_files"]}
+    visible = _neutral_visible_files(checkout)
+    if set(visible) != set(expected):
+        raise SystemExit("Neutral worker contains files outside the supplied input/config boundary")
+    for name, path in visible.items():
+        row = expected[name]
+        if path.is_symlink() and (not row.get("annex_key") or
+                os.readlink(path) != row.get("link_target") or
+                not path.resolve().is_relative_to((checkout / ".git/annex/objects").resolve())):
+            raise SystemExit("Neutral supplied input link changed: " + name)
+        if hashlib.sha256(path.read_bytes()).hexdigest() != row["sha256"]:
+            raise SystemExit("Neutral supplied bytes changed: " + name)
+    for row in receipt.get("skill_files", []):
+        path = Path(receipt["skills_directory"]) / row["path"]
+        data = os.readlink(path).encode() if row["mode"] == "120000" else path.read_bytes()
+        if hashlib.sha256(data).hexdigest() != row["sha256"]:
+            raise SystemExit("Supplied research skill bytes changed")
+    return receipt
+
+
+def neutral_research_prompt(checkout, receipt_path):
+    receipt = json.loads(Path(receipt_path).read_text())
+    common = receipt["common_prompt"].replace("$COMMON_RESOURCES", receipt["common_resources"])
+    addition = receipt["assignment"]["additional_prompt"]
+    return ((checkout / "input/study-task.md").read_bytes() + b"\n" + common.encode() +
             (("\n" + addition + "\n").encode() if addition else b""))
