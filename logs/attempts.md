@@ -17,5 +17,10 @@ All substantive runs were launched through Pixi and captured by duct in this dir
 | `final-common_2026.10.15T23.33.03-647_` | Accepted 9,999-permutation run using the committed all-participant common-support mask. |
 | `audit-common_2026.10.15T23.33.29-4343_` | Independent SciPy and max-null numerical checks passed for the common-support result. |
 | `audit-common-final_2026.10.15T23.34.17-15725_` | Final validation also verified the finite statistic-map support equals the 198,029-voxel analysis mask. |
+| `replay-final-common_2026.10.15T23.40.10-20261015_` | Fresh clone of the committed environment snapshot (`9a5902e`, parent `8905843`); `pixi install --locked` succeeded and the 9,999-permutation run reproduced the accepted group summary. |
+| `compare-replay-final_2026.10.15T23.41.00-20261015_` | Passed exact replay comparison for all NIfTI values and geometry, TSV tables, summary values (excluding runtime), and figure bytes. See `analysis/compare_replay.py` and `results/group-analysis/replay-validation.json`. |
+| `replay-audit-final_2026.10.15T23.42.00-20261015_` | Independent audit in the clean snapshot checkout passed: 54 ROI rows, 198,029 tested voxels, and 24 corrected voxels. |
 
 The first duct invocation used an extra `run` subcommand (`pixi run duct run ...`) and was rejected by duct before starting a child process; it produced no duct record. This invocation error did not launch analysis and was corrected immediately.
+
+The first final-replay duct invocation also used an extra `run` subcommand and was rejected before starting Pixi. The corrected invocation used `duct -p ... pixi run ...`; no analysis ran during the failed invocation.
