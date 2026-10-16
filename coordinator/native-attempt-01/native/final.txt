@@ -1,0 +1,11 @@
+The analysis does **not support a positive vmPFC gain effect** in the equal-indifference group. The mean vmPFC cope was −0.0048 (95% interval −0.0243 to 0.0147); no vmPFC voxels survived whole-brain max-*t* FWE correction. The interval includes zero, so this is lack of evidence for the increase, not proof of no effect. The hypothesis follows the positive vmPFC prediction in the [original NARPS instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf).
+
+The primary analysis included all 54 participants. Across the whole-brain mask, 24 voxels survived correction, all in small posterior clusters rather than vmPFC. The broader 90% coverage sensitivity run gave the same conclusion. The report explains the anatomical ROI definition, uncertainty, and limits of the supplied cope estimates; the Harvard–Oxford atlas source is documented by [FSL](https://fsl.fmrib.ox.ac.uk/fsl/docs/other/datasets.html).
+
+- [Scientific report](report/report.md)
+- [Analysis code](analysis/run_analysis.py) and [frozen protocol](analysis/protocol.md)
+- [Primary results](results/summary.json) and [90% coverage sensitivity results](results/sensitivity_90pct/summary.json)
+- [vmPFC participant estimates](figures/vmPFC_estimates.png) and [whole-brain corrected map](figures/whole_brain_fwe.png)
+- [Run instructions and environment](README.md)
+
+The report also identifies a superseded permutation-statistic attempt retained and marked invalid; the final statistics were regenerated with the corrected calculation and cross-checked against SciPy.
