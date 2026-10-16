@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/scripts/analyze_gain.py", line 234, in <module>
+    main()
+    ~~~~^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/scripts/analyze_gain.py", line 108, in main
+    perm = non_parametric_inference(
+        second_level_input=imgs,
+    ...<9 lines>...
+        verbose=1,
+    )
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/.pixi/envs/default/lib/python3.13/site-packages/nilearn/glm/second_level/second_level.py", line 1274, in non_parametric_inference
+    outputs = permuted_ols(
+        tested_var,
+    ...<10 lines>...
+        tfce=tfce,
+    )
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/.pixi/envs/default/lib/python3.13/site-packages/nilearn/mass_univariate/permuted_least_squares.py", line 805, in permuted_ols
+    ret = joblib.Parallel(n_jobs=n_jobs, verbose=verbose)(
+        joblib.delayed(_permuted_ols_on_chunk)(
+    ...<16 lines>...
+        for thread_id, n_perm_chunk in enumerate(n_perm_chunks)
+    )
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/.pixi/envs/default/lib/python3.13/site-packages/joblib/parallel.py", line 2098, in __call__
+    return output if self.return_generator else list(output)
+                                                ~~~~^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/.pixi/envs/default/lib/python3.13/site-packages/joblib/parallel.py", line 1704, in _get_outputs
+    yield from self._retrieve()
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/.pixi/envs/default/lib/python3.13/site-packages/joblib/parallel.py", line 1822, in _retrieve
+    time.sleep(0.01)
+    ~~~~~~~~~~^^^^^^
+KeyboardInterrupt
