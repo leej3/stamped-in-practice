@@ -1,0 +1,190 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0a508b05e2ac0c24c761cea6c0021110df6a87b1\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-24-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/analysis_mask.nii.gz",
+      "results/failed_studentization_run/analysis_mask.nii.gz",
+      "results/failed_studentization_run/group_mean_cope.nii.gz",
+      "results/failed_studentization_run/group_p_fwe_maxT.nii.gz",
+      "results/failed_studentization_run/group_p_uncorrected.nii.gz",
+      "results/failed_studentization_run/group_significant_fwe05.nii.gz",
+      "results/failed_studentization_run/group_t.nii.gz",
+      "results/failed_studentization_run/vmPFC_annotation_mask.nii.gz",
+      "results/failed_studentization_run/voxel_statistics.tsv.gz",
+      "results/group_mean_cope.nii.gz",
+      "results/group_p_fwe_maxT.nii.gz",
+      "results/group_p_uncorrected.nii.gz",
+      "results/group_significant_fwe05.nii.gz",
+      "results/group_t.nii.gz",
+      "results/sensitivity_90pct/analysis_mask.nii.gz",
+      "results/sensitivity_90pct/group_mean_cope.nii.gz",
+      "results/sensitivity_90pct/group_p_fwe_maxT.nii.gz",
+      "results/sensitivity_90pct/group_p_uncorrected.nii.gz",
+      "results/sensitivity_90pct/group_significant_fwe05.nii.gz",
+      "results/sensitivity_90pct/group_t.nii.gz",
+      "results/sensitivity_90pct/vmPFC_annotation_mask.nii.gz",
+      "results/sensitivity_90pct/voxel_statistics.tsv.gz",
+      "results/vmPFC_annotation_mask.nii.gz",
+      "results/voxel_statistics.tsv.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/analysis_mask.nii.gz ok\ncopy results/failed_studentization_run/analysis_mask.nii.gz ok\ncopy results/failed_studentization_run/group_mean_cope.nii.gz ok\ncopy results/failed_studentization_run/group_p_fwe_maxT.nii.gz (to con-hub...) \n\n46%   31.98 KiB       124 MiB/s 0s\n100%  69.71 KiB       115 MiB/s 0s\n                                  \nok\ncopy results/failed_studentization_run/group_p_uncorrected.nii.gz (to con-hub...) \n\n3%    31.98 KiB        30 MiB/s 0s\n100%  988.38 KiB        8 MiB/s 0s\n                                  \nok\ncopy results/failed_studentization_run/group_significant_fwe05.nii.gz (to con-hub...) \n\n46%   31.98 KiB        43 MiB/s 0s\n100%  70.25 KiB        33 MiB/s 0s\n                                  \nok\ncopy results/failed_studentization_run/group_t.nii.gz ok\ncopy results/failed_studentization_run/vmPFC_annotation_mask.nii.gz (to con-hub...) \n\n95%   31.98 KiB        46 MiB/s 0s\n100%  33.84 KiB         3 MiB/s 0s\n                                  \nok\ncopy results/failed_studentization_run/voxel_statistics.tsv.gz (to con-hub...) \n\n1%    31.98 KiB        34 MiB/s 0s\n100%  5.67 MiB         57 MiB/s 0s\n                                  \nok\ncopy results/group_mean_cope.nii.gz ok\ncopy results/group_p_fwe_maxT.nii.gz (to con-hub...) \n\n43%   31.98 KiB        46 MiB/s 0s\n100%  73.62 KiB        40 MiB/s 0s\n                                  \nok\ncopy results/group_p_uncorrected.nii.gz ok\ncopy results/group_significant_fwe05.nii.gz (to con-hub...) \n\n46%   31.98 KiB        53 MiB/s 0s\n100%  69.29 KiB        35 MiB/s 0s\n                                  \nok\ncopy results/group_t.nii.gz ok\ncopy results/sensitivity_90pct/analysis_mask.nii.gz ok\ncopy results/sensitivity_90pct/group_mean_cope.nii.gz ok\ncopy results/sensitivity_90pct/group_p_fwe_maxT.nii.gz (to con-hub...) \n\n43%   31.98 KiB       165 MiB/s 0s\n100%  74.87 KiB       116 MiB/s 0s\n                                  \nok\ncopy results/sensitivity_90pct/group_p_uncorrected.nii.gz ok\ncopy results/sensitivity_90pct/group_significant_fwe05.nii.gz (to con-hub...) \n\n45%   31.98 KiB       146 MiB/s 0s\n100%  70.39 KiB        98 MiB/s 0s\n                                  \nok\ncopy results/sensitivity_90pct/group_t.nii.gz ok\ncopy results/sensitivity_90pct/vmPFC_annotation_mask.nii.gz ok\ncopy results/sensitivity_90pct/voxel_statistics.tsv.gz (to con-hub...) \n\n0%    31.98 KiB       159 MiB/s 0s\n100%  7.15 MiB         90 MiB/s 0s\n                                  \nok\ncopy results/vmPFC_annotation_mask.nii.gz (to con-hub...) \n\n94%   31.98 KiB       152 MiB/s 0s\n100%  33.87 KiB        14 MiB/s 0s\n                                  \nok\ncopy results/voxel_statistics.tsv.gz (to con-hub...) \n\n0%    31.98 KiB       165 MiB/s 0s\n100%  6.71 MiB         54 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-24-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-24-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-24-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-24-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-24-browsable' set up to track 'origin/codex/narps-neutral-r1-24-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "bb010929364143adad693b7a12626fee443a24c5\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0a508b05e2ac0c24c761cea6c0021110df6a87b1\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "bb010929364143adad693b7a12626fee443a24c5",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   bb01092..218b3e6  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "218b3e6a8567cc38033d2095424d5946631eed1f\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-24-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0a508b05e2ac0c24c761cea6c0021110df6a87b1\trefs/heads/codex/narps-neutral-r1-24-browsable\n218b3e6a8567cc38033d2095424d5946631eed1f\trefs/heads/git-annex\n"
+  }
+]
