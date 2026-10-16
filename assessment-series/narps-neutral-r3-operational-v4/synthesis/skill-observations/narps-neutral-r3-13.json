@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r3-13",
+  "extracted_at_utc": "2026-10-16T16:54:25.955042+00:00",
+  "assigned_condition": "discover-science",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 65,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "notebook scaffold and format validation observed; no notebook execution observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "notes": [
+      "Read skill-installer guidance, listed the curated catalog, installed and read jupyter-notebook.",
+      "The skill scaffold helper wrote report/group_analysis.ipynb. A later nbformat validation reported six valid cells with a missing cell ID warning; validation is separate from notebook execution, which was not observed.",
+      "A broad adjacent-directory search and an agent claim about maps in another workspace were observed. These are not evidence of reading another worker's scientific results or copying its analysis; no influence is inferred.",
+      "A separate PDF fetch/extraction attempt returned HTTP403 and command exit1; the PDF skill was not installed or read in this session. Upstream installed skill revision was not resolved."
+    ]
+  },
+  "evidence": {
+    "installer_loaded_and_adjacent_search": [
+      {
+        "line": 11,
+        "item_id": "item_5",
+        "event_sha256": "fa8330297e4b6964c4ff8c4d89414b7dd80dc2384771aaf5ad5b2068e1a596e8",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ufs3ouim/skills/.system/skill-installer/SKILL.md && find . -maxdepth 4 -type f | head -100 && find .. -maxdepth 5 -type f -name '*cope.nii.gz' | head\"",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n./input/sources.json\n./input/study-task.md\n./input/upstream-methods.md\n./input/participants.tsv\n./.codex/hooks.json\n./.git/config\n./.git/objects/61/e25f5221edac483879a552abe628adf5dbebb4\n./.git/objects/61/ec4ac4affc4629ce84d42fe5daa048d85243ed\n./.git/objects/0d/c180f87a878572420e93e8b95e67ee3cc2aba0\n./.git/objects/0d/c6228af9e268a27296da2b4743629082232fc0\n./.git/objects/95/e3d26870aceffdbff606ba89f88a97e55efbc2\n./.git/objects/95/4e8d8f830a3e23a93baed7093bc88ce91dd054\n./.git/objects/59/40f5dd0f7dd73463a96b28279eec934cdded04\n./.git/objects/59/6f1e237cd3ecfb2625ed8efa3898225b11f869\n./.git/objects/92/3ba12454af9382d8df4efcd77a6c048b797edb\n./.git/objects/0c/902039dba8304819938d6255c18c06780644ef\n./.git/objects/0c/cf087c935866d352cc9e30fff70b7b5719c66c\n./.git/objects/66/b9796c809aa5ba0294c9766812272d1a192fe3\n./.git/objects/3e/797e1150c226e51c26649cf8e3c9b6d09de974\n./.git/objects/3e/6f10b68f6c3510c32d29db9d10ea21ba26eb9f\n./.git/objects/3e/b941a04022527ad36bb1c69df864f82839d00d\n./.git/objects/3e/27f7099e28cadb796ec9d0500c9287c517b74f\n./.git/objects/68/7b7c5df31f2fd062c904dcfb86daf5580d739c\n./.git/objects/68/7403d4670f20cedc0a498fb45b92b39676ffa6\n./.git/objects/57/a425ac2313d02ba508cb301f6d52bec0f8246a\n./.git/objects/57/0f7782ca1d8edc547daa09e1c0f7fed4850924\n./.git/objects/3b/b98b5203b70d78260732057b911d346310509d\n./.git/objects/6f/f1d99190dafdb25460cc4faa9e475aa4bfff20\n./.git/objects/6f/f077ea6253bd763dde130a873064668f81cfe5\n./.git/objects/03/cb06e2811b36b92ce68f8df8f5c674c9d25cc0\n./.git/objects/03/5ac0904e9e6727b010e0fa2139cc67cad9ff3e\n./.git/objects/03/865c202b13bb11cce7f710627f6739b2d8cf0a\n./.git/objects/03/8d35a165b401cbe5d3b1f5112ca505e38bfecc\n./.git/objects/9b/3a76ae817d03839852e15363f1f5829d080a29\n./.git/objects/9b/5e019b966c67faeba72a9332e09bfd067d29d8\n./.git/objects/9e/e9de311205cfb823f1f31a38a853932f004cc6\n./.git/objects/9e/45bb85100959d7f7b6384b927c33cbca8616d4\n./.git/objects/9e/65ea98094cea0e66f19fc5059eaff83e3100ba\n./.git/objects/04/262596b85faae4912625d1bb7f99fcb3bc0263\n./.git/objects/6a/9591337795c0687f6d6771479ee24566f3f72f\n./.git/objects/35/99849c0d2b3f7b7fe6d114555d66334d3b97c2\n./.git/objects/35/590e71538a78ed748c63a33abc3e878be7d92e\n./.git/objects/69/feaeb4828612630335c96a7879763bae9e381e\n./.git/objects/69/ab9dea10dac64ce2e1d91c3071a87cde44cd3c\n./.git/objects/3c/fe5e2399ee32d9d222f56ea1d422130b5dcb7a\n./.git/objects/56/513317599bdfca72a00828aba9f354ca943a30\n./.git/objects/56/70fc7dccaec5620a5bb935d7c4379504cab6eb\n./.git/objects/56/a5ca2a332ada43d310dc2c1a73790f48274b50\n./.git/objects/51/0a52ae0ab1d4e2c50d6f73d58bd0980384a656\n./.git/objects/51/e893f0efc83f25d1decdbfcbe9cf51262c4e83\n./.git/objects/3d/c60ff0697f244d731dbfca02d6d19bc5570b3d\n./.git/objects/3d/9f17ae44ea91bebcf7e0b2d118e33b318c8b34\n./.git/objects/3d/711ea7e56cc2d2555f93b1edb4d1c0d6ab8750\n./.git/objects/67/8aa72fdceb7533f26a2a75367ae983c023f481\n./.git/objects/93/bb574113c1e8835bf4690d736514ccb17848aa\n./.git/objects/93/f911ee70114af76b7bc32ea1f052bad0e8bbca\n./.git/objects/93/8aaade665e68d1abb87954d21fecb6104de0a0\n./.git/objects/94/9ada86b2e56fd5d91f30a1833c2cd093958478\n./.git/objects/0e/37cc22e7c97dab0df7af89994867d98245b3af\n./.git/objects/0e/0c3a903f9bfebd3aa5ddef47aae497288a9d69\n./.git/objects/5a/549f519eb4f3a61360f0e99beaaf092a33d2f0\n./.git/objects/5f/56f6bd6f004db74ec74921673defd7f03e023e\n./.git/objects/5f/5ddf3ce66d70a23d6d62521545776bc3e9dd88\n./.git/objects/5f/90449dd485d490155712888fe08924680a7e37\n./.git/objects/33/3bab14a57676b956ab1c627323187e8be41b0e\n./.git/objects/33/3e4910b86d5816d7409032f26de6a7b1ae047e\n./.git/objects/33/c12b71b853779910e545a596f40b36eb696ebb\n./.git/objects/05/e8a195108f726737eb9ead31e8c3d51a320455\n./.git/objects/9d/1feeed5fa143ee40152e1855259227def9b2f6\n./.git/objects/9c/ea3c9927b066accd4f958b532ec5ca201d0a59\n./.git/objects/9c/b2008c534b01544f138aa0b9635fb24f129ef0\n./.git/objects/9c/67c758f1fdce4489036b15a2bd1ecd28656796\n./.git/objects/02/695c7f7535690b666cee23d1acd8da96d4f481\n./.git/objects/02/980c5247495e42860d79a224cf46a7d6a368a2\n./.git/objects/a4/648fb60f1d59df6ccb9fb9a18832a9d9f7a473\n./.git/objects/a4/177a28497de0f05e67b3c15346009a8b838f74\n./.git/objects/a4/84f41db2095ef116f08d359f9b95ad41981698\n./.git/objects/a3/2f04e95ecd8541844f1217f9dfae1f969b826b\n./.git/objects/a3/fca495381b953e2b2ebfd51f270f2dd49c6606\n./.git/objects/a3/0577631858789640615101aac55fa841b0145d\n./.git/objects/b5/8fb581180949f2ad4c8ed901d687df350c95a3\n./.git/objects/b2/9aa5cdc614c675f72c91d2b73964ff3f8fba8c\n./.git/objects/b2/d2d15e193dc3d23c6596629f323029c1b83c4c\n./.git/objects/d9/ef0037db21dd6e0819df0b488efcb05f8e8586\n./.git/objects/ac/b6c23ef79ee54d28c68294b7f94d4b63fea95f\n./.git/objects/ac/d08720c07886244f066b42cc26fbc064b30df8\n./.git/objects/ac/5fbeee03b86a2d31ad2ab2a5061fadc580328e\n./.git/objects/ad/a55ad075a163d19498dbc840af6266346cf433\n./.git/objects/ad/7dcfe7f0a0d75cb2e2bcce3b46c3e34d2ba879\n./.git/objects/ad/1085b97f6ecbd92c22c3fd2ba2abcabe1c4e6a\n./.git/objects/d7/9a1a1193a848ea6ab1674631614791c9d71a79\n./.git/objects/d7/05a7e6dd5e8d8e9f630bd64bbf8201ee6878a0\n./.git/objects/d7/19a36feb58436c42ccc90249553834c5f50641\n./.git/objects/be/684d9b3e607abe6cb9632cbecd17ba42c932cc\n./.git/objects/b3/1789446bb4539edaee2a8f2886635df806a51a\n./.git/objects/b3/ecf0c48eeec9edb50dde07477009f0ae48e50c\n./.git/objects/df/3114c83a5396b69240a57e9b90d756ee08884a\n./.git/objects/b4/4645b57338e4b17cdc792993d1f8d7cc387760\n./.git/objects/b4/6627a24317d19a77f9303812e8b956a5500c16\n./.git/objects/b4/2c99f6118fbae7cb11e45f89167b10f1fc5049\n../narps-neutral-r1-19/results/group_mean_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-043_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-093_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-025_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-077_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-039_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-011_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-009_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-047_hypo1_cope.nii.gz\n../narps-neutral-r1-16/input/data/sub-021_hypo1_cope.nii.gz\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "adjacent_path_claim": [
+      {
+        "line": 12,
+        "item_id": "item_6",
+        "event_sha256": "036d93364817b18eea29810456a3caad319df1316bff21ccdd75b09d2596e257",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "agent_message",
+            "text": "The maps are absent from this checkout but present in an adjacent task workspace; to keep this analysis self-contained, I\u2019ll retrieve only the exact effect maps already enumerated in this workspace\u2019s provenance manifest (no scans or upstream reruns). I\u2019m checking the curated skill catalog for a relevant workflow skill."
+          }
+        }
+      }
+    ],
+    "discovery": [
+      {
+        "line": 14,
+        "item_id": "item_7",
+        "event_sha256": "1e6676e611dcd0321a903617f9a4dd19ca08c4210258bbcce30b39f9761be010",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ufs3ouim/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 17,
+        "item_id": "item_9",
+        "event_sha256": "00dab0da987c7ff6fba1b25db025c9ef46079a1558787b125fb355581fe9bfde",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ufs3ouim/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/jupyter-notebook --dest .codex/skills'",
+            "aggregated_output": "Installed jupyter-notebook to .codex/skills/jupyter-notebook\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "instructions_loaded": [
+      {
+        "line": 19,
+        "item_id": "item_10",
+        "event_sha256": "8f6273ef32d21ce30ee31fa4bf34b5744b9fa56b5148c33f3483fa6d866cf63f",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_10",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat .codex/skills/jupyter-notebook/SKILL.md && python - <<'PY'\nimport json\nm=json.load(open('input/sources.json'))\nprint(len([k for k in m['files'] if k.endswith('.nii.gz')]))\nPY\"",
+            "aggregated_output": "---\nname: \"jupyter-notebook\"\ndescription: \"Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.\"\n---\n\n\n# Jupyter Notebook Skill\n\nCreate clean, reproducible Jupyter notebooks for two primary modes:\n\n- Experiments and exploratory analysis\n- Tutorials and teaching-oriented walkthroughs\n\nPrefer the bundled templates and the helper script for consistent structure and fewer JSON mistakes.\n\n## When to use\n- Create a new `.ipynb` notebook from scratch.\n- Convert rough notes or scripts into a structured notebook.\n- Refactor an existing notebook to be more reproducible and skimmable.\n- Build experiments or tutorials that will be read or re-run by other people.\n\n## Decision tree\n- If the request is exploratory, analytical, or hypothesis-driven, choose `experiment`.\n- If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.\n- If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.\n\n## Skill path (set once)\n\n```bash\nexport CODEX_HOME=\"${CODEX_HOME:-$HOME/.codex}\"\nexport JUPYTER_NOTEBOOK_CLI=\"$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py\"\n```\n\nUser-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).\n\n## Workflow\n1. Lock the intent.\nIdentify the notebook kind: `experiment` or `tutorial`.\nCapture the objective, audience, and what \"done\" looks like.\n\n2. Scaffold from the template.\nUse the helper script to avoid hand-authoring raw notebook JSON.\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind experiment \\\n  --title \"Compare prompt variants\" \\\n  --out output/jupyter-notebook/compare-prompt-variants.ipynb\n```\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind tutorial \\\n  --title \"Intro to embeddings\" \\\n  --out output/jupyter-notebook/intro-to-embeddings.ipynb\n```\n\n3. Fill the notebook with small, runnable steps.\nKeep each code cell focused on one step.\nAdd short markdown cells that explain the purpose and expected result.\nAvoid large, noisy outputs when a short summary works.\n\n4. Apply the right pattern.\nFor experiments, follow `references/experiment-patterns.md`.\nFor tutorials, follow `references/tutorial-patterns.md`.\n\n5. Edit safely when working with existing notebooks.\nPreserve the notebook structure; avoid reordering cells unless it improves the top-to-bottom story.\nPrefer targeted edits over full rewrites.\nIf you must edit raw JSON, review `references/notebook-structure.md` first.\n\n6. Validate the result.\nRun the notebook top-to-bottom when the environment allows.\nIf execution is not possible, say so explicitly and call out how to validate locally.\nUse the final pass checklist in `references/quality-checklist.md`.\n\n## Templates and helper script\n- Templates live in `assets/experiment-template.ipynb` and `assets/tutorial-template.ipynb`.\n- The helper script loads a template, updates the title cell, and writes a notebook.\n\nScript path:\n- `$JUPYTER_NOTEBOOK_CLI` (installed default: `$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py`)\n\n## Temp and output conventions\n- Use `tmp/jupyter-notebook/` for intermediate files; delete when done.\n- Write final artifacts under `output/jupyter-notebook/` when working in this repo.\n- Use stable, descriptive filenames (for example, `ablation-temperature.ipynb`).\n\n## Dependencies (install only when needed)\nPrefer `uv` for dependency management.\n\nOptional Python packages for local notebook execution:\n\n```bash\nuv pip install jupyterlab ipykernel\n```\n\nThe bundled scaffold script uses only the Python standard library and does not require extra dependencies.\n\n## Environment\nNo required environment variables.\n\n## Reference map\n- `references/experiment-patterns.md`: experiment structure and heuristics.\n- `references/tutorial-patterns.md`: tutorial structure and teaching flow.\n- `references/notebook-structure.md`: notebook JSON shape and safe editing rules.\n- `references/quality-checklist.md`: final validation checklist.\n54\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "scaffold": [
+      {
+        "line": 34,
+        "item_id": "item_19",
+        "event_sha256": "ff869dcb14ff25d282f0006d43ba892e539f1d5615dde6730b6050c8dda2c579",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_19",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python .codex/skills/jupyter-notebook/scripts/new_notebook.py --kind experiment --title 'NARPS equal-indifference gain-effect group analysis' --out report/group_analysis.ipynb && head -c 1200 report/group_analysis.ipynb\"",
+            "aggregated_output": "Wrote /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-13/report/group_analysis.ipynb using kind=experiment.\n{\n  \"cells\": [\n    {\n      \"cell_type\": \"markdown\",\n      \"metadata\": {},\n      \"source\": [\n        \"# Experiment: NARPS equal-indifference gain-effect group analysis\\n\",\n        \"\\n\",\n        \"Objective:\\n\",\n        \"- State the question you want to answer.\\n\",\n        \"- Define the success criteria.\\n\"\n      ]\n    },\n    {\n      \"cell_type\": \"code\",\n      \"execution_count\": null,\n      \"metadata\": {},\n      \"outputs\": [],\n      \"source\": [\n        \"# Setup: imports and reproducibility\\n\",\n        \"from __future__ import annotations\\n\",\n        \"\\n\",\n        \"import random\\n\",\n        \"import statistics\\n\",\n        \"\\n\",\n        \"SEED = 7\\n\",\n        \"random.seed(SEED)\\n\",\n        \"SEED\\n\"\n      ]\n    },\n    {\n      \"cell_type\": \"markdown\",\n      \"metadata\": {},\n      \"source\": [\n        \"## Plan\\n\",\n        \"\\n\",\n        \"- Hypothesis:\\n\",\n        \"- Variables to sweep:\\n\",\n        \"- Metrics to record:\\n\"\n      ]\n    },\n    {\n      \"cell_type\": \"code\",\n      \"execution_count\": null,\n      \"metadata\": {},\n      \"outputs\": [],\n      \"source\": [\n        \"# Define parameters and lightweight helpers\\n\",\n        \"sample_size = 20\\n\",\n        \"values = [random.random() for _ in range(s",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "notebook_format_validation": [
+      {
+        "line": 52,
+        "item_id": "item_28",
+        "event_sha256": "5d6d57694b00b73effebc8a43a75125cc11ef9ab820dc3b071d075335afb2eac",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_28",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\np='report/group_analysis.ipynb'\nnb=json.load(open(p))\nfor c in nb['cells']:\n if c['cell_type']=='code':\n  s=''.join(c['source'])\n  if 'ROOT = Path.cwd()' in s:\n   s=s.replace('ROOT = Path.cwd()', 'CWD = Path.cwd()\\\\nROOT = next(p for p in (CWD, *CWD.parents) if (p / \\\"code\\\" / \\\"group_analysis.py\\\").exists())')\n   c['source']=s.splitlines(True)\nopen(p,'w').write(json.dumps(nb,indent=2,ensure_ascii=False)+'\\\\n')\ntry:\n import nbformat\n n=nbformat.read(p,as_version=4)\n nbformat.validate(n)\n print('notebook valid; cells:',len(n.cells))\nexcept ImportError:\n print('nbformat unavailable; JSON parsed; cells:',len(nb['cells']))\nPY\ncat results/fwe_clusters.csv && cat results/cohort_summary.json && git status --short | tail -30\"",
+            "aggregated_output": "/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n  validate(nb)\nnotebook valid; cells: 6\ncluster,n_voxels,peak_t,peak_i,peak_j,peak_k,peak_x_mm,peak_y_mm,peak_z_mm,peak_p_fwe,peak_in_vmpfc_bounds\n1,17,6.617173194885254,35,15,31,-26.0,-102.0,-3.599997043609619,0.00039992001256905496,False\n2,2,5.760898590087891,61,17,32,26.0,-98.0,-1.1999969482421875,0.01299740094691515,False\n3,5,6.1934027671813965,63,19,29,30.0,-94.0,-8.399997234344482,0.002799440175294876,False\n{\n  \"n\": 54,\n  \"age_mean\": 26.055555555555557,\n  \"age_sd\": 3.0493838948818466,\n  \"age_min\": 21,\n  \"age_max\": 37,\n  \"gender_counts\": {\n    \"F\": 30,\n    \"M\": 24\n  }\n}\n?? .codex/\n?? code/\n?? figures/\n?? report/\n?? results/\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "failed_pdf_attempt": [
+      {
+        "line": 28,
+        "item_id": "item_15",
+        "event_sha256": "360087c1e0a928b6eaff6f18ba02f9fb0e83b047edd9135b969c598b7ae12879",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_15",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport urllib.request\nu='https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf'\ntry:\n r=urllib.request.urlopen(u,timeout=30); b=r.read(); print(len(b)); open('/tmp/narps_instructions.pdf','wb').write(b)\nexcept Exception as e: print(type(e).__name__,e)\nPY\nwhich pdftotext && pdftotext -layout /tmp/narps_instructions.pdf /tmp/narps_instructions.txt && rg -n -C 3 'Hypothesis 1|voxel|vmPFC|multiple' /tmp/narps_instructions.txt | head -100\"",
+            "aggregated_output": "HTTPError HTTP Error 403: Forbidden\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/events.jsonl",
+      "sha256": "64541b02266708d9e47ce816099c8913f5a7b68ca42e5f6d031ad02bb85d15f1",
+      "bytes": 164462
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/launch.json",
+      "sha256": "7aad97d720f3f3c3e90260b41d0e669d0cecb73c91d5b6cfa940ce1e3ccae1a7",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/result.json",
+      "sha256": "b2c30b32db8f16d5ccc41e716f43376598a0e33fbeb498f6a2403593d6fa56cc",
+      "bytes": 6408
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/worker-end-state.json",
+      "sha256": "307ddc9a2f0722b26ba7cb360ce4d97c1d051d858e6f82b8c16524788ef6656c",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/skill-observations.json",
+      "sha256": "2d38293796c38eab787833feb41dfd4881df1ff5d93954fcc9c115aab79f5dd6",
+      "bytes": 1759
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/condition-assignment.json",
+      "sha256": "a855bd2ea52d60f9f8836a61a6bf1ce5dc996dabf89af6d8428404d1eab02d1a",
+      "bytes": 692
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-13/attempt-01/native/prompt-preflight.json",
+      "sha256": "6bb94f102003b3c421d240d33fca1527fc3380b7db960ac760bf26954ba2311c",
+      "bytes": 2120
+    }
+  ]
+}

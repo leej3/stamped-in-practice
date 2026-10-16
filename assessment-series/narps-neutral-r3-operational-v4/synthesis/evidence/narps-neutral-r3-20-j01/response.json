@@ -1,0 +1,591 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered files, data links, code, and results sit under the workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Project root and deliverables; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Data link is relative and resolves inside the root to captured annex content; original-file-sha256=54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The supplied maps and metadata are reachable by the analysis from relative paths within the project.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/run_analysis.py",
+          "description": "Reads input/participants.tsv, input/sources.json, and input/data/<participant>_hypo1_cope.nii.gz; original-file-sha256=41a97aa73ef85c1faeac8383b4da57cb2f832bd223517ff23cf3fda0ada64b66",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Relative annex link within the common root; original-file-sha256=54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2",
+          "sha256": null
+        },
+        {
+          "uri": "assessment:replay/replay-record.json",
+          "description": "Fresh complete-capture replay accessed inputs without retrieval; sha256=081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "The scientific Python dependencies are declared in the delivered Pixi environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Declares Python, NumPy, SciPy, pandas, matplotlib, nibabel, and nilearn; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.lock",
+          "description": "Resolved dependency lock is present; original-file-sha256=038698284e9cbd9911e1ba98b33354d98804394ea60e7c0abcb2538630ab1a79",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Analysis, report, and environment files were untracked at the worker stop; HEAD does not capture them.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "assessment:probes.json",
+          "description": "tree-clean recorded eight untracked paths, including analysis/, report/, results/, pixi.toml, and pixi.lock; sha256=None",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-20-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt binds this complete delivery to HEAD 129f3ae3717999e72ef6fbb9e9335f6d69c27470; sha256=4bb593fb676f3279755596ff6b81b5655a0cd7961b16b23fc8fbba58c96284b1",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "unmet",
+      "reason": "The annexed maps were coordinator-supplied inputs; no worker-produced large binary is shown annexed.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-20-j01/attempt-01/worker-end-state.json",
+          "description": "seed_identities lists all 54 annexed input maps as supplied files; sha256=4bb593fb676f3279755596ff6b81b5655a0cd7961b16b23fc8fbba58c96284b1",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/sources.json",
+          "description": "Describes the 54 supplied participant maps and their provenance; original-file-sha256=919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "met",
+      "reason": "The worker summary records the runtime and hashes of the analysis, protocol, manifest, and lock used for results.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/results/summary.json",
+          "description": "Records runtime versions and SHA-256 values for analysis code, protocol, pixi.toml, and pixi.lock; original-file-sha256=a46af98275c26ac5b470406b208616eaa7ec94c32ec83b131975605aa8c819a3",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Environment manifest corresponding to the recorded hash; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.lock",
+          "description": "Environment lock corresponding to the recorded hash; original-file-sha256=038698284e9cbd9911e1ba98b33354d98804394ea60e7c0abcb2538630ab1a79",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "README provides installation and usage instructions, including the analysis command.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Reproduce section documents git annex get, pixi install, and pixi run python analysis/run_analysis.py; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "README names analysis/run_analysis.py as the runnable starting point and the outputs it produces.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Reproduction command and deliverables section; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/run_analysis.py",
+          "description": "Complete group-analysis entrypoint; original-file-sha256=41a97aa73ef85c1faeac8383b4da57cb2f832bd223517ff23cf3fda0ada64b66",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis uses project-relative paths and contains no machine-specific absolute input paths.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/run_analysis.py",
+          "description": "Input and output defaults are relative Path values; original-file-sha256=41a97aa73ef85c1faeac8383b4da57cb2f832bd223517ff23cf3fda0ada64b66",
+          "sha256": null
+        },
+        {
+          "uri": "assessment:probes.json",
+          "description": "no-abs-paths probe found no host-specific paths in tracked files; sha256=None",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "partial",
+      "reason": "The scientific packages are declared, but Pixi and git-annex are required host tools without supplied installation declarations.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Scientific package dependencies are declared; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Workflow assumes pixi and git annex commands are already available; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Pixi lists supported platforms, but required Pixi/Git-annex host setup and versions are not documented.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Lists osx-arm64 and linux-64 platforms; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Uses Pixi and git-annex but does not document their installation or version requirements; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "README gives workflow commands and scientific packages are listed, but omits host-tool installation requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Reproduction instructions omit Pixi and Git-annex installation steps; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Lists scientific packages; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "The environment, code, and report were untracked at the worker stop and are absent from captured HEAD.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "assessment:probes.json",
+          "description": "Probe found no tracked environment specification; complete-capture inspection shows pixi.toml and pixi.lock present but untracked; sha256=None",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-20-j01/attempt-01/worker-end-state.json",
+          "description": "Stop receipt identifies the original worker HEAD; sha256=4bb593fb676f3279755596ff6b81b5655a0cd7961b16b23fc8fbba58c96284b1",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency-update and lock-regeneration process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Documents installation and execution but no dependency-update procedure; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Contains dependencies without a regeneration instruction; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "met",
+      "reason": "Both the Pixi manifest and exact lock are included and their hashes are recorded with results.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.lock",
+          "description": "Exact resolved environment lock is included; original-file-sha256=038698284e9cbd9911e1ba98b33354d98804394ea60e7c0abcb2538630ab1a79",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/results/summary.json",
+          "description": "Records the manifest and lock hashes; original-file-sha256=a46af98275c26ac5b470406b208616eaa7ec94c32ec83b131975605aa8c819a3",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared repository or publication route provides the environment files to recipients.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Explains use after checkout but declares no project repository URL or publication route; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "assessment:access-record.json",
+          "description": "Worker route and tested host scope are recorded; no recipient-accessible project endpoint was found; sha256=None",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "met",
+      "reason": "README tells recipients to run pixi install and then the analysis command.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Reproduce section; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git contains the supplied input base, but worker-created code, documentation, outputs, and environment files were uncommitted.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "assessment:probes.json",
+          "description": "Operational-copy git status showed eight untracked project paths; sha256=None",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-20-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt records HEAD; untracked observations are not the stop receipt itself; sha256=4bb593fb676f3279755596ff6b81b5655a0cd7961b16b23fc8fbba58c96284b1",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "Validation notes record checks and a completed run, but no recurring test schedule or repeated test record establishes regular testing.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/validation-notes.md",
+          "description": "Records pilot geometry checks, spot checks, and a completed workflow run; original-file-sha256=972c9608dc4b74841e586cbdd326d4ba5ce61481051b4028fd1c491c4c70517d",
+          "sha256": null
+        },
+        {
+          "uri": "assessment:probes.json",
+          "description": "CI probe not-checked and explicitly recommends inspecting equivalent manual tests; sha256=None",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, analysis, results, figures, and report have distinct directories, while environment files remain at the root.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Lists analysis, results, figures, report, and input components; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "assessment:probes.json",
+          "description": "Probe saw only input/ because most worker-created modules were not tracked; sha256=None",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the supplied dataset and software are public; there is no restricted component to isolate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/sources.json",
+          "description": "Identifies public NeuroVault maps and public cohort/method sources; original-file-sha256=919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "The worker record does not establish execution in a fresh container, VM, batch job, or cloud host.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/validation-notes.md",
+          "description": "Describes checks and a run but not a clean external execution host; original-file-sha256=972c9608dc4b74841e586cbdd326d4ba5ce61481051b4028fd1c491c4c70517d",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented Pixi workflow uses a persistent project environment and does not create a disposable environment per run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Uses pixi install and pixi run without an isolated per-run environment mechanism; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "Defines a conventional persistent Pixi project environment; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "No worker record shows the locked environment being reconstituted in an independent clean host.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/validation-notes.md",
+          "description": "Reports validation and a completed analysis but not clean environment reconstruction; original-file-sha256=972c9608dc4b74841e586cbdd326d4ba5ce61481051b4028fd1c491c4c70517d",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.lock",
+          "description": "The lock is present; independent worker reconstitution is not documented; original-file-sha256=038698284e9cbd9911e1ba98b33354d98804394ea60e7c0abcb2538630ab1a79",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "met",
+      "reason": "The captured workspace archives a complete Pixi environment, including its Python executable and scientific packages.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/.pixi/envs/default/bin/python3.13",
+          "description": "Archived worker environment executable; original-file-sha256=9842497e1fa26c5cfde49de0c354400421539f25396d0e78b8bb0bcd3fd0d115",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/.pixi/envs/default/lib/python3.13/site-packages/numpy/__init__.py",
+          "description": "Archived scientific package code; original-file-sha256=09295a80660f17925ae23765ce8cbd7ff7ceae968d5f2f89349f1cb74c0b9e11",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency-update process is documented; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "No lock regeneration procedure is documented; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/pixi.toml",
+          "description": "No dependency update process is recorded; original-file-sha256=66c2fed16a7aee486d37a9dbc159ca2ee01783a3c60c54d021b79be4aa4c8eb2",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The external participant maps are separately identified with source URLs, checksums, and a clear input boundary.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/sources.json",
+          "description": "Lists each participant source URL, ID, byte count, and SHA-256; original-file-sha256=919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Annex pointer keeps the large input payload outside ordinary Git blobs; original-file-sha256=54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README and protocol explain the input, analysis, environment, result, and figure modules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Deliverables and directory roles are listed; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/protocol.md",
+          "description": "Documents inputs, model, support, and outputs; original-file-sha256=daf69cdee594156d570c83786a39945b8ff172c2129ddcac6fc7bfe4351d2808",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Separate paths and input checksums support replacing components, but no independent module interface/version contract is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/run_analysis.py",
+          "description": "Consumes fixed relative input filenames and writes declared outputs; original-file-sha256=41a97aa73ef85c1faeac8383b4da57cb2f832bd223517ff23cf3fda0ada64b66",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/sources.json",
+          "description": "Provides checksums for the data boundary; original-file-sha256=919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The analysis script composes the input, metadata, environment, and output directories in one documented command.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Documented pixi run command; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/analysis/run_analysis.py",
+          "description": "Reads inputs and writes results and figures; original-file-sha256=41a97aa73ef85c1faeac8383b4da57cb2f832bd223517ff23cf3fda0ada64b66",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README and protocol give a usable map of the project and its principal artifacts.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "Deliverables section provides navigation; original-file-sha256=4e33748b5965950e46495ba4de6dfbe14691088158217cd09ed8565dcea98ff6",
+          "sha256": null
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/protocol.md",
+          "description": "Analysis protocol and interpretation limits; original-file-sha256=daf69cdee594156d570c83786a39945b8ff172c2129ddcac6fc7bfe4351d2808",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "licence-declared",
+      "status": "unmet",
+      "reason": "No licence is declared for reuse of the analysis project or its derived outputs.",
+      "evidence": [
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/README.md",
+          "description": "README documents files and sources but does not state reuse terms."
+        },
+        {
+          "uri": "capture:081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170:content/workspace/input/sources.json",
+          "description": "Source provenance does not declare a project/output licence."
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "129f3ae3717999e72ef6fbb9e9335f6d69c27470",
+    "captured_at": "2026-10-16T16:54:34.137506+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-20-j01/canonical/manifest.json",
+      "sha256": "081187272e224efabaa7d68ef5468c4be90d4d7ea4ce907ded5b2f3407888170"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete stopped delivery inspection; one documented group-analysis replay from separate canonical copy; no retrieval."
+}

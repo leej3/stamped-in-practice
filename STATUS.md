@@ -1,25 +1,21 @@
-**AI-generated draft — not reviewed by John**
+# Completed comparison
 
-# Current comparison status
+**All 72 assigned research workers and 96 operational judgments have finished. No research or assessment controller remains active.** The [final three-round readout](final-synthesis/README.md) and [lessons](final-synthesis/LESSONS.md) retain all outcomes, missingness and exact skill revisions.
+The earlier [original round-one assessment](rounds/round-01/synthesis/README.md) remains unchanged and separate from the operational reassessment.
 
-**All 24 round-three research workers have finished; their 32 assigned judgments are running under the unchanged procedure.** Round two completed all 24 workers and 32 judgments.
-Round two’s frozen reporting gate rejected all 32 judgments because the truthful worker source revision differs from the original research seal.
-[The completed findings](assessment-series/narps-neutral-r2-operational-v4/synthesis/README.md) retain the exact mismatch, unavailable measures and all original judgments.
-These are provenance admission failures, not scientific failures or zero scores; later gates are unestablished.
+Round one’s operational reassessment has 32 scientific records and 30 valid checklists; its eight duplicate pairs disagree on 67 of 248 item decisions and on scientific adequacy in five pairs.
+The supplied procedure exposed the current assignment in documented judgment `04-j01`.
+All 32 judgments in each of rounds two and three fail the unchanged first provenance gate because truthful worker source revisions differ from the original seal.
+Their science/checklist measures and pair comparisons are unavailable, not zero scores or scientific failures.
+Later admission gates are unestablished.
+This comparison does not establish a skill benefit, reduced variability or transfer to another study.
 
-Round three adopts [one consolidated research-skill revision](rounds/round-03/preparation-01/README.md), `32660661`, from closed delivery observations, not formal scores.
-Research source `36acf240` preserves the original `b011` procedure and scientific inputs.
-The existing operational judging source `4f72ef49`, assessor `9852d836` and Luna/high settings remain fixed.
-The user-authorized local concurrency limit is 10; timing records disclose scheduling separately from skill effects.
+The tested research-skill revisions are `f2e74ea3`, `d83d7d66` and `32660661`.
+Operational assessor `9852d836`, source `4f72ef49` and Luna/high remained frozen; prospective main changes were not adopted.
+The authorized concurrency increase from three to ten is retained as scheduling context, not a skill effect.
+No retries, repairs, replacements, sample extension or round-three tuning were applied.
 
-The [round-three assessment series](assessment-series/narps-neutral-r3-operational-v4/README.md) binds the 24 original deliveries to 32 assigned judgments, including eight preselected duplicates.
-No further tuning follows round three.
-Failures, missingness and disagreement are outcomes; no retries, repairs, replacements or sample extension are authorized.
-
-Round one remains unchanged: [original assessment](rounds/round-01/synthesis/README.md) and [separate operational assessment](assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md).
-Known context exposure, replay limitations and grading variability remain disclosed.
-Prospective assessor and scientific-guidance revisions are development evidence and are not adopted for this continuation.
-
-The [binding user authorization](rounds/round-02/adoption-01/README.md) superseded earlier discretionary holds and cancelled the Sol transition and extra round-one series.
-Historical completed controllers must not be restarted.
-Pending Hub payload publication remains explicit and does not delay executable assignments.
+Complete formal captures and original logs remain local.
+See [publication states](final-synthesis/PUBLICATION.md) for published Git references, hosted Entire verification, archive verification and pending annex payload delivery.
+No pending upload authorizes another research or assessment run.
+Historical queue/handoff instructions are completed records and must not be executed.

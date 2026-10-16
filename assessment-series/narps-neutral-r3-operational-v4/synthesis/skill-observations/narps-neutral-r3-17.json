@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r3-17",
+  "extracted_at_utc": "2026-10-16T16:55:09.488264+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 105,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "notebook scaffold observed; no notebook execution observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "notes": [
+      "Read skill-installer guidance, listed 39 curated skills, installed and read jupyter-notebook inside .workspace-skills.",
+      "The notebook helper's help command and scaffold invocation were observed; the helper wrote group_analysis.ipynb.",
+      "A notebook-writing attempt failed with NameError because Python code used null; a subsequent writing command succeeded. Later JSON/cell checks are distinct from notebook execution, which was not observed.",
+      "The upstream installed revision was not resolved. No scientific benefit is inferred."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "e5d14063605c3af94b514672484689be896ac1dd14527f9ffbc58f2de1cefc2d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'ls -la input && ls -la && cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-7h7fbkdo/skills/.system/skill-installer/SKILL.md'",
+            "aggregated_output": "total 64\ndrwxr-xr-x@  7 johnlee  staff    224 Oct 16 12:36 .\ndrwxr-xr-x@  6 johnlee  staff    192 Oct 16 12:36 ..\ndrwxr-xr-x@ 56 johnlee  staff   1792 Oct 16 12:36 data\n-rw-r--r--@  1 johnlee  staff   1706 Oct 16 12:36 participants.tsv\n-rw-r--r--@  1 johnlee  staff  19843 Oct 16 12:36 sources.json\n-rw-r--r--@  1 johnlee  staff   1483 Oct 16 12:36 study-task.md\n-rw-r--r--@  1 johnlee  staff   1342 Oct 16 12:36 upstream-methods.md\ntotal 0\ndrwxr-xr-x@  6 johnlee  staff   192 Oct 16 12:36 .\ndrwxr-xr-x@ 59 johnlee  staff  1888 Oct 16 12:36 ..\ndrwxr-x---@  3 johnlee  staff    96 Oct 16 12:36 .codex\ndrwxr-x---@  7 johnlee  staff   224 Oct 16 12:37 .entire\ndrwxr-xr-x@ 14 johnlee  staff   448 Oct 16 12:37 .git\ndrwxr-xr-x@  7 johnlee  staff   224 Oct 16 12:36 input\n---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "discovery": [
+      {
+        "line": 16,
+        "item_id": "item_8",
+        "event_sha256": "c39f2e2d8f2187acb2e652295e215a26eadf8e0b0a9f419a56e99bc0971ec07a",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-7h7fbkdo/skills/.system/skill-installer/scripts/list-skills.py --format json'",
+            "aggregated_output": "[{\"name\": \"aspnet-core\", \"installed\": false}, {\"name\": \"chatgpt-apps\", \"installed\": false}, {\"name\": \"cli-creator\", \"installed\": false}, {\"name\": \"cloudflare-deploy\", \"installed\": false}, {\"name\": \"define-goal\", \"installed\": false}, {\"name\": \"figma\", \"installed\": false}, {\"name\": \"figma-code-connect-components\", \"installed\": false}, {\"name\": \"figma-create-design-system-rules\", \"installed\": false}, {\"name\": \"figma-create-new-file\", \"installed\": false}, {\"name\": \"figma-generate-design\", \"installed\": false}, {\"name\": \"figma-generate-library\", \"installed\": false}, {\"name\": \"figma-implement-design\", \"installed\": false}, {\"name\": \"figma-use\", \"installed\": false}, {\"name\": \"gh-address-comments\", \"installed\": false}, {\"name\": \"gh-fix-ci\", \"installed\": false}, {\"name\": \"hatch-pet\", \"installed\": false}, {\"name\": \"jupyter-notebook\", \"installed\": false}, {\"name\": \"linear\", \"installed\": false}, {\"name\": \"migrate-to-codex\", \"installed\": false}, {\"name\": \"netlify-deploy\", \"installed\": false}, {\"name\": \"notion-knowledge-capture\", \"installed\": false}, {\"name\": \"notion-meeting-intelligence\", \"installed\": false}, {\"name\": \"notion-research-documentation\", \"installed\": false}, {\"name\": \"notion-spec-to-implementation\", \"installed\": false}, {\"name\": \"openai-docs\", \"installed\": false}, {\"name\": \"pdf\", \"installed\": false}, {\"name\": \"playwright\", \"installed\": false}, {\"name\": \"playwright-interactive\", \"installed\": false}, {\"name\": \"render-deploy\", \"installed\": false}, {\"name\": \"screenshot\", \"installed\": false}, {\"name\": \"security-best-practices\", \"installed\": false}, {\"name\": \"security-ownership-map\", \"installed\": false}, {\"name\": \"security-threat-model\", \"installed\": false}, {\"name\": \"sentry\", \"installed\": false}, {\"name\": \"speech\", \"installed\": false}, {\"name\": \"transcribe\", \"installed\": false}, {\"name\": \"vercel-deploy\", \"installed\": false}, {\"name\": \"winui-app\", \"installed\": false}, {\"name\": \"yeet\", \"installed\": false}]\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 18,
+        "item_id": "item_9",
+        "event_sha256": "209e7f00e3f2fc37eb655736032e482b73713ddcd2e06beb4f56901e712aff84",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-7h7fbkdo/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/jupyter-notebook --dest .workspace-skills'",
+            "aggregated_output": "Installed jupyter-notebook to .workspace-skills/jupyter-notebook\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "instructions_loaded": [
+      {
+        "line": 20,
+        "item_id": "item_10",
+        "event_sha256": "2d1a3eea037484e958cea1b487ef33da88793c302b526499afece169e667ec02",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_10",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat .workspace-skills/jupyter-notebook/SKILL.md && python - <<'PY'\nimport os\nprint('maps', len([f for f in os.listdir('input/data') if f.endswith('.nii.gz')]))\nPY\"",
+            "aggregated_output": "---\nname: \"jupyter-notebook\"\ndescription: \"Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.\"\n---\n\n\n# Jupyter Notebook Skill\n\nCreate clean, reproducible Jupyter notebooks for two primary modes:\n\n- Experiments and exploratory analysis\n- Tutorials and teaching-oriented walkthroughs\n\nPrefer the bundled templates and the helper script for consistent structure and fewer JSON mistakes.\n\n## When to use\n- Create a new `.ipynb` notebook from scratch.\n- Convert rough notes or scripts into a structured notebook.\n- Refactor an existing notebook to be more reproducible and skimmable.\n- Build experiments or tutorials that will be read or re-run by other people.\n\n## Decision tree\n- If the request is exploratory, analytical, or hypothesis-driven, choose `experiment`.\n- If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.\n- If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.\n\n## Skill path (set once)\n\n```bash\nexport CODEX_HOME=\"${CODEX_HOME:-$HOME/.codex}\"\nexport JUPYTER_NOTEBOOK_CLI=\"$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py\"\n```\n\nUser-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).\n\n## Workflow\n1. Lock the intent.\nIdentify the notebook kind: `experiment` or `tutorial`.\nCapture the objective, audience, and what \"done\" looks like.\n\n2. Scaffold from the template.\nUse the helper script to avoid hand-authoring raw notebook JSON.\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind experiment \\\n  --title \"Compare prompt variants\" \\\n  --out output/jupyter-notebook/compare-prompt-variants.ipynb\n```\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind tutorial \\\n  --title \"Intro to embeddings\" \\\n  --out output/jupyter-notebook/intro-to-embeddings.ipynb\n```\n\n3. Fill the notebook with small, runnable steps.\nKeep each code cell focused on one step.\nAdd short markdown cells that explain the purpose and expected result.\nAvoid large, noisy outputs when a short summary works.\n\n4. Apply the right pattern.\nFor experiments, follow `references/experiment-patterns.md`.\nFor tutorials, follow `references/tutorial-patterns.md`.\n\n5. Edit safely when working with existing notebooks.\nPreserve the notebook structure; avoid reordering cells unless it improves the top-to-bottom story.\nPrefer targeted edits over full rewrites.\nIf you must edit raw JSON, review `references/notebook-structure.md` first.\n\n6. Validate the result.\nRun the notebook top-to-bottom when the environment allows.\nIf execution is not possible, say so explicitly and call out how to validate locally.\nUse the final pass checklist in `references/quality-checklist.md`.\n\n## Templates and helper script\n- Templates live in `assets/experiment-template.ipynb` and `assets/tutorial-template.ipynb`.\n- The helper script loads a template, updates the title cell, and writes a notebook.\n\nScript path:\n- `$JUPYTER_NOTEBOOK_CLI` (installed default: `$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py`)\n\n## Temp and output conventions\n- Use `tmp/jupyter-notebook/` for intermediate files; delete when done.\n- Write final artifacts under `output/jupyter-notebook/` when working in this repo.\n- Use stable, descriptive filenames (for example, `ablation-temperature.ipynb`).\n\n## Dependencies (install only when needed)\nPrefer `uv` for dependency management.\n\nOptional Python packages for local notebook execution:\n\n```bash\nuv pip install jupyterlab ipykernel\n```\n\nThe bundled scaffold script uses only the Python standard library and does not require extra dependencies.\n\n## Environment\nNo required environment variables.\n\n## Reference map\n- `references/experiment-patterns.md`: experiment structure and heuristics.\n- `references/tutorial-patterns.md`: tutorial structure and teaching flow.\n- `references/notebook-structure.md`: notebook JSON shape and safe editing rules.\n- `references/quality-checklist.md`: final validation checklist.\nmaps 54\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "scaffold_help": [
+      {
+        "line": 45,
+        "item_id": "item_24",
+        "event_sha256": "f52490e4aa97d10b1112df9d7cf93fb60fbe58bd499c4280aa4c2732ce0ef3ee",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_24",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python .workspace-skills/jupyter-notebook/scripts/new_notebook.py --help'",
+            "aggregated_output": "usage: new_notebook.py [-h] [--kind {experiment,tutorial}] --title TITLE\n                       [--out OUT] [--force]\n\nScaffold a Jupyter notebook for experiments or tutorials.\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --kind {experiment,tutorial}\n                        Notebook style to scaffold (default: experiment).\n  --title TITLE         Human-readable notebook title used in the first\n                        markdown cell.\n  --out OUT             Output path for the notebook. Defaults to\n                        output/jupyter-notebook/<slug>.ipynb.\n  --force               Overwrite the output file if it already exists.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "scaffold": [
+      {
+        "line": 48,
+        "item_id": "item_26",
+        "event_sha256": "cbf7b6ccd2433ed95fb68989e2851966bfc8a9b81a036643fe157fc3f806a4e5",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_26",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python .workspace-skills/jupyter-notebook/scripts/new_notebook.py --kind experiment --title \"NARPS Hypothesis 1 Group Analysis: Potential Gain and vmPFC\" --out group_analysis.ipynb'",
+            "aggregated_output": "Wrote /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-17/group_analysis.ipynb using kind=experiment.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "notebook_writing_attempts": [
+      {
+        "line": 82,
+        "item_id": "item_44",
+        "event_sha256": "9c21425865eb3415c5dfbe38142b9d157355f7fa1a877dc504b003744da5aa90",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_44",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\nfrom pathlib import Path\ncells = [\n {\\\"cell_type\\\":\\\"markdown\\\",\\\"metadata\\\":{},\\\"source\\\":[\\\"# NARPS Hypothesis 1 group analysis\\\\n\\\",\\\"\\\\n\\\",\\\"**Question:** Does potential gain elicit a positive group response in vmPFC in the equal-indifference group?\\\\n\\\",\\\"\\\\n\\\",\\\"This notebook documents the fixed-input group analysis. The executable model and plotting code are in \"'`code/group_analysis.py`; it performs a one-sample random-effects t test and one-sided whole-brain max-T sign-flip correction (10,000 permutations). The participant maps are supplied AO86 cope estimates; no preprocessing or first-level models are rerun.'\"\\\\n\\\",\\\"\\\\n\\\",\\\"Run the analysis cell below from the workspace root with the prepared Python environment to regenerate the output files. It takes about one minute for the permutation step.\\\"]},\n {\\\"cell_type\\\":\\\"code\\\",\\\"execution_count\\\":null,\\\"metadata\\\":{},\\\"outputs\\\":[],\\\"source\\\":[\\\"from pathlib import Path\\\\n\\\",\\\"import json, subprocess, sys\\\\n\\\",\\\"\\\\n\\\",\\\"root = Path.cwd()\\\\n\\\",\\\"assert (root / 'input' / 'sources.json').exists(), 'Run this notebook from the workspace root'\\\\n\\\",\\\"subprocess.run([sys.executable, 'code/group_analysis.py'], cwd=root, check=True)\\\\n\\\"]},\n {\\\"cell_type\\\":\\\"markdown\\\",\\\"metadata\\\":{},\\\"source\\\":[\\\"## Results\\\\n\\\",\\\"\\\\n\\\",\\\"The primary decision uses positive voxelwise whole-brain familywise error control. The AAL3 anatomical vmPFC ROI is used to localize the result; it is not used to reduce the whole-brain correction. Cope values are in upstream model units, not change per monetary unit.\\\"]},\n {\\\"cell_type\\\":\\\"code\\\",\\\"execution_count\\\":null,\\\"metadata\\\":{},\\\"outputs\\\":[],\\\"source\\\":[\\\"from IPython.display import display, Image\\\\n\\\",\\\"import pandas as pd\\\\n\\\",\\\"\\\\n\\\",\\\"summary = json.loads((root / 'results' / 'summary.json').read_text())\\\\n\\\",\\\"print('N:', summary['n_participants'], '| exclusions:', len(summary['excluded']))\\\\n\\\",\\\"print('Mask voxels:', summary['mask_voxels'])\\\\n\\\",\\\"print('Positive FWE voxels:', summary['positive_fwe_voxels'])\\\\n\\\",\\\"print('Max-T threshold:', summary['permutation']['critical_t95'])\\\\n\\\",\\\"print('vmPFC mean cope and 95% CI:', summary['vmPFC_roi']['mean_cope'], summary['vmPFC_roi']['ci95_t'])\\\\n\\\",\\\"display(pd.DataFrame(summary['clusters']))\\\\n\\\"]},\n {\\\"cell_type\\\":\\\"code\\\",\\\"execution_count\\\":null,\\\"metadata\\\":{},\\\"outputs\\\":[],\\\"source\\\":[\\\"display(Image(filename=str(root / 'figures' / 'whole_brain_fwe_glass_brain.png')))\\\\n\\\",\\\"display(Image(filename=str(root / 'figures' / 'vmPFC_subject_estimates.png')))\\\\n\\\"]},\n {\\\"cell_type\\\":\\\"markdown\\\",\\\"metadata\\\":{},\\\"source\\\":[\\\"## Interpretation and limits\\\\n\\\",\\\"\\\\n\\\",\\\"See \"'`report.md` for the concise scientific interpretation, QC and limitations. The group t test treats the supplied participant cope maps as observations and cannot precision-weight participants because first-level variance maps are unavailable. Permutation inference assumes sign symmetry under the null. A nonsignificant vmPFC finding is lack of corrected evidence for the predicted positive effect, not evidence of equivalence or proof of no response.\"]}\n]\nnb = {\"cells\":cells,\"metadata\":{\"kernelspec\":{\"display_name\":\"Python 3\",\"language\":\"python\",\"name\":\"python3\"},\"language_info\":{\"name\":\"python\",\"version\":\"3.13\"}},\"nbformat\":4,\"nbformat_minor\":5}\nPath('\"'group_analysis.ipynb').write_text(json.dumps(nb,indent=2)+'\\\\n')\nPY\"",
+            "aggregated_output": "Traceback (most recent call last):\n  File \"<stdin>\", line 5, in <module>\nNameError: name 'null' is not defined\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      },
+      {
+        "line": 84,
+        "item_id": "item_45",
+        "event_sha256": "3d72ee4968532fb692eee612b54ad67f70859e8fef23f00ff26fe1de9e8a7edb",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_45",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\nfrom pathlib import Path\nM=lambda s:{\\\"cell_type\\\":\\\"markdown\\\",\\\"metadata\\\":{},\\\"source\\\":s.splitlines(True)}\nC=lambda s:{\\\"cell_type\\\":\\\"code\\\",\\\"execution_count\\\":None,\\\"metadata\\\":{},\\\"outputs\\\":[],\\\"source\\\":s.splitlines(True)}\ncells=[\nM(\\\"\\\"\\\"# NARPS Hypothesis 1 group analysis\n\n**Question:** Does potential gain elicit a positive group response in vmPFC in the equal-indifference group?\n\nThis notebook documents the fixed-input group analysis. The executable model and plotting code are in \"'`code/group_analysis.py`; it performs a one-sample random-effects t test and one-sided whole-brain max-T sign-flip correction (10,000 permutations). The participant maps are supplied AO86 cope estimates; no preprocessing or first-level models are rerun.\n\nRun the analysis cell below from the workspace root with the prepared Python environment to regenerate the output files. It takes about one minute for the permutation step.\n\"\"\"),\nC(\"\"\"from pathlib import Path\nimport json, subprocess, sys\n\nroot = Path.cwd()\nassert (root / '\"'input' / 'sources.json').exists(), 'Run this notebook from the workspace root'\nsubprocess.run([sys.executable, 'code/group_analysis.py'], cwd=root, check=True)\n\\\"\\\"\\\"),\nM(\\\"\\\"\\\"## Results\n\nThe primary decision uses positive voxelwise whole-brain familywise error control. The AAL3 anatomical vmPFC ROI is used to localize the result; it is not used to reduce the whole-brain correction. Cope values are in upstream model units, not change per monetary unit.\n\\\"\\\"\\\"),\nC(\\\"\\\"\\\"from IPython.display import display, Image\nimport pandas as pd\n\nsummary = json.loads((root / 'results' / 'summary.json').read_text())\nprint('N:', summary['n_participants'], '| exclusions:', len(summary['excluded']))\nprint('Mask voxels:', summary['mask_voxels'])\nprint('Positive FWE voxels:', summary['positive_fwe_voxels'])\nprint('Max-T threshold:', summary['permutation']['critical_t95'])\nprint('vmPFC mean cope and 95% CI:', summary['vmPFC_roi']['mean_cope'], summary['vmPFC_roi']['ci95_t'])\ndisplay(pd.DataFrame(summary['clusters']))\n\\\"\\\"\\\"),\nC(\\\"\\\"\\\"display(Image(filename=str(root / 'figures' / 'whole_brain_fwe_glass_brain.png')))\ndisplay(Image(filename=str(root / 'figures' / 'vmPFC_subject_estimates.png')))\n\\\"\\\"\\\"),\nM(\\\"\\\"\\\"## Interpretation and limits\n\nSee \"'`report.md` for the concise scientific interpretation, QC and limitations. The group t test treats the supplied participant cope maps as observations and cannot precision-weight participants because first-level variance maps are unavailable. Permutation inference assumes sign symmetry under the null. A nonsignificant vmPFC finding is lack of corrected evidence for the predicted positive effect, not evidence of equivalence or proof of no response.\n\"\"\")]\nnb={\"cells\":cells,\"metadata\":{\"kernelspec\":{\"display_name\":\"Python 3\",\"language\":\"python\",\"name\":\"python3\"},\"language_info\":{\"name\":\"python\",\"version\":\"3.13\"}},\"nbformat\":4,\"nbformat_minor\":5}\nPath('\"'group_analysis.ipynb').write_text(json.dumps(nb,indent=2)+'\\\\n')\nPY\"",
+            "aggregated_output": "",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "notebook_json_check": [
+      {
+        "line": 103,
+        "item_id": "item_55",
+        "event_sha256": "62495092e646b3af7457fa326ddd62fec2be29278373b94ca7083a05d8fd729c",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_55",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\nfrom pathlib import Path\nPath('results/max_positive_t_null_10000_seed20261016.npy').unlink(missing_ok=True)\nnb=json.loads(Path('group_analysis.ipynb').read_text())\nassert nb['nbformat']==4 and len(nb['cells'])==6\ns=json.loads(Path('results/summary.json').read_text())\nprint('notebook cells:',len(nb['cells']))\nprint('n=',s['n_participants'],'mask=',s['mask_voxels'],'FWE voxels=',s['positive_fwe_voxels'])\nprint('ROI mean and CI=',s['vmPFC_roi']['mean_cope'],s['vmPFC_roi']['ci95_t'])\nprint('versions=',s['software'])\nPY\ngit status --short && find figures results code -type f | sort\"",
+            "aggregated_output": "notebook cells: 6\nn= 54 mask= 192339 FWE voxels= 23\nROI mean and CI= -0.006388080772012472 [-0.02512938354972838, 0.012353222005703435]\nversions= {'python': '3.13.16', 'numpy': '2.5.4', 'scipy': '1.18.1', 'nibabel': '5.4.2', 'nilearn': '0.14.1'}\n?? .workspace-skills/\n?? code/\n?? figures/\n?? group_analysis.ipynb\n?? report.md\n?? results/\ncode/group_analysis.py\nfigures/participant_map_qc.png\nfigures/vmPFC_subject_estimates.png\nfigures/whole_brain_fwe_glass_brain.png\nfigures/whole_brain_fwe_vmPFC.png\nresults/aal3_vmPFC_roi.nii.gz\nresults/group_mask.nii.gz\nresults/max_positive_t_null_10000_seed20261016_brainmask.npy\nresults/mean_cope.nii.gz\nresults/p_fwe_positive.nii.gz\nresults/participant_qc.csv\nresults/summary.json\nresults/t_fwe_p05_positive.nii.gz\nresults/t_statistic.nii.gz\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/events.jsonl",
+      "sha256": "c32e6a1c0368040916a43dac2952312276d2b9571eb8dd7405cacbc10f58fb58",
+      "bytes": 140441
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/launch.json",
+      "sha256": "1215a475dbb8d730a9e2184a59021a9ca4ea238149ced3d70a1c775d1fe4dee4",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/result.json",
+      "sha256": "2bf0542ae68e4e4ef1a1cf3a2dfea28b5427847876200c52274f318d0f072662",
+      "bytes": 6407
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/worker-end-state.json",
+      "sha256": "dfdb5389ccd0c8c34d7c305ea4127fb79503efb5865196be09a45012eb91c8c4",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/skill-observations.json",
+      "sha256": "38558a067aef882aced3e636bcc453c5a33308388c61ccc1464d03c89c4df349",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/condition-assignment.json",
+      "sha256": "f4c1b57e7b8437105b24f575068ee2452961eedae42dc42379bfcd332edb345c",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-17/attempt-01/native/prompt-preflight.json",
+      "sha256": "f3659915b5dcaa00e4428d2c740f7b6bd2239c8ad05e94350e539a023b18fa5b",
+      "bytes": 2120
+    }
+  ]
+}

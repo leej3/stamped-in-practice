@@ -1,0 +1,647 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All scientific inputs, code, environment and outputs are under one captured workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; project inventory; paths resolve under this workspace.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; the 54 map paths are within the root and backed by captured annex payloads.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All supplied maps and metadata are inside the root and the documented script resolves them relative to itself.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; INPUT is rooted at the script parent; it reads input/participants.tsv and input/data.",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; source and byte checksums for the included maps and participant table.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "Runtime packages are declared in the delivered Pixi environment; their completeness is assessed under must/010.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; declares Python, NumPy, SciPy, pandas, Matplotlib, nibabel and nilearn.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; resolves the declared environment.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "At worker stop the analysis, documentation, environment spec and results remained untracked in Git.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured worker analysis source; operational-copy Git status showed analysis/ untracked at stop.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured report was untracked at stop; captured HEAD contains the supplied input commit only.",
+          "sha256": null
+        },
+        {
+          "uri": ".git/index",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured index; Git-state observation is from the operational copy, not worker-action evidence.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": null,
+      "reason": "The 54 maps are annex-backed, but the stop receipt attributes them as supplied inputs; worker tracking practice is not established.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "input/data",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; probe found 54 annex pointers; worker-stop receipt seed_identities.supplied_files identifies map files as supplied.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-02-j01/attempt-01/worker-end-state.json",
+          "description": "Worker-stop receipt SHA-256 f64892e020611b79834de40eed2802af473323e23ad4fddc25aa50d40772bfcf; maps appear among supplied inputs.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:large-in-annex+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The run summary records code/input hashes and package versions, but not the exact lockfile or environment identity used.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; runtime package versions, platform, input hashes and analysis source hash; no pixi.lock digest.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/attempts.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; documents the accepted run and earlier checksum-guard failures.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "value": "yes",
+      "reason": "README gives the Pixi installation and run commands plus a contents guide.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; \u201cRun\u201d section documents pixi install and pixi run analyze; delivered despite being untracked.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The README names pixi run analyze, which dispatches the analyze task to the group-analysis script.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; analyze task runs python analysis/run_analysis.py.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; complete group workflow.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis derives input and output locations from its own path; no machine-specific paths are required.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; ROOT is derived from __file__; input, result and figure paths are relative to it.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:no-abs-paths",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "All imported third-party libraries are declared in pixi.toml and resolved in pixi.lock.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; declares all third-party imports used by analysis/run_analysis.py.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; pins resolved package builds; both are in the complete worker-stop delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "value": "yes",
+      "reason": "The only declared host prerequisite is Pixi; supported platforms are listed, with no extra mounts, services, variables or hardware assumed.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; states Pixi is required and documents the command route.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; lists osx-arm64 and linux-64 platforms.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "yes",
+      "reason": "README names Pixi and the environment spec lists the software dependencies and supported platforms.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; \u201cRequires Pixi\u201d and exact run instructions.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; host platforms and package dependencies.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "pixi.toml and pixi.lock are captured but were untracked at worker stop, so they were not under version control.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured worker environment file; operational-copy Git status showed it untracked.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured lockfile; operational-copy Git status showed it untracked.",
+          "sha256": null
+        },
+        {
+          "uri": ".git/index",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured index; Git-state observation is from the operational copy.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update or lockfile-regeneration process is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; documents installation and execution, not environment update procedure.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; declares tasks and packages but no update/lock regeneration process.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "yes",
+      "reason": "A complete Pixi lockfile and environment recipe are included in the stopped delivery.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; exact resolved package manifest included in the capture.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; recipe and supported platforms.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker-declared authorized retrieval route or Git remote is present; coordinator delivery does not establish worker sharing.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; only explains local Pixi use; it gives no retrieval or publication route.",
+          "sha256": null
+        },
+        {
+          "uri": ".git/config",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured repository config; operational-copy git remote -v returned no remote.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "value": "yes",
+      "reason": "README explains how to use the supplied environment specification to install and run the workflow.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; \u201cRun\u201d section: pixi install followed by pixi run analyze.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; recipe identifies task and dependencies.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Inputs are annex-backed, but worker analysis, documentation, environment and results were untracked at stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; untracked worker code at stop; captured Git state observed on operational copy.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; annex-backed input maps are supplied; no worker-originated versioning of analysis is established.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "One accepted run and failed development attempts are recorded, but regular testing is not established.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "analysis/attempts.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; records same-session attempts, not a regular test schedule.",
+          "sha256": null
+        },
+        {
+          "uri": "probe:ci-present",
+          "description": "Frozen probe found no recognized CI configuration; this does not rule out tests outside the capture.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "README and directories separate inputs, analysis, results/figures and environment, but these are not independently updateable modules.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; documents distinct workspace areas.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; one workflow reads input/ and writes results/ and figures/; all remain in one repository.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: supplied NARPS materials and declared software show no restricted component requiring a separate module.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/upstream-methods.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; identifies the public NARPS/OpenNeuro cohort.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; declares public conda-forge software dependencies.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "The recorded accepted run does not identify a fresh environment; the sole assessor replay did not reach the entrypoint.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "analysis/attempts.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; accepted run described without fresh-host/environment evidence.",
+          "sha256": null
+        },
+        {
+          "uri": "fresh-rerun.json",
+          "description": "Assessor-side setup failure: output workdir was precreated; no target command ran.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The delivered Pixi environment is persistent under .pixi/envs/default; each run does not create a disposable environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": ".pixi/envs/default",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured persistent environment directory.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; instructions reuse pixi install and pixi run in the project.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": null,
+      "reason": "The captured run and lock are present, but recurring environment reconstitution tests are not demonstrated.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "analysis/attempts.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; records a single run session, not repeated reconstitution checks.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; reconstitution recipe exists; no repeat-test record.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "yes",
+      "reason": "The complete local Pixi environment binaries are archived inside the captured workspace.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": ".pixi/envs/default",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; captured executable environment artifacts; environment is present at worker stop.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.lock",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; paired environment lock.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No process for updating dependencies or tracking lockfile changes is stated.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; no environment update procedure; repeats must/014 by checklist design.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; no lockfile update command or policy.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: the workspace has no independently maintained project components; runtime packages are dependencies, not project modules.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; one workspace and no component/submodule layout.",
+          "sha256": null
+        },
+        {
+          "uri": ".git/config",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; no external module remote is configured.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "yes",
+      "reason": "README explains the roles of input, code, results, environment and report/figures.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; \u201cContents\u201d section maps project components and outputs.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Directory roles are clear, but components share one repository and the script couples input, analysis and output paths.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; single workflow reads input/ and writes results/figures.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; components are documented as contents, not independent modules.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "There is no module composition mechanism; one Pixi task launches one script over the workspace.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; one analyze task invokes one script.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; documents a single local execution route.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README provides a contents guide linking the report, protocol, analysis code, results and figures.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; \u201cContents\u201d section describes where artifacts live and their roles.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No reuse terms or license are declared in the complete workspace.",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Canonical capture SHA-256 ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0; README and captured workspace inventory contain no license or reuse statement.",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "d4d11a9c1bd38a9c96b5a4cf0c5403c455f1f96c",
+    "captured_at": "2026-10-16T16:51:22.119541+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-02-j01/canonical/manifest.json",
+      "sha256": "ce0f53e7851a29789255c124bd60091355202305a3a359e6ccd080f2bf3640b0"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "GPT-6 (runtime variant not exposed)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py; final assessment by Codex",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete original stopped delivery assessed; canonical capture and worker stop state distinguished; one replay attempt failed before target execution; no declared access route."
+}

@@ -1,0 +1,223 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r3-12",
+  "extracted_at_utc": "2026-10-16T16:54:25.966039+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 70,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "notebook skill instructions read; no scaffold helper or notebook execution observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "notes": [
+      "Read skill-installer guidance, listed the curated catalog, installed jupyter-notebook, read its SKILL.md and listed reference file paths.",
+      "Listing reference paths is not reading their contents. No notebook scaffold helper or notebook execution was observed; the native stream instead contains direct script executions, including a failed attempt.",
+      "The installed upstream revision was not resolved. No causal skill benefit or scientific grade is inferred."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 8,
+        "item_id": "item_3",
+        "event_sha256": "685311d93275fa19bbb15baf7704f743a92091b562e5cf824c209b76f809946f",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_3",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ukcorc36/skills/.system/skill-installer/SKILL.md && find input -maxdepth 4 -type f -printf '%p\\\\t%s bytes\\\\n' | head -100 && cat input/upstream-methods.md && cat input/study-task.md\"",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\nfind: -printf: unknown primary or operator\n# Fixed upstream analysis\n\nEach map is one participant's unthresholded gain-effect estimate from NARPS team AO86, averaged across four runs.\nThe 54 participants comprise the complete equal-indifference group in OpenNeuro ds001734 version 1.0.4.\nThese are effect estimates, not standardized test statistics or group results.\nMaps are reported in MNI152NLin2009cAsym space.\n\nAO86 used fMRIPrep outputs and nistats participant models.\nTheir reported gain regressor was mean-centered and variance-normalized before HRF convolution; its coefficients must not be interpreted as change per currency unit.\nResponse trials used response-time durations, with separate response-choice and gain modulators.\nNonresponse trials, motion terms, flagged volumes and drift terms were also modeled; runs were combined within participant.\nGain and loss used separate models, so the supplied gain effect is conditional on that modeling choice.\n\nThe reported upstream choices are fixed for this task.\nParticipant variance maps and a complete executable upstream pipeline are not supplied; account for these limits when choosing and interpreting group inference.\n`participants.tsv` retains the source group, age and gender columns.\n`sources.json` identifies each original image, its retrieved-byte checksum, the pinned cohort table and the original methods report.\n# Potential gains and brain activity\n\nDoes increasing potential monetary gain produce a greater fMRI response in the ventromedial prefrontal cortex (vmPFC) in the NARPS equal-indifference group?\n\nTest the hypothesis that this response increases with potential gain.\nParticipants performed a mixed-gambles task, deciding whether to accept gambles with possible gains and losses.\nIn this group, the range of potential gains was twice the range of potential losses.\n\nInvestigate the question at the group-analysis stage using the supplied 54 participant gain-effect maps and metadata.\nPreprocessing and individual modeling are fixed inputs, described in `upstream-methods.md`; do not repeat them or download time-series scans.\nChoose scientifically defensible group models, quality checks, software and visualizations.\nAccount for what the supplied effect estimates measure and the limits of their upstream model.\nUse whole-brain correction for multiple comparisons when evaluating support for the hypothesis, as required by the original study; justify how you identify vmPFC.\n\nProduce a concise scientific report with informative figures and the code and results supporting your conclusions.\nExplain uncertainty, exclusions and limitations, including what a lack of support would mean.\nPrior teams' answers are not ground truth or a required result.\n\nSource: [NARPS original analysis instructions, Hypothesis 1](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf).\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "discovery": [
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "2f981d36443f7d210b40580ac5cd490b225fc82151c0eca9705e147c3db35eb1",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'find input/data -type f | head -20 && python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ukcorc36/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 17,
+        "item_id": "item_8",
+        "event_sha256": "51d0e231b912c5fdb60120c1e17ac57342253c6e0c95064495c2c719a1a13722",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ukcorc36/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/jupyter-notebook --dest ./.codex/skills'",
+            "aggregated_output": "Installed jupyter-notebook to ./.codex/skills/jupyter-notebook\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "instructions_loaded": [
+      {
+        "line": 20,
+        "item_id": "item_10",
+        "event_sha256": "506c7265c0d16f4f23c7a6479cdc43cb864930e6f10445207b94da2f3445de79",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_10",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat .codex/skills/jupyter-notebook/SKILL.md && python - <<'PY'\nfrom pathlib import Path\np=Path('input/data')\nfs=list(p.glob('*.nii.gz'))\nprint('maps',len(fs),'resolved',sum(x.exists() for x in fs),'broken',[str(x) for x in fs if not x.exists()][:3])\nprint('example',fs[0].resolve() if fs else None)\nPY\"",
+            "aggregated_output": "---\nname: \"jupyter-notebook\"\ndescription: \"Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.\"\n---\n\n\n# Jupyter Notebook Skill\n\nCreate clean, reproducible Jupyter notebooks for two primary modes:\n\n- Experiments and exploratory analysis\n- Tutorials and teaching-oriented walkthroughs\n\nPrefer the bundled templates and the helper script for consistent structure and fewer JSON mistakes.\n\n## When to use\n- Create a new `.ipynb` notebook from scratch.\n- Convert rough notes or scripts into a structured notebook.\n- Refactor an existing notebook to be more reproducible and skimmable.\n- Build experiments or tutorials that will be read or re-run by other people.\n\n## Decision tree\n- If the request is exploratory, analytical, or hypothesis-driven, choose `experiment`.\n- If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.\n- If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.\n\n## Skill path (set once)\n\n```bash\nexport CODEX_HOME=\"${CODEX_HOME:-$HOME/.codex}\"\nexport JUPYTER_NOTEBOOK_CLI=\"$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py\"\n```\n\nUser-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).\n\n## Workflow\n1. Lock the intent.\nIdentify the notebook kind: `experiment` or `tutorial`.\nCapture the objective, audience, and what \"done\" looks like.\n\n2. Scaffold from the template.\nUse the helper script to avoid hand-authoring raw notebook JSON.\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind experiment \\\n  --title \"Compare prompt variants\" \\\n  --out output/jupyter-notebook/compare-prompt-variants.ipynb\n```\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind tutorial \\\n  --title \"Intro to embeddings\" \\\n  --out output/jupyter-notebook/intro-to-embeddings.ipynb\n```\n\n3. Fill the notebook with small, runnable steps.\nKeep each code cell focused on one step.\nAdd short markdown cells that explain the purpose and expected result.\nAvoid large, noisy outputs when a short summary works.\n\n4. Apply the right pattern.\nFor experiments, follow `references/experiment-patterns.md`.\nFor tutorials, follow `references/tutorial-patterns.md`.\n\n5. Edit safely when working with existing notebooks.\nPreserve the notebook structure; avoid reordering cells unless it improves the top-to-bottom story.\nPrefer targeted edits over full rewrites.\nIf you must edit raw JSON, review `references/notebook-structure.md` first.\n\n6. Validate the result.\nRun the notebook top-to-bottom when the environment allows.\nIf execution is not possible, say so explicitly and call out how to validate locally.\nUse the final pass checklist in `references/quality-checklist.md`.\n\n## Templates and helper script\n- Templates live in `assets/experiment-template.ipynb` and `assets/tutorial-template.ipynb`.\n- The helper script loads a template, updates the title cell, and writes a notebook.\n\nScript path:\n- `$JUPYTER_NOTEBOOK_CLI` (installed default: `$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py`)\n\n## Temp and output conventions\n- Use `tmp/jupyter-notebook/` for intermediate files; delete when done.\n- Write final artifacts under `output/jupyter-notebook/` when working in this repo.\n- Use stable, descriptive filenames (for example, `ablation-temperature.ipynb`).\n\n## Dependencies (install only when needed)\nPrefer `uv` for dependency management.\n\nOptional Python packages for local notebook execution:\n\n```bash\nuv pip install jupyterlab ipykernel\n```\n\nThe bundled scaffold script uses only the Python standard library and does not require extra dependencies.\n\n## Environment\nNo required environment variables.\n\n## Reference map\n- `references/experiment-patterns.md`: experiment structure and heuristics.\n- `references/tutorial-patterns.md`: tutorial structure and teaching flow.\n- `references/notebook-structure.md`: notebook JSON shape and safe editing rules.\n- `references/quality-checklist.md`: final validation checklist.\nmaps 54 resolved 54 broken []\nexample /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-12/.git/annex/objects/9m/xV/MD5E-s1776243--168b758aef9d72402c65cf477d0d9e03.nii.gz/MD5E-s1776243--168b758aef9d72402c65cf477d0d9e03.nii.gz\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "reference_paths_listed": [
+      {
+        "line": 22,
+        "item_id": "item_11",
+        "event_sha256": "a5fd586a5a8f06bc7c9c065a50aeaa8c244f6f1795e5d1c931b9af151455e29d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_11",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"find .codex/skills/jupyter-notebook -maxdepth 2 -type f -name '*.md' -print\"",
+            "aggregated_output": ".codex/skills/jupyter-notebook/references/experiment-patterns.md\n.codex/skills/jupyter-notebook/references/quality-checklist.md\n.codex/skills/jupyter-notebook/references/tutorial-patterns.md\n.codex/skills/jupyter-notebook/references/notebook-structure.md\n.codex/skills/jupyter-notebook/SKILL.md\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "direct_script_attempts": [
+      {
+        "line": 40,
+        "item_id": "item_19",
+        "event_sha256": "b23460ba9cd688316d318a0782ce3c41b5e35c516ca0971dfeb25e021f943d1d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_19",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/run_analysis.py'",
+            "aggregated_output": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-12/analysis/run_analysis.py:151: UserWarning: empty mask\n  display = plotting.plot_stat_map(\n[fetch_atlas_harvard_oxford] Dataset directory found: /Users/johnlee/nilearn_data/fsl\n{\n  \"n_participants\": 54,\n  \"n_voxels_tested\": 186400,\n  \"n_fwe_significant_positive\": 0,\n  \"alpha_one_sided\": 0.05,\n  \"n_sign_flips\": 10000,\n  \"random_seed\": 20261016,\n  \"max_t_fwe_critical\": 290.20130378790196,\n  \"max_observed_t\": 6.617173246302241,\n  \"max_t_mni_mm\": [\n    -26.0,\n    -102.0,\n    -3.599997043609619\n  ],\n  \"max_observed_t_fwe_p\": 1.0,\n  \"smallest_possible_permutation_p\": 9.999000099990002e-05,\n  \"mask\": \"intersection of nonzero participant-map coverage and resampled MNI152 brain mask\",\n  \"roi\": {\n    \"roi\": \"Harvard-Oxford cortical atlas: Frontal Medial Cortex\",\n    \"role\": \"anatomical localization only; primary support requires whole-brain FWE\",\n    \"voxels\": 769,\n    \"participants\": 54,\n    \"mean_cope\": -0.009139069356024265,\n    \"sd_across_participant_roi_means\": 0.11267783492803574,\n    \"ci95_low\": -0.03989419796105427,\n    \"ci95_high\": 0.021616059249005743,\n    \"t_one_sample\": -0.5960193500468712,\n    \"p_one_sided_unadjusted\": 0.7231503234780605\n  },\n  \"exclusions\": []\n}\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      },
+      {
+        "line": 48,
+        "item_id": "item_25",
+        "event_sha256": "6aab5afe5f9662020e17e291b6280ef84912c7bae44478602842394d6c0f0b4a",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_25",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/run_analysis.py'",
+            "aggregated_output": "[fetch_atlas_harvard_oxford] Dataset directory found: /Users/johnlee/nilearn_data/fsl\nTraceback (most recent call last):\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-12/analysis/run_analysis.py\", line 197, in <module>\n    main()\n    ~~~~^^\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-12/analysis/run_analysis.py\", line 175, in main\n    display.figure.text(0.02, 0.01, \"Cyan outline: Harvard\u2013Oxford Frontal Medial Cortex anatomical proxy for vmPFC.\", fontsize=8)\n    ^^^^^^^^^^^^^^\nAttributeError: 'ZSlicer' object has no attribute 'figure'\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      },
+      {
+        "line": 53,
+        "item_id": "item_28",
+        "event_sha256": "48082ea832aa9eaa5ac392ca6307056f065bf1821f3d5ec8c1717e713e69319b",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_28",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/run_analysis.py'",
+            "aggregated_output": "[fetch_atlas_harvard_oxford] Dataset directory found: /Users/johnlee/nilearn_data/fsl\n{\n  \"n_participants\": 54,\n  \"n_voxels_tested\": 186400,\n  \"n_fwe_significant_positive\": 0,\n  \"alpha_one_sided\": 0.05,\n  \"n_sign_flips\": 10000,\n  \"random_seed\": 20261016,\n  \"max_t_fwe_critical\": 290.20130378790196,\n  \"max_observed_t\": 6.617173246302241,\n  \"max_t_mni_mm\": [\n    -26.0,\n    -102.0,\n    -3.599997043609619\n  ],\n  \"max_observed_t_fwe_p\": 1.0,\n  \"smallest_possible_permutation_p\": 9.999000099990002e-05,\n  \"parametric_bonferroni_sensitivity\": {\n    \"method\": \"one-sample t test, one-sided, Bonferroni over all tested voxels\",\n    \"n_significant_voxels\": 11,\n    \"minimum_corrected_p\": 0.0017356755348133276,\n    \"interpretation\": \"sensitivity analysis; normality of participant estimates is assumed\"\n  },\n  \"mask\": \"intersection of nonzero participant-map coverage and resampled MNI152 brain mask\",\n  \"roi\": {\n    \"roi\": \"Harvard-Oxford cortical atlas: Frontal Medial Cortex\",\n    \"role\": \"anatomical localization only; primary support requires whole-brain FWE\",\n    \"voxels\": 769,\n    \"participants\": 54,\n    \"mean_cope\": -0.009139069356024265,\n    \"sd_across_participant_roi_means\": 0.11267783492803574,\n    \"ci95_low\": -0.03989419796105427,\n    \"ci95_high\": 0.021616059249005743,\n    \"t_one_sample\": -0.5960193500468712,\n    \"p_one_sided_unadjusted\": 0.7231503234780605\n  },\n  \"exclusions\": []\n}\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      },
+      {
+        "line": 65,
+        "item_id": "item_34",
+        "event_sha256": "79b4e5f912a3a0ad3a255bf9bbe4365265a360ab2caec7cbc6ac428b7beffc4e",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_34",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/run_analysis.py'",
+            "aggregated_output": "[fetch_atlas_harvard_oxford] Dataset directory found: /Users/johnlee/nilearn_data/fsl\n{\n  \"n_participants\": 54,\n  \"n_voxels_tested\": 186400,\n  \"n_fwe_significant_positive\": 0,\n  \"alpha_one_sided\": 0.05,\n  \"n_sign_flips\": 10000,\n  \"random_seed\": 20261016,\n  \"max_t_fwe_critical\": 290.20130378790196,\n  \"max_observed_t\": 6.617173246302241,\n  \"max_t_mni_mm\": [\n    -26.0,\n    -102.0,\n    -3.599997043609619\n  ],\n  \"max_observed_t_fwe_p\": 1.0,\n  \"smallest_possible_permutation_p\": 9.999000099990002e-05,\n  \"parametric_bonferroni_sensitivity\": {\n    \"method\": \"one-sample t test, one-sided, Bonferroni over all tested voxels\",\n    \"n_significant_voxels\": 11,\n    \"minimum_corrected_p\": 0.0017356755348133276,\n    \"interpretation\": \"sensitivity analysis; normality of participant estimates is assumed\"\n  },\n  \"mask\": \"intersection of nonzero participant-map coverage and resampled MNI152 brain mask\",\n  \"software\": {\n    \"python\": \"3.13.16\",\n    \"numpy\": \"2.5.4\",\n    \"pandas\": \"3.0.6\",\n    \"scipy\": \"1.18.1\",\n    \"nibabel\": \"5.4.2\",\n    \"nilearn\": \"0.14.1\"\n  },\n  \"roi\": {\n    \"roi\": \"Harvard-Oxford cortical atlas: Frontal Medial Cortex\",\n    \"role\": \"anatomical localization only; primary support requires whole-brain FWE\",\n    \"voxels\": 769,\n    \"participants\": 54,\n    \"mean_cope\": -0.009139069356024265,\n    \"sd_across_participant_roi_means\": 0.11267783492803574,\n    \"ci95_low\": -0.03989419796105427,\n    \"ci95_high\": 0.021616059249005743,\n    \"t_one_sample\": -0.5960193500468712,\n    \"p_one_sided_unadjusted\": 0.7231503234780605\n  },\n  \"exclusions\": []\n}\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/events.jsonl",
+      "sha256": "6a9266aa92a1c92c7e2145213aeb8a1f1ae3fb5436d75dfef2c195d5aaab85f5",
+      "bytes": 71050
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/launch.json",
+      "sha256": "afa1f08327bfa9bd811baba3399db2dff35ce971ea610d4f25e25fd8021ce30c",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/result.json",
+      "sha256": "d8bc339e544f4e32e06c33c93d34027a2a31e3211ae0341d3bca3095bc9b4825",
+      "bytes": 6407
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/worker-end-state.json",
+      "sha256": "c0e31095b57c285aac338da6216ce53c196d5699cc6a23847eb3ca3da510bab2",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/skill-observations.json",
+      "sha256": "a38427d0b9e31bc02adbd030d02db1a18e6d9b37a497d3b7ac2ae14f8dd3d1d7",
+      "bytes": 1759
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/condition-assignment.json",
+      "sha256": "f4c1b57e7b8437105b24f575068ee2452961eedae42dc42379bfcd332edb345c",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-12/attempt-01/native/prompt-preflight.json",
+      "sha256": "f152bf6d55cc1ab04b86262abaebd28671e044a3712fd1a4a1fc7e9f1c1190bb",
+      "bytes": 2120
+    }
+  ]
+}

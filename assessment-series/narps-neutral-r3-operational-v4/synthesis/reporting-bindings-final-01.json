@@ -1,0 +1,302 @@
+{
+  "kind": "round-three-final-reporting-bindings",
+  "status": "Final registration bound; no judgment outcomes read. Extraction awaits executor all32 closure.",
+  "scope": "Same frozen scientific/checklist/admission logic, including coordinator_commit equality. Only round, path, receipt hash and corresponding timing-caption bindings adapted.",
+  "frozen_judging_source": "4f72ef49fdbcd50c55df6e31867579a2e7e870ad",
+  "frozen_assessor": "9852d8360f9519d21d11099b45f5deb8ba80cb28",
+  "registration": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/series.json",
+      "sha256": "018a684202b2d4b3aa7482b07c7782014ae09e31eeadedef912b1e5b39d30541"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/assessment-procedure.json",
+      "sha256": "f857ec92e31b81fc6709cc24932752c84b2880d5f310d1c3ed73a0e860dadacc"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/initial-index.json",
+      "sha256": "e26a564a1f5e3999586f7d70cb164fb6c6198a07de2134fa21b1dcc1981a6fb6"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-allocation.json",
+      "sha256": "a4678aa8dbc52d7d46ba5bd659746d81a48427a0a29a1f17f651b5821127889c"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-procedure.json",
+      "sha256": "b011f6e68dc6838e736f1ae2ad70d52896dab9b848d6f33950b4d35dd86b1521"
+    }
+  ],
+  "other_registration_sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-registration.json",
+      "sha256": "1345e3a70cdfe344f458277c29abe81a17b144c6cde78673a8e9a7a52d5a4e74"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-object-sources.json",
+      "sha256": "75cf6592bfa0e0e9746c66adacfcae2f2527069c8818723bf14e1793808e6f4a"
+    }
+  ],
+  "files": [
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/build-extraction.py",
+      "source_sha256": "280df487f32f3014a33f5f0e355052ec2afcf0884a4d1a2e91fb3e72bad18a9f",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/build-extraction.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-extraction.py",
+      "adapter_sha256": "b508b98546c792bf79da90e64a4ad30fd402995dbd620b790c5f94b779340c45",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/build-extraction.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-extraction.py\n@@ -1,7 +1,7 @@\n \"\"\"Snapshot completed operational-v4 evidence without regrading or source writes.\n \n Each invocation creates a new output. The registered empty-outcome index supplies\n-worker identities and all round-two assigned slots. Only a finalized launcher\n+worker identities and all round-three assigned slots. Only a finalized launcher\n completion permits reading a judgment's native/output evidence. The sealed\n aggregator, not this extractor, determines inclusion and measure availability.\n \"\"\"\n@@ -17,13 +17,13 @@\n \n HERE = Path(__file__).resolve().parent\n B = HERE.parent\n-REG = B / \"round-02-assessment-registration-01\"\n-SERIES = B / \"assessment-series/narps-neutral-r2-operational-v4\"\n+REG = B / \"round-03-assessment-registration-01\"\n+SERIES = B / \"assessment-series/narps-neutral-r3-operational-v4\"\n SEALED = HERE / \"sealed-source\"\n EXPECTED = {\n-    \"series.json\": \"b440c946d35f299a2d64ccf1f8a0fc54587e6fa11aae079db975cbb014c0b848\",\n-    \"assessment-procedure.json\": \"fe2478235e58b5d7b1ac16043d947b47e06014e7c3b4d420ed2538541ee23b82\",\n-    \"initial-index.json\": \"fb18a532225f1be5fed69873234bf1b54a1f20eca962f6a335358a1c6ae02db7\",\n+    \"series.json\": \"018a684202b2d4b3aa7482b07c7782014ae09e31eeadedef912b1e5b39d30541\",\n+    \"assessment-procedure.json\": \"f857ec92e31b81fc6709cc24932752c84b2880d5f310d1c3ed73a0e860dadacc\",\n+    \"initial-index.json\": \"e26a564a1f5e3999586f7d70cb164fb6c6198a07de2134fa21b1dcc1981a6fb6\",\n     \"original-allocation.json\": \"a4678aa8dbc52d7d46ba5bd659746d81a48427a0a29a1f17f651b5821127889c\",\n     \"original-procedure.json\": \"b011f6e68dc6838e736f1ae2ad70d52896dab9b848d6f33950b4d35dd86b1521\",\n }\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/build-initial-index-v2.py",
+      "source_sha256": "bef034df5c72408a29a2c0fb506b629f1dd112e2420c1e050f661afb851428e9",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/build-initial-index-v2.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-initial-index-v2.py",
+      "adapter_sha256": "73bff88d9c7a6dd805266fa9349ae7d1a5af7b3bc9459cbfbe8753bbb373bd82",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/build-initial-index-v2.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-initial-index-v2.py\n@@ -1,4 +1,4 @@\n-\"\"\"Assemble the unchanged registered index shape from stopped round-two bindings.\n+\"\"\"Assemble the unchanged registered index shape from stopped round-three bindings.\n \n No judgment outcomes are read. Original byte copies are retained for the executor\n who owns the registration. Completion describes native process status only.\n@@ -54,7 +54,7 @@\n     sources_path = reg / 'original-object-sources.json'\n     allocation = read(allocation_path)\n     assert sha(allocation_path) == 'a4678aa8dbc52d7d46ba5bd659746d81a48427a0a29a1f17f651b5821127889c'\n-    round_record = next(row for row in allocation['rounds'] if row['round'] == 2)\n+    round_record = next(row for row in allocation['rounds'] if row['round'] == 3)\n     sources = {row['run']: row for row in read(sources_path)}\n     assigned = round_record['launch_order']\n     assert len(assigned) == 24 and set(sources) == {row['run'] for row in assigned}\n@@ -105,7 +105,7 @@\n         assert sha(Path(row['source_path'])) == row['copy']['sha256']\n     with (out / 'initial-index.json').open('x') as stream:\n         json.dump(index, stream, indent=2); stream.write('\\n')\n-    provenance = {'kind': 'round-two-initial-index-assembly',\n+    provenance = {'kind': 'round-three-initial-index-assembly',\n         'created_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),\n         'scope': 'Same initial-index schema, all 24 assigned workers and 32 empty judgment slots. No judgment outcomes read or inferred.',\n         'script': {'path': str(Path(__file__)), 'sha256': sha(Path(__file__))},\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/process-snapshot.py",
+      "source_sha256": "df5d35933dd9bfc58fca6721a48d6cf0c5fad04600e7272e45aed306b5ac4fd3",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/process-snapshot.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/process-snapshot.py",
+      "adapter_sha256": "84989576c5c7640d2ffec15ae61909d0d31bf21aafb79552bd77b11f5952323a",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/process-snapshot.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/process-snapshot.py\n@@ -32,11 +32,11 @@\n replay_exit = run(\"replay-check\", [python, root / \"check-replay-evidence.py\", snapshot])\n summary_exit = run(\"summary\", [python, root / \"summarize-snapshot.py\", snapshot])\n round_figure_exit = run(\"round-figures\", [python, root / \"presentation-v2/render_round_summary.py\",\n-    \"--analysis\", snapshot / \"analysis\", \"--round\", \"2\",\n+    \"--analysis\", snapshot / \"analysis\", \"--round\", \"3\",\n     \"--assessor\", aggregate[aggregate.index(\"--assessor\") + 1],\n     \"--assessment-pin\", aggregate[aggregate.index(\"--assessment-pin\") + 1],\n     \"--skill-observations\", root / \"skill-observations\",\n-    \"--output\", snapshot / \"round-02-summary\"])\n+    \"--output\", snapshot / \"round-03-summary\"])\n code_sources = []\n for name in (\"build-extraction.py\", \"process-snapshot.py\", \"run-recorded.py\", \"check-replay-evidence.py\", \"summarize-snapshot.py\", \"presentation-v2/render_round_summary.py\", \"presentation-v2/comparison_figures.py\"):\n     raw = (root / name).read_bytes()\n@@ -47,7 +47,7 @@\n result = {\"snapshot\": str(snapshot), \"aggregate_returncode\": aggregation_exit,\n           \"replay_check_returncode\": replay_exit, \"summary_returncode\": summary_exit,\n           \"round_figure_returncode\": round_figure_exit,\n-          \"figure_scope\": \"Use round-02-summary for current-series presentation (24 workers/32 judgments). Full-allocation figures in analysis are retained frozen-aggregator audit outputs, not the current-series synthesis.\",\n+          \"figure_scope\": \"Use round-03-summary for current-series presentation (24 workers/32 judgments). Full-allocation figures in analysis are retained frozen-aggregator audit outputs, not the current-series synthesis.\",\n           \"code_sources\": code_sources,\n           \"index_sha256\": hashlib.sha256((snapshot / \"index.json\").read_bytes()).hexdigest(),\n           \"snapshot_sha256\": hashlib.sha256((snapshot / \"snapshot.json\").read_bytes()).hexdigest()}\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/aggregate-command.json",
+      "source_sha256": "27797ccd6c547cf66b0bf05d4a8a2b03e4cb168f23d3ac98bf30a6e328ed6cc6",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/aggregate-command.json",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/aggregate-command.json",
+      "adapter_sha256": "9e6529495fbfbde1fcdd00e9b1a9a6105c01e3e4bd069c6452790d6519ec5ef9",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/aggregate-command.json\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/aggregate-command.json\n@@ -1,23 +1,23 @@\n {\n   \"argv\": [\n     \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/aggregate_comparison.py\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/aggregate_comparison.py\",\n     \"--allocation\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-assessment-registration-01/original-allocation.json\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-allocation.json\",\n     \"--registration\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-assessment-registration-01/original-registration.json\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-registration.json\",\n     \"--research-procedure\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-assessment-registration-01/original-procedure.json\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-procedure.json\",\n     \"--assessment-procedure-sha256\",\n-    \"fe2478235e58b5d7b1ac16043d947b47e06014e7c3b4d420ed2538541ee23b82\",\n+    \"f857ec92e31b81fc6709cc24932752c84b2880d5f310d1c3ed73a0e860dadacc\",\n     \"--assessor\",\n     \"/Users/johnlee/.local/share/wt-utils/worktrees/73e0/stamped-in-practice/assessment\",\n     \"--assessment-pin\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/assessment-version.json\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/assessment-version.json\",\n     \"--index\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/snapshot-00-pending/index.json\",\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/snapshot-00-pending/index.json\",\n     \"--output\",\n-    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/snapshot-00-pending/analysis\"\n+    \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/snapshot-00-pending/analysis\"\n   ],\n-  \"scope\": \"Explicit round-two path/hash bindings for the unchanged frozen aggregation invocation; index/output are bound by process-snapshot.py.\"\n+  \"scope\": \"Explicit round-three path/hash bindings for the unchanged frozen aggregation invocation; index/output are bound by process-snapshot.py.\"\n }\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/run-recorded.py",
+      "source_sha256": "c86d2b00d53fa0f52c25021c5f48973bd5ecbecf7d4c1bff172e258c6db302c5",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/run-recorded.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/run-recorded.py",
+      "adapter_sha256": "c86d2b00d53fa0f52c25021c5f48973bd5ecbecf7d4c1bff172e258c6db302c5",
+      "unified_diff": ""
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/check-replay-evidence.py",
+      "source_sha256": "451ce581010faeeb470207f65d7cd92113bc7156790926177795f7186816da95",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/check-replay-evidence.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/check-replay-evidence.py",
+      "adapter_sha256": "451ce581010faeeb470207f65d7cd92113bc7156790926177795f7186816da95",
+      "unified_diff": ""
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/summarize-snapshot.py",
+      "source_sha256": "3cdbfc2f2c300d65b3dbad4bb9d69271c3c9bde7491795a2d1961a95b99a85e8",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/summarize-snapshot.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-snapshot.py",
+      "adapter_sha256": "3c545b6fb0e26a11bdbb54a35698a5312a19f6028e4461fc83c73b63bf5f5bbf",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/summarize-snapshot.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-snapshot.py\n@@ -1,4 +1,4 @@\n-\"\"\"Report round-two availability separately from grades and other rounds.\"\"\"\n+\"\"\"Report round-three availability separately from grades and other rounds.\"\"\"\n import argparse\n from collections import Counter\n import hashlib\n@@ -7,7 +7,7 @@\n \n parser = argparse.ArgumentParser()\n parser.add_argument(\"snapshot\", type=Path)\n-parser.add_argument(\"--output-name\", default=\"round-02-availability.json\")\n+parser.add_argument(\"--output-name\", default=\"round-03-availability.json\")\n args = parser.parse_args()\n root = args.snapshot.resolve()\n output = root / args.output_name\n@@ -30,8 +30,8 @@\n \n workers = table(\"runs\")\n judgments = table(\"judgments\")\n-current_workers = [row for row in workers if row[\"round\"] == 2]\n-current = [row for row in judgments if row[\"round\"] == 2]\n+current_workers = [row for row in workers if row[\"round\"] == 3]\n+current = [row for row in judgments if row[\"round\"] == 3]\n assert len(workers) == 72 and len(judgments) == 96\n assert len(current_workers) == 24 and len(current) == 32\n assert Counter(row[\"role\"] for row in current) == {\"primary\": 24, \"duplicate\": 8}\n@@ -53,8 +53,8 @@\n               \"replay_records\": selected}\n     rows.append(fields)\n summary = {\n-    \"kind\": \"round-two-assessment-measure-availability\", \"round\": 2,\n-    \"scope\": \"Only the 24 original round-two workers and 32 newly assigned operational-v4 judgments; 24 primary and 8 duplicate. Other rounds are outside current-series missingness.\",\n+    \"kind\": \"round-three-assessment-measure-availability\", \"round\": 3,\n+    \"scope\": \"Only the 24 original round-three workers and 32 newly assigned operational-v4 judgments; 24 primary and 8 duplicate. Other rounds are outside current-series missingness.\",\n     \"full_registered_allocation\": {\"workers\": 72, \"judgments\": 96},\n     \"current_series_allocation\": {\"workers\": 24, \"judgments\": 32, \"primary\": 24, \"duplicate\": 8},\n     \"other_rounds\": {\"workers\": 48, \"judgments\": 64, \"status\": \"pending-outside-current-series\"},\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/review-final-series.py",
+      "source_sha256": "212277384b4fcdb1d098ad60589d3851f267ac31197b7445e3c4c9ff3b204120",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/review-final-series.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/review-final-series.py",
+      "adapter_sha256": "af258dfeaff3dcc7a54fada9b39acc671bde419ec44b0321f1512dd0147f6c0f",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/review-final-series.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/review-final-series.py\n@@ -32,9 +32,9 @@\n \n \n meta = read(\"snapshot.json\")\n-availability = read(\"round-02-availability.json\")\n+availability = read(\"round-03-availability.json\")\n rows = availability[\"rows\"]\n-runs = [row for row in table(\"runs\") if row[\"round\"] == 2]\n+runs = [row for row in table(\"runs\") if row[\"round\"] == 3]\n run_ids = {row[\"run_id\"] for row in runs}\n judgments = [row for row in table(\"judgments\") if row[\"run_id\"] in run_ids]\n assert len(rows) == len(judgments) == 32 and len(runs) == 24\n@@ -119,11 +119,11 @@\n                                \"scope\": \"Candidate mention only; do not infer invocation, attempt, completion or entrypoint execution.\"})\n \n issues = table(\"issues\")\n-sources = [ref(root / name) for name in (\"index.json\", \"snapshot.json\", \"round-02-availability.json\",\n+sources = [ref(root / name) for name in (\"index.json\", \"snapshot.json\", \"round-03-availability.json\",\n     \"replay-native-observations.json\", \"source-manifest.json\", \"analysis/aggregation.json\",\n     \"analysis/judgments.jsonl\", \"analysis/pairs.jsonl\", \"analysis/disagreement.jsonl\", \"analysis/issues.jsonl\")]\n result = {\"kind\": \"current-series-evidence-review\", \"interim\": bool(meta[\"pending_current_series_slots\"]),\n-          \"scope\": \"Only round2:24 workers/32 judgments; primary24/duplicate8. Full original allocation72/96 retained; other48/64 outside current-series missingness.\",\n+          \"scope\": \"Only round3:24 workers/32 judgments; primary24/duplicate8. Full original allocation72/96 retained; other48/64 outside current-series missingness.\",\n           \"snapshot\": str(root), \"reviewer_script\": ref(Path(__file__)), \"sources\": sources,\n           \"groups\": groups, \"pairs\": pair_summary, \"retained_aggregation_issues\": issues,\n           \"replay\": {\"same_event_binding_only\": True,\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/inspect-closed-skill-actions.py",
+      "source_sha256": "f1c6309ae8d89b35bd391abe32610c72b080c71a4ac06fc13358b601335c296b",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/inspect-closed-skill-actions.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/inspect-closed-skill-actions.py",
+      "adapter_sha256": "9110feac8ec8a8e8b695f9f08f22d16805b479f23390ece8c1621d9ae72b0d40",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/inspect-closed-skill-actions.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/inspect-closed-skill-actions.py\n@@ -6,7 +6,7 @@\n p=argparse.ArgumentParser();p.add_argument('label');p.add_argument('runs',nargs='+');a=p.parse_args()\n rows=[]\n for num in a.runs:\n- name='narps-neutral-r2-'+num;n=B/'runs'/name/'attempt-01/native'\n+ name='narps-neutral-r3-'+num;n=B/'runs'/name/'attempt-01/native'\n  result=json.loads((n/'result.json').read_bytes())\n  assert result.get('finished_at') and result['role']=='research'\n  raw=(n/'events.jsonl').read_bytes();events=[]\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/summarize-worker-context.py",
+      "source_sha256": "a532e2db8d36fc32689a81cb5b8151988bc55fe52478ad5f1ac17ac0bea102a3",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/summarize-worker-context.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-worker-context.py",
+      "adapter_sha256": "d0044c3d42c11b6fcd7489a3ef3dd87a40b4fe2d51d974f2eeb20092f90c4b8b",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/summarize-worker-context.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-worker-context.py\n@@ -2,10 +2,10 @@\n from pathlib import Path\n import datetime, hashlib, json, statistics\n ROOT=Path(__file__).resolve().parent\n-REG=ROOT.parent/'round-02-assessment-registration-01'\n+REG=ROOT.parent/'round-03-assessment-registration-01'\n sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\n read=lambda p:json.loads(p.read_bytes())\n-allocation=next(x for x in read(REG/'original-allocation.json')['rounds'] if x['round']==2)\n+allocation=next(x for x in read(REG/'original-allocation.json')['rounds'] if x['round']==3)\n assignments={x['run']:x for x in allocation['launch_order']}\n sources=read(REG/'original-object-sources.json')\n rows=[]\n@@ -41,10 +41,10 @@\n   'loaded':sum(x['observed_actions']['loaded'] for x in selected),\n   'timing_observations':len(durations),'elapsed_minutes_median':statistics.median(durations) if durations else None,\n   'elapsed_minutes_min':min(durations) if durations else None,'elapsed_minutes_max':max(durations) if durations else None})\n-result={'kind':'round-two-stopped-worker-context','round':2,'workers':24,'groups':groups,'rows':rows,\n+result={'kind':'round-three-stopped-worker-context','round':3,'workers':24,'groups':groups,'rows':rows,\n  'native_intervals_available':len(intervals),'maximum_observed_native_overlap':max(levels.values(),default=None),\n  'native_overlap_definition':'Count finalized native result intervals with started_at <= time < finished_at. Reported wall time and overlap include session activity/waiting; not computation-only time. Queue active-launcher counts include setup and are not substituted.',\n- 'timing_caveat':'User-authorized scheduling amendment raised maximum simultaneous native sessions from3 to10. No causal timing or skill-effect inference.',\n+ 'timing_caveat':'Round three used the user-authorized maximum10 simultaneous native sessions from its start; round two changed from3 to10. No causal timing or skill-effect inference.',\n  'skill_caveat':'Observed discovery, worker installation and instruction reading are separate actions. Availability, application and scientific benefit are distinct. Installer reads are included in loaded; supplied guidance needs no worker installation.',\n  'sources':[{'path':str(p),'sha256':sha(p)} for p in [Path(__file__),REG/'original-object-sources.json',REG/'original-allocation.json',ROOT/'timing-context/user-concurrency-amendment.json']]}\n out=ROOT/'worker-context.json'\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/presentation-v2/render_round_summary.py",
+      "source_sha256": "94909e83642ac1a0fcdf6543b6f3ea395a2be77184dfb359bb11879121faf35a",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/presentation-v2/render_round_summary.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/presentation-v2/render_round_summary.py",
+      "adapter_sha256": "134891ece5cad7845c485dfbcca1d13a454ea421168571bfacdc884e7b6087a8",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/presentation-v2/render_round_summary.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/presentation-v2/render_round_summary.py\n@@ -189,14 +189,14 @@\n                \"renderer_sha256\": digest(Path(__file__)),\n                \"figure_helper_sha256\": digest(Path(__file__).with_name(\"comparison_figures.py\")),\n                \"frozen_figure_helper_sha256\": digest(Path(__file__).resolve().parents[1] / \"sealed-source/scripts/comparison_figures.py\"),\n-               \"presentation_changes\": \"Short effort titles; pending/unavailable science labels derive from unchanged normalized table availability; full scope retained in README. Recurring outcomes title explicitly states all four conditions and round 2.\",\n+               \"presentation_changes\": \"Short effort titles; pending/unavailable science labels derive from unchanged normalized table availability; full scope retained in README. Recurring outcomes title explicitly states all four conditions and round 3.\",\n                \"token_rows\": tokens,\n                \"skill_observations\": observations}\n     scopes = list(dict.fromkeys((row[\"stage\"], row[\"actor\"], row[\"scope\"], row[\"assessment_scope\"]) for row in selected[\"effort\"]))\n     caption = [\"# Round presentation\", \"\", f\"Round {args.round}: {len(selected['runs'])} assigned workers and {len(selected['judgments'])} assigned judgments.\", \"\",\n                \"Only this round appears in these figures. Other rounds remain pending in the full allocation but are outside this series' missingness.\", \"\",\n                \"Science uses primary judgments only. Pending means the assigned primary judgment has not closed; unavailable means a closed observation has no extractable category. These availability states are separate from the judge's category `unable to assess`. Duplicates do not replace primary judgments.\", \"\",\n-               \"Effort is elapsed native-session wall time, grouped exactly as in the validated operation table. It includes session work and waiting; computation-only time is not inferred. Durations are not summed, and no billing inference is made. Original research effort belongs to the closed original deliveries, while judgment effort belongs to this new series. The user authorized an adaptive increase from three to ten simultaneous native sessions; runtime differences may reflect scheduling and do not establish a skill effect.\", \"\", \"## Exact operation scopes\", \"\"]\n+               \"Effort is elapsed native-session wall time, grouped exactly as in the validated operation table. It includes session work and waiting; computation-only time is not inferred. Durations are not summed, and no billing inference is made. Original research effort belongs to the closed original deliveries, while judgment effort belongs to this new series. The user-authorized maximum was ten simultaneous native sessions from the start of round three; runtime differences may reflect scheduling and do not establish a skill effect.\", \"\", \"## Exact operation scopes\", \"\"]\n     for scope in scopes:\n         caption.append(\"- \" + \" \u00b7 \".join(scope))\n     (args.output / \"README.md\").write_text(\"\\n\".join(caption) + \"\\n\")\n"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/presentation-v2/comparison_figures.py",
+      "source_sha256": "f2f80a6c25d38bc86ccd960ed4ee3ee1d1c68ac1c352aa762547c3cc0732f680",
+      "original_copy": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/original-processing-code/presentation-v2/comparison_figures.py",
+      "adapter": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/presentation-v2/comparison_figures.py",
+      "adapter_sha256": "fd3e2d101dae7e91263739dd83f5b47472ad4c0e5a650df4e84eb728a937f967",
+      "unified_diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/presentation-v2/comparison_figures.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/presentation-v2/comparison_figures.py\n@@ -241,7 +241,7 @@\n             title += \" \u00b7 \" + scope[-1]\n         ax.set_title(title, loc=\"left\", fontsize=11)\n     fig.text(.01, .01, \"Elapsed native-session wall time; durations are not summed. Points, medians and observed ranges are descriptive.\\n\"\n-             \"Research and judging are separate; concurrency increased from 3 to 10 sessions. No causal timing inference. See README.md.\", fontsize=9)\n+             \"Research and judging are separate; round 3 used a maximum of 10 concurrent sessions from its start. No causal timing inference. See README.md.\", fontsize=9)\n     fig.tight_layout(rect=(0, .075, 1, 1))\n     save(fig, output, \"effort\")\n \n"
+    }
+  ],
+  "frozen_files": [
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/assessment-version.json",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/assessment-version.json",
+      "sha256": "27d75f55b892856b2e5b025515c07c37632a377b3e4314c894fdb0d7ae13c6c4"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/comparison-plan.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/comparison-plan.md",
+      "sha256": "8eee2f97776ee540be15ba03e21af4a7c2bd2a40bde12002ba430af4b2b054a4"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/conditions.json",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/conditions.json",
+      "sha256": "2d41f2690f427f468ddec46c8d40944d28a21f2013315dde8c1e4618b29d79c5"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/AGGREGATION.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/AGGREGATION.md",
+      "sha256": "4822e4573b29e53f16520bb1e5513f63458ea032ea6c92b7bb9e7e394f08634f"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/JUDGE_WORKSPACE.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/JUDGE_WORKSPACE.md",
+      "sha256": "6e0342b5c7a0c71520f6ee06f3072cccaa76b7919d9e5bcb37d5bbd1914d6781"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/READINESS.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/READINESS.md",
+      "sha256": "de9219991fbebeb2332a6595ae096fb8cd1fd4bbc8152913ea85d3fa374bf2d4"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/README.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/README.md",
+      "sha256": "1b7a17f84490bd69bab46f74cdf6a92714913c97d81c6e8b527d8f9ff68f8d36"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/RETENTION.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/RETENTION.md",
+      "sha256": "888b40a8a6571da9c3852acd1bb866b7b0216ec8c09e1ee0e062dbf6dd84f498"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/WORKER-END-STATE.md",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/WORKER-END-STATE.md",
+      "sha256": "289889cadcd5c09ce90c29f455c13b9c57252a56b53e2310e8c2a5d2bb3f54c1"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/aggregate_comparison.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/aggregate_comparison.py",
+      "sha256": "a58e39170be822bd992dbfb86f115ea90f5c9eeb5e63b7b553cc4b01234eb18f"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/assessment.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/assessment.py",
+      "sha256": "7d16037883b5ec059caa5cb4828f64ca926a3ddb37fd086267caf69c3cb01913"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/assessment_procedure.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/assessment_procedure.py",
+      "sha256": "defff417f44314f7f840df945429ca9084650f6a869a70198942ccbf85c2e1e6"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/commit_provenance_hook.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/commit_provenance_hook.py",
+      "sha256": "3b7b0265e1525df78e0fb2c318c1a8cea481cd0ab1947bd562a918581b6cc4a4"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/comparison_figures.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/comparison_figures.py",
+      "sha256": "90ccccf1bb638b40dc7e94fc31a4d4ba7c1d5364a0de94b3ceb4d739f18e6bf8"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/create_public_profile.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/create_public_profile.py",
+      "sha256": "5a5ec42db108b7cb18daba89f0f6548ab72f7118e126122e28e03a9c2ffe9b87"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/delivery_snapshot.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/delivery_snapshot.py",
+      "sha256": "ef575e07cf2f7ce9759f5ebec318dc562a89c0ecc3a10a94083787d2dbd1f997"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/judge_workspace.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/judge_workspace.py",
+      "sha256": "4543c56d22b081c3e0d24d5771b801d311e839de7656b2295c227fc26f502dd5"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/launch_native_probe.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/launch_native_probe.py",
+      "sha256": "ee989fdf676c9b34d2ef0dd8eac713aa448c4ae0670e5e8ebe1c43820c3851b9"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/package_delivery.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/package_delivery.py",
+      "sha256": "b238d0f5e929d7dc2403255456c0d5393cfe6640842bc5607dbf50cec2016bdc"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/package_retention.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/package_retention.py",
+      "sha256": "989315ceb1d84fb64d58dd688af4098f0ac34f38c1dac8d86b1dc7998d1909e5"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/prepare_checkout.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/prepare_checkout.py",
+      "sha256": "a6a195afe621a6abf7df1aa7e202022831f3e3a7a9cb07dd2b7c3e468a79ae95"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/prepare_launch.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/prepare_launch.py",
+      "sha256": "fa54a66e0590f3178ce34a8523aeba08af59876d95e99b5d71b8d90fe80605ef"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/readiness.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/readiness.py",
+      "sha256": "0e8aef2cb58df17be12687ccdf7deb9721fdf58c4f0c94fecdfbec8edd40d4af"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/render_assessment_attrition.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/render_assessment_attrition.py",
+      "sha256": "22d3cb5c7b523ccf42ef7b8f17aa16eec3dc273774f5029e2fa7f6c1688856f1"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/render_round_summary.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/render_round_summary.py",
+      "sha256": "02b02fa7d4c59e1a12f5b4b1a7e5dc746166e74ad0011673b50ee648af459e82"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/research_conditions.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/research_conditions.py",
+      "sha256": "f706c769726429e276103d4bc15401d4d5e8c19471b7dba548341d204fa6248a"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/round1_figures.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/round1_figures.py",
+      "sha256": "9bbd80b81add69aff466f5ff01512cd1500d855dc5b49458fa52fd09e0c03d6b"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/scientific_judgment.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/scientific_judgment.py",
+      "sha256": "b125ebae705fd704f32f0d10c466174b9133cc66c47fa5006cc149d1cf4d1ecf"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/study_seed.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/study_seed.py",
+      "sha256": "a72592b36cbe3756857486255c2f690c26b96d83c674f1090fe547945dc0578f"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/verify_native_capture.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/verify_native_capture.py",
+      "sha256": "2d9cedc184fefaad33ed1b1a55fd7ca7b89ec8eba440aae1967e20066dd3022c"
+    },
+    {
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-operational-extraction-01/sealed-source/scripts/worker_end_state.py",
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/sealed-source/scripts/worker_end_state.py",
+      "sha256": "bf74b09dd0971444884479a70e28ad83d52f70b9c88b72aea3eefc2673844d78"
+    }
+  ],
+  "preparation": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/reporting-bindings-preparation-01.json",
+    "sha256": "b12819bbe0374f01ccf3aee33f5adacbf53dd7020746b685e84b00d9543db47f"
+  },
+  "binding_script": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/bind-final-registration.py",
+    "sha256": "b50134435a4013cd35f723d543f1c78d453fac7f8859c19bf81993dbfd13df2f"
+  }
+}

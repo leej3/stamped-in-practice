@@ -1,0 +1,570 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All inputs, analysis code, environment file, results and figures are nested in one workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; describes root-relative inputs and outputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 maps and metadata are under input/; each map resolves through the captured annex object within the same workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; identifies all source maps and hashes",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; retained relative link maps into workspace .git/annex",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "The Python analysis dependencies are declared in requirements.txt and the documented route installs that file.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; direct runtime and plotting packages pinned",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L8",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; setup command",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git tracks supplied inputs, but the worker's report, code, requirements and results are untracked at stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/REPORT.md",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; delivered worker report",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/run_group.py",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; delivered worker code",
+          "sha256": null
+        },
+        {
+          "uri": "probe:tree-clean",
+          "description": "worker-stop checkout had five untracked paths: REPORT.md, analysis/, figures/, requirements.txt, results/; only input commit is HEAD",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "partial",
+      "reason": "Large supplied maps use annex pointers; worker-generated NIfTI results are untracked, and the input annex commit is coordinator-supplied.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; supplied annex pointer",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/group_t.nii.gz",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; generated binary result is outside HEAD",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "Results record package/runtime versions and parameters, but no exact environment spec identity is linked to the run.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/group_results.json",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; records command parameters and package versions",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; direct pins only, no lock/hash linked from result",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "analysis/README.md gives Python setup and the run commands; the probe missed this nested README.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L1-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; setup, usage and output locations",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "analysis/run_group.py is the documented starting script for pilot and confirmatory group inference.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_group.py#L88-L108",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; executable CLI and inference entry",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The delivered scripts resolve inputs and outputs relative to their own project root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_group.py#L14-L17",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; paths derive from __file__",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "met",
+      "reason": "requirements.txt covers the third-party imports, including nibabel, nilearn and scientific/plotting libraries.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; all third-party direct dependencies",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/REPORT.md#L37-L43",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; Python 3.13 setup and installation route",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "met",
+      "reason": "The route documents Python 3.13; the code declares no other host, scheduler, mount, hardware or service assumption.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L8",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; documented runtime and commands",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/run_group.py#L14-L17",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; project-relative paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "met",
+      "reason": "The instructions name Python 3.13 and requirements.txt lists the direct package dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L8",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; runtime and install instructions",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; package requirements",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "requirements.txt is present in the stop capture but was untracked, so the environment specification is not in version control.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; delivered specification",
+          "sha256": null
+        },
+        {
+          "uri": "probe:tree-clean",
+          "description": "worker-stop Git status reports requirements.txt as untracked",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "The delivered docs pin dependencies but give no process or command for updating the specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; pins without update instructions",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L8",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; setup/run instructions only",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "Direct requirements pins and reported package versions omit a complete transitive lock or environment digest for exact recreation.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; direct package pins only",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/group_results.json",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; observed versions but no full environment identity",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared route or remote publishes the complete study and environment for an authorized researcher.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; no worker remote recorded",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/REPORT.md#L35-L48",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; no retrieval route documented",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "met",
+      "reason": "The analysis README explains Python setup, dependency installation and the run commands.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; how to obtain and use requirements",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git/annex covers supplied inputs, while worker-authored code, report, environment file and outputs remain untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; annexed input inventory",
+          "sha256": null
+        },
+        {
+          "uri": "probe:tree-clean",
+          "description": "worker-stop Git status shows all worker deliverables untracked",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "A validation result is shipped, but the capture does not establish regular workflow testing; recurring run records would settle it.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/independent_validation.json",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; one numerical cross-check",
+          "sha256": null
+        },
+        {
+          "uri": "probe:ci-present",
+          "description": "no recognized CI config; manual or scheduled history not captured",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, analysis, results and figures are separated by directory, but not independent modules with separate update boundaries.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; input and output boundaries",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/run_group.py#L14-L17",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; single script connects fixed directories",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: no restricted data or software component is identified in the delivered study; the source maps are the public NARPS cohort.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/upstream-methods.md#L3-L4",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; OpenNeuro cohort and input provenance",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "The only replay stopped before analysis because the frozen runtime lacks pip; a fresh-environment result is unavailable.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "fresh-rerun.json",
+          "description": "canonical capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; retained replay attempt failed at dependency installation",
+          "sha256": null
+        },
+        {
+          "uri": "replay/workdir/replay.stderr",
+          "description": "assessor runtime: No module named pip; scientific entrypoint did not start",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented workflow installs into the active Python environment and does not create a disposable environment per run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L8",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; pip install and direct script commands",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "No environment reconstitution history is captured; the failed replay never reached the supplied setup route.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; direct pins, no lock",
+          "sha256": null
+        },
+        {
+          "uri": "replay/workdir/replay.stderr",
+          "description": "assessor runtime lacks pip; environment reconstitution not measured",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "The project supplies a text requirements file, but no archived Python environment, package binaries or container image.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; text-only dependency pins",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency-update process is documented or tracked; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/requirements.txt",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; pins without update process",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained project components; maps, code and results are within one workspace, while Python packages are runtime dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; one root workflow and internal paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The report and analysis README explain the inputs, scripts, result directories and how to run the analysis from the root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/REPORT.md#L35-L48",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; artifact map and run route",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/README.md#L3-L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; boundaries and output locations",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directory boundaries aid updates, but code and outputs are fixed to one script and are not independently maintained components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_group.py#L14-L17",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; fixed directory wiring",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/README.md#L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; single analysis workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "unmet",
+      "reason": "The directories are joined by one script; no module composition or orchestration mechanism is provided.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_group.py#L14-L17",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; one fixed workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report lists key artifacts and the analysis README links to the protocol and output locations.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/REPORT.md#L48",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; key artifacts listed",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/README.md#L11",
+          "description": "capture SHA-256 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; protocol/navigation pointer",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "82443e43a1171f47c085c5e0fadc9e8132a12053",
+    "captured_at": "2026-10-16T16:55:12.565633+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-09-j02/canonical/manifest.json",
+      "sha256": "794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex; frozen STAMPED assessment runner",
+    "model": "GPT-6 (specific variant not exposed)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Canonical capture 794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1; complete worker stop inspected. One replay attempt stopped before analysis because frozen runtime lacks pip. Worker retrieval route absent; coordinator preservation excluded from worker credit."
+}

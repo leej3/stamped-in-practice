@@ -1,0 +1,567 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All files are under one project root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 maps and metadata are present through annex-backed input paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/input/sources.json",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/input/participants.tsv",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "External analysis packages are specified in requirements.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Worker-produced report, code, environment files, and results were untracked at stop; HEAD is the supplied seed commit.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/report.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/summary.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "partial",
+      "reason": "Large supplied input maps have annex pointers, but worker attribution is not established and generated binary results are untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/input/data/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "No machine-readable run record links generated results to their environment; execution notes are narrative.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/results/run_notes.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "README includes installation and usage instructions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "README names the analysis entry point and numerical validator.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/validate_results.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Scripts use paths relative to the project root; no hard-coded host path was found.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "met",
+      "reason": "Direct Python dependencies and Python version are declared; transitive dependencies are not fully locked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/.python-version",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Python and thread assumptions are documented; host, OS, and network/cache assumptions are incomplete.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "met",
+      "reason": "README lists Python and packages and gives environment installation steps.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "Environment declarations are present but untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/.python-version",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "partial",
+      "reason": "Direct versions are pinned but transitive dependencies and a complete environment lock are absent.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published route for the environment specification is evidenced.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/.git/config",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "met",
+      "reason": "README explains venv creation and dependency installation.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git and annex are present for supplied seed inputs, but worker-created components remain untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/input/data/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/report.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "A separate numerical validator and manual iterations are documented, without a regular test schedule.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/analysis/validate_results.py",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/run_notes.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "met",
+      "reason": "Inputs, code, reference atlas, and derived results have separate directories.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/input/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/reference/",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "No restricted data or software is identified in scope.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/input/study-task.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "No worker evidence of fresh container, batch, clean VM, or cloud testing; the assessor replay does not count as worker practice.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/run_notes.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented venv is reusable rather than disposable for each execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "No worker record shows regular reconstitution and testing of the exact environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/results/run_notes.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived in the worker delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "No independently maintained submodule or subdataset component is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/input/sources.json",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README describes project directories and their contents.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories separate concerns, but independent update boundaries are not specified or tested.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "partial",
+      "reason": "Scripts and data combine through project-root paths, but no module composition mechanism is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/analysis/run_analysis.py",
+          "description": null,
+          "sha256": null
+        },
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README gives a user-facing file and output map.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:content/workspace/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "d0ad0ea69075111a6de1229d1b5eeb1aa710d550",
+    "captured_at": "2026-10-16T17:05:34.456772+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-18-j02/canonical/manifest.json",
+      "sha256": "63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0"
+    }
+  },
+  "assessor": {
+    "skill": "frozen assess-alignment-with-stamped-principles",
+    "version": "source 9852d8360f9519d21d11099b45f5deb8ba80cb28; environment 3552d5003a2485b6405805236d5c54e7ed42f097",
+    "harness": "Codex using frozen assessment runner",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assessment-version:9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "checklist:0.3.1"
+    ]
+  },
+  "scope": "Full worker-stop delivery inspection; declared-route HEAD checks; one bounded full-delivery replay; checklist and scientific assessment."
+}

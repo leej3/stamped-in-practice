@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r3-03",
+  "extracted_at_utc": "2026-10-16T16:58:19.615533+00:00",
+  "assigned_condition": "baseline",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 38,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": false,
+    "installation": false,
+    "loaded": false,
+    "application": "no skill discovery, installation or instruction read observed",
+    "source_repository": null,
+    "source_revision": null,
+    "notes": [
+      "The completed baseline native stream contains no observed skill discovery, installation or instruction read. No scientific or causal benefit is inferred."
+    ]
+  },
+  "evidence": {
+    "final_delivery": [
+      {
+        "line": 37,
+        "item_id": "item_19",
+        "event_sha256": "0ae4111fab990fd02b94cfbac902bf2eed56830fed236144cc6010436282c375",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_19",
+            "type": "agent_message",
+            "text": "## Result\n\nThe analysis found **no support for a positive whole-brain gain effect in vmPFC**: no voxel survived one-sided max-T familywise correction across the brain (5,000 sign flips; peak *t*(53) = 0.90, FWE *p* = 1.000; zero voxels at FWE *p* < .05). The NARPS instructions require whole-brain-corrected results for the hypothesis decision ([original instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf)).\n\nIn the independently defined vmPFC sphere, the mean estimate was \u22120.0061 cope units (95% CI [\u22120.0342, 0.0221]). This interval includes zero, so the result does not establish that the true effect is absent. The cope units also cannot be interpreted as BOLD change per currency unit.\n\n## Deliverables\n\n- [Scientific report](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/report.md>)\n- [Analysis code](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/analysis/group_analysis.py>)\n- [Group maps figure](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/figures/group_maps.png>) and [vmPFC participant estimates](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/figures/vmPFC_participants.png>)\n- [Numerical summary](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/results/summary.json>) and supporting [QC](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-r3-03/workspaces/narps-neutral-r3-03/results/input_qc.tsv>), participant summaries, and NIfTI group maps in `results/`\n\nAll 54 supplied participants were included, and their file checksums matched the manifest. The report describes the common-coverage mask, permutation assumptions, and limits from missing participant variance maps and normalized upstream gain regressors."
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/events.jsonl",
+      "sha256": "e21304148d2da8f6dacbc6a494dd3b0b1218e73d6099b3cc2db4ef75fb63de7a",
+      "bytes": 80666
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/launch.json",
+      "sha256": "9acaa262cf33bc9b096a4036262f3cd200a271da08daa0c2e721d8e0766af3f1",
+      "bytes": 5590
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/result.json",
+      "sha256": "094f711e510df244c97d6368ec304cebf53c83b4a37799ab29043762368d1961",
+      "bytes": 6400
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/worker-end-state.json",
+      "sha256": "f0e216cddf471b52448636819a8483a4c1f5103967c0f3900711b587ad6cef91",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/skill-observations.json",
+      "sha256": "d14c4c96c3db14441fca68f85f02d3b0ebb8b585d61e70ed1a53dfcce8a6604a",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/condition-assignment.json",
+      "sha256": "aaa931479dc173e7eb3e8f06529fcb15a98f0dd52c4319c7d53111a129759cb4",
+      "bytes": 545
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-03/attempt-01/native/prompt-preflight.json",
+      "sha256": "a80c72314574ea2ce3ba0225a921a00c3b1fc402bdbd68475f873ab515560ec3",
+      "bytes": 2112
+    }
+  ]
+}

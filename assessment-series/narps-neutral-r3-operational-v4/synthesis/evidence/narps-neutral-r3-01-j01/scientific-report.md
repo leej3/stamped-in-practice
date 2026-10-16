@@ -1,0 +1,98 @@
+# Independent assessment — NARPS potential gain and vmPFC response
+
+**STAMPED verdicts:** MUST: 5 met / 2 partial / 10 unmet / 0 not-checked (17); SHOULD: 0 met / 2 partial / 5 unmet / 1 not-checked / 1 not-applicable (9); MAY: 2 met / 2 partial / 0 unmet / 0 not-checked / 1 not-applicable (5). Partial does not satisfy a MUST. There is no combined score.
+
+## Scope and evidence boundary
+
+The assessed scientific delivery is the complete worker-stop workspace, including uncommitted `analysis.py`, `report.md`, `results/`, and `local-skills/`, identified by canonical capture SHA-256 `c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26`. Original paths below are relative to `content/workspace/` in that capture. The recorded worker stop was a normal exit at 2026-10-16 16:43:23 UTC, with HEAD `0acda2e09b35799b07d22052122402c9e54c8965`; it is not the whole delivery. The frozen capture describes 1,210 entries with no capture omissions or errors, and its original HEAD matches the stop receipt.
+
+Probe and Git inspection used the operational copy. The post-inspection comparison found no ordinary file, link, index, ref, object, or configuration differences. `.git/annex/keysdb/db` changed from SHA-256 `f6f8fd7af99434db59fadc6da021051789c6aaa271ebf878c54dafc6c9fde5ca` to `233c0be3e02857e0fbf47b00b8a94de3e9126529bee41b2491286aef7372be80`; this is the one separately classified operational metadata change. Logical database equivalence is not established. See `integrity-check.json`.
+
+The worker's code, report and results were untracked at stop; the original commit contains the supplied input material, not these scientific outputs. The supplied skill catalog and later coordinator preservation are not worker actions. A captured `.entire` session log/metadata and locally installed skill files indicate possible assistance-context exposure; their contents were not used as grading evidence. The worker's `.git/config` has no publication remote. Later coordinator delivery to the assessor does not establish worker access.
+
+The probe sweep is in [`probes.json`](probes.json), with the exact runner invocation logs in `probes-command.stdout` and `probes-command.stderr`. Probe outputs were reviewed against the complete delivery; alternate report/analysis files and untracked results changed several automated statuses. The separate access assessment is [`access-record.json`](access-record.json). No worker-declared route for retrieving the complete object was found or tested. `input/sources.json` links source datasets, not a publication route for the worker's full object. Required access would cover code, report, all inputs and results, plus an executable environment; tested host scope is local inspection only. Anonymous access was not required.
+
+## Assessor diagnostics and scope limits
+
+The supplied frozen Python 3.13 runner passed its required check, probe sweep and final response validation. A help-only invocation with the shell’s unqualified Python 3.9 failed because `contextlib.chdir` is unavailable there; a later display-only snippet also raised a `KeyError` after the scientific validator had already passed. Both diagnostics are recorded in `assessment-command-log.md` and their stderr files; neither affected the object or any measure. `judge-target.json` lists no reference limits. Retained links were treated as captured evidence and were not traversed to external targets.
+
+## What to fix first
+
+1. Add a tracked, pinned environment declaration and a retrievable route for it, including the atlas requirement and run provenance. This addresses the largest execution and distribution gaps (must/003, 006, 010–017; should/006–008).
+2. Track the analysis, report and generated results at the worker stop, or otherwise preserve an explicit versioned state for them. The current Git commit omits the work product (must/004; should/001, 003).
+3. Give readers install and usage instructions that work from a fresh checkout without a host-specific absolute path (must/007, 011, 012, 017).
+4. Add a recorded repeated check of the documented route and test it in a fresh environment when the environment is available (should/002, 004, 005).
+
+## What is already good
+
+- All 54 participant effect maps and cohort/provenance metadata are delivered under `input/`; Git-annex carries the large image payloads. See captured `input/data/` and `input/sources.json`.
+- The report identifies `analysis.py` as the group-stage entry point and explains the participant set, the standardized gain-regressor interpretation, whole-brain correction and uncertainty. The figures, masks, participant summaries and result maps are present under `results/`.
+- The scientific analysis does not treat the uncorrected vmPFC summary as confirmatory and does not interpret failure to find a corrected vmPFC effect as proof of zero effect.
+
+## Per-item STAMPED results
+
+| item | principles | status | source | evidence | reason |
+|---|---|---|---|---|---|
+| must/001 | S.1 | met | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | The complete delivery is nested under content/workspace in the canonical capture. |
+| must/002 | S.1 | met | probe:subdatasets-resolvable+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/sources.json`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | All 54 maps and metadata are inside input/ and the script resolves them relative to its own root. |
+| must/003 | S.1 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | The delivered script imports scientific packages from an external prepared environment; no environment specification or software module is included. |
+| must/004 | T.1,T.3,T.5 | partial ⚠ (a MUST is not satisfied by partial) | probe:tree-clean+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `probes.json#tree-clean` | Git versions inputs and config, but analysis.py, report.md, local-skills/ and results/ were untracked at worker stop. |
+| must/005 | T.1,T.3,T.5 | met | probe:large-in-annex | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/data` | Git-annex pointers track all 54 participant maps; payloads are retained in the complete capture. |
+| must/006 | T.1,T.3,T.5 | unmet | probe:derived-have-records+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#results/results.json`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | Shipped results have no run record linking the computation to an exact environment; results.json lists package versions but no lock or environment identity. |
+| must/007 | A.1 | partial ⚠ (a MUST is not satisfied by partial) | probe:entry-point+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files` | report.md gives a usage command, but installation and environment setup instructions are absent and the command uses a host-specific path. |
+| must/008 | A.1 | met | probe:entry-point+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | report.md identifies analysis.py and gives a command that starts the group analysis. |
+| must/009 | P.1 | met | probe:no-abs-paths+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | The analysis script resolves inputs and outputs relative to its own root; its code has no host-specific data path. |
+| must/010 | P.1 | unmet | probe:env-spec-tracked+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | Imports require scientific Python packages, but the complete delivery has no dependency declaration or lockfile. |
+| must/011 | P.1 | unmet | probe:platform-assumptions+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | The documented route assumes an absolute external environment and network/cache access for an atlas; system and host requirements are not documented. |
+| must/012 | P.2 | unmet | probe:platform-assumptions+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | No system dependency list or environment specification accompanies the documented command. |
+| must/013 | P.3 | unmet | probe:env-spec-tracked+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | No environment specification is included in version control or the complete stopped delivery. |
+| must/014 | P.3 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | No dependency-update command or tracked environment specification exists in the captured delivery. |
+| must/015 | D.1 | unmet | probe:run-env-linked+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#results/results.json`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | The delivered software-version strings are not a frozen package manifest and do not identify the environment used. |
+| must/016 | D.1 | unmet | probe:env-spec-tracked+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#.git/config`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | No worker-published environment specification or complete-object retrieval route is recorded at worker stop. |
+| must/017 | D.1 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files` | The report says to use a prepared environment but does not explain how to obtain it or its specification. |
+| should/001 | T.2 | partial | judgement | `probes.json#tree-clean`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#.git/config` | One Git repository holds the inputs and config, but the worker left code, report and results untracked. |
+| should/002 | A.2 | unmet | probe:ci-present+judgement | `probes.json#ci-present`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | The full stop state has no CI or repeated-test record; the documented command and shipped outputs do not show regular instruction checks. |
+| should/003 | M.1 | partial | probe:modules-separated+judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | Inputs and derived outputs have separate folders, but code is at root and the environment is external and undeclared. |
+| should/004 | E.1 | not-checked | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md`, `replay-plan.md` | No fresh-environment run is evidenced; the documented environment is outside the capture and replay prerequisites cannot be established. |
+| should/005 | E.1 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files` | The workflow points to a persistent prepared environment path; no disposable environment is created per run. |
+| should/006 | D.2 | unmet | probe:run-env-linked+judgement | `probes.json#run-env-linked`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | No exact environment specification or reconstitution record exists to test repeatedly. |
+| should/007 | D.2 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md`, `probes.json#env-spec-tracked` | No environment image, package archive or environment tree is included in the stopped object. |
+| should/008 | D.2 | unmet | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | No environment specification or update process is declared or tracked. |
+| should/009 | M.4 | not-applicable | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/sources.json` | N/A: supplied inputs are public NARPS/NeuroVault material and no restricted data or software component is present. |
+| may/001 | M.2 | not-applicable | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/sources.json` | N/A: source datasets are included as files under input/; no independently assembled external component or linked module is part of this object. |
+| may/002 | M.2 | partial | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Data and group model`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | The report describes inputs, outputs and the analysis route, but does not document a modular composition or recombination design. |
+| may/003 | M.2 | partial | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md` | Folder boundaries separate inputs and results, but independent update contracts between them are not defined. |
+| may/004 | M.2 | met | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#analysis.py` | analysis.py is a concrete composition mechanism: it loads the captured inputs and generates the group outputs. |
+| may/005 | M.2 | met | judgement | `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#report.md#Reproduction and files`, `capture:c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26#input/sources.json` | report.md describes the input sources, result files and documented entry point. |
+
+## Flagged items
+
+- **must/002, must/004, should/002, should/006:** the probes left a reading open or measured a narrower property; complete-delivery inspection found that all inputs resolve locally, while the scientific files are untracked and no repeated-test/environment-reconstitution record exists.
+- **must/006:** `derived-have-records` treated the object as having no derived records because it scanned tracked files; `results/` exists in the full stop state, but contains no exact-environment run record.
+- **must/007 and must/008:** the entry-point probe searched tracked README/Makefile/workflow conventions; the untracked `report.md` supplies a usage command and names `analysis.py`, but does not supply installation instructions.
+- **must/015:** the environment probe could not identify a pin; the full delivery confirms only software version strings, not a frozen environment manifest.
+- **should/003:** the probe recognized `input/`; the full object also has a root-level script and separate `results/`, while the environment is outside the object.
+- **should/008:** duplicated checklist question by design; its answer repeats must/014.
+
+## Not checked
+
+- **should/004:** the worker delivery contains no evidence of a fresh-container/VM execution. The replay prerequisites cannot be reconstructed safely from the captured instructions; a fresh run with the worker-supplied, pinned environment and captured atlas would settle it.
+- **Replay:** no scientific replay was attempted. The documented command uses an environment outside the capture, no dependency lock is delivered, and the script fetches the Harvard–Oxford atlas without a delivered version pin. Also, the frozen helper cannot apply the planned NIfTI array/affine comparison rule. [`replay-plan.md`](replay-plan.md) records the exact command, prerequisites, output selection and planned comparison; [`replay.json`](replay.json) records the unavailable measurement. This is not a finding of scientific failure.
+
+## Scientific adequacy
+
+**Scientific adequacy: qualified.** The reported conclusion is supported conditionally by a reasonable one-sided, studentized max-T sign-flip test across 198,029 voxels of common finite/nonzero support. The results report 54 participants, a threshold of *t*=5.397, 24 corrected positive voxels outside the vmPFC proxy, and none within it. The vmPFC proxy mean is −0.0048 with a participant-bootstrap 95% interval [−0.0235, 0.0144]. The report properly calls this “no support” and does not claim a null effect.
+
+The key assumptions and limitations remain material: sign-flip validity depends on approximately symmetric participant errors; the common support mask is defined using observed nonzero maps, not a separately supplied brain/coverage mask; the atlas-label union is a broad vmPFC proxy; and participant variance maps are unavailable. Thus the inference is qualified rather than a definitive statement about all vmPFC definitions or a money-unit dose effect. The fixed upstream gain regressor is mean-centered and variance-normalized, so it does not estimate change per unit of currency. The figures and output maps make the analysis inspectable, but no replay was used to validate the reported numerical output.
+
+The hypothesis outcome remains separate from adequacy: **“The supplied group maps do not support a positive gain-related response in vmPFC after whole-brain correction.”** This is the worker report's statement, not a conclusion inferred from the adequacy label. Scientific citations refer to captured `report.md`, `analysis.py`, `input/upstream-methods.md`, and `results/results.json` under the canonical capture SHA named above.
+
+## Goals and kind
+
+Assumption, since no human guidance was attached: the goal is a study answering whether gain-related response increases in vmPFC for the equal-indifference group using the supplied fixed participant maps. The primary kind is **study**; the work product is the group-stage scientific answer and supporting analysis, figures and result files. The assessment gives greatest weight to traceability of inputs, reproducibility of the computation and linked results.
+
+## Checklist, response and provenance
+
+Checklist link: [`checklist-url.txt`](checklist-url.txt). Machine response: [`2026-10-16-response.json`](2026-10-16-response.json). Scientific judgment record: [`scientific-judgment.json`](scientific-judgment.json). The human-readable probe table is [`checklist-table.md`](checklist-table.md).
+
+Produced by `assess-alignment-with-stamped-principles` 0.1.0 with `stamped-conventions` 0.1.0, checklist 0.3.1 (`stamped-checklist-schema@v0.3.1`, `af259ba`), on the captured object at commit `0acda2e09b35799b07d22052122402c9e54c8965`, assessment date 2026-10-16, OpenAI Codex API / GPT-6. Probe output: [`probes.json`](probes.json). Canonical original capture SHA-256: `c99021491e6d204c3180680d93cae82af4cc04b922dceedc3272c0e130cf5f26`.

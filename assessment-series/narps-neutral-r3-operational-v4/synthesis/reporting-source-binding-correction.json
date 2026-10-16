@@ -1,0 +1,64 @@
+{
+  "source_receipt": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-assessment-registration-01/original-object-sources.json",
+    "sha256": "75cf6592bfa0e0e9746c66adacfcae2f2527069c8818723bf14e1793808e6f4a"
+  },
+  "changes": [
+    {
+      "before": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/build-extraction.py",
+        "sha256": "b508b98546c792bf79da90e64a4ad30fd402995dbd620b790c5f94b779340c45"
+      },
+      "after": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-extraction.py",
+        "sha256": "fa6cd0f4b93e9b5307ad94999e8285d8ca8017e369f313d35df645a4810412e0"
+      },
+      "diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/build-extraction.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/build-extraction.py\n@@ -233,7 +233,7 @@\n     \"\"\"Extract measurements from the same already-closed research sessions.\"\"\"\n     sources_path = REG / \"original-object-sources.json\"\n     snapshot.capture(sources_path, \"registration/original-object-sources.json\",\n-                     \"0a98043889185efeff36e8eb9627618914a13eecee1647f3054af313ebc5cbfb\")\n+                     \"75cf6592bfa0e0e9746c66adacfcae2f2527069c8818723bf14e1793808e6f4a\")\n     sources = {row[\"run\"]: row for row in read(sources_path)}\n     for identity, run in runs.items():\n         result_ref = run[\"worker_native\"][\"result\"]\n"
+    },
+    {
+      "before": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/summarize-final-findings.py",
+        "sha256": "f35588cdea91b37e171e92ca1b9d69cc2d1d0fa7d14817fb51aac50ea84422b0"
+      },
+      "after": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-final-findings.py",
+        "sha256": "9d63c97e3428cf655afe4e60d02f703b7a297b89409e2043b90fbe09a3c9e7a3"
+      },
+      "diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/summarize-final-findings.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/summarize-final-findings.py\n@@ -5,7 +5,7 @@\n from pathlib import Path\n \n root = Path(__file__).resolve().parent\n-snapshot = root / \"snapshot-final-01\"\n+snapshot = root / \"snapshot-final-02\"\n out = root / \"final-findings-01\"\n out.mkdir(exist_ok=False)\n \n@@ -126,7 +126,7 @@\n for row in explicit_evidence:\n     links = \"; \".join(f\"[{key}]({value['path']})\" for key,value in row[\"retained_evidence\"].items())\n     lines.append(f\"- {row['run_id']}: must/005 unavailable; {links}.\")\n-lines += [\"\", \"All seven existing-method figures are in ../snapshot-final-01/round-03-summary/. Figures keep unavailable observations visible. Machine findings and source hashes are in findings.json; the full frozen normalized tables are in ../snapshot-final-01/analysis/. Exact source/adaptation provenance is in ../reporting-bindings-final-01.json, with original code retained separately. Duct logs and per-command receipts remain under ../duct/ and ../commands/.\", \"\",\n+lines += [\"\", \"All seven existing-method figures are in ../snapshot-final-02/round-03-summary/. Figures keep unavailable observations visible. Machine findings and source hashes are in findings.json; the full frozen normalized tables are in ../snapshot-final-02/analysis/. Exact source/adaptation provenance is in ../reporting-bindings-final-01.json, with original code retained separately. Duct logs and per-command receipts remain under ../duct/ and ../commands/.\", \"\",\n     \"The retention helper reported 24/24 worker native and skill-availability captures and 32/32 judge capture/integrity audits, with no retention failures or retries. This establishes local preservation, not scientific validity, skill use or hosted publication. Exact final retention receipts are copied into retention-closure/.\"]\n (out / \"README.md\").write_text(\"\\n\".join(lines) + \"\\n\")\n print(json.dumps({\"output\": str(out), \"findings\": ref(out / \"findings.json\"), \"groups\": groups,\n"
+    },
+    {
+      "before": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/finalize-reporting.py",
+        "sha256": "d020457651c5c58db4ffcead1b59fb27d667164279c3aa920528310a95a21a8f"
+      },
+      "after": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/finalize-reporting.py",
+        "sha256": "2ac4bf024579bbe402f10d498526c7df73af16b92f6859788e59df0dc002762b"
+      },
+      "diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/finalize-reporting.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/finalize-reporting.py\n@@ -4,7 +4,7 @@\n from pathlib import Path\n \n root = Path(__file__).resolve().parent\n-figures = root / \"snapshot-final-01/round-03-summary\"\n+figures = root / \"snapshot-final-02/round-03-summary\"\n def ref(path):\n     return {\"path\": str(path), \"sha256\": hashlib.sha256(path.read_bytes()).hexdigest()}\n \n@@ -32,15 +32,15 @@\n     \"cross-round-readout-01/README.md\", \"cross-round-readout-01/readout.json\", \"compose-cross-round-readout.py\",\n     \"round-one-worker-context.json\", \"compose-round-one-worker-context.py\",\n     \"final-findings-01/retention-closure/retention-closure.json\", \"final-review-01/review.json\", \"final-review-01/README.md\",\n-    \"snapshot-final-01/index.json\", \"snapshot-final-01/snapshot.json\", \"snapshot-final-01/source-manifest.json\",\n-    \"snapshot-final-01/analysis/issues.jsonl\", \"snapshot-final-01/processing-result.json\",\n-    \"snapshot-final-01/round-03-summary/presentation.json\", \"worker-context.json\", \"reporting-bindings-final-01.json\",\n+    \"snapshot-final-02/index.json\", \"snapshot-final-02/snapshot.json\", \"snapshot-final-02/source-manifest.json\",\n+    \"snapshot-final-02/analysis/issues.jsonl\", \"snapshot-final-02/processing-result.json\",\n+    \"snapshot-final-02/round-03-summary/presentation.json\", \"worker-context.json\", \"reporting-bindings-final-01.json\",\n     \"reporting-bindings-preparation-01.json\", \"skill-observation-method.json\",\n     \"final-closure/provenance.json\", \"retain-final-closure.py\", \"summarize-final-findings.py\", \"finalize-reporting.py\"]\n manifest = {\"kind\": \"round-three-reporting-handoff\", \"root\": str(root),\n     \"result\": \"All32 judgments closed but rejected by unchanged provenance gate. All24 primary scores and8 pair comparisons unavailable; no zero-score conversion.\",\n     \"key_files\": [ref(root / name) for name in files],\n-    \"preserve_directories\": [str(root / name) for name in (\"snapshot-final-01\", \"final-findings-01\", \"final-review-01\",\n+    \"preserve_directories\": [str(root / name) for name in (\"snapshot-final-02\", \"final-findings-01\", \"final-review-01\",\n         \"skill-observations\", \"timing-context\", \"original-processing-code\", \"sealed-source\", \"commands\", \"duct\", \"final-closure\",\n         \"cross-round-readout-01\", \"initial-index-assembly-01\", \"pre-final-binding-code\")],\n     \"reuse\": \"Original frozen source and schema, primary/duplicate labels, admission rules and unavailable outcomes retained. Explicit round/series/paths/hash and caption adaptations only; current scripts and source diffs retained. Outcome-specific report assertions are not grading logic. Final cross-round readout composes existing results without pooling admission.\",\n"
+    },
+    {
+      "before": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/compose-cross-round-readout.py",
+        "sha256": "6d50c2c65a6dfb78b6851ef4cdb2bafb7b076090240f53e863076bdeff638d3a"
+      },
+      "after": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/compose-cross-round-readout.py",
+        "sha256": "b0e6d620c607d2941ca9299b0852dc09edc482e1c64c24dbc66f6b93dc4ba396"
+      },
+      "diff": "--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/pre-source-binding-correction/compose-cross-round-readout.py\n+++ /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/compose-cross-round-readout.py\n@@ -45,7 +45,7 @@\n                        'categories': x['science_categories'] if x['science_available'] else None}\n                       for x in findings['groups']]\n         report = directory / 'final-findings-01/README.md'\n-        figures = directory / f'snapshot-final-01/round-0{round_number}-summary'\n+        figures = directory / f\"snapshot-final-{'01' if round_number == 2 else '02'}/round-0{round_number}-summary\"\n     assert total['assigned_slots'] == total['launcher_closed'] == 32\n     assert primary['assigned_slots'] == 24 and duplicates['assigned_slots'] == 8\n     assert context['workers'] == 24 and len(context['rows']) == 24\n"
+    }
+  ],
+  "previous_bindings": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/reporting-bindings-final-01.json",
+    "sha256": "d631135c8304134b4496b4c880a1e245f92560f025e6ed71ab91b785f2f61917"
+  },
+  "failure": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/processing-failures-01.json",
+    "sha256": "40b9fdb03a7c6db7e8acb071297e80e719e3c497f3e3d957fc6c79041fdb597f"
+  },
+  "script": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-03-operational-extraction-01/correct-reporting-source-binding.py",
+    "sha256": "7cd14a40dbf3ce449effd6e09ebbade7e92fdc424ac3ebd7cd508643aa0124a2"
+  }
+}

@@ -1,0 +1,516 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All essential files reside under the captured workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Analysis script is at the workspace root; inputs and results are nested beneath it.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 maps and metadata are included within the root; source links are supplementary.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/input/sources.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd. Sources list the included maps and cohort metadata; annex links remain within input/data.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Python packages used by analysis.py are not included in a supplied environment or linked software module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Imports NumPy, SciPy, NiBabel, pandas, Nilearn, and Matplotlib.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Notebook provides no installation/environment definition.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Git tracks inputs, but the worker-stop analysis, report, notebook, and results are untracked.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Report and analysis files are untracked in the complete worker stop state.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        },
+        {
+          "uri": "probes.json#tree-clean",
+          "description": "Probe confirms five untracked paths at captured HEAD",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex tracks all 54 map pointers and their content is present in the captured delivery.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/input/sources.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd. 54 participant maps are enumerated with byte sizes and SHA-256 values.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "logs/inspection.stdout.txt#git-annex-find",
+          "description": "annex reports all 54 input maps available",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "Notebook metadata records Python 3.9.18 while the report claims Python 3.13; no exact environment is linked to results.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Analysis section states Python 3.13.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Kernel metadata records Python 3.9.18 and contains an executed analysis call.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "No installation instructions or dependency setup are supplied; notebook and report provide only a partial usage route.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Report names the analysis script and notebook but gives no install procedure.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Notebook contains a project-root assertion and analysis invocation.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "partial",
+      "reason": "The notebook invokes analysis.py, but the Python-version conflict and absent setup leave the reproduction route incomplete.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Executed notebook cell calls sys.executable analysis.py from the project root.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Report claims Python 3.13, unlike notebook kernel metadata.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Analysis paths are rooted relative to the project; the execution script has no host-specific file paths.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Paths are built from Path(__file__).resolve().parent.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The script imports required packages, but no dependency specification declares them or their versions.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Imports external Python packages.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. No requirements or lockfile accompanies the runnable notebook.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "Captured Git config points hooks to an absolute host path; notebook output also names a local atlas cache, neither documented.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/.git/config",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 02a02fc53f18fd71658416db2c841a5f271b6ce884ef278cd0a673cc51edac11. core.hookspath names an external /Users/... path.",
+          "sha256": "02a02fc53f18fd71658416db2c841a5f271b6ce884ef278cd0a673cc51edac11"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Executed output reports a local Nilearn atlas cache path.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No README or environment file lists system requirements or software dependencies.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. No setup or requirements section is provided.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. External package imports are not accompanied by a dependency list.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is tracked or present in the complete delivery.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. No environment file is present alongside the notebook.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No command or process for updating environment specifications is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. No environment/update procedure is described.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No pinned package environment or runtime capture is supplied for exact reconstitution.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Only a Python kernel version is recorded; package versions and a lock are absent.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment specification is published or retrievable through a worker-declared route.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "access-record.json#required_artifact_coverage",
+          "description": "No worker route for an environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "Documentation does not explain how to obtain or install the analysis environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Report names output files but gives no environment acquisition instructions.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Inputs use Git and git-annex, while the scientific code, report, and results were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Complete stop-state Git status is summarized in the probe record.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        },
+        {
+          "uri": "probes.json#tree-clean",
+          "description": "Only the input files are tracked",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "One notebook execution is visible; no repeated-test history is supplied. A testing record would settle this.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. One execution is recorded, not a regular testing history.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs and results have directories, but code remains at root and no environment module exists.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Analysis script remains at root.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/results/results.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 647a39f521e1465ae7ba241070cc8c043c967433988df21fa40499b617a46668. Generated outputs are under results/.",
+          "sha256": "647a39f521e1465ae7ba241070cc8c043c967433988df21fa40499b617a46668"
+        },
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/input/sources.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd. Inputs are under input/.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: no restricted data or software component is identified; supplied scientific inputs are linked as public sources.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/input/sources.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd. Input sources identify public NeuroVault and GitHub URLs.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No fresh-environment run is recorded; a replay could settle this if the missing environment were specified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Execution is recorded but no fresh container or isolated environment is described.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The notebook runs in its existing kernel and creates no disposable environment for each execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. The entrypoint directly invokes analysis.py using the current kernel interpreter.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute and test regularly.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. No package lock or environment declaration is present.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment image, binaries, or lock artifact is archived with the study.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Reproducibility files list no environment artifacts.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is declared; this repeats must/014 by design.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. No dependency update command or procedure is described.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: the workspace has no independently maintained project components; data are included as inputs.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/input/sources.json",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd. External URLs identify source data, not separately maintained code modules.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The report lists files and roles, but does not document module boundaries or how they relate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Reproducibility files are named, without a module map.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "unmet",
+      "reason": "No independently updatable code, data, and environment module boundaries are defined.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.py",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0. Code sits at workspace root; inputs and results are directories, with no environment module.",
+          "sha256": "70a7cddafac7228fe9d44d7c5fcaa5903dcc11e060776a518d7dec267a52fad0"
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "unmet",
+      "reason": "There is no mechanism for composing the input, analysis, and output parts beyond running from the project root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/analysis.ipynb",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf. Notebook requires project-root execution and invokes one script; no composition interface is described.",
+          "sha256": "f0e849563fa50354d482b32e15a88a552e849581276cd9124b685b9e65775daf"
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "The report and notebook identify key files, but there is no general navigation or structure guide.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048#content/workspace/report.md",
+          "description": "canonical capture 35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048; file SHA-256 47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da. Reproducibility files are listed but project layout is not explained.",
+          "sha256": "47cb2e5c82aaf7dacd5c21a367c8a6069a0a6fff6dc58a37da7cbd6f0f9a42da"
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "0acda2e09b35799b07d22052122402c9e54c8965",
+    "captured_at": "2026-10-16T16:42:05.731177+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-24-j01/canonical/manifest.json",
+      "sha256": "35c62952400477cd4e8cc48fc293e6bebc488198068bd8c8c2ed60ac3b683048"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API assessment harness (runtime build not exposed)",
+    "model": "GPT-6 (exact model identifier not exposed)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Independent assessment of the complete canonical worker stop, including uncommitted and ignored files; assessed scientific adequacy, checked declared input-route endpoints, ran frozen probes, and marked replay not-checked because no worker-supplied environment specification exists. Coordinator delivery is not worker publication."
+}

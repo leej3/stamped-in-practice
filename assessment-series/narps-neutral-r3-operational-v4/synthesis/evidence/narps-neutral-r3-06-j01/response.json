@@ -1,0 +1,469 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "The delivered files are nested under one workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Worker report resides within the workspace root.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The complete map set, cohort metadata and methods reference are within the root and connected through the manifest/code.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Manifest identifies all participant maps and pinned source records.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "Runtime software is referred to in prose but is not declared in a delivered environment or linked software module.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Lines 35-35 name packages but no installable environment specification is delivered.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git is present, but the report, analysis code, retrieved maps and results were uncommitted at worker stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Worker-stop inventory records these as untracked deliverables; captured Git HEAD only tracks input/.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "The 54 large participant maps are tracked as git-annex content.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "The delivery includes annex-backed source maps; frozen probe identifies 54 annex pointers.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The result record names analysis parameters but does not link the produced outputs and actions to an exact runtime environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/analysis_results.json",
+          "description": "Machine-readable analysis record has no environment identity.",
+          "sha256": "5e6e5505a563386a4e8164098b35686cc993bd82b6d554df68fb44ee1bb3796e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The report gives usage instructions but does not explain how to install the prepared environment.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Lines 33-37 provide dependencies, command, environment variable and output links.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report identifies analysis/run_group_analysis.py as the runnable starting point.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Line 35 names the documented entrypoint; code has a main guard.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script resolves inputs and outputs relative to its own workspace.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "ROOT is derived from __file__; paths are workspace-relative.",
+          "sha256": "f222541f8a93dec8fde39edeac0a36c6486ad89c346d85a22adee50b1433f037"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "The dependency names are not included in a machine-readable environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "No environment spec is present at worker stop.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "yes",
+      "reason": "Documented runtime assumptions are the named Python packages and workspace-local NILEARN_DATA; no additional host-specific assumption appears in the route.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Line 35 documents the environment variable and Python package assumptions.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "The report names Python dependencies and NILEARN_DATA but gives no install steps or system requirements.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Line 35 is a useful partial dependency list; the environment is called prepared.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is tracked alongside the code.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No process for regenerating and tracking environment specifications is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "No pinned environment artifact is supplied for exact reconstitution.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "There is no environment specification available for others to access.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report does not explain how to obtain or install the prepared environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "It names dependencies and a prepared environment but supplies no installation route.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git and annex cover inputs, while uncommitted code and results are outside tracked version history.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "No recognized CI or repeated-test record was found; the captured delivery does not establish whether equivalent tests ran regularly.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Probe found no CI and asked for equivalent records; none were evidenced in the assessed report/results.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, analysis code and outputs occupy separate directories, but no environment module exists.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Report links the input, analysis and results areas.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: no restricted data or software component is identified in this public-input analysis delivery.",
+      "status": "not-applicable",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "No evidence establishes whether the workflow was tested in a fresh container, VM, batch job or cloud instance.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": null,
+      "reason": "No supplied record establishes whether executions use disposable environments.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "The report refers to a prepared environment but gives no isolation mechanism.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No exact environment specification exists to test for reconstitution.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived in the research object.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No environment update process is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: no independently maintained project components are identified; runtime packages are not project modules.",
+      "status": "not-applicable",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report explains the fixed input, group analysis and results roles, but not an environment module or composition map.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Lines 17-23 and 33-37 explain these roles.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Input, analysis and results directories are separable, but reproducible independent updates are limited by the absent environment specification.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "Code reads input and writes results using separate workspace paths.",
+          "sha256": "f222541f8a93dec8fde39edeac0a36c6486ad89c346d85a22adee50b1433f037"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "The object has no mechanism for composing independent modules.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen automated probe output; interpretation is summarized in the assessment report.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report and sources manifest help readers navigate the input, analysis and result artifacts.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Lines 35-44 identify entrypoint and key results with relative links.",
+          "sha256": "159edefd1643b66609cf361451e361ccc1045231c8378cc94317dd84e9b8ccd4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No reuse license is stated in the complete captured workspace.",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-06-j01/attempt-01/judgment/probes/probes.json",
+          "description": "Frozen license probe found no license declaration among tracked paths.",
+          "sha256": "85ca4ed262fd779487b3aab505b97400a14877dfeb4b88b898765061ed84fa15"
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "e09e9887ff701ffa1b550ad83676aed6d27f5ff1",
+    "captured_at": "2026-10-16T16:44:55.960666+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-06-j01/canonical/manifest.json",
+      "sha256": "d9a460b5bc349513f883c33039f469882bc878d31c0e09eee434a9cfc4ac5eda"
+    }
+  },
+  "assessor": {
+    "skill": "frozen-independent-assessor",
+    "version": "1",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.2.0"
+    ]
+  },
+  "scope": "Complete canonical original workspace inspected through verified operational copy; input route HEAD-checked; scientific replay not checked because prerequisites were not supplied."
+}

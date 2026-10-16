@@ -1,0 +1,434 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered material is under the workspace root, including annex payloads reached by relative links.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete captured workspace root; see input/data symlinks",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 supplied maps are linked within the root to retained annex payloads; code uses root-relative paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "relative symlink to .git/annex; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py=DATA and ROOT are workspace-relative",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The Python analysis imports external libraries, but the worker supplied no environment specification or linked software module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "imports numpy, pandas, nibabel, scipy, nilearn and matplotlib; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace=full delivery inventory has no environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git tracks supplied inputs and configuration, while the analysis, report, figures and results remained untracked at worker stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "untracked at captured index; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=untracked; probes.json=tree-clean reports four untracked paths",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned",
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex tracks all 54 large participant maps; their annex payloads are retained inside the captured workspace.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/input/data",
+          "description": "sub-001 through sub-123 maps as annex links; probes.json=54 annex pointers and no large Git blobs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The report and outputs lack a worker run record linking the generated results to an exact environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/results/summary.json",
+          "description": "reports methods and software versions, not an environment lock; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=documents output but no run record",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "The report gives a usage command but no install or environment setup instructions; its interpreter is a worker-host absolute path.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "Reproducibility files command; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=absolute interpreter path outside delivery",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report names analysis/group_analysis.py and gives a direct invocation that writes the listed results and figures.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "documents entrypoint and invocation; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py=executable analysis script",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis resolves inputs and outputs from its own file location; its internal file paths are relative to the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "ROOT from __file__, relative input and output paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Required Python libraries are imported, but no dependency declaration is included in the worker delivery.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "required imports; probes.json=env-spec-tracked found no tracked environment spec",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The documented command assumes an absolute worker-specific interpreter path and does not document the host or system requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "absolute interpreter path; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/.git/config=absolute external hooksPath",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No installation instructions or list of system requirements accompanies the documented command.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "Reproducibility files section; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace=complete inventory has no README or environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the worker delivery or tracked history.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery inventory; probes.json=env-spec-tracked found no tracked environment spec",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or documented update process is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery inventory has no environment specification; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=no environment update instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The report lists library versions, but no frozen environment manifest or container digest is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/results/summary.json",
+          "description": "package versions only; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace=complete delivery inventory contains no lock or container",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared authorized route publishes an environment specification or the complete analysis object.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/.git/config",
+          "description": "no remote configured; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=no retrieval route",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The report does not explain how to obtain or recreate the environment; it points to a host-specific interpreter.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "Reproducibility files command; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace=complete delivery inventory has no environment files",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "One Git repository and its git-annex extension cover the supplied inputs and workspace history.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/.git/config",
+          "description": "Git and annex configuration; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/input/data=annex-backed inputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No CI is present; the captured assistance transcript was excluded from grading. A separate worker-attributed record of recurring workflow tests would settle this.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery; probes.json=ci-present found no recognized CI configuration",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs are separated under input/, but code, derived results and environment are not organized as distinct modules.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/input",
+          "description": "separate inputs directory; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis=code and results are separate directories but not modules",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the captured inputs and declared software contain no restricted data or software.",
+      "source": "judgement"
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No worker-attributed record establishes a fresh-container, clean-VM or batch-job run; such a record would settle this.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "documents a prepared host environment but no fresh-run evidence; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace=complete captured inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented workflow invokes a pre-existing interpreter and does not create a disposable environment per run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "invokes external prepared Python environment; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py=no environment creation",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification is provided to reconstitute and test against the results.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery inventory has no environment spec; probes.json=run-env-linked found no recorded environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment lock, container image or executable environment artifact is archived with the worker delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery inventory; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/results/summary.json=records versions, not environment artifacts",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is documented or tracked; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace",
+          "description": "complete delivery inventory has no environment spec; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=no update process",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: the project has no independently maintained external component; source maps are included through local annex payloads.",
+      "source": "judgement"
+    },
+    "stamped-checklist:may/002": {
+      "status": "unmet",
+      "reason": "The report lists files but does not document module boundaries or how components relate and recombine.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "Reproducibility files list; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/input=only documented directory boundary",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "unmet",
+      "reason": "No independently updateable module boundaries are defined; the analysis reads directly from the workspace input directory.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "direct ROOT-relative input/output access",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "unmet",
+      "reason": "No module-composition mechanism is documented; the single script reads local inputs and writes local outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/analysis/group_analysis.py",
+          "description": "direct input-to-results workflow; capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md=no composition instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report identifies the entrypoint and enumerates the input, code, result and figure files for navigation.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd#content/workspace/report.md",
+          "description": "Reproducibility files section",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "82443e43a1171f47c085c5e0fadc9e8132a12053",
+    "captured_at": "2026-10-16T16:53:51.456332+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-03-j01/canonical/manifest.json",
+      "sha256": "accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "GPT-6 (deployed variant not exposed)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete worker-stop capture accefbd1bec4eb42279cf17f789438d3936e1dc654d4801a311bad3b9c21a6dd; probe and inspection on operational copy; no safe replay entrypoint environment or worker retrieval route; coordinator-supplied inputs and later preservation excluded from worker-practice credit."
+}

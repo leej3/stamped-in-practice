@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/storage-accounting-02/consolidate-approved.py", line 30, in <module>
+    p=Path(row['path']); shutil.rmtree(p); assert not p.exists()
+                         ~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 852, in rmtree
+    _rmtree_impl(path, dir_fd, onexc)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 721, in _rmtree_safe_fd
+    _rmtree_safe_fd_step(stack, onexc)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 802, in _rmtree_safe_fd_step
+    onexc(func, path, err)
+    ~~~~~^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 795, in _rmtree_safe_fd_step
+    onexc(os.unlink, fullname, err)
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/shutil.py", line 791, in _rmtree_safe_fd_step
+    os.unlink(entry.name, dir_fd=topfd)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-02-native-retention-01/judgments/narps-neutral-r2-01-j01/late-capture-01/content/attempt-01/native/operational-retention/original-delivery/content/workspace/content/workspace/.git/annex/objects/qQ/kG/MD5E-s1792367--a8f4864747246fed458e132d5e56d5a9.nii.gz'

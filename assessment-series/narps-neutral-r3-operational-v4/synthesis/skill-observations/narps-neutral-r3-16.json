@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r3-16",
+  "extracted_at_utc": "2026-10-16T16:58:19.590948+00:00",
+  "assigned_condition": "discover-science",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 108,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "notebook scaffold invocation observed; no notebook execution observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "notes": [
+      "Read skill-installer instructions, listed the curated catalog, installed jupyter-notebook into the isolated per-run skills profile and read its instructions.",
+      "Read the experiment-patterns reference and invoked the notebook scaffold helper for analysis.ipynb. Later JSON/cell checks were observed; these are separate from notebook execution, which was not observed.",
+      "The upstream installed revision was not resolved. Scientific benefit was not assessed."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 11,
+        "item_id": "item_5",
+        "event_sha256": "c749fd91bf997f8218f48c731af87021b0ab56680b852fb38ba052e1d04171d3",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/.system/skill-installer/SKILL.md && find . -type f -name '*.nii*' -o -name '*.gz' | head -30 && ls -la\"",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n./input/data/sub-043_hypo1_cope.nii.gz\n./input/data/sub-093_hypo1_cope.nii.gz\n./input/data/sub-025_hypo1_cope.nii.gz\n./input/data/sub-077_hypo1_cope.nii.gz\n./input/data/sub-039_hypo1_cope.nii.gz\n./input/data/sub-011_hypo1_cope.nii.gz\n./input/data/sub-009_hypo1_cope.nii.gz\n./input/data/sub-047_hypo1_cope.nii.gz\n./input/data/sub-021_hypo1_cope.nii.gz\n./input/data/sub-115_hypo1_cope.nii.gz\n./input/data/sub-109_hypo1_cope.nii.gz\n./input/data/sub-073_hypo1_cope.nii.gz\n./input/data/sub-015_hypo1_cope.nii.gz\n./input/data/sub-121_hypo1_cope.nii.gz\n./input/data/sub-041_hypo1_cope.nii.gz\n./input/data/sub-113_hypo1_cope.nii.gz\n./input/data/sub-027_hypo1_cope.nii.gz\n./input/data/sub-069_hypo1_cope.nii.gz\n./input/data/sub-075_hypo1_cope.nii.gz\n./input/data/sub-013_hypo1_cope.nii.gz\n./input/data/sub-095_hypo1_cope.nii.gz\n./input/data/sub-045_hypo1_cope.nii.gz\n./input/data/sub-117_hypo1_cope.nii.gz\n./input/data/sub-071_hypo1_cope.nii.gz\n./input/data/sub-059_hypo1_cope.nii.gz\n./input/data/sub-017_hypo1_cope.nii.gz\n./input/data/sub-123_hypo1_cope.nii.gz\n./input/data/sub-089_hypo1_cope.nii.gz\n./input/data/sub-061_hypo1_cope.nii.gz\n./input/data/sub-049_hypo1_cope.nii.gz\ntotal 0\ndrwxr-xr-x@  6 johnlee  staff   192 Oct 16 12:36 .\ndrwxr-xr-x@ 59 johnlee  staff  1888 Oct 16 12:36 ..\ndrwxr-x---@  3 johnlee  staff    96 Oct 16 12:36 .codex\ndrwxr-x---@  7 johnlee  staff   224 Oct 16 12:36 .entire\ndrwxr-xr-x@ 14 johnlee  staff   448 Oct 16 12:36 .git\ndrwxr-xr-x@  7 johnlee  staff   224 Oct 16 12:36 input\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "discovery": [
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "e70ca2d39dde12da42498fdc109802a19a0a8da5cfba17f2eb0ca73e4273a516",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 16,
+        "item_id": "item_8",
+        "event_sha256": "6fbff01d2ae398600808f1069e0dcdfb76ab74494307f83f42af9e637101ecf9",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/jupyter-notebook'",
+            "aggregated_output": "Installed jupyter-notebook to /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/jupyter-notebook\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "instructions_loaded": [
+      {
+        "line": 18,
+        "item_id": "item_9",
+        "event_sha256": "5f155df1ed70647e22dc74da296190727d21ec0666dfee765246ec13d95ac532",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/jupyter-notebook/SKILL.md && python - <<'PY'\nimport json,os\nj=json.load(open('input/sources.json'))\nprint('maps json',len([k for k in j['files'] if k.endswith('.nii.gz')]))\nprint('maps actual',len([k for k in os.listdir('input/data') if k.endswith('.nii.gz')]))\nPY\n\"",
+            "aggregated_output": "---\nname: \"jupyter-notebook\"\ndescription: \"Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.\"\n---\n\n\n# Jupyter Notebook Skill\n\nCreate clean, reproducible Jupyter notebooks for two primary modes:\n\n- Experiments and exploratory analysis\n- Tutorials and teaching-oriented walkthroughs\n\nPrefer the bundled templates and the helper script for consistent structure and fewer JSON mistakes.\n\n## When to use\n- Create a new `.ipynb` notebook from scratch.\n- Convert rough notes or scripts into a structured notebook.\n- Refactor an existing notebook to be more reproducible and skimmable.\n- Build experiments or tutorials that will be read or re-run by other people.\n\n## Decision tree\n- If the request is exploratory, analytical, or hypothesis-driven, choose `experiment`.\n- If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.\n- If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.\n\n## Skill path (set once)\n\n```bash\nexport CODEX_HOME=\"${CODEX_HOME:-$HOME/.codex}\"\nexport JUPYTER_NOTEBOOK_CLI=\"$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py\"\n```\n\nUser-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).\n\n## Workflow\n1. Lock the intent.\nIdentify the notebook kind: `experiment` or `tutorial`.\nCapture the objective, audience, and what \"done\" looks like.\n\n2. Scaffold from the template.\nUse the helper script to avoid hand-authoring raw notebook JSON.\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind experiment \\\n  --title \"Compare prompt variants\" \\\n  --out output/jupyter-notebook/compare-prompt-variants.ipynb\n```\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind tutorial \\\n  --title \"Intro to embeddings\" \\\n  --out output/jupyter-notebook/intro-to-embeddings.ipynb\n```\n\n3. Fill the notebook with small, runnable steps.\nKeep each code cell focused on one step.\nAdd short markdown cells that explain the purpose and expected result.\nAvoid large, noisy outputs when a short summary works.\n\n4. Apply the right pattern.\nFor experiments, follow `references/experiment-patterns.md`.\nFor tutorials, follow `references/tutorial-patterns.md`.\n\n5. Edit safely when working with existing notebooks.\nPreserve the notebook structure; avoid reordering cells unless it improves the top-to-bottom story.\nPrefer targeted edits over full rewrites.\nIf you must edit raw JSON, review `references/notebook-structure.md` first.\n\n6. Validate the result.\nRun the notebook top-to-bottom when the environment allows.\nIf execution is not possible, say so explicitly and call out how to validate locally.\nUse the final pass checklist in `references/quality-checklist.md`.\n\n## Templates and helper script\n- Templates live in `assets/experiment-template.ipynb` and `assets/tutorial-template.ipynb`.\n- The helper script loads a template, updates the title cell, and writes a notebook.\n\nScript path:\n- `$JUPYTER_NOTEBOOK_CLI` (installed default: `$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py`)\n\n## Temp and output conventions\n- Use `tmp/jupyter-notebook/` for intermediate files; delete when done.\n- Write final artifacts under `output/jupyter-notebook/` when working in this repo.\n- Use stable, descriptive filenames (for example, `ablation-temperature.ipynb`).\n\n## Dependencies (install only when needed)\nPrefer `uv` for dependency management.\n\nOptional Python packages for local notebook execution:\n\n```bash\nuv pip install jupyterlab ipykernel\n```\n\nThe bundled scaffold script uses only the Python standard library and does not require extra dependencies.\n\n## Environment\nNo required environment variables.\n\n## Reference map\n- `references/experiment-patterns.md`: experiment structure and heuristics.\n- `references/tutorial-patterns.md`: tutorial structure and teaching flow.\n- `references/notebook-structure.md`: notebook JSON shape and safe editing rules.\n- `references/quality-checklist.md`: final validation checklist.\nmaps json 54\nmaps actual 54\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "reference_loaded_and_scaffold": [
+      {
+        "line": 28,
+        "item_id": "item_14",
+        "event_sha256": "d35679e42723eae5901696cc7e9531e2ee3f2d9bb5a24fba0e0ec2d845e4da2d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_14",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"sed -n '1,200p' /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/jupyter-notebook/references/experiment-patterns.md && python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-z26bnaav/skills/jupyter-notebook/scripts/new_notebook.py --kind experiment --title 'NARPS potential gain group analysis' --out analysis.ipynb && git status --short\"",
+            "aggregated_output": "# Experiment Patterns\n\nUse this structure for exploratory and experimental work:\n\n- Title and objective: state the question and the success criteria.\n- Setup and reproducibility: import only what you need, set a seed early, and keep configuration in one short cell.\n- Plan: list hypotheses, sweeps, and metrics before running code.\n- Minimal baseline: start with the smallest runnable example and confirm it runs end-to-end before adding complexity.\n- Results and notes: summarize findings in markdown near the relevant code and record key metrics in a small dictionary or table-like structure.\n- Next steps: decide whether to continue, pivot, or stop, and capture follow-up ideas as short bullets.\nWrote /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r3-16/analysis.ipynb using kind=experiment.\n?? analysis.ipynb\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "notebook_json_check": [
+      {
+        "line": 100,
+        "item_id": "item_54",
+        "event_sha256": "181704481afded12b9a0cf020fd5d088f5e1142e3efb71b5df9152f78d92be5b",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_54",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"rg -n '90%|210,968|0.0062|0.0204|0.0327|10,000' report.md analysis.ipynb code results || true && python - <<'PY'\nimport json\nfrom pathlib import Path\nnb=json.loads(Path('analysis.ipynb').read_text())\nprint('notebook cells',len(nb['cells']),'format',nb['nbformat'],nb['nbformat_minor'])\ns=json.loads(Path('results/summary.json').read_text())\nprint({k:s[k] for k in ['n_participants','n_excluded','n_perm','whole_brain_mask_voxels','significant_voxels_p_fwe_lt_0_05','significant_vmPFC_proxy_voxels_p_fwe_lt_0_05','vmPFC_proxy_mean_subject_effect','vmPFC_proxy_mean_subject_effect_ci95','peak_t','smallest_fwe_p','python_version','numpy_version','nibabel_version','nilearn_version']})\nPY\ncat results/significant_components.tsv\ngit status --short\"",
+            "aggregated_output": "results/participant_qc.tsv:13:sub-027\t27\tF\t1.0\t0.25234656440393777\t0.01946452260017395\t0.12562590837478638\t0.020429419353604317\t0.14840508997440338\tdffa472f8cfe30b9c2025470924fceb23d30fb881db6b893d436faa8d8dcef2f\nnotebook cells 7 format 4 5\n{'n_participants': 54, 'n_excluded': 0, 'n_perm': 5000, 'whole_brain_mask_voxels': 198029, 'significant_voxels_p_fwe_lt_0_05': 24, 'significant_vmPFC_proxy_voxels_p_fwe_lt_0_05': 0, 'vmPFC_proxy_mean_subject_effect': 0.0026563459541648626, 'vmPFC_proxy_mean_subject_effect_ci95': [-0.021659984978589363, 0.026972676886919088], 'peak_t': 6.617175366830268, 'smallest_fwe_p': 0.0009998000399920012, 'python_version': '3.9.18', 'numpy_version': '2.0.2', 'nibabel_version': '5.3.2', 'nilearn_version': '0.12.1'}\ncomponent\tvoxels\textent_mm3\tpeak_x_mm\tpeak_y_mm\tpeak_z_mm\tpeak_t\tpeak_p_fwe\tmin_p_fwe\n1\t17\t163.20001\t-26.0\t-102.0\t-3.599997043609619\t6.617175579071045\t0.0009998000459745526\t0.0009998000459745526\n2\t2\t19.2\t26.0\t-98.0\t-1.1999969482421875\t5.760898113250732\t0.012797440402209759\t0.012797440402209759\n3\t5\t48.0\t30.0\t-94.0\t-8.399997234344482\t6.193403244018555\t0.002799440175294876\t0.002799440175294876\n?? analysis.ipynb\n?? code/\n?? figures/\n?? report.md\n?? results/\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/events.jsonl",
+      "sha256": "bcc5d5b040439f99fc45dd4c9053ca7c92e75da56868d9b81829a84392448f75",
+      "bytes": 252580
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/launch.json",
+      "sha256": "558f1edc418001acc517c86fc83fd58a30fafd2fb841ddbf0d0922db64877135",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/result.json",
+      "sha256": "e847f2decb8f9598e937bed46d72c7da6d9baa711085cb5ddc2c96d13ededc43",
+      "bytes": 6406
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/worker-end-state.json",
+      "sha256": "e788e32f27b98796ea63de7a5b7ba34cb25438a00e6c4ff45186830edc284b58",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/skill-observations.json",
+      "sha256": "a5286e766f3d49805aa125df14a856b54c99c4d25b734374864a126a229b26fc",
+      "bytes": 1735
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/condition-assignment.json",
+      "sha256": "a855bd2ea52d60f9f8836a61a6bf1ce5dc996dabf89af6d8428404d1eab02d1a",
+      "bytes": 692
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r3-16/attempt-01/native/prompt-preflight.json",
+      "sha256": "7f05ff20f9a8a3f17176b17f7d54b167a64fae16bde03da455fbdd927fca874d",
+      "bytes": 2120
+    }
+  ]
+}

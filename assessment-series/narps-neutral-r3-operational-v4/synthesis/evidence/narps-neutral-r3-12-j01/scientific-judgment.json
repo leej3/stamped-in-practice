@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "delivery_capture_sha256": "82cb872b11c624381c7a999a410c4e657ec5f0d1488285c491760d752160fd2b",
+  "scientific_adequacy": "qualified",
+  "report": {
+    "path": "2026-10-16-assessment.md",
+    "sha256": "d3c3eb07274666497cd05eaea957f59e67e8949de5630409b9bf92a5523d454d"
+  },
+  "adequacy_evidence": {
+    "quote": "**Scientific adequacy: qualified.** The report's no-support conclusion is defensible from its one-sided whole-brain Bonferroni sensitivity analysis (11 corrected voxels, all reported posterior and outside the vmPFC proxy) and the descriptive parcel estimate (mean cope −0.009; 95% CI −0.040 to 0.022; one-sided unadjusted *p*=.723). But the report's primary permutation correction is invalid: `t_obs` uses the mean as numerator (`analysis/run_analysis.py` line 76), while `t_perm = signs @ chunk` is a signed sum and lines 89–90 divide that sum by the standard error of a mean. The resulting null maximum near 200–290, including the reported critical value 290.20, is therefore inflated by roughly *n*=54. The permutation FWE result (*p*=1.00/no survivors) cannot be treated as valid whole-brain inference. The Bonferroni test is an independent, whole-brain corrected sensitivity under the stated one-sample-*t* assumptions and supports the same absence of positive vmPFC evidence, so I classify the overall adequacy as **qualified**, rather than treating the faulty primary permutation as the only evidence. The null still does not establish zero response. Scientific artifacts cited here are from canonical capture 82cb872b11c624381c7a999a410c4e657ec5f0d1488285c491760d752160fd2b: `content/workspace/analysis/run_analysis.py` (SHA-256 dbd9ed4fff89b4cbae153d6fe890f280d9941d1630137b13f4a521fff7bbae43), `content/workspace/results/analysis_summary.json` (SHA-256 433330e4eac95c89e1279569e1b7e00c69ebac4f0103d9973eb7e56b0d327715), `content/workspace/results/vmPFC_roi_summary.json` (SHA-256 c9882dfde22ee08719f6f352b69262e70dd6637d9f6e8b609c5be4a4350f50fc), `content/workspace/REPORT.md` (SHA-256 f55f8f5578dc6c195365b688613db97a284a428d7444d8faadf9ff3bf40ffbc4), and `content/workspace/input/upstream-methods.md` (SHA-256 508d832c8787ed8303c3de101c2c76f40a3aa5dec53e6993dc2a49c4b7bcf90b).",
+    "start_line": 26,
+    "end_line": 26
+  },
+  "hypothesis_conclusion": {
+    "quote": "In the 54-person NARPS equal-indifference group, these data do **not support a positive gain-related response in vmPFC**.",
+    "start_line": 28,
+    "end_line": 28
+  }
+}

@@ -1,0 +1,548 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "The captured workspace is nested under one common root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The supplied inputs and provenance are inside the workspace; participant map symlinks resolve within the captured root to annex objects.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/sources.json",
+          "description": "Canonical capture file input/sources.json; worker-stop evidence.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/upstream-methods.md",
+          "description": "Canonical capture file input/upstream-methods.md; worker-stop evidence.",
+          "sha256": "508d832c8787ed8303c3de101c2c76f40a3aa5dec53e6993dc2a49c4b7bcf90b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "No external software component or submodule is supplied; packages are named in prose but not included or pinned.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git exists, but the report, analysis script, figures, and results were untracked at worker stop, so Git did not track the complete project state.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex tracks 54 participant map payloads; each retained symlink points into the captured annex object store.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/sources.json",
+          "description": "Canonical capture file input/sources.json; worker-stop evidence.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "probe:large-in-annex+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The summary names only some software versions and no complete exact environment is linked to the generated results.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#results/summary.json",
+          "description": "Canonical capture file results/summary.json; worker-stop evidence.",
+          "sha256": "7417163162ff0db929935a6e83f297ab9fed07e04e49a0d051db4ddcb987316c"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "There is no README or Makefile with installation and usage instructions; report.md gives a short invocation and package-name list.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "analysis.py is a clear entrypoint and report.md documents `python analysis.py`.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script builds paths relative to its own location.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "No dependency or environment specification is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": null,
+      "reason": "No host assumptions are stated; the available documentation does not establish whether any system assumptions apply.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "The report names the Python packages, but gives no versions for most dependencies and no system requirement list.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is tracked.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No process for updating environment specifications is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "No pinned environment artifact is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No environment specification is available to share.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "No instructions explain obtaining and using a reproducible environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git and annex are used, but the principal code and result components were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "No workflow or repeated validation record is present.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, code, figures, and results have separate directories; an environment module is absent.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/participants.tsv",
+          "description": "Canonical capture file input/participants.tsv; worker-stop evidence.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#results/summary.json",
+          "description": "Canonical capture file results/summary.json; worker-stop evidence.",
+          "sha256": "7417163162ff0db929935a6e83f297ab9fed07e04e49a0d051db4ddcb987316c"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "The supplied participant maps and metadata are public source data; no restricted-data component is identified.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/sources.json",
+          "description": "Canonical capture file input/sources.json; worker-stop evidence.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "No worker evidence shows a clean container, VM, or equivalent test.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "No disposable execution environment is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No exact environment exists to test for reconstitution.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No environment-update process is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "No independently maintained external project component is used as a submodule.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/sources.json",
+          "description": "Canonical capture file input/sources.json; worker-stop evidence.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report lists artifacts but does not explain a modular structure.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Input and output boundaries are visible, but there is no environment module and code/results were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#input/participants.tsv",
+          "description": "Canonical capture file input/participants.tsv; worker-stop evidence.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": null,
+      "reason": "No independently composed modules are documented.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report describes the main script and output files and provides direct relative links.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#report.md",
+          "description": "Canonical capture file report.md; worker-stop evidence.",
+          "sha256": "9e1edaf28eca291af363658c0cc665393bd2e3684bed512b28de7cb5647e9969"
+        },
+        {
+          "uri": "capture:6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c#analysis.py",
+          "description": "Canonical capture file analysis.py; worker-stop evidence.",
+          "sha256": "3eb33c887a875b384e8f8eb70d9744c0f32fb0913cd6a835b2b97869ffc9aa30"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "a5761281bfdd9868cd88cb0720d8d06b9e2f7fb8",
+    "captured_at": "2026-10-16T16:58:17.386131+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-11-j01/canonical/manifest.json",
+      "sha256": "6af950ad9ae95990853b7ea04f976ba25a872221be56566cbc24e634341a016c"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "frozen external assessment runner v1",
+    "model": "independent assessor",
+    "date": "2026-10-16",
+    "drafted_by": "judgement",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.3.1",
+      "assessment-runner@9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097"
+    ]
+  },
+  "scope": "Complete worker-stop delivery; one replay attempt; scientific assessment conditional on supplied maps"
+}
