@@ -56,4 +56,5 @@ The tested source and preparation evidence are linked in [`source-version.json`]
 
 The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed.
-The [prospective tool-neutral registration](https://github.com/leej3/stamped-in-practice/blob/9a8bd5eb1cf09cd55365cb41cbe5135f85022aa0/registration.md) fixes 72 new workers and 96 judgments; launch integration is being finalized before sealing.
+The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
+The first three registered workers are running; follow the [current status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) for progress and evidence.
