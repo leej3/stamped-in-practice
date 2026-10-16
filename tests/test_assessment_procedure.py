@@ -550,12 +550,10 @@ def test_formal_runner_applies_replay_constraints_before_dispatch(frozen_runner,
     pin = json.loads(Path(os.environ["STAMPED_ASSESSMENT_PIN"]).read_text())
     manifest = {"assessment": pin, "fixed_files": {
         "scripts/assessment.py": procedure.sha256(Path(assessment.__file__).read_bytes())}}
-    monkeypatch.setenv("STAMPED_PROCEDURE", str(tmp_path / "procedure.json"))
-    monkeypatch.setenv("STAMPED_PROCEDURE_SHA256", "registered-seal")
     monkeypatch.setenv("STAMPED_JUDGE_TARGET", str(tmp_path / "target"))
     monkeypatch.setenv("STAMPED_JUDGE_COMMIT", "exact-result")
     monkeypatch.setenv("STAMPED_JUDGE_OUTPUT", str(tmp_path / "judgment"))
-    monkeypatch.setattr(procedure, "load_procedure", lambda path, digest: manifest)
+    monkeypatch.setattr(assessment, "runtime_context", lambda: manifest)
     monkeypatch.setattr(procedure, "git", lambda *args: "exact-result")
     checked = []
     def constrained(frozen, arguments, target, output):
@@ -568,3 +566,27 @@ def test_formal_runner_applies_replay_constraints_before_dispatch(frozen_runner,
     assert result.value.code == 7
     assert checked == [(manifest, ["requested-arguments"], tmp_path / "target", tmp_path / "judgment")]
     assert calls[-1][0][-4:] == ["--path", str(tmp_path / "target"), "--entry", "documented-entry"]
+
+
+def test_neutral_seal_freezes_role_resources_and_complete_delivery_replay(comparison, tmp_path):
+    args, _ = comparison
+    for name in procedure.NEUTRAL_FILES:
+        target = args.repo / name
+        if not target.exists():
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes((ROOT / name).read_bytes())
+    args.base = commit(args.repo, "test: add prospective neutral source boundary")
+    args.protocol = seed.NEUTRAL_PROTOCOL
+    args.common_resources = tmp_path / "common-resources.md"
+    args.common_resources.write_text("Optional matched environment outside each delivery.\n")
+    args.output = tmp_path / "neutral-seal.json"
+    procedure.seal(args)
+    manifest = procedure.load_procedure(args.output, procedure.sha256(args.output.read_bytes()))
+    assert manifest["version"] == 3
+    assert manifest["replay"]["source"] == "original-complete-delivery"
+    assert set(manifest["role_hosts"]) == {"research", "judge"}
+    assert manifest["role_hosts"]["research"]["thread_environment"] == procedure.NEUTRAL_THREAD_ENV
+    procedure.check_host(manifest, args)
+    args.common_resources.write_text("Changed optional resource")
+    with pytest.raises(SystemExit, match="common optional resources"):
+        procedure.check_host(manifest, args)

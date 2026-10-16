@@ -12,7 +12,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-from study_seed import audit_seed, blob, make_seed, research_prompt, worker_manifest
+from study_seed import (audit_seed, blob, make_seed, research_prompt, worker_manifest,
+                        NEUTRAL_PROTOCOL, make_neutral_seed, neutral_research_prompt,
+                        retain_neutral_preparation)
 from research_conditions import CONDITION_CHOICES
 import assessment_procedure as procedure
 import judge_workspace
@@ -119,6 +121,116 @@ def render_judge_prompt(template, study, target_commit, evidence, reference=None
     return destination
 
 
+def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, retained, checkout):
+    """Use the native task flow without injecting the legacy worker workflow."""
+    from delivery_snapshot import materialize_capture, validate_capture
+    seed_path = evidence / "input-boundary.json"
+    capture_path = None
+    canonical_path = None
+    if args.role == "research":
+        seed = make_neutral_seed(args.repo, base_commit, args.study, checkout, args.branch,
+                                 args.condition, args.resolver, seed_path, args.common_resources,
+                                 args.skills_source)
+        args.prompt = evidence / "research-prompt.md"
+        args.prompt.write_bytes(neutral_research_prompt(checkout, seed_path))
+        identity = {"commit": seed["seed_commit"]}
+    else:
+        seed_bytes = args.seed_receipt.read_bytes()
+        seed = json.loads(seed_bytes)
+        seed_path.write_bytes(seed_bytes)
+        receipt_bytes = args.worker_end_state.read_bytes()
+        receipt = json.loads(receipt_bytes)
+        if receipt.get("schema_version") != 2 or receipt.get("kind") != "worker-end-state":
+            raise SystemExit("Neutral judging requires the original complete-delivery stop receipt")
+        procedure.require_equal(receipt.get("seed_identities", {}).get("seed_commit"),
+                                seed["seed_commit"], "original supplied seed")
+        validate_capture(args.delivery_capture, receipt["capture"]["sha256"])
+        if frozen and frozen["version"] == 4:
+            canonical = materialize_capture(args.delivery_capture, checkout / "canonical")
+            canonical_path = Path(canonical["manifest"])
+            materialized = materialize_capture(canonical_path, checkout / "operational")
+            procedure.check_retained_target(frozen, seed, seed["seed_commit"],
+                canonical["identity"]["commit"], args.worker_end_state, receipt["capture"]["sha256"])
+        else:
+            materialized = materialize_capture(args.delivery_capture, checkout)
+        checkout = Path(materialized["target"])
+        capture_path = Path(materialized["manifest"])
+        identity = materialized["identity"]
+        args.worker_end_state = evidence / "worker-end-state.json"
+        args.worker_end_state.write_bytes(receipt_bytes)
+        brief = evidence / "original-study-prompt.md"
+        brief.write_bytes(blob(args.study, seed["study_commit"], "input/study-task.md"))
+        template = (retained / procedure.judge_template_name(frozen) if frozen else
+                    coordinator / procedure.NEUTRAL_JUDGE)
+        rubric = retained / frozen["study"]["rubric"] if frozen else None
+        reference = (retained / frozen["study"]["reference"]
+                     if frozen and frozen["study"]["reference"] else args.reference)
+        args.prompt = render_judge_prompt(template, brief, identity["commit"] or "none",
+                                         evidence, reference, rubric)
+        with args.prompt.open("a") as stream:
+            if frozen:
+                stream.write(procedure.replay_instruction(frozen))
+            stream.write(procedure.worker_credit_instruction(args.worker_end_state))
+    if frozen:
+        procedure.check_seed(frozen, seed)
+        procedure.check_worker_sources(frozen, coordinator, args.study, seed["coordinator_commit"])
+    (evidence / "checkout.json").write_text(json.dumps({"checkout": str(checkout),
+        "protocol": NEUTRAL_PROTOCOL, "kind": "complete-delivery" if capture_path else "supplied-inputs",
+        "worker_commit": identity["commit"], "role": args.role,
+        "capture": identity.get("capture")}, indent=2) + "\n")
+    lock = args.env_manifest.with_name("pixi.lock")
+    (evidence / "environment.json").write_text(json.dumps({
+        "source_manifest": str(args.env_manifest), "worker_environment_installed": False,
+        "attribution": "prepared optional coordinator resources, outside the worker delivery",
+        "manifest_sha256": hashlib.sha256(args.env_manifest.read_bytes()).hexdigest(),
+        "lock_sha256": hashlib.sha256(lock.read_bytes()).hexdigest()}, indent=2) + "\n")
+    session_checkout = checkout
+    if args.role == "judge":
+        session_checkout = args.judge_workspace.resolve() if args.judge_workspace else evidence / "judgment"
+        workspace = judge_workspace.initialize(session_checkout, checkout, args.resolver, capture_path,
+                                               canonical_path)
+        (evidence / "judge-workspace.json").write_text(json.dumps({
+            "workspace": str(session_checkout), "target": workspace}, indent=2) + "\n")
+    scripts = coordinator / "scripts"
+    environment = procedure.neutral_environment(args.env_manifest, os.environ, args.role)
+    environment["CODEX_HOME"] = str(args.codex_home)
+    if not shutil.which("entire", path=environment["PATH"]):
+        raise SystemExit("Native capture requires Entire available in the common resource PATH")
+    # Host profile selection is per subprocess; never alter this coordinator's
+    # own CODEX_HOME, provenance resolver identity or future tool environment.
+    preparation = [sys.executable, scripts / "prepare_checkout.py", "--checkout", session_checkout,
+        "--approved-hooks", args.approved_hooks, "--trust-sync", args.trust_sync,
+        "--resolver", args.resolver, "--checkpoint-repo", args.checkpoint_repo,
+        "--receipt", evidence / "preparation.json"]
+    subprocess.run([str(x) for x in preparation], cwd=args.repo, env=environment, check=True)
+    if args.role == "research":
+        retain_neutral_preparation(checkout, seed_path)
+    command = [sys.executable, scripts / "launch_native_probe.py", "--checkout", checkout,
+        "--protocol", NEUTRAL_PROTOCOL, "--seed-receipt", seed_path,
+        "--env-manifest", args.env_manifest,
+        "--prompt", args.prompt, "--output", evidence / "native", "--cli", args.cli,
+        "--seconds", str(args.seconds), "--review-seconds", str(args.review_seconds),
+        "--role", args.role, "--model", args.model, "--effort", args.effort,
+        "--assessment-pin", retained / "assessment-version.json" if frozen else coordinator / "assessment-version.json",
+        "--assessment-source", coordinator / "assessment"]
+    if frozen:
+        command += ["--run-mode", "formal", "--procedure", evidence / "procedure.json",
+                    "--procedure-sha256", args.procedure_sha256, "--procedure-study", args.study,
+                    "--resource-readiness", evidence / "resource-readiness.json"]
+    if capture_path:
+        command += ["--delivery-capture", capture_path, "--worker-end-state", args.worker_end_state,
+                    "--judge-workspace", session_checkout]
+    if canonical_path:
+        command += ["--canonical-capture", canonical_path]
+    if args.capture_execution:
+        command += ["--capture-execution", "--duct-executable", args.duct_executable]
+    if args.declared_artifacts:
+        command += ["--declared-artifacts", args.declared_artifacts]
+    if args.prepare_only:
+        command.append("--preflight-only")
+    subprocess.run([str(x) for x in command], cwd=args.repo, env=environment, check=True)
+
+
 def main():
     defaults_parser = argparse.ArgumentParser(add_help=False)
     defaults_parser.add_argument("--host-config", type=Path, default=procedure.default_host_config())
@@ -136,6 +248,7 @@ def main():
                         help="Separate judge session/output repository; default: EVIDENCE/judgment")
     parser.add_argument("--evidence", type=Path, required=True)
     parser.add_argument("--env-manifest", type=Path)
+    parser.add_argument("--duct-executable", type=Path)
     parser.add_argument("--approved-hooks", type=Path)
     parser.add_argument("--trust-sync", type=Path)
     parser.add_argument("--resolver", type=Path)
@@ -158,8 +271,19 @@ def main():
                         help="Prepared isolated public profile, without private global instructions")
     parser.add_argument("--prepare-only", action="store_true")
     parser.add_argument("--capture-execution", action="store_true",
-                        help="Request duct execution records in the worker; use only when authorized")
+                        help="Request execution capture: outer native wrapper for neutral-v1; worker instructions for legacy")
     parser.add_argument("--condition", choices=CONDITION_CHOICES, default="baseline")
+    parser.add_argument("--protocol", choices=("legacy", NEUTRAL_PROTOCOL), default="legacy")
+    parser.add_argument("--common-resources", type=Path,
+                        help="Neutral workers: frozen optional resource facts, outside worker inputs")
+    parser.add_argument("--skills-source", type=Path,
+                        help="Installed repository containing the pinned research skill directories")
+    parser.add_argument("--seed-receipt", type=Path,
+                        help="Neutral judges: original coordinator-only input receipt")
+    parser.add_argument("--delivery-capture", type=Path,
+                        help="Neutral judges: complete original-delivery manifest")
+    parser.add_argument("--declared-artifacts", type=Path,
+                        help="Neutral workers: explicit external artifact paths with declaration provenance")
     parser.add_argument("--run-mode", choices=("development", "formal"), default="development")
     parser.add_argument("--procedure", type=Path, help="Sealed comparison procedure, formal runs only")
     parser.add_argument("--procedure-sha256", help="Registered SHA-256 of the sealed procedure")
@@ -170,6 +294,16 @@ def main():
     # an old absolute repository path retained in a host configuration.
     parser.set_defaults(**{key: value for key, value in defaults.items() if key != "repo"})
     args = parser.parse_args()
+    neutral = args.protocol == NEUTRAL_PROTOCOL
+    if neutral:
+        if args.capture_execution and not args.duct_executable:
+            parser.error("Neutral outer capture requires --duct-executable")
+        if args.role == "research" and not args.common_resources:
+            parser.error("Neutral workers require --common-resources")
+        if args.role == "judge" and not all((args.seed_receipt, args.delivery_capture, args.worker_end_state)):
+            parser.error("Neutral judges require --seed-receipt, --delivery-capture and --worker-end-state")
+    elif any((args.common_resources, args.skills_source, args.seed_receipt, args.delivery_capture, args.declared_artifacts)):
+        parser.error("Neutral input/capture flags require --protocol neutral-v1")
     if args.seconds < 0 or args.review_seconds < 0:
         parser.error("Time settings must be nonnegative")
     if not args.study or not args.study.is_dir():
@@ -191,7 +325,7 @@ def main():
         setattr(args, name, Path(value).expanduser().resolve())
     if not args.checkpoint_repo:
         parser.error("Missing --checkpoint-repo; configure host defaults once")
-    if not args.annex_git_url or not args.annex_url:
+    if not neutral and (not args.annex_git_url or not args.annex_url):
         parser.error("Missing annex remote URLs; configure host defaults once")
     repo = args.repo.resolve()
     base_commit = run(["git", "rev-parse", "--verify", args.base + "^{commit}"], repo, True)
@@ -203,6 +337,7 @@ def main():
         if args.role == "judge" and not args.worker_end_state:
             parser.error("Formal judges require --worker-end-state from the research launch")
         frozen = procedure.load_procedure(args.procedure, args.procedure_sha256)
+        procedure.require_equal(procedure.is_neutral(frozen), neutral, "selected launch protocol")
         procedure.check_sources(frozen, coordinator, args.study,
                                 base_commit if args.role == "research" else None)
         procedure.check_host(frozen, args)
@@ -219,7 +354,7 @@ def main():
         (evidence / "resource-readiness.json").write_bytes(args.resource_readiness.read_bytes())
         procedure_receipt.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                                  comparison_id=frozen["comparison_id"])
-        if frozen["version"] == 2:
+        if frozen["version"] in (2, 4):
             procedure_receipt["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     (evidence / "procedure-status.json").write_text(json.dumps(procedure_receipt, indent=2) + "\n")
     if not args.branch.startswith("codex/"):
@@ -228,6 +363,10 @@ def main():
                 repo.parent / (repo.name + "-workers") / args.branch)
     if checkout.exists():
         parser.error("Worker destination exists; choose a fresh --branch or --clone-path")
+    if neutral:
+        prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence,
+                               retained if frozen else None, checkout)
+        return
     if args.role == "research":
         seed = make_seed(repo, base_commit, args.study, checkout, args.branch,
                          args.condition, args.resolver)

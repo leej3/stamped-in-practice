@@ -271,3 +271,22 @@ def test_hardlinked_target_blob_is_not_an_independent_object_store(repositories)
     os.link(source, destination)
     with pytest.raises(SystemExit, match="linked Git objects"):
         judge.validate(workspace, target)
+
+
+def test_complete_no_git_delivery_has_capture_identity_without_borrowed_commit(repositories, tmp_path):
+    from delivery_snapshot import save_delivery, materialize_capture, validate_capture
+    parent, workspace, resolver = repositories
+    original = parent / "ordinary-delivery"
+    original.mkdir()
+    (original / "untracked-result.csv").write_text("x\n1\n")
+    pointer = save_delivery(original, tmp_path / "capture", {})
+    copied = materialize_capture(pointer["capture"]["uri"], tmp_path / "delivery-copy")
+    target = Path(copied["target"])
+    identity = judge.initialize(workspace, target, resolver, Path(copied["manifest"]))
+    assert identity["schema_version"] == 2
+    assert identity["target_commit"] is None
+    assert identity["capture"]["sha256"] == pointer["capture"]["sha256"]
+    judge.validate(workspace, target)
+    judge.validate_target(target, identity)
+    validate_capture(copied["manifest"])
+    assert not (target / ".git").exists()

@@ -16,7 +16,8 @@ import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
 
-from study_seed import audit_seed, research_prompt
+from study_seed import (audit_seed, research_prompt, NEUTRAL_PROTOCOL,
+                        audit_neutral_seed, neutral_research_prompt)
 from research_conditions import CONDITION_CHOICES, RESEARCH_SKILLS, canonical_condition
 import assessment_procedure as procedure
 import judge_workspace
@@ -192,7 +193,7 @@ def terminate_worker_group(process):
 
 
 def wait_and_capture_worker(process, prompt, output, checkout, record, role,
-                            hard_limit, review_after):
+                            hard_limit, review_after, delivery_seed=None, declared_artifacts=None):
     """Retain research state immediately after stop, even on a failed worker."""
     started = time.monotonic()
     timed_out = False
@@ -222,10 +223,65 @@ def wait_and_capture_worker(process, prompt, output, checkout, record, role,
             worker = {"pid": process.pid, "returncode": process.returncode,
                       "timed_out": timed_out, "stop_reason": reason,
                       "stopped_at": record["finished_at"]}
-            record["worker_end_state"] = save_worker_end_state(checkout, output, worker)
+            if delivery_seed is None:
+                record["worker_end_state"] = save_worker_end_state(checkout, output, worker)
+            else:
+                from delivery_snapshot import save_delivery
+                try:
+                    record["worker_end_state"] = save_delivery(
+                        checkout, output, worker, delivery_seed, declared_artifacts)
+                except (OSError, ValueError) as error:
+                    # Loss of the source still belongs to this stopped attempt.
+                    failure = {"schema_version": 2, "kind": "worker-end-state",
+                               "capture_status": "failed", "worker": worker, "error": str(error)}
+                    (output / "worker-end-state-failure.json").write_text(json.dumps(failure, indent=2) + "\n")
+                    record["worker_end_state"] = {"path": "worker-end-state-failure.json",
+                                                  "capture_status": "failed", "error": str(error)}
         # Save this before stream joins, session parsing or skill inventory fail.
         (output / "result.json").write_text(json.dumps(record, indent=2) + "\n")
     return timed_out
+
+
+def judge_environment(environment, args, session_checkout, profile, workspace, frozen):
+    """Replace inherited role metadata with this judge's explicit bindings."""
+    environment = {key: value for key, value in environment.items() if not key.startswith("STAMPED_")}
+    neutral = args.protocol == NEUTRAL_PROTOCOL
+    operational = bool(frozen and frozen["version"] == 4)
+    environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1")
+    if operational:
+        environment = procedure.operational_environment(environment)
+    environment["STAMPED_JUDGE_OUTPUT"] = str(session_checkout)
+    environment["STAMPED_JUDGE_TARGET"] = str(args.checkout.resolve())
+    environment["STAMPED_ASSESSMENT_RUNNER"] = str(Path(__file__).resolve().with_name("assessment.py"))
+    environment["STAMPED_ASSESSMENT_PYTHON"] = sys.executable
+    environment["STAMPED_ASSESSMENT_SOURCE"] = str(args.assessment_source.resolve())
+    environment["STAMPED_ASSESSMENT_PIN"] = str(args.assessment_pin.resolve())
+    if neutral:
+        environment["STAMPED_DELIVERY_MANIFEST"] = str(
+            (args.canonical_capture if operational else args.delivery_capture).resolve())
+        if operational:
+            environment["STAMPED_OPERATIONAL_MANIFEST"] = str(args.delivery_capture.resolve())
+            environment["STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR"] = str(
+                Path(__file__).resolve().with_name("scientific_judgment.py"))
+        environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
+        environment["STAMPED_ASSESSMENT_VERSION"] = str(args.assessment_pin.resolve())
+    if frozen:
+        environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
+        environment["STAMPED_JUDGE_COMMIT"] = (workspace["target_commit"] or "" if neutral else
+                                               procedure.git(args.checkout, "rev-parse", "HEAD"))
+        # Keep the role-facing pin beside the projection, away from seal records.
+        pin_path = profile / "assessment-version.json"
+        environment["STAMPED_ASSESSMENT_PIN"] = str(pin_path)
+        if neutral:
+            environment["STAMPED_ASSESSMENT_VERSION"] = str(pin_path)
+        runtime = procedure.judge_runtime_projection(frozen, environment)
+        pin_path.write_text(json.dumps(runtime["assessment"], indent=2) + "\n")
+        path = profile / "judge-runtime.json"
+        content = (json.dumps(runtime, indent=2, sort_keys=True) + "\n").encode()
+        path.write_bytes(content)
+        environment["STAMPED_JUDGE_RUNTIME"] = str(path)
+        environment["STAMPED_JUDGE_RUNTIME_SHA256"] = procedure.sha256(content)
+    return environment
 
 
 def main():
@@ -250,13 +306,35 @@ def main():
     parser.add_argument("--condition", choices=CONDITION_CHOICES, default="baseline")
     parser.add_argument("--preflight-only", action="store_true")
     parser.add_argument("--capture-execution", action="store_true")
+    parser.add_argument("--env-manifest", type=Path)
+    parser.add_argument("--duct-executable", type=Path)
     parser.add_argument("--run-mode", choices=("development", "formal"), default="development")
     parser.add_argument("--procedure", type=Path)
     parser.add_argument("--procedure-sha256")
     parser.add_argument("--procedure-study", type=Path)
     parser.add_argument("--resource-readiness", type=Path)
     parser.add_argument("--worker-end-state", type=Path)
+    parser.add_argument("--protocol", choices=("legacy", NEUTRAL_PROTOCOL), default="legacy")
+    parser.add_argument("--seed-receipt", type=Path)
+    parser.add_argument("--delivery-capture", type=Path)
+    parser.add_argument("--canonical-capture", type=Path)
+    parser.add_argument("--declared-artifacts", type=Path)
     args = parser.parse_args()
+    neutral = args.protocol == NEUTRAL_PROTOCOL
+    if neutral and (not args.seed_receipt or not args.env_manifest):
+        parser.error("Neutral sessions require external seed receipt and common environment")
+    if neutral and args.role == "judge" and not all((args.delivery_capture, args.worker_end_state)):
+        parser.error("Neutral judges require the original delivery capture and stop receipt")
+    if not neutral and any((args.seed_receipt, args.delivery_capture, args.declared_artifacts)):
+        parser.error("Delivery/seed flags require --protocol neutral-v1")
+    if args.declared_artifacts and args.role != "research":
+        parser.error("External worker artifact declarations are for research only")
+    if neutral:
+        if args.seed_receipt.resolve().is_relative_to(args.checkout.resolve()):
+            parser.error("Assignment metadata must stay outside the worker/target")
+        seed = json.loads(args.seed_receipt.read_bytes())
+        if seed.get("protocol") != NEUTRAL_PROTOCOL:
+            parser.error("Unsupported neutral seed receipt")
     if args.seconds < 0 or args.review_seconds < 0:
         parser.error("Time settings must be nonnegative")
     session_checkout = args.checkout.resolve()
@@ -270,18 +348,29 @@ def main():
         parser.error("--judge-workspace is for judges only")
     pin = check_assessment(args.assessment_source.resolve(), args.assessment_pin) if args.role == "judge" else None
     if args.role == "research":
-        seed = audit_seed(args.checkout.resolve())
-        if canonical_condition(seed["condition"]) != canonical_condition(args.condition):
+        seed = (audit_neutral_seed(args.checkout.resolve(), args.seed_receipt) if neutral else
+                audit_seed(args.checkout.resolve()))
+        if not neutral and canonical_condition(seed["condition"]) != canonical_condition(args.condition):
             raise SystemExit("Requested condition differs from the worker seed")
         args.condition = seed["condition"]
-        if args.prompt.read_bytes() != research_prompt(args.checkout, args.capture_execution):
+        expected_prompt = (neutral_research_prompt(args.checkout, args.seed_receipt) if neutral else
+                           research_prompt(args.checkout, args.capture_execution))
+        if args.prompt.read_bytes() != expected_prompt:
             raise SystemExit("Research prompt differs from committed input and common execution guidance")
     worker_validation = None
     if args.worker_end_state:
         if args.role != "judge":
             parser.error("Worker-stop evidence is for judges only")
-        worker_validation = validate_retained_artifacts(
-            json.loads(args.worker_end_state.read_bytes()), args.checkout.resolve())
+        receipt = json.loads(args.worker_end_state.read_bytes())
+        if neutral:
+            from delivery_snapshot import validate_capture
+            if not args.delivery_capture or receipt.get("schema_version") != 2:
+                parser.error("Neutral judges require an original complete-delivery capture and stop receipt")
+            worker_validation = validate_capture(args.delivery_capture, receipt["capture"]["sha256"])
+            procedure.require_equal(receipt.get("seed_identities", {}).get("seed_commit"),
+                                    seed["seed_commit"], "original supplied seed")
+        else:
+            worker_validation = validate_retained_artifacts(receipt, args.checkout.resolve())
     frozen = None
     status = {"version": 1, "status": "development-unsealed"}
     if args.run_mode == "formal":
@@ -290,7 +379,8 @@ def main():
         if args.role == "judge" and not args.worker_end_state:
             parser.error("Formal judges require --worker-end-state")
         frozen = procedure.load_procedure(args.procedure, args.procedure_sha256)
-        if args.role == "judge":
+        procedure.require_equal(procedure.is_neutral(frozen), neutral, "selected native protocol")
+        if args.role == "judge" and not neutral:
             roots = procedure.git(args.checkout, "rev-list", "--max-parents=0", "HEAD").splitlines()
             if len(roots) != 1:
                 raise SystemExit("Formal judge target must have one input-seed root")
@@ -300,10 +390,13 @@ def main():
         procedure.check_sources(frozen, coordinator, args.procedure_study)
         procedure.check_worker_sources(frozen, coordinator, args.procedure_study,
                                        seed["coordinator_commit"])
-        if args.role == "judge":
+        if args.role == "judge" and not neutral:
             procedure.check_retained_target(frozen, seed, roots[0],
                                             procedure.git(args.checkout, "rev-parse", "HEAD"),
                                             args.worker_end_state)
+        if args.role == "judge" and frozen["version"] == 4:
+            procedure.check_retained_target(frozen, seed, seed["seed_commit"],
+                workspace["target_commit"], args.worker_end_state, workspace["capture"]["sha256"])
         procedure.check_settings(frozen, args)
         procedure.check_readiness(frozen, args.resource_readiness)
         if args.role == "judge":
@@ -315,17 +408,20 @@ def main():
             for name, digest in frozen["study"]["guidance_files"].items():
                 procedure.require_equal(procedure.sha256((retained / name).read_bytes()), digest,
                                         "retained guidance " + name)
-            procedure.require_equal(procedure.sha256((retained / "judge-prompt.md").read_bytes()),
-                                    frozen["fixed_files"]["judge-prompt.md"], "retained judge prompt")
+            template = procedure.judge_template_name(frozen)
+            procedure.require_equal(procedure.sha256((retained / template).read_bytes()),
+                                    frozen["fixed_files"][template], "retained judge prompt")
             with tempfile.TemporaryDirectory() as temporary:
                 scratch = Path(temporary)
                 brief = scratch / "original-study-prompt.md"
-                brief.write_bytes(procedure.blob(args.checkout, roots[0], "input/study-task.md"))
+                brief.write_bytes(procedure.blob(args.procedure_study, seed["study_commit"], "input/study-task.md")
+                                  if neutral else procedure.blob(args.checkout, roots[0], "input/study-task.md"))
                 procedure.require_equal(procedure.sha256(brief.read_bytes()), frozen["study"]["task_sha256"],
                                         "judge scientific task")
                 reference = frozen["study"]["reference"]
-                expected = render_judge_prompt(retained / "judge-prompt.md", brief,
-                    procedure.git(args.checkout, "rev-parse", "HEAD"), scratch,
+                target_commit = workspace["target_commit"] if neutral else procedure.git(args.checkout, "rev-parse", "HEAD")
+                expected = render_judge_prompt(retained / template, brief,
+                    target_commit or "none", scratch,
                     retained / reference if reference else None, retained / frozen["study"]["rubric"])
                 procedure.require_equal(args.prompt.read_text(), expected.read_text() +
                                         procedure.replay_instruction(frozen) +
@@ -333,11 +429,30 @@ def main():
                                         "rendered judge instructions")
         status.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                       comparison_id=frozen["comparison_id"])
-        if frozen["version"] == 2:
+        if frozen["version"] in (2, 4):
             status["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     elif args.procedure or args.procedure_sha256 or args.procedure_study or args.resource_readiness:
         parser.error("Procedure flags require --run-mode formal")
+    operational = bool(frozen and frozen["version"] == 4 and args.role == "judge")
+    if args.canonical_capture and not operational:
+        parser.error("Canonical/operational judging requires a version 4 assessment seal")
+    if args.role == "judge":
+        procedure.require_equal(workspace["schema_version"], 3 if operational else 2 if neutral else 1,
+                                "judge target schema for assessment version")
+    if operational:
+        if not args.canonical_capture:
+            parser.error("Version 4 assessment requires --canonical-capture")
+        procedure.require_equal(str(args.canonical_capture.resolve()), workspace["capture"]["uri"],
+                                "canonical capture path")
+        procedure.require_equal(str(args.delivery_capture.resolve()), workspace["operational_capture"]["uri"],
+                                "operational capture path")
+        status["operational_runtime"] = frozen["operational_runtime"]
     output = args.output.resolve()
+    if operational:
+        for manifest in (args.canonical_capture, args.delivery_capture):
+            bundle = manifest.resolve().parent
+            if output.is_relative_to(bundle) or bundle.is_relative_to(output):
+                parser.error("Native evidence must be separate from canonical and operational capture bundles")
     if output.is_relative_to(args.checkout.resolve()):
         parser.error("Launch evidence must be outside the assessed or research checkout")
     if args.role == "judge" and (output.is_relative_to(session_checkout) or
@@ -361,16 +476,31 @@ def main():
         (output / "condition-assignment.json").write_text(json.dumps(assigned, indent=2) + "\n")
     prepared_profile = Path(os.environ.get("CODEX_HOME", str(Path.home() / ".codex")))
     if frozen:
-        procedure.check_native(frozen, args.cli, prepared_profile)
+        procedure.check_native(frozen, args.cli, prepared_profile, args.role)
+        if neutral:
+            for name in ("pixi.toml", "pixi.lock"):
+                procedure.require_equal(procedure.sha256(args.env_manifest.with_name(name).read_bytes()),
+                    frozen["role_hosts"][args.role]["environment"][name], "native common environment " + name)
+            procedure.require_equal(frozen["role_hosts"][args.role]["thread_environment"],
+                                    procedure.NEUTRAL_THREAD_ENV, "native thread environment")
     profile = launch_profile(prepared_profile, args.assessment_source if args.role == "judge" else None)
+    if neutral and args.role == "research" and seed.get("skills_directory"):
+        # Preserve sibling references while advertising only assigned entrypoints.
+        for directory in sorted(Path(seed["skills_directory"]).iterdir()):
+            if directory.is_dir():
+                (profile / "skills" / directory.name).symlink_to(directory)
     config = tomllib.loads((profile / "config.toml").read_text())
     overrides = {item["path"]: item["enabled"] for item in config.get("skills", {}).get("config", [])}
     overrides.update({str(path): False for path in host_skill_paths(prepared_profile)})
     study_skills = ([profile / "skills" / name / "SKILL.md"
                      for name in sorted(JUDGE_SKILLS)] if args.role == "judge" else
+                    [profile / "skills" / name / "SKILL.md" for name in STUDY_SKILLS] if neutral else
                     [args.checkout.resolve() / ".agents/skills" / name / "SKILL.md"
                      for name in STUDY_SKILLS])
     selected = selected_skills(args.role, args.condition)
+    if neutral and args.role == "research":
+        overrides.update({str(path): path.parent.name in selected
+                          for path in (profile / "skills").glob("*/SKILL.md")})
     if any(not path.is_file() for path in study_skills if path.parent.name in selected):
         raise SystemExit("Selected role requires installed skill entrypoints")
     # Do not disable nonexistent local skill paths in discovery/baseline arms:
@@ -390,19 +520,13 @@ def main():
                "-c", skill_config, "-c", "project_doc_max_bytes=0",
                "exec", "--json", "--color", "never", "-C", str(session_checkout),
                "-o", str(output / "final.txt"), "-"]
-    environment = os.environ.copy()
+    environment = (procedure.neutral_environment(args.env_manifest, os.environ, args.role)
+                   if neutral else os.environ.copy())
     environment["CODEX_HOME"] = str(profile)
     if args.role == "judge":
-        environment["STAMPED_JUDGE_OUTPUT"] = str(session_checkout)
-        environment["STAMPED_JUDGE_TARGET"] = str(args.checkout.resolve())
-        environment["STAMPED_ASSESSMENT_RUNNER"] = str(Path(__file__).resolve().with_name("assessment.py"))
-        environment["STAMPED_ASSESSMENT_PYTHON"] = sys.executable
-        environment["STAMPED_ASSESSMENT_SOURCE"] = str(args.assessment_source.resolve())
-        environment["STAMPED_ASSESSMENT_PIN"] = str(args.assessment_pin.resolve())
+        environment = judge_environment(environment, args, session_checkout, profile, workspace, frozen)
         if frozen:
-            environment["STAMPED_PROCEDURE"] = str(args.procedure.resolve())
-            environment["STAMPED_PROCEDURE_SHA256"] = args.procedure_sha256
-            environment["STAMPED_JUDGE_COMMIT"] = procedure.git(args.checkout, "rev-parse", "HEAD")
+            (output / "judge-runtime.json").write_bytes(Path(environment["STAMPED_JUDGE_RUNTIME"]).read_bytes())
     removed = [key for key in ("CODEX_THREAD_ID", "CODEX_PARENT_THREAD_ID", "CODEX_SESSION_ID")
                if environment.pop(key, None) is not None]
     pixi_removed = [key for key in ("PIXI_PROJECT_MANIFEST", "PIXI_IN_SHELL", "PIXI_PROJECT_ROOT",
@@ -429,14 +553,27 @@ def main():
                  "visible_study_skills": visible, "advertised_skill_catalog": catalog,
                  "unexpected_skill_catalog": unexpected,
                  "profile_config_sha256": hashlib.sha256((profile / "config.toml").read_bytes()).hexdigest(),
-                 "inherited_pixi_variables_removed": pixi_removed}
+                 "inherited_pixi_variables_removed": pixi_removed,
+                 "resource_path": environment["PATH"] if neutral else None,
+                 "thread_environment": procedure.NEUTRAL_THREAD_ENV if neutral else None}
     (output / "prompt-preflight.json").write_text(json.dumps(preflight, indent=2) + "\n")
     if forbidden or project_instructions or unexpected or set(visible) != selected:
         raise SystemExit("Effective prompt failed instruction or study-skill visibility preflight")
     if args.preflight_only:
         print(json.dumps(preflight))
         return
-    record = {"command": command, "cwd": str(session_checkout),
+    duct = None
+    if neutral and args.capture_execution:
+        duct = procedure.duct_identity(args.duct_executable)
+        if frozen:
+            procedure.require_equal(duct, frozen["role_hosts"][args.role]["duct"], "native outer capture")
+        command = [str(args.duct_executable.resolve()), "--mode", "current-session",
+                   "--output-prefix", str(output / "execution/run_"), "--fail-time", "0",
+                   "--capture-outputs", "all", "--outputs", "all", "--sample-interval", "1",
+                   "--report-interval", "60", "--log-level", "WARNING", *command]
+    record = {"command": command, "outer_capture": duct,
+              "resource_path": environment["PATH"] if neutral else None,
+              "thread_environment": procedure.NEUTRAL_THREAD_ENV if neutral else None, "cwd": str(session_checkout),
               "prompt_sha256": hashlib.sha256(prompt).hexdigest(),
               "inherited_session_variables_removed": removed,
               "inherited_pixi_variables_removed": pixi_removed,
@@ -452,12 +589,19 @@ def main():
     if args.role == "judge":
         record["judge_workspace"] = str(session_checkout)
         record["target"] = workspace
+        if operational:
+            record["operational_runtime"] = frozen["operational_runtime"]
+            record["git_config_overlay"] = {"inherited_count": int(os.environ.get("GIT_CONFIG_COUNT", "0")),
+                "effective_count": int(environment["GIT_CONFIG_COUNT"]),
+                "appended": frozen["operational_runtime"]["git_config"], "GIT_OPTIONAL_LOCKS": "0"}
+        if frozen:
+            record["judge_runtime_sha256"] = environment["STAMPED_JUDGE_RUNTIME_SHA256"]
         runner = Path(environment["STAMPED_ASSESSMENT_RUNNER"])
         record["assessment_runner_sha256"] = hashlib.sha256(runner.read_bytes()).hexdigest()
     (output / "launch.json").write_text(json.dumps(record, indent=2) + "\n")
     process = subprocess.Popen(command, cwd=session_checkout, env=environment,
                                stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                               process_group=0)
+                               **({"start_new_session": True} if duct else {"process_group": 0}))
     def relay():
         with (output / "events.jsonl").open("xb") as events:
             for line in process.stdout:
@@ -476,8 +620,15 @@ def main():
     error_reader = threading.Thread(target=relay_errors)
     reader.start()
     error_reader.start()
+    declarations = json.loads(args.declared_artifacts.read_bytes()) if args.declared_artifacts else []
+    if neutral and args.role == "research":
+        declarations.append({"path": str(profile / "skills"), "declaration": {
+            "kind": "native-session-skill-directory", "initial_catalog": catalog,
+            "attribution": "Initial supplied guidance is coordinator material; newly installed contents are worker discoveries. Native auth/history excluded."}})
     timed_out = wait_and_capture_worker(process, prompt, output, args.checkout,
-                                        record, args.role, args.seconds, args.review_seconds)
+                                        record, args.role, args.seconds, args.review_seconds,
+                                        seed if neutral and args.role == "research" else None,
+                                        declarations)
     reader.join(timeout=10)
     error_reader.join(timeout=10)
     if reader.is_alive() or error_reader.is_alive():
@@ -494,10 +645,34 @@ def main():
     target_error = None
     if args.role == "judge":
         try:
-            judge_workspace.validate_target(args.checkout.resolve(), workspace)
-            record["target_unchanged"] = True
-        except (ValueError, SystemExit, subprocess.CalledProcessError) as error:
+            if operational:
+                integrity = judge_workspace.retain_operational_target(args.checkout.resolve(), workspace,
+                    output / "operational-retention")
+                record["operational_integrity"] = integrity
+                for name in ("target_unchanged", "canonical_unchanged", "operational_metadata_changed"):
+                    record[name] = integrity[name]
+                if not integrity["protected_unchanged"]:
+                    raise ValueError("Protected operational content changed or retention is incomplete")
+            else:
+                judge_workspace.validate_target(args.checkout.resolve(), workspace)
+                record["target_unchanged"] = True
+        except (OSError, ValueError, SystemExit, subprocess.CalledProcessError) as error:
             record["target_unchanged"] = False
+            if operational:
+                record.setdefault("canonical_unchanged", False)
+                # A failed canonical check must not discard the operational
+                # bytes. These failure captures never make a result eligible.
+                if "operational_integrity" not in record:
+                    from delivery_snapshot import save_delivery
+                    record["failed_integrity_captures"] = {}
+                    for label, manifest in (("canonical", args.canonical_capture),
+                                            ("operational", args.delivery_capture)):
+                        try:
+                            record["failed_integrity_captures"][label] = save_delivery(
+                                manifest.absolute().parent, output / (label + "-as-found"),
+                                {"kind": "failed-assessment-integrity"})
+                        except (OSError, ValueError) as retention_error:
+                            record["failed_integrity_captures"][label] = {"error": str(retention_error)}
             target_error = str(error)
             record["target_validation_error"] = target_error
     (output / "result.json").write_text(json.dumps(record, indent=2) + "\n")

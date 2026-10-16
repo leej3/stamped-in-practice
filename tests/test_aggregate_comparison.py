@@ -21,7 +21,30 @@ PIN = {"source_commit": "f" * 40, "environment_commit": "c" * 40,
 
 @pytest.fixture
 def allocation():
-    return agg.parse_json((ROOT / "iterations/narps-v1/allocation.json").read_bytes())
+    return synthetic_allocation()
+
+
+def synthetic_allocation(replicates=3, duplicates=1, *, prospective=False):
+    conditions = ["baseline", "discover-general", "discover-science", "stamped-explicit"]
+    groups = []
+    for round_id in range(1, 4):
+        runs = [{"run": f"fixture-r{round_id}-{c}-{n}", "condition": condition, "replicate": n}
+                for c, condition in enumerate(conditions) for n in range(1, replicates + 1)]
+        selected = [r["run"] for r in runs if r["replicate"] <= duplicates]
+        group = {"round": round_id, "launch_order": runs, "duplicate_judgments": selected}
+        if prospective:
+            for n, run in enumerate(runs):
+                run.update(wave=n // 3 + 1, launch_position=n % 3 + 1)
+            slots = [{"run": r["run"], "role": role, "judgment": r["run"] + suffix}
+                     for r in runs for role, suffix in (("primary", "-j01"), ("duplicate", "-j02"))
+                     if role == "primary" or r["run"] in selected]
+            group["judgment_dispatch_order"] = [dict(slot, dispatch_order=n)
+                                                for n, slot in enumerate(slots, 1)]
+        groups.append(group)
+    return {"comparison_id": "fixture-comparison", "conditions": conditions, "rounds": groups,
+            **({} if prospective else {"study": "fixture"}), "total_workers": 12 * replicates,
+            "total_primary_judgments": 12 * replicates, "total_duplicate_judgments": 12 * duplicates,
+            "total_judgments": 12 * (replicates + duplicates)}
 
 
 @pytest.fixture
@@ -565,6 +588,17 @@ def test_frozen_assets_match_expected_dimensions_when_available():
     assert len(contract.items) == 31
     assert {d: sum(d in i["dimension"] for i in contract.items) for d in "STAMPED"} == dict(
         zip("STAMPED", [3, 4, 3, 7, 6, 2, 6]))
+    # Exercise the pinned schema with a synthetic content capture, never research data.
+    document = response(contract, "not-checked")
+    capture = {"uri": "synthetic/manifest.json", "sha256": "7" * 64}
+    document.update(scope="Synthetic schema fixture", assessor={
+        "skill": "fixture", "version": "fixture", "harness": "fixture", "model": "fixture",
+        "date": "2026-01-01", "dependencies": ["fixture"]})
+    document["object"] = {"commit": None, "capture": capture, "kind": "study",
+                          "captured_at": "2026-01-01T00:00:00Z"}
+    assert contract.validate(document, None, capture) == []
+    document["object"].pop("capture")
+    assert contract.validate(document, None, capture)
 
 
 def gate_bundle(tmp_path, allocation, contract):

@@ -1,3 +1,5 @@
+**AI-generated draft — not reviewed by John**
+
 # Improving STAMPED research skills
 
 <img src="assets/workbench.png" alt="STAMPED workbench" width="280">
@@ -26,11 +28,14 @@ These comparisons measure assistance strategies: wording can affect behavior eve
 The explicit STAMPED condition directly tests the guidance we are improving.
 
 During preparation, the assessor and its runtime can improve alongside the other skills.
-Formal runs begin from a fresh clone with shallow history and keep their assessment version fixed.
+Formal runs begin from a fresh clone with shallow history.
+Comparable assessment series keep their assessor and runtime fixed; necessary repairs define a separate series.
 
-To start a coordinator, give it this repository and a request such as:
+To start or resume a coordinator, give it this repository and a request such as:
 
-> Follow `prompt.md` using `studies/narps` and its registered comparison in `iterations/narps-v1/`.
+> Follow `prompt.md` using `studies/narps`.
+> First read the selected iteration's pinned `STATUS.md` and reconcile any active runs.
+> Continue its registered next step; select and seal a new registration only when no existing one applies.
 
 | Location | Purpose |
 | --- | --- |
@@ -41,11 +46,12 @@ To start a coordinator, give it this repository and a request such as:
 | `studies/<study>/input/` | The scientific prompt and verified data supplied to research workers |
 | `studies/<study>/coordinator-guidance/` | Evaluation guidance and reference material for the coordinator and judges |
 | `studies/<study>/results/<run>/` | An experiment submodule containing the worker's research object, assessments and execution records |
-| `skills/` | Evolving `con/skills`, pinned to [our development branch](https://github.com/con/skills/tree/codex/pr26-operational-environment) |
+| `skills/` | Evolving `con/skills`; each iteration records the exact tested revision and development branch |
 | `assessment/` | The selected assessor version, identified by `assessment-version.json` |
 
 Keep iteration, study and experiment submodules uninitialized until needed.
 Open selected paths and retrieve their required annex content; the coordinator tree retains their exact commits without expanding every experiment.
+The [retrieval guide](RETRIEVAL.md) gives the current NARPS payload route and commands for a selected experiment.
 
 The intended result is transferable guidance: an independent agent can use these skills with a researcher's own data and hypothesis to produce scientifically useful, rigorous and convenient research.
 The products are improved shareable skills, evidence about their impact, and a STAMPED research object documenting the whole workshop.
@@ -54,8 +60,20 @@ Figures summarize scientific outcomes, reproducibility, effort and variability.
 NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
-The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/14e22eada5f5af9db83f734ff291298441c3f1f2/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
-Its workflow mandates and assessment changes are disclosed; the next stable comparison will keep coordinator preservation separate from worker guidance.
+The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
+Its workflow mandates and assessment changes are disclosed.
+The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
+The [completed round-one reassessment](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md) retains 32 scientific judgments of 24 research deliveries and 30 valid checklists, with figures and links to the unchanged original assessment.
+Duplicate judges disagreed on 67 of 248 checklist decisions and on scientific adequacy in five of eight duplicate pairs; these results do not establish a skill benefit.
+The supplied assessment procedure also exposed treatment assignments; that limitation remains disclosed.
+The user directed rounds two and three to continue with the existing Luna/high procedure and its known limitations. [Round two completed all 24 workers and 32 judgments](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/assessment-series/narps-neutral-r2-operational-v4/synthesis/README.md), but every judgment was rejected by the frozen reporting gate because its worker source revision differed from the original seal. Those provenance failures leave scientific and checklist measures unavailable; they are not scientific failures or zero scores. All 72 assigned research workers across the three rounds are complete. The final 32 round-three judgments are running under the unchanged procedure. Round three used the [single final research-skill revision](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/skill-reflection/round-03-research-guidance-01/README.md), `32660661`, based on closed delivery observations.
+The tested research revisions are `f2e74ea3` (round one), `d83d7d66` (round two) and `32660661` (round three), with assessor `9852d836` frozen for the operational assessment series.
+No further skill tuning follows round three.
+Research source `36acf240` and frozen operational judging source `4f72ef49` retain their original execution logic; prospective changes on main do not replace those sources.
+The user-authorized concurrency limit is 10, with scheduling disclosed separately from skill effects.
+Complete evidence remains locally retained while some annex payload publication is pending.
+The [prospective assessment helper revision and trials](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/skill-reflection/assessment-capture-skill-01/README.md) protect capture identities and isolate remote checks; the formal assessor remains frozen at `9852d836`.
+Follow the [status at this checkout's pinned iteration](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/STATUS.md), which links the separate runtime and scientific-wording preparation evidence, before continuing.
 
 The [scientific poster figures](scripts/POSTER-FIGURES.md) are generated here from frozen research outputs with `pixi run poster-figures`.
 Presentation repositories retain display copies linked to this benchmark’s code, inputs and provenance.
