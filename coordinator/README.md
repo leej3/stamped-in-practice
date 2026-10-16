@@ -13,3 +13,11 @@ The original raw transcript and native capture witnesses are retained separately
 Historical Entire attachment is performed only on this later coordinator commit and earns no worker credit.
 No full native profile or authentication store is included.
 Archives preserve external links literally; verification streams members without extracting or following links.
+
+## Browsable original files
+
+Original scientific files are also available at their unchanged workspace paths.
+The [copy manifest](browsable-copy-01/manifest.json) records exact source hashes, original modes and storage choices.
+These are coordinator presentation copies; the complete archive remains authoritative.
+The input tree matches the [shared retrieval proof](browsable-copy-01/shared-input-route-proof.json); its 58 payloads were independently retrieved in the cited run 20 check.
+No scientific execution or worker credit is implied.
