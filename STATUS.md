@@ -11,6 +11,10 @@ The remaining 48 research attempts and 64 judgments in the original allocation h
 Further research awaits the [measurement viability decision](rounds/round-01/synthesis/viability.md): the original series remains intact, and any repaired all-object assessment must be separately registered rather than selectively replacing failed measurements.
 No skill-effect claim crosses that boundary silently.
 
+The [candidate research guidance and trial evidence](skill-reflection/research-skill-revision-01/README.md) are published on a separate development branch.
+The registered round-one skill pin remains unchanged.
+The final native assessment trial is under verification; no new assessment series or subsequent research round has launched.
+
 See the [completion ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [judgment dispatches](rounds/round-01/judging/), [sealed registration](registration.md) and [allocation](allocation.json).
 The registration's zero-start count describes its prelaunch state.
 Its original records and hashes remain unchanged.

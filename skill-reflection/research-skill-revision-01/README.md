@@ -21,6 +21,8 @@ That snapshot differs from later candidate `56183c3229f8785ab962fb820e4a50f7c11c
 The separate [native synthetic research trial](../../measurement-development/assessment-operational-live-trial-01/README.md) used `56183c3` and delivered direct dependency pins and acquisition instructions.
 Later clarification commit [9c731e1](https://github.com/con/skills/commit/9c731e1e4e76770991b419987727fdaca5e06e64) permits unchanged-method verification explicitly and labels commit-based templates as one workflow.
 Those final wording changes received source review, not another behavioral trial.
+Published candidate [d83d7d6](https://github.com/con/skills/commit/d83d7d66a9060be6afae57336124afdcfc1743e9) keeps those exact working files and links the [trial evaluation record](https://github.com/con/skills/tree/12dc2f5ae2c644004ee4e4fbebb5b122b9ed9834/stamped/blind-runs/2026-10-16-research-guidance-handoff).
+The evaluation child was published before its parent; its bounded claims link these immutable full trial archives.
 The formal round-one skill pin remains unchanged; these observations do not estimate a skill effect.
 
 ## Complete retained evidence
