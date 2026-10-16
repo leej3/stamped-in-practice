@@ -14,11 +14,19 @@ Check out the environment snapshot branch. It contains the task source tree and 
 git clone --branch codex/env-narps-r1-12-20261015 https://github.com/leej3/stamped-in-practice.git
 cd stamped-in-practice
 git annex init
+git remote add con-hub https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git
+git config remote.con-hub.annexurl annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp
+git config remote.con-hub.annex-uuid 6215ce45-8f0f-4062-9bc0-d04781b4cd11
+git config remote.con-hub.fetch '+refs/heads/*:refs/remotes/con-hub/*'
+git annex enableremote con-hub
+git annex sync --no-push con-hub
 git annex get input/data input/atlas
 pixi install --locked
 pixi run group-analysis -- --permutations 9999
 pixi run validate-results
 ```
+
+The GitHub remote carries the Git branches; the configured `con-hub` annex remote carries large-file content and its location records. `git annex sync --no-push` retrieves those records without publishing changes from the clone.
 
 The primary inference uses 9,999 sign flips with seed 20261015. Outputs are written under `results/group-analysis/`. `logs/` contains duct command metadata, standard output and error, and sampled resource use. [`results/group-analysis/provenance.json`](results/group-analysis/provenance.json) records the code revision, exact lock checksum, input-manifest hashes, command, and clean-checkout replay. Inputs and their checksums are described in `input/sources.json` and `input/atlas/sources.json`.
 
