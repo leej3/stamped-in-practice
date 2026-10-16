@@ -97,19 +97,23 @@ def main() -> None:
     # Atlas anatomical label is independent of the observed effects.
     atlas = datasets.fetch_atlas_harvard_oxford("cort-prob-2mm", data_dir=str(ROOT / ".local" / "nilearn_data"))
     labels = list(atlas.labels)
-    label_idx = next((i for i, label in enumerate(labels) if label == "Frontal Medial Cortex"), None)
-    if label_idx is None:
-        raise ValueError("Harvard-Oxford atlas has no Frontal Medial Cortex label")
+    label_indices = [i for i, label in enumerate(labels) if label in {"Frontal Orbital Cortex", "Subcallosal Cortex"}]
+    if len(label_indices) != 2:
+        raise ValueError("Harvard-Oxford atlas lacks expected orbital/subcallosal labels")
     prob_img = atlas.maps
     prob_data = np.asarray(prob_img.dataobj)
-    # Probabilistic atlas is 4D with one volume per cortical label.
-    prob = image.resample_img(nib.Nifti1Image(prob_data[..., label_idx], prob_img.affine),
-                              target_affine=affine, target_shape=shape, interpolation="continuous")
-    prob_data_ref = np.asarray(prob.dataobj)
+    # Probabilistic atlas is 4D with one volume per cortical label. Use the
+    # atlas-defined orbital/subcallosal anatomy, then select anterior midline,
+    # ventral voxels; this is a descriptive anatomical ROI, not the search mask.
+    prob_masks = []
+    for label_idx in label_indices:
+        prob = image.resample_img(nib.Nifti1Image(prob_data[..., label_idx], prob_img.affine),
+                                  target_affine=affine, target_shape=shape, interpolation="continuous")
+        prob_masks.append(np.asarray(prob.dataobj) >= 25)
     ijk = np.indices(shape, dtype=np.float32).reshape(3, -1)
     xyz = nib.affines.apply_affine(affine, ijk.T)
     xyz = xyz.reshape(*shape, 3)
-    roi = (prob_data_ref >= 25) & (xyz[..., 1] >= 0) & (xyz[..., 2] <= 0) & mask
+    roi = np.logical_or.reduce(prob_masks) & (np.abs(xyz[..., 0]) <= 15) & (xyz[..., 1] >= 0) & (xyz[..., 2] <= 0) & mask
     n_roi = int(roi.sum())
     if n_roi == 0:
         raise ValueError("Atlas-defined vmPFC mask is empty on input grid")
@@ -157,7 +161,7 @@ def main() -> None:
         "max_t": float(t_obs.max()),
         "max_t_xyz_mm": peak_all_xyz.tolist(),
         "max_t_p_fwe": float(p_fwe[np.argmax(t_obs)]),
-        "vmPFC_definition": "Harvard-Oxford cortical atlas Frontal Medial Cortex >=25%; MNI y>=0, z<=0",
+        "vmPFC_definition": "Harvard-Oxford cortical atlas Frontal Orbital or Subcallosal Cortex probability >=25%; MNI |x|<=15, y>=0, z<=0",
         "vmPFC_n_voxels": n_roi,
         "vmPFC_mean_effect": roi_mean,
         "vmPFC_effect_sd_between_participants": roi_sd,
