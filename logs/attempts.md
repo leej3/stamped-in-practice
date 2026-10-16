@@ -11,5 +11,11 @@ All substantive runs were launched through Pixi and captured by duct in this dir
 | `final-pinned_2026.10.15T23.27.11-92611_` | Checksum guard correctly stopped before computation because the script used repository-root-relative paths instead of the input-manifest-relative paths. Fixed the path lookup. |
 | `final-pinned-retry_2026.10.15T23.27.21-92830_` | Accepted final 9,999-permutation inference; checksum validation passed for all maps, the participant table, atlas, and display template. |
 | `audit_2026.10.15T23.29.20-97173_` | Independent SciPy and max-null numerical checks passed. |
+| `replay_2026.10.15T23.31.09-99416_` | Fresh checkout and exact-lock replay of the then-current union-support method. It reproduced the outputs exactly but was superseded after support QC showed 53,034 partially supported voxels; see the accepted common-support run below. |
+| `mask-audit_2026.10.15T23.32.09-99913_` | Failed before reading data due to a malformed Python import in an inline audit command. Retained; corrected immediately. |
+| `mask-audit-retry_2026.10.15T23.32.12-146_` | Found 251,063 union-support voxels, of which 198,029 were nonzero in every map and 53,034 had partial support. This prompted the common-support mask revision. |
+| `final-common_2026.10.15T23.33.03-647_` | Accepted 9,999-permutation run using the committed all-participant common-support mask. |
+| `audit-common_2026.10.15T23.33.29-4343_` | Independent SciPy and max-null numerical checks passed for the common-support result. |
+| `audit-common-final_2026.10.15T23.34.17-15725_` | Final validation also verified the finite statistic-map support equals the 198,029-voxel analysis mask. |
 
 The first duct invocation used an extra `run` subcommand (`pixi run duct run ...`) and was rejected by duct before starting a child process; it produced no duct record. This invocation error did not launch analysis and was corrected immediately.

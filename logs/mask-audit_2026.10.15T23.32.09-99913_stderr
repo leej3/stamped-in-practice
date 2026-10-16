@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import glob,nibabel as n,np; from pathlib import Path; import numpy as np; f=sorted(Path("input/data").glob("*_hypo1_cope.nii.gz")); a=np.stack([np.asarray(nib.load(str(p)).dataobj) for p in f]); k=np.sum(a!=0,axis=0); m=k>0; u,c=np.unique(k[m],return_counts=True); print("n",len(f),"any",int(m.sum()),"all",int((k==len(f)).sum())); print("support_counts",dict(zip(u.tolist(),c.tolist()))); print("fractional_support_voxels",int(((k>0)&(k<len(f))).sum())); print("zero_total_within_union",int((a[:,m]==0).sum()))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'np'
