@@ -1,0 +1,170 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "31845bbcb0ed4d51db8436d17e834e491eca18a4\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-08-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/group_mean_effect.nii.gz",
+      "results/p_fwe_maxT.nii.gz",
+      "results/p_uncorrected_one_sided.nii.gz",
+      "results/t_statistic.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/group_mean_effect.nii.gz (to con-hub...) \n\n3%    31.98 KiB        61 MiB/s 0s\n63%   607.7 KiB         3 MiB/s 0s\n100%  968.69 KiB       22 MiB/s 0s\n                                  \nok\ncopy results/p_fwe_maxT.nii.gz (to con-hub...) \n\n43%   31.98 KiB        54 MiB/s 0s\n100%  74.94 KiB        45 MiB/s 0s\n                                  \nok\ncopy results/p_uncorrected_one_sided.nii.gz (to con-hub...) \n\n4%    31.98 KiB        42 MiB/s 0s\n100%  901.33 KiB       61 MiB/s 0s\n                                  \nok\ncopy results/t_statistic.nii.gz (to con-hub...) \n\n3%    31.98 KiB        42 MiB/s 0s\n100%  970.03 KiB       64 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-08-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-08-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-08-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-08-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-08-browsable' set up to track 'origin/codex/narps-neutral-r1-08-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n   0957f9e..2abafea  git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "2abafeae261d9b0f80c8fff8736c40693929c19e\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "31845bbcb0ed4d51db8436d17e834e491eca18a4\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "2abafeae261d9b0f80c8fff8736c40693929c19e",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   2abafea..7bc032c  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "7bc032cfd6e1f9496ae7adad65b0479cd30782f9\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-08-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "31845bbcb0ed4d51db8436d17e834e491eca18a4\trefs/heads/codex/narps-neutral-r1-08-browsable\n7bc032cfd6e1f9496ae7adad65b0479cd30782f9\trefs/heads/git-annex\n"
+  }
+]
