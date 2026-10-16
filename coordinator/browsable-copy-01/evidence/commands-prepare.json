@@ -1,0 +1,210 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "codex/narps-neutral-r1-20-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-20-01/publisher/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "git@github.com:leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932"
+    ],
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n * branch            23c2cb0f0fe443d21bea4f8bb57101e5d89ae932 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "reset",
+      "--hard",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "HEAD is now at 23c2cb0 chore(retention): preserve original delivery for narps-neutral-r1-20\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-20 browsable coordinator copy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-20 browsable coordinator copy ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "add",
+      "--force-large",
+      "--backend=SHA256E",
+      "--",
+      "results/group_mean_effect.nii.gz",
+      "results/group_p_fwe.nii.gz",
+      "results/group_tstat.nii.gz",
+      "results/group_tstat_fwe05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "add results/group_mean_effect.nii.gz \n\n3%    31.98 KiB       355 MiB/s 0s\n100%  988.46 KiB      246 MiB/s 0s\n                                  \nok\nadd results/group_p_fwe.nii.gz \n\n47%   31.98 KiB       844 MiB/s 0s\n100%  68.42 KiB       145 MiB/s 0s\n                                  \nok\nadd results/group_tstat.nii.gz \n\n3%    31.98 KiB       601 MiB/s 0s\n100%  990.03 KiB      251 MiB/s 0s\n                                  \nok\nadd results/group_tstat_fwe05.nii.gz \n\n100%  31.15 KiB       780 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_p_fwe.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s70057--52d4e6b11d498ea3c1f00700f1fc6dca91ff3401ceb2404937b3c07894a3b7d5.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_tstat.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_tstat_fwe05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s31901--da72a4f63b40c2d4fa771fab6cdf6c116cbb26b8e12ca325f53b90dd47dd0c09.nii.gz\n"
+  }
+]

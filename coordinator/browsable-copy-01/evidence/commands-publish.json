@@ -1,0 +1,83 @@
+[
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/group_mean_effect.nii.gz",
+      "results/group_p_fwe.nii.gz",
+      "results/group_tstat.nii.gz",
+      "results/group_tstat_fwe05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/group_mean_effect.nii.gz ok\ncopy results/group_p_fwe.nii.gz ok\ncopy results/group_tstat.nii.gz ok\ncopy results/group_tstat_fwe05.nii.gz (to con-hub...) \n\n100%  31.15 KiB       102 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "codex/narps-neutral-r1-20-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-20-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-20-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      codex/narps-neutral-r1-20-browsable -> codex/narps-neutral-r1-20-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-20-browsable' set up to track 'origin/codex/narps-neutral-r1-20-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   1115597..1b1478e  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "c5a91d0f40e159f9174868988b8c39da1ece28c0\n"
+  }
+]

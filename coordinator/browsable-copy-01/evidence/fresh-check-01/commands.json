@@ -1,0 +1,294 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-20-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "c5a91d0f40e159f9174868988b8c39da1ece28c0"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            c5a91d0f40e159f9174868988b8c39da1ece28c0 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at c5a91d0 feat: expose unchanged research files beside their archive\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable delivery receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable delivery receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_p_fwe.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s70057--52d4e6b11d498ea3c1f00700f1fc6dca91ff3401ceb2404937b3c07894a3b7d5.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_tstat.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_tstat_fwe05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s31901--da72a4f63b40c2d4fa771fab6cdf6c116cbb26b8e12ca325f53b90dd47dd0c09.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "results/group_mean_effect.nii.gz",
+      "results/group_p_fwe.nii.gz",
+      "results/group_tstat.nii.gz",
+      "results/group_tstat_fwe05.nii.gz",
+      "input/data/sub-001_hypo1_cope.nii.gz",
+      "input/data/sub-003_hypo1_cope.nii.gz",
+      "input/data/sub-005_hypo1_cope.nii.gz",
+      "input/data/sub-009_hypo1_cope.nii.gz",
+      "input/data/sub-011_hypo1_cope.nii.gz",
+      "input/data/sub-013_hypo1_cope.nii.gz",
+      "input/data/sub-015_hypo1_cope.nii.gz",
+      "input/data/sub-017_hypo1_cope.nii.gz",
+      "input/data/sub-019_hypo1_cope.nii.gz",
+      "input/data/sub-021_hypo1_cope.nii.gz",
+      "input/data/sub-025_hypo1_cope.nii.gz",
+      "input/data/sub-027_hypo1_cope.nii.gz",
+      "input/data/sub-029_hypo1_cope.nii.gz",
+      "input/data/sub-033_hypo1_cope.nii.gz",
+      "input/data/sub-035_hypo1_cope.nii.gz",
+      "input/data/sub-037_hypo1_cope.nii.gz",
+      "input/data/sub-039_hypo1_cope.nii.gz",
+      "input/data/sub-041_hypo1_cope.nii.gz",
+      "input/data/sub-043_hypo1_cope.nii.gz",
+      "input/data/sub-045_hypo1_cope.nii.gz",
+      "input/data/sub-047_hypo1_cope.nii.gz",
+      "input/data/sub-049_hypo1_cope.nii.gz",
+      "input/data/sub-051_hypo1_cope.nii.gz",
+      "input/data/sub-053_hypo1_cope.nii.gz",
+      "input/data/sub-055_hypo1_cope.nii.gz",
+      "input/data/sub-057_hypo1_cope.nii.gz",
+      "input/data/sub-059_hypo1_cope.nii.gz",
+      "input/data/sub-061_hypo1_cope.nii.gz",
+      "input/data/sub-063_hypo1_cope.nii.gz",
+      "input/data/sub-067_hypo1_cope.nii.gz",
+      "input/data/sub-069_hypo1_cope.nii.gz",
+      "input/data/sub-071_hypo1_cope.nii.gz",
+      "input/data/sub-073_hypo1_cope.nii.gz",
+      "input/data/sub-075_hypo1_cope.nii.gz",
+      "input/data/sub-077_hypo1_cope.nii.gz",
+      "input/data/sub-079_hypo1_cope.nii.gz",
+      "input/data/sub-081_hypo1_cope.nii.gz",
+      "input/data/sub-083_hypo1_cope.nii.gz",
+      "input/data/sub-085_hypo1_cope.nii.gz",
+      "input/data/sub-087_hypo1_cope.nii.gz",
+      "input/data/sub-089_hypo1_cope.nii.gz",
+      "input/data/sub-093_hypo1_cope.nii.gz",
+      "input/data/sub-095_hypo1_cope.nii.gz",
+      "input/data/sub-099_hypo1_cope.nii.gz",
+      "input/data/sub-103_hypo1_cope.nii.gz",
+      "input/data/sub-105_hypo1_cope.nii.gz",
+      "input/data/sub-107_hypo1_cope.nii.gz",
+      "input/data/sub-109_hypo1_cope.nii.gz",
+      "input/data/sub-113_hypo1_cope.nii.gz",
+      "input/data/sub-115_hypo1_cope.nii.gz",
+      "input/data/sub-117_hypo1_cope.nii.gz",
+      "input/data/sub-119_hypo1_cope.nii.gz",
+      "input/data/sub-121_hypo1_cope.nii.gz",
+      "input/data/sub-123_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get results/group_mean_effect.nii.gz (from con-hub...) \n\n1%    7.7 KiB          83 KiB/s 11s\n43%   423.8 KiB         2 MiB/s 0s \n100%  988.46 KiB       13 MiB/s 0s \n                                   \nok\nget results/group_p_fwe.nii.gz (from con-hub...) \n\n11%   7.7 KiB         101 KiB/s 0s\n100%  68.42 KiB        35 MiB/s 0s\n                                  \nok\nget results/group_tstat.nii.gz (from con-hub...) \n\n0%    3.74 KiB         42 KiB/s 23s\n100%  990.03 KiB       22 MiB/s 0s \n                                   \nok\nget results/group_tstat_fwe05.nii.gz (from con-hub...) \n\n12%   3.74 KiB         61 KiB/s 0s\n100%  31.15 KiB        17 MiB/s 0s\n                                  \nok\nget input/data/sub-001_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         35 KiB/s 49s\n100%  1.71 MiB         22 MiB/s 0s \n                                   \nok\nget input/data/sub-003_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          99 KiB/s 17s\n100%  1.68 MiB         39 MiB/s 0s \n                                   \nok\nget input/data/sub-005_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          97 KiB/s 18s\n100%  1.76 MiB         31 MiB/s 0s \n                                   \nok\nget input/data/sub-009_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          87 KiB/s 19s\n100%  1.66 MiB         22 MiB/s 0s \n                                   \nok\nget input/data/sub-011_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          83 KiB/s 21s\n100%  1.74 MiB         22 MiB/s 0s \n                                   \nok\nget input/data/sub-013_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          86 KiB/s 19s\n100%  1.68 MiB         38 MiB/s 0s \n                                   \nok\nget input/data/sub-015_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         50 KiB/s 35s\n100%  1.72 MiB         31 MiB/s 0s \n                                   \nok\nget input/data/sub-017_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         106 KiB/s 16s\n100%  1.71 MiB         19 MiB/s 0s \n                                   \nok\nget input/data/sub-019_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         46 KiB/s 38s\n100%  1.71 MiB         29 MiB/s 0s \n                                   \nok\nget input/data/sub-021_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          98 KiB/s 18s\n100%  1.74 MiB         28 MiB/s 0s \n                                   \nok\nget input/data/sub-025_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         56 KiB/s 31s\n100%  1.72 MiB         44 MiB/s 0s \n                                   \nok\nget input/data/sub-027_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         105 KiB/s 16s\n100%  1.73 MiB         51 MiB/s 0s \n                                   \nok\nget input/data/sub-029_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 14s\n100%  1.71 MiB         46 MiB/s 0s \n                                   \nok\nget input/data/sub-033_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          96 KiB/s 17s\n100%  1.68 MiB         51 MiB/s 0s \n                                   \nok\nget input/data/sub-035_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         123 KiB/s 13s\n100%  1.69 MiB         22 MiB/s 0s \n                                   \nok\nget input/data/sub-037_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         41 KiB/s 43s\n100%  1.72 MiB         28 MiB/s 0s \n                                   \nok\nget input/data/sub-039_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          85 KiB/s 20s\n100%  1.69 MiB         32 MiB/s 0s \n                                   \nok\nget input/data/sub-041_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          98 KiB/s 17s\n100%  1.72 MiB         24 MiB/s 0s \n                                   \nok\nget input/data/sub-043_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          87 KiB/s 19s\n100%  1.69 MiB         18 MiB/s 0s \n                                   \nok\nget input/data/sub-045_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          93 KiB/s 18s\n100%  1.73 MiB         28 MiB/s 0s \n                                   \nok\nget input/data/sub-047_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          94 KiB/s 18s\n100%  1.68 MiB         18 MiB/s 0s \n                                   \nok\nget input/data/sub-049_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          91 KiB/s 19s\n100%  1.74 MiB         24 MiB/s 0s \n                                   \nok\nget input/data/sub-051_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         108 KiB/s 15s\n100%  1.67 MiB         33 MiB/s 0s \n                                   \nok\nget input/data/sub-053_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         105 KiB/s 16s\n100%  1.68 MiB         21 MiB/s 0s \n                                   \nok\nget input/data/sub-055_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          90 KiB/s 19s\n100%  1.71 MiB         30 MiB/s 0s \n                                   \nok\nget input/data/sub-057_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          98 KiB/s 17s\n100%  1.73 MiB         47 MiB/s 0s \n                                   \nok\nget input/data/sub-059_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         111 KiB/s 15s\n100%  1.7 MiB          26 MiB/s 0s \n                                   \nok\nget input/data/sub-061_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         109 KiB/s 15s\n100%  1.7 MiB          63 MiB/s 0s \n                                   \nok\nget input/data/sub-063_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          76 KiB/s 22s\n100%  1.7 MiB          61 MiB/s 0s \n                                   \nok\nget input/data/sub-067_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         127 KiB/s 13s\n100%  1.69 MiB         58 MiB/s 0s \n                                   \nok\nget input/data/sub-069_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 13s\n100%  1.69 MiB         63 MiB/s 0s \n                                   \nok\nget input/data/sub-071_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         125 KiB/s 13s\n100%  1.71 MiB         57 MiB/s 0s \n                                   \nok\nget input/data/sub-073_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         115 KiB/s 15s\n100%  1.7 MiB          50 MiB/s 0s \n                                   \nok\nget input/data/sub-075_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         112 KiB/s 15s\n100%  1.69 MiB         45 MiB/s 0s \n                                   \nok\nget input/data/sub-077_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         61 KiB/s 27s\n100%  1.67 MiB         58 MiB/s 0s \n                                   \nok\nget input/data/sub-079_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         106 KiB/s 16s\n100%  1.69 MiB         44 MiB/s 0s \n                                   \nok\nget input/data/sub-081_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          89 KiB/s 19s\n100%  1.73 MiB         37 MiB/s 0s \n                                   \nok\nget input/data/sub-083_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         102 KiB/s 16s\n100%  1.69 MiB         34 MiB/s 0s \n                                   \nok\nget input/data/sub-085_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          93 KiB/s 18s\n100%  1.65 MiB         44 MiB/s 0s \n                                   \nok\nget input/data/sub-087_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         121 KiB/s 14s\n100%  1.74 MiB         53 MiB/s 0s \n                                   \nok\nget input/data/sub-089_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         133 KiB/s 12s\n100%  1.66 MiB         23 MiB/s 0s \n                                   \nok\nget input/data/sub-093_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         109 KiB/s 15s\n100%  1.7 MiB          52 MiB/s 0s \n                                   \nok\nget input/data/sub-095_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          83 KiB/s 20s\n100%  1.65 MiB         29 MiB/s 0s \n                                   \nok\nget input/data/sub-099_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          98 KiB/s 18s\n100%  1.74 MiB         27 MiB/s 0s \n                                   \nok\nget input/data/sub-103_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         110 KiB/s 16s\n100%  1.73 MiB         52 MiB/s 0s \n                                   \nok\nget input/data/sub-105_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         121 KiB/s 14s\n100%  1.71 MiB         58 MiB/s 0s \n                                   \nok\nget input/data/sub-107_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         116 KiB/s 15s\n100%  1.72 MiB         58 MiB/s 0s \n                                   \nok\nget input/data/sub-109_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         121 KiB/s 14s\n100%  1.71 MiB         50 MiB/s 0s \n                                   \nok\nget input/data/sub-113_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         118 KiB/s 14s\n100%  1.74 MiB         41 MiB/s 0s \n                                   \nok\nget input/data/sub-115_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          84 KiB/s 20s\n100%  1.71 MiB         26 MiB/s 0s \n                                   \nok\nget input/data/sub-117_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB          76 KiB/s 22s\n100%  1.66 MiB         52 MiB/s 0s \n                                   \nok\nget input/data/sub-119_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         106 KiB/s 16s\n100%  1.67 MiB         58 MiB/s 0s \n                                   \nok\nget input/data/sub-121_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         61 KiB/s 28s\n100%  1.68 MiB         63 MiB/s 0s \n                                   \nok\nget input/data/sub-123_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         140 KiB/s 12s\n100%  1.66 MiB         59 MiB/s 0s \n                                   \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "c5a91d0f40e159f9174868988b8c39da1ece28c0\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]

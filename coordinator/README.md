@@ -12,3 +12,7 @@ The [identity record](retention.json) keeps the original capture SHA and worker 
 Closed native attempt records and outer execution logs are retained under `native-attempt-01/`.
 No full native profile or authentication store is included.
 Archives preserve external links literally; verification streams members without extracting or following links.
+
+The [independent retrieval check](browsable-copy-01/evidence/fresh-check-01/result.json) fetched the browsable content commit into an empty Git store and verified all 15 copied files and all 58 supplied input files.
+This establishes retrieval through the configured authenticated annex route on the same host; it does not claim scientific replay or cross-host portability.
+Preparation, publication and retrieval commands and outputs are retained with [their file manifest](browsable-copy-01/evidence/manifest.json).
