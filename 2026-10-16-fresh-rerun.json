@@ -1,0 +1,97 @@
+{
+  "probe": "fresh-rerun",
+  "items": [
+    "stamped-checklist:must/007",
+    "stamped-checklist:must/008",
+    "stamped-checklist:must/015",
+    "stamped-checklist:must/017",
+    "stamped-checklist:should/004",
+    "stamped-checklist:should/006"
+  ],
+  "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/targets/judgment-01",
+  "started_at": "2026-10-16T04:27:00+00:00",
+  "host": {
+    "uname": "Darwin vpn-two-factor-general-229-133-11.dartmouth.edu 27.0.0 Darwin Kernel Version",
+    "datalad": true,
+    "container_runtime": null
+  },
+  "steps": [
+    {
+      "step": "datalad clone",
+      "returncode": 0,
+      "log": "install(ok): /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone (dataset)\n[INFO] Attempting a clone into /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone \n[INFO] Attempting to clone from /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/targets/judgment-01 to /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone \n[INFO] Start enumerating objects \n[INFO] Start counting objects \n[INFO] Start compressing objects \n[INFO] Start receiving objects \n[INFO] Start resolving deltas \n[INFO] Completed clone attempts for Dataset(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone) \n"
+    },
+    {
+      "step": "datalad get -n -r .",
+      "returncode": 0,
+      "log": "install(ok): /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills (dataset)\ninstall(ok): /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills/evals (dataset)\naction summary:\n  install (ok: 2)\n[INFO] Ensuring presence of Dataset(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone) to get /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone \n[INFO] Attempting a clone into /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills \n[INFO] Attempting to clone from https://github.com/con/skills.git to /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills \n[INFO] Start enumerating objects \n[INFO] Start counting objects \n[INFO] Start compressing objects \n[INFO] Start receiving objects \n[INFO] Start resolving deltas \n[INFO] Completed clone attempts for Dataset(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills) \n[WARNING] GitRepo(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills) has a detached HEAD, because the target commit c90252a7 has no unique ancestor with branch 'master' \n[INFO] Attempting a clone into /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills/evals \n[INFO] Attempting to clone from https://github.com/con/skills.git to /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills/evals \n[INFO] Start enumerating objects \n[INFO] Start counting objects \n[INFO] Start compressing objects \n[INFO] Start receiving objects \n[INFO] Start resolving deltas \n[INFO] Completed clone attempts for Dataset(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills/evals) \n[WARNING] GitRepo(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/skills/evals) has a detached HEAD, because the target commit df8f8861 has no unique ancestor with branch 'master' \n"
+    },
+    {
+      "step": "datalad get -r . (0.1 GiB)",
+      "returncode": 0,
+      "log": " [from origin...]\nget(ok): logs/group-analysis-usage.jsonl (file) [from replay-source-route-1...]\nget(ok): input/data/sub-061_hypo1_cope.nii.gz (file) [from replay-source-route-1...]\nget(ok): logs/group-analysis-stderr (file) [from replay-source-route-1...]\nget(ok): logs/pilot-info.json (file) [from replay-source-route-1...]\nget(ok): logs/group-analysis-stdout (file) [from replay-source-route-1...]\nget(ok): logs/group-analysis-final-stderr (file) [from origin...]\nget(ok): logs/group-analysis-retry-usage.jsonl (file) [from replay-source-route-1...]\nget(ok): input/data/sub-043_hypo1_cope.nii.gz (file) [from replay-source-route-1...]\nget(ok): logs/pilot-retry-usage.jsonl (file) [from replay-source-route-1...]\nget(ok): logs/replay-group-analysis-info.json (file) [from origin...]\nget(ok): logs/group-analysis-final-v3-stdout (file) [from replay-source-route-1...]\nget(ok): logs/pilot-retry-stdout (file) [from replay-source-route-1...]\nget(ok): logs/pilot-stdout (file) [from origin...]\nget(ok): logs/group-analysis-final-v3-stderr (file) [from origin...]\nget(ok): logs/pilot-usage.jsonl (file) [from replay-source-route-1...]\nget(ok): logs/pilot-stderr (file) [from replay-source-route-1...]\nget(ok): logs/pilot-retry-info.json (file) [from replay-source-route-1...]\nget(ok): logs/pilot-retry-stderr (file) [from origin...]\nget(ok): results/final-v2/wholebrain-fwe-significant.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v2/group-t.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v2/group-mean-effect.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v2/group-fwe-p.nii.gz (file) [from replay-source-route-1...]\nget(ok): logs/replay-group-analysis-stdout (file) [from origin...]\nget(ok): logs/replay-group-analysis-usage.jsonl (file) [from origin...]\nget(ok): results/final-v2/vmpfc-mask.nii.gz (file) [from replay-source-route-1...]\nget(ok): logs/group-analysis-retry-stderr (file) [from origin...]\nget(ok): results/final-v2/permutation-max-t.tsv.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v3/wholebrain-fwe-significant.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v3/permutation-max-t.tsv.gz (file) [from replay-source-route-1...]\nget(ok): results/final/permutation-max-t.tsv.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v3/vmpfc-mask.nii.gz (file) [from replay-source-route-1...]\nget(ok): logs/replay-group-analysis-stderr (file) [from origin...]\nget(ok): results/final-v3/group-mean-effect.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final/group-fwe-p.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final/vmpfc-mask.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final/wholebrain-fwe-significant.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/group-fwe-p.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/permutation-max-t.tsv.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v3/group-fwe-p.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final-v3/group-t.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/wholebrain-fwe-significant.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/vmpfc-mask.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/group-t.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final/group-t.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/final/group-mean-effect.nii.gz (file) [from replay-source-route-1...]\nget(ok): results/initial-run/group-mean-effect.nii.gz (file) [from replay-source-route-1...]\naction summary:\n  get (ok: 115)\n[INFO] Ensuring presence of Dataset(/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone) to get /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone \n"
+    },
+    {
+      "step": "input modules excluded from --outputs",
+      "returncode": 0,
+      "log": "skills/"
+    },
+    {
+      "step": "fetched 17 output candidate(s) for comparison",
+      "returncode": 0,
+      "log": "action summary:\n  get (notneeded: 17)\n"
+    },
+    {
+      "step": "removed 17 shipped output(s) before the rerun",
+      "returncode": 0,
+      "log": "input/participants.tsv\nresults/final-v2/input-checksums.tsv\nresults/final-v2/participant-vmpfc-effects.tsv\nresults/final-v3/input-checksums.tsv\nresults/final-v3/participant-vmpfc-effects.tsv\nresults/final/input-checksums.tsv\nresults/final/participant-vmpfc-effects.tsv\nresults/initial-run/input-checksums.tsv\nresults/initial-run/participant-vmpfc-effects.tsv\nresults/final-v2/vmpfc-participant-estimates.png\nresults/final-v2/wholebrain-fwe-map.png\nresults/final-v3/vmpfc-participant-estimates.png\nresults/final-v3/wholebrain-fwe-map.png\nresults/final/vmpfc-participant-estimates.png\nresults/final/wholebrain-fwe-map.png\nresults/initial-run/vmpfc-participant-estimates.png\nresults/initial-run/wholebrain-fwe-map.png"
+    },
+    {
+      "step": "committed output removal",
+      "returncode": 0,
+      "log": ""
+    },
+    {
+      "step": "entry: pixi run analysis",
+      "returncode": 1,
+      "log": " WARN Using local manifest /Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/judgment-01/judgment/replay-work/clone/pixi.toml rather than /Users/johnlee/code/CON/stamped-in-practice/.pixi/assessment-runtime/3552d5003a2485b6405805236d5c54e7ed42f097/pixi.toml from environment variable `PIXI_PROJECT_MANIFEST`\n\u2728 Pixi task (analysis): duct --output-prefix logs/group-analysis-final-v3- --message 'Primary analysis with code and environment identities recorded' python code/analyze.py: (Run preregistered group inference, QC, tables and figures)\n2026-10-16T00:27:23-0400 [INFO    ] con-duct: python-dotenv not installed, skipping .env file loading\n2026-10-16T00:27:23-0400 [ERROR   ] con-duct: Conflicting files:\n- logs/group-analysis-final-v3-stdout\n- logs/group-analysis-final-v3-stderr\n- logs/group-analysis-final-v3-usage.jsonl\n- logs/group-analysis-final-v3-info.json\nUse --clobber to overwrite conflicting files.\n"
+    }
+  ],
+  "local_source_transports": {
+    "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-10/targets/judgment-01",
+    "host_scope": "same-host",
+    "route_origin": "local-source-git-config",
+    "routes": [
+      {
+        "source_remote": "con-hub",
+        "replay_remote": "replay-source-route-1",
+        "url": "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git",
+        "annexurl": "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp",
+        "annex-uuid": "6215ce45-8f0f-4062-9bc0-d04781b4cd11"
+      }
+    ]
+  },
+  "content_to_fetch_bytes": 105288812,
+  "outputs_shipped": {
+    "input/participants.tsv": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf",
+    "results/final-v2/input-checksums.tsv": "15d3f8da16892bc2646252697b766538b61eb3ad6f4c8cf1e31b7eb8e1d800db",
+    "results/final-v2/participant-vmpfc-effects.tsv": "dea608ba026368153ab49bcb4b69cc61a1e21037770d1a4b4a5b69f838454f1d",
+    "results/final-v3/input-checksums.tsv": "15d3f8da16892bc2646252697b766538b61eb3ad6f4c8cf1e31b7eb8e1d800db",
+    "results/final-v3/participant-vmpfc-effects.tsv": "dea608ba026368153ab49bcb4b69cc61a1e21037770d1a4b4a5b69f838454f1d",
+    "results/final/input-checksums.tsv": "15d3f8da16892bc2646252697b766538b61eb3ad6f4c8cf1e31b7eb8e1d800db",
+    "results/final/participant-vmpfc-effects.tsv": "dea608ba026368153ab49bcb4b69cc61a1e21037770d1a4b4a5b69f838454f1d",
+    "results/initial-run/input-checksums.tsv": "15d3f8da16892bc2646252697b766538b61eb3ad6f4c8cf1e31b7eb8e1d800db",
+    "results/initial-run/participant-vmpfc-effects.tsv": "dea608ba026368153ab49bcb4b69cc61a1e21037770d1a4b4a5b69f838454f1d",
+    "results/final-v2/vmpfc-participant-estimates.png": "e5858cb95ce62767331f3fcf4ca173a1a9ec0847f8f49932140d1c60d3113300",
+    "results/final-v2/wholebrain-fwe-map.png": "e096fc4b7cc10779ab0f87689e0a6f2d1b7eb6ea8788f8fa60f42c9a6426fb25",
+    "results/final-v3/vmpfc-participant-estimates.png": "e5858cb95ce62767331f3fcf4ca173a1a9ec0847f8f49932140d1c60d3113300",
+    "results/final-v3/wholebrain-fwe-map.png": "e096fc4b7cc10779ab0f87689e0a6f2d1b7eb6ea8788f8fa60f42c9a6426fb25",
+    "results/final/vmpfc-participant-estimates.png": "e5858cb95ce62767331f3fcf4ca173a1a9ec0847f8f49932140d1c60d3113300",
+    "results/final/wholebrain-fwe-map.png": "3dd674be75d307c52037c7461318420cef1cc62292ae95cead0c3dc2e5339599",
+    "results/initial-run/vmpfc-participant-estimates.png": "e5858cb95ce62767331f3fcf4ca173a1a9ec0847f8f49932140d1c60d3113300",
+    "results/initial-run/wholebrain-fwe-map.png": "2fb23cd95b48390ed691d4c9128a4df0439c71aa9927a498dea7cab10b8230f2"
+  },
+  "status": "unmet",
+  "reason": "The documented entry point failed in a fresh clone: `pixi run analysis` exited 1.",
+  "finished_at": "2026-10-16T04:27:23+00:00"
+}
