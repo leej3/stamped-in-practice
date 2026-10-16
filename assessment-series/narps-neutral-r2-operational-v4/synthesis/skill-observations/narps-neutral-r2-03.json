@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r2-03",
+  "extracted_at_utc": "2026-10-16T15:37:20.260155+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 71,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "PDF skill installed and read; local PDF extraction or rendering execution not observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "catalog_count": 39,
+    "notes": [
+      "Read installer, listed catalog, selected and installed PDF locally, then read the skill entrypoint.",
+      "The combined entrypoint-read/data-retrieval command returned 1 after printing the skill; the unrelated HTTP403 failure does not erase the observed instruction read.",
+      "No local PDF extraction/rendering command is observed; scientific benefit is not assessed."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 8,
+        "item_id": "item_3",
+        "event_sha256": "f078dc5a158e208dae86b154584f8ae07651f1313f921449497118095af344df",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_3",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-o5tx5vrj/skills/.system/skill-installer/SKILL.md && rg --files input'",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\ninput/participants.tsv\ninput/upstream-methods.md\ninput/study-task.md\ninput/sources.json\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog": [
+      {
+        "line": 14,
+        "item_id": "item_6",
+        "event_sha256": "1bbb4f92abc2a7654fde3312e5f5bac6b66225f1b7cb4ae33fbde03a7d69658a",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'ls -la && python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-o5tx5vrj/skills/.system/skill-installer/scripts/list-skills.py --format json'",
+            "aggregated_output": "total 0\ndrwxr-xr-x@  6 johnlee  staff   192 Oct 16 11:26 .\ndrwxr-xr-x@ 38 johnlee  staff  1216 Oct 16 11:25 ..\ndrwxr-x---@  3 johnlee  staff    96 Oct 16 11:26 .codex\ndrwxr-x---@  7 johnlee  staff   224 Oct 16 11:26 .entire\ndrwxr-xr-x@ 14 johnlee  staff   448 Oct 16 11:26 .git\ndrwxr-xr-x@  7 johnlee  staff   224 Oct 16 11:25 input\n[{\"name\": \"aspnet-core\", \"installed\": false}, {\"name\": \"chatgpt-apps\", \"installed\": false}, {\"name\": \"cli-creator\", \"installed\": false}, {\"name\": \"cloudflare-deploy\", \"installed\": false}, {\"name\": \"define-goal\", \"installed\": false}, {\"name\": \"figma\", \"installed\": false}, {\"name\": \"figma-code-connect-components\", \"installed\": false}, {\"name\": \"figma-create-design-system-rules\", \"installed\": false}, {\"name\": \"figma-create-new-file\", \"installed\": false}, {\"name\": \"figma-generate-design\", \"installed\": false}, {\"name\": \"figma-generate-library\", \"installed\": false}, {\"name\": \"figma-implement-design\", \"installed\": false}, {\"name\": \"figma-use\", \"installed\": false}, {\"name\": \"gh-address-comments\", \"installed\": false}, {\"name\": \"gh-fix-ci\", \"installed\": false}, {\"name\": \"hatch-pet\", \"installed\": false}, {\"name\": \"jupyter-notebook\", \"installed\": false}, {\"name\": \"linear\", \"installed\": false}, {\"name\": \"migrate-to-codex\", \"installed\": false}, {\"name\": \"netlify-deploy\", \"installed\": false}, {\"name\": \"notion-knowledge-capture\", \"installed\": false}, {\"name\": \"notion-meeting-intelligence\", \"installed\": false}, {\"name\": \"notion-research-documentation\", \"installed\": false}, {\"name\": \"notion-spec-to-implementation\", \"installed\": false}, {\"name\": \"openai-docs\", \"installed\": false}, {\"name\": \"pdf\", \"installed\": false}, {\"name\": \"playwright\", \"installed\": false}, {\"name\": \"playwright-interactive\", \"installed\": false}, {\"name\": \"render-deploy\", \"installed\": false}, {\"name\": \"screenshot\", \"installed\": false}, {\"name\": \"security-best-practices\", \"installed\": false}, {\"name\": \"security-ownership-map\", \"installed\": false}, {\"name\": \"security-threat-model\", \"installed\": false}, {\"name\": \"sentry\", \"installed\": false}, {\"name\": \"speech\", \"installed\": false}, {\"name\": \"transcribe\", \"installed\": false}, {\"name\": \"vercel-deploy\", \"installed\": false}, {\"name\": \"winui-app\", \"installed\": false}, {\"name\": \"yeet\", \"installed\": false}]\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "selection_rationale": [
+      {
+        "line": 15,
+        "item_id": "item_7",
+        "event_sha256": "1cce0fc4db6a6d9c21e63c24f1aebd45423a2c913bf8da94ac254f8328457843",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "agent_message",
+            "text": "The metadata lists all 54 effect-map files, but the files themselves aren\u2019t present in the workspace. I\u2019m checking whether those exact, checksum-pinned NeuroVault maps can be retrieved; no time-series scans are needed. I found a PDF skill that can help inspect the original analysis instructions and will install it locally in the workspace."
+          }
+        }
+      }
+    ],
+    "install": [
+      {
+        "line": 17,
+        "item_id": "item_8",
+        "event_sha256": "6566cd8fa40f6d245eef77363ed6b8d50360515ff34a89d8744a20e2a24b9dbe",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-o5tx5vrj/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/pdf --dest \"$PWD/.codex/skills\" --method auto'",
+            "aggregated_output": "Installed pdf to /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r2-03/.codex/skills/pdf\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "loaded_and_retrieval_failure": [
+      {
+        "line": 19,
+        "item_id": "item_9",
+        "event_sha256": "820321c4203db4c72c0fc3529ec24110a8a18db3c4203b3d69a17134e987bd58",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat .codex/skills/pdf/SKILL.md && mkdir -p data && python - <<'PY'\nimport json, urllib.request, hashlib, pathlib, time\nsrc=json.load(open('input/sources.json'))\nfor rel, meta in src['files'].items():\n    if not rel.startswith('data/'): continue\n    p=pathlib.Path(rel); p.parent.mkdir(parents=True,exist_ok=True)\n    if p.exists() and p.stat().st_size==meta['bytes']: continue\n    try:\n        with urllib.request.urlopen(meta['url'], timeout=90) as r: b=r.read()\n        if len(b)\"'!=meta['\"'bytes'] or hashlib.sha256(b).hexdigest()\"'!=meta['\"'sha256']:\n            raise ValueError(f'checksum/size mismatch {len(b)}')\n        p.write_bytes(b)\n        print(rel, len(b))\n    except Exception as e:\n        print('ERROR', rel, repr(e)); raise\nPY\"",
+            "aggregated_output": "---\nname: \"pdf\"\ndescription: \"Use when tasks involve reading, creating, or reviewing PDF files where rendering and layout matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and extraction.\"\n---\n\n\n# PDF Skill\n\n## When to use\n- Read or review PDF content where layout and visuals matter.\n- Create PDFs programmatically with reliable formatting.\n- Validate final rendering before delivery.\n\n## Workflow\n1. Prefer visual review: render PDF pages to PNGs and inspect them.\n   - Use `pdftoppm` if available.\n   - If unavailable, install Poppler or ask the user to review the output locally.\n2. Use `reportlab` to generate PDFs when creating new documents.\n3. Use `pdfplumber` (or `pypdf`) for text extraction and quick checks; do not rely on it for layout fidelity.\n4. After each meaningful update, re-render pages and verify alignment, spacing, and legibility.\n\n## Temp and output conventions\n- Use `tmp/pdfs/` for intermediate files; delete when done.\n- Write final artifacts under `output/pdf/` when working in this repo.\n- Keep filenames stable and descriptive.\n\n## Dependencies (install if missing)\nPrefer `uv` for dependency management.\n\nPython packages:\n```\nuv pip install reportlab pdfplumber pypdf\n```\nIf `uv` is unavailable:\n```\npython3 -m pip install reportlab pdfplumber pypdf\n```\nSystem tools (for rendering):\n```\n# macOS (Homebrew)\nbrew install poppler\n\n# Ubuntu/Debian\nsudo apt-get install -y poppler-utils\n```\n\nIf installation isn't possible in this environment, tell the user which dependency is missing and how to install it locally.\n\n## Environment\nNo required environment variables.\n\n## Rendering command\n```\npdftoppm -png $INPUT_PDF $OUTPUT_PREFIX\n```\n\n## Quality expectations\n- Maintain polished visual design: consistent typography, spacing, margins, and section hierarchy.\n- Avoid rendering issues: clipped text, overlapping elements, broken tables, black squares, or unreadable glyphs.\n- Charts, tables, and images must be sharp, aligned, and clearly labeled.\n- Use ASCII hyphens only. Avoid U+2011 (non-breaking hyphen) and other Unicode dashes.\n- Citations and references must be human-readable; never leave tool tokens or placeholder strings.\n\n## Final checks\n- Do not deliver until the latest PNG inspection shows zero visual or formatting defects.\n- Confirm headers/footers, page numbering, and section transitions look polished.\n- Keep intermediate files organized or remove them after final approval.\nERROR data/sub-001_hypo1_cope.nii.gz <HTTPError 403: 'Forbidden'>\nTraceback (most recent call last):\n  File \"<stdin>\", line 8, in <module>\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 214, in urlopen\n    return opener.open(url, data, timeout)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 523, in open\n    response = meth(req, response)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 632, in http_response\n    response = self.parent.error(\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 561, in error\n    return self._call_chain(*args)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 494, in _call_chain\n    result = func(*args)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/urllib/request.py\", line 641, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 403: Forbidden\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/events.jsonl",
+      "sha256": "bf9eef327ba074ae5048c15800cfa7595275dfc28b737d123ef71ac3ef3c3d46",
+      "bytes": 100693
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/launch.json",
+      "sha256": "72d07b5d994112606000e3caf3aa61f8b57b68cb853d03f15f236e1e762a3ddf",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/result.json",
+      "sha256": "4007379b39d81f3d72f4b10980d6a21bc66d7693f34a0dd51687a40e14ddc2c3",
+      "bytes": 6407
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/worker-end-state.json",
+      "sha256": "798f1f6b11d8ac4d3adcce781cb9f0c69ee4fd0372167d5b2d66fafe6fead758",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/skill-observations.json",
+      "sha256": "e4a01232d7ea5348191764203a986caf218d9fd93536b79f0ed896c5d2c7945b",
+      "bytes": 1746
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/condition-assignment.json",
+      "sha256": "fbfd786290bf02b0ccc75e313bb920fe7b3b0c5adaceb891d04c4298635053be",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-03/attempt-01/native/prompt-preflight.json",
+      "sha256": "5ddd2858954550dafb43b183aadbda8fca8203bae1024e6b2e344b3db479efcd",
+      "bytes": 2120
+    }
+  ]
+}

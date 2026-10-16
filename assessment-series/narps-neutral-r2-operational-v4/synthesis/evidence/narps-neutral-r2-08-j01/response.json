@@ -1,0 +1,492 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All inputs, code, report, results, figures and records are below one captured workspace root; annex links resolve inside its .git directory.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L31-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; complete root and listed artifacts",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 maps and metadata are locally included under input/; captured annex links remain within the root and sources.json records their origins and hashes.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd; 54 map entries",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The script imports NumPy, SciPy, pandas, matplotlib, NiBabel, Nilearn and threadpoolctl, but the captured project contains no installable environment declaration.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py#L9-L20",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; file SHA-256 68ac3c94e521b0f0fdec8b2117713ac8306560c885aa80ab43ee16b838c3fd47b0",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git contains supplied inputs and docs, but the worker's report, analysis code, results and figures were untracked at stop; most scientific deliverables lack version history.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "report.md; scripts/analyze_gain.py; results/summary.json; .git/index",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; stop-state inventory plus operational git status observation",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "All 54 participant maps are annex pointers with their payloads present in the captured annex store; no oversized raw map blob is required from an external location.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "input/data/",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; 54 captured annex pointers and payloads",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The run log lists package versions, but no exact environment specification or digest is linked to the result-generating action; the shared runtime is coordinator supplied.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "results/run.log; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; run log SHA-256 933cc678a445ce974c474d0c6c4510c5b76e25f2ec8b5c000e2919ad39cc3aec; complete tree inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "The report gives a run command but no installation/setup steps; it points to a coordinator-host absolute interpreter path rather than an obtainable environment.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L38-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; report SHA-256 56a13c85572173f9a9352e44f4f0f70cc676bf4b74b0e8982a838c4fe5f6d8c6",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report names scripts/analyze_gain.py and a concrete command; the script reads input/ and writes results/ and figures/.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L33-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; report SHA-256 56a13c85572173f9a9352e44f4f0f70cc676bf4b74b0e8982a838c4fe5f6d8c6",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis script resolves inputs and outputs from __file__ with relative paths; the probe scanned tracked text only and missed this untracked script.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py#L22-L27",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; script SHA-256 68ac3c94e521b0f0fdec8b2117713ac8306560c885aa80ab43ee16b838c3fd47b0",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "No dependency specification is included; the script invokes scientific libraries plus threadpoolctl and fetches an atlas through Nilearn.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py#L9-L20; scripts/analyze_gain.py#L113-L124",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; script SHA-256 68ac3c94e521b0f0fdec8b2117713ac8306560c885aa80ab43ee16b838c3fd47b0",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "The report names the shared interpreter path, but does not document how to provision it or the external Nilearn atlas cache required by the entrypoint.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L40-L44; results/run.log#L1",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report lists package versions, but gives no installation recipe or complete system requirements; the route assumes a prepared host runtime and atlas cache.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L38-L44; results/run.log#L1",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "The complete captured project has no tracked or untracked environment specification alongside the analysis code and data.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; complete captured tree inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or runnable update process is included, so there is no declared process to track when dependencies change.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".; report.md#L31-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; complete captured tree and report inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The report lists broad package versions but no frozen manifest, digest, container identity, or environment capture for exact reconstruction.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L38-L44; results/run.log",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared publication or authorized retrieval route exists in the captured stop state; coordinator delivery does not establish researcher access.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": ".git/config; report.md#L31-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; captured config has no remote and report lists only internal outputs",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The report assumes a coordinator-only absolute interpreter path and does not explain how an intended researcher obtains or uses the environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L40-L44; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git and git-annex cover supplied inputs, while the worker's primary code, report and derived outputs were untracked at stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".git/index; scripts/analyze_gain.py; results/summary.json",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "unmet",
+      "reason": "The complete stop records one analysis run, with no recurring test schedule, repeated workflow check, or CI configuration in the delivered tree.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "results/run.log; .entire/logs/entire.log; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs are separated under input/ and outputs under results/ and figures/, but code and environment are not separately specified modules.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "report.md#L31-L44; input/upstream-methods.md",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the captured analysis uses public maps and public software; no restricted data or software component is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No fresh-environment test is documented; the single supplied run used a prepared host environment. A clean isolated rerun with the required atlas would settle this.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "report.md#L40-L44; results/run.log#L1",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented route reuses a prepared shared interpreter and does not create a disposable environment for each execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L40-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No environment artifact is included or tested for reconstruction; the stop record names package versions only and a host atlas cache.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "results/run.log; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived in the research object; the report points to the externally supplied common interpreter.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L38-L44; .",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment spec or runnable update process exists; no update instance can be tracked. Duplicate of must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".; report.md#L38-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The input module is clearly bounded; sources.json links all 54 files with hashes and all 54 source URLs returned HTTP 200 on the assessor host.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json; input/data/",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; source URL HEAD results in attempts/10-source-route-check.log",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The report lists input, code, result and figure relationships, but does not document reusable module interfaces or recomposition boundaries.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L31-L44; scripts/analyze_gain.py#L22-L27",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Input and generated-output paths are distinct and the script keeps them separate, but independent module-update boundaries and compatibility rules are not specified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py#L22-L27; report.md#L31-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "partial",
+      "reason": "One script composes the captured inputs and atlas into results and figures, but no composition mechanism for independently versioned modules is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze_gain.py#L22-L27; scripts/analyze_gain.py#L113-L124",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report names and links the key script, summary, participant table, permutation output and maps, giving readers a usable navigation index.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md#L31-L44",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No license file or dataset License field was found; reuse terms are unstated. This probe result is outside the pinned checklist.",
+      "evidence": [
+        {
+          "uri": ".",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; complete captured tree inspected",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No Git text blob exceeded the 10 MiB probe threshold; this is not a checklist item.",
+      "evidence": [
+        {
+          "uri": ".",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; clone-weight probe inventory",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules were recorded, so the probe had no module input state to compare.",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c; source manifest and complete input boundary",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "78d5939f13b4caeecb07a75518298c6c9c44cfd1",
+    "captured_at": "2026-10-16T15:39:57.936450+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-08-j01/canonical/manifest.json",
+      "sha256": "c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c4"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex (GPT-6)",
+    "model": "GPT-6 (exact variant not exposed by harness)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0",
+      "frozen-assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097"
+    ]
+  },
+  "scope": "Complete captured worker stop state; canonical capture c5428ad6d165740d356f7cb7db6ab3e5635c99566c48e2913a0fbccad58c01c, original HEAD 78d5939f13b4caeecb07a75518298c6c9c44cfd1; worker actions separated from coordinator resources and later preservation; one documented replay considered but not checked due undeclared external atlas prerequisite; worker project access route absent."
+}

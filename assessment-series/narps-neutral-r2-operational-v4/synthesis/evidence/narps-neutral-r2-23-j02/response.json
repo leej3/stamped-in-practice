@@ -1,0 +1,596 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All delivered files are nested in the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All maps, metadata, code and annex content are reachable within the captured root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "The delivered environment declaration includes the required Python packages.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git existed, but the worker analysis, report, environment file and results were untracked at stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "ffc6c016c1d28ebfa1e41b458d38c43a2cb3bb91337d083103ae7b271b964ce4"
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "14c6d2b2bf5345576f4758037b840c24887aacf7c5548952ed467815c61af862"
+        }
+      ],
+      "source": "probe:tree-clean",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex carries the 54 large input maps inside the capture.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Provenance records package versions, but does not identify a complete locked environment.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/provenance.json",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "b0d4b02422c93a783089eb28f8894ab2b692a7ed323b6e90223b6469916e7149"
+        },
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "yes",
+      "reason": "README documents how to run the analysis and where outputs are written.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "README names analysis/run_analysis.py as the reproduction entrypoint.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script resolves inputs and outputs relative to its project root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "environment.yml lists Python and the direct analysis packages with versions.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "README documents a shared absolute interpreter path, while broader host assumptions are not portable.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "yes",
+      "reason": "README and environment.yml identify runtime versions and required packages.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "The environment specification was present but untracked at the worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No runnable process for updating and tracking environment changes is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "Direct dependency versions are pinned, but there is no transitive lock or complete captured environment.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "content/workspace/results/provenance.json",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "b0d4b02422c93a783089eb28f8894ab2b692a7ed323b6e90223b6469916e7149"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker publication or retrieval route for the environment specification is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "eb164ee279d1b514f63d4a745f9adf53157cc38a0a870d485b518342c04b6e23"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "README gives the shared-interpreter command and mentions a task-local environment, but no install command.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "The worker-created analysis and outputs were not tracked by Git at stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "ffc6c016c1d28ebfa1e41b458d38c43a2cb3bb91337d083103ae7b271b964ce4"
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "14c6d2b2bf5345576f4758037b840c24887aacf7c5548952ed467815c61af862"
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "Attempt logs show iterative runs, but not a regular testing process.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/attempts/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "824583e214fc9751d197b4f1f3873fde43da3707a801ccd3f35c1bc618d87ba8"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, analysis, results and environment have separate paths, without distinct component boundaries.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4b171cdf329b1a4b930da697bfed3fd18d27e2cb92a7d341c26b261c1f56c3e6"
+        }
+      ],
+      "source": "probe:modules-separated",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: the delivered project identifies no restricted data or software component.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "Worker records do not establish a test in a fresh container, job, VM or cloud host.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/attempts/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "824583e214fc9751d197b4f1f3873fde43da3707a801ccd3f35c1bc618d87ba8"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The documented workflow uses a shared prepared interpreter and does not spawn disposable environments.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": null,
+      "reason": "No worker record shows regular environment reconstruction.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/attempts/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "824583e214fc9751d197b4f1f3873fde43da3707a801ccd3f35c1bc618d87ba8"
+        },
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "A direct-dependency environment file is present; no complete environment artifact is archived.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No environment update process with tracked updates is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "content/workspace/environment.yml",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: no independently maintained project component requires a submodule or subdataset link.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "yes",
+      "reason": "README and protocol explain the input, analysis, output and their relationship.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4b171cdf329b1a4b930da697bfed3fd18d27e2cb92a7d341c26b261c1f56c3e6"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Inputs, code and results can be updated separately, but no formal module interface is defined.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "content/workspace/analysis/run_analysis.py",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": null,
+      "reason": "N/A: no independently maintained modules need composition.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README contents list and links help a researcher navigate the project.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical original capture artifact; see item rationale.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "767f76ed3d12c3a7ff9fb23989358c768b301bc5",
+    "captured_at": "2026-10-16T15:28:19.117232+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-23-j02/canonical/manifest.json",
+      "sha256": "9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490"
+    }
+  },
+  "assessor": {
+    "skill": "frozen-independent-assessment",
+    "version": "1",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "note": "Frozen external assessor/runtime pinned by assessment-version.json; runner check passed.",
+    "dependencies": [
+      "frozen-assessment@9852d8360f9519d21d11099b45f5deb8ba80cb28"
+    ]
+  },
+  "scope": "Complete stopped workspace; canonical original capture; one complete-delivery replay; no worker retrieval route found."
+}

@@ -1,0 +1,699 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All supplied inputs, analysis code, and outputs are contained under the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/participants.tsv",
+          "description": "Supplied participant cohort metadata for the 54 equal-indifference participants.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/results/summary.json",
+          "description": "Generated worker summary; shipped result, not replay evidence.",
+          "sha256": "858c897f87e6c5064975a48663e8839367d3e94f3a28462723bc7c81c4e585e5"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The 54 maps and metadata are delivered under input/ and the script reads them from the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Supplied source map inventory, paths, checksums, and source provenance.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "input/participants.tsv",
+          "description": "Supplied participant cohort metadata for the 54 equal-indifference participants.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "External libraries are named, but no software environment or linked software component is delivered.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git tracks the supplied inputs, but worker analysis code and outputs were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": ".git/config",
+          "description": "Worker-stop Git configuration; no remote is configured.",
+          "sha256": "dfb77a538576f4d6d7bf4d50b18ef4a114dba4062e2a867614704f5f6375aa79"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "Git-annex carries the 54 binary maps while source metadata retains their checksums.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Representative retained relative annex link; the source inventory enumerates all 54 maps and checksums.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Supplied source map inventory, paths, checksums, and source provenance.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The run used an external interpreter and lists package versions, but no exact environment specification links the action to these results.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The report gives a run command and package versions, but no installation or environment setup instructions.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report names scripts/group_analysis.py as the reproduction entrypoint, and the script reads local inputs and writes outputs.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script derives paths from its own location and uses workspace-relative input/output paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "probe:no-abs-paths",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "The report lists versions, but the workspace has no dependency specification that installs them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The documented route relies on an external host environment and Nilearn template resources without documenting host or network requirements.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "No README or environment specification gives complete system requirements and dependencies.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        }
+      ],
+      "source": "probe:entry-point+probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is included in the captured workspace.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No environment specification or tracked update process is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "The listed package versions are not a frozen environment specification that can reconstitute the run.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No environment specification or worker publication route is provided.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        },
+        {
+          "uri": ".git/config",
+          "description": "Worker-stop Git configuration; no remote is configured.",
+          "sha256": "dfb77a538576f4d6d7bf4d50b18ef4a114dba4062e2a867614704f5f6375aa79"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report points to a machine-specific interpreter path but does not explain how to obtain the environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git and annex version the supplied data, but code and derived results are outside the worker commit.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Representative retained relative annex link; the source inventory enumerates all 54 maps and checksums.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "The stop record shows a final run and earlier debugging, but does not establish regular testing beyond this captured session.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "input/, scripts/, and output/ are distinct, but no environment module is included.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/participants.tsv",
+          "description": "Supplied participant cohort metadata for the 54 equal-indifference participants.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/results/summary.json",
+          "description": "Generated worker summary; shipped result, not replay evidence.",
+          "sha256": "858c897f87e6c5064975a48663e8839367d3e94f3a28462723bc7c81c4e585e5"
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: the supplied inputs are publicly sourced and the stopped workspace contains no identified restricted component.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Source inventory identifies the supplied public OpenNeuro/NeuroVault inputs.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "The recorded execution used a shared host environment; no fresh container, clean VM, batch, or cloud run is recorded.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The recorded workflow uses an existing external environment path, with no disposable environment creation mechanism.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a14552-3bce-7273-bef7-ad8341e9d1ef/full.jsonl",
+          "description": "Worker-stop session transcript with script invocations and the external interpreter path.",
+          "sha256": "83cffc2f028734d767175e6c3f8694da32a4a3a86ed7f6943c472474116b2f34"
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No exact environment specification or reconstitution test is included.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived in the workspace.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No process for updating environment specifications is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen assessor probe output; findings are cross-checked against the complete stopped workspace."
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: there are no independently maintained project components; the supplied maps are data inputs and Python libraries are runtime dependencies.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Supplied source map inventory, paths, checksums, and source provenance.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report names the script and output locations, but does not explain module relationships or recombination.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Inputs, code, and results occupy separate directories, but no interface or contract supports independent updates.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Supplied source map inventory, paths, checksums, and source provenance.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/results/summary.json",
+          "description": "Generated worker summary; shipped result, not replay evidence.",
+          "sha256": "858c897f87e6c5064975a48663e8839367d3e94f3a28462723bc7c81c4e585e5"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "The single documented analysis script composes local input maps into the reported result and figure directories.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "Group analysis script; uses the workspace root to access input/ and write output/.",
+          "sha256": "a6e6dee319d4da34bedb13adcd4777c88e19af0afa80cadafe957203dcfa0ffe"
+        },
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report links the analysis script, summary, results, and figures for navigation.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "output/report.md",
+          "description": "Worker scientific report, including result, interpretation, and reproduction description.",
+          "sha256": "16a6b545838d376e1cac628bea3afce710ce2bf5b45e2e54f29ce5717998c71e"
+        },
+        {
+          "uri": "output/results/summary.json",
+          "description": "Generated worker summary; shipped result, not replay evidence.",
+          "sha256": "858c897f87e6c5064975a48663e8839367d3e94f3a28462723bc7c81c4e585e5"
+        },
+        {
+          "uri": "output/figures/whole_brain_t_map.png",
+          "description": "Worker-shipped figure shows positive whole-brain max-T corrected voxels; not replay evidence.",
+          "sha256": "2de1999b71548204594ebf909e590eb44507c8cc669733195c8556aedde07055"
+        },
+        {
+          "uri": "output/figures/vmPFC_participant_estimates.png",
+          "description": "Worker-shipped descriptive participant-level ROI plot; not replay evidence.",
+          "sha256": "f9567c15c207dd991f0d3957b5f3b7e6ae1c1aa6d5357bdb80ff8a926afd2cb0"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "c341bb810566ffec5a12747e921f38c28c618b4a",
+    "captured_at": "2026-10-16T15:56:31+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-01-j02/canonical/manifest.json",
+      "sha256": "21b5f53f9cbc01dce2bc961e06a436fa5fbeae8a6e8118d53866c2a0ccfb014d"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.2.0"
+    ]
+  },
+  "scope": "Complete worker-stop assessment; replay not checked because no installable environment specification was delivered."
+}

@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r2-15",
+  "extracted_at_utc": "2026-10-16T15:43:06.048972+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 89,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "PDF skill installed and read; attempted PDF text extraction did not produce text",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "catalog_count": 39,
+    "notes": [
+      "Listed curated catalog, selected and installed PDF locally. An incomplete shell command returned2 before reading the skill; the corrected command printed its instructions.",
+      "Later attempted PDF extraction left the text path unavailable; outer shell exit0 does not establish extraction success."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 11,
+        "item_id": "item_5",
+        "event_sha256": "2874e828baf8a63640036534d65c1ad9cc43b8becf192e55a96256775feab294",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-e0nb04go/skills/.system/skill-installer/SKILL.md && rg --files input | tail -10 && rg --files | head -20'",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\ninput/participants.tsv\ninput/upstream-methods.md\ninput/study-task.md\ninput/sources.json\ninput/participants.tsv\ninput/upstream-methods.md\ninput/study-task.md\ninput/sources.json\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog": [
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "ac11cd3aa7c9cbc4917a3e4d8fdef4fdda4c0bb3b65de07aac5957939fff0f36",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'ls -la input && find . -maxdepth 3 -type d -print && git status --short --branch && python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-e0nb04go/skills/.system/skill-installer/scripts/list-skills.py --format json'",
+            "aggregated_output": "total 64\ndrwxr-xr-x@  7 johnlee  staff    224 Oct 16 11:30 .\ndrwxr-xr-x@  6 johnlee  staff    192 Oct 16 11:31 ..\ndrwxr-xr-x@ 56 johnlee  staff   1792 Oct 16 11:31 data\n-rw-r--r--@  1 johnlee  staff   1706 Oct 16 11:30 participants.tsv\n-rw-r--r--@  1 johnlee  staff  19843 Oct 16 11:30 sources.json\n-rw-r--r--@  1 johnlee  staff   1483 Oct 16 11:30 study-task.md\n-rw-r--r--@  1 johnlee  staff   1342 Oct 16 11:30 upstream-methods.md\n.\n./input\n./input/data\n./.codex\n./.git\n./.git/objects\n./.git/objects/61\n./.git/objects/0d\n./.git/objects/95\n./.git/objects/59\n./.git/objects/92\n./.git/objects/0c\n./.git/objects/66\n./.git/objects/3e\n./.git/objects/68\n./.git/objects/57\n./.git/objects/6f\n./.git/objects/03\n./.git/objects/9b\n./.git/objects/9e\n./.git/objects/04\n./.git/objects/6a\n./.git/objects/35\n./.git/objects/69\n./.git/objects/51\n./.git/objects/3d\n./.git/objects/58\n./.git/objects/67\n./.git/objects/0b\n./.git/objects/93\n./.git/objects/94\n./.git/objects/0e\n./.git/objects/5f\n./.git/objects/33\n./.git/objects/05\n./.git/objects/9d\n./.git/objects/9c\n./.git/objects/02\n./.git/objects/a4\n./.git/objects/a3\n./.git/objects/b5\n./.git/objects/b2\n./.git/objects/d9\n./.git/objects/ac\n./.git/objects/bb\n./.git/objects/d7\n./.git/objects/d0\n./.git/objects/be\n./.git/objects/b3\n./.git/objects/df\n./.git/objects/da\n./.git/objects/b4\n./.git/objects/a2\n./.git/objects/a5\n./.git/objects/bd\n./.git/objects/d1\n./.git/objects/d6\n./.git/objects/bc\n./.git/objects/ae\n./.git/objects/e5\n./.git/objects/e2\n./.git/objects/f4\n./.git/objects/f3\n./.git/objects/c0\n./.git/objects/ee\n./.git/objects/fd\n./.git/objects/f2\n./.git/objects/f5\n./.git/objects/e3\n./.git/objects/cf\n./.git/objects/e4\n./.git/objects/fe\n./.git/objects/c8\n./.git/objects/fb\n./.git/objects/ed\n./.git/objects/c6\n./.git/objects/ec\n./.git/objects/4e\n./.git/objects/20\n./.git/objects/27\n./.git/objects/4b\n./.git/objects/pack\n./.git/objects/11\n./.git/objects/7d\n./.git/objects/7c\n./.git/objects/16\n./.git/objects/42\n./.git/objects/89\n./.git/objects/45\n./.git/objects/73\n./.git/objects/87\n./.git/objects/80\n./.git/objects/74\n./.git/objects/1a\n./.git/objects/28\n./.git/objects/17\n./.git/objects/7b\n./.git/objects/8f\n./.git/objects/8a\n./.git/objects/7e\n./.git/objects/10\n./.git/objects/19\n./.git/objects/4c\n./.git/objects/4d\n./.git/objects/75\n./.git/objects/86\n./.git/objects/44\n./.git/objects/2a\n./.git/objects/2f\n./.git/objects/43\n./.git/objects/88\n./.git/objects/6b\n./.git/objects/07\n./.git/objects/00\n./.git/objects/6e\n./.git/objects/9a\n./.git/objects/5c\n./.git/objects/09\n./.git/objects/5d\n./.git/objects/31\n./.git/objects/info\n./.git/objects/91\n./.git/objects/65\n./.git/objects/62\n./.git/objects/96\n./.git/objects/3a\n./.git/objects/54\n./.git/objects/53\n./.git/objects/3f\n./.git/objects/30\n./.git/objects/5e\n./.git/objects/5b\n./.git/objects/37\n./.git/objects/08\n./.git/objects/6d\n./.git/objects/01\n./.git/objects/06\n./.git/objects/6c\n./.git/objects/99\n./.git/objects/52\n./.git/objects/55\n./.git/objects/97\n./.git/objects/63\n./.git/objects/0f\n./.git/objects/64\n./.git/objects/90\n./.git/objects/bf\n./.git/objects/d3\n./.git/objects/d4\n./.git/objects/ba\n./.git/objects/a0\n./.git/objects/a7\n./.git/objects/b8\n./.git/objects/b1\n./.git/objects/dd\n./.git/objects/dc\n./.git/objects/b6\n./.git/objects/a9\n./.git/objects/d5\n./.git/objects/d2\n./.git/objects/aa\n./.git/objects/b7\n./.git/objects/db\n./.git/objects/a8\n./.git/objects/b0\n./.git/objects/a6\n./.git/objects/b9\n./.git/objects/a1\n./.git/objects/ef\n./.git/objects/c3\n./.git/objects/ea\n./.git/objects/e1\n./.git/objects/cc\n./.git/objects/e6\n./.git/objects/f9\n./.git/objects/f0\n./.git/objects/f7\n./.git/objects/e8\n./.git/objects/fa\n./.git/objects/ff\n./.git/objects/c5\n./.git/objects/c2\n./.git/objects/f6\n./.git/objects/e9\n./.git/objects/f1\n./.git/objects/e7\n./.git/objects/cb\n./.git/objects/f8\n./.git/objects/ce\n./.git/objects/e0\n./.git/objects/2c\n./.git/objects/79\n./.git/objects/2d\n./.git/objects/83\n./.git/objects/77\n./.git/objects/48\n./.git/objects/70\n./.git/objects/1e\n./.git/objects/84\n./.git/objects/24\n./.git/objects/23\n./.git/objects/4f\n./.git/objects/8d\n./.git/objects/12\n./.git/objects/8c\n./.git/objects/85\n./.git/objects/1d\n./.git/objects/71\n./.git/objects/76\n./.git/objects/82\n./.git/objects/49\n./.git/objects/40\n./.git/objects/2e\n./.git/objects/2b\n./.git/objects/47\n./.git/objects/78\n./.git/objects/8b\n./.git/objects/13\n./.git/objects/7f\n./.git/objects/14\n./.git/objects/8e\n./.git/objects/22\n./.git/objects/25\n./.git/annex\n./.git/annex/journal\n./.git/annex/fsck\n./.git/annex/objects\n./.git/annex/keysdb\n./.git/annex/othertmp\n./.git/info\n./.git/entire-sessions\n./.git/logs\n./.git/logs/refs\n./.git/hooks\n./.git/entire-session-locks\n./.git/refs\n./.git/refs/annex\n./.git/refs/heads\n./.git/refs/tags\n./.entire\n./.entire/logs\n./.entire/tmp\n./.entire/metadata\n./.entire/metadata/01a14556-ab98-7400-8889-e3f7468e6317\n## codex/narps-neutral-r2-15\n[{\"name\": \"aspnet-core\", \"installed\": false}, {\"name\": \"chatgpt-apps\", \"installed\": false}, {\"name\": \"cli-creator\", \"installed\": false}, {\"name\": \"cloudflare-deploy\", \"installed\": false}, {\"name\": \"define-goal\", \"installed\": false}, {\"name\": \"figma\", \"installed\": false}, {\"name\": \"figma-code-connect-components\", \"installed\": false}, {\"name\": \"figma-create-design-system-rules\", \"installed\": false}, {\"name\": \"figma-create-new-file\", \"installed\": false}, {\"name\": \"figma-generate-design\", \"installed\": false}, {\"name\": \"figma-generate-library\", \"installed\": false}, {\"name\": \"figma-implement-design\", \"installed\": false}, {\"name\": \"figma-use\", \"installed\": false}, {\"name\": \"gh-address-comments\", \"installed\": false}, {\"name\": \"gh-fix-ci\", \"installed\": false}, {\"name\": \"hatch-pet\", \"installed\": false}, {\"name\": \"jupyter-notebook\", \"installed\": false}, {\"name\": \"linear\", \"installed\": false}, {\"name\": \"migrate-to-codex\", \"installed\": false}, {\"name\": \"netlify-deploy\", \"installed\": false}, {\"name\": \"notion-knowledge-capture\", \"installed\": false}, {\"name\": \"notion-meeting-intelligence\", \"installed\": false}, {\"name\": \"notion-research-documentation\", \"installed\": false}, {\"name\": \"notion-spec-to-implementation\", \"installed\": false}, {\"name\": \"openai-docs\", \"installed\": false}, {\"name\": \"pdf\", \"installed\": false}, {\"name\": \"playwright\", \"installed\": false}, {\"name\": \"playwright-interactive\", \"installed\": false}, {\"name\": \"render-deploy\", \"installed\": false}, {\"name\": \"screenshot\", \"installed\": false}, {\"name\": \"security-best-practices\", \"installed\": false}, {\"name\": \"security-ownership-map\", \"installed\": false}, {\"name\": \"security-threat-model\", \"installed\": false}, {\"name\": \"sentry\", \"installed\": false}, {\"name\": \"speech\", \"installed\": false}, {\"name\": \"transcribe\", \"installed\": false}, {\"name\": \"vercel-deploy\", \"installed\": false}, {\"name\": \"winui-app\", \"installed\": false}, {\"name\": \"yeet\", \"installed\": false}]\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "selection_rationale": [
+      {
+        "line": 16,
+        "item_id": "item_8",
+        "event_sha256": "fbac5e85f3279f993995103941bff70e7726773f15e63ea4f721cf16c5f19f31",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "agent_message",
+            "text": "The 54 NIfTI files are present as Git-annex links and resolve locally. The curated skill catalog has no neuroimaging/statistics skill, but it does include a PDF skill that fits reviewing the original instructions; I\u2019m installing that into this workspace so it does not alter shared configuration."
+          }
+        }
+      }
+    ],
+    "install": [
+      {
+        "line": 18,
+        "item_id": "item_9",
+        "event_sha256": "7c3fa15523ce6e814b2d65fb98e5e3f1674b29bf5cb2ec1900cc560476389738",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-e0nb04go/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/pdf --dest .codex/skills'",
+            "aggregated_output": "Installed pdf to .codex/skills/pdf\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "failed_load_command": [
+      {
+        "line": 20,
+        "item_id": "item_10",
+        "event_sha256": "3e45bd59d795f655c5e97515a5a2fd710d8943c3b6c4138b80593e032b73fce4",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_10",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat .codex/skills/pdf/SKILL.md && find input/data -type l | wc -l &&'",
+            "aggregated_output": "/opt/homebrew/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+            "exit_code": 2,
+            "status": "failed"
+          }
+        }
+      }
+    ],
+    "loaded": [
+      {
+        "line": 22,
+        "item_id": "item_11",
+        "event_sha256": "092a86d4e8cf3d62e73f65c2899c9048fa72501e7373f8d91a142af2afe69d28",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_11",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat .codex/skills/pdf/SKILL.md && find input/data -type l | wc -l'",
+            "aggregated_output": "---\nname: \"pdf\"\ndescription: \"Use when tasks involve reading, creating, or reviewing PDF files where rendering and layout matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and extraction.\"\n---\n\n\n# PDF Skill\n\n## When to use\n- Read or review PDF content where layout and visuals matter.\n- Create PDFs programmatically with reliable formatting.\n- Validate final rendering before delivery.\n\n## Workflow\n1. Prefer visual review: render PDF pages to PNGs and inspect them.\n   - Use `pdftoppm` if available.\n   - If unavailable, install Poppler or ask the user to review the output locally.\n2. Use `reportlab` to generate PDFs when creating new documents.\n3. Use `pdfplumber` (or `pypdf`) for text extraction and quick checks; do not rely on it for layout fidelity.\n4. After each meaningful update, re-render pages and verify alignment, spacing, and legibility.\n\n## Temp and output conventions\n- Use `tmp/pdfs/` for intermediate files; delete when done.\n- Write final artifacts under `output/pdf/` when working in this repo.\n- Keep filenames stable and descriptive.\n\n## Dependencies (install if missing)\nPrefer `uv` for dependency management.\n\nPython packages:\n```\nuv pip install reportlab pdfplumber pypdf\n```\nIf `uv` is unavailable:\n```\npython3 -m pip install reportlab pdfplumber pypdf\n```\nSystem tools (for rendering):\n```\n# macOS (Homebrew)\nbrew install poppler\n\n# Ubuntu/Debian\nsudo apt-get install -y poppler-utils\n```\n\nIf installation isn't possible in this environment, tell the user which dependency is missing and how to install it locally.\n\n## Environment\nNo required environment variables.\n\n## Rendering command\n```\npdftoppm -png $INPUT_PDF $OUTPUT_PREFIX\n```\n\n## Quality expectations\n- Maintain polished visual design: consistent typography, spacing, margins, and section hierarchy.\n- Avoid rendering issues: clipped text, overlapping elements, broken tables, black squares, or unreadable glyphs.\n- Charts, tables, and images must be sharp, aligned, and clearly labeled.\n- Use ASCII hyphens only. Avoid U+2011 (non-breaking hyphen) and other Unicode dashes.\n- Citations and references must be human-readable; never leave tool tokens or placeholder strings.\n\n## Final checks\n- Do not deliver until the latest PNG inspection shows zero visual or formatting defects.\n- Confirm headers/footers, page numbering, and section transitions look polished.\n- Keep intermediate files organized or remove them after final approval.\n      54\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "pdf_attempt": [
+      {
+        "line": 28,
+        "item_id": "item_14",
+        "event_sha256": "cee0dbdc6cb2490b6b6cf44ef3204ae9897c86006e3a9811716b7dcf33eb3200",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_14",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"mkdir -p tmp/pdfs && curl -L --max-time 60 'https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf' -o tmp/pdfs/narps_instructions.pdf && file tmp/pdfs/narps_instructions.pdf && (pdftotext -layout tmp/pdfs/narps_instructions.pdf tmp/pdfs/narps_instructions.txt || true) && rg -n -i -C 3 'whole.brain|correct|vmPFC|ventromedial|voxel|family' tmp/pdfs/narps_instructions.txt | head -120\"",
+            "aggregated_output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:11 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:12 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:13 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:14 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:15 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:16 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:17 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:18 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:19 --:--:--     0\r100    16    0    16    0     0      0      0 --:--:--  0:00:19 --:--:--     3\ntmp/pdfs/narps_instructions.pdf: ASCII text\n/opt/homebrew/bin/bash: line 1: pdftotext: command not found\nrg: tmp/pdfs/narps_instructions.txt: IO error for operation on tmp/pdfs/narps_instructions.txt: No such file or directory (os error 2)\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/events.jsonl",
+      "sha256": "fa4e702946a14eaed5c7c6e5e51b07858139d4c428038df944c11ba23e413758",
+      "bytes": 111190
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/launch.json",
+      "sha256": "998bf7137308b9ae5d18dbcd3bf661d866094bd5e7b985407e32ab98a8b7ee81",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/result.json",
+      "sha256": "17af83c4773ae79dffff51d22d0b0cfdadb4eb64103064c18045ec98c354faba",
+      "bytes": 6407
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/worker-end-state.json",
+      "sha256": "a0bbbe31a545341523d8c75c7cd6f5662f49ea6290ad460788b68f6826ce044e",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/skill-observations.json",
+      "sha256": "d32c5e84570d82b7fdd91be1a3ed67dcaeb76c02fa4f2bd7149c0294b0a0ff3e",
+      "bytes": 1746
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/condition-assignment.json",
+      "sha256": "fbfd786290bf02b0ccc75e313bb920fe7b3b0c5adaceb891d04c4298635053be",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-15/attempt-01/native/prompt-preflight.json",
+      "sha256": "a6503780c98093e57c8982b0b3f714bda16e7dde5f7d9297e9bb79428a80d93b",
+      "bytes": 2120
+    }
+  ]
+}

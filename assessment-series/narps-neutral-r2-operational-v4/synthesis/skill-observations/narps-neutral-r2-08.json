@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r2-08",
+  "extracted_at_utc": "2026-10-16T15:43:06.051925+00:00",
+  "assigned_condition": "baseline",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 84,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": false,
+    "installation": false,
+    "loaded": false,
+    "application": "not observed; attempted execution of an imagegen instruction path does not establish reading or use",
+    "notes": [
+      "A command attempted to execute imagegen/SKILL.md with output discarded. The combined command continued to an unrelated PDF fetch. No instruction text or successful skill invocation is observed.",
+      "No skill discovery or installation action is observed. Runtime availability is not use."
+    ]
+  },
+  "evidence": {
+    "runtime_warning": [
+      {
+        "line": 2,
+        "item_id": "item_0",
+        "event_sha256": "8476336e85181333cd197d54503e633039d0f96c2c16cf69ad3efc1588b18aa6",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_0",
+            "type": "error",
+            "message": "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-x7c21may/config.toml."
+          }
+        }
+      }
+    ],
+    "discarded_skill_path_attempt": [
+      {
+        "line": 30,
+        "item_id": "item_15",
+        "event_sha256": "dc7b0c5bde1e295e542a64ef51241d4b8d196bf34dfc4c03a3f9578eb4283e8f",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_15",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-x7c21may/skills/.system/imagegen/SKILL.md >/dev/null 2>&1; python - <<'PY'\nimport urllib.request\nu='https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf'\nr=urllib.request.Request(u,headers={'User-Agent':'Mozilla/5.0'})\ntry:\n d=urllib.request.urlopen(r,timeout=30).read(); print(len(d),d[:8]); open('results/narps_instructions.pdf','wb').write(d)\nexcept Exception as e: print(type(e).__name__,e)\nPY\npdftotext -layout results/narps_instructions.pdf results/narps_instructions.txt 2>/dev/null || true\nrg -n -i 'whole.brain|hypothesis 1|vmPFC|multiple comparisons|equal.indifference' results/narps_instructions.txt | head -30\"",
+            "aggregated_output": "HTTPError HTTP Error 522: <none>\nrg: results/narps_instructions.txt: IO error for operation on results/narps_instructions.txt: No such file or directory (os error 2)\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/events.jsonl",
+      "sha256": "ba826d0e9ed1bc712007e45cef966ccb7b2d15aa5c1923b41499adf5a94a6087",
+      "bytes": 104373
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/launch.json",
+      "sha256": "d46aec5d6cf9cd819bb8f0f5f5ee1ed692e65845166b99d25d4cb5400b0071b0",
+      "bytes": 5590
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/result.json",
+      "sha256": "6407943d906dabb5d6db03ffd1a145f7dac3495bc90aabb52d4215f5daa4a7ee",
+      "bytes": 6399
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/worker-end-state.json",
+      "sha256": "822946ca93ec6693eb1095e79e6aeef982d2301aa758c71fd57f2ee518440c9b",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/skill-observations.json",
+      "sha256": "a7f9c8bfa79911b1063edb104cff72942223de419f6f6b2d465e06679014fbde",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/condition-assignment.json",
+      "sha256": "ba28603f256ba0355831de6819072976416789b63e368ec1aef6fc31b4d9967f",
+      "bytes": 545
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r2-08/attempt-01/native/prompt-preflight.json",
+      "sha256": "071b3dad8d973245a33b2295eb836029d7757446776254e560e7a41bfdf3bc44",
+      "bytes": 2112
+    }
+  ]
+}

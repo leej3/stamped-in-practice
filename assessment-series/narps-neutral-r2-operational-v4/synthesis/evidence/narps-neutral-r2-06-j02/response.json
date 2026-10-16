@@ -1,0 +1,416 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered paths are within the workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace",
+          "description": "complete workspace boundary",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 maps and metadata are included under input/ and the analysis resolves them locally.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/input",
+          "description": "54 supplied participant maps, metadata and provenance",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Dependencies are listed, but no installable environment declaration or linked software is delivered.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "lists packages but not an installable specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "At worker stop, code, documentation, figures and results remained untracked outside Git.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/code",
+          "description": "untracked at worker stop; see operational Git status",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large participant maps are carried by git-annex pointers.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/input/data",
+          "description": "54 annex-backed maps",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Run metadata records package versions and input hashes, but no exact environment specification is linked to the outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/results/run_metadata.json",
+          "description": "records software versions without a locked environment identity",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "The report provides setup context and a directly runnable command under Reproduction.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/report/report.md",
+          "description": "Reproduction section gives invocation",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report names code/analyze.py as the reproducible starting point; the script drives the group analysis.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/code/analyze.py",
+          "description": "main group-analysis entrypoint; report documents command",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Analysis paths are resolved relative to the workspace rather than hardcoded input/output paths.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/code/analyze.py",
+          "description": "ROOT-relative paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The external common environment is named, but dependencies are not declared in a delivered environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "dependency list only",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Python and macOS are documented, but host requirements and system libraries are not fully specified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "documents interpreter, OS and platform",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report lists package versions and platform, but gives no complete installable system requirement specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "package versions and host listed",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the worker-stop versioned tree.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "untracked prose, no tracked environment declaration",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No command or process for updating environment specifications is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "no environment update procedure",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "Exact environment lock or container identity is absent; listed package versions do not pin a reconstructable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "shared environment reference without lock",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published environment artifact or access route is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "host-local shared environment path",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "partial",
+      "reason": "A report gives a machine-specific invocation but no instructions to obtain the environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/report/report.md",
+          "description": "run command; environment.md=external path",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "unmet",
+      "reason": "The analysis and its outputs were untracked at stop, so Git did not cover all project components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/code",
+          "description": "untracked code and results at stop",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "A final run and independent numerical validation are reported, but no recurring test schedule or history is shown.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/report/validation.md",
+          "description": "final run and cross-check reported",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code, results and figures have distinct directories; environment documentation remains at the root and is not a specification.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace",
+          "description": "inputs, code, results and figures separated; environment only prose",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: supplied public research data and code show no restricted component requiring isolation.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/input/sources.json",
+          "description": "public NeuroVault and OpenNeuro source references",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "Worker records describe a run in the shared host environment, not a fresh container, job or clean machine.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "shared common environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The workflow uses a shared pre-existing environment rather than a disposable environment per run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "shared common environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute or test regularly.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "no lock or container declaration",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "The environment is not archived with the research object; documentation points to a shared host path.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "external environment path",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/environment.md",
+          "description": "no update process",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained project components are declared; the maps are inputs, not subprojects.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/protocol.md",
+          "description": "single-object input/code/output workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "Protocol and report explain the roles of inputs, analysis code, derived results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/protocol.md",
+          "description": "analysis scope and output organization",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories separate inputs, code and outputs, but no interfaces or independent update boundaries are documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/protocol.md",
+          "description": "workflow roles described",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivery has one research workflow and no independently composable modules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/protocol.md",
+          "description": "single workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "Protocol and report document the paths and roles needed to navigate the delivered analysis.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be#content/workspace/report/report.md",
+          "description": "links figures, code, results and data sources",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "78d5939f13b4caeecb07a75518298c6c9c44cfd1",
+    "captured_at": "2026-10-16T15:36:32.611449+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-06-j02/canonical/manifest.json",
+      "sha256": "200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be"
+    }
+  },
+  "assessor": {
+    "skill": "frozen external STAMPED assessor",
+    "version": "source commit 9852d8360f9519d21d11099b45f5deb8ba80cb28; environment commit 3552d5003a2485b6405805236d5c54e7ed42f097",
+    "harness": "OpenAI Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assessment-runner@9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097"
+    ]
+  },
+  "scope": "Independent assessment of the complete worker-stop delivery through the unchanged operational copy; scientific evidence cited to canonical capture SHA-256 200c46ed7c6fb6320bec58e218778c6d7e426d286019e27eca034e3bb18915be. Original HEAD is preserved in object.commit. One documented complete-delivery replay was run from a fresh copy; no worker-declared project publication/retrieval route was available to test. Coordinator preservation is not worker credit."
+}

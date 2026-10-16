@@ -1,0 +1,660 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "The stopped workspace is a single project root containing its inputs, code, results, report and protocol. Capture evidence: root-level REPORT.md and protocol/protocol.md.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Root-level report inside the common workspace.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Project protocol inside the same workspace root.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The analysis script reads input/data maps through project-relative paths; the maps are relative annex links whose targets are retained under the same workspace .git.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Loads declared maps under the project input directory.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "Identifies 54 map sources and metadata.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Relative symlink into captured workspace annex objects.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Scientific software is referenced as an installed external Python environment; no software source or environment is included/linked as a submodule in the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Names a pre-existing external Python interpreter and packages rather than an in-project software module.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Git is present, but the main code, report, protocol, figures and results were uncommitted at worker stop; Git did not track the complete research state.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/HEAD",
+          "description": "Captured worker-stop HEAD.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/index",
+          "description": "Captured worker-stop index.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Present in complete capture but untracked in operational-copy status.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Present in complete capture but untracked in operational-copy status.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Present in complete capture but untracked in operational-copy status.",
+          "sha256": null
+        },
+        {
+          "uri": "observation:probes.json",
+          "description": "Frozen tree-clean probe reports uncommitted REPORT.md, code/, figures/, protocol/ and results/.",
+          "sha256": null
+        },
+        {
+          "uri": "observation:commands/003-probes.stdout.txt",
+          "description": "Probe output retained in this assessment.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large participant maps use Git-annex pointers; captured object targets are retained within the workspace and no large map blobs are stored directly in Git.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Annex pointer symlink for a participant map.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/config",
+          "description": "Captured annex configuration.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "Lists the 54 supplied participant maps.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "The report/run record identify the interpreter and most package versions, but there is no exact tracked environment specification linked to the run.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/run_record.txt",
+          "description": "Records Python/package versions and command; its environment details are not a complete lock or specification.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Provides package versions and an absolute interpreter path.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Documents the external environment used.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "REPORT.md documents a reproduction command and points to the script, but supplies no installation instructions or README/Makefile usage guide.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Contains the commands and file references needed to invoke the analysis, without an installation guide.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report names code/run_analysis.py as the executable entrypoint and gives its command.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Names the entrypoint and gives a runnable command.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Identifies code/run_analysis.py as the executable entry point.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Documented analysis script.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis code derives its root from __file__ and uses project-relative input/output paths; the host-specific interpreter path appears in documentation, not as a hard-coded data/code path.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Uses paths relative to the script's project root.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Documents the absolute interpreter prerequisite separately from analysis paths.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Dependencies are named and versioned in documentation, but no included environment specification declares all software dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Lists Python packages but refers to an external pre-installed environment.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Names package versions without an environment lock/specification.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Some environment assumptions are explicit (absolute interpreter location and package versions), but host OS/system requirements and portability assumptions are not fully documented.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Documents an absolute interpreter path and selected package versions, but not OS/system requirements.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Uses the same host-specific interpreter route.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "Python and scientific package versions are listed, but there is no complete requirements list or installation/system setup guide.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Names Python and scientific libraries.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Gives reproduction commands but no system/dependency installation steps.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the captured project/version control state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Refers to a supplied external interpreter and packages.",
+          "sha256": null
+        },
+        {
+          "uri": "observation:probes.json",
+          "description": "Frozen environment-spec probe found no tracked lockfile/container definition/registration.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or tracked update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "No environment update workflow is described.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "No update procedure is described.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No pinned environment specification or frozen package manifest is included for exact reconstruction.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Lists package versions but does not include a lock or image digest.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/run_record.txt",
+          "description": "Names the Python and package environment but is not a reconstructable specification.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-shared environment specification or environment archive is recorded at stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Points to a host-local supplied interpreter, not a shared environment artifact.",
+          "sha256": null
+        },
+        {
+          "uri": "observation:probes.json",
+          "description": "Frozen probe found no tracked environment specification or publication.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The documentation gives a local interpreter path but no route to obtain a portable environment specification or instructions for using one.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Reproduction instructions depend on a host-specific absolute interpreter path.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "No environment acquisition or installation instructions.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "Git and Git-annex are used in the same project for text/code state and large input maps.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/HEAD",
+          "description": "Captured Git repository state.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/config",
+          "description": "Annex configuration is present.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Annex-managed map link.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "A numerical validation script and a worker validation result exist, but no repeated/regular testing schedule or CI record is present.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/validate_results.py",
+          "description": "Independent numerical checks are implemented.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/validation.json",
+          "description": "Worker-shipped validation passed once.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Describes the validation performed.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code, results/figures and protocol occupy distinct directories, but the environment is not a separate project module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "Input module.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Code module.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/summary.json",
+          "description": "Derived output module.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Protocol module; no environment module is supplied.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the complete captured object has no restricted data or software; all disclosed source inputs are public.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "Documents public NeuroVault/OpenNeuro provenance.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/study-task.md",
+          "description": "Describes the supplied scientific inputs; no access restriction is declared.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "The worker stop state shows a local validation run but no clean-container, batch, VM, or cloud workflow test.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Specifies a pre-existing local environment, not a clean execution environment.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/run_record.txt",
+          "description": "Records a local interpreter command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented workflow relies on a supplied pre-installed environment and does not spawn disposable environments.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Names use of an existing absolute-path Python environment.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "There is no exact environment specification whose reconstitution is tested.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "No lock or image digest is supplied.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/results/run_record.txt",
+          "description": "Version summary is not a reconstitutable environment specification.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment binaries, container image, or environment archive is included in the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Refers to an external environment rather than archiving it in the project.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No tracked environment-update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "No update procedure is stated.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "No update procedure is stated.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained project components are present; annex-managed maps are data storage, not submodules.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/.git/config",
+          "description": "No submodule configuration is present; annex config is distinct.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "Documents direct source data rather than a subdataset module.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The protocol explains fixed inputs, group analysis and output locations, but does not define a composable module architecture.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Explains analysis stages and output locations, with limited modular composition detail.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "The project has directory boundaries, but there is insufficient evidence that modules can be independently updated without breaking the workflow.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Describes stages but not independent update guarantees.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/code/run_analysis.py",
+          "description": "Uses coupled paths and inputs; no modular update contract is documented.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "N/A: the project has no independently composed modules or components requiring a composition mechanism.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Describes one analysis workflow.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/input/sources.json",
+          "description": "References source inputs, not project submodules.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "The report/protocol and descriptive folder names help navigate the analysis, but there is no README or fuller module guide.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/REPORT.md",
+          "description": "Links to major analysis artifacts.",
+          "sha256": null
+        },
+        {
+          "uri": "capture:6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674/protocol/protocol.md",
+          "description": "Describes inputs, analysis, checks and results.",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "ee2121676b82900d355458da4ad9a13014094fc4",
+    "captured_at": "2026-10-16T15:41:54.652877+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-21-j01/canonical/manifest.json",
+      "sha256": "6c2d6ff3da625ff7ddd25f12be64dad41ce8d41e797d9a48059f43966aadb674"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex (API)",
+    "model": "GPT-6 family (exact variant not exposed)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete worker-stop capture; inspection, worker-route check and one documented complete-delivery replay; science conditional on supplied participant maps"
+}

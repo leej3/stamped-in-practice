@@ -1,0 +1,521 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "The complete analysis workspace, inputs, scripts, results and figures sit under one root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L16-L26 inventories inputs, scripts, results and figures; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 participant maps and metadata are included under the common root; exact upstream URLs and hashes are recorded.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "declares 54 map URLs, participant IDs and SHA-256 values; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "captured annex-backed input link; all 54 data links are in the canonical inventory; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Python packages are named, but no delivered environment installs or links those dependencies.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L11 names packages and relies on a shared external environment; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "The worker\u2019s code, report, figures and results were untracked at stop; Git does not version the complete research state.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/index",
+          "description": "canonical index snapshot; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 18ff909c8351bca371face30957e1740fde57c146f9d088f183e50b698b6179f",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/README.md",
+          "description": "captured delivered README is outside the captured Git index; worker stop receipt confirms stop-time inventory; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large source maps have Git-annex pointer entries; checksums tie the captured work copies to those inputs.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "annex pointer; 54 input pointers enumerated in probe evidence; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "L1-L20 and per-image hashes specify source identity; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The delivered results have no run record linking the analysis action and its exact environment.",
+      "source": "probe:derived-have-records+probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/scripts/group_analysis.py",
+          "description": "L96-L142 defines generated maps and tables but no run/environment record; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 180c915fb5d8ba0dd0a1c56bf6d92da285ba3f442e53fda67ba848644d391309",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/group_results.json",
+          "description": "records parameters, not execution or environment identity; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 023157b2c82e31980062b1a565bb2a7a89c219515fecc20ea9427208938c579d",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "Usage is documented, but installing or obtaining the named environment is not reproducible from the delivery.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L5-L14 gives commands and package names but only an external absolute environment path; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The README names the group-analysis entrypoint and its generated products.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L10-L24 documents scripts and expected outputs; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/scripts/group_analysis.py",
+          "description": "L32-L39 starts the group workflow; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 180c915fb5d8ba0dd0a1c56bf6d92da285ba3f442e53fda67ba848644d391309",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "partial",
+      "reason": "Project-relative file paths are used in code, but the README command hardcodes a host-specific Python path.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/scripts/group_analysis.py",
+          "description": "L17-L20 roots paths at __file__; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 180c915fb5d8ba0dd0a1c56bf6d92da285ba3f442e53fda67ba848644d391309",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L10-L11 invokes Python from a host-specific absolute path; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "No environment specification declares the required packages; the README relies on preinstalled software.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L11 lists dependencies but supplies no installable spec; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Python and a named shared-environment path are stated; OS and other host assumptions are not.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14 states Python version, packages, absolute environment path and NARPS_PERMUTATIONS; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The README lists Python packages but omits a portable system-requirements or install specification.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is delivered alongside code and data.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L11 points outside the research object for its environment; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency-update process or tracked environment specification is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; no environment update command or policy is stated; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The object contains no pinned package lock or environment image identity.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L11 gives an external path and package names without versions/lock; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published route exposes the complete code, results, report and environment.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "captured config has no remote stanza; full-object route is absent; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 a77fd574b07acd7ead5697e9216f62c6a72cc05734818025c01f76e584020d5a",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "only upstream source maps have retrieval URLs; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The README points to a host-local environment path; it gives no route to obtain an environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git tracks supplied input metadata and annex pointers, but the worker\u2019s code, report and outputs were untracked at stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/index",
+          "description": "canonical capture 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; captured Git index snapshot",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/scripts/group_analysis.py",
+          "description": "captured worker code; stop inventory shows it outside the tracked index",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No recurring test record is present; a CI filename scan cannot establish whether manual checks recur.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L5-L14 describes execution but no testing schedule or history; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, scripts, work maps, results and figures have separate directories, but no independent environment module exists.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L16-L26 lists directory roles; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivered source maps are public; no restricted data or software component is identified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "identifies public NeuroVault image URLs; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "The one replay succeeded on the documented shared host environment; no fresh container, VM or cloud environment was tested.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md#L7-L14",
+          "description": "canonical capture 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; README requires the named shared host environment",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/judgments/narps-neutral-r2-19-j01/attempt-01/judgment/replay.json",
+          "description": "assessor replay receipt; successful same-host run, not fresh-environment evidence",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The workflow runs in a pre-existing shared environment and does not create a disposable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute or test.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; no captured package lock, container or reconstitution process; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment image, binaries or package artifacts are archived in the research object.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L11 relies on an external shared environment; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency-update process or tracked environment specification is present; duplicate of must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L7-L14; no environment update command or policy is stated; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The independently maintained NeuroVault map source is explicitly identified by per-image URLs and hashes; all 54 URLs responded to HEAD from this host.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "canonical capture 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; identifies collection and the 54 image URLs/hashes",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/judgments/narps-neutral-r2-19-j01/attempt-01/judgment/access-check-retry.stdout.txt",
+          "description": "independent access check; HEAD returned HTTP 2xx for all 54 URLs from this host",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README documents the input, code, work, result and figure roles and their use.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L16-L26; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories separate roles, but no independent module boundaries or dependency contracts are supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L16-L26; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "README composes exact-map retrieval followed by group analysis with two explicit commands.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L9-L14; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README lists main files and explains their purpose and expected output.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "L16-L26; canonical capture SHA-256 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7; file SHA-256 9b15f0a7bee1eac62e138eb648a29ce25e3060ed519d18918a4a0507193fed88",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "c341bb810566ffec5a12747e921f38c28c618b4a",
+    "captured_at": "2026-10-16T16:21:11+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-19-j01/canonical/manifest.json",
+      "sha256": "55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex operational assessment",
+    "model": "not reported by runtime",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.2.0",
+      "assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097"
+    ]
+  },
+  "scope": "Canonical complete capture 55039e27138c4d8ef8a473d7df48357003536c639d50b13ecab2264b1ad404e7 at original HEAD c341bb810566ffec5a12747e921f38c28c618b4a; worker stop receipt 702e95337005119a068608337e95aa5c83d508c61529ce53f55579fcd038e008; inspected unchanged operational copy; one documented same-host replay; 54 source-map HEAD checks; coordinator delivery excluded from worker publication credit."
+}

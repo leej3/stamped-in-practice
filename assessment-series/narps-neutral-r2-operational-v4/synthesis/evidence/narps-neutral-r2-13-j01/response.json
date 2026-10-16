@@ -1,0 +1,505 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "Study workspace, inputs, script and outputs share the captured root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "product and workspace structure; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All maps and metadata are inside input/ and code resolves them relative to the script.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "relative input path; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "map source manifest; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Runtime packages are named but no environment installs or includes external software.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "lists packages, no install specification; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Worker analysis code, report and outputs were untracked at stop; the captured commit is the supplied input baseline.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "worker script was untracked at stop; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "worker report was untracked at stop; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "stop HEAD bfe069501c140673f38778116f34bc8a5c36366f; capture receipt",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "unmet",
+      "reason": "Annex pointers reflect supplied input handling; the stop record does not show worker versioning of large data.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "supplied annex pointer; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "inputs are listed as seed identities, not worker annex actions",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Shipped results have no worker run record linking actions to an exact environment.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "shipped results; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "claims prepared environment but no exact provenance; capture 85aa5d91",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "REPORT.md gives usage but no installation steps or environment setup.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files and run instruction; capture 85aa5d91",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "analyze.py is a clear documented group-analysis entrypoint, though untracked at stop.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "script entrypoint; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "documents python analyze.py; capture 85aa5d91",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The inspected worker script uses paths relative to its own location.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "ROOT uses Path(__file__).resolve().parent; capture 85aa5d91",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The script imports NumPy, pandas, NiBabel, SciPy, Matplotlib and Nilearn, but no dependency specification is delivered.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "imports; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "package names only; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The documented route assumes a prepared Python environment and network-fetched Nilearn atlas/template resources without documenting host prerequisites.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "prepared environment and run instruction; capture 85aa5d91",
+          "sha256": null
+        },
+        {
+          "uri": "analyze.py",
+          "description": "fetches atlas and template resources; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "REPORT.md names Python packages but omits installable versions and system/network requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "package list; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No tracked or untracked environment specification is in the complete stop inventory.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "complete stop inventory does not list an environment manifest",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No command or process for updating environment specifications is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "workflow documentation; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No frozen environment identity is linked to the result artifacts.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "results without environment pin; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published environment artifact or retrieval route is recorded.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "stop inventory; capture receipt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "Readers are told to use a prepared Python environment, but not how to obtain or build it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "unmet",
+      "reason": "At worker stop, the study code and derived results were outside the supplied Git baseline and untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "stop HEAD and tracked inventory; capture receipt",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "analysis files absent from tracked baseline; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No repeated test record is present; a single worker run or a future CI check would settle this.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "documents one execution route; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code and derived outputs occupy separate directories, but code and outputs are not tracked and no environment module exists.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "input directory; analyze.py=code; results/=derived outputs; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivered inputs and listed software are public; there is no restricted component to isolate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "public NeuroVault/OpenNeuro source routes; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No fresh-environment run was performed; a successful isolated execution would settle this.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "replay-record.json",
+          "description": "not checked because environment is not pinned",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented command uses a prepared Python environment; no per-run disposable environment is created.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "documents use of a prepared environment and python analyze.py; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "There is no environment specification to reconstitute and test.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "complete stop inventory; capture receipt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived in the worker stop state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "complete stop inventory; capture receipt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is stated; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "no environment-update procedure; capture 85aa5d91",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: this study has no independently maintained linked project components; runtime libraries are package dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "inputs are captured directly; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The report names inputs, code and result locations but does not explain modular boundaries or their relationships.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "unmet",
+      "reason": "The delivered project has no documented modular boundaries designed for independent updates.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "lists locations but no independent module boundaries; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained modules are composed by this study.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "single captured input component; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "The report lists key files, but offers no broader navigation guide or README.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files; capture 85aa5d91",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "bfe069501c140673f38778116f34bc8a5c36366f",
+    "captured_at": "2026-10-16T15:56:29+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-13-j01/canonical/manifest.json",
+      "sha256": "85aa5d916991b5b56e67d4c065b7c2fa4c18790910f761b154be501bf51fe77e"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "frozen external assessment runner, source commit 9852d8360f9519d21d11099b45f5deb8ba80cb28",
+    "model": "not provided by runtime",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Canonical original complete delivery SHA-256 85aa5d916991b5b56e67d4c065b7c2fa4c18790910f761b154be501bf51fe77e; worker stop receipt checked; coordinator actions excluded from worker credit; one replay not checked because no supplied environment specification; operational annex DB metadata changed during inspection."
+}

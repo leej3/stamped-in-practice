@@ -1,0 +1,571 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "partial",
+      "reason": "Participant maps are captured, but the code fetches standard brain-mask and anatomical-template datasets outside the project root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L57-L59",
+          "description": "loads a standard MNI152 mask; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py#L201-L206",
+          "description": "loads standard MNI152 anatomical template; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "partial",
+      "reason": "Captured participant maps resolve internally; the MNI mask and display template are fetched through Nilearn outside the root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "annex link resolves inside captured root; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py#L57-L59",
+          "description": "mask loader retrieves an external template dataset; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The code imports scientific packages, but no delivered environment or linked software module supplies them.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "nibabel, numpy, pandas, nilearn and scipy imports; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "The captured HEAD equals the seed commit; worker analysis code, report, figures and results remain untracked.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "git status --short --ignored",
+          "description": "worker stop observation: analyze.py, report.md, figures/ and results/ are untracked; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "HEAD equals seed_commit 78d5939f13b4caeecb07a75518298c6c9c44cfd1; receipt sha256=a0bbbe31a545341523d8c75c7cd6f5662f49ea6290ad460788b68f6826ce044e",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "unmet",
+      "reason": "Annex-backed maps were coordinator-supplied inputs; worker-generated binary maps remain untracked and no annex action is attributable to the worker.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "supplied_files lists the maps and seed_commit equals captured HEAD; receipt sha256=a0bbbe31a545341523d8c75c7cd6f5662f49ea6290ad460788b68f6826ce044e",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results",
+          "description": "worker-produced NIfTI outputs are untracked at stop; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Shipped results have no execution record linking the analysis action to an exact environment.",
+      "source": "probe:derived-have-records+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "run instruction, but no completed-run or environment record; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/analysis_summary.json",
+          "description": "shipped group results; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "report.md documents usage, but installation and environment setup instructions are absent.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "usage command; only says \u201cprepared environment\u201d; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py",
+          "description": "documented entrypoint; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report names python analyze.py and the script is included.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "documented command; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py",
+          "description": "main group analysis script; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Analysis code uses paths relative to its own directory.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L16-L19",
+          "description": "ROOT-relative paths; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "No environment declaration covers the scientific Python imports or plotting dependencies.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "imports require undeclared packages; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The host Python and package environment are not documented; captured Git config also contains an absolute hooks path.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "assumes an unspecified prepared environment; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "absolute hooksPath points outside the capture; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No README or environment specification lists system requirements and dependencies.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "required imports; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "does not identify how to prepare them; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is included in version control or the stopped workspace.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "no dependency or environment specification in tracked paths; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency update procedure or tracked environment specification is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py",
+          "description": "imports without an environment declaration; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "git log -1",
+          "description": "captured history contains no environment update process; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No frozen environment specification identifies the packages used for these results.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "only refers to a prepared environment; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "package requirements are not pinned; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared route publishes an environment specification for researcher retrieval.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "no remote is configured; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "publishes input source routes only; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "Instructions do not explain how to obtain or use an environment; the setup is called \u201cprepared\u201d only.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "usage command without environment acquisition steps; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "unmet",
+      "reason": "Worker-created code, documentation and results are untracked; Git/annex state belongs to the supplied seed inputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "git status --short --ignored",
+          "description": "worker stop observation: all worker deliverables are untracked; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "seed_commit equals captured HEAD; receipt sha256=a0bbbe31a545341523d8c75c7cd6f5662f49ea6290ad460788b68f6826ce044e",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No repeat-testing evidence is supplied; a future scheduled or repeated run record would settle this.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "no recognized CI workflow; no equivalent repeat-test record found; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code, results and figures have separate paths, but environment is not a module.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input",
+          "description": "input boundary; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results",
+          "description": "derived outputs; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py",
+          "description": "analysis code; no environment module; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: captured data are publicly retrievable and no restricted software or data component is identified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "public source URLs for inputs and metadata; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No safe fresh replay was possible because no package environment was supplied; a pinned environment and rerun would settle it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "entrypoint says prepared environment; no setup declaration; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "python analyze.py uses the caller\u2019s active environment and does not create a disposable one.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L1-L25",
+          "description": "script starts directly in the active Python environment; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification or reconstitution test is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "unversioned package imports; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "no reconstitution record; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment image, binary environment artifact or package cache is archived in the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py",
+          "description": "code is present; environment artifacts are absent; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency update process is documented or tracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L7-L14",
+          "description": "no environment specification or regeneration command; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "partial",
+      "reason": "The participant maps are captured and their source is identified, but Nilearn template datasets are implicit external inputs.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "participant input sources and hashes; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py#L57-L59",
+          "description": "implicit external MNI template dataset; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The report and directory structure explain inputs, analysis, results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L7-L13",
+          "description": "analysis and anatomical definition; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "input/output locations; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "The input boundary is checksum- and grid-checked, but changes require coordinated manifest updates.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L30-L47",
+          "description": "checksums and image geometry enforced; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "source manifest; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "analyze.py composes the captured inputs into result maps, tables and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analyze.py#L25-L29",
+          "description": "loads cohort and input maps; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analyze.py#L200-L218",
+          "description": "generates figures; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report names the input, result and figure locations and the script to run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md#L35-L37",
+          "description": "navigation and use instructions; canonical capture sha256=8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "78d5939f13b4caeecb07a75518298c6c9c44cfd1",
+    "captured_at": "2026-10-16T15:41:02.932777+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-15-j01/canonical/manifest.json",
+      "sha256": "8d0fdaeeda6a0b9c877ea7fd74222e16e75697ca45da5b39bfacb8c8a312eabf"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "OpenAI Codex API",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete original stopped study delivery; worker state attributed from stop receipt; coordinator preservation excluded. Source-route HEAD checks only. No replay: supplied environment is unspecified and script requests uncaptured Nilearn templates."
+}
