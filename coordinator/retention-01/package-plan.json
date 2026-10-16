@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02",
+  "worker_stop": "launch/native/worker-end-state.json",
+  "scientific_result": "e0a8fb1ae78b457a38ff7102825b1d8bc63119b4",
+  "exclude": [
+    {
+      "path": "retention/recipient-check-01/recipient",
+      "reason": "Reconstructable independent recipient cache; exact-result retrieval and stopped-artifact validation are preserved.",
+      "reconstruct_from": {
+        "repository": "git@github.com:leej3/stamped-in-practice.git",
+        "result_commit": "e0a8fb1ae78b457a38ff7102825b1d8bc63119b4",
+        "environment_commit": "d215b5efd4b4bae49745059aca1dff7fc780d2f2",
+        "annex_route": "con-hub as recorded in retained retrieval commands and receipts"
+      },
+      "evidence": [
+        "retention/recipient-check-01/result.json"
+      ]
+    },
+    {
+      "path": "retention/judgment-01-archives-restore-01",
+      "reason": "Duplicate restored trees; complete archives, original-path manifests and exact restore-verification evidence remain included.",
+      "reconstruct_from": {
+        "manifest": "retention/judgment-01-archives/manifest.json"
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/remote-retrieval",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/remote-retrieval.tar.gz",
+        "archive_sha256": "857dc4c9ff7d34d041dad846208df2ed52ee70cc55b91bf386e84e21aafae262",
+        "original_relative_path": "judgment-01/judgment/remote-retrieval",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/remote-retrieval.tar.gz"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/replay-output",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/replay-output.tar.gz",
+        "archive_sha256": "d4dd5c8974c8113f02a58959f92ec5fedf0bc8b40134b170c7b0cf9808bfb039",
+        "original_relative_path": "judgment-01/judgment/replay-output",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/replay-output.tar.gz"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/replay-workdir",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/replay-workdir.tar.gz",
+        "archive_sha256": "29ba743b343e024f3a7017ccdacbd8b5b5e73e8d676251c371117b014bc36c2e",
+        "original_relative_path": "judgment-01/judgment/replay-workdir",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/replay-workdir.tar.gz"
+      ]
+    }
+  ]
+}
