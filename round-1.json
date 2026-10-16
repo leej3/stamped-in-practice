@@ -18,7 +18,7 @@
       "run": "narps-r1-07",
       "condition": "discover-science",
       "replicate": 1,
-      "status": "judgments-awaiting-retention",
+      "status": "judgment-running",
       "observed_skill_discovery": null,
       "observed_skill_use": null,
       "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/launch",
@@ -68,7 +68,7 @@
           "elapsed_seconds": 601.3073380419519,
           "finished_at": "2026-10-16T02:23:34.439766+00:00",
           "assessment_scope": "original-procedure-infrastructure-attempt",
-          "outcome_pooling": "held",
+          "outcome_pooling": "excluded-operational-only",
           "infrastructure_attempt_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/retention/judgment-01-infrastructure-attempt.json",
             "sha256": "c3cabf3db199ffdaf70e20b06b1520e5ba4acd740c66f4a3ae9f7d831a57567c"
@@ -76,7 +76,26 @@
           "native_preservation_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/retention/judgment-01-native/native-capture-01.json",
             "sha256": "417ceb9df01d7c97f968869f1e5e19ee8e6a25da8d65ec7fb9c547b45167e63f"
-          }
+          },
+          "procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
+          "research_procedure_sha256": null,
+          "worker_end_state_sha256": "97caecab5ddac2f1b7bfa033e1b20470c263523c6cf88bb1fc34482c0ab55e25",
+          "native_thread_id": "01a1427c-6e26-78a0-9a66-8bec9cdb4503"
+        },
+        {
+          "judgment_id": "judgment-02",
+          "evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-02",
+          "status": "running",
+          "started_at": "2026-10-16T03:00:20.086145+00:00",
+          "prompt_sha256": "da402850af3467b72d784610571e6a77b0ef53d818d1d176e6f1729e207a731f",
+          "workspace": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-02/judgment",
+          "procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
+          "research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
+          "worker_end_state_sha256": "97caecab5ddac2f1b7bfa033e1b20470c263523c6cf88bb1fc34482c0ab55e25",
+          "assessment_scope": "corrected-common-procedure",
+          "judgment_role": "primary",
+          "outcome_pooling": "pending-inclusion-gate",
+          "native_thread_id": "01a142a7-422a-7981-84c0-c2040256763b"
         }
       ]
     },
@@ -134,7 +153,7 @@
           "elapsed_seconds": 613.0664606249193,
           "finished_at": "2026-10-16T02:28:51.611975+00:00",
           "assessment_scope": "original-procedure-infrastructure-attempt",
-          "outcome_pooling": "held",
+          "outcome_pooling": "excluded-operational-only",
           "infrastructure_attempt_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-08/retention/judgment-01-infrastructure-attempt.json",
             "sha256": "f87c8c342b4f4597ee5795581bdd0d94bcc28756817116788e15978805067b91"
@@ -142,7 +161,11 @@
           "native_preservation_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-08/retention/judgment-01-native/native-capture-bounded-evidence-02.json",
             "sha256": "5743b41db36bb529349521191aa1817e354f1210ef473437565317d2ac4cd830"
-          }
+          },
+          "procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
+          "research_procedure_sha256": null,
+          "worker_end_state_sha256": "37b6cb7641223b20738096045a9b82ac7cadc864b4e196e7ac8235793949433b",
+          "native_thread_id": "01a14281-167c-7473-8dce-52de3f342896"
         }
       ]
     },
@@ -367,10 +390,10 @@
       "observed_skill_use": null
     }
   ],
-  "last_updated_at": "2026-10-16T02:45:30.410457+00:00",
+  "last_updated_at": "2026-10-16T03:03:06.819009+00:00",
   "formal_workers_started_current": 6,
   "worker_sessions_completed_current": 6,
-  "formal_judgments_started_current": 2,
+  "formal_judgments_started_current": 3,
   "formal_judgments_completed_current": 2,
   "assessment_hold": {
     "active": true,
@@ -382,5 +405,7 @@
       "Actual intended payload retrieval and replay entry execution/comparison evidence; scientific success is not required.",
       "Aggregation inclusion gate regression tests and independent review."
     ]
-  }
+  },
+  "native_sessions_running_current": 1,
+  "corrected_judgments_started_current": 1
 }

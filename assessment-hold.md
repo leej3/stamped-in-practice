@@ -1,7 +1,8 @@
 # Assessment hold
 
 Six registered research workers and the first two original judgments completed naturally.
-No native formal sessions remain active.
+After the accepted assessment-only amendment, one corrected primary judgment is active for `narps-r1-07` in `judgment-02`.
+The remaining queue is held pending actual replay infrastructure evidence and aggregation-gate tests and independent review.
 The original procedure, allocation, research inputs, six scientific commits and worker-stop receipts remain unchanged.
 The round ledger records exact identities and retention evidence.
 
@@ -18,13 +19,15 @@ The target retained locked pointers without their payloads, so the replay clone'
 Both attempts stopped before their scientific entrypoints executed.
 Independent full-object retrieval distinguishes this infrastructure failure from missing published payloads.
 The original assessment reports and responses remain unchanged.
-Their outcome pooling is held pending a reviewed common assessment amendment.
+They remain excluded from primary and duplicate outcome pooling as operational infrastructure attempts, irrespective of their grades.
 
-The isolated candidate branch `codex/narps-assessment-amendment` preserves the original research seal and validates a separate assessment-only seal.
+The accepted amendment preserves the original research seal and validates a separate assessment-only seal.
 Its 127 regression tests passed.
-A narrow comparator correction for unavailable unlocked annex pointers and an aggregation gate binding every included judgment to its exact assessment/research seals, result and stop receipt remain prerequisites.
-No replacement assessment seal is active and no new formal launch has occurred.
-After an explicit amendment decision, one corrected native primary judgment must exercise the complete prepared-target and fresh-replay path before the queue resumes.
+The corrected assessor restores explicit same-host annex routes and rejects unavailable unlocked pointers as comparison baselines before analysis.
+The [decision](amendment-01/DECISION.md) records the exact new seal and pins, original judgment disposition and queue gates.
+An initial coordinator prelaunch command used a nonexistent recipient path and stopped before any target or native session was created; its receipt is retained separately, and the corrected invocation uses the unchanged original worker source.
+The active corrected judgment must exercise the complete prepared-target and fresh-replay path before the queue resumes.
+A scientific or numerical failure remains an outcome; a favorable judgment is not required.
 
 The judging prompt omits treatment labels and coordinator verdicts, but the assessed object's `worker-input.json` exposes condition and assignment metadata.
 The design does not guarantee condition blinding.
