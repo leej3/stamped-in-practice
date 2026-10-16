@@ -47,7 +47,9 @@ assert len(raw_null) == summary["permutations"]
 for k in range(20):
     signs = rng_perm.choice(np.array([-1.0, 1.0]), size=len(imgs))
     permuted = x * signs[:, None]
-    perm_t = permuted.mean(axis=0) / (permuted.std(axis=0, ddof=1) / np.sqrt(len(imgs)))
+    perm_mean = permuted.mean(axis=0)
+    perm_denom = permuted.std(axis=0, ddof=1) / np.sqrt(len(imgs))
+    perm_t = np.divide(perm_mean, perm_denom, out=np.zeros_like(perm_mean), where=perm_denom > 0)
     assert np.isclose(raw_null[k], np.max(perm_t), rtol=2e-5, atol=2e-5), (k, raw_null[k], np.max(perm_t))
 
 # Reconstruct every voxel's corrected p-value from the stored max-t null and

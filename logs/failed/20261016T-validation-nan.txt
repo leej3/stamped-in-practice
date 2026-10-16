@@ -1,0 +1,5 @@
+Attempt: 2026-10-15 23:59:30 America/New_York
+Command: pixi run duct --output-prefix logs/20261016T-review-fixes-validation --capture-outputs all --message 'Independent post-review numerical verification of max-t permutation, corrected maps and sensitivity outputs; code commit 3ec1ca45d9364d30bc320185a7e0d57897cc8dd8' pixi run validate-results
+Outcome: validator exited 1 during direct sign-flip recomputation; primary analysis outputs were unchanged.
+Error: A constant-zero voxel inside the common mask had zero permuted standard error, so the validator's direct division produced NaN and the maximum became NaN. The production statistic explicitly assigns zero when standard error is zero. The validator now applies the same boundary rule; rerun is pending.
+Duct removed the log bundle because the attempt lasted under 3 seconds; this note retains the command outcome and diagnosis.
