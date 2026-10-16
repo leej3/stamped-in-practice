@@ -14,6 +14,8 @@ Use a separately registered stable protocol for subsequent comparable rounds, wi
   Use `pixi run launch` to create independent repositories without coordinator history, references or prior results; separate worktrees alone share Git objects.
   Keep coding tasks in their own worktrees.
 - Register each published experiment repository as a submodule at the selected study's `results/<run>/`; retain complete worker branches and failed attempts.
+  Keep original scientific files browsable at their delivered paths, with large payloads in annex and the complete capture retained separately.
+  Attribute later presentation copies to the coordinator, verify their exact source bytes, and add navigation without replacing original reports or README files.
   Keep study and experiment submodules uninitialized by default; initialize only selected paths and required dependencies.
   Keep launch and judging receipts outside workers while they run, then retain them in a later experiment commit without changing the recorded scientific result commit that was judged.
   Before judging, preserve the complete original delivery and verify the assessment copy against its capture; publish coordinator retention separately from any worker publication.
