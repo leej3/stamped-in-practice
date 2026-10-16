@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-native-publication-01/run-git-only.py", line 112, in <module>
+    git('diff-check','diff','--cached','--check')
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-native-publication-01/run-git-only.py", line 42, in git
+    def git(label,*args,cwd=None):return run(label,['git',*args],cwd).stdout.decode().strip()
+                                         ~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-native-publication-01/run-git-only.py", line 39, in run
+    if not allow:p.check_returncode()
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['git', 'diff', '--cached', '--check']' returned non-zero exit status 2.

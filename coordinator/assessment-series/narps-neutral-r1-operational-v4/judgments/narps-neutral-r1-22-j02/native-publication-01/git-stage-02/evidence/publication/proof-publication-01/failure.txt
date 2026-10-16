@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-native-publication-01/judgments/narps-neutral-r1-22-j02/native-publication-01/finalize-proof.py", line 81, in <module>
+    if bulk:run('fresh-get',pixi+['git','annex','get','--from',host['annex_remote'],'--',*bulk],received)
+            ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-native-publication-01/judgments/narps-neutral-r1-22-j02/native-publication-01/finalize-proof.py", line 21, in run
+    if not allow:p.check_returncode()
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['pixi', 'run', '--manifest-path', '/Users/johnlee/code/CON/stamped-in-practice/pixi.toml', '--locked', 'git', 'annex', 'get', '--from', 'con-hub', '--', 'coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j02/native-publication-01/evidence/processed-transcript.stdout', 'coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j02/native-publication-01/evidence/receiver-processed-transcript.stdout']' returned non-zero exit status 1.
