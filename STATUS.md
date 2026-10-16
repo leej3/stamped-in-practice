@@ -1,9 +1,10 @@
 # Current comparison status
 
-**Round two is released for execution under the existing Luna/high procedure.** The user superseded the earlier discretionary holds and cancelled both the Sol transition and the extra round-one judging series.
+**Round-two research is complete (24/24); its 32 assigned judgments are running under the existing Luna/high procedure.** The user superseded the earlier discretionary holds and cancelled both the Sol transition and the extra round-one judging series.
 The [binding adoption record](rounds/round-02/adoption-01/README.md) adopts the already prepared research-skill revision `d83d7d66` with its adaptive history.
 
-The current stage has 24 preassigned fresh research workers followed by 32 assigned judgments, including eight preselected duplicates.
+All 24 preassigned fresh research workers have finished; their [32 assigned judgments](assessment-series/narps-neutral-r2-operational-v4/README.md), including eight preselected duplicates, are underway.
+The [research closure receipts](rounds/round-02/research-closure-01/summary.json) retain exact original result identities.
 Research source `9068886f` uses the original `b011` procedure; judging keeps operational source `4f72ef49` and frozen assessor `9852d836`, with Luna/high for both roles. A later [user-authorized scheduling amendment](rounds/round-02/concurrency-amendment-01/README.md) permits up to 10 local native sessions; assigned waves now overlap while their original order and labels remain fixed.
 The original allocation, task, inputs, conditions and resources remain fixed.
 Failures, missingness and disagreement are recorded outcomes; no retries, repairs, replacements or sample extension are authorized.
