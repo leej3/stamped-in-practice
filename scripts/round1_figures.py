@@ -128,7 +128,7 @@ def main():
         ax.errorbar(mean,y,xerr=[[mean-lo],[hi-mean]],fmt='o',color=color,capsize=4,ms=6,lw=1.6)
     ax.axvline(0,color='#606972',lw=1,ls='--');ax.set_yticks(range(12),[e['run_id'][-2:]+'  '+e['roi_label'] for e in estimates],fontsize=9);ax.invert_yaxis();ax.grid(axis='x',alpha=.17);clean(ax)
     ax.set_xlabel('Reported participant-average regional gain coefficient (upstream model units)')
-    ax.set_title('Different regional definitions produced different descriptive estimates',loc='left',fontsize=14,pad=20)
+    ax.set_title('Reported regional estimates differ across analysis choices',loc='left',fontsize=14,pad=20)
     fig.text(.33,.075,'Worker-reported means and 95% intervals from the same 54 maps; anatomical regions differ.\nThese descriptive intervals are not the whole-brain-corrected hypothesis tests or assistance-effect intervals.\nNo pooled estimate: the rows are alternative analyses of shared data, not independent study replications.',fontsize=9.5)
     fig.legend(handles=[Patch(facecolor=c,label=l) for c,l in zip(COLORS,LABELS)], loc='upper center',ncol=4,frameon=False,bbox_to_anchor=(.6,.98),fontsize=9)
     save(fig,args.output,'reported-regional-estimates')
