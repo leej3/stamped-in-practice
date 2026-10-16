@@ -26,14 +26,17 @@ OUT = ROOT / "results" / "group-analysis"
 
 
 def main() -> None:
+    global OUT
     parser = argparse.ArgumentParser()
     parser.add_argument("--permutations", type=int, default=9999)
     parser.add_argument("--seed", type=int, default=20261015)
     parser.add_argument("--batch-size", type=int, default=64)
+    parser.add_argument("--output-dir", type=Path, default=OUT)
     args = parser.parse_args()
     if args.permutations < 999:
         raise ValueError("Use at least 999 sign flips for stable tail resolution")
     started = time.time()
+    OUT = args.output_dir if args.output_dir.is_absolute() else ROOT / args.output_dir
     OUT.mkdir(parents=True, exist_ok=True)
 
     participants = pd.read_csv(INPUT / "participants.tsv", sep="\t")
