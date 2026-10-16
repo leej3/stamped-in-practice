@@ -1,0 +1,72 @@
+ .gitattributes                                     |  62 ++
+ .task-skills/jupyter-notebook/LICENSE.txt          | 201 ++++++
+ .task-skills/jupyter-notebook/SKILL.md             | 107 ++++
+ .task-skills/jupyter-notebook/agents/openai.yaml   |   6 +
+ .../assets/experiment-template.ipynb               | 110 ++++
+ .../jupyter-notebook/assets/jupyter-small.svg      |   3 +
+ .task-skills/jupyter-notebook/assets/jupyter.png   | Bin 0 -> 2713 bytes
+ .../assets/tutorial-template.ipynb                 | 107 ++++
+ .../references/experiment-patterns.md              |  10 +
+ .../references/notebook-structure.md               |  17 +
+ .../references/quality-checklist.md                |  11 +
+ .../references/tutorial-patterns.md                |   9 +
+ .../jupyter-notebook/scripts/new_notebook.py       | 130 ++++
+ .task-skills/pdf/LICENSE.txt                       | 201 ++++++
+ .task-skills/pdf/SKILL.md                          |  67 ++
+ .task-skills/pdf/agents/openai.yaml                |   5 +
+ .task-skills/pdf/assets/pdf.png                    | Bin 0 -> 1312 bytes
+ README.md                                          |  14 +
+ analyze.py                                         | 235 +++++++
+ coordinator/README.md                              |   8 +
+ coordinator/browsable-copy-01/add-navigation.py    |  45 ++
+ coordinator/browsable-copy-01/config.json          |  41 ++
+ coordinator/browsable-copy-01/input-manifest.json  | 526 ++++++++++++++++
+ coordinator/browsable-copy-01/manifest.json        | 590 +++++++++++++++++
+ coordinator/browsable-copy-01/navigation.json      |  15 +
+ coordinator/browsable-copy-01/plan.json            | 696 +++++++++++++++++++++
+ coordinator/browsable-copy-01/prepare.py           | 142 +++++
+ .../shared-input-route-proof.json                  |  18 +
+ references/nilearn/README.md                       |   6 +
+ .../atlases/HarvardOxford-Cortical-Lateralized.xml | 118 ++++
+ .../fsl/data/atlases/HarvardOxford-Cortical.xml    |  66 ++
+ .../fsl/data/atlases/HarvardOxford-Subcortical.xml |  39 ++
+ .../HarvardOxford-cort-maxprob-thr0-1mm.nii.gz     |   1 +
+ .../HarvardOxford-cort-maxprob-thr0-2mm.nii.gz     |   1 +
+ .../HarvardOxford-cort-maxprob-thr25-1mm.nii.gz    |   1 +
+ .../HarvardOxford-cort-maxprob-thr25-2mm.nii.gz    |   1 +
+ .../HarvardOxford-cort-maxprob-thr50-1mm.nii.gz    |   1 +
+ .../HarvardOxford-cort-maxprob-thr50-2mm.nii.gz    |   1 +
+ .../HarvardOxford-cort-prob-1mm.nii.gz             |   1 +
+ .../HarvardOxford-cort-prob-2mm.nii.gz             |   1 +
+ .../HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz    |   1 +
+ .../HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz    |   1 +
+ .../HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz   |   1 +
+ .../HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz   |   1 +
+ .../HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz   |   1 +
+ .../HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz   |   1 +
+ .../HarvardOxford-cortl-prob-1mm.nii.gz            |   1 +
+ .../HarvardOxford-cortl-prob-2mm.nii.gz            |   1 +
+ .../HarvardOxford-sub-maxprob-thr0-1mm.nii.gz      |   1 +
+ .../HarvardOxford-sub-maxprob-thr0-2mm.nii.gz      |   1 +
+ .../HarvardOxford-sub-maxprob-thr25-1mm.nii.gz     |   1 +
+ .../HarvardOxford-sub-maxprob-thr25-2mm.nii.gz     |   1 +
+ .../HarvardOxford-sub-maxprob-thr50-1mm.nii.gz     |   1 +
+ .../HarvardOxford-sub-maxprob-thr50-2mm.nii.gz     |   1 +
+ .../HarvardOxford-sub-prob-1mm.nii.gz              |   1 +
+ .../HarvardOxford-sub-prob-2mm.nii.gz              |   1 +
+ .../nilearn/fsl/data/atlases/HarvardOxford/labels  |  21 +
+ .../nilearn/fsl/data/atlases/HarvardOxford/relabel |  11 +
+ report.md                                          |  42 ++
+ results/fwer_positive_clusters.tsv                 |   4 +
+ results/group_fwer05_mask.nii.gz                   |   1 +
+ results/group_mean_cope.nii.gz                     |   1 +
+ results/group_p_fwer.nii.gz                        |   1 +
+ results/group_t.nii.gz                             |   1 +
+ results/participant_qc.tsv                         |  55 ++
+ results/results.json                               |  46 ++
+ results/run.log                                    |  46 ++
+ results/vmPFC_proxy_roi.nii.gz                     |   1 +
+ results/vmPFC_roi.png                              | Bin 0 -> 52340 bytes
+ results/wholebrain_fwer_clusters.png               | Bin 0 -> 203022 bytes
+ results/wholebrain_t_and_fwer.png                  | Bin 0 -> 99006 bytes
+ 71 files changed, 3859 insertions(+)
