@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-08",
+  "worker_stop": "launch/native/worker-end-state.json",
+  "scientific_result": "42e957201315aa8221ba60fbe614119e22639ce8",
+  "exclude": [
+    {
+      "path": "retention/recipient-check-01/recipient",
+      "reason": "Reconstructable independent recipient cache; successful complete retrieval and exact stopped-result validation are retained.",
+      "reconstruct_from": {
+        "repository": "git@github.com:leej3/stamped-in-practice.git",
+        "result_commit": "42e957201315aa8221ba60fbe614119e22639ce8",
+        "environment_commit": "cfacdef5db5d615d8ecc64b60035fbb3ccdd0a90",
+        "annex_route": "con-hub as recorded in retained retrieval commands and receipts"
+      },
+      "evidence": [
+        "retention/recipient-check-01/result-complete.json",
+        "retention/recipient-check-01/judge-source-check.json",
+        "retention/coordinator-publish-01/result.json"
+      ]
+    },
+    {
+      "path": "retention/judgment-01-archives-restore-01",
+      "reason": "Duplicate restored archive tree; original attempt, full archive, per-entry manifest and successful exact restore verification remain included.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/2026-10-16-attempt-01.tar.gz",
+        "archive_sha256": "13a60ccf1d35e6242f6cd7047fa149906fc35be9c9efa4ae64ba62b9327bd8a2"
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/2026-10-16-attempt-01.tar.gz"
+      ]
+    }
+  ]
+}

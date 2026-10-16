@@ -1,0 +1,16 @@
+## Finding
+
+The 54 participant maps **do not support a positive vmPFC gain effect after whole-brain correction**. No voxel in the predefined vmPFC reference survived correction; its peak had \(p_\mathrm{FWE}=.801\). The descriptive vmPFC mean was 0.0062 map units (95% *t* interval −0.0204 to 0.0327).
+
+The whole-brain test found 24 corrected positive voxels in three small occipital-pole clusters. Those findings are outside vmPFC and do not support the hypothesis. The test follows the positive vmPFC hypothesis in the [original NARPS instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf). These coefficients come from a standardized gain modulator, so they are not response changes per dollar. A null corrected result is not evidence that the true effect is exactly zero.
+
+The concise report, figures, methods, and limitations are in [results/report.md](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-08/results/report.md). The analysis code is [scripts/analyze_gain.py](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-08/scripts/analyze_gain.py); results and duct run records are retained under `results/` and `logs/`. All 54 participants were included.
+
+## Reproducibility and publishing
+
+I installed the PDF skill locally in the experiment repository and used its source-review workflow; the NARPS PDF download returned a 522 error, which is recorded in the logs. The working `pixi.lock` remains ignored; `pixi install --locked` succeeded, and the exact lock was committed on the separate environment branch.
+
+- Task branch `codex/narps-r1-08`: `42e957201315aa8221ba60fbe614119e22639ce8`
+- Environment branch `codex/env-narps-r1-08`, one commit above: `cfacdef5db5d615d8ecc64b60035fbb3ccdd0a90`
+
+Both branches were pushed to `origin` and `con-hub`; annexed analysis outputs and atlas data were copied to `con-hub`. The working tree is clean and back on the task branch.
