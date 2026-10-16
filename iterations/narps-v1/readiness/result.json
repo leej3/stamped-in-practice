@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-16T00:13:23.373523+00:00",
+  "ready": false,
+  "complete": true,
+  "requirements_source": "/Users/johnlee/code/CON/stamped-in-practice/iterations/narps-v1/requirements.json",
+  "requirements_sha256": "93aed9fb12d4af0ae19bf0e5dc686625076ac021c3dc47e7f7484779a73a558f",
+  "host_config": "/Users/johnlee/.config/stamped-in-practice/readiness.json",
+  "checks": [
+    {
+      "id": "native-capture",
+      "description": "A real native session in the intended checkout creates a checkpoint, its code/checkpoint refs are published, and hosted metadata matches the session.",
+      "source": "User: establish Entire access before the coordinator launches research.",
+      "started_at": "2026-10-16T00:13:23.373856+00:00",
+      "status": "passed",
+      "argv": [
+        "/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/bin/python",
+        "/Users/johnlee/.config/stamped-in-practice/readiness_probe.py",
+        "native-capture"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "returncode": 0,
+      "artifacts": [
+        {
+          "path": "native-capture/artifacts/verification.json",
+          "sha256": "4540bcfe588120be4cb9c4e04fedb15a220d8e59433bae1255e6bf93511fd0c7",
+          "bytes": 2591,
+          "status": "retained"
+        },
+        {
+          "path": "native-capture/artifacts/commands.json",
+          "sha256": "a1ae7dfc55ae6743900a687724140a84b5364b6204785fa903a3e7f926dac04b",
+          "bytes": 9351,
+          "status": "retained"
+        },
+        {
+          "path": "native-capture/artifacts/probe.py",
+          "sha256": "333f10821ddee755e1636ae889ce580b1d91f5cd46c105a8f6455ca47e17aad3",
+          "bytes": 20513,
+          "status": "retained"
+        }
+      ],
+      "timeout_seconds": 300,
+      "artifact_directory": "/Users/johnlee/.local/state/stamped-in-practice/readiness-01/native-capture/artifacts",
+      "stdout": {
+        "path": "native-capture/stdout.txt",
+        "sha256": "2437bac88dbda9b25571df91c4739dcc86eeb56ce7b04751242e1d36b141e254",
+        "bytes": 182
+      },
+      "stderr": {
+        "path": "native-capture/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "finished_at": "2026-10-16T00:13:26.065790+00:00",
+      "elapsed_seconds": 2.691932166926563
+    },
+    {
+      "id": "annex-round-trip",
+      "description": "Upload a new task artifact to the selected annex store and independently retrieve identical bytes.",
+      "source": "User: confirm annex push access and keep complete artifacts without Git bloat.",
+      "started_at": "2026-10-16T00:13:26.066256+00:00",
+      "status": "failed",
+      "argv": [
+        "/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/bin/python",
+        "/Users/johnlee/.config/stamped-in-practice/readiness_probe.py",
+        "annex-round-trip"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "returncode": 1,
+      "artifacts": [
+        {
+          "path": "annex-round-trip/artifacts/verification.json",
+          "sha256": "308a4649e24a50fe8e1d782c134c0e50ac1f33688ac617ec1ab63e108c4f3a25",
+          "bytes": 1640,
+          "status": "retained"
+        },
+        {
+          "path": "annex-round-trip/artifacts/commands.json",
+          "sha256": "2c62fdb5bac6867f31ed0e737c8ceab1b69378bd4a4ce861509eca144532d7d8",
+          "bytes": 11616,
+          "status": "retained"
+        },
+        {
+          "path": "annex-round-trip/artifacts/probe.py",
+          "sha256": "333f10821ddee755e1636ae889ce580b1d91f5cd46c105a8f6455ca47e17aad3",
+          "bytes": 20513,
+          "status": "retained"
+        },
+        {
+          "path": "annex-round-trip/artifacts/payload.json",
+          "sha256": "9300efb6ceb4080a6019469fea3df7ba7cbcd88631980b03f38fb7a9a8d788c3",
+          "bytes": 155,
+          "status": "retained"
+        }
+      ],
+      "timeout_seconds": 600,
+      "artifact_directory": "/Users/johnlee/.local/state/stamped-in-practice/readiness-01/annex-round-trip/artifacts",
+      "stdout": {
+        "path": "annex-round-trip/stdout.txt",
+        "sha256": "1d298413654f33c52a4c0c44cf09ced1b614b6446b316763da8fe0ab10dac1a6",
+        "bytes": 205
+      },
+      "stderr": {
+        "path": "annex-round-trip/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "finished_at": "2026-10-16T00:13:29.233614+00:00",
+      "elapsed_seconds": 3.1673494160640985
+    },
+    {
+      "id": "hpc-round-trip",
+      "description": "Submit a small scheduler job to the user-selected cluster and return its completed output; publication may pass through the local host.",
+      "source": "User: establish HPC access; Unity and the project work directory were supplied in prompt.md.",
+      "started_at": "2026-10-16T00:13:29.233987+00:00",
+      "status": "passed",
+      "argv": [
+        "/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/bin/python",
+        "/Users/johnlee/.config/stamped-in-practice/readiness_probe.py",
+        "hpc-round-trip"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "returncode": 0,
+      "artifacts": [
+        {
+          "path": "hpc-round-trip/artifacts/verification.json",
+          "sha256": "bee41738f52f51b1f2df31594da5d6879dd46685b7ce75276dbdb9d57b1cf367",
+          "bytes": 1562,
+          "status": "retained"
+        },
+        {
+          "path": "hpc-round-trip/artifacts/commands.json",
+          "sha256": "aad2f4d622bd4d15e3c5403d843d6535c2460013f0804c05bb22cd3495852e0a",
+          "bytes": 2401,
+          "status": "retained"
+        },
+        {
+          "path": "hpc-round-trip/artifacts/probe.py",
+          "sha256": "333f10821ddee755e1636ae889ce580b1d91f5cd46c105a8f6455ca47e17aad3",
+          "bytes": 20513,
+          "status": "retained"
+        }
+      ],
+      "timeout_seconds": 180,
+      "artifact_directory": "/Users/johnlee/.local/state/stamped-in-practice/readiness-01/hpc-round-trip/artifacts",
+      "stdout": {
+        "path": "hpc-round-trip/stdout.txt",
+        "sha256": "432b9dc3880c901e7bd9eb3599d80c88e92a85f3353f96f6bb2ff06a2c039864",
+        "bytes": 182
+      },
+      "stderr": {
+        "path": "hpc-round-trip/stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "finished_at": "2026-10-16T00:13:32.838225+00:00",
+      "elapsed_seconds": 3.60423795809038
+    }
+  ],
+  "finished_at": "2026-10-16T00:13:32.839119+00:00",
+  "elapsed_seconds": 9.465554125024937,
+  "unmet_requirements": [
+    "annex-round-trip"
+  ]
+}

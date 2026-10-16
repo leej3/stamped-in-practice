@@ -18,5 +18,9 @@ The required services and host configuration come from this user's setup; they a
 The access check establishes current availability, not a guarantee that later sessions will work.
 Preserve each worker's actual stop state before coordinator packaging; publish its immutable result and annex objects before judging.
 
-Formal scientific workers have not started in this preparation commit.
+The procedure is sealed and verified; formal scientific workers have not started.
+The current readiness check passes native capture and the retained cluster job check, but annex upload access is locked.
+Unlock the host credential vault, rerun readiness into a new directory, and retain both attempts before starting.
+Complete prelaunch evidence is retained in `evidence/prelaunch-evidence-01.tar.gz`; its annex upload is also pending access.
+The cluster check re-verifies an earlier completed job and current SSH access; it does not submit a new job.
 Record subsequent launches and outcomes alongside this registration rather than changing its allocation or frozen procedure.
