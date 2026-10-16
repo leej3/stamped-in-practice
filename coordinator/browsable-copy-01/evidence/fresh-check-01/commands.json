@@ -1,0 +1,429 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-16-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "f50d27dfbafa20d304a620df07719978ae1fcee7"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            f50d27dfbafa20d304a620df07719978ae1fcee7 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at f50d27d feat(retention): expose original files for narps-neutral-r1-16\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "f50d27dfbafa20d304a620df07719978ae1fcee7\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "70a21e8011ea03b782c34a7e89ffcd5b64650714",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "70a21e8011ea03b782c34a7e89ffcd5b64650714",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s823762--81e6763e58476aabafb7ad29d6b631a2b291e074e67ad2eac8d974520801677e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_neglog10_p_bonferroni.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s44885--8170f23fb2fda919e358a058c3d65b08473d9c211c5bacf9e4b839323c63a930.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s821404--0fffe8562dcdf5c134a9b1cc82c4ce6851fe853706db96896c00dbec53ffa117.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "results/group_mean_cope.nii.gz",
+      "results/group_neglog10_p_bonferroni.nii.gz",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get results/group_mean_cope.nii.gz (from con-hub...) \n\n1%    7.7 KiB         107 KiB/s 7s\n51%   407.81 KiB        2 MiB/s 0s\n100%  804.46 KiB       24 MiB/s 0s\n                                  \nok\nget results/group_neglog10_p_bonferroni.nii.gz (from con-hub...) \n\n9%    3.74 KiB         44 KiB/s 0s\n100%  43.83 KiB        31 MiB/s 0s\n                                  \nok\nget results/group_t_positive.nii.gz (from con-hub...) \n\n0%    3.74 KiB         59 KiB/s 13s\n100%  802.15 KiB       18 MiB/s 0s \n                                   \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/group_analysis.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob dc3cea0acc5b8c2865f09e871f733dadb181731c\tanalysis/group_analysis.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/restore_maps.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 695171867412a37fe6e191e452509cdfb86430fe\tanalysis/restore_maps.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/group_mean_cope.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob ff7ced22f55d65e84ddd2ec88bfb4f3594185fac\tfigures/group_mean_cope.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/vmPFC_proxy_participants.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 922527a79fab994c15ea10d75edd6e1ef3a49269\tfigures/vmPFC_proxy_participants.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/whole_brain_fwe.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 566c333a2f8ca81ffee4d5d4f87e4e66345b2711\tfigures/whole_brain_fwe.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/whole_brain_results.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 097c6616f80197d4e0a881f70a877aca68d09327\tfigures/whole_brain_results.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "report.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c9b6bdeb3c207c5ed45d7fcc99674f7013f1680f\treport.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/fwe_positive_voxels.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob f1650aec704d5cdc214861c1110fa97dc42088ad\tresults/fwe_positive_voxels.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7bc9925e4f7513b19aff1f3feff5107b7d65a362\tresults/group_mean_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_neglog10_p_bonferroni.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7e1aedc065f7a2191a0c6f4533115be77573f8f1\tresults/group_neglog10_p_bonferroni.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f1ef797130619ed6a54f2d77fa1cf8490f4c0adc\tresults/group_t_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/map_qc.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 180f8ebd5aff1440f6de98dd486fafe3cb9f4f66\tresults/map_qc.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5e3634cd0d8b0b11dcff300f5693aa5cbf311e15\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_proxy_participant_estimates.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 46783c5409aa3cd0526d3f612629d31c3299b702\tresults/vmPFC_proxy_participant_estimates.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "f50d27dfbafa20d304a620df07719978ae1fcee7\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
