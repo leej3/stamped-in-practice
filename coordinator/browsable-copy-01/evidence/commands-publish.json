@@ -1,0 +1,186 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-04-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat",
+      "results/aal3_vmPFC_localization_mask.nii.gz",
+      "results/group_coverage_mask.nii.gz",
+      "results/group_mean_effect.nii.gz",
+      "results/group_tstat.nii.gz",
+      "results/max_t_null.npy",
+      "results/neglog10_p_fwe.nii.gz",
+      "results/significant_fwe_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy .cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf ok\ncopy .cache/nilearn/aal_3v2/AAL3/AAL3v1.nii ok\ncopy .cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz ok\ncopy .cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii ok\ncopy .cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat ok\ncopy .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat ok\ncopy results/aal3_vmPFC_localization_mask.nii.gz (to con-hub...) \n\n97%   31.98 KiB       122 MiB/s 0s\n100%  33.08 KiB         6 MiB/s 0s\n                                  \nok\ncopy results/group_coverage_mask.nii.gz ok\ncopy results/group_mean_effect.nii.gz ok\ncopy results/group_tstat.nii.gz ok\ncopy results/max_t_null.npy (to con-hub...) \n\n82%   31.98 KiB        33 MiB/s 0s\n100%  39.19 KiB         9 MiB/s 0s\n                                  \nok\ncopy results/neglog10_p_fwe.nii.gz (to con-hub...) \n\n67%   31.98 KiB        58 MiB/s 0s\n100%  47.61 KiB        27 MiB/s 0s\n                                  \nok\ncopy results/significant_fwe_mask.nii.gz (to con-hub...) \n\n100%  15.63 KiB        18 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-04-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-04-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-04-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-04-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-04-browsable' set up to track 'origin/codex/narps-neutral-r1-04-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "408b2fd7d97d1b329ecbef71dc52645f9309151d\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "408b2fd7d97d1b329ecbef71dc52645f9309151d",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   408b2fd..588b0db  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "588b0db4f0366c8639ba39090b4b9fc11c718853\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-04-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95\trefs/heads/codex/narps-neutral-r1-04-browsable\n588b0db4f0366c8639ba39090b4b9fc11c718853\trefs/heads/git-annex\n"
+  }
+]

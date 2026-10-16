@@ -1,0 +1,1258 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-04-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            e73ff5bfcadc863bc4da438e8e27c23eb3e34b95 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at e73ff5b feat(retention): expose original files for narps-neutral-r1-04\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "7929eb9710201b9040cb4ee56e34af4451740186",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "7929eb9710201b9040cb4ee56e34af4451740186",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s109995--9867f498a7a54c7108024915d583d8e68639e05bf01e695246f1f2cdd8a98d6e.pdf\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s902981--4a9f9c8c5fc0b93d1396295be6cf25075e21560917262476b8a312f6739039e8.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s39157--5fbc211ffa4e97a69768e1343da93de30799a7e8b3867d2b2cb41baf852452a1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s7109489--aa44bb1767594f560e811cd917fee5833c2f843b81a8febd614db20284b11a34.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s119520--a3721422dffd9ca1345b9c33b95431d719a29d86ef0d5ef0c9806bdf31e9b700.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s902981--166e9b5b6e4fe0c687dd2c5d4262c839c84094a06439d37fd05a5805f8fc976c.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s7109489--422e62c7ee1c523b561c5102ea828b03a06b1c4d14c6f191a832a47d64c4cbf2.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s956452--9d28e017d45bee3295a6aea4e3394c29cdb099a9310a703d476eda4b6739fbe4.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s2931--9eec49c63ea8e493af1a7d324e274be7cc7d17d0f16a890a911e59213a6ed3f3.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s4473--597d2a00b8f703569b8c0f725cbd207563b4b503d9a6a132aed6934af4c8e967.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s207106--60036928735a791fcd1d24d32844703236119134c3b88321d2e08a9dcfda8426.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s2931--9eec49c63ea8e493af1a7d324e274be7cc7d17d0f16a890a911e59213a6ed3f3.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s4723--75cc99fcb2fd01ccd8cfb3ad2ac591eb7d5f3289810afc64649f7547fe6a45fd.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/aal3_vmPFC_localization_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s33870--9a657dfb6e898a1c3e9190bed4e69150cccf07f9e7f7641c5d02bdf0bb958402.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_coverage_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s66546--2c88b35880eb8814322a5df81c277844020c1662416375e92bdae4c76f6d0970.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s823808--13a77919f6b715c57a9b2ffddf8dd3649a15d6cc01026fd72f5e4c1351f1afc1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_tstat.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s821466--aff0a67360cf89eb3609b7f9cd54b40c26967c99c2cb537ffd00a179cd42f26c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/max_t_null.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s40128--a9ee0ad722b4cec1bf3f6f12863d5b5f7d99d088cf97af9531c219a13a369025.npy\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/neglog10_p_fwe.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s48752--74491301e2d8e94e98dc1c81305aed380cd34b7f49157cbaf06e32f8c023d876.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/significant_fwe_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s16010--ed39dcc0041d256f4c96f47d9434ef71bd2f9c0f3e56f4033002f4af4b4bc9f6.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat",
+      "results/aal3_vmPFC_localization_mask.nii.gz",
+      "results/group_coverage_mask.nii.gz",
+      "results/group_mean_effect.nii.gz",
+      "results/group_tstat.nii.gz",
+      "results/max_t_null.npy",
+      "results/neglog10_p_fwe.nii.gz",
+      "results/significant_fwe_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get .cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf (from con-hub...) \n\n3%    3.74 KiB         39 KiB/s 2s\n100%  107.42 KiB      856 KiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/AAL3v1.nii (from con-hub...) \n\n1%    7.7 KiB          63 KiB/s 13s\n100%  881.82 KiB        7 MiB/s 0s \n                                   \nok\nget .cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz (from con-hub...) \n\n20%   7.7 KiB          93 KiB/s 0s\n100%  38.24 KiB        19 MiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii (from con-hub...) \n\n0%    7.7 KiB          97 KiB/s 1m11s\n25%   1.66 MiB          4 MiB/s 1s   \n100%  6.78 MiB         50 MiB/s 0s   \n                                     \nok\nget .cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz (from con-hub...) \n\n7%    7.7 KiB         101 KiB/s 1s\n100%  116.72 KiB       34 MiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii (from con-hub...) \n\n1%    7.7 KiB          73 KiB/s 11s\n100%  881.82 KiB       22 MiB/s 0s \n                                   \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii (from con-hub...) \n\n0%    3.74 KiB         58 KiB/s 2m\n25%   1.66 MiB          5 MiB/s 1s\n100%  6.78 MiB         65 MiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat (from con-hub...) \n\n1%    7.7 KiB          89 KiB/s 10s\n100%  934.04 KiB       62 MiB/s 0s \n                                   \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat (from con-hub...) \n\n100%  2.86 KiB         39 KiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat (from con-hub...) \n\n100%  4.37 KiB         69 KiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat (from con-hub...) \n\n4%    7.7 KiB         103 KiB/s 1s\n100%  202.25 KiB       40 MiB/s 0s\n                                  \nok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat (from con-hub...) ok\nget .cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat (from con-hub...) \n\n100%  4.61 KiB         72 KiB/s 0s\n                                  \nok\nget results/aal3_vmPFC_localization_mask.nii.gz (from con-hub...) \n\n23%   7.7 KiB         129 KiB/s 0s\n100%  33.08 KiB        44 MiB/s 0s\n                                  \nok\nget results/group_coverage_mask.nii.gz (from con-hub...) \n\n12%   7.7 KiB         105 KiB/s 0s\n100%  64.99 KiB        34 MiB/s 0s\n                                  \nok\nget results/group_mean_effect.nii.gz (from con-hub...) \n\n1%    7.7 KiB          97 KiB/s 8s\n100%  804.5 KiB        36 MiB/s 0s\n                                  \nok\nget results/group_tstat.nii.gz (from con-hub...) \n\n1%    7.7 KiB         100 KiB/s 7s\n100%  802.21 KiB       24 MiB/s 0s\n                                  \nok\nget results/max_t_null.npy (from con-hub...) \n\n20%   7.7 KiB         126 KiB/s 0s\n100%  39.19 KiB        43 MiB/s 0s\n                                  \nok\nget results/neglog10_p_fwe.nii.gz (from con-hub...) \n\n16%   7.7 KiB         125 KiB/s 0s\n100%  47.61 KiB        49 MiB/s 0s\n                                  \nok\nget results/significant_fwe_mask.nii.gz (from con-hub...) \n\n49%   7.7 KiB         132 KiB/s 0s\n100%  15.63 KiB        23 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/README.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8e3648b5b4e2ee4146e7b38004dfff9da4abedd9\t.cache/nilearn/README.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 75ef78065dd6e75f522a0a41c742425cc4a50b66\t.cache/nilearn/aal_3v2/AAL3/AAL3.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob df783b217302fb40ac2e9d593266e01d0461423c\t.cache/nilearn/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob aafa5aee8f7fec6bbf94870d42b5779fa308e179\t.cache/nilearn/aal_3v2/AAL3/AAL3v1.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 39bb2c549340023d668cba3b51ad99bfa70d93ec\t.cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 40f00023aecb64b0567cddce12b18d028dd4d8c7\t.cache/nilearn/aal_3v2/AAL3/AAL3v1.nii.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c03e47f27e31bcdd4fea64267a11ee4a2f959894\t.cache/nilearn/aal_3v2/AAL3/AAL3v1.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 97aad6b624644dfef0cacdaf3ae7b64f6dae7f7b\t.cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 608d7133aee95acf36636002cbc0a822e64f2959\t.cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 40f00023aecb64b0567cddce12b18d028dd4d8c7\t.cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.nii.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c923bad255ab43597e4b8fa5cc0f25c2a79cdf2e\t.cache/nilearn/aal_3v2/AAL3/AAL3v1_1mm.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 5dd9c1d83f05594a724f874652b1a405d49fb31a\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 43ba2cf9de9eff29e7e13affdfd17d3ba88c65ca\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob b38e9d354896469ee0ab478256ea953243734949\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 68eab025776999c978b72dcada995b9559eeaf23\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 1818fe6ff0d19376ac68ab8ad0af355050c100ad\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 5c01d28cd5be07e42e399abf9ed592786a6f566b\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e3283967720c8125c8a105ab4c6b780f4133c155\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 6c6da7a10a8891ebf3023b6d24174b446be2c79a\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob da53e4296898acd13dc47d7b8f7f1a3f48cfce93\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_Border.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 5c01d28cd5be07e42e399abf9ed592786a6f566b\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_List.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 0858fd6ec82c9019eb4529b92353808d32bef793\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 81f7511bc9ecab9d44154dc9c2d684cc5a132cdd\t.cache/nilearn/aal_3v2/AAL3/ROI_MNI_V7_vol.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_clusters.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7643a0abe79ee4a57bcdc333bd326dbbc7014bf0\t.cache/nilearn/aal_3v2/AAL3/gin_clusters.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_clusters_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7f47cf26ff087f96c5939a910487362f3006b096\t.cache/nilearn/aal_3v2/AAL3/gin_clusters_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_det_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 395fc44586856b5e96b2609c33f2924394aa2edb\t.cache/nilearn/aal_3v2/AAL3/gin_det_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_det_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob fd4775d205d7a996d56315523d4bf48f25849d2b\t.cache/nilearn/aal_3v2/AAL3/gin_det_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob fbf0049fb8523a86c18ae28daab50206fbaa8fd6\t.cache/nilearn/aal_3v2/AAL3/gin_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_list_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob ae6f1a33c16b9fd6ad17281a4e14f1df0ff20a4a\t.cache/nilearn/aal_3v2/AAL3/gin_list_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_list_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d300431db928a8a0540e4a557540abcce18c32ab\t.cache/nilearn/aal_3v2/AAL3/gin_list_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".cache/nilearn/aal_3v2/AAL3/gin_rclusters.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob f4780c51fb04a6f1ba8abed50330e2395cfef089\t.cache/nilearn/aal_3v2/AAL3/gin_rclusters.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/LICENSE.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 13e25df86ce06eb6488e6a6bc5c5847f5dedc352\t.codex/skills/jupyter-notebook/LICENSE.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/SKILL.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob e1d1748cac9e9313c8229763751714628d1f6853\t.codex/skills/jupyter-notebook/SKILL.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/agents/openai.yaml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8832dea0a6e64f173f09e77f690dada6a5f73074\t.codex/skills/jupyter-notebook/agents/openai.yaml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/experiment-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a4a0323e567a772456395aee29494b1babee622c\t.codex/skills/jupyter-notebook/assets/experiment-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter-small.svg"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 472d07fdfca9a558325cc8eaf91e861a44843b3e\t.codex/skills/jupyter-notebook/assets/jupyter-small.svg\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 51cdf7d3bba730eda85a26a87d1ee65c14da97f0\t.codex/skills/jupyter-notebook/assets/jupyter.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/tutorial-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7001309593a8c10fa34d68870c3a558348f76216\t.codex/skills/jupyter-notebook/assets/tutorial-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/experiment-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2d5093b256f328dabb89de16822286c5f2f4dda4\t.codex/skills/jupyter-notebook/references/experiment-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/notebook-structure.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 681d36f53d55cb089b1d815bacaac9b363f76fa4\t.codex/skills/jupyter-notebook/references/notebook-structure.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/quality-checklist.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5482f282845271ac1614a33135000e18f54d95aa\t.codex/skills/jupyter-notebook/references/quality-checklist.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/tutorial-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2a360b089b904299f463f88b5cdae0ea9bdb1123\t.codex/skills/jupyter-notebook/references/tutorial-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/scripts/new_notebook.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 0aba209a63c9744e7eeca5a59a12135b387e5229\t.codex/skills/jupyter-notebook/scripts/new_notebook.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "REPORT.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 05118902e9a966cc449e34139ce6cb7d2f5935a5\tREPORT.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 664a1f0edeac9ba6d8060a8d88ca4f4711b9edc3\tanalysis.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "output/figures/group_gain_maps.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8dc6bb2f5a295c17615e4b39ffad0b81dcb35696\toutput/figures/group_gain_maps.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "output/figures/vmPFC_participant_effects.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d226601034af0f191cafa0b4f41afccb87e2c4d7\toutput/figures/vmPFC_participant_effects.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/README.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob dbddc7799e74fe83b272399c8d8487c2874d928b\tresults/README.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/aal3_vmPFC_localization_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e5d9b57d5bb96fcbf9b3997f9c3ae94af4737a84\tresults/aal3_vmPFC_localization_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_coverage_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e8871741bb1b8e97f29cff2dd8c7868f5f1e7483\tresults/group_coverage_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 41e2972ee116c44e555b1870a55b8d0c792c3b3b\tresults/group_mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_results.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9c80ba501174717d4fa2b562c575d3e172020dd2\tresults/group_results.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_tstat.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob b057360af40130678b4842e2dfff3fd374048244\tresults/group_tstat.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/max_t_null.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 9c46923d78b4518980a612545304da2377179936\tresults/max_t_null.npy\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/neglog10_p_fwe.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 9f851325f7ba5cee38c413521520fee95444510d\tresults/neglog10_p_fwe.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_map_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c8572edcef7ba5e003557d8fd3077976b12fdb44\tresults/participant_map_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_vmPFC_effects.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c9f183b3e4d259bac58cf2232f53b674593803ab\tresults/participant_vmPFC_effects.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/significant_components.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob dc638c345858517d764be877a267d71f28b21640\tresults/significant_components.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/significant_fwe_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6c8ba41daccde61b7597ff3ae2837e9625d388dc\tresults/significant_fwe_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e73ff5bfcadc863bc4da438e8e27c23eb3e34b95\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
