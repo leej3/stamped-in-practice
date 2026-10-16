@@ -197,11 +197,11 @@ def main() -> None:
     t_sig = np.full(shape, 0, dtype=np.float32)
     t_sig[mask] = np.where(sig, t_obs, 0)
     sig_img = nib.Nifti1Image(t_sig, affine)
-    fig = plotting.plot_stat_map(sig_img, bg_img=datasets.load_mni152_template(resolution=2),
-                                 threshold=0.01, display_mode="ortho", cut_coords=(0, 30, -8),
-                                 cmap="cold_hot", colorbar=True, title="Positive gain effect: whole-brain max-T FWE p <= .05")
-    fig.savefig(OUT / "whole_brain_fwe.png", dpi=180)
-    plotting.close()
+    display = plotting.plot_stat_map(sig_img, bg_img=datasets.load_mni152_template(resolution=2),
+                                    threshold=0.01, display_mode="ortho", cut_coords=(0, 30, -8),
+                                    cmap="cold_hot", colorbar=True, title="Positive gain effect: whole-brain max-T FWE p <= .05")
+    display.savefig(OUT / "whole_brain_fwe.png", dpi=180)
+    display.close()
     print(json.dumps(summary, indent=2))
 
 
