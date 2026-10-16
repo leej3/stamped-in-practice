@@ -1,0 +1,12 @@
+The analysis found **no whole-brain-corrected support for a positive vmPFC response**. The vmPFC mean estimate was 0.006 (95% CI −0.066 to 0.078), and no vmPFC voxels survived correction. Elsewhere, 24 voxels in three small posterior clusters passed whole-brain FWE correction; they do not support the vmPFC hypothesis.
+
+The concise report is [REPORT.md](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/REPORT.md). It explains the model, vmPFC definition, exclusions, uncertainty, and limits of the supplied effect estimates. The whole-brain correction follows the [original NARPS instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf).
+
+Supporting materials:
+
+- Analysis code: [group_analysis.py](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/analysis/group_analysis.py)
+- Notebook: [narps_group_analysis.ipynb](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/analysis/narps_group_analysis.ipynb)
+- Results and QC: [summary](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/results/analysis_summary.json), [quality checks](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/results/quality_checks.json), [cluster table](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/results/significant_clusters.csv)
+- Figures: [mean effect](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/figures/mean_effect.png), [whole-brain corrected results](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/figures/whole_brain_fwe.png), [vmPFC distribution](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-10/figures/vmPFC_distribution.png)
+
+I executed the analysis and notebook. No participants were excluded. The main limits are the fixed upstream model, unavailable participant variance maps, and the fact that a null corrected result does not establish that the vmPFC effect is zero. The `jupyter-notebook` skill is installed in the workspace at `.task-skills/jupyter-notebook/`.
