@@ -1,0 +1,983 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-r1-05",
+  "extracted_at_utc": "2026-10-16T03:46:13.142600+00:00",
+  "scope": {
+    "coordinator_only": true,
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "auth_or_profile_copied": false,
+    "source_evidence": "Completed native event stream, launch receipts, allocation, worker-input and existing retained skill archive manifest. No archive or environment snapshot was recreated."
+  },
+  "source_artifacts": [
+    {
+      "path": "/Users/johnlee/code/CON/stamped-in-practice/iterations/narps-v1/allocation.json",
+      "sha256": "3d8674fd7a404bb0020fc5a0bde0b913373e53c6cf9a3663de95f3600f472876",
+      "bytes": 5574
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+      "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+      "bytes": 226702
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/prompt-preflight.json",
+      "sha256": "c6c3b5125cb1072ada6d72551b50d3d673d2c85a0bdcb1cf6fd63af9f0d50cda",
+      "bytes": 1808
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/condition-assignment.json",
+      "sha256": "05bdadb215c95c5f20e3c81e4da7748d1f04b443aeb602975685259b3ab1b36d",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/skill-observations.json",
+      "sha256": "120f3779915f39c416a6d7b27d100154439e1b8761168c9fda942ef113759b6f",
+      "bytes": 1720
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/worker-end-state.json",
+      "sha256": "c6fe206a8a09efc1e8d103ea6583de93bb384473cc97cf1d2a445870980c5c4e",
+      "bytes": 61127
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/prompt.txt",
+      "sha256": "323fd87f691b921c1ef09b26ca5d463f9b9236ca736edf962e702eb0374a4eb9",
+      "bytes": 2414
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/result.json",
+      "sha256": "61661dbcaff0626e357fb95d08487ebf0cf91e2aa3422cce493dc7c6857d610a",
+      "bytes": 5009
+    },
+    {
+      "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/worker-input.json",
+      "sha256": "f275cc8fe63c1408e0c394a01f7a4dfa85700ddd103ad4909442a87831aeed82",
+      "bytes": 15187
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/retention/installed-skills-01/manifest.json",
+      "sha256": "44a62521221a9e472d24fb8566440960bb76c9701737e6991abe8f0896f9f859",
+      "bytes": 24675
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/retention/installed-skills-01/installed-skills.tar.gz",
+      "sha256": "280b1757f697b765be8b2dac962e9139183dee7c4afc802a44e4a1422b6aeb32",
+      "bytes": 108757
+    },
+    {
+      "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/SKILL.md",
+      "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+      "bytes": 2517
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md",
+      "sha256": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee",
+      "bytes": 3367
+    }
+  ],
+  "assigned_condition": {
+    "authority": {
+      "path": "/Users/johnlee/code/CON/stamped-in-practice/iterations/narps-v1/allocation.json",
+      "sha256": "3d8674fd7a404bb0020fc5a0bde0b913373e53c6cf9a3663de95f3600f472876",
+      "bytes": 5574,
+      "json_pointer": "/rounds/0/launch_order/6"
+    },
+    "run": "narps-r1-05",
+    "condition": "discover-general",
+    "replicate": 2,
+    "round": 1,
+    "launch_order_1based": 7,
+    "duplicate_selected": false,
+    "native_assignment": {
+      "config_version": 1,
+      "config_sha256": "2d41f2690f427f468ddec46c8d40944d28a21f2013315dde8c1e4618b29d79c5",
+      "requested_condition": "discover-general",
+      "condition": "discover-general",
+      "additional_prompt": "Find and install skills you consider useful for completing this task, and use them where appropriate.",
+      "additional_prompt_sha256": "bc8baae751c0ee6f9d46be0fa3dbc43b8148e52d927ca1a888f97b9e324e18fd",
+      "supplied_skills": [],
+      "prompt_sha256": "323fd87f691b921c1ef09b26ca5d463f9b9236ca736edf962e702eb0374a4eb9",
+      "coordinator_commit": "e86a968be5a03114a279985fadd7ce7274f235aa",
+      "supplied_skills_commit": null,
+      "capture_execution": true
+    },
+    "worker_input": {
+      "version": 2,
+      "coordinator_commit": "e86a968be5a03114a279985fadd7ce7274f235aa",
+      "study_commit": "c7a135f92f92df15c379f7c2d9231f13981d76e4",
+      "study_input_tree": "a484f41db2095ef116f08d359f9b95ad41981698",
+      "condition": "discover-general",
+      "run": "narps-r1-05",
+      "assignment": {
+        "config_version": 1,
+        "config_sha256": "2d41f2690f427f468ddec46c8d40944d28a21f2013315dde8c1e4618b29d79c5",
+        "requested_condition": "discover-general",
+        "condition": "discover-general",
+        "additional_prompt": "Find and install skills you consider useful for completing this task, and use them where appropriate.",
+        "additional_prompt_sha256": "bc8baae751c0ee6f9d46be0fa3dbc43b8148e52d927ca1a888f97b9e324e18fd",
+        "supplied_skills": []
+      }
+    },
+    "assignment_sources_match": true,
+    "interpretation": "Assigned condition is retained independently from observed discovery, installation, loading and application."
+  },
+  "worker_state": {
+    "head_commit": "e2d266ea0ca7cc52e9ecab358e0f5a8c9085f6b9",
+    "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_status_clean": true,
+    "refs_sha256": "72eee5f84adbd67e204d7a628d04797a414c4f0a5f6c7c9d21d1bc27a2cd1961",
+    "index_sha256": "9ea3331fc1546426aedebd97ba254ad788866dcc8af7dedbc78e55773849a347",
+    "matches_native_stop_head": true,
+    "native_capture_status": "complete",
+    "read_only_check_after": {
+      "head_commit": "e2d266ea0ca7cc52e9ecab358e0f5a8c9085f6b9",
+      "status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_status_clean": true,
+      "refs_sha256": "72eee5f84adbd67e204d7a628d04797a414c4f0a5f6c7c9d21d1bc27a2cd1961",
+      "index_sha256": "9ea3331fc1546426aedebd97ba254ad788866dcc8af7dedbc78e55773849a347"
+    },
+    "refs_index_status_unchanged_during_extraction": true
+  },
+  "initial_catalog": {
+    "advertised_skill_catalog": [
+      {
+        "name": "imagegen",
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/imagegen/SKILL.md",
+        "sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba"
+      },
+      {
+        "name": "openai-docs",
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/openai-docs/SKILL.md",
+        "sha256": "aa6829e21df2223167c85d2e49b6337a7345c84c1033f1ec10182c7882b36d45"
+      },
+      {
+        "name": "skill-creator",
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-creator/SKILL.md",
+        "sha256": "6656e54755638e8efcf275a472b9672eaa8a9a1b9e59dc210e275b03b59e1e66"
+      },
+      {
+        "name": "skill-installer",
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md",
+        "sha256": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee"
+      }
+    ],
+    "visible_study_skills": [],
+    "unexpected_skill_catalog": [],
+    "project_instructions_present": false,
+    "evidence": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/prompt-preflight.json",
+      "sha256": "c6c3b5125cb1072ada6d72551b50d3d673d2c85a0bdcb1cf6fd63af9f0d50cda",
+      "bytes": 1808,
+      "json_pointer": "/advertised_skill_catalog"
+    },
+    "interpretation": "Four common built-ins were advertised; no study skill supplied. Advertisement alone is not loading or use."
+  },
+  "discovery": {
+    "searches": [
+      {
+        "query_recorded": "https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf",
+        "action": {
+          "type": "open_page",
+          "url": "https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf"
+        },
+        "scope": "study-source-or-software-context-not-skill-discovery",
+        "skill_query_indices_0based": [],
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 30,
+          "line_sha256": "f270d2b0810ccceb452a8dbe1190bf402ea0ade76b9c3c2c81d7c8fbb4c754fa",
+          "event_type": "item.completed",
+          "item_id": "exec-79698c7d-f496-4d25-941d-6d8ea52ca485",
+          "field": "item"
+        },
+        "duration_seconds": null
+      },
+      {
+        "query_recorded": "NARPS instructions analysis teams PDF Hypothesis 1 vmPFC whole-brain correction",
+        "action": {
+          "type": "search",
+          "query": "NARPS instructions analysis teams PDF Hypothesis 1 vmPFC whole-brain correction"
+        },
+        "scope": "study-source-or-software-context-not-skill-discovery",
+        "skill_query_indices_0based": [],
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 34,
+          "line_sha256": "c9aab848ec422a8176be13f9ee835ee017ac0276e1e6fc9265a45ba0fb80994c",
+          "event_type": "item.completed",
+          "item_id": "exec-504391ff-2b72-48e9-9aad-6540c83ea11e",
+          "field": "item"
+        },
+        "duration_seconds": null
+      },
+      {
+        "query_recorded": "vmPFC coordinate 0 40 -10 sphere region of interest fMRI valuation meta analysis ...",
+        "action": {
+          "type": "search",
+          "queries": [
+            "vmPFC coordinate 0 40 -10 sphere region of interest fMRI valuation meta analysis",
+            "NARPS Hypothesis 1 positive effect vmPFC equal indifference gain effect description"
+          ]
+        },
+        "scope": "study-source-or-software-context-not-skill-discovery",
+        "skill_query_indices_0based": [],
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 48,
+          "line_sha256": "00d4b77e7c993736e0f6e1d52bf7b2ab11e5d719181e1a5b0f8444b030ac0241",
+          "event_type": "item.completed",
+          "item_id": "exec-e5fa6988-4808-4447-84d1-250ae75a06e8",
+          "field": "item"
+        },
+        "duration_seconds": null
+      },
+      {
+        "query_recorded": "\"0, 46, -6\" vmPFC meta-analysis ...",
+        "action": {
+          "type": "search",
+          "queries": [
+            "\"0, 46, -6\" vmPFC meta-analysis",
+            "\"[0,46,-6]\" vmPFC fMRI meta-analysis"
+          ]
+        },
+        "scope": "study-source-or-software-context-not-skill-discovery",
+        "skill_query_indices_0based": [],
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 69,
+          "line_sha256": "af23189149ad4880f38d0c5a7d090821e423ac7a19d4f3c2d397664a3748550a",
+          "event_type": "item.completed",
+          "item_id": "exec-36a86a98-3327-49a5-ad26-4075225527bd",
+          "field": "item"
+        },
+        "duration_seconds": null
+      },
+      {
+        "query_recorded": "site:nilearn.github.io non_parametric_inference max-t logp_max_t family-wise permutation ...",
+        "action": {
+          "type": "search",
+          "queries": [
+            "site:nilearn.github.io non_parametric_inference max-t logp_max_t family-wise permutation",
+            "Nilearn non_parametric_inference API official docs max t"
+          ]
+        },
+        "scope": "study-source-or-software-context-not-skill-discovery",
+        "skill_query_indices_0based": [],
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 74,
+          "line_sha256": "009bd0ef70c2af209ff33133acf7c2f5eb300888ec45b7bca8db61a5e0971b13",
+          "event_type": "item.completed",
+          "item_id": "exec-b029af68-aacf-41af-9f36-f3fc16c69131",
+          "field": "item"
+        },
+        "duration_seconds": null
+      }
+    ],
+    "catalog_queries": [
+      {
+        "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/scripts/list-skills.py --format json'",
+        "exit_code": 0,
+        "status": "completed",
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 15,
+          "line_sha256": "08b4c3363b4fd00c9b769efd60e0256cf892c0dabf3927d05260dd9e46b1a9a9",
+          "event_type": "item.completed",
+          "item_id": "item_7",
+          "field": "item"
+        },
+        "duration_seconds": null,
+        "duration_missing_reason": "No structured per-command timestamp or elapsed field in the retained native event.",
+        "output_sha256": "89308a5cbd9ee6db7fc0f51047d30df3468d7af22dc6ef650adca0433f74f787",
+        "output_bytes": 1931
+      }
+    ],
+    "catalog_entries": [
+      {
+        "name": "aspnet-core",
+        "installed": false
+      },
+      {
+        "name": "chatgpt-apps",
+        "installed": false
+      },
+      {
+        "name": "cli-creator",
+        "installed": false
+      },
+      {
+        "name": "cloudflare-deploy",
+        "installed": false
+      },
+      {
+        "name": "define-goal",
+        "installed": false
+      },
+      {
+        "name": "figma",
+        "installed": false
+      },
+      {
+        "name": "figma-code-connect-components",
+        "installed": false
+      },
+      {
+        "name": "figma-create-design-system-rules",
+        "installed": false
+      },
+      {
+        "name": "figma-create-new-file",
+        "installed": false
+      },
+      {
+        "name": "figma-generate-design",
+        "installed": false
+      },
+      {
+        "name": "figma-generate-library",
+        "installed": false
+      },
+      {
+        "name": "figma-implement-design",
+        "installed": false
+      },
+      {
+        "name": "figma-use",
+        "installed": false
+      },
+      {
+        "name": "gh-address-comments",
+        "installed": false
+      },
+      {
+        "name": "gh-fix-ci",
+        "installed": false
+      },
+      {
+        "name": "hatch-pet",
+        "installed": false
+      },
+      {
+        "name": "jupyter-notebook",
+        "installed": false
+      },
+      {
+        "name": "linear",
+        "installed": false
+      },
+      {
+        "name": "migrate-to-codex",
+        "installed": false
+      },
+      {
+        "name": "netlify-deploy",
+        "installed": false
+      },
+      {
+        "name": "notion-knowledge-capture",
+        "installed": false
+      },
+      {
+        "name": "notion-meeting-intelligence",
+        "installed": false
+      },
+      {
+        "name": "notion-research-documentation",
+        "installed": false
+      },
+      {
+        "name": "notion-spec-to-implementation",
+        "installed": false
+      },
+      {
+        "name": "openai-docs",
+        "installed": false
+      },
+      {
+        "name": "pdf",
+        "installed": false
+      },
+      {
+        "name": "playwright",
+        "installed": false
+      },
+      {
+        "name": "playwright-interactive",
+        "installed": false
+      },
+      {
+        "name": "render-deploy",
+        "installed": false
+      },
+      {
+        "name": "screenshot",
+        "installed": false
+      },
+      {
+        "name": "security-best-practices",
+        "installed": false
+      },
+      {
+        "name": "security-ownership-map",
+        "installed": false
+      },
+      {
+        "name": "security-threat-model",
+        "installed": false
+      },
+      {
+        "name": "sentry",
+        "installed": false
+      },
+      {
+        "name": "speech",
+        "installed": false
+      },
+      {
+        "name": "transcribe",
+        "installed": false
+      },
+      {
+        "name": "vercel-deploy",
+        "installed": false
+      },
+      {
+        "name": "winui-app",
+        "installed": false
+      },
+      {
+        "name": "yeet",
+        "installed": false
+      }
+    ],
+    "catalog_count": 39,
+    "catalog_entry_interpretation": "Observed discovery-query results only; not a count of available skills.",
+    "helper_inspection_attempts": [
+      {
+        "command": "/opt/homebrew/bin/bash -lc 'git annex list 2>&1 | head -20; git ls-files -s | head -30; git config --get core.excludesfile; git branch -vv; ls /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/scripts'",
+        "exit_code": 0,
+        "status": "completed",
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 13,
+          "line_sha256": "f5429df94753f35496e71ec1707595b6a92ea51fcd202dedd373df68b951c768",
+          "event_type": "item.completed",
+          "item_id": "item_6",
+          "field": "item"
+        },
+        "duration_seconds": null,
+        "duration_missing_reason": "No structured per-command timestamp or elapsed field in the retained native event.",
+        "output_sha256": "aff7044259230cc18883bca7bb4dab50a841d11b0a1fafcde8da9176b24217dc",
+        "output_bytes": 3390
+      }
+    ],
+    "search_candidate_exposures": [],
+    "selection_rationale": [
+      {
+        "quote": "The maps are Git-annex inputs and are available from the configured remotes, so I can retrieve only those supplied effect maps (no time-series scans). I found the curated PDF skill useful for checking the cited study instructions; I’ll install it under this repository’s `.codex/skills/` and use it to verify the source requirements.",
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 16,
+          "line_sha256": "9e05d5009d869f58cfb39a09ef101237a2aa9e136e188149b80b3ebab11fcbda",
+          "event_type": "item.completed",
+          "item_id": "item_8",
+          "field": "item.text"
+        }
+      }
+    ]
+  },
+  "selected_skills": [
+    {
+      "name": "pdf",
+      "repository_path": ".codex/skills/pdf",
+      "source_repository": "https://github.com/openai/skills",
+      "source_path": "skills/.curated/pdf",
+      "source_url": "https://github.com/openai/skills/tree/main/skills/.curated/pdf",
+      "source_url_basis": "Explicit installer repository/path and documented default main; immutable upstream revision was not emitted.",
+      "requested_ref": null,
+      "installer_documented_default_ref": "main",
+      "resolved_commit": null,
+      "revision_missing_reason": "Exact upstream revision absent from retained installer output.",
+      "selection_observed_via_install": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 18,
+        "line_sha256": "00d5ce73a26874310e954a37972fc8c0cbd35cadfc9937ff2439bc8876f9ec57",
+        "event_type": "item.completed",
+        "item_id": "item_9",
+        "field": "item.command"
+      },
+      "installation": "succeeded",
+      "entrypoint_loaded": true
+    }
+  ],
+  "installation_attempts": [
+    {
+      "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/pdf --dest .codex/skills'",
+      "exit_code": 0,
+      "status": "completed",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 18,
+        "line_sha256": "00d5ce73a26874310e954a37972fc8c0cbd35cadfc9937ff2439bc8876f9ec57",
+        "event_type": "item.completed",
+        "item_id": "item_9",
+        "field": "item"
+      },
+      "duration_seconds": null,
+      "duration_missing_reason": "No structured per-command timestamp or elapsed field in the retained native event.",
+      "output_sha256": "4332abd77a12321f13ee8e1844ef6c35e1409e147ca848969e80167fd27a24fb",
+      "output_bytes": 35,
+      "output": "Installed pdf to .codex/skills/pdf\n"
+    }
+  ],
+  "installation_failed_attempts_observed": 0,
+  "loaded_instructions": [
+    {
+      "skill": "pdf",
+      "entrypoint": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/SKILL.md",
+      "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 20,
+        "line_sha256": "ac409038eeae9a951ec376c4fdc3de44552f36989f4ee75d12991821075066d7",
+        "event_type": "item.completed",
+        "item_id": "item_10",
+        "field": "item.aggregated_output"
+      },
+      "content_observed_verbatim": true,
+      "output_text_line_start_1based": 1,
+      "output_text_line_end_1based": 67,
+      "interpretation": "Complete installed instruction bytes were returned to the worker; application is recorded separately."
+    }
+  ],
+  "loaded_builtin_instructions": [
+    {
+      "skill": "skill-installer",
+      "catalog_entry": {
+        "name": "skill-installer",
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md",
+        "sha256": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee"
+      },
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 10,
+        "line_sha256": "b945c8557ab84acebc76dfe1aac5a604ddc46eae66f5162b0dd8f1e08c6dabca",
+        "event_type": "item.completed",
+        "item_id": "item_4",
+        "field": "item.aggregated_output"
+      },
+      "read_command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md && ls -la && cat input/sources.json && sed -n '1,12p' input/participants.tsv && git annex status 2>&1 | head -40 && find input -maxdepth 2 -type f -ls\"",
+      "content_observed_verbatim": true,
+      "interpretation": "Complete common installer instructions loaded; catalogue and install commands separately establish procedural execution."
+    }
+  ],
+  "instruction_context": [
+    {
+      "skill": "pdf",
+      "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/SKILL.md",
+      "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+      "guidance": [
+        {
+          "line_1based": 15,
+          "text": "1. Prefer visual review: render PDF pages to PNGs and inspect them."
+        },
+        {
+          "line_1based": 19,
+          "text": "3. Use `pdfplumber` (or `pypdf`) for text extraction and quick checks; do not rely on it for layout fidelity."
+        },
+        {
+          "line_1based": 65,
+          "text": "- Do not deliver until the latest PNG inspection shows zero visual or formatting defects."
+        }
+      ],
+      "purpose": "Instruction context only; no adherence or scientific grading."
+    }
+  ],
+  "installed_skill_inventory": {
+    "scanned_repository_roots": [
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/skills",
+        "exists": false
+      },
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.agents/skills",
+        "exists": false
+      },
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills",
+        "exists": true
+      }
+    ],
+    "actual_installed_repository_roots": [
+      "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills"
+    ],
+    "files": [
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/LICENSE.txt",
+        "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+        "bytes": 10776,
+        "repository_path": ".codex/skills/pdf/LICENSE.txt"
+      },
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/SKILL.md",
+        "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2",
+        "bytes": 2517,
+        "repository_path": ".codex/skills/pdf/SKILL.md"
+      },
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/agents/openai.yaml",
+        "sha256": "f8b223e25343559f57e1839ccd849fd1494a9729da33da04bb5074b7f80f4887",
+        "bytes": 219,
+        "repository_path": ".codex/skills/pdf/agents/openai.yaml"
+      },
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/assets/pdf.png",
+        "sha256": "17da356d195d4e3fa24f9becbee6b8d9e60e13005762b5ab0809c520c76da6ee",
+        "bytes": 1312,
+        "repository_path": ".codex/skills/pdf/assets/pdf.png"
+      }
+    ],
+    "file_count": 4,
+    "launcher_observed_entrypoints": [
+      {
+        "path": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.codex/skills/pdf/SKILL.md",
+        "sha256": "d108cf2b36355ab37eb5962933f4d09785ec002f3105c506129320209306b9d2"
+      },
+      {
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/imagegen/SKILL.md",
+        "sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba"
+      },
+      {
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/openai-docs/SKILL.md",
+        "sha256": "aa6829e21df2223167c85d2e49b6337a7345c84c1033f1ec10182c7882b36d45"
+      },
+      {
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/review-agent/SKILL.md",
+        "sha256": "07079efd0dc76f05fade424e5dfb048dce1de2df7626e1a4f56292a4f3f92228"
+      },
+      {
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-creator/SKILL.md",
+        "sha256": "6656e54755638e8efcf275a472b9672eaa8a9a1b9e59dc210e275b03b59e1e66"
+      },
+      {
+        "path": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md",
+        "sha256": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee"
+      }
+    ],
+    "launcher_inventory_limitation": "Availability only; use requires separate native event evidence.",
+    "post_catalog_difference": "review-agent appears in the post-run profile inventory but was not initially advertised. No worker install/read event observed; not counted as worker-selected.",
+    "retained_available_skill_archive": {
+      "manifest": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/retention/installed-skills-01/manifest.json",
+        "sha256": "44a62521221a9e472d24fb8566440960bb76c9701737e6991abe8f0896f9f859",
+        "bytes": 24675
+      },
+      "archive": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/retention/installed-skills-01/installed-skills.tar.gz",
+        "sha256": "280b1757f697b765be8b2dac962e9139183dee7c4afc802a44e4a1422b6aeb32",
+        "bytes": 108757
+      },
+      "manifest_scope": "Full installed directories identified at worker stop, including common built-ins; availability is not evidence of loading or use. Sources were read only.",
+      "archive_file_hash_verified": true,
+      "archive_file_count_from_existing_manifest": 53,
+      "per_member_archive_reverification_performed": false,
+      "interpretation": "Existing retained archive identity referenced only; archive and environment preservation were not repeated."
+    }
+  },
+  "application_evidence": [
+    {
+      "skill": "skill-installer",
+      "classification": "observed-procedural-execution",
+      "description": "Ran the loaded installer catalogue and install helpers; this is procedural use, not scientific effect.",
+      "evidence": [
+        {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 15,
+          "line_sha256": "08b4c3363b4fd00c9b769efd60e0256cf892c0dabf3927d05260dd9e46b1a9a9",
+          "event_type": "item.completed",
+          "item_id": "item_7",
+          "field": "item"
+        },
+        {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 18,
+          "line_sha256": "00d5ce73a26874310e954a37972fc8c0cbd35cadfc9937ff2439bc8876f9ec57",
+          "event_type": "item.completed",
+          "item_id": "item_9",
+          "field": "item"
+        }
+      ]
+    },
+    {
+      "skill": "pdf",
+      "classification": "observed-attempt-failed",
+      "description": "Attempted acquisition of the cited study PDF, intended to precede local text extraction.",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 32,
+        "line_sha256": "c2127e106353d0c28d174a37dd5c4b778c610dd071eb633b7dacc0594e3fc16f",
+        "event_type": "item.completed",
+        "item_id": "item_16",
+        "field": "item"
+      },
+      "command": "/opt/homebrew/bin/bash -lc \"curl -L --fail --silent --show-error https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf -o tmp_narps_instructions.pdf && ls -lh tmp_narps_instructions.pdf && command -v pdftotext && pdftotext -layout tmp_narps_instructions.pdf - | sed -n '1,240p'\"",
+      "exit_code": 56,
+      "observed_output": "curl: (56) The requested URL returned error: 522\n",
+      "causal_attribution": "Worker selection rationale connects the attempt to PDF source review; no causal effect is assessed.",
+      "downstream_steps": "curl failed; && prevented ls, command -v pdftotext and pdftotext in that command.",
+      "completion": "No completed local PDF text extraction, page rendering or visual PDF review established."
+    }
+  ],
+  "worker_reported_application_claims": [
+    {
+      "quote": "I installed the PDF skill locally at `.codex/skills/pdf`; it did not change shared user configuration.",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 169,
+        "line_sha256": "ca6ec79a7947d4df67a1ff3ba0c07500a86044c852f7e94dd3920487c2d3771c",
+        "event_type": "item.completed",
+        "item_id": "item_89",
+        "field": "item.text"
+      },
+      "status": "worker-reported"
+    }
+  ],
+  "not_established": [
+    {
+      "skill": "pdf",
+      "observation": "HTTP 522 prevented local PDF acquisition; no completed extraction, page rendering or visual PDF review appears in the native stream. Subsequent web source searches are not evidence of completed local PDF workflow."
+    }
+  ],
+  "incidental_exposure": [],
+  "process_visibility_checks": [],
+  "failures_and_attempt_limitations": [
+    {
+      "classification": "runtime-feature-warning",
+      "message": "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/config.toml.",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 2,
+        "line_sha256": "1e07d0f3bf256512da2741b5107320036aa2cb07516892570a6b16751c963641",
+        "event_type": "item.completed",
+        "item_id": "item_0",
+        "field": "item"
+      },
+      "interpretation": "Runtime warning, not evidence of skill installation failure."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 28,
+        "line_sha256": "eb48899ce33c0084cd3865ef3452183a7e41087d6de333e16ec55ababf53b4e4",
+        "event_type": "item.completed",
+        "item_id": "item_14",
+        "field": "item"
+      },
+      "exit_code": 1,
+      "command_sha256": "d2bfa356b52c5cfac9aeeb46f0bbbb2e80297d4a226528a9753e016233a8bfa5",
+      "output_sha256": "d284e06deede36cce9f70220ded38b21814e8a8e998abf30a01f28720ff61344",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "web-source-access-failure",
+      "skill_attribution": "not-established",
+      "action": {
+        "type": "open_page",
+        "url": "https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf"
+      },
+      "result": {
+        "type": "text_result",
+        "ref_id": "turn0view0",
+        "snippet": "Total lines: 1",
+        "title": "Internal Error"
+      },
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 30,
+        "line_sha256": "f270d2b0810ccceb452a8dbe1190bf402ea0ade76b9c3c2c81d7c8fbb4c754fa",
+        "event_type": "item.completed",
+        "item_id": "exec-79698c7d-f496-4d25-941d-6d8ea52ca485",
+        "field": "item.results[0]"
+      }
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 32,
+        "line_sha256": "c2127e106353d0c28d174a37dd5c4b778c610dd071eb633b7dacc0594e3fc16f",
+        "event_type": "item.completed",
+        "item_id": "item_16",
+        "field": "item"
+      },
+      "exit_code": 56,
+      "command_sha256": "b385fe66fe002121f9aea66bc9dae14c6dcbee0f1cbc8a758a9be62afc8e149f",
+      "output_sha256": "88097cdbff4ca34e0ee0f22904bcd8429886f4f9a09a31f4ef6b3d2cc0e14669",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 65,
+        "line_sha256": "bac3847ed90756c80640af69e8bbb5634a0576d4df455886041d92f3a32b542f",
+        "event_type": "item.completed",
+        "item_id": "item_34",
+        "field": "item"
+      },
+      "exit_code": 1,
+      "command_sha256": "a4999955df6a023ab26dc5e4f858631254dac614347f3c808187a1b8dde1421b",
+      "output_sha256": "7b3cc93ae7ee76019c50df188621a668494f75eeec54f06d2f11cb474ccc3166",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 142,
+        "line_sha256": "e10639bf182ef30fdf1e6e36516baafc041b9b94b05372e052769fd5437b9b1b",
+        "event_type": "item.completed",
+        "item_id": "item_75",
+        "field": "item"
+      },
+      "exit_code": 2,
+      "command_sha256": "6dd9701c0c0181074151df60f5f1b05cf0263caff9b3f10f07029696d534b44c",
+      "output_sha256": "678833bca56d8909cd5ca578e1878f016d46f4db93c28f15542ecc0fa5229a3d",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 146,
+        "line_sha256": "e5c0ebd7196a3dc5d62ad0227dcac8ae3b9aeceb734cf89a1c806db097eb1197",
+        "event_type": "item.completed",
+        "item_id": "item_77",
+        "field": "item"
+      },
+      "exit_code": 1,
+      "command_sha256": "cdfdbb585621af932144fd5a26d59495ee9e0aa004b1c69f8807b6f353459e42",
+      "output_sha256": "279d6c7e389c88b9af7ab4ad5b8ad2cc17938b7e234b95316655f23140913a41",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 156,
+        "line_sha256": "257bda95afdbd9894a63bc620d74f1aa7f4e7d224e9f254dab6759f9c07d1ec0",
+        "event_type": "item.completed",
+        "item_id": "item_82",
+        "field": "item"
+      },
+      "exit_code": 1,
+      "command_sha256": "a3184bee62f3c0c260b986d1c1eed4682b2de99527804f22279021913eef60f5",
+      "output_sha256": "d3bb351f5033208f8b0fda394f6c5b0bcf3bf849c95cbc418e40d74efd83dfd0",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "recorded-execution-failure-not-attributed-to-skill",
+      "evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+        "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+        "line_1based": 166,
+        "line_sha256": "b2bd44f5247262de8fc9b3cba8e5fc4c9319f6d5a679ca038da40b57d6ca8be1",
+        "event_type": "item.completed",
+        "item_id": "item_87",
+        "field": "item"
+      },
+      "exit_code": 1,
+      "command_sha256": "52f5901b34ca5382eab18a67ea3eb2caa913a1427e94d6984d2992f3c5743d16",
+      "output_sha256": "fd45d8663b3139dbfefee6b69bb8241fe25b073e7133c516b27757532c820af9",
+      "description": "Preserved native failure identity; no scientific or skill attribution."
+    },
+    {
+      "classification": "source-acquisition-failure",
+      "skills": [
+        "pdf"
+      ],
+      "attempt": {
+        "command": "/opt/homebrew/bin/bash -lc \"curl -L --fail --silent --show-error https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf -o tmp_narps_instructions.pdf && ls -lh tmp_narps_instructions.pdf && command -v pdftotext && pdftotext -layout tmp_narps_instructions.pdf - | sed -n '1,240p'\"",
+        "exit_code": 56,
+        "status": "failed",
+        "evidence": {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+          "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+          "line_1based": 32,
+          "line_sha256": "c2127e106353d0c28d174a37dd5c4b778c610dd071eb633b7dacc0594e3fc16f",
+          "event_type": "item.completed",
+          "item_id": "item_16",
+          "field": "item"
+        },
+        "duration_seconds": null,
+        "duration_missing_reason": "No structured per-command timestamp or elapsed field in the retained native event.",
+        "output_sha256": "88097cdbff4ca34e0ee0f22904bcd8429886f4f9a09a31f4ef6b3d2cc0e14669",
+        "output_bytes": 49,
+        "output": "curl: (56) The requested URL returned error: 522\n"
+      },
+      "description": "HTTP 522 before &&-linked text extraction; preserved as attempted application, not successful PDF review."
+    }
+  ],
+  "measurement": {
+    "installation_elapsed_seconds": null,
+    "discovery_elapsed_seconds": null,
+    "missing_reason": "Native command events lack structured per-command timestamps/duration; elapsed time is not inferred from order or total runtime.",
+    "successful_install_commands": 1,
+    "successfully_installed_skills": 1,
+    "loaded_selected_skill_entrypoints": 1,
+    "application_success_count": null,
+    "application_success_count_missing_reason": "No scientific or causal skill success score is derived."
+  },
+  "audit_coverage": {
+    "event_file": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch/native/events.jsonl",
+      "sha256": "8ccf327e9dd305e132be8f09bcd352ff4964e94ee55ae7eff71aafa1967aa91f",
+      "bytes": 226702
+    },
+    "jsonl_lines": 170,
+    "completed_item_types": {
+      "error": 1,
+      "agent_message": 12,
+      "command_execution": 61,
+      "web_search": 5,
+      "file_change": 11
+    },
+    "terminal_turn_completed": true
+  },
+  "limitations": [
+    "No scientific conclusion, correctness, adequacy or causal skill effect assessed.",
+    "Availability, selection, instruction loading, procedural execution, attempted application and completed application are distinct.",
+    "No exact upstream revision or per-command duration is inferred from a default ref or event order.",
+    "No auth/profile directory, installed archive or environment snapshot was copied.",
+    "Absence means no evidence in this complete retained native stream; it does not prove absence of unrecorded behavior."
+  ]
+}
