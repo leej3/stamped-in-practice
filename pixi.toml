@@ -1,0 +1,10 @@
+[workspace]
+name = "study-mriqc"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[dependencies]
+python = "3.12.*"
+
+[tasks]
+verify-design = "python coordinator-guidance/verify_design.py"
