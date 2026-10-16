@@ -1,6 +1,7 @@
 """Static descriptive figures from normalized coordinator tables."""
 from collections import defaultdict
 import statistics
+import textwrap
 
 import matplotlib
 matplotlib.use("Agg")
@@ -226,7 +227,9 @@ def _render_effort(tables, output, stratified=False):
         ax.invert_yaxis()
         ax.set_xlim(left=0, right=max(1, max(r["duration_s"] for r in rows) / 60 * 1.1))
         ax.set_xlabel("Minutes per recorded operation · points, median and observed range")
-        ax.set_title(" · ".join(scope) + f"\n{len(rows)} verified measurements; durations are not summed", loc="left", fontsize=10)
+        title = textwrap.fill(" · ".join(scope), width=95,
+                              break_long_words=False, break_on_hyphens=False)
+        ax.set_title(title + f"\n{len(rows)} verified measurements; durations are not summed", loc="left", fontsize=10)
     fig.tight_layout()
     save(fig, output, "effort")
 
