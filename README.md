@@ -37,3 +37,11 @@ Keep working `pixi.lock` files ignored; retain any validated environment snapsho
 
 `coordinator-guidance/readiness.json` records preparation of the input package only.
 The coordinator must verify retrieval and its required host resources before sealing or launching a formal comparison.
+
+## Completed experiment retention
+
+`results/narps-r1-08` and `results/narps-r1-09` pin independently retrieved experiment repositories.
+Each retention commit is a direct child of its unchanged scientific result and adds only coordinator evidence, with no worker credit.
+The complete archive includes execution records, original assessments, failed attempts and environment snapshots; directly readable copies of key reports and receipts are under `coordinator/retention-01/indexable/`.
+`retention-publications.json` identifies the separate scientific and retention revisions and hashes the independent publication checks retained by the coordinator.
+Keep these experiment submodules uninitialized until needed.
