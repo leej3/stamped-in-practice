@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
 import hashlib
 import json
 import platform
+import subprocess
 import sys
 from pathlib import Path
 
@@ -15,13 +17,14 @@ import matplotlib.pyplot as plt
 import nibabel as nib
 import numpy as np
 import pandas as pd
+import nilearn
 from nilearn import datasets, image, plotting
 from scipy.stats import t as t_dist
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "input/sources.json"
 PARTICIPANTS = ROOT / "input/participants.tsv"
-OUT = ROOT / "results/final-v2"
+OUT = ROOT / "results/final-v3"
 ATLAS_PATH = ROOT / "input/reference/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz"
 N_PERM = 5000
 SEED = 20261016
@@ -201,6 +204,12 @@ def run():
         "vmpfc_participant_sd": float(roi_values.std(ddof=1)),
         "null_max_t_quantiles": {str(q): float(np.quantile(null_maxima, q)) for q in [.5, .95, .99]},
         "input_manifest_sha256": sha256(MANIFEST), "participants_tsv_sha256": sha256(PARTICIPANTS),
+        "atlas_sha256": sha256(ATLAS_PATH), "protocol_sha256": sha256(ROOT / "protocol.md"),
+        "code_git_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+        "pixi_lock_sha256": sha256(ROOT / "pixi.lock"),
+        "run_utc": datetime.now(timezone.utc).isoformat(),
+        "numpy_version": np.__version__, "pandas_version": pd.__version__,
+        "nilearn_version": nilearn.__version__, "nibabel_version": nib.__version__,
         "python": sys.version, "platform": platform.platform(),
     }
     (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
