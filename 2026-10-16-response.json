@@ -1,0 +1,465 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "partial",
+      "reason": "Required Harvard-Oxford atlas and MNI template are fetched outside the root at runtime.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "Nilearn fetches atlas and MNI template; pixi.toml=declares software but not atlas files",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 input maps, metadata and their source manifest are under input/ and read by root-relative paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/data",
+          "description": "54 participant maps; input/sources.json=source URLs and SHA-256 manifest; analysis/run_group_analysis.py=reads input/",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "All analysis software imports are declared in the tracked Pixi environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "Python imports; pixi.toml=declares numpy scipy pandas matplotlib nibabel nilearn",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "met",
+      "reason": "Git tracks the committed code and records; worker receipt shows the stop tree was clean.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-04/judgment-01/worker-end-state.json",
+          "description": "HEAD and empty status at worker stop",
+          "sha256": null
+        },
+        {
+          "uri": "git status at target",
+          "description": "clean",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Large maps and binary results use git-annex; the published clone retrieved all annex content.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "probe:large-in-annex",
+          "description": "58 annex pointers; records/remote-get.stdout=58 annex files retrieved from origin",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Run records exist, but none names the exact environment; pixi.lock is ignored and absent.",
+      "source": "probe:derived-have-records+judgement",
+      "evidence": [
+        {
+          "uri": "logs/group-analysis-final-info.json",
+          "description": "command and host but no environment pin; results/group_results.json=package versions only; .gitignore=ignores pixi.lock",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "No README or Makefile gives installation and usage instructions.",
+      "source": "probe:entry-point",
+      "evidence": [
+        {
+          "uri": "probe:entry-point",
+          "description": "neither README nor Makefile; results/report.md=links script but no install instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report links the runnable main script and the recorded command invokes it.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility and files",
+          "description": "links analysis script; logs/group-analysis-final-info.json=exact pixi run command",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Tracked code uses root-relative paths and the probe found no host-specific paths.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "probe:no-abs-paths",
+          "description": "scanned tracked text; analysis/run_group_analysis.py=ROOT-relative input and result paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "met",
+      "reason": "Every Python import used by the analysis is declared in pixi.toml.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "imports; pixi.toml=declared dependencies",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "Runtime network access is required to fetch the atlas and template, but host requirements are not documented.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "fetch_atlas_harvard_oxford and load_mni152_template; pixi.toml=platforms only",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "pixi.toml lists packages and platforms, but omits Pixi bootstrap and runtime network requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "declared platforms and packages; analysis/run_group_analysis.py=remote atlas/template fetch",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "met",
+      "reason": "pixi.toml is tracked alongside the code and results.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "tracked pixi.toml",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency update or environment regeneration process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "wildcard dependency constraints; git ls-files= no pixi.lock or update procedure",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The environment specification is mutable and no exact lock or archived environment is included.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "unlocked dependencies; .gitignore=ignores pixi.lock; logs/group-analysis-final-info.json=no environment hash",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "not-checked",
+      "reason": "Current same-host HTTPS retrieval succeeds, but the worker-stop receipt lacks annex locations; stop-time publication cannot be established. A time-stamped worker remote inventory would settle it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-04/judgment-01/judgment/records/remote-get.stdout",
+          "description": "all current annex content retrieved from the HTTPS hub",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-04/judgment-01/worker-end-state.json",
+          "description": "annex location inventory absent",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "No documentation explains how to install or use the environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "environment spec; results/report.md=analysis links but no environment acquisition instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "Git and git-annex version code, data, results and configuration under one repository boundary.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "project inventory; probe:large-in-annex=annex content",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "unmet",
+      "reason": "No CI configuration or recurring workflow tests the documented procedure.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no tracked CI configuration",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "met",
+      "reason": "Inputs, analysis code, outputs and environment are separated in the project layout.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "probe:modules-separated",
+          "description": "input, analysis, results and pixi.toml",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the input maps and code have no restricted-access component.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "public NeuroVault source URLs; no restricted module in tracked object",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "Fresh replay could not reach analysis: the runner removed input/participants.tsv as an output; a clean successful test would settle this.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "2026-10-16-fresh-rerun.json",
+          "description": "runner removed input/participants.tsv then entry failed before analysis",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "pixi run reuses a project-local environment; no per-execution disposable environment is defined.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "logs/group-analysis-final-info.json",
+          "description": "pixi run command; .gitignore=project .pixi environment ignored",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No recurring test reconstitutes the exact environment; no lock is tracked.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no CI; pixi.toml=unlocked dependencies; .gitignore=ignores pixi.lock",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "The object tracks an environment recipe but archives no resolved environment or executable image.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "recipe only; .gitignore=ignores pixi.lock",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency update process is documented; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "wildcard dependencies and no update instructions; git ls-files=no pixi.lock",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "unmet",
+      "reason": "External atlas data and software are fetched or installed, but no external component is linked as a submodule.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "fetches atlas/template; pixi.toml=package dependencies; .gitmodules=absent",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The report identifies code and result files, but does not explain how the components are recombined.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility and files",
+          "description": "links artifacts; no root workflow instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Inputs, code and results are separated, but paths and source hashes tie them to the current root layout.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_group_analysis.py",
+          "description": "ROOT-relative paths; input/sources.json=hash-bound inputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "unmet",
+      "reason": "No documented composition workflow joins inputs, environment and analysis.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "environment; analysis/run_group_analysis.py=script; no Makefile or workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The scientific report lists and links the code, result tables, maps and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility and files",
+          "description": "artifact navigation",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 114 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": "git@github.com:leej3/stamped-in-practice.git",
+    "commit": "a424c3e8ae47f9208fa661fc4f974f6b187acb00",
+    "captured_at": "2026-10-16T04:18:44+00:00",
+    "kind": "study"
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "not exposed by harness",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Committed state a424c3e8; remote retrieval checked; one authorized same-host fresh replay attempted and failed after runner removed an input; worker-stop receipt used for versioning and publication attribution."
+}
