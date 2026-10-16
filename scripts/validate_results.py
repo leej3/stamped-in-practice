@@ -97,6 +97,12 @@ global_table = pd.read_csv(R / "participant_global_brain_summary.tsv", sep="\t")
 assert np.allclose(global_table.mean_effect_across_brain_mask, global_values, atol=5e-8)
 assert np.isclose(global_values.mean(), summary["whole_brain_subject_average_mean"], atol=5e-8)
 assert summary["n_fwe_positive_voxels_in_vmPFC_box"] == 0
+world_masked = world[brain_mask]
+box_masked = ((np.abs(world_masked[:, 0]) <= 10) & (world_masked[:, 1] >= 20) &
+              (world_masked[:, 1] <= 60) & (world_masked[:, 2] >= -20) &
+              (world_masked[:, 2] <= 20))
+assert summary["n_bonferroni_positive_voxels_in_vmPFC_box"] == int(
+    np.sum((p_unc <= .05 / summary["n_voxels_tested"]) & box_masked))
 
 print(json.dumps({"validated": True, "n_maps": len(imgs), "voxel_t_checks": 20,
                   "direct_sign_flip_checks": 20, "voxelwise_fwe_values_checked": int(brain_mask.sum()),

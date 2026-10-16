@@ -1,0 +1,30 @@
+✨ Pixi task (group-analysis): python scripts/group_analysis.py
+Traceback (most recent call last):
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/scripts/group_analysis.py", line 292, in <module>
+    main()
+    ~~~~^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/scripts/group_analysis.py", line 174, in main
+    nib.save(nib.Nifti1Image(array, affine, header), OUT / f"{name}.nii.gz")
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/loadsave.py", line 167, in save
+    img.to_filename(filename, **kwargs)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/filebasedimages.py", line 304, in to_filename
+    self.to_file_map(**kwargs)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/nifti1.py", line 2372, in to_file_map
+    super().to_file_map(file_map, dtype)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/analyze.py", line 1040, in to_file_map
+    hdrf = hdr_fh.get_prepare_fileobj(mode='wb')
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/fileholders.py", line 77, in get_prepare_fileobj
+    obj = ImageOpener(self.filename, *args, **kwargs)
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/openers.py", line 110, in __init__
+    self.fobj = opener(fileish, *args, **kwargs)
+                ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/_compression.py", line 143, in gzip_open
+    gzip_file = DeterministicGzipFile(filename, mode, compresslevel, mtime=mtime)
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/.pixi/envs/default/lib/python3.13/site-packages/nibabel/_compression.py", line 101, in __init__
+    fileobj = self.myfileobj = ty.cast('io.FileIO', open(filename, modestr))
+                                                    ~~~~^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-11/results/mean_effect.nii.gz'

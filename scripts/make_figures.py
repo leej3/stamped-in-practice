@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Create a coordinate-based localization figure from checked group maps."""
 from pathlib import Path
+import json
 import os
 import nibabel as nib
 import numpy as np
 import pandas as pd
 from scipy import stats
+from nilearn import datasets
+from nilearn.image import resample_to_img
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -51,6 +54,35 @@ fig.suptitle(f"{len(t)} positive voxels survived whole-brain max-t FWE (p ≤ .0
 save_figure(fig, R / "corrected_voxel_coordinates.png")
 plt.close(fig)
 
+summary = json.loads((R / "summary.json").read_text())
+t_img = nib.load(str(R / "t_unthresholded.nii.gz"))
+mask_img = resample_to_img(datasets.load_mni152_brain_mask(resolution=2), t_img,
+                           interpolation="nearest", force_resample=True, copy_header=True)
+t_all = np.asarray(t_img.dataobj)[np.asarray(mask_img.dataobj) > 0]
+null = pd.read_csv(R / "permutation_max_t.tsv", sep="\t").max_t_null.to_numpy()
+threshold = float(np.quantile(null, .95, method="higher"))
+fig, axes = plt.subplots(1, 2, figsize=(10, 4.5), gridspec_kw={"width_ratios": [1.35, 1]}, constrained_layout=True)
+axes[0].hist(t_all, bins=90, color="#7897A8", edgecolor="white", linewidth=.25)
+axes[0].axvline(0, color="black", lw=1)
+axes[0].axvline(threshold, color="#B33C2E", lw=2, ls="--", label=f"95th percentile max-t null = {threshold:.2f}")
+axes[0].set(xlabel="One-sample t statistic", ylabel="Tested voxels", title="Whole-brain voxelwise statistics")
+axes[0].legend(frameon=False, fontsize=9)
+axes[1].axis("off")
+peak = pd.read_csv(R / "top_voxels.tsv", sep="\t").iloc[0]
+axes[1].text(.02, .95,
+        "One-sided max-t inference\n\n"
+        f"{summary['n_voxels_tested']:,} tested voxels\n"
+        f"{summary['n_fwe_positive_voxels']} positive voxels passed FWE p ≤ .05\n"
+        f"{summary['n_fwe_positive_voxels_in_vmPFC_box']} in vmPFC search box\n\n"
+        f"Peak: t = {peak.t:.2f}\n"
+        f"MNI ({peak.x_mm:.1f}, {peak.y_mm:.1f}, {peak.z_mm:.1f})\n"
+        f"FWE p = {peak.p_fwe_max_t:.4g}\n\n"
+        "See coordinate figure for all corrected voxels.",
+        ha="left", va="top", fontsize=11, linespacing=1.35)
+fig.suptitle("Group gain effect: whole-brain inference", fontsize=14)
+save_figure(fig, R / "whole_brain_results.png")
+plt.close(fig)
+
 subjects = pd.read_csv(R / "participant_vmPFC_summary.tsv", sep="\t")
 values = subjects.vmPFC_box_mean_effect.to_numpy()
 n = len(values)
@@ -68,4 +100,4 @@ ax.set(xlabel="Participant (cohort table order)", ylabel="Mean participant gain 
 ax.legend(frameon=False, loc="best")
 save_figure(fig, R / "vmPFC_participant_effects.png")
 plt.close(fig)
-print(f"saved results/corrected_voxel_coordinates.png ({len(t)} voxels) and participant interval figure")
+print(f"saved three figures; {len(t)} voxels passed whole-brain correction")

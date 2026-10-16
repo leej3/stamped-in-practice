@@ -16,15 +16,15 @@ Because vmPFC has no single universally agreed atlas boundary, we used an explic
 
 ## Results and uncertainty
 
-All 54 participant maps passed checksum, geometry, and finite-value checks; there were no exclusions. The descriptive mean effect in the vmPFC coordinate box was −0.0022 map units (between-participant SD 0.071; 95% t interval for the mean [−0.0215, 0.0172]). The interval spans zero and the mean is close to zero. It is a summary of the supplied normalized-modulator estimates, not an effect per currency unit.
+All 54 participant maps passed checksum, geometry, and finite-value checks; there were no exclusions. The descriptive mean effect in the vmPFC coordinate box was −0.0022 map units (between-participant SD 0.071; 95% t interval for the mean [−0.0215, 0.0172]). The interval spans zero and the mean is close to zero. The whole-mask participant average was −0.0070 map units (95% t interval [−0.0215, 0.0075]); this is descriptive and does not replace voxelwise inference. Both summaries use supplied normalized-modulator estimates, not effects per currency unit. A post-selection check at the voxel with the largest observed vmPFC-box t statistic found t(53) = 4.19, uncorrected one-sided p = 5.3 × 10⁻⁵, but max-t FWE p = .791. Selecting the maximum within the box makes the uncorrected value optimistic; the corrected result does not support a regional claim. As a sensitivity analysis, voxelwise Bonferroni correction identified 11 positive voxels across the brain and zero in vmPFC, consistent with the primary max-t result.
 
 ![Participant-level descriptive vmPFC effects and 95% interval](vmPFC_participant_effects.png)
 
-![Whole-brain unthresholded group t map and corrected map](whole_brain_results.png)
+![Whole-brain t-statistic distribution and corrected inference summary](whole_brain_results.png)
 
 ![Coordinates of all whole-brain-corrected positive voxels relative to the vmPFC search box](corrected_voxel_coordinates.png)
 
-The corrected positive foci were posterior and bilateral, not vmPFC. Their presence does not rescue the vmPFC hypothesis. The independent numerical checks recomputed one-sample t statistics at 20 sampled voxels, verified the map checksums and geometry, checked the permutation null distribution, and reconstructed the vmPFC summary from the participant maps; all passed ([validation log](../logs/20261015T-validation2info.json)).
+The corrected positive foci were posterior and bilateral, not vmPFC. Their presence does not rescue the vmPFC hypothesis. The independent numerical checks recomputed one-sample t statistics at 20 sampled voxels, directly reconstructed 20 sign-flip maxima, reconstructed the full voxelwise FWE p map and both threshold maps, verified checksums and geometry, and rebuilt the vmPFC, selected-voxel, global-average, and Bonferroni summaries from participant maps; all passed ([validation log](../logs/20261016T-final-validation2info.json)).
 
 ## Interpretation and limits
 
@@ -32,4 +32,4 @@ The result is **lack of support under this group model and supplied contrast**, 
 
 ## Reproduction
 
-Run `pixi run group-analysis`, then `pixi run validate-results`; `pixi run figures` regenerates the coordinate localization figure. The validated analysis code was committed at `6e2e29ea48a6dbff84e55e0a6e5cc449ff6d4ef3`; later commits add validation and figures without changing group statistics. Duct captured the pilot, final run, validation, figures, and failed attempts under [`logs/`](../logs/). The validated environment lock SHA256 is `5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21`; its exact bytes are retained on the companion environment branch named in the delivery record.
+Run `pixi run group-analysis`, then `pixi run validate-results`; `pixi run figures` regenerates all three figures. The final task commit is the parent of the companion environment snapshot commit. Duct captured the pilot, final run, validation, figures, and failed attempts under [`logs/`](../logs/). The validated environment lock SHA256 is `5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21`; its exact bytes are retained on `codex/env-narps-r1-11`, one commit above the final task commit.

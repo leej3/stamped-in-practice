@@ -17,7 +17,7 @@ import nibabel as nib
 import nilearn
 import numpy as np
 import pandas as pd
-from nilearn import datasets, plotting
+from nilearn import datasets
 from nilearn.image import resample_to_img
 from scipy import stats
 
@@ -200,9 +200,6 @@ def main() -> None:
 
     ijk = np.argwhere(mask)
     xyz = nib.affines.apply_affine(affine, ijk)
-    peak_vox = int(np.argmax(t_obs))
-    peak_xyz = xyz[peak_vox]
-    peak_cuts = tuple(float(round(v / 2) * 2) for v in peak_xyz)
     peak_indices = np.argsort(t_obs)[::-1][:20]
     peaks = []
     for idx in peak_indices:
@@ -263,29 +260,6 @@ def main() -> None:
     save_figure(fig, OUT / "vmPFC_participant_effects.png")
     plt.close(fig)
 
-    t_img = nib.Nifti1Image(t_img_data, affine, header)
-    fwe_img = nib.Nifti1Image(thresh_img_data, affine, header)
-    fig = plt.figure(figsize=(10, 5.4))
-    plotting.plot_stat_map(t_img, display_mode="ortho", cut_coords=(0, 40, -8), threshold=None,
-                           cmap="cold_hot", colorbar=True, title="Group gain effect: unthresholded t map",
-                           figure=fig, axes=(0.03, 0.10, 0.62, 0.78))
-    if np.any(thresh_img_data):
-        plotting.plot_stat_map(fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0,
-                               cmap="cold_hot", colorbar=True,
-                               title=f"Max-t FWE positive voxels at peak cuts {peak_cuts}",
-                               figure=fig, axes=(0.68, 0.10, 0.30, 0.78))
-    else:
-        ax = fig.add_axes((0.68, 0.2, 0.30, 0.55))
-        ax.axis("off")
-        ax.text(.5, .5, "No positive voxel passed\nwhole-brain max-t FWE p ≤ .05", ha="center", va="center", fontsize=13)
-    save_figure(fig, OUT / "whole_brain_results.png")
-    plt.close(fig)
-    display = plotting.plot_stat_map(
-        fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
-        colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05\nPeak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
-        black_bg=False, annotate=True, draw_cross=True)
-    atomic_output(OUT / "corrected_peak_localization.png", lambda temp: display.savefig(temp))
-    display.close()
 
     sig = p_fwe <= ALPHA
     vm_sig = sig & (np.abs(xyz[:, 0]) <= 10) & (xyz[:, 1] >= 20) & (xyz[:, 1] <= 60) & (xyz[:, 2] >= -20) & (xyz[:, 2] <= 20)
@@ -297,6 +271,7 @@ def main() -> None:
         "permutations": N_PERM, "seed": SEED, "df": df,
         "n_fwe_positive_voxels": int(sig.sum()), "n_fwe_positive_voxels_in_vmPFC_box": int(vm_sig.sum()),
         "n_bonferroni_positive_voxels": int(np.sum(p_unc <= ALPHA / nvox)),
+        "n_bonferroni_positive_voxels_in_vmPFC_box": int(np.sum((p_unc <= ALPHA / nvox) & vm_roi[mask])),
         "bonferroni_voxelwise_alpha": ALPHA / nvox,
         "vmPFC_box_definition_mni_mm": {"x": [-10, 10], "y": [20, 60], "z": [-20, 20]},
         "vmPFC_box_voxels": roi_nvox, "vmPFC_box_mean_effect": roi_mean,
