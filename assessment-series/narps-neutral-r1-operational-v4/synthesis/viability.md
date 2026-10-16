@@ -32,10 +32,11 @@ Its no-use claim cannot establish absence of influence.
 Preserve all32 judgments unchanged; hold all further formal launches for an isolated, reviewed runtime-context projection and an explicit new measurement boundary.
 Do not silently treat a documentation disclaimer as the repair.
 
-Any later continuation must preserve these limits, the fixed sample/stopping rule, all primary and duplicate labels, and the unchanged v4 measurement mechanism.
-A later seal may bind new original delivery identities without changing that mechanism.
-The prepared round-two source changes only the permitted research-skill input; it is not yet a launched round.
-The coordinator's continuation decision will be retained additively, outside original outcomes.
+The completed v4 series stays fixed.
+Future assessment using a corrected context projection requires its own seal and an explicit new measurement boundary; an object-only rebind cannot represent a runtime change.
+Any continuation preserves the registered sample and stopping rule, all primary and duplicate labels, and the stated measurement limits.
+The prepared round-two source changes the permitted research-skill input only and remains unlaunched.
+This review grants no launch approval; a separate continuation decision will be retained outside original outcomes.
 
 Full local retention and Git/Entire identity publication are complete for all32 sessions.
 Native Hub retrieval is complete for five and pending for27; full-support archives are separately scoped.
