@@ -1,0 +1,604 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "reason": "All delivered paths sit under one workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/study-task.md",
+          "description": "Study objective is inside the workspace.",
+          "sha256": "e92bf2e0c0db4cc49688cce9f9dfff8a236fc4ec151c09961719f49f31310cc8"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Analysis code is inside the same workspace root.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "reason": "All 54 maps and cohort metadata are delivered under input/ and referenced by relative paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/participants.tsv",
+          "description": "Pinned 54-person cohort table.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Map paths resolve relative to the script's project root.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Example captured annex link resolves to an in-root annex object; same pattern for 54 maps.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "reason": "Scientific software dependencies are listed in prose but no installable environment specification includes them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Names Python and package versions, but supplies no dependency declaration or installer.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "reason": "Git tracks supplied inputs and metadata, but worker analysis code, report, figures, and results were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "integrity/git-status.txt",
+          "description": "Operational-copy git status; inspection observation used to compare the stopped inventory.",
+          "sha256": "50b35d812576b6f400c143a9544111658fbb46e759a134ae1f114916ccefbb68"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-06-j01/attempt-01/worker-end-state.json",
+          "description": "Worker-stop receipt: complete capture, normal exit, original HEAD, and supplied-resource inventory.",
+          "sha256": "ebf92e88edc21d3312725711918512cf15c0fe25c083e95a5ee51cce6dd36640"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "reason": "The 54 large maps are annex links among supplied inputs; no worker-authored annex action is evidenced, so worker credit cannot be attributed.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Operational capture contains an annex link; format alone does not establish who configured it.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-06-j01/attempt-01/worker-end-state.json",
+          "description": "Worker-stop receipt: complete capture, normal exit, original HEAD, and supplied-resource inventory.",
+          "sha256": "ebf92e88edc21d3312725711918512cf15c0fe25c083e95a5ee51cce6dd36640"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:large-in-annex+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "reason": "The report gives package versions, but no execution record binds generated results to an exact environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Environment described in prose only; no run provenance or lockfile.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/results/summary.json",
+          "description": "Results summary records analysis settings but no environment identity.",
+          "sha256": "0aba6b80df86de1910b1c36be524c2970e065b63f51ba8600a8dce9dffd9b7f4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "reason": "No delivered instructions explain installation and usage of the analysis.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Explains the analysis and links artifacts, but gives no install or invocation instructions.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/008": {
+      "reason": "The report identifies code/group_analysis.py, a standalone analysis entry script that writes the listed outputs.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Reproducibility files section names the analysis script.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Top-level script reads inputs and creates results and figures.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "reason": "Analysis paths are derived from the script location; no host-specific paths are embedded.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Uses Path(__file__) to locate the project root and relative input/output paths.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "reason": "NumPy, SciPy, pandas, NiBabel, Nilearn, and Matplotlib are not declared in an installable environment spec.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Lists package names/versions but provides no environment file.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "reason": "The delivered report names Python and package versions; host or system-library assumptions are not specified well enough to settle this item.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Python and package versions are stated, without host-system requirements.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "reason": "No README or environment specification lists system requirements and dependencies.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Version list is not an installation requirements list.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "reason": "No environment specification is tracked or included in the complete stopped delivery.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Imports scientific packages without a paired manifest.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "reason": "No environment update process or dependency-change history is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Names versions without an update procedure.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "reason": "No frozen environment specification is available to pin the result-generating environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Lists versions but has no lockfile or immutable environment identity.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "reason": "No usable environment specification is included or shared with the delivered object.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Version list cannot be installed as a complete environment without additional declarations.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "reason": "The report does not explain how to obtain or use the environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "No environment acquisition or setup instructions.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "reason": "Git covers supplied metadata and inputs, but not the worker's analysis code and scientific outputs.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "integrity/git-status.txt",
+          "description": "Operational-copy status shows scientific code and results untracked at inspection; stop receipt anchors worker attribution.",
+          "sha256": "50b35d812576b6f400c143a9544111658fbb46e759a134ae1f114916ccefbb68"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "reason": "No CI workflow is present; equivalent evidence of regular manual testing was not established by the captured delivery.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/results/summary.json",
+          "description": "One result set exists; it does not show regular testing.",
+          "sha256": "0aba6b80df86de1910b1c36be524c2970e065b63f51ba8600a8dce9dffd9b7f4"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "reason": "The complete delivery separates input/, code/, results/, and figures/, but environment definitions are absent and the boundaries are not fully described.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/participants.tsv",
+          "description": "Input module.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/code/group_analysis.py",
+          "description": "Code module.",
+          "sha256": "4c062e7888f85698b15ae65942f7dbd1340489192415df05628f70e68861da2a"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/results/summary.json",
+          "description": "Derived results module.",
+          "sha256": "0aba6b80df86de1910b1c36be524c2970e065b63f51ba8600a8dce9dffd9b7f4"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "reason": "N/A: no restricted data or software component is identified in this public study delivery.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/sources.json",
+          "description": "Maps and metadata are attributed to public source routes; no restricted component is declared.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "reason": "No captured record establishes whether the worker ran this pipeline in a fresh container, VM, batch job, or cloud instance.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "reason": "No captured record establishes whether executions use a disposable environment.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "reason": "There is no exact environment specification to reconstitute or a record of repeated environment checks.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Package version prose is not a reconstitutable environment.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "reason": "No environment artifacts are archived in the stopped delivery.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "reason": "No environment update process is documented; this repeats must/014 by design.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "No environment update instructions.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "reason": "N/A: no independently maintained project components are linked; ordinary dataset and package dependencies are not project modules.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        },
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/sources.json",
+          "description": "Inputs are included directly rather than linked as independent project components.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "reason": "The report lists files but does not document modular boundaries or how components can be recombined.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Artifact links aid navigation but do not describe composition.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "reason": "No independent update boundaries or compatibility contracts are described.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "No module-update or compatibility guidance.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "reason": "No module composition mechanism is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "No module orchestration or composition instructions.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "reason": "The report links the script, key outputs, QC tables, and figures for navigation.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/report.md",
+          "description": "Reproducibility files section links the main analysis artifacts.",
+          "sha256": "9ea79bef10dedfe5b1ff40558fa07070c2c0704ae17252abe51b3945a446eb74"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No reuse terms are stated for the delivered code and data.",
+      "evidence": [
+        {
+          "uri": "capture:44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878#content/workspace/input/sources.json",
+          "description": "Sources are cited, but no license/reuse terms are supplied.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "probes/probes.json",
+          "description": "Frozen probe result on the operational copy; an assessor observation, not worker-authored evidence.",
+          "sha256": "28ef321b6d38e9ab719685763ca3786e0b665cf0decce43b4d9bd0a56718ec50"
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8",
+    "captured_at": "2026-10-16T07:41:21.554566+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-06-j01/canonical/manifest.json",
+      "sha256": "44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py plus judgement",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ],
+    "model": "GPT-6"
+  },
+  "scope": "Complete verified worker-stop capture; one replay not checked because the worker supplied no exact invocation or installable environment; no complete-object retrieval route declared."
+}
