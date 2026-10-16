@@ -22,6 +22,10 @@ Use the exact external assessor and runtime identified in `$STAMPED_ASSESSMENT_V
 Run `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" check` with no additional arguments before using its probe or response actions.
 The runner executes helpers in `$STAMPED_JUDGE_OUTPUT`; relative response filenames and replay `--workdir`/`--output` paths resolve there regardless of your shell's current directory. Initialize a new response with `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" template -o response.json`. This fills the exact canonical capture/HEAD and frozen assessor metadata while preserving every blank item verdict; complete the scope and assessments from your evidence.
 Formal `validate` (including `response validate`) checks those identity fields before the frozen checklist validator; it never repairs missing metadata or changes verdicts.
+Keep probe drafts separate from this formal response.
+For the frozen skill's Step 3, use `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" probes "$STAMPED_JUDGE_TARGET" --kind study -o probes.json --response probe-draft.json`, adding its other applicable probe options.
+Never pass the formal response file to probes as `--response`: the frozen probe writer replaces the object header and does not preserve canonical capture metadata.
+Review the probe evidence and use the response helper's `set` action to record your item judgments in the initialized formal response; do not copy the probe draft's object or assessor header.
 Do not substitute target scripts for assessor code.
 Inspect meaningful evidence even if an automated probe does not recognize its tool or file format.
 A missing tool-specific mechanism does not by itself establish absence of an equivalent scientific practice.

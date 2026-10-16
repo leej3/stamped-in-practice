@@ -19,12 +19,20 @@ from test_assessment_runner import frozen_runner
 
 
 @pytest.fixture
-def projected_judge(tmp_path, monkeypatch, frozen_runner):
+def projected_judge(tmp_path, monkeypatch, frozen_runner, request):
     calls, source, runtime = frozen_runner
     worker = tmp_path / 'worker'
     worker.mkdir()
     (worker / 'result.csv').write_text('x\n1\n')
     (worker / 'run.py').write_text("from pathlib import Path\nPath('result.csv').write_text('x\\n1\\n')\n")
+    if getattr(request, 'param', None) == 'git-object':
+        for arguments in (['init', '-b', 'main'], ['add', '.'],
+                ['-c', 'core.hooksPath=/dev/null', '-c', 'user.name=Projection fixture',
+                 '-c', 'user.email=fixture@example.invalid', 'commit', '-m', 'test: synthetic probe delivery']):
+            process = subprocess.Popen(['git', '-C', str(worker), *arguments],
+                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            stdout, stderr = process.communicate(timeout=30)
+            assert process.returncode == 0, (stdout, stderr)
     receipt = delivery_snapshot.save_delivery(worker, tmp_path / 'canonical', {})
     canonical = Path(receipt['capture']['uri'])
     stop = tmp_path / 'worker-stop.json'
@@ -32,6 +40,8 @@ def projected_judge(tmp_path, monkeypatch, frozen_runner):
     output, profile, target = (tmp_path / name for name in ('judgment', 'profile', 'operational'))
     for path in (output, profile, target):
         path.mkdir()
+    if getattr(request, 'param', None) == 'git-object':
+        shutil.copytree(worker, target, dirs_exist_ok=True)
     for name in ('assess-alignment-with-stamped-principles', 'stamped-conventions'):
         skill = source / 'skills' / name
         skill.mkdir(parents=True)
@@ -54,7 +64,7 @@ def projected_judge(tmp_path, monkeypatch, frozen_runner):
         STAMPED_PROCEDURE_SHA256='FULL_SEAL_DIGEST_SENTINEL',
         STAMPED_OTHER_JUDGE='/OTHER_JUDGMENT_SENTINEL/report.md')
     environment = launch.judge_environment(inherited, args, output, profile,
-                                            {'target_commit': None}, frozen)
+                                            {'target_commit': json.loads(canonical.read_bytes())['head_commit']}, frozen)
     for key, value in environment.items():
         if key.startswith('STAMPED_'):
             monkeypatch.setenv(key, value)
@@ -280,3 +290,41 @@ def test_metadata_template_rejects_unsafe_destination_before_helper(projected_ju
         assessment.response_template(['-o', str(target)], assessment.runtime_context(), [], output)
     assert calls == []
     assert not target.exists()
+
+
+@pytest.mark.parametrize('projected_judge', ['git-object'], indirect=True)
+def test_actual_frozen_probe_draft_stays_separate_from_formal_response(projected_judge):
+    _, environment, _, _, output, _ = projected_judge
+    root = Path(assessment.__file__).resolve().parents[1] / 'assessment/skills'
+    encoder = root / 'stamped-conventions/scripts/encode_response.py'
+    probes = root / 'assess-alignment-with-stamped-principles/scripts/run_probes.py'
+    def execute(script, arguments):
+        process = subprocess.Popen([sys.executable, str(script), *arguments], cwd=output,
+            env=environment, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        stdout, stderr = process.communicate(timeout=30)
+        assert process.returncode == 0, (stdout, stderr)
+        return stdout
+    response = json.loads(execute(encoder, ['template']))
+    runtime = assessment.runtime_context()
+    for section, fields in runtime['response_identity'].items():
+        response[section].update(fields)
+    response['scope'] = 'Synthetic helper composition test; all items remain not checked.'
+    path = output / 'response.json'
+    path.write_text(json.dumps(response))
+    before = path.read_bytes()
+    # Reproduce the observed composition defect using the unchanged frozen CLI.
+    collision = output / 'overwritten-response.json'
+    collision.write_bytes(before)
+    common = [environment['STAMPED_JUDGE_TARGET'], '--kind', 'study', '--only', 'tree-clean']
+    execute(probes, [*common, '-o', 'collision-probes.json', '--response', str(collision)])
+    changed = json.loads(collision.read_bytes())
+    assert 'capture' not in changed['object']
+    with pytest.raises(SystemExit, match='missing object.capture'):
+        assessment.validate_response_identity(changed, runtime)
+    # The future prompt's separate-draft route preserves the formal response.
+    execute(probes, [*common, '-o', 'probes.json', '--response', 'probe-draft.json'])
+    assert (output / 'probe-draft.json').is_file()
+    assert path.read_bytes() == before
+    assessment.validate_response_identity(json.loads(path.read_bytes()), runtime)
+    assert json.loads(path.read_bytes())['responses'] == response['responses']
+    execute(encoder, ['validate', str(path)])
