@@ -1,0 +1,299 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "codex/narps-neutral-r1-01-j01-operational-v4-support-01",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "set-url",
+      "--push",
+      "origin",
+      "git@github.com:leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "3c68b3f0916d4ef58b2466d93eb1e0552761875a"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            3c68b3f0916d4ef58b2466d93eb1e0552761875a -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "reset",
+      "--hard",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "HEAD is now at 3c68b3f chore(narps): retain operational-v4 native verification\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "3c68b3f0916d4ef58b2466d93eb1e0552761875a",
+      "3c68b3f0916d4ef58b2466d93eb1e0552761875a"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-01-j01 separate assessment support"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-01-j01 separate assessment support ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "snapper",
+      "--in-place",
+      "coordinator/README.md",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "add",
+      "--force-large",
+      "--backend=SHA256E",
+      "--",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "add coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/support.tar.gz \n\n0%    31.98 KiB       363 MiB/s 0s\n19%   54.5 MiB        272 MiB/s 0s\n38%   110.04 MiB      278 MiB/s 0s\n53%   153.14 MiB      215 MiB/s 0s\n71%   206.68 MiB      268 MiB/s 0s\n91%   263.65 MiB      285 MiB/s 0s\n100%  290.14 MiB      297 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s304233677--10eebeb4e5a1adab331ef99ca5ef99f772b3d8238256985f5237e6513298caab.tar.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      ".gitattributes",
+      "coordinator"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--name-only"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ".gitattributes\ncoordinator/README.md\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/native-procedure-status.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/native-result.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/output-binding.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/report.md\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/response.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/scientific-judgment.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/scientific-report.md\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/README.md\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/completion-index.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/member-manifest.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package-verification.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package.py\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package_delivery.py\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/publication-files.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/readable-copy-map.json\ncoordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/support.tar.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".gitattributes",
+      "coordinator/README.md",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n"
+  },
+  {
+    "argv": [
+      "git",
+      "commit",
+      "-F",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/commit-message.txt"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "[codex/narps-neutral-r1-01-j01-operational-v4-support-01 a420c71] data(assessment): preserve separate-series complete support\n 18 files changed, 53345 insertions(+)\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/native-procedure-status.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/native-result.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/output-binding.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/report.md\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/response.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/scientific-judgment.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/assessment/scientific-report.md\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/README.md\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/completion-index.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/member-manifest.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package-verification.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package.py\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/package_delivery.py\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/publication-files.json\n create mode 100644 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/readable-copy-map.json\n create mode 120000 coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/support-01/support.tar.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a420c7197d06ec9b6072539daa7d847294d92954\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD^"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "3c68b3f0916d4ef58b2466d93eb1e0552761875a\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "3c68b3f0916d4ef58b2466d93eb1e0552761875a:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-01-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
