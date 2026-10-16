@@ -26,3 +26,5 @@ The first duct invocation used an extra `run` subcommand (`pixi run duct run ...
 The first final-replay duct invocation also used an extra `run` subcommand and was rejected before starting Pixi. The corrected invocation used `duct -p ... pixi run ...`; no analysis ran during the failed invocation.
 
 The published-route check used a fresh GitHub clone of the environment branch, initialized the documented `con-hub` annex remote, fetched its location metadata without pushing, and retrieved the 54 maps, atlas files, and accepted outputs. The locked install, 9,999-permutation replay, exact output comparison, and independent audit all passed; see the `replay-published-final_*`, `compare-published-final_*`, and `validate-published-final_*` duct records.
+
+The README reproduction route was then exercised from a fresh clone of environment commit `0bd2b5f`: the 9,999-permutation run wrote to `results/replay/`, the exact comparison against accepted `results/group-analysis/` passed, and `validate-results` passed. The accepted outputs remained untouched. See `replay-readme-route_*`, `compare-readme-route_*`, and `validate-readme-route_*` duct records.
