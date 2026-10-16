@@ -202,7 +202,10 @@ def main() -> None:
     participant_summary.to_csv(OUT / "participant_vmPFC_summary.tsv", sep="\t", index=False)
     fig, ax = plt.subplots(figsize=(7.2, 4.2), constrained_layout=True)
     ax.scatter(np.arange(n) + 1, vm_effects, color="#356A8A", alpha=.8, s=24)
-    ax.axhline(roi_mean, color="#B33C2E", lw=2, label=f"mean {roi_mean:.3g}; 95% CI [{roi_ci[0]:.3g}, {roi_ci[1]:.3g}]")
+    ax.axhline(roi_mean, color="#B33C2E", lw=1.5, label=f"mean {roi_mean:.3g}")
+    ax.errorbar((n + 1) / 2, roi_mean, yerr=[[roi_mean - roi_ci[0]], [roi_ci[1] - roi_mean]],
+                fmt="o", color="#B33C2E", capsize=5, lw=2,
+                label=f"95% t CI [{roi_ci[0]:.3g}, {roi_ci[1]:.3g}]")
     ax.axhline(0, color="black", lw=1, ls="--")
     ax.set(xlabel="Participant (cohort table order)", ylabel="Mean participant gain effect (map units)",
            title="Descriptive vmPFC coordinate-box effects")

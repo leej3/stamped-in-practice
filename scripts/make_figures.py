@@ -3,6 +3,8 @@
 from pathlib import Path
 import nibabel as nib
 import numpy as np
+import pandas as pd
+from scipy import stats
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -38,4 +40,22 @@ fig.colorbar(scatter, ax=axes, label="Group t statistic at max-t FWE-significant
 fig.suptitle(f"{len(t)} positive voxels survived whole-brain max-t FWE (p ≤ .05)", fontsize=14)
 fig.savefig(R / "corrected_voxel_coordinates.png", dpi=180)
 plt.close(fig)
-print(f"saved results/corrected_voxel_coordinates.png ({len(t)} voxels)")
+
+subjects = pd.read_csv(R / "participant_vmPFC_summary.tsv", sep="\t")
+values = subjects.vmPFC_box_mean_effect.to_numpy()
+n = len(values)
+mean = float(values.mean())
+sd = float(values.std(ddof=1))
+ci = stats.t.interval(.95, n - 1, loc=mean, scale=sd / np.sqrt(n))
+fig, ax = plt.subplots(figsize=(7.2, 4.2), constrained_layout=True)
+ax.scatter(np.arange(n) + 1, values, color="#356A8A", alpha=.8, s=24)
+ax.axhline(mean, color="#B33C2E", lw=1.5, label=f"mean {mean:.3g}")
+ax.errorbar((n + 1) / 2, mean, yerr=[[mean - ci[0]], [ci[1] - mean]], fmt="o",
+            color="#B33C2E", capsize=5, lw=2, label=f"95% t CI [{ci[0]:.3g}, {ci[1]:.3g}]")
+ax.axhline(0, color="black", lw=1, ls="--")
+ax.set(xlabel="Participant (cohort table order)", ylabel="Mean participant gain effect (map units)",
+       title="Descriptive vmPFC coordinate-box effects")
+ax.legend(frameon=False, loc="best")
+fig.savefig(R / "vmPFC_participant_effects.png", dpi=180)
+plt.close(fig)
+print(f"saved results/corrected_voxel_coordinates.png ({len(t)} voxels) and participant interval figure")
