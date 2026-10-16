@@ -17,7 +17,7 @@ def git(*args, cwd=ROOT):
     return subprocess.check_output(["git", *args], cwd=cwd)
 
 
-def captured_replay(arguments, helper):
+def captured_replay(arguments, helper, operational=False):
     """Replay documented outputs from a verified complete copy, never from HEAD."""
     import importlib.util
     import signal
@@ -40,7 +40,8 @@ def captured_replay(arguments, helper):
     identity = validate_capture(manifest_path, receipt["capture"]["sha256"])
     manifest = json.loads(manifest_path.read_bytes())
     original = manifest_path.parent / manifest["workspace"]
-    procedure.require_equal(args.path.resolve(), original.resolve(), "captured replay source")
+    declared = Path(os.environ["STAMPED_JUDGE_TARGET"]) if operational else original
+    procedure.require_equal(args.path.resolve(), declared.resolve(), "captured replay source")
     report = {"probe": "fresh-rerun", "source": str(original), "capture": identity["capture"],
               "commit": identity["commit"], "captured_at": identity["captured_at"],
               "scope": "Complete stopped delivery copy; existing environment/cache bytes retained. "
@@ -120,8 +121,13 @@ def captured_replay(arguments, helper):
     started = time.monotonic()
     with (args.workdir / "replay.stdout").open("xb") as stdout, (args.workdir / "replay.stderr").open("xb") as stderr:
         environment = os.environ.copy()
-        environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1",
-                           GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="core.hooksPath", GIT_CONFIG_VALUE_0=os.devnull)
+        if operational:
+            environment = procedure.git_config_overlay(procedure.operational_environment(environment),
+                                                        {"core.hooksPath": os.devnull})
+            environment["PYTHONDONTWRITEBYTECODE"] = "1"
+        else:
+            environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1",
+                               GIT_CONFIG_COUNT="1", GIT_CONFIG_KEY_0="core.hooksPath", GIT_CONFIG_VALUE_0=os.devnull)
         report["replay_git_overlay"] = {"core.hooksPath": os.devnull,
             "reason": "Disable original checkout hooks in the replay copy; captured config bytes unchanged"}
         process = subprocess.Popen(command, cwd=clone, env=environment, stdout=stdout, stderr=stderr,
@@ -212,7 +218,7 @@ def main():
         helper = scripts / {"probes": "run_probes.py", "fresh-rerun": "fresh_rerun.py"}[args.action]
     if frozen and args.action == "fresh-rerun":
         target = Path(os.environ["STAMPED_JUDGE_TARGET"])
-        if frozen.get("version") == 3:
+        if procedure.is_neutral(frozen):
             remaining = procedure.replay_arguments(frozen, remaining, target,
                                                    Path(os.environ["STAMPED_JUDGE_OUTPUT"]))
             result = subprocess.run(["pixi", "run", "--locked", "--manifest-path", manifest,
@@ -236,5 +242,5 @@ if __name__ == "__main__":
                                 frozen["fixed_files"]["scripts/assessment.py"], "capture replay adapter")
         helper = Path(sys.argv[2])
         procedure.require_equal(procedure.sha256(helper.read_bytes()), sys.argv[3], "frozen replay helper")
-        raise SystemExit(captured_replay(sys.argv[4:], helper))
+        raise SystemExit(captured_replay(sys.argv[4:], helper, frozen.get("version") == 4))
     main()

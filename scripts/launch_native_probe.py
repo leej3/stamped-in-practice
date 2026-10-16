@@ -275,6 +275,7 @@ def main():
     parser.add_argument("--protocol", choices=("legacy", NEUTRAL_PROTOCOL), default="legacy")
     parser.add_argument("--seed-receipt", type=Path)
     parser.add_argument("--delivery-capture", type=Path)
+    parser.add_argument("--canonical-capture", type=Path)
     parser.add_argument("--declared-artifacts", type=Path)
     args = parser.parse_args()
     neutral = args.protocol == NEUTRAL_PROTOCOL
@@ -336,7 +337,7 @@ def main():
         if args.role == "judge" and not args.worker_end_state:
             parser.error("Formal judges require --worker-end-state")
         frozen = procedure.load_procedure(args.procedure, args.procedure_sha256)
-        procedure.require_equal(frozen.get("version") == 3, neutral, "selected native protocol")
+        procedure.require_equal(procedure.is_neutral(frozen), neutral, "selected native protocol")
         if args.role == "judge" and not neutral:
             roots = procedure.git(args.checkout, "rev-list", "--max-parents=0", "HEAD").splitlines()
             if len(roots) != 1:
@@ -351,6 +352,9 @@ def main():
             procedure.check_retained_target(frozen, seed, roots[0],
                                             procedure.git(args.checkout, "rev-parse", "HEAD"),
                                             args.worker_end_state)
+        if args.role == "judge" and frozen["version"] == 4:
+            procedure.check_retained_target(frozen, seed, seed["seed_commit"],
+                workspace["target_commit"], args.worker_end_state, workspace["capture"]["sha256"])
         procedure.check_settings(frozen, args)
         procedure.check_readiness(frozen, args.resource_readiness)
         if args.role == "judge":
@@ -383,11 +387,30 @@ def main():
                                         "rendered judge instructions")
         status.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                       comparison_id=frozen["comparison_id"])
-        if frozen["version"] == 2:
+        if frozen["version"] in (2, 4):
             status["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     elif args.procedure or args.procedure_sha256 or args.procedure_study or args.resource_readiness:
         parser.error("Procedure flags require --run-mode formal")
+    operational = bool(frozen and frozen["version"] == 4 and args.role == "judge")
+    if args.canonical_capture and not operational:
+        parser.error("Canonical/operational judging requires a version 4 assessment seal")
+    if args.role == "judge":
+        procedure.require_equal(workspace["schema_version"], 3 if operational else 2 if neutral else 1,
+                                "judge target schema for assessment version")
+    if operational:
+        if not args.canonical_capture:
+            parser.error("Version 4 assessment requires --canonical-capture")
+        procedure.require_equal(str(args.canonical_capture.resolve()), workspace["capture"]["uri"],
+                                "canonical capture path")
+        procedure.require_equal(str(args.delivery_capture.resolve()), workspace["operational_capture"]["uri"],
+                                "operational capture path")
+        status["operational_runtime"] = frozen["operational_runtime"]
     output = args.output.resolve()
+    if operational:
+        for manifest in (args.canonical_capture, args.delivery_capture):
+            bundle = manifest.resolve().parent
+            if output.is_relative_to(bundle) or bundle.is_relative_to(output):
+                parser.error("Native evidence must be separate from canonical and operational capture bundles")
     if output.is_relative_to(args.checkout.resolve()):
         parser.error("Launch evidence must be outside the assessed or research checkout")
     if args.role == "judge" and (output.is_relative_to(session_checkout) or
@@ -460,6 +483,8 @@ def main():
     environment["CODEX_HOME"] = str(profile)
     if args.role == "judge":
         environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1")
+        if operational:
+            environment = procedure.operational_environment(environment)
         environment["STAMPED_JUDGE_OUTPUT"] = str(session_checkout)
         environment["STAMPED_JUDGE_TARGET"] = str(args.checkout.resolve())
         environment["STAMPED_ASSESSMENT_RUNNER"] = str(Path(__file__).resolve().with_name("assessment.py"))
@@ -467,7 +492,12 @@ def main():
         environment["STAMPED_ASSESSMENT_SOURCE"] = str(args.assessment_source.resolve())
         environment["STAMPED_ASSESSMENT_PIN"] = str(args.assessment_pin.resolve())
         if neutral:
-            environment["STAMPED_DELIVERY_MANIFEST"] = str(args.delivery_capture.resolve())
+            environment["STAMPED_DELIVERY_MANIFEST"] = str(
+                (args.canonical_capture if operational else args.delivery_capture).resolve())
+            if operational:
+                environment["STAMPED_OPERATIONAL_MANIFEST"] = str(args.delivery_capture.resolve())
+                environment["STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR"] = str(
+                    Path(__file__).resolve().with_name("scientific_judgment.py"))
             environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
             environment["STAMPED_ASSESSMENT_VERSION"] = str(args.assessment_pin.resolve())
         if frozen:
@@ -537,6 +567,11 @@ def main():
     if args.role == "judge":
         record["judge_workspace"] = str(session_checkout)
         record["target"] = workspace
+        if operational:
+            record["operational_runtime"] = frozen["operational_runtime"]
+            record["git_config_overlay"] = {"inherited_count": int(os.environ.get("GIT_CONFIG_COUNT", "0")),
+                "effective_count": int(environment["GIT_CONFIG_COUNT"]),
+                "appended": frozen["operational_runtime"]["git_config"], "GIT_OPTIONAL_LOCKS": "0"}
         runner = Path(environment["STAMPED_ASSESSMENT_RUNNER"])
         record["assessment_runner_sha256"] = hashlib.sha256(runner.read_bytes()).hexdigest()
     (output / "launch.json").write_text(json.dumps(record, indent=2) + "\n")
@@ -586,10 +621,34 @@ def main():
     target_error = None
     if args.role == "judge":
         try:
-            judge_workspace.validate_target(args.checkout.resolve(), workspace)
-            record["target_unchanged"] = True
-        except (ValueError, SystemExit, subprocess.CalledProcessError) as error:
+            if operational:
+                integrity = judge_workspace.retain_operational_target(args.checkout.resolve(), workspace,
+                    output / "operational-retention")
+                record["operational_integrity"] = integrity
+                for name in ("target_unchanged", "canonical_unchanged", "operational_metadata_changed"):
+                    record[name] = integrity[name]
+                if not integrity["protected_unchanged"]:
+                    raise ValueError("Protected operational content changed or retention is incomplete")
+            else:
+                judge_workspace.validate_target(args.checkout.resolve(), workspace)
+                record["target_unchanged"] = True
+        except (OSError, ValueError, SystemExit, subprocess.CalledProcessError) as error:
             record["target_unchanged"] = False
+            if operational:
+                record.setdefault("canonical_unchanged", False)
+                # A failed canonical check must not discard the operational
+                # bytes. These failure captures never make a result eligible.
+                if "operational_integrity" not in record:
+                    from delivery_snapshot import save_delivery
+                    record["failed_integrity_captures"] = {}
+                    for label, manifest in (("canonical", args.canonical_capture),
+                                            ("operational", args.delivery_capture)):
+                        try:
+                            record["failed_integrity_captures"][label] = save_delivery(
+                                manifest.absolute().parent, output / (label + "-as-found"),
+                                {"kind": "failed-assessment-integrity"})
+                        except (OSError, ValueError) as retention_error:
+                            record["failed_integrity_captures"][label] = {"error": str(retention_error)}
             target_error = str(error)
             record["target_validation_error"] = target_error
     (output / "result.json").write_text(json.dumps(record, indent=2) + "\n")

@@ -40,8 +40,22 @@ def _clean(repo, label):
         raise SystemExit(label + " must have no tracked changes or untracked files")
 
 
-def _target_identity(target, delivery_capture=None):
+def _target_identity(target, delivery_capture=None, canonical_capture=None):
     target = Path(target).resolve()
+    if canonical_capture:
+        from delivery_snapshot import capture_container_modes
+        operational = _target_identity(target, delivery_capture)
+        canonical_manifest = Path(canonical_capture).resolve()
+        canonical_target = canonical_manifest.parent / "content/workspace"
+        canonical = _target_identity(canonical_target, canonical_manifest)
+        _paths(canonical_manifest.parent, Path(delivery_capture).resolve().parent)
+        if operational["capture"]["sha256"] != canonical["capture"]["sha256"]:
+            raise SystemExit("Operational copy differs from canonical original capture")
+        return dict(operational, schema_version=3, capture=canonical["capture"],
+                    canonical_target_path=str(canonical_target),
+                    operational_capture=operational["capture"],
+                    canonical_container_modes=capture_container_modes(canonical_manifest),
+                    operational_container_modes=capture_container_modes(delivery_capture))
     if delivery_capture:
         from delivery_snapshot import validate_capture, capture_reference_limits
         manifest = Path(delivery_capture).resolve()
@@ -65,9 +79,35 @@ def validate_target(target: Path, identity: dict) -> None:
     """Recheck the pinned research object without refreshing its Git index."""
     if not isinstance(identity, dict) or type(identity.get("schema_version")) is not int:
         raise SystemExit("Invalid judge target identity")
-    capture = identity.get("capture", {}).get("uri") if identity.get("schema_version") == 2 else None
-    if _target_identity(target, capture) != identity:
+    version = identity.get("schema_version")
+    if version not in (1, 2, 3):
+        raise SystemExit("Unsupported judge target identity")
+    capture = identity.get("capture", {}).get("uri") if version in (2, 3) else None
+    actual = (_target_identity(target, identity["operational_capture"]["uri"], capture)
+              if version == 3 else _target_identity(target, capture))
+    if actual != identity:
         raise SystemExit("Judge target identity changed")
+
+
+def retain_operational_target(target, identity, output):
+    """Verify canonical bytes and retain the complete operational state at stop."""
+    from delivery_snapshot import validate_capture, capture_container_modes, retain_operational_delta
+    if identity.get("schema_version") != 3 or str(Path(target).resolve()) != identity["target_path"]:
+        raise SystemExit("Operational retention requires its pinned target identity")
+    canonical = Path(identity["capture"]["uri"])
+    operational = Path(identity["operational_capture"]["uri"])
+    if str(operational.parent / "content/workspace") != identity["target_path"]:
+        raise SystemExit("Operational target path changed")
+    def check_canonical():
+        observed = validate_capture(canonical, identity["capture"]["sha256"])
+        if (observed["commit"] != identity["target_commit"] or
+                capture_container_modes(canonical) != identity["canonical_container_modes"]):
+            raise SystemExit("Canonical capture identity changed")
+    check_canonical()
+    result = retain_operational_delta(canonical, operational,
+                                      identity["operational_container_modes"], output)
+    check_canonical()
+    return result
 
 
 def _independent_repository(workspace):
@@ -126,14 +166,18 @@ def validate(workspace: Path, target: Path) -> dict:
     return identity
 
 
-def initialize(workspace: Path, target: Path, provenance: Path, delivery_capture=None) -> dict:
+def initialize(workspace: Path, target: Path, provenance: Path, delivery_capture=None,
+               canonical_capture=None) -> dict:
     """Create a fresh seed without copying or fetching the research history."""
     if Path(workspace).is_symlink():
         raise SystemExit("Judge workspace must be a new directory")
     workspace, target = _paths(workspace, target)
     if workspace.exists():
         raise SystemExit("Judge workspace already exists; choose a new directory")
-    identity = _target_identity(target, delivery_capture)
+    if canonical_capture:
+        _paths(workspace, Path(canonical_capture).resolve().parent)
+        _paths(workspace, Path(delivery_capture).resolve().parent)
+    identity = _target_identity(target, delivery_capture, canonical_capture)
     workspace.parent.mkdir(parents=True, exist_ok=True)
     # Empty templates and a local hooks path prevent inherited commit hooks from
     # executing before the coordinator explicitly prepares judge capture.
