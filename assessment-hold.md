@@ -2,7 +2,8 @@
 
 All 12 original research workers and all 16 assigned judgments have completed.
 The four preselected duplicates remain separate from their primaries.
-Evidence publication, comparison and skill reflection are in progress; no scientific restart or repair retry is planned.
+The [comparison and reflection](synthesis/README.md) are complete; prospective skill validation and iteration restructuring are in progress.
+No scientific restart or repair retry is planned.
 One additional completed repair attempt is retained separately.
 The [current ledger](round-1.json) records exact identities and timestamps.
 

@@ -1,0 +1,371 @@
+{
+  "run": "narps-r1-10",
+  "scientific_result": "62d247e48e69978d294dc39175d53f9aa638ce0d",
+  "bundle_receipt_sha256": "bf4a7b91f75c22b96a117ac4a0f3e2183fd237ed14fbf44072d1c15bc3fff6f3",
+  "actor": "coordinator",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--single-branch",
+        "--branch",
+        "codex/narps-r1-10",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:07.048731+00:00",
+      "finished_at": "2026-10-16T05:01:08.098065+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Cloning into '/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout'...\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.098284+00:00",
+      "finished_at": "2026-10-16T05:01:08.103729+00:00",
+      "returncode": 0,
+      "stdout": "62d247e48e69978d294dc39175d53f9aa638ce0d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "switch",
+        "-c",
+        "codex/narps-r1-10-retained"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.103934+00:00",
+      "finished_at": "2026-10-16T05:01:08.111288+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'codex/narps-r1-10-retained'\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "remote",
+        "add",
+        "con-hub",
+        "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.112063+00:00",
+      "finished_at": "2026-10-16T05:01:08.117805+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "config",
+        "remote.con-hub.annexurl",
+        "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.117965+00:00",
+      "finished_at": "2026-10-16T05:01:08.123188+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "config",
+        "remote.origin.annex-ignore",
+        "true"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.123333+00:00",
+      "finished_at": "2026-10-16T05:01:08.128169+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "fetch",
+        "origin",
+        "git-annex:refs/remotes/origin/git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:08.128324+00:00",
+      "finished_at": "2026-10-16T05:01:09.255234+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "annex",
+        "init",
+        "coordinator retention narps-r1-10"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:09.255513+00:00",
+      "finished_at": "2026-10-16T05:01:10.048345+00:00",
+      "returncode": 0,
+      "stdout": "init coordinator retention narps-r1-10 ok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "annex",
+        "merge"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:10.048669+00:00",
+      "finished_at": "2026-10-16T05:01:10.154864+00:00",
+      "returncode": 0,
+      "stdout": "merge git-annex ok\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "snapper",
+        "--in-place",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout/coordinator/retention-01/README.md"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:10.512164+00:00",
+      "finished_at": "2026-10-16T05:01:10.660829+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "annex",
+        "add",
+        "coordinator/retention-01"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:10.661097+00:00",
+      "finished_at": "2026-10-16T05:01:12.679001+00:00",
+      "returncode": 0,
+      "stdout": "add coordinator/retention-01/README.md \n\n100%  1.24 KiB          6 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/bundle-receipt.json \n\n100%  6.94 KiB         97 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/bundle_package.py \n\n100%  4.91 KiB         70 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md \n\n100%  16.56 KiB       193 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json \n\n100%  12.89 KiB       194 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json \n\n100%  21.18 KiB       249 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/events.jsonl \n\n4%    31.98 KiB       395 MiB/s 0s\n100%  752.33 KiB      264 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/final.txt \n\n100%  1.77 KiB         21 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/launch.json \n\n100%  5.15 KiB         79 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/procedure-status.json \n\n100%  367 B             4 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/prompt.txt \n\n100%  8.65 KiB        110 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/result.json \n\n100%  5.47 KiB         73 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/condition-assignment.json \n\n100%  934 B            13 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/events.jsonl \n\n10%   31.98 KiB       406 MiB/s 0s\n100%  308.43 KiB      274 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/final.txt \n\n100%  2.01 KiB         30 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/launch.json \n\n100%  5.19 KiB         70 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/procedure-status.json \n\n100%  171 B             3 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/prompt-preflight.json \n\n100%  3.54 KiB         59 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/prompt.txt \n\n100%  2.4 KiB          34 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/result.json \n\n100%  5.72 KiB         80 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/skill-observations.json \n\n100%  2.83 KiB         41 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/worker-end-state.json \n\n19%   31.98 KiB       395 MiB/s 0s\n100%  166.7 KiB       208 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/coordinator-observed-retention-01.json \n\n100%  2.63 KiB         35 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/coordinator-publish-01/result.json \n\n100%  4.23 KiB         64 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/environment-snapshot.json \n\n100%  399 B             6 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/judgment-01-launch/result.json \n\n100%  75 B            814 KiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/judgment-01-output-binding.json \n\n100%  2.01 KiB         22 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/launch-command-01/result.json \n\n100%  75 B              1 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/recipient-check-01/result.json \n\n100%  2.15 KiB         25 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/recipient-check-02/result.json \n\n100%  4.33 KiB         65 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/skill-use-observations.json \n\n51%   31.98 KiB       244 MiB/s 0s\n100%  62.81 KiB       247 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock \n\n19%   31.98 KiB       406 MiB/s 0s\n100%  171.52 KiB      218 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package-manifest.json \n\n3%    31.98 KiB       422 MiB/s 0s\n100%  945.96 KiB      247 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package-plan.json \n\n100%  3.16 KiB         46 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package.tar.gz \n\n0%    31.98 KiB       422 MiB/s 1s\n12%   57.47 MiB       287 MiB/s 1s\n24%   115.41 MiB      290 MiB/s 1s\n37%   172.95 MiB      288 MiB/s 1s\n49%   230.98 MiB      290 MiB/s 0s\n61%   288.89 MiB      289 MiB/s 0s\n73%   346.49 MiB      288 MiB/s 0s\n85%   403.43 MiB      285 MiB/s 0s\n97%   460.28 MiB      284 MiB/s 0s\n100%  473.69 MiB      289 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package_retention.py \n\n100%  7.5 KiB          85 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/publish_bundle.py \n\n100%  5.07 KiB         80 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:12.679353+00:00",
+      "finished_at": "2026-10-16T05:01:12.685662+00:00",
+      "returncode": 0,
+      "stdout": "coordinator/retention-01/README.md\ncoordinator/retention-01/bundle-receipt.json\ncoordinator/retention-01/bundle_package.py\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json\ncoordinator/retention-01/indexable/judgment-01/native/events.jsonl\ncoordinator/retention-01/indexable/judgment-01/native/final.txt\ncoordinator/retention-01/indexable/judgment-01/native/launch.json\ncoordinator/retention-01/indexable/judgment-01/native/procedure-status.json\ncoordinator/retention-01/indexable/judgment-01/native/prompt.txt\ncoordinator/retention-01/indexable/judgment-01/native/result.json\ncoordinator/retention-01/indexable/launch/native/condition-assignment.json\ncoordinator/retention-01/indexable/launch/native/events.jsonl\ncoordinator/retention-01/indexable/launch/native/final.txt\ncoordinator/retention-01/indexable/launch/native/launch.json\ncoordinator/retention-01/indexable/launch/native/procedure-status.json\ncoordinator/retention-01/indexable/launch/native/prompt-preflight.json\ncoordinator/retention-01/indexable/launch/native/prompt.txt\ncoordinator/retention-01/indexable/launch/native/result.json\ncoordinator/retention-01/indexable/launch/native/skill-observations.json\ncoordinator/retention-01/indexable/launch/native/worker-end-state.json\ncoordinator/retention-01/indexable/retention/coordinator-observed-retention-01.json\ncoordinator/retention-01/indexable/retention/coordinator-publish-01/result.json\ncoordinator/retention-01/indexable/retention/environment-snapshot.json\ncoordinator/retention-01/indexable/retention/judgment-01-launch/result.json\ncoordinator/retention-01/indexable/retention/judgment-01-output-binding.json\ncoordinator/retention-01/indexable/retention/launch-command-01/result.json\ncoordinator/retention-01/indexable/retention/recipient-check-01/result.json\ncoordinator/retention-01/indexable/retention/recipient-check-02/result.json\ncoordinator/retention-01/indexable/retention/skill-use-observations.json\ncoordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\ncoordinator/retention-01/package-manifest.json\ncoordinator/retention-01/package-plan.json\ncoordinator/retention-01/package.tar.gz\ncoordinator/retention-01/package_retention.py\ncoordinator/retention-01/publish_bundle.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:12.685907+00:00",
+      "finished_at": "2026-10-16T05:01:12.812262+00:00",
+      "returncode": 0,
+      "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "commit",
+        "-F",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/publication-01/commit-message.txt"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:12.812676+00:00",
+      "finished_at": "2026-10-16T05:01:13.227510+00:00",
+      "returncode": 0,
+      "stdout": "[codex/narps-r1-10-retained 9384fa1] chore(retention): preserve narps-r1-10 coordinator evidence\n 37 files changed, 37 insertions(+)\n create mode 120000 coordinator/retention-01/README.md\n create mode 120000 coordinator/retention-01/bundle-receipt.json\n create mode 120000 coordinator/retention-01/bundle_package.py\n create mode 120000 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md\n create mode 120000 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json\n create mode 120000 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/events.jsonl\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/final.txt\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/launch.json\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/procedure-status.json\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/prompt.txt\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/result.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/condition-assignment.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/events.jsonl\n create mode 120000 coordinator/retention-01/indexable/launch/native/final.txt\n create mode 120000 coordinator/retention-01/indexable/launch/native/launch.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/procedure-status.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/prompt-preflight.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/prompt.txt\n create mode 120000 coordinator/retention-01/indexable/launch/native/result.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/skill-observations.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/worker-end-state.json\n create mode 120000 coordinator/retention-01/indexable/retention/coordinator-observed-retention-01.json\n create mode 120000 coordinator/retention-01/indexable/retention/coordinator-publish-01/result.json\n create mode 120000 coordinator/retention-01/indexable/retention/environment-snapshot.json\n create mode 120000 coordinator/retention-01/indexable/retention/judgment-01-launch/result.json\n create mode 120000 coordinator/retention-01/indexable/retention/judgment-01-output-binding.json\n create mode 120000 coordinator/retention-01/indexable/retention/launch-command-01/result.json\n create mode 120000 coordinator/retention-01/indexable/retention/recipient-check-01/result.json\n create mode 120000 coordinator/retention-01/indexable/retention/recipient-check-02/result.json\n create mode 120000 coordinator/retention-01/indexable/retention/skill-use-observations.json\n create mode 120000 coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\n create mode 120000 coordinator/retention-01/package-manifest.json\n create mode 120000 coordinator/retention-01/package-plan.json\n create mode 120000 coordinator/retention-01/package.tar.gz\n create mode 120000 coordinator/retention-01/package_retention.py\n create mode 120000 coordinator/retention-01/publish_bundle.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:13.227826+00:00",
+      "finished_at": "2026-10-16T05:01:13.233195+00:00",
+      "returncode": 0,
+      "stdout": "9384fa182cec08fa0153c0c739a6e32468de7399\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "rev-parse",
+        "HEAD^"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:13.233411+00:00",
+      "finished_at": "2026-10-16T05:01:13.238853+00:00",
+      "returncode": 0,
+      "stdout": "62d247e48e69978d294dc39175d53f9aa638ce0d\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "push",
+        "origin",
+        "codex/narps-r1-10-retained"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:13.239200+00:00",
+      "finished_at": "2026-10-16T05:01:14.863178+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "remote: \nremote: Create a pull request for 'codex/narps-r1-10-retained' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-r1-10-retained        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      codex/narps-r1-10-retained -> codex/narps-r1-10-retained\n"
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "annex",
+        "copy",
+        "--to",
+        "con-hub",
+        "--json",
+        "--",
+        "coordinator/retention-01"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:14.863568+00:00",
+      "finished_at": "2026-10-16T05:01:47.719639+00:00",
+      "returncode": 0,
+      "stdout": "{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/README.md\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s1265--ac9809a66f2389f2f7690b0ca8cb88a3feff3b65eec2fb7c87d359cc482ac9c9.md\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/bundle-receipt.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s7108--bf4a7b91f75c22b96a117ac4a0f3e2183fd237ed14fbf44072d1c15bc3fff6f3.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/bundle_package.py\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5025--48adc4de6d13c2404c4ea441b009da162e32b72905d27b4de90acff4d6a4b93b.py\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s16959--8bdf16263a6195ab0328dbd893ce898fa4b4549e4ed02b144dc76afffd9c6c83.md\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s13202--18fdbb8607d0061bc74e1e7c1a83faf739a1d2e55648239ce5aef9312b38dfa6.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s21691--e41128bd6ccac7fcdb275f5f74a4e51e8338c101353be40e003c975196c8f1ff.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/events.jsonl\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s770382--2532819e87ea463fbe1f95a73b6ac442b94c96a07369c489dba14495047ae81d\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/final.txt\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s1812--66e465f825f15951ff9f906a4e89d7a83b93e36d598bbc21f8c0f0e96c0e03f6.txt\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/launch.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5276--6e778a1de92794784dba0ba50911d56d5a081d9be5d6434e7c15ddf3ebd9dd3f.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/procedure-status.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s367--3f8ea7c3e28c3c27fa4af2d98c7542cb07aeff6fbd2ff946289f6bdeb2798193.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/prompt.txt\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s8854--4926f4c92f4121cfa61d54446110026e56e31ca57de3c3b3dc91eea370ebc716.txt\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5606--7686be5b09279de08c771940d9fa05eca96190af4d56f08fdb774e7f2d535730.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/condition-assignment.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s934--58fd42670489699d4d7b65b300b41c687153e03a043da3aedca0b2f4c2e47af1.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/events.jsonl\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s315828--7dda8036299d91fa0db8a0ab6cbe87cb45d024b74692d64cf5963cc3f33ac4d8\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/final.txt\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2062--7e70af7b06779dc5e1bc7765370fa459cc32755bede8bd22721cf1c791fbe350.txt\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/launch.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5315--034a15f4835f632ea08e342c2674bb2ca486106328926096dae2a3d83efcf5dc.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/procedure-status.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s171--fe97152600170966c97943c02421e3ec0e8557f0e650c80308038fef764cec80.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/prompt-preflight.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s3625--87656b52fab052270a1864a5177ee02c3c84fd086671941fd27d7c8d0b46c44d.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/prompt.txt\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2459--ee6dae2eb560f408da608489a414af5cfb8c1fbfa42f0264d4efa5c9fa58890a.txt\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5861--d489a1370da324faa559d58da73d4ca7abb3d82bd90169a624c0155081de4ab0.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/skill-observations.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2897--c8c7527627e0824597f2d7f0d7aec8ab1e8215c3fa0f17bdaef646dea418bb41.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/worker-end-state.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s170699--e755347d326d37950589af4e25a4ef5c582c7f3b2db8e4ce5455e05ca2c493fe.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/coordinator-observed-retention-01.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2697--972a57c6676e063aeba94dee3e6176b932046c105d09f32cb2f8f49ea1fdeb3d.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/coordinator-publish-01/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s4331--1cd0efde7f87ece09d2d038bb398a163f9973d8de1142fec73306d00f35731a8.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/environment-snapshot.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s399--6c39174e50d975a117a1fa5f405d00a875fda2a17d1bcda0a3465a2964b159fa.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/judgment-01-launch/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s75--3f5ea840ead107907a67959343e03532f8b718531fc8f329e9a54ae8e2403d2d.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/judgment-01-output-binding.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2062--708160b153131abd72e30bedb2ba71660c4e1a766bf634a217814e9949c25cd8.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/launch-command-01/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s75--c4b21dc07ada219e7dd6ef55ac85212e9f255cedfd2f5a35105536d9a99d1b58.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/recipient-check-01/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s2206--5b376b476845eb6145d6b834e56c7c19f42d274bb58cb352df4b832ec1479296.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/recipient-check-02/result.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s4435--09038891c8117ee7c0deea1645c2099f9c075995d7406f03bb022df65888de9a.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/skill-use-observations.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s64319--2f4d683ab214557d3420d7299dad7a4b0c698c79f0865a42527be45343e400b1.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s175639--5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21.lock\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package-manifest.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s968667--e88a2cd711b1f64ff338aa5785fef64001ece97f984b48bd6b2991b91177ecba.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package-plan.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s3236--5d9bd0e54de5899abab931249569283f479e21811d9dc34e1e17a4b1839511f3.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package.tar.gz\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s496700489--669a5342318ccb37de39b75148f5cb14e65eb4516f128dd5ef0c33225cb3984b.tar.gz\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package_retention.py\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s7680--989315ceb1d84fb64d58dd688af4098f0ac34f38c1dac8d86b1dc7998d1909e5.py\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/publish_bundle.py\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s5195--41c998b40dc7a942f63c60161cacdfe7696c2135f1025bbba00076b828fe27c4.py\",\"note\":\"to con-hub...\",\"success\":true}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "fetch",
+        "origin",
+        "git-annex:refs/remotes/origin/git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:47.720046+00:00",
+      "finished_at": "2026-10-16T05:01:48.632985+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "annex",
+        "merge"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:48.633647+00:00",
+      "finished_at": "2026-10-16T05:01:48.744118+00:00",
+      "returncode": 0,
+      "stdout": "merge git-annex ok\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "push",
+        "origin",
+        "git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:48.744518+00:00",
+      "finished_at": "2026-10-16T05:01:50.405861+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "To github.com:leej3/stamped-in-practice.git\n   80f9afa..9ff792c  git-annex -> git-annex\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-10/retention-checkout",
+        "rev-parse",
+        "git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T05:01:50.406641+00:00",
+      "finished_at": "2026-10-16T05:01:50.422203+00:00",
+      "returncode": 0,
+      "stdout": "9ff792c3f23b6ee1d696c05dde31e1b10fa0b624\n",
+      "stderr": ""
+    }
+  ],
+  "retention_commit": "9384fa182cec08fa0153c0c739a6e32468de7399",
+  "branch": "codex/narps-r1-10-retained",
+  "published_annex_metadata": "9ff792c3f23b6ee1d696c05dde31e1b10fa0b624",
+  "publication_complete": true
+}

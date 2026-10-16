@@ -39,3 +39,10 @@ The [common-workflow limitation](common-workflow-limitation-01.md) qualifies the
 Explicit human steering now treats the complete first round as development evidence.
 Finish its original assignments and reflection before changing the setup.
 The original three-round registration above is retained as history; the subsequent stable tool-neutral protocol will be declared separately and will not pool round one into a clean across-round skill comparison.
+
+## Round-one result
+
+All 12 original workers and 16 assigned assessments are complete.
+The [round-one synthesis](synthesis/README.md) presents scientific findings, item-level evidence, effort, variability and the methodological reflection.
+One supplementary repair remains separate; the first-assigned judgments and unavailable measures are preserved.
+Subsequent tool-neutral work will use a declared new setup.
