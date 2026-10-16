@@ -12,6 +12,7 @@ pixi run python scripts/aggregate_comparison.py \
   --allocation iterations/narps-v1/allocation.json \
   --index /path/to/extraction-index.json \
   --assessment-procedure-sha256 <approved-amended-seal-digest> \
+  --disposition iterations/narps-v1/measurement-disposition-01.json \
   --output /path/to/comparison-report-01
 ```
 
@@ -51,7 +52,8 @@ For included outcomes, the index needs one `comparison_provenance` object:
 The selected version 2 seal must embed the exact original research procedure bytes and preserve the research design, settings, replay policy, environment and fixed files outside the four assessment adapter files permitted by the amendment.
 The loaded assessor pin must match the amended seal exactly.
 Each included judgment needs `native.procedure_status` and `native.result`, both hashed artifact references to the retained native files.
-The gate requires formal verification, both procedure digests, the original worker-stop hash, identical procedure receipts, the selected assessor source and environment, the exact scientific result commit, an unchanged target, a completion timestamp and native session IDs.
+The gate requires formal verification, the selected procedure digest, the original worker-stop hash, identical procedure receipts, the selected assessor source and environment, the exact scientific result commit, an unchanged target, a completion timestamp and native session IDs.
+Current-version receipts also require the original research digest; original-version receipts may omit that later-added field.
 Judge sessions must have a null condition; IDs cannot be reused across included or excluded attempts.
 Nonzero process return codes remain operational facts and do not choose or replace primary judgments.
 
@@ -107,7 +109,8 @@ Each optional run record has:
   Roles mean first assigned and preselected second judgment, regardless of completion time or result.
   A duplicate never fills a missing primary.
 - `operations`: optional observations described below.
-- `excluded_attempts`: original infrastructure attempts retained outside assigned judgment slots.
+- `excluded_attempts`: explicitly excluded attempts retained outside assigned judgment slots.
+- `supplementary_attempts`: additional assessments retained with full judgment fields and a `reason`, outside the assigned slots.
 
 A judgment has a unique `judgment_id`, admission evidence described above, optional hashed `response` and `report` references, optional `adequacy`, and optional `conclusion`.
 Omitted evidence remains missing.
@@ -149,15 +152,66 @@ Use `extraction_status: "missing"` or `"ambiguous"` with `category: null` when n
 Do not turn a missing classification into `unable to assess`.
 Keep the scientific conclusion separately, including defensible null findings.
 
+## First-assigned judgments and measurement validity
+
+The human-directed disposition preserves the original first-assigned primaries for `narps-r1-07` and `narps-r1-08` under the original research seal.
+The repaired `narps-r1-07` judgment 02 is supplementary, not the preselected duplicate.
+Remaining assigned judgments use the accepted current assessment version.
+Replay success is not an inclusion requirement, and there is no outcome-based replacement or regrading loop.
+Keep every response, report and operational attempt.
+
+`--disposition` reads a small coordinator analysis record, separate from the immutable research and assessment procedures.
+Its exact bytes are hashed in `aggregation.json`; optional `--disposition-sha256` checks an expected copy.
+It does not authorize launches or change the assessor.
+The CLI confirms both accepted assessor commits have byte-identical checklist, lock and response schema assets.
+Library callers must establish that shared response contract themselves.
+
+The disposition has `version: 1`, `comparison_id`, `allocation_sha256`, `research_procedure_sha256`, `assessment_procedure_sha256`, and a `judgments` array.
+Each row names `run_id`, `role` (`primary`, `duplicate`, or `supplementary`), unique `judgment_id`, and `procedure_sha256`.
+A completed observation also needs `native_result_sha256` and, when outputs are supplied, `output_binding_sha256`.
+These bind an exact attempt to its assigned slot while the existing native, result, original-stop and output checks remain in force.
+Planned rows may omit the completion hashes.
+Missing future slots remain pending and do not prevent synthesis or dispatch; unlisted pending slots default to the accepted current version.
+Completed observations need an exact disposition row when this analysis mode is selected.
+
+An optional `measure_validity` array contains entries such as:
+
+```json
+{
+  "measure": "stamped-checklist:should/004",
+  "status": "unavailable",
+  "reason": "The cited assessor infrastructure failure prevents this measurement.",
+  "evidence": [{"path": "retained-helper-report.json", "sha256": "<64 lowercase hex>"}]
+}
+```
+
+`measure` must be `replay` or an exact pinned checklist item ID.
+`status` is `unavailable` or `invalid`; both remove only that measure from comparable summaries.
+The coordinator supplies the factual reason and hashed evidence, with paths relative to the disposition file or absolute.
+Evidence errors are reported and the affected measure stays out of comparable summaries; raw grades remain retained.
+No status or process return code automatically creates a validity decision or converts an infrastructure failure into a worker failure.
+The helper names must/007, must/008, must/015, must/017, should/004 and should/006, but that list is not a blanket invalidation rule.
+An exact additional item may be affected when its own cited evidence establishes the dependency.
+Independent documentary evidence can leave other ratings usable.
+
+Optional `scientific_dependency` contains `status` (`independent` or `uncertain`), `reason`, and hashed `evidence`.
+Uncertainty is displayed alongside the raw scientific category; the tool never reinterprets that category or the conclusion.
+Uncertain or unverified dependency evidence excludes scientific duplicate agreement, not the retained label.
+No dependency inference is made from a replay overlay alone.
+
 ## Operations and effort
 
-Record original pre-amendment attempts in `excluded_attempts`, with a unique `judgment_id`, a nonempty `reason`, optional `native` receipt references, and optional hashed `response` and `report` references.
+Use `excluded_attempts` only for attempts explicitly outside the assignment and supplementary records, with a unique `judgment_id`, a nonempty `reason`, optional `native` receipt references, and optional hashed `response` and `report` references.
+The original 07/08 first-assigned primaries belong in `judgments.primary`, not this collection.
 They are validated against the original seal and original assessor pin, and never supply checklist, adequacy, conclusion or disagreement outcomes.
 Incomplete receipts remain visible as invalid operational evidence; they do not prevent retention of the attempt or other assignments.
 Omit scientific extraction fields from this collection.
 An operation may use `excluded_attempt_id` to identify one of its run's excluded attempts; it cannot also claim `judgment_role`.
 Its recorded duration remains in `operations`, but enters `effort` only when both its measurement sources and excluded-attempt provenance validate.
 Excluded infrastructure costs are labeled and plotted separately from assigned comparison measurements, even when their stage, actor and scope match.
+Use `supplementary_attempt_id` to attribute repair-attempt operations to an indexed supplementary judgment.
+It cannot also claim `judgment_role` or `excluded_attempt_id`.
+Verified supplementary costs remain visible in their own scope and version, never credited to a worker or assigned duplicate.
 
 Each observation requires `operation_id` (unique within its run), `stage`, `actor`, `status`, a nonempty measurement `scope`, and one or more hashed `evidence` references.
 Stages are `setup`, `worker`, `discovery`, `installation`, `computation`, `judging`, `replay`, `input-retrieval`, `output-retrieval`, `environment-retrieval`, `publication`, and `coordinator`.
@@ -192,16 +246,23 @@ Tables are:
 
 - `runs`: all assigned workers and known commit identities.
 - `judgments`: all primary and preselected duplicate slots, response availability and narrative extractions.
-- `excluded_attempts`: original infrastructure attempts, their exclusion reasons, receipt validation and operational identities.
+- `excluded_attempts`: explicitly excluded attempts, their reasons, receipt validation and operational identities.
+- `supplementary_attempts` and `supplementary_items`: additional attempts and their raw answers, outside all assigned outcome counts and pairs.
 - `items`: valid canonical item answers with evidence, source and flags; additional answer fields remain under `answer_extensions`.
-- `counts`: separate status counts by level and STAMPED dimension.
-- `cells`: condition-by-round adequacy counts and per-run checklist count medians/ranges.
+- `counts`: raw status counts by level and STAMPED dimension, unchanged by measurement validity.
+- `measure_validity`: exact evidence-cited coordinator overlays, with evidence validation status.
+- `comparable_items` and `comparable_counts`: valid measures only, with pinned, valid, unavailable and invalid denominators.
+- `cells`: retained raw condition-by-round summaries, explicitly labeled as raw when versions differ.
+- `version_strata`: every registered round/condition/version cell, including zero assignment cells, and assigned, available, missing, unavailable and invalid counts.
+- `version_cells`: version-specific raw scientific categories and comparable checklist summaries; medians/ranges are absent when workers have different valid item sets.
 - `operations` and `effort`: cited observations and verified duration measurements.
 - `pairs` and `disagreement`: duplicate availability and exact paired status differences.
 - `issues`: invalid artifacts and extraction problems.
 
-`aggregation.json` retains allocation, registration, original procedure and index hashes, the independently approved amended digest, selected seal reference and assessor/checklist pins.
-Five figures are saved in SVG and PNG: scientific adequacy, item statuses, recurring item outcomes, effort, and duplicate disagreement.
+`aggregation.json` retains allocation, registration, original procedure, disposition and index hashes, the independently approved amended digest, selected seal reference and assessor/checklist pins.
+Without a disposition, five legacy figures are saved in SVG and PNG: scientific adequacy, item statuses, recurring item outcomes, effort, and duplicate disagreement.
+With a disposition, each outcome figure is split by full procedure identity; effort has separate version and supplementary scopes.
+Empty condition cells remain visible, so version-confounded condition coverage cannot be mistaken for a pooled comparison.
 The item figure follows registered launch order.
 Effort points represent observations, not sums across phases.
 
@@ -216,7 +277,9 @@ There is no combined score or certification.
 Missing or invalid assessments are separate from `not-checked` verdicts.
 Cell denominators retain all three allocated workers, with valid-primary availability explicit.
 No observations means missing median/range, not zero.
-Duplicate matrices use complete pairs and show availability out of the preselected pairs.
+Duplicate matrices compare only same-version, mutually valid item observations and report their item and object denominators out of the preselected pairs.
+Cross-version pairs are unavailable, not agreement or disagreement.
+Partial comparable subsets remain separate from complete pairs.
 Checklist comparisons are nested within objects, not independent extra workers.
 With three workers per cell, interpret individual observations, counts, medians and ranges descriptively.
 Do not infer significance or reliable variance estimates.

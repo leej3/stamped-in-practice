@@ -35,29 +35,49 @@ def categorical(axis, values, colors):
         interpolation="nearest")
 
 
-def render(tables, items, output):
-    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10,
-                         "axes.spines.top": False, "axes.spines.right": False})
+def _render_outcomes(tables, items, output, version=None, registered_runs=None):
     runs = tables["runs"]
+    registered_runs = runs if registered_runs is None else registered_runs
     primary = {j["run_id"]: j for j in tables["judgments"] if j["role"] == "primary"}
-    answers = {(i["run_id"], i["item_id"]): i["status"] for i in tables["items"] if i["role"] == "primary"}
+    source = tables["comparable_items"] if version else tables["items"]
+    answers = {(i["run_id"], i["judgment_id"], i["item_id"]): i["status"]
+               for i in source if i["role"] == "primary"}
+    validity = {(i["run_id"], i["judgment_id"], i["item_id"]): i["validity"]
+                for i in tables.get("measure_validity", []) if i["role"] == "primary"}
     valid = sum(j["response_status"] == "valid" for j in primary.values())
-    groups = list(dict.fromkeys((r["round"], r["condition"]) for r in runs))
-    groups.sort(key=lambda g: (g[0], list(dict.fromkeys(r["condition"] for r in runs)).index(g[1])))
+    groups = list(dict.fromkeys((r["round"], r["condition"]) for r in registered_runs))
+    groups.sort(key=lambda g: (g[0], list(dict.fromkeys(r["condition"] for r in registered_runs)).index(g[1])))
     abbreviations = {"baseline": "B", "discover-general": "DG",
                      "discover-science": "DS", "stamped-explicit": "SE"}
     run_labels = [r["run_id"] + " (" + abbreviations.get(r["condition"], r["condition"]) + ")" for r in runs]
     group_labels = [f"R{round_id} · {condition}" for round_id, condition in groups]
 
+    def finish(fig, name):
+        if version:
+            fig.text(.01, .01, f"Assessment procedure: {version}\n"
+                     "Condition coverage is shown within each version; empty cells are not outcomes. "
+                     "No pooled cross-version comparison.", fontsize=8)
+            fig.tight_layout(rect=(0, .065, 1, 1))
+        save(fig, output, name + ("-" + version[:12] if version else ""))
+
     def sci(judgment):
         return judgment["adequacy"] or judgment["extraction_status"]
 
     fig, axes = plt.subplots(2, 1, figsize=(16, 8), gridspec_kw={"height_ratios": [1, 3]})
-    categorical(axes[0], [[SCI_LABELS.index(sci(primary[r["run_id"]])) for r in runs]], SCI_COLORS)
-    axes[0].set_xticks(range(len(runs)), run_labels, rotation=90, fontsize=7)
+    dependencies = {r["run_id"] for r in runs
+                    if (primary[r["run_id"]].get("scientific_dependency") or {}).get("status") == "uncertain"}
+    if runs:
+        categorical(axes[0], [[SCI_LABELS.index(sci(primary[r["run_id"]])) for r in runs]], SCI_COLORS)
+    else:
+        axes[0].text(.5, .5, "No primary workers assigned to this version", ha="center",
+                     transform=axes[0].transAxes)
+    axes[0].set_xticks(range(len(runs)), [label + (" *" if r["run_id"] in dependencies else "")
+                                        for r, label in zip(runs, run_labels)], rotation=90, fontsize=7)
     axes[0].set_yticks([])
     axes[0].set_title(f"Scientific adequacy · one tile per assigned worker (n={len(runs)})\n"
-                     "B baseline · DG general discovery · DS science discovery · SE explicit STAMPED", loc="left")
+                     "B baseline · DG general discovery · DS science discovery · SE explicit STAMPED"
+                     + ("\n* Uncertain dependency on affected helper evidence; raw category unchanged"
+                        if dependencies else ""), loc="left")
     left = np.zeros(len(groups))
     for status, color in zip(SCI_LABELS, SCI_COLORS):
         counts = [sum(sci(primary[r["run_id"]]) == status for r in runs
@@ -67,29 +87,55 @@ def render(tables, items, output):
             if count:
                 axes[1].text(offset + count / 2, y, str(count), ha="center", va="center", fontsize=9)
         left += counts
-    axes[1].set_yticks(range(len(groups)), [f"{label} (n={int(n)})" for label, n in zip(group_labels, left)])
+    assigned = [sum((r["round"], r["condition"]) == group for r in registered_runs) for group in groups]
+    axes[1].set_yticks(range(len(groups)), [
+        f"{label} ({int(n)}/{total} workers assigned to version)" if version else f"{label} (n={int(n)})"
+        for label, n, total in zip(group_labels, left, assigned)])
     axes[1].invert_yaxis()
     axes[1].set_xlabel("Assigned workers; categories describe support for the reported conclusion")
     legend(axes[1], SCI_LABELS, SCI_COLORS, 4)
     fig.tight_layout(h_pad=3)
-    save(fig, output, "scientific-adequacy")
+    finish(fig, "scientific-adequacy")
 
     labels = (*STATUSES, "assessment missing/invalid")
-    matrix = [[STATUSES.index(answers[r["run_id"], i["id"]]) if (r["run_id"], i["id"]) in answers
-               else len(STATUSES) for r in runs] for i in items]
+    colors = STATUS_COLORS
+    if version:
+        labels = (*STATUSES, "assessment missing", "assessment invalid",
+                  "measurement unavailable", "measurement invalid")
+        colors = (*STATUS_COLORS, "#343a46", "#75b9c5", "#a563a1")
+
+    def item_label(run, item):
+        judgment = primary[run["run_id"]]
+        key = (run["run_id"], judgment["judgment_id"], item["id"])
+        if version and judgment["response_status"] == "valid" and validity.get(key) in ("unavailable", "invalid"):
+            return "measurement " + validity[key]
+        if key in answers:
+            return answers[key]
+        if not version:
+            return "assessment missing/invalid"
+        if judgment["response_status"] == "invalid":
+            return "assessment invalid"
+        if judgment["response_status"] == "valid":
+            return "measurement unavailable"
+        return "assessment missing"
+
+    matrix = [[labels.index(item_label(r, i)) for r in runs] for i in items]
     fig, ax = plt.subplots(figsize=(16, 11))
-    categorical(ax, matrix, STATUS_COLORS)
+    if runs:
+        categorical(ax, matrix, colors)
+    else:
+        ax.text(.5, .5, "No primary workers assigned to this version", ha="center", transform=ax.transAxes)
     ax.set_xticks(range(len(runs)), run_labels, rotation=90, fontsize=8)
     ax.set_yticks(range(len(items)), [i["id"].split(":")[-1] + " · " + "/".join(i["dimension"]) for i in items])
-    ax.set_title(f"Checklist items · primary judgments · {valid}/{len(runs)} valid assessments\n"
+    ax.set_title(f"Checklist items · primary judgments · {valid}/{len(runs)} valid response files\n"
                  "Registered launch order · B baseline · DG general · DS science · SE explicit", loc="left", pad=15)
-    legend(ax, labels, STATUS_COLORS)
+    legend(ax, labels, colors)
     fig.tight_layout()
-    save(fig, output, "item-statuses")
+    finish(fig, "item-statuses")
 
     fig, ax = plt.subplots(figsize=(13, 12))
     left = np.zeros(len(items))
-    for index, (label, color) in enumerate(zip(labels, STATUS_COLORS)):
+    for index, (label, color) in enumerate(zip(labels, colors)):
         counts = [sum(value == index for value in row) for row in matrix]
         ax.barh(range(len(items)), counts, left=left, color=color, edgecolor="white", height=.8)
         left += counts
@@ -97,14 +143,63 @@ def render(tables, items, output):
     ax.invert_yaxis()
     ax.set_xlabel(f"Assigned workers per item (n={len(runs)}); missing assessments are not item verdicts")
     ax.set_title("Recurring item outcomes · partial and unmet remain separate\n"
-                 f"{valid}/{len(runs)} valid primary judgments; no combined certification score", loc="left")
-    legend(ax, labels, STATUS_COLORS)
+                 f"{valid}/{len(runs)} valid response files; no combined certification score", loc="left")
+    legend(ax, labels, colors)
     fig.tight_layout()
-    save(fig, output, "recurring-outcomes")
+    finish(fig, "recurring-outcomes")
 
+    fig, axes = plt.subplots(1, 2, figsize=(13, 6))
+    paired = sum(p["item_pair_complete"] for p in tables["pairs"])
+    observed_pairs = len({r["run_id"] for r in tables["disagreement"]})
+    scientific = sum(p["adequacy_pair_complete"] for p in tables["pairs"])
+    item_matrix = np.zeros((len(STATUSES), len(STATUSES)), dtype=int)
+    scientific_matrix = np.zeros((len(ADEQUACY), len(ADEQUACY)), dtype=int)
+    for row in tables["disagreement"]:
+        item_matrix[STATUSES.index(row["primary_status"]), STATUSES.index(row["duplicate_status"])] += 1
+    for pair in tables["pairs"]:
+        if pair["adequacy_pair_complete"]:
+            scientific_matrix[ADEQUACY.index(pair["primary_adequacy"]), ADEQUACY.index(pair["duplicate_adequacy"])] += 1
+    for ax, matrix, categories, title in (
+        (axes[0], item_matrix, STATUSES,
+         f"Checklist: {observed_pairs}/{len(tables['pairs'])} objects with comparable items" if version else
+         f"Checklist: {paired}/{len(tables['pairs'])} complete object pairs"),
+        (axes[1], scientific_matrix, ADEQUACY, f"Scientific adequacy: {scientific}/{len(tables['pairs'])} complete pairs"),
+    ):
+        ax.imshow(matrix, cmap="Blues", vmin=0, vmax=max(1, matrix.max()))
+        for y in range(len(categories)):
+            for x in range(len(categories)):
+                ax.text(x, y, str(matrix[y, x]), ha="center", va="center",
+                        color="white" if matrix[y, x] > max(1, matrix.max()) / 2 else "black")
+        ax.set_xticks(range(len(categories)), categories, rotation=35, ha="right")
+        ax.set_yticks(range(len(categories)), categories)
+        ax.set_xlabel("Preselected duplicate")
+        ax.set_ylabel("First assigned judgment")
+        ax.set_title(title + ("\nOnly same-version, mutually valid measures compared" if version else
+                             "\nMissing pairs excluded and reported above"), fontsize=10)
+    unavailable = sum(bool(p.get("comparison_unavailable_reason")) for p in tables["pairs"])
+    fig.suptitle("Independent-judge disagreement · counts, not additional workers\n"
+                 f"{len(tables['disagreement'])} item comparisons nested within {observed_pairs} objects"
+                 + (f"; {unavailable} unavailable pairs" if version else ""), fontsize=12)
+    fig.tight_layout(rect=(0, 0, 1, .88))
+    finish(fig, "duplicate-disagreement")
+
+
+def _render_effort(tables, output, stratified=False):
+    runs = tables["runs"]
+    groups = list(dict.fromkeys((r["round"], r["condition"]) for r in runs))
+    conditions = list(dict.fromkeys(r["condition"] for r in runs))
+    groups.sort(key=lambda g: (g[0], conditions.index(g[1])))
+    group_labels = [f"R{round_id} · {condition}" for round_id, condition in groups]
+    judgments = {(j["run_id"], j["role"]): j for j in tables["judgments"]}
     by_scope = defaultdict(list)
     for row in tables["effort"]:
-        by_scope[row["stage"], row["actor"], row["scope"], row["assessment_scope"]].append(row)
+        scope = (row["stage"], row["actor"], row["scope"], row["assessment_scope"])
+        if stratified:
+            version = row.get("procedure_sha256")
+            if not version and row.get("judgment_role"):
+                version = judgments.get((row["run_id"], row["judgment_role"]), {}).get("procedure_sha256")
+            scope += ("assessment " + version[:12] if version else "assessment version unassigned",)
+        by_scope[scope].append(row)
     fig, axes = plt.subplots(max(1, len(by_scope)), 1, figsize=(12, max(4, 3.8 * len(by_scope))), squeeze=False)
     if not by_scope:
         axes[0, 0].axis("off")
@@ -131,31 +226,27 @@ def render(tables, items, output):
     fig.tight_layout()
     save(fig, output, "effort")
 
-    fig, axes = plt.subplots(1, 2, figsize=(13, 6))
-    paired = sum(p["item_pair_complete"] for p in tables["pairs"])
-    scientific = sum(p["adequacy_pair_complete"] for p in tables["pairs"])
-    item_matrix = np.zeros((len(STATUSES), len(STATUSES)), dtype=int)
-    scientific_matrix = np.zeros((len(ADEQUACY), len(ADEQUACY)), dtype=int)
-    for row in tables["disagreement"]:
-        item_matrix[STATUSES.index(row["primary_status"]), STATUSES.index(row["duplicate_status"])] += 1
-    for pair in tables["pairs"]:
-        if pair["adequacy_pair_complete"]:
-            scientific_matrix[ADEQUACY.index(pair["primary_adequacy"]), ADEQUACY.index(pair["duplicate_adequacy"])] += 1
-    for ax, matrix, categories, title in (
-        (axes[0], item_matrix, STATUSES, f"Checklist: {paired}/{len(tables['pairs'])} complete object pairs"),
-        (axes[1], scientific_matrix, ADEQUACY, f"Scientific adequacy: {scientific}/{len(tables['pairs'])} complete pairs"),
-    ):
-        ax.imshow(matrix, cmap="Blues", vmin=0, vmax=max(1, matrix.max()))
-        for y in range(len(categories)):
-            for x in range(len(categories)):
-                ax.text(x, y, str(matrix[y, x]), ha="center", va="center",
-                        color="white" if matrix[y, x] > max(1, matrix.max()) / 2 else "black")
-        ax.set_xticks(range(len(categories)), categories, rotation=35, ha="right")
-        ax.set_yticks(range(len(categories)), categories)
-        ax.set_xlabel("Preselected duplicate")
-        ax.set_ylabel("First assigned judgment")
-        ax.set_title(title + "\nMissing pairs excluded and reported above", fontsize=10)
-    fig.suptitle("Independent-judge disagreement · counts, not additional workers\n"
-                 f"{len(tables['disagreement'])} item comparisons nested within {paired} objects", fontsize=12)
-    fig.tight_layout(rect=(0, 0, 1, .88))
-    save(fig, output, "duplicate-disagreement")
+
+def render(tables, items, output):
+    plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 10,
+                         "axes.spines.top": False, "axes.spines.right": False})
+    strata = tables.get("version_strata")
+    if not strata:
+        _render_outcomes(tables, items, output)
+        _render_effort(tables, output)
+        return
+    versions = list(dict.fromkeys(row["procedure_sha256"] for row in strata))
+    if len({version[:12] for version in versions}) != len(versions):
+        raise ValueError("Assessment digest prefixes collide in figure filenames")
+    primary = {j["run_id"]: j for j in tables["judgments"] if j["role"] == "primary"}
+    for version in versions:
+        run_ids = {run_id for run_id, judgment in primary.items()
+                   if judgment["procedure_sha256"] == version}
+        selected = dict(tables)
+        for name in ("runs", "judgments", "items", "pairs", "disagreement"):
+            selected[name] = [row for row in tables[name] if row["run_id"] in run_ids]
+        for name in ("comparable_items", "measure_validity"):
+            selected[name] = [row for row in tables[name]
+                              if row["run_id"] in run_ids and row["procedure_sha256"] == version]
+        _render_outcomes(selected, items, output, version, tables["runs"])
+    _render_effort(tables, output, stratified=True)

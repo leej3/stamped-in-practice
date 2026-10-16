@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import sys
 import uuid
+import copy
 
 import pytest
 
@@ -135,6 +136,211 @@ def collect(allocation, contract, tmp_path, *records):
                 bind_outputs(tmp_path, judgment)
     return agg.aggregate(allocation, {"schema_version": 2, "comparison_provenance": selection,
         "runs": list(records)}, tmp_path, contract, original, selection["assessment_seal"]["sha256"])
+
+
+def disposition_fixture(tmp_path, allocation, contract, *, original_primary=False, duplicate=False):
+    record = indexed_run(tmp_path, allocation, contract, duplicate=duplicate)
+    original, selection, _ = authority(tmp_path, allocation)
+    if original_primary:
+        primary = record["judgments"]["primary"]
+        primary["native"] = native(tmp_path, allocation, "original-primary", excluded=True)
+        bind_outputs(tmp_path, primary)
+    index = {"schema_version": 2, "comparison_provenance": selection, "runs": [record]}
+    disposition = {"version": 1, "comparison_id": "fixture-comparison", "allocation_sha256": "9" * 64,
+        "research_procedure_sha256": agg.sha256(original),
+        "assessment_procedure_sha256": selection["assessment_seal"]["sha256"], "judgments": []}
+    for role, judgment in record["judgments"].items():
+        status = agg.parse_json(agg.artifact(judgment["native"]["procedure_status"], tmp_path))
+        disposition["judgments"].append({"run_id": record["run_id"], "role": role,
+            "judgment_id": judgment["judgment_id"], "procedure_sha256": status["procedure_sha256"],
+            "native_result_sha256": judgment["native"]["result"]["sha256"],
+            "output_binding_sha256": judgment["output_binding"]["sha256"]})
+    return index, original, disposition
+
+
+def disposition_collect(allocation, contract, tmp_path, index, original, disposition):
+    return agg.aggregate(allocation, index, tmp_path, contract, original,
+        index["comparison_provenance"]["assessment_seal"]["sha256"], disposition=disposition,
+        disposition_base=tmp_path, allocation_sha256="9" * 64)
+
+
+def overlay(tmp_path, measure, status="unavailable"):
+    return {"measure": measure, "status": status, "reason": "Synthetic assessor-infrastructure evidence",
+            "evidence": [artifact(tmp_path, "overlay-evidence.txt", "synthetic operational fixture")]}
+
+
+def test_original_first_assignment_retains_grades_and_exact_measure_overlay(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, original_primary=True)
+    raw_before = agg.artifact(index["runs"][0]["judgments"]["primary"]["response"], tmp_path)
+    disposition["judgments"][0]["measure_validity"] = [overlay(tmp_path, "replay"),
+        overlay(tmp_path, "stamped-checklist:should/004"),
+        overlay(tmp_path, "stamped-checklist:must/016", "invalid")]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert tables["issues"] == []
+    assert len(tables["items"]) == 31 and len(tables["comparable_items"]) == 29
+    assert all(i["status"] == "met" for i in tables["items"])
+    assert next(j for j in tables["judgments"] if j["inclusion_status"] == "eligible")["procedure_sha256"] == agg.sha256(original)
+    assert len(tables["judgments"]) == 48 and len(tables["pairs"]) == 12
+    assert agg.artifact(index["runs"][0]["judgments"]["primary"]["response"], tmp_path) == raw_before
+    observed = next(s for s in tables["version_strata"] if s["n_response_available"])
+    assert (observed["n_valid_items"], observed["n_unavailable_items"], observed["n_invalid_items"]) == (29, 1, 1)
+    assert any(s["n_assigned_version"] == 0 and s["n_assigned_total"] == 3 for s in tables["version_strata"])
+    assert sum(s["n_assigned_version"] for s in tables["version_strata"]) == 36
+
+
+@pytest.mark.parametrize("field", ["judgment_id", "native_result_sha256", "output_binding_sha256", "procedure_sha256", "role"])
+def test_disposition_rejects_attempt_or_version_substitution(allocation, contract, tmp_path, field):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, original_primary=True)
+    row = disposition["judgments"][0]
+    row[field] = "different-attempt" if field == "judgment_id" else (
+        "duplicate" if field == "role" else (
+        disposition["assessment_procedure_sha256"] if field == "procedure_sha256" else "0" * 64))
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert tables["items"] == tables["comparable_items"] == []
+    assert next(j for j in tables["judgments"] if j["judgment_id"] == "fixture-primary")["inclusion_status"] == "invalid"
+    assert tables["issues"]
+
+
+@pytest.mark.parametrize("mutation", [
+    lambda d: d.update(allocation_sha256="0" * 64),
+    lambda d: d.update(research_procedure_sha256="0" * 64),
+    lambda d: d["judgments"][0].update(procedure_sha256="0" * 64),
+    lambda d: d["judgments"].append(copy.deepcopy(d["judgments"][0])),
+    lambda d: d["judgments"][0].update(measure_validity=[{
+        "measure": "not-an-item", "status": "unavailable", "reason": "fixture",
+        "evidence": [{"path": "unused", "sha256": "0" * 64}]}]),
+])
+def test_disposition_rejects_wrong_identity_or_unknown_measure(allocation, contract, tmp_path, mutation):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract)
+    mutation(disposition)
+    with pytest.raises(ValueError):
+        disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+
+
+def test_cross_version_duplicate_is_unavailable_not_agreement(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract,
+                                                       original_primary=True, duplicate=True)
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    pair = next(p for p in tables["pairs"] if p["primary_id"])
+    assert pair["comparison_unavailable_reason"] == "cross-version pair"
+    assert pair["item_disagreements"] is None and pair["comparable_item_count"] == 0
+    assert not pair["item_pair_complete"] and not pair["adequacy_pair_complete"]
+    assert len(tables["items"]) == 62 and tables["disagreement"] == []
+
+
+def test_duplicate_comparison_uses_only_mutually_valid_items(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, duplicate=True)
+    first, second = disposition["judgments"]
+    first["measure_validity"] = [overlay(tmp_path, "stamped-checklist:should/004")]
+    second["measure_validity"] = [overlay(tmp_path, "stamped-checklist:must/016", "invalid")]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    pair = next(p for p in tables["pairs"] if p["primary_id"])
+    assert pair["comparable_item_count"] == len(tables["disagreement"]) == 29
+    assert not pair["item_pair_complete"] and pair["item_disagreements"] == 0
+    assert len(tables["items"]) == 62
+
+
+def test_supplementary_repair_never_fills_assigned_duplicate(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, original_primary=True)
+    record = index["runs"][0]
+    supplement = {"judgment_id": "repair-02", "reason": "Supplementary assessor repair",
+        "native": native(tmp_path, allocation, "repair"),
+        "response": artifact(tmp_path, "repair-response.json", response(contract, "unmet"))}
+    bind_outputs(tmp_path, supplement)
+    record["supplementary_attempts"] = [supplement]
+    disposition["judgments"].append({"run_id": record["run_id"], "role": "supplementary",
+        "judgment_id": supplement["judgment_id"], "procedure_sha256": disposition["assessment_procedure_sha256"],
+        "native_result_sha256": supplement["native"]["result"]["sha256"],
+        "output_binding_sha256": supplement["output_binding"]["sha256"]})
+    record["operations"] = [{"operation_id": "repair-cost", "stage": "judging", "actor": "judge",
+        "supplementary_attempt_id": "repair-02", "status": "failed", "scope": "synthetic attempt",
+        "duration_s": 42, "evidence": [supplement["native"]["result"]]}]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert tables["issues"] == [] and len(tables["judgments"]) == 48
+    assert len(tables["items"]) == len(tables["supplementary_items"]) == 31
+    assert all(i["status"] == "met" for i in tables["items"])
+    assert all(i["status"] == "unmet" for i in tables["supplementary_items"])
+    assert tables["disagreement"] == [] and len(tables["supplementary_attempts"]) == 1
+    assert tables["effort"][0]["assessment_scope"] == "supplementary attempt"
+    assert tables["effort"][0]["procedure_sha256"] == disposition["assessment_procedure_sha256"]
+
+
+def test_absent_future_slots_remain_pending_without_issues(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract)
+    index["runs"] = []
+    row = disposition["judgments"][0]
+    del row["native_result_sha256"], row["output_binding_sha256"]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert len(tables["judgments"]) == 48 and tables["issues"] == tables["items"] == []
+    assert all(j["response_status"] == "pending" for j in tables["judgments"])
+    assert sum(s["n_missing_items"] for s in tables["version_strata"]) == 36 * 31
+    assert sum(s["n_assigned_version"] for s in tables["version_strata"]) == 36
+
+
+def test_overlay_evidence_failure_preserves_raw_and_omits_affected_measure(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract)
+    decision = overlay(tmp_path, "stamped-checklist:should/004")
+    decision["evidence"][0]["sha256"] = "0" * 64
+    disposition["judgments"][0]["measure_validity"] = [decision]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert len(tables["items"]) == 31 and len(tables["comparable_items"]) == 30
+    assert tables["measure_validity"][0]["evidence_status"] == "invalid"
+    assert any(i["area"].startswith("measure-validity:") for i in tables["issues"])
+
+
+def test_nonzero_exit_and_uncertain_science_do_not_change_raw_category(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, duplicate=True)
+    for judgment, decision in zip(index["runs"][0]["judgments"].values(), disposition["judgments"]):
+        result = agg.parse_json(agg.artifact(judgment["native"]["result"], tmp_path))
+        result["returncode"] = 9
+        judgment["native"]["result"] = artifact(tmp_path, judgment["judgment_id"] + "-nonzero.json", result)
+        judgment["report"] = artifact(tmp_path, judgment["judgment_id"] + "-report.md", "Scientific adequacy: qualified.")
+        judgment["adequacy"] = {"extraction_status": "explicit", "category": "qualified", "excerpt": {
+            "quote": "Scientific adequacy: qualified.", "start_line": 1, "end_line": 1}}
+        bind_outputs(tmp_path, judgment)
+        decision.update(native_result_sha256=judgment["native"]["result"]["sha256"],
+                        output_binding_sha256=judgment["output_binding"]["sha256"])
+    disposition["judgments"][0]["scientific_dependency"] = dict(
+        status="uncertain", reason="Synthetic affected replay dependency",
+        evidence=[artifact(tmp_path, "dependency.txt", "synthetic uncertainty")])
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    assert tables["issues"] == [] and len(tables["items"]) == 62
+    observed = [j for j in tables["judgments"] if j["inclusion_status"] == "eligible"]
+    assert all(j["adequacy"] == "qualified" and j["returncode"] == 9 for j in observed)
+    pair = next(p for p in tables["pairs"] if p["primary_id"])
+    assert pair["item_pair_complete"] and not pair["adequacy_pair_complete"]
+    assert pair["adequacy_disagreement"] is None
+
+
+def test_mixed_version_figures_keep_strata_and_distinct_missing_states(allocation, contract, tmp_path):
+    index, original, disposition = disposition_fixture(tmp_path, allocation, contract, original_primary=True)
+    disposition["judgments"][0]["measure_validity"] = [overlay(tmp_path, "stamped-checklist:should/004")]
+    tables = disposition_collect(allocation, contract, tmp_path, index, original, disposition)
+    output = tmp_path / "stratified-report"
+    agg.write_tables(tables, output)
+    from comparison_figures import render
+    render(tables, contract.items, output)
+    assert len(list(output.glob("*.svg"))) == len(list(output.glob("*.png"))) == 9
+    assert not (output / "scientific-adequacy.svg").exists()
+    original_item = (output / ("item-statuses-" + agg.sha256(original)[:12] + ".svg")).read_text()
+    assert "measurement unavailable" in original_item and "assessment invalid" in original_item
+    assert "assessment missing" in original_item and "No pooled cross-version comparison" in original_item
+
+
+@pytest.mark.parametrize("second_ids", [["one", "two"], ["one"], ["one", "three"], []])
+def test_count_summary_requires_identical_valid_item_sets(second_ids):
+    masks = {"worker-a": ["one", "two"], "worker-b": second_ids}
+    counts = [{"role": "primary", "judgment_id": identity, "group_type": "level",
+               "group": "must", "met": len(ids)} for identity, ids in masks.items()]
+    items = [{"judgment_id": identity, "item_id": item, "level": "must"}
+             for identity, ids in masks.items() for item in ids]
+    summary = agg.comparable_cell_summary(counts, items, set(masks), "level", "must", "met")
+    assert summary["n_observed"] == 2
+    if second_ids == ["one", "two"]:
+        assert summary["median"] == 2 and summary["common_valid_item_ids"] == second_ids
+    else:
+        assert summary["median"] is summary["minimum"] is summary["maximum"] is None
+        assert summary["n_comparable"] == 0
 
 
 def test_empty_index_retains_all_assignments_and_missing_denominators(allocation, contract, tmp_path):
