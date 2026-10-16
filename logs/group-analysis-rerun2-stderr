@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/analysis/run_group_analysis.py", line 341, in <module>
+    main()
+    ~~~~^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/analysis/run_group_analysis.py", line 326, in main
+    ax.errorbar([1], [roi_subject.mean()], yerr=[[roi_subject.mean() - ci[0]], [ci[1] - roi_subject.mean()]], fmt="D", color="#B33B2E", capsize=5, markersize=6, label="Mean and 95% t CI")
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/_api/deprecation.py", line 477, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/__init__.py", line 1531, in inner
+    return func(
+        ax,
+        *map(cbook.sanitize_sequence, args),
+        **{k: cbook.sanitize_sequence(v) for k, v in kwargs.items()})
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/axes/_axes.py", line 4232, in errorbar
+    raise ValueError(
+        f"'{dep_axis}err' must not contain negative values")
+ValueError: 'yerr' must not contain negative values
