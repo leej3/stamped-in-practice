@@ -1,5 +1,3 @@
-**AI-generated draft — not reviewed by John**
-
 # Improving STAMPED research skills
 
 <img src="assets/workbench.png" alt="STAMPED workbench" width="280">
@@ -63,14 +61,15 @@ The tested source and preparation evidence are linked in [`source-version.json`]
 The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed.
 The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
-The [completed round-one reassessment](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md) retains 32 scientific judgments of 24 research deliveries and 30 valid checklists, with figures and links to the unchanged original assessment.
-Duplicate judges disagreed on 67 of 248 checklist decisions and on scientific adequacy in five of eight duplicate pairs; these results do not establish a skill benefit.
-The supplied assessment procedure also exposed treatment assignments; that limitation remains disclosed.
-The user directed rounds two and three to continue with the existing Luna/high procedure and its known limitations. [Round two completed all 24 workers and 32 judgments](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/assessment-series/narps-neutral-r2-operational-v4/synthesis/README.md), but every judgment was rejected by the frozen reporting gate because its worker source revision differed from the original seal. Those provenance failures leave scientific and checklist measures unavailable; they are not scientific failures or zero scores. All 72 assigned research workers across the three rounds are complete. The final 32 round-three judgments are running under the unchanged procedure. Round three used the [single final research-skill revision](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/skill-reflection/round-03-research-guidance-01/README.md), `32660661`, based on closed delivery observations.
-The tested research revisions are `f2e74ea3` (round one), `d83d7d66` (round two) and `32660661` (round three), with assessor `9852d836` frozen for the operational assessment series.
-No further skill tuning follows round three.
-Research source `36acf240` and frozen operational judging source `4f72ef49` retain their original execution logic; prospective changes on main do not replace those sources.
-The user-authorized concurrency limit is 10, with scheduling disclosed separately from skill effects.
-Complete evidence remains locally retained while some annex payload publication is pending.
-The [prospective assessment helper revision and trials](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/skill-reflection/assessment-capture-skill-01/README.md) protect capture identities and isolate remote checks; the formal assessor remains frozen at `9852d836`.
-Follow the [status at this checkout's pinned iteration](https://github.com/leej3/stamped-in-practice/blob/5541abee8fafbad5b049a7538029c0955f2428c0/STATUS.md), which links the separate runtime and scientific-wording preparation evidence, before continuing.
+The [completed three-round readout](https://github.com/leej3/stamped-in-practice/blob/5e0a72417619ee50eac501222beaa84e527f5c26/final-synthesis/README.md) retains all 72 assigned research workers and 96 operational judgments, with the earlier original round-one assessment kept separately.
+The frozen reporting gate rejected all judgments in rounds two and three because the registered worker source revisions differed from the original seal; those measures are unavailable, not zero scores or scientific failures.
+Round-one duplicate judgments also showed substantial disagreement, and a supplied-procedure exposure limits blinding.
+This comparison does not establish a skill benefit, reduced variability or transfer to another study.
+The [lessons](https://github.com/leej3/stamped-in-practice/blob/5e0a72417619ee50eac501222beaa84e527f5c26/final-synthesis/LESSONS.md) explain what the retained evidence supports.
+
+The tested research-skill revisions were `f2e74ea3`, `d83d7d66` and the final [`32660661`](https://github.com/con/skills/commit/326606610af6c261876c92032ca1f89f6d3ad1f1).
+Operational assessor `9852d836`, source `4f72ef49` and Luna/high remained frozen; prospective changes retained on main were not adopted.
+No further tuning or runs are pending.
+
+The [publication record](https://github.com/leej3/stamped-in-practice/blob/5e0a72417619ee50eac501222beaa84e527f5c26/final-synthesis/PUBLICATION.md) distinguishes complete local captures, published Git references, hosted Entire verification and pending annex retrieval.
+Read the [pinned completed status](https://github.com/leej3/stamped-in-practice/blob/5e0a72417619ee50eac501222beaa84e527f5c26/STATUS.md) before continuing; historical controllers must not be restarted.
