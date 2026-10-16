@@ -22,7 +22,20 @@ The first fixture accidentally used the same key for all three paths and did not
 
 Independent review also found that the original comparator can hash an unavailable unlocked annex pointer as though it were materialized output.
 The mixed locked/unlocked fixture does not isolate that error because its missing locked output already stops comparison.
-An unlocked-only regression and any necessary minimal comparator correction must be resolved and included explicitly in the corrected assessor version before sealing.
+The corrected comparator asks git-annex whether a pointer-shaped file is an unavailable annex object, and records a null baseline before the existing missing-baseline gate stops execution.
+Ordinary pointer-looking text remains a valid ordinary file.
+The original unlocked-only no-route test already returned not-checked through its failed-retrieval fallback; no false met verdict was demonstrated.
+The correction prevents accepting pointer bytes as a comparator and unnecessarily executing analysis without a valid baseline.
+
+The proposed assessor commit is `b86e37ff9115e37541fd47aca73f49e13b5110bb` on `con/skills` branch `codex/narps-replay-route-fix`, a direct child of the frozen `0208f82504f15b82b7582f34143ab889dd52c68d`.
+Only `skills/assess-alignment-with-stamped-principles/scripts/fresh_rerun.py` changes; its SHA-256 is `0705dfb955ca2ed8418e20714d044b3bb11e5f5b4be2542f4018ec2d56e911df`.
+The checklist, conventions, skill instructions, dependencies, runtime and evaluation gitlink are unchanged.
+The combined native matrix verifies available mixed, unlocked and ordinary outputs; unavailable unlocked output stops before entry; all source state remains unchanged.
+Independent blind checks and the broader development suite are retained as evidence at [development commit 1743896803f0c2160d18307ed07881bee6cea035](https://github.com/con/skills/tree/1743896803f0c2160d18307ed07881bee6cea035/stamped/blind-runs/2026-10-15-replay-comparators).
+Their selected helper bytes match this minimal formal candidate exactly; their broader source and evaluation pins are not adopted.
+The development suite reports 150 tests, 26 evaluations and 18 calibration mutants passing.
+`proof/comparator-review/retention-manifest.json` records byte-exact local copies of source, commands, reports and reviews, including the separate dirty synthetic-fixture reviewer attempt and clean isolated verification.
+These synthetic checks do not substitute for the first corrected native formal judgment through the full prepared-target and fresh-replay path.
 
 ## Two immutable identities
 
@@ -54,5 +67,8 @@ The judging prompt omits condition labels and coordinator verdicts, but the exac
 The original design therefore does not guarantee condition blinding.
 No assessed object is redacted or altered to conceal this limitation.
 
-Remaining gates: independent review of the concrete code and proofs, complete regression results, publication of the corrected assessor commit, explicit amendment decision, new immutable seal and inclusion-gate validation.
+The assessment adapter is committed at `1c68a6d4472d6f453ac882be0cc46554ce42e20d`; its 127 regression checks pass, including retained-object relabeling and future original-source drift rejection.
+Independent review confirms the minimal assessor diff, native comparator proofs, adapter boundary and exact six retained identities.
+Remaining gates: final aggregation inclusion-gate validation and independent review, explicit amendment decision and a new immutable seal.
+After authorization, launch one corrected primary judgment and inspect its actual entrypoint and output comparison before reopening the queue.
 No existing assessment result is repaired or rerun in place.
