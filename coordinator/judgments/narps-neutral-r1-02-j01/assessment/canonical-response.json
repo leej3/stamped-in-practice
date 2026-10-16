@@ -1,0 +1,610 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All delivered files, including the annex object store, sit under the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/judge-target.json",
+          "description": "Inspected delivered evidence for must/001."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/delivery-verification.json",
+          "description": "Inspected delivered evidence for must/001."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All 54 supplied maps are reachable through relative links into the in-root annex store; code and inputs share the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/data/",
+          "description": "Inspected delivered evidence for must/002."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/002."
+        },
+        {
+          "uri": ".git/annex/",
+          "description": "Inspected delivered evidence for must/002."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "The analysis imports scientific software, but no dependency specification or linked software module is delivered.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/003."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/003."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git tracks the seed, but the analysis, report, figures and results are untracked at worker stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for must/004."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/worker-end-state.json",
+          "description": "Inspected delivered evidence for must/004."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/delivery-tree-comparison.json",
+          "description": "Complete capture tree matched the worker stop inventory, including untracked outputs."
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex stores all 54 binary map payloads inside the captured .git/annex object store.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": ".git/annex/",
+          "description": "Inspected delivered evidence for must/005."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for must/005."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The run log and report do not link the generated results to an exact environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/run.log",
+          "description": "Inspected delivered evidence for must/006."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/006."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The report gives a run command but no installation instructions or usable dependency setup.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/007."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report identifies analysis/group_analysis.py and gives its invocation as the results entry point.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/008."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/008."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "The filename probe missed report.md and the untracked documented script; manual review found a clear entrypoint."
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script builds paths from its own root and uses relative project paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/009."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "No environment specification declares the imported Python dependencies.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/010."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/010."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The documented command assumes a host-specific prepared interpreter path; host setup requirements are not documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/011."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "The report names Python and package versions, but does not give a complete system/dependency setup.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/012."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is included in the tracked project.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for must/013."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No process for updating and tracking dependency specifications is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/014."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for must/014."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "No exact environment specification is supplied for reconstructing the analysis environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/015."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker-declared route shares an environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/016."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/access-record.json",
+          "description": "Inspected delivered evidence for must/016."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report points to a prepared interpreter but gives no route to obtain or recreate that environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for must/017."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "One Git repository is used for the tracked project material; binary inputs use the in-repository annex store.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": ".git/HEAD",
+          "description": "Inspected delivered evidence for should/001."
+        },
+        {
+          "uri": ".git/annex/",
+          "description": "Inspected delivered evidence for should/001."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "No repeated or scheduled workflow-test record was found; the probe only ruled out recognized CI configuration.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for should/002."
+        },
+        {
+          "uri": ".codex/",
+          "description": "Inspected delivered evidence for should/002."
+        },
+        {
+          "uri": "results/run.log",
+          "description": "The delivered run log records an analysis execution but no repeated or scheduled workflow test."
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, code and results have separate directories in the complete delivery; environment definitions are absent and worker-produced modules are untracked.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Inspected delivered evidence for should/003."
+        },
+        {
+          "uri": "analysis/",
+          "description": "Inspected delivered evidence for should/003."
+        },
+        {
+          "uri": "results/",
+          "description": "Inspected delivered evidence for should/003."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for should/003."
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: inspected contents show public study inputs and no restricted data or software component.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Inspected delivered evidence for should/009."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for should/009."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "No clean-container or fresh-host run record is supplied; the bounded captured-delivery replay adapter is unavailable for this frozen runner.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/replay-record.json",
+          "description": "Inspected delivered evidence for should/004."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/replay-record.json",
+          "description": "Replay used the documented host interpreter; no clean container, VM, batch or cloud host was tested."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "No workflow creates a disposable environment for each run.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for should/005."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for should/005."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "There is no exact environment specification or record of regularly testing its reconstruction.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for should/006."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for should/006."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived with the project.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Inspected delivered evidence for should/007."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/workspace-files.json",
+          "description": "Complete captured workspace path inventory used to check for a dependency or environment artifact."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency update process is declared or tracked; this duplicates must/014.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for should/008."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for should/008."
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "Atlas resources are copied into the workspace without independently retrievable component links or module boundaries.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/atlases/README.md",
+          "description": "Inspected delivered evidence for may/001."
+        },
+        {
+          "uri": "analysis/atlases/",
+          "description": "Inspected delivered evidence for may/001."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report names input, analysis and result paths, but does not document a modular composition model.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for may/002."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Inputs and analysis have directory boundaries, but their independent update contract is not documented.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Inspected delivered evidence for may/003."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Inspected delivered evidence for may/003."
+        },
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for may/003."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "Separate input, code, atlas and result directories exist, but no mechanism is documented for composing them as modules.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "The report gives direct file paths but no module composition mechanism."
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "The script directly resolves inputs and outputs from the repository root."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "no",
+      "reason": "The report links the script and result locations, but offers no broader navigation guide for the workspace.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Inspected delivered evidence for may/005."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No project-wide license declaration covers the worker-authored analysis and report; an atlas COPYING file covers upstream resource terms only.",
+      "evidence": [
+        {
+          "uri": "analysis/atlases/icbm152_2009/COPYING",
+          "description": "License file is nested with an upstream atlas, not a project-wide license."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/probes.json",
+          "description": "Frozen license probe found no project license among tracked paths."
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "ad3956ae64dcbdd1eec6af4ed21e0b168e478106",
+    "captured_at": "2026-10-16T07:04:26.210922+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-02-j01/manifest.json",
+      "sha256": "b8c5ed926b870d7d78ec6ecc4fbccd218f12523802ded9d082f032d901fd9aec"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.2.0",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.2.0"
+    ],
+    "note": "Frozen external runner and checklist; independent human-readable evidence review."
+  },
+  "scope": "Independent review of the complete captured worker-stop workspace, including untracked analysis/report/results and in-root annex payloads. Capture verified complete with no mismatch. No worker-declared complete-object access route. One documented scientific replay ran from a fresh copy; only the two declared numerical tables were compared. Replay and access evidence are coordinator assessment evidence, not worker-practice credit."
+}
