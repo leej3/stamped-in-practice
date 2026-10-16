@@ -1,9 +1,8 @@
-# Assessment status: assigned judging resumed
+# Round-one status: assigned science and assessment complete
 
-The assessment hold is lifted.
-Round 1 is completing its original 12 research workers and 16 assigned judgments; the science is not being restarted.
-All twelve original research workers have completed.
-All twelve primaries and three preselected duplicates have completed; the final assigned duplicate is running.
+All 12 original research workers and all 16 assigned judgments have completed.
+The four preselected duplicates remain separate from their primaries.
+Evidence publication, comparison and skill reflection are in progress; no scientific restart or repair retry is planned.
 One additional completed repair attempt is retained separately.
 The [current ledger](round-1.json) records exact identities and timestamps.
 
@@ -16,7 +15,7 @@ Successful replay is not required to finish the round or proceed to the next one
 
 The original seals, scientific objects, reports and earlier decisions remain historical evidence.
 The [first amendment decision](amendment-01/DECISION.md) describes the accepted transport and comparator repair; its earlier exclusion and queue rules are superseded by the current disposition.
-Remaining assigned judgments use that accepted assessment version.
+The remaining assigned judgments used that accepted assessment version.
 The explicit-output candidate is retained on a development branch for prospective between-round work and is not part of current-round assessment.
 
 The judging prompt omits treatment labels and coordinator verdicts, but `worker-input.json` exposes assignment metadata.
