@@ -54,7 +54,7 @@ def main() -> None:
     by_id = {p.name.split("_", 1)[0]: p for p in paths}
     paths = [by_id[participant_id] for participant_id in expected]
     for path in paths:
-        relpath = path.relative_to(ROOT).as_posix()
+        relpath = path.relative_to(INPUT).as_posix()
         expected_hash = source_manifest["files"][relpath]["sha256"]
         actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
         if actual_hash != expected_hash:
