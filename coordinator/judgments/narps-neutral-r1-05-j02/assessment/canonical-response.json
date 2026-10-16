@@ -1,0 +1,579 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All delivered files and directories are rooted in the workspace.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "protocol.md",
+          "description": "All delivered files and directories are rooted in the workspace."
+        },
+        {
+          "uri": "input/",
+          "description": "All delivered files and directories are rooted in the workspace."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The analysis inputs resolve within the delivery through local files and annex content.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "The analysis inputs resolve within the delivery through local files and annex content."
+        },
+        {
+          "uri": "input/data/",
+          "description": "The analysis inputs resolve within the delivery through local files and annex content."
+        },
+        {
+          "uri": "results/retrieval-manifest.txt",
+          "description": "The analysis inputs resolve within the delivery through local files and annex content."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "The workflow relies on externally installed Python packages; no delivered environment or software module supplies them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "The workflow relies on externally installed Python packages; no delivered environment or software module supplies them."
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "The workflow relies on externally installed Python packages; no delivered environment or software module supplies them."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git tracks part of the project, but the report, scripts, results, figures and retrieved data remained untracked at worker stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "Git tracks part of the project, but the report, scripts, results, figures and retrieved data remained untracked at worker stop."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/worker-end-state.json",
+          "description": "Git tracks part of the project, but the report, scripts, results, figures and retrieved data remained untracked at worker stop."
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex stores the 54 large map payloads behind tracked pointers.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/data/",
+          "description": "git-annex stores the 54 large map payloads behind tracked pointers."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/manifest-verification.json",
+          "description": "git-annex stores the 54 large map payloads behind tracked pointers."
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Run records list package versions but do not include or identify an exact environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "Run records list package versions but do not include or identify an exact environment specification."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "Run records list package versions but do not include or identify an exact environment specification."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "Run records list package versions but do not include or identify an exact environment specification."
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "REPORT.md explains usage and names the command, but provides no install instructions for the external common Python environment.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "REPORT.md explains usage and names the command, but provides no install instructions for the external common Python environment."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "REPORT.md explains usage and names the command, but provides no install instructions for the external common Python environment."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "REPORT.md explains usage and names the command, but provides no install instructions for the external common Python environment."
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The documented reproduction starting point is bash run_analysis.sh.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "The documented reproduction starting point is bash run_analysis.sh."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "The documented reproduction starting point is bash run_analysis.sh."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/replay/replay.json",
+          "description": "The documented reproduction starting point is bash run_analysis.sh."
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "no",
+      "reason": "The run script defaults PYTHON to a host-specific absolute path, although callers can override it.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "The run script defaults PYTHON to a host-specific absolute path, although callers can override it."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "The run script defaults PYTHON to a host-specific absolute path, although callers can override it."
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "No tracked environment specification declares the Python dependencies.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "No tracked environment specification declares the Python dependencies."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "No tracked environment specification declares the Python dependencies."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The report names the provided common environment and summary records the observed platform, but the required host assumptions are not specified sufficiently to reconstruct it.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "The report names the provided common environment and summary records the observed platform, but the required host assumptions are not specified sufficiently to reconstruct it."
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "The report names the provided common environment and summary records the observed platform, but the required host assumptions are not specified sufficiently to reconstruct it."
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "No clear installable system and dependency requirements list is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "No clear installable system and dependency requirements list is supplied."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "No clear installable system and dependency requirements list is supplied."
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is present in the worker delivery.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "No environment specification is present in the worker delivery."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/worker-end-state.json",
+          "description": "No environment specification is present in the worker delivery."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update process is declared or tracked.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "No dependency-update process is declared or tracked."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/worker-end-state.json",
+          "description": "No dependency-update process is declared or tracked."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "Package versions are recorded, but no frozen manifest or container digest identifies the exact runtime.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "Package versions are recorded, but no frozen manifest or container digest identifies the exact runtime."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "Package versions are recorded, but no frozen manifest or container digest identifies the exact runtime."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "There is no environment specification to share.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "There is no environment specification to share."
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report refers to a pre-provided common environment without instructions to obtain or reconstruct its specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "The report refers to a pre-provided common environment without instructions to obtain or reconstruct its specification."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "The report refers to a pre-provided common environment without instructions to obtain or reconstruct its specification."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git/git-annex covers tracked inputs, but untracked scripts, outputs, and retrieved data were outside version control at worker stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "The worker-stop Git status lists scripts/, results/, figures/, run_analysis.sh, and data/ as untracked."
+        },
+        {
+          "uri": "input/data/",
+          "description": "Tracked annex pointers are present for supplied maps."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "The stopped delivery documents a failed attempt and a corrected rerun, but not a recurring test schedule or repeated independent workflow checks.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "results/attempts/README.md",
+          "description": "The stopped delivery documents a failed attempt and a corrected rerun, but not a recurring test schedule or repeated independent workflow checks."
+        },
+        {
+          "uri": "results/run.stdout",
+          "description": "The stopped delivery documents a failed attempt and a corrected rerun, but not a recurring test schedule or repeated independent workflow checks."
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, scripts, and outputs occupy separate directories; environment definitions are absent.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Inputs, scripts, and outputs occupy separate directories; environment definitions are absent."
+        },
+        {
+          "uri": "scripts/",
+          "description": "Inputs, scripts, and outputs occupy separate directories; environment definitions are absent."
+        },
+        {
+          "uri": "results/",
+          "description": "Inputs, scripts, and outputs occupy separate directories; environment definitions are absent."
+        },
+        {
+          "uri": "figures/",
+          "description": "Inputs, scripts, and outputs occupy separate directories; environment definitions are absent."
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: delivered inputs and software are public; there is no restricted component to isolate.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "N/A: delivered inputs and software are public; there is no restricted component to isolate."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "Worker records show execution in a shared preconfigured environment, not a clean container, VM, batch job, or cloud instance.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "Worker records show execution in a shared preconfigured environment, not a clean container, VM, batch job, or cloud instance."
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Worker records show execution in a shared preconfigured environment, not a clean container, VM, batch job, or cloud instance."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The workflow does not create a disposable environment for each run.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "The workflow does not create a disposable environment for each run."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "There is no exact environment specification or record of regular reconstitution tests.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "There is no exact environment specification or record of regular reconstitution tests."
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "There is no exact environment specification or record of regular reconstitution tests."
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived in the delivered object.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "No environment artifact is archived in the delivered object."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency-update process or tracked updates are present.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/attempt-01/judgment/probes.json",
+          "description": "No dependency-update process or tracked updates are present."
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: the project contains no independently maintained external project module; input maps are locally included through git-annex.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "N/A: the project contains no independently maintained external project module; input maps are locally included through git-annex."
+        },
+        {
+          "uri": "input/data/",
+          "description": "N/A: the project contains no independently maintained external project module; input maps are locally included through git-annex."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report and protocol identify inputs, scripts, results, and figures, but do not fully explain modular relations.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "The report and protocol identify inputs, scripts, results, and figures, but do not fully explain modular relations."
+        },
+        {
+          "uri": "protocol.md",
+          "description": "The report and protocol identify inputs, scripts, results, and figures, but do not fully explain modular relations."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Directories give some separation, but environment boundaries and independently updateable module interfaces are not defined.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "protocol.md",
+          "description": "Directories give some separation, but environment boundaries and independently updateable module interfaces are not defined."
+        },
+        {
+          "uri": "run_analysis.sh",
+          "description": "Directories give some separation, but environment boundaries and independently updateable module interfaces are not defined."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "run_analysis.sh composes retrieval and group analysis as the workflow entrypoint.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "run_analysis.sh",
+          "description": "run_analysis.sh composes retrieval and group analysis as the workflow entrypoint."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "REPORT.md links the report, protocol, code, data manifest, outputs, and figures for navigation.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "REPORT.md links the report, protocol, code, data manifest, outputs, and figures for navigation."
+        }
+      ],
+      "source": "probe:judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "afb62884c70115b6e46a92ddcd1d17bbf4f33544",
+    "captured_at": "2026-10-16T07:14:46.061440+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-05-j02/manifest.json",
+      "sha256": "62fae7a1b4cf57bb811b88cb718ed01596b5d9b784e996e678b4851cadefbd0d"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete worker-stopped delivery; manifest-verified; scientific artifact inspection, route check and one documented replay. Coordinator preservation excluded from worker-practice credit."
+}
