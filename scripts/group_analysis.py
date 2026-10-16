@@ -234,8 +234,8 @@ def main() -> None:
         fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
         colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05\nPeak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
         black_bg=False, annotate=True, draw_cross=True)
-    display.figure.savefig(OUT / "corrected_peak_localization.png", dpi=180, bbox_inches="tight")
-    plt.close(display.figure)
+    display.savefig(OUT / "corrected_peak_localization.png", dpi=180)
+    display.close()
 
     sig = p_fwe <= ALPHA
     vm_sig = sig & (np.abs(xyz[:, 0]) <= 10) & (xyz[:, 1] >= 20) & (xyz[:, 1] <= 60) & (xyz[:, 2] >= -20) & (xyz[:, 2] <= 20)
