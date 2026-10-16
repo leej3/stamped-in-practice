@@ -1,0 +1,576 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All delivered files sit beneath the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "judge-target.json",
+          "description": "Complete delivery root: content/workspace; manifest capture validated.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The 54 supplied maps and metadata are inside input/ and the analysis reads them via relative paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/data/",
+          "description": "54 annex-backed participant maps are captured within the workspace.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Builds input/data and input/participants.tsv paths relative to workspace root.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "The report names Python packages, but no delivered environment declaration installs them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Lists package versions but gives no environment manifest.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Imports numpy, scipy, pandas, matplotlib, nibabel and nilearn.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git is used, but analysis/, results/ and .codex/ were untracked at worker stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": ".git/HEAD",
+          "description": "Worker-stop HEAD d857ab1302d13cb660a7a044af07141f44bfa9ba.",
+          "sha256": null
+        },
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "tree-clean observed analysis/, results/ and .codex/ untracked; full manifest confirms these files were delivered.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": [
+        "mapping-questioned",
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "All 54 large map payloads are annex-backed and present in the complete captured delivery.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/data/",
+          "description": "54 annex pointer symlinks with payloads retained beneath .git/annex/.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-03-j01/manifest.json",
+          "description": "Complete original-delivery manifest; capture SHA-256 b321a85c15f4ada27df7bfdb1a8ac1083c4cf328f8db985598daefa0c322444f; no omissions.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "No worker run record links generated results to an exact environment; the referenced environment was coordinator-prepared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Reports a command using the coordinator common-environment absolute path.",
+          "sha256": null
+        },
+        {
+          "uri": "environment.json",
+          "description": "worker_environment_installed=false; attribution says prepared optional coordinator resource outside delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "Stop receipt inventories no run record or environment declaration.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The report documents a command but does not give a usable install or environment-acquisition route.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Reproduction command requires an absolute coordinator path; no README, Makefile or install instructions.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report identifies analysis/group_analysis.py as the entrypoint and lists its generated outputs.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Reproducibility section names the analysis script and results under results/.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "no",
+      "reason": "The script uses relative paths, but the documented command hardcodes a host-specific absolute environment path.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Input/output paths are relative to the script root.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/report.md",
+          "description": "Command begins with /Users/johnlee/.../common-environment/...",
+          "sha256": null
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "No complete dependency specification is delivered.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Scientific dependencies imported by the entrypoint.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/report.md",
+          "description": "Package versions are descriptive only, without a reconstructable manifest.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The documented route relies on a specific host path and does not document host or system requirements.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Absolute environment location is required; no OS or system library assumptions are listed.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "There is no usable dependency or system-requirement list for setting up the analysis.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Names package versions but does not explain how to install or obtain them.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is included in the worker delivery.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "Stop inventory has no environment manifest or lockfile.",
+          "sha256": null
+        },
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "env-spec-tracked found no tracked environment specification.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update process or tracked environment updates are supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "No environment declaration or update procedure.",
+          "sha256": null
+        },
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "env-spec-tracked found no declaration.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "No pinned environment specification used for the results is included.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "environment.json",
+          "description": "The available common environment is coordinator-prepared and was not installed by the worker.",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "Worker stop inventory contains no environment manifest.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "The worker did not share an environment specification or retrieval route.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "environment.json",
+          "description": "Optional common environment is outside the delivery; worker_environment_installed=false.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/report.md",
+          "description": "Only a host-specific path is supplied, with no acquisition instructions.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "Documentation gives no way to obtain the environment specification; it only names a local path.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Reproduction section lists a machine-specific environment path.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git tracks the project metadata and annex manages the large input payloads.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": ".git/HEAD",
+          "description": "Worker-stop Git repository is present.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data/",
+          "description": "Large map files are annex-backed.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "No CI or repeat-testing records were found; manual or scheduled test history is not established.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "ci-present found no recognized CI; equivalent manual testing remains unverified.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, analysis code and results have separate directories, but no environment module is supplied.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Input maps, metadata and methods.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/",
+          "description": "Analysis code and scientific report.",
+          "sha256": null
+        },
+        {
+          "uri": "results/",
+          "description": "Generated maps, tables, summary and figures.",
+          "sha256": null
+        },
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "modules-separated overlooked untracked analysis/results; full-delivery reading finds these directories.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: supplied data and software are public; no restricted component is present.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Source dataset and input provenance.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "No worker record establishes a fresh-container, batch or clean-machine execution.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "Stop-state inventory has no such execution record.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The delivered workflow does not create a disposable environment per execution.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Requires a pre-existing environment and offers no isolation mechanism.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No exact environment specification or reconstitution check is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "2026-10-16-probes.json",
+          "description": "env-spec-tracked found no environment spec.",
+          "sha256": null
+        },
+        {
+          "uri": "environment.json",
+          "description": "Coordinator-prepared environment was not installed by the worker.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifacts are archived in the research object.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "worker-end-state.json",
+          "description": "Complete worker-stop inventory contains no environment artifacts.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency-update process is documented or tracked.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "No environment declaration or update procedure.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: this is a single analysis object; it contains no independently maintained project components linked as submodules.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Data are included as annex-backed files, not a separately maintained component.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "Directory boundaries are apparent and partly explained, but no modular architecture or recombination guide is supplied.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Links inputs and names the analysis/results route.",
+          "sha256": null
+        },
+        {
+          "uri": "input/",
+          "description": "Inputs are grouped separately.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "No independent-update boundaries or interface contracts are documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Describes a single analysis run, not independently updateable modules.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "No module-composition mechanism is described.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "One script reads input/ and writes results/; no orchestration or composition route.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report links the upstream methods and sources and identifies the code and result locations.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/report.md",
+          "description": "Links upstream methods and sources and names analysis script and results directory.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "d857ab1302d13cb660a7a044af07141f44bfa9ba",
+    "captured_at": "2026-10-16T06:44:45.379389+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-03-j01/manifest.json",
+      "sha256": "b321a85c15f4ada27df7bfdb1a8ac1083c4cf328f8db985598daefa0c322444f"
+    }
+  },
+  "assessor": {
+    "skill": "independent-scientific-and-STAMPED-assessment",
+    "version": "frozen-assessment-v1",
+    "harness": "Codex (frozen assessor runtime)",
+    "model": "gpt-6-luna",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ],
+    "note": "Pinned assessment runner/runtime verified against assessment-version.json."
+  },
+  "scope": "Complete captured worker-stop delivery; no replay because required environment was coordinator-prepared and absent from the worker delivery."
+}

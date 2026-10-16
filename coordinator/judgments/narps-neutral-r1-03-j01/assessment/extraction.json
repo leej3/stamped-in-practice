@@ -1,0 +1,60 @@
+{
+  "run_id": "narps-neutral-r1-03",
+  "role": "primary",
+  "judgment": {
+    "judgment_id": "narps-neutral-r1-03-j01",
+    "report": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/attempt-01/judgment/2026-10-16-assessment.md",
+      "sha256": "b351a2e67dbea6d6b502698a4f5d937b7727f823f595926eb0f613783e447200"
+    },
+    "response": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/attempt-01/judgment/2026-10-16-response.json",
+      "sha256": "a4912d727d14934f81997c5b7248fa0dfded27c920e5cab2c5d69ec06163c6fe"
+    },
+    "native": {
+      "procedure_status": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/attempt-01/native/procedure-status.json",
+        "sha256": "ef182d1a5610087fb39dbc21db1cb4fd9bc6d214246c1c53ff15c6ec1c3d6f26"
+      },
+      "result": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/attempt-01/native/result.json",
+        "sha256": "9d5d44f523e8525e8a8bce990ed8af8695f718c178d764c93d1b31b3c51d0e0b"
+      }
+    },
+    "output_binding": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judgment-extractions/narps-neutral-r1-03-j01/output-binding.json",
+      "sha256": "71557c25dd55f2f6bcd381ee7ecc9d9bed162eb387cbb2708707187f5418657c"
+    },
+    "adequacy": {
+      "extraction_status": "explicit",
+      "category": "supported",
+      "excerpt": {
+        "quote": "**Scientific adequacy: supported.** The group analysis is an appropriate and transparent test conditional on the supplied AO86 participant estimates. `analysis/group_analysis.py` checks for 54 maps and cohort rows, participant identity/group, finite values, matching shape and affine, and analyzes the common nonzero support. It uses one independent map per participant and a one-sided positive one-sample t test, with Bonferroni familywise correction over all 198,029 supported voxels. Bonferroni is conservative but valid under arbitrary spatial dependence. The report explains that the maps are gain-modulator coefficients normalized upstream, not BOLD change per unit currency, and that participant-level variance maps are absent. The 12-mm MNI sphere at (0, 40, \u221210) is stated as an operational anatomical summary; whole-brain corrected inference remains primary. These choices address the supplied question without requiring a particular atlas or model.",
+        "start_line": 7,
+        "end_line": 7
+      }
+    },
+    "conclusion": {
+      "quote": "Reported hypothesis outcome: no corrected vmPFC support. Scientific conclusion: qualified.** The ROI mean is \u22120.0055 cope units (95% CI \u22120.0309 to 0.0199; one-sided *t*(53)=\u22120.44, *p*=.667), with zero voxels in the ROI surviving whole-brain correction. Eleven positive voxels survive whole-brain Bonferroni correction, but the strongest is posterior at MNI (\u221226, \u2212102, \u22123.6), outside the hypothesized region. The report correctly says this is a lack of support, not proof of no effect; its interval is compatible with small effects in either direction.",
+      "start_line": 9,
+      "end_line": 9
+    }
+  },
+  "operations": [
+    {
+      "operation_id": "narps-neutral-r1-03-j01-native",
+      "stage": "judging",
+      "actor": "judge",
+      "judgment_role": "primary",
+      "status": "succeeded",
+      "scope": "native independent judgment session elapsed wall time; process completion, not scientific adequacy or billing",
+      "duration_s": 259.37514445895795,
+      "evidence": [
+        {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/attempt-01/native/result.json",
+          "sha256": "9d5d44f523e8525e8a8bce990ed8af8695f718c178d764c93d1b31b3c51d0e0b"
+        }
+      ]
+    }
+  ]
+}
