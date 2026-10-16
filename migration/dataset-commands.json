@@ -1,0 +1,113 @@
+[
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "datalad",
+      "create",
+      "--force",
+      "--description",
+      "NARPS round-one development evidence",
+      "--message",
+      "chore(dataset): initialize preserved iteration as DataLad dataset\n\nCreate dataset metadata above the unchanged prefix history.\nNative operation: DataLad create --force.\n\nCo-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "create(ok): /Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset (dataset)\n",
+    "stderr": "[INFO] Unable to parse git config from origin \n[INFO] Remote origin does not have git-annex installed; setting annex-ignore\n|   This could be a problem with the git-annex installation on the remote. Please make sure that git-annex-shell is available in PATH when you ssh into the remote. Once you have fixed the git-annex installation, run: git annex enableremote origin \n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/dataset",
+      "annex",
+      "fromkey",
+      "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz",
+      "evidence/access-evidence-02.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "git-annex: key (SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz) is not present in backend (use --force to override this sanity check)\n\n"
+  }
+]
