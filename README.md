@@ -7,7 +7,7 @@ It compares four ways of assisting agents with scientific studies, evaluates the
 The question is whether the guidance helps agents do sound science with more thorough, efficient and consistent reproducibility.
 
 Each iteration tests a pinned skill revision on selected studies: run matched agents, assess their work independently, compare outcomes and effort, then improve and compress the reusable guidance.
-Study inputs and scientific outputs belong to study submodules; root iteration records connect that work to changes in the skills.
+Study inputs and scientific outputs belong to study submodules; iteration subdatasets connect that work to changes in the skills.
 
 The broader hypothesis concerns both humans and agents; this experiment tests agents.
 Repeated baseline runs help distinguish improvements from ordinary variability.
@@ -36,7 +36,7 @@ To start a coordinator, give it this repository and a request such as:
 | --- | --- |
 | `prompt.md` | The research, assessment and skill-improvement loop |
 | `AGENTS.md` | Instructions for the coordinator |
-| `iterations/<iteration>/` | Skill revisions, linked trials and assessments, comparisons and reasons for changes |
+| `iterations/<iteration>/` | An iteration subdataset with revisions, linked trials, assessments, comparisons and reasons for changes |
 | `studies/<study>/` | A versioned study submodule |
 | `studies/<study>/input/` | The scientific prompt and verified data supplied to research workers |
 | `studies/<study>/coordinator-guidance/` | Evaluation guidance and reference material for the coordinator and judges |
@@ -44,7 +44,7 @@ To start a coordinator, give it this repository and a request such as:
 | `skills/` | Evolving `con/skills`, pinned to [our development branch](https://github.com/con/skills/tree/codex/pr26-operational-environment) |
 | `assessment/` | The selected assessor version, identified by `assessment-version.json` |
 
-Keep study and experiment submodules uninitialized until needed.
+Keep iteration, study and experiment submodules uninitialized until needed.
 Open selected paths and retrieve their required annex content; the coordinator tree retains their exact commits without expanding every experiment.
 
 The intended result is transferable guidance: an independent agent can use these skills with a researcher's own data and hypothesis to produce scientifically useful, rigorous and convenient research.
@@ -54,7 +54,5 @@ Figures summarize scientific outcomes, reproducibility, effort and variability.
 NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
-Round 1 has completed all **12 research workers and 16 assigned judgments**, with one supplementary repair attempt retained separately.
-The [round-one comparison](iterations/narps-v1/synthesis/README.md) presents the findings, evidence and skill reflection.
-The round is development evidence: common workflow mandates and assessment changes limit assistance comparisons.
-The next declared setup will separate coordinator preservation from worker guidance; changes across that boundary will not be presented as a clean skill effect.
+The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/14e22eada5f5af9db83f734ff291298441c3f1f2/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
+Its workflow mandates and assessment changes are disclosed; the next stable comparison will keep coordinator preservation separate from worker guidance.
