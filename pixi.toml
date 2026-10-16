@@ -28,7 +28,7 @@ tox = "*"
 [tasks]
 launch = { cmd = "python scripts/prepare_launch.py --model gpt-6-luna --effort high", description = "Launch one fresh research worker from selected study inputs" }
 judge = { cmd = "python scripts/prepare_launch.py --role judge --model gpt-6-luna --effort high", description = "Judge one original research delivery in a fresh session" }
-launcher-tests = { cmd = "python -m pytest -q tests/test_launch.py tests/test_assessment_runner.py tests/test_assessment_procedure.py tests/test_worker_end_state.py tests/test_judge_workspace.py tests/test_judge_materialization.py tests/test_delivery_snapshot.py tests/test_neutral_protocol.py tests/test_captured_replay.py", env = { PYTEST_DISABLE_PLUGIN_AUTOLOAD = "1" }, description = "Check input isolation, judging, timing and frozen helper execution" }
+launcher-tests = { cmd = "python -m pytest -q tests/test_launch.py tests/test_assessment_runner.py tests/test_assessment_procedure.py tests/test_worker_end_state.py tests/test_judge_workspace.py tests/test_judge_materialization.py tests/test_delivery_snapshot.py tests/test_neutral_protocol.py tests/test_captured_replay.py tests/test_operational_assessment.py tests/test_judge_runtime.py", env = { PYTEST_DISABLE_PLUGIN_AUTOLOAD = "1" }, description = "Check input isolation, judging, timing and frozen helper execution" }
 datalad-report = { cmd = "datalad -f json rerun --report", description = "Inspect a native DataLad run record" }
 datalad-replay = { cmd = "datalad rerun", description = "Replay a native DataLad run" }
 assessment-check = { cmd = "python scripts/assessment.py check", description = "Verify the frozen assessor and install its recorded runtime" }

@@ -136,9 +136,7 @@ def formal_runner(monkeypatch, version):
               "replay": assessment.procedure.NEUTRAL_REPLAY,
               "fixed_files": {"scripts/assessment.py":
                   assessment.procedure.sha256(Path(assessment.__file__).read_bytes())}}
-    monkeypatch.setenv("STAMPED_PROCEDURE", "synthetic-procedure.json")
-    monkeypatch.setenv("STAMPED_PROCEDURE_SHA256", "synthetic-seal")
-    monkeypatch.setattr(assessment.procedure, "load_procedure", lambda *args: frozen)
+    monkeypatch.setattr(assessment, "runtime_context", lambda: frozen)
     return frozen
 
 

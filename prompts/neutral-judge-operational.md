@@ -20,7 +20,12 @@ Record any mismatch and bound affected conclusions rather than repairing the evi
 
 Use the exact external assessor and runtime identified in `$STAMPED_ASSESSMENT_VERSION`, with the supplied runner at `$STAMPED_ASSESSMENT_RUNNER` and interpreter `$STAMPED_ASSESSMENT_PYTHON`.
 Run `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" check` with no additional arguments before using its probe or response actions.
-The runner executes helpers in `$STAMPED_JUDGE_OUTPUT`; relative response filenames and replay `--workdir`/`--output` paths resolve there regardless of your shell's current directory.
+The runner executes helpers in `$STAMPED_JUDGE_OUTPUT`; relative response filenames and replay `--workdir`/`--output` paths resolve there regardless of your shell's current directory. Initialize a new response with `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" template -o response.json`. This fills the exact canonical capture/HEAD and frozen assessor metadata while preserving every blank item verdict; complete the scope and assessments from your evidence.
+Formal `validate` (including `response validate`) checks those identity fields before the frozen checklist validator; it never repairs missing metadata or changes verdicts.
+Keep probe drafts separate from this formal response.
+For the frozen skill's Step 3, use `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" probes "$STAMPED_JUDGE_TARGET" --kind study -o probes.json --response probe-draft.json`, adding its other applicable probe options.
+Never pass the formal response file to probes as `--response`: the frozen probe writer replaces the object header and does not preserve canonical capture metadata.
+Review the probe evidence and use the response helper's `set` action to record your item judgments in the initialized formal response; do not copy the probe draft's object or assessor header.
 Do not substitute target scripts for assessor code.
 Inspect meaningful evidence even if an automated probe does not recognize its tool or file format.
 A missing tool-specific mechanism does not by itself establish absence of an equivalent scientific practice.
@@ -53,6 +58,8 @@ A successful replay is not a prerequisite for accepting other evidence or comple
 Use a separate new writable replay copy of the canonical original complete delivery, preserving needed uncommitted and ignored files.
 Never replay in the inspection copy.
 The frozen runner makes this separate copy from the canonical capture.
+Pass a nonexistent `--workdir` and a nonexistent output file; do not create the workdir first.
+A rejected path preflight is recorded separately and does not consume the single replay attempt; choose fresh paths before scientific execution.
 Reconstruct the environment only through instructions or dependency declarations that the worker actually supplied; do not add missing declarations, repair code, infer a replacement pipeline or modify the source object.
 
 Before replay, declare the exact command, prerequisites, scientific output selection and comparison rule.

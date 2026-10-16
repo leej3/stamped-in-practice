@@ -18,6 +18,19 @@ def git(*args, cwd=ROOT):
     return subprocess.check_output(["git", *args], cwd=cwd)
 
 
+def runtime_context():
+    """Read only the role projection; full seals remain coordinator inputs."""
+    if os.environ.get("STAMPED_PROCEDURE") or os.environ.get("STAMPED_PROCEDURE_SHA256"):
+        raise SystemExit("Full coordinator procedures are not judge runtime inputs")
+    path = os.environ.get("STAMPED_JUDGE_RUNTIME")
+    if not path:
+        return None
+    runtime = procedure.load_judge_runtime(path, os.environ.get("STAMPED_JUDGE_RUNTIME_SHA256"), os.environ)
+    procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
+                            runtime["fixed_files"]["scripts/assessment.py"], "assessment runner source")
+    return runtime
+
+
 def dispatch_directory(frozen):
     """Keep v4 relative helper paths inside its existing judgment workspace."""
     if not frozen or frozen.get("version") != 4:
@@ -34,6 +47,47 @@ def dispatch_directory(frozen):
         if output.is_relative_to(target) or target.is_relative_to(output):
             raise SystemExit("Version 4 judgment output must be separate from the assessed target")
     return output
+
+
+def validate_response_identity(response, frozen):
+    """Read-only formal identity checks; leave scientific verdicts to the assessor."""
+    if not isinstance(response, dict):
+        raise SystemExit("Formal response must be an object")
+    for section, expected in frozen["response_identity"].items():
+        supplied = response.get(section, {})
+        if not isinstance(supplied, dict):
+            raise SystemExit("Formal response " + section + " must be an object")
+        for key, value in expected.items():
+            if key not in supplied:
+                raise SystemExit("Formal response missing " + section + "." + key)
+            procedure.require_equal(supplied[key], value, "formal response " + section + "." + key)
+
+
+def response_template(arguments, frozen, command, cwd):
+    """Initialize known metadata on the frozen helper's unchanged blank verdicts."""
+    parser = argparse.ArgumentParser(description=response_template.__doc__, allow_abbrev=False)
+    parser.add_argument("-o", "--output", type=Path)
+    args = parser.parse_args(arguments)
+    target = cwd / args.output if args.output else None
+    if target and (not target.resolve().is_relative_to(cwd.resolve()) or os.path.lexists(target)):
+        raise SystemExit("Formal template output must be a new file inside the judgment workspace")
+    result = subprocess.run([*command, "template"], cwd=cwd, capture_output=True, text=True)
+    if result.stderr:
+        print(result.stderr, file=sys.stderr, end="")
+    if result.returncode:
+        print(result.stdout, end="")
+        raise SystemExit(result.returncode)
+    response = json.loads(result.stdout)
+    for section, fields in frozen["response_identity"].items():
+        response.setdefault(section, {}).update(fields)
+    content = json.dumps(response, indent=2) + "\n"
+    if target:
+        with target.open("x") as stream:
+            stream.write(content)
+        print("wrote " + str(target))
+    else:
+        print(content, end="")
+    return 0
 
 
 def captured_replay(arguments, helper, operational=False):
@@ -192,21 +246,27 @@ def captured_replay(arguments, helper, operational=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=("check", "probes", "response", "validate", "fresh-rerun"))
+    parser.add_argument("action", choices=("check", "probes", "response", "validate", "template", "fresh-rerun"))
     parser.add_argument("arguments", nargs=argparse.REMAINDER)
     args = parser.parse_args()
     remaining = args.arguments
     pin_path = Path(os.environ.get("STAMPED_ASSESSMENT_PIN", ROOT / "assessment-version.json"))
     pin = json.loads(pin_path.read_text())
-    frozen_path = os.environ.get("STAMPED_PROCEDURE")
-    frozen = None
-    if frozen_path:
-        frozen = procedure.load_procedure(frozen_path, os.environ.get("STAMPED_PROCEDURE_SHA256"))
+    frozen = runtime_context()
+    if frozen:
         procedure.require_equal(pin, frozen["assessment"], "assessment runner pin")
-        procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
-                                frozen["fixed_files"]["scripts/assessment.py"], "assessment runner source")
     operational = bool(frozen and frozen.get("version") == 4)
     dispatch_cwd = dispatch_directory(frozen)
+    formal_response = bool(frozen and "response_identity" in frozen)
+    if args.action == "template" and not formal_response:
+        parser.error("template requires a projected captured-delivery judge runtime")
+    validation = (remaining if args.action == "validate" else remaining[1:]
+                  if args.action == "response" and remaining[:1] == ["validate"] else None)
+    if formal_response and validation is not None and not any(flag in validation for flag in ("--help", "-h")):
+        check = argparse.ArgumentParser(allow_abbrev=False)
+        check.add_argument("response", type=Path)
+        response_path = check.parse_args(validation).response
+        validate_response_identity(json.loads((dispatch_cwd / response_path).read_bytes()), frozen)
     source = Path(os.environ.get("STAMPED_ASSESSMENT_SOURCE", ROOT / "assessment"))
     if operational:
         source = source.resolve()
@@ -243,12 +303,15 @@ def main():
         print(json.dumps(pin, indent=2))
         return
     scripts = source / "skills" / "assess-alignment-with-stamped-principles" / "scripts"
-    if args.action in ("response", "validate"):
+    if args.action in ("response", "validate", "template"):
         helper = source / "skills" / "stamped-conventions" / "scripts" / "encode_response.py"
         if args.action == "validate":
             remaining.insert(0, "validate")
     else:
         helper = scripts / {"probes": "run_probes.py", "fresh-rerun": "fresh_rerun.py"}[args.action]
+    if args.action == "template":
+        raise SystemExit(response_template(remaining, frozen,
+            ["pixi", "run", "--locked", "--manifest-path", manifest, "python", helper], dispatch_cwd))
     if frozen and args.action == "fresh-rerun":
         target = Path(os.environ["STAMPED_JUDGE_TARGET"])
         if procedure.is_neutral(frozen):
@@ -272,10 +335,9 @@ def main():
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["--captured-replay"]:
-        frozen = procedure.load_procedure(os.environ["STAMPED_PROCEDURE"],
-                                          os.environ["STAMPED_PROCEDURE_SHA256"])
-        procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
-                                frozen["fixed_files"]["scripts/assessment.py"], "capture replay adapter")
+        frozen = runtime_context()
+        if frozen is None:
+            raise SystemExit("Captured replay requires a judge runtime projection")
         helper = Path(sys.argv[2])
         procedure.require_equal(procedure.sha256(helper.read_bytes()), sys.argv[3], "frozen replay helper")
         raise SystemExit(captured_replay(sys.argv[4:], helper, frozen.get("version") == 4))

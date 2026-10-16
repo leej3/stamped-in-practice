@@ -57,6 +57,9 @@ Use the same study revision and evaluation guidance for matched judgments.
 The launcher retains the scientific prompt and optional reference guidance with their hashes, independently of the submitted object.
 Judges use the coordinator's frozen assessor and runtime outside the target; the target need not contain assessment tools.
 A separate host profile makes the frozen judging skills discoverable without adding files to the assessed checkout.
+Formal judges receive `STAMPED_JUDGE_RUNTIME` and its digest: a closed projection containing the validated assessor/runtime pin, runner hash, replay contract and only their own object bindings. The launcher validates the full procedure first and retains that seal and allocation as coordinator records; it never advertises the seal path to judges. Inherited `STAMPED_*` values are replaced for judges, and a local assessor pin is supplied beside the projection. The retained native evidence includes the projection bytes and digest. This is an explicit context boundary, not same-user host containment: assessor/runner locations, scientific guidance, current-object records and host access remain available.
+Adopting these changed launcher/helper bytes requires a newly declared assessment procedure; it does not amend prior exposure, judgments or scientific criteria.
+Research launch behavior is unchanged; any worker environment revision requires its own research boundary.
 The judge works in a separate [output repository](JUDGE_WORKSPACE.md), where normal preservation commits capture its real Entire session; the assessed target remains unchanged.
 The clone retains the result commit and its annex metadata, without other trial branches.
 They inspect and replay the object's declared environment without repairing it first.

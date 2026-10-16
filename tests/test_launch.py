@@ -367,6 +367,8 @@ if "debug" in args:
         print("- unrelated-skill: Host guidance (file: /unexpected/SKILL.md)")
 else:
     if "STAMPED_ASSESSMENT_SOURCE" in os.environ:
+        assert "STAMPED_PROCEDURE" not in os.environ
+        assert "STAMPED_OTHER_JUDGE" not in os.environ
         source = pathlib.Path(os.environ["STAMPED_ASSESSMENT_SOURCE"])
         pin = json.loads(pathlib.Path(os.environ["STAMPED_ASSESSMENT_PIN"]).read_text())
         assert (source / "skills/assess-alignment-with-stamped-principles/SKILL.md").is_file()
@@ -408,7 +410,9 @@ def test_fixture_launch_retains_evidence_and_judges_without_worker_assessor(
     pin = tmp_path / "pin.json"
     pin.write_text(json.dumps({"source_commit": git(assessor, "rev-parse", "HEAD")}))
     environment = dict(os.environ, CODEX_HOME=str(profile), CODEX_THREAD_ID="must-be-removed",
-                       PIXI_PROJECT_MANIFEST="/wrong/coordinator/pixi.toml", PIXI_IN_SHELL="1")
+                       PIXI_PROJECT_MANIFEST="/wrong/coordinator/pixi.toml", PIXI_IN_SHELL="1",
+                       STAMPED_PROCEDURE="/coordinator/full-seal.json",
+                       STAMPED_OTHER_JUDGE="/other-object/judgment.json")
     workspace = tmp_path / "judgment"
     target_before = (git(worker, "rev-parse", "HEAD"), git(worker, "status", "--porcelain"))
     if role == "judge":

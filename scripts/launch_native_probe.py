@@ -242,6 +242,48 @@ def wait_and_capture_worker(process, prompt, output, checkout, record, role,
     return timed_out
 
 
+def judge_environment(environment, args, session_checkout, profile, workspace, frozen):
+    """Replace inherited role metadata with this judge's explicit bindings."""
+    environment = {key: value for key, value in environment.items() if not key.startswith("STAMPED_")}
+    neutral = args.protocol == NEUTRAL_PROTOCOL
+    operational = bool(frozen and frozen["version"] == 4)
+    environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1")
+    if operational:
+        environment = procedure.operational_environment(environment)
+    environment["STAMPED_JUDGE_OUTPUT"] = str(session_checkout)
+    environment["STAMPED_JUDGE_TARGET"] = str(args.checkout.resolve())
+    environment["STAMPED_ASSESSMENT_RUNNER"] = str(Path(__file__).resolve().with_name("assessment.py"))
+    environment["STAMPED_ASSESSMENT_PYTHON"] = sys.executable
+    environment["STAMPED_ASSESSMENT_SOURCE"] = str(args.assessment_source.resolve())
+    environment["STAMPED_ASSESSMENT_PIN"] = str(args.assessment_pin.resolve())
+    if neutral:
+        environment["STAMPED_DELIVERY_MANIFEST"] = str(
+            (args.canonical_capture if operational else args.delivery_capture).resolve())
+        if operational:
+            environment["STAMPED_OPERATIONAL_MANIFEST"] = str(args.delivery_capture.resolve())
+            environment["STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR"] = str(
+                Path(__file__).resolve().with_name("scientific_judgment.py"))
+        environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
+        environment["STAMPED_ASSESSMENT_VERSION"] = str(args.assessment_pin.resolve())
+    if frozen:
+        environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
+        environment["STAMPED_JUDGE_COMMIT"] = (workspace["target_commit"] or "" if neutral else
+                                               procedure.git(args.checkout, "rev-parse", "HEAD"))
+        # Keep the role-facing pin beside the projection, away from seal records.
+        pin_path = profile / "assessment-version.json"
+        environment["STAMPED_ASSESSMENT_PIN"] = str(pin_path)
+        if neutral:
+            environment["STAMPED_ASSESSMENT_VERSION"] = str(pin_path)
+        runtime = procedure.judge_runtime_projection(frozen, environment)
+        pin_path.write_text(json.dumps(runtime["assessment"], indent=2) + "\n")
+        path = profile / "judge-runtime.json"
+        content = (json.dumps(runtime, indent=2, sort_keys=True) + "\n").encode()
+        path.write_bytes(content)
+        environment["STAMPED_JUDGE_RUNTIME"] = str(path)
+        environment["STAMPED_JUDGE_RUNTIME_SHA256"] = procedure.sha256(content)
+    return environment
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--checkout", type=Path, required=True)
@@ -482,29 +524,9 @@ def main():
                    if neutral else os.environ.copy())
     environment["CODEX_HOME"] = str(profile)
     if args.role == "judge":
-        environment.update(GIT_OPTIONAL_LOCKS="0", PYTHONDONTWRITEBYTECODE="1")
-        if operational:
-            environment = procedure.operational_environment(environment)
-        environment["STAMPED_JUDGE_OUTPUT"] = str(session_checkout)
-        environment["STAMPED_JUDGE_TARGET"] = str(args.checkout.resolve())
-        environment["STAMPED_ASSESSMENT_RUNNER"] = str(Path(__file__).resolve().with_name("assessment.py"))
-        environment["STAMPED_ASSESSMENT_PYTHON"] = sys.executable
-        environment["STAMPED_ASSESSMENT_SOURCE"] = str(args.assessment_source.resolve())
-        environment["STAMPED_ASSESSMENT_PIN"] = str(args.assessment_pin.resolve())
-        if neutral:
-            environment["STAMPED_DELIVERY_MANIFEST"] = str(
-                (args.canonical_capture if operational else args.delivery_capture).resolve())
-            if operational:
-                environment["STAMPED_OPERATIONAL_MANIFEST"] = str(args.delivery_capture.resolve())
-                environment["STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR"] = str(
-                    Path(__file__).resolve().with_name("scientific_judgment.py"))
-            environment["STAMPED_WORKER_STOP_RECEIPT"] = str(args.worker_end_state.resolve())
-            environment["STAMPED_ASSESSMENT_VERSION"] = str(args.assessment_pin.resolve())
+        environment = judge_environment(environment, args, session_checkout, profile, workspace, frozen)
         if frozen:
-            environment["STAMPED_PROCEDURE"] = str(args.procedure.resolve())
-            environment["STAMPED_PROCEDURE_SHA256"] = args.procedure_sha256
-            environment["STAMPED_JUDGE_COMMIT"] = (workspace["target_commit"] or "" if neutral else
-                                                   procedure.git(args.checkout, "rev-parse", "HEAD"))
+            (output / "judge-runtime.json").write_bytes(Path(environment["STAMPED_JUDGE_RUNTIME"]).read_bytes())
     removed = [key for key in ("CODEX_THREAD_ID", "CODEX_PARENT_THREAD_ID", "CODEX_SESSION_ID")
                if environment.pop(key, None) is not None]
     pixi_removed = [key for key in ("PIXI_PROJECT_MANIFEST", "PIXI_IN_SHELL", "PIXI_PROJECT_ROOT",
@@ -572,6 +594,8 @@ def main():
             record["git_config_overlay"] = {"inherited_count": int(os.environ.get("GIT_CONFIG_COUNT", "0")),
                 "effective_count": int(environment["GIT_CONFIG_COUNT"]),
                 "appended": frozen["operational_runtime"]["git_config"], "GIT_OPTIONAL_LOCKS": "0"}
+        if frozen:
+            record["judge_runtime_sha256"] = environment["STAMPED_JUDGE_RUNTIME_SHA256"]
         runner = Path(environment["STAMPED_ASSESSMENT_RUNNER"])
         record["assessment_runner_sha256"] = hashlib.sha256(runner.read_bytes()).hexdigest()
     (output / "launch.json").write_text(json.dumps(record, indent=2) + "\n")
