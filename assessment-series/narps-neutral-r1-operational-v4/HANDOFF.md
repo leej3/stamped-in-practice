@@ -11,6 +11,10 @@ Local full-support packaging may continue, but it does not launch agents or clai
 
 # Active-series handoff
 
+> **Historical instructions — completed; do not execute.** The fixed 32-attempt queue and its extraction are closed.
+> Everything below is preserved operational history, not an instruction to monitor, resume or finish a queue.
+> Follow the current [STATUS](../../STATUS.md); further formal launches remain held.
+
 Monitor the existing queue.
 Do not rerun the initial controller or start another assessment series to continue this one.
 Its scripts refuse existing directories, but that guard is not a substitute for reconciling the native sessions.

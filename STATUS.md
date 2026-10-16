@@ -11,7 +11,8 @@ The supplied assessment procedure exposed allocation records.
 Exact native evidence shows 04-j01 displayed its own condition.
 The completed 32 observations remain unchanged; future launches require a declared measurement boundary.
 The [reviewed context mechanism and one synthetic native trial](measurement-development/assessment-context-native-trial-01/README.md) are complete; the [prospective scientific wording check](skill-reflection/scientific-criteria-calibration-01/README.md) is also complete.
-Generic skill checks remain separate, and no new formal launch is authorized.
+The [prospective assessment-helper revision and its three trials](skill-reflection/assessment-capture-skill-01/README.md) are also complete and published, separately from the frozen assessor.
+No new formal launch is authorized.
 The remaining 48 research attempts and 64 judgments have not launched, and the formal research-skill pin has not changed.
 
 All 24 original deliveries and their original-series support are published and independently retrieved.

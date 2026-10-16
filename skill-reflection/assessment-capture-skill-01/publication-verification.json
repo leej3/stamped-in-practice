@@ -1,0 +1,834 @@
+{
+  "source_commit": "55f5b5123dc1e300ebea6098e1616080c3a7905c",
+  "evals_commit": "7869a62fbe948b894f546cf576837f18314226ae",
+  "source_branch": "codex/assessment-capture-drafts",
+  "evals_branch": "codex/assessment-capture-draft-evals",
+  "independent_empty_git_receiver": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+  "remote": "git@github.com:con/skills.git",
+  "verified_source_files": 5,
+  "verified_eval_files": 48,
+  "gitlink_matches_published_eval_commit": true,
+  "source_and_evals_clean": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "init",
+        "--bare",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git/\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/8c30/skills",
+      "exit_code": 0,
+      "stdout": "55f5b5123dc1e300ebea6098e1616080c3a7905c\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/8c30/skills/evals",
+      "exit_code": 0,
+      "stdout": "7869a62fbe948b894f546cf576837f18314226ae\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "fetch",
+        "--depth=1",
+        "--no-tags",
+        "git@github.com:con/skills.git",
+        "refs/heads/codex/assessment-capture-drafts:refs/heads/source"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "From github.com:con/skills\n * [new branch]      codex/assessment-capture-drafts -> source\n"
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "fetch",
+        "--depth=1",
+        "--no-tags",
+        "git@github.com:con/skills.git",
+        "refs/heads/codex/assessment-capture-draft-evals:refs/heads/evals"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "From github.com:con/skills\n * [new branch]      codex/assessment-capture-draft-evals -> evals\n"
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "rev-parse",
+        "source"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "55f5b5123dc1e300ebea6098e1616080c3a7905c\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "rev-parse",
+        "evals"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "7869a62fbe948b894f546cf576837f18314226ae\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "ls-tree",
+        "source",
+        "evals"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "160000 commit 7869a62fbe948b894f546cf576837f18314226ae\tevals\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "source:skills/assess-alignment-with-stamped-principles/SKILL.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "23669 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "source:skills/assess-alignment-with-stamped-principles/scripts/run_probes.py"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "14716 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "source:skills/stamped-conventions/scripts/encode_response.py"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "20998 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "source:skills/stamped-conventions/references/response-format.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "10476 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "source:skills/assess-alignment-with-stamped-principles/scripts/probes/modules.py"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "15850 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff-tree",
+        "--no-commit-id",
+        "--name-only",
+        "-r",
+        "7869a62fbe948b894f546cf576837f18314226ae"
+      ],
+      "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/8c30/skills/evals",
+      "exit_code": 0,
+      "stdout": "3302 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/README.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "3532 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/2026-10-16-assessment.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "30541 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/2026-10-16-probes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "12045 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/2026-10-16-url.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "8917 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/friction.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "# Skill-use friction\n\n- The skill says to fill metadata \u201cwith `stamp` rather than a snippet of your\n  own\u201d and to use the UTC assessment date. However `stamp` leaves the supplied\n  `assessor.date: null` unchanged and has no date option. Validation failed with\n  `assessor/date: None is not of type 'string'`. I retained the failed duct log,\n  added the UTC date with a metadata-only edit, and revalidated successfully.\n- The assignment says \u201cComplete the supplied response.json\u201d, while the skill\n  requires \u201c`<date>-response.json`\u201d. I completed the supplied file and retained\n  a byte-identical dated copy, explicitly naming the supplied file canonical.\n- \u201cThe probes cover 13 of the 17 MUST items\u201d is coverage of tracked-path\n  heuristics, not delivered-file coverage. This case required many overrides:\n  the probes missed the untracked README, script, environment and results.\n  The skill does warn about this, but per-item reconciliation was the slowest\n  part. Its separate probe-draft instruction prevented capture identity loss.\n- `large-in-annex` claimed \u201cgit-annex carries the binary content\u201d and cited\n  `.datalad/config`, although that path does not exist and the only annexed file\n  is a supplied 167-byte CSV. The complete delivery has no large binary subject;\n  the final answer is N/A with the mismatch flagged.\n- \u201cExact environment specifications\u201d and \u201call software dependencies\u201d need\n  separate treatment when only direct package pins and an original interpreter\n  path are retained. The allowed capture has no resolved transitive metadata;\n  I marked completeness not-checked and exactness partial, rather than treating\n  an untracked specification as absent or using assessor packages as evidence.\n- The manifest says \u201csymlinks: preserved without following\u201d and records no\n  omissions, while external skill links point outside the permitted case.\n  I verified link text and regular-file hashes without following those links,\n  and reported their unmaterialized targets as a capture limitation rather than\n  a worker defect. They are not required for the scientific analysis route.\n\nNo target change, replay, commit, publication or Workshop capture was made.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/invocation.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Read and carry out /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-a/prompt.txt. That file is the complete assignment and identifies the only permitted case, skill snapshot, supplied response and output directory. Do not read the source repository, other cases or surrounding planning records. Return the requested products and friction notes; do not commit or publish.",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/launch-record.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"agent\": \"/root/capture_skill_trial_a\",\n  \"fork_turns\": \"none\",\n  \"model_override\": null,\n  \"prompt_sha256\": \"bd4cfadafb978277e1b33e43efe4f945421d4afae4a12a6406f0581f759bfbb9\",\n  \"invocation_sha256\": \"bbaac0c837c1ca4fdcb5a1a7d5941125ed8c0de2d81c488280e4750e7de27c61\",\n  \"status\": \"launched\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/native-session-receipt.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"retained_utc\": \"2026-10-16T12:57:18.568602+00:00\",\n  \"scope\": \"Closed independent prospective skill-use trial coordination session; not a formal research or assessment observation.\",\n  \"session_id\": \"01a144bf-bb6b-7721-8048-2d9d13193ff8\",\n  \"agent_path\": \"/root/capture_skill_trial_a\",\n  \"parent_thread_id\": \"01a13c60-1063-7be3-8eab-fb5df54cb12b\",\n  \"source_path\": \"/Users/johnlee/.codex/sessions/2026/10/16/rollout-2026-10-16T08-46-18-01a144bf-bb6b-7721-8048-2d9d13193ff8.jsonl\",\n  \"bytes\": 1002028,\n  \"sha256\": \"4142c66e76f098df66326abb69960aa481530c79eaa40940ebe1243bf67c4ca6\",\n  \"records\": 202,\n  \"task_complete_events\": 1,\n  \"exact_prompt_path_observed\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-a/prompt.txt\",\n  \"prompt_sha256\": \"bd4cfadafb978277e1b33e43efe4f945421d4afae4a12a6406f0581f759bfbb9\",\n  \"launch_record_sha256\": \"6eaec4a169a2decda0750aaeec600a06ddc32c529cb1afa5a6ef679c0b660eda\",\n  \"source_before_copy_after_equal\": true,\n  \"source_modified\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/prompt.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Use the assessment skill at /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/snapshot/skills/assess-alignment-with-stamped-principles/SKILL.md to assess the research delivery at /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-a/object-capture/content/workspace.\n\nWork in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-a/assessment. Complete the supplied response.json, whose object metadata identifies the original delivery. Write the report, probe records and checklist URL there too. The capture manifest is beside content/ in object-capture/. Preserve the supplied capture identity and actual Git identity. Treat this as an independent, read-only assessment; no scientific replay or source repair is requested. State reasonable assumptions and continue without a human clarification. Do not commit or publish.\n\nUse only this case, the copied skill and its conventions sibling. Do not read the source skills repository, other cases, previous assessments or parent planning records: this is an independent skill-use check. For commands, the supplied resource interpreter is /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python; it is assessment infrastructure, not worker evidence. Use PYTHONDONTWRITEBYTECODE=1 and GIT_OPTIONAL_LOCKS=0. Retain requested command logging with duct under your assessment directory, including failures; no Workshop capture. Record actual available model/tool identity without guessing.\n\nReturn the assessment products and a short friction.md listing instructions that were ambiguous, missing, contradictory or slow, quoting the relevant wording. Report completion without further changes to the target.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/response.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "31725 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/review.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"case\": \"case-a\",\n  \"snapshot\": \"snapshot\",\n  \"snapshot_files_unchanged\": true,\n  \"original_object_commit\": \"20171384fc05892008d889ed7440d7646eef6c5b\",\n  \"capture_sha256\": \"5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5\",\n  \"response_sha256\": \"3f60a2f027d85125dab22ace2f7158a39999ca01d8053f533f249344b11d9c5b\",\n  \"response_identity_preserved\": true,\n  \"schema_valid\": true,\n  \"items\": 31,\n  \"native_session\": \"01a144bf-bb6b-7721-8048-2d9d13193ff8\",\n  \"native_sha256\": \"4142c66e76f098df66326abb69960aa481530c79eaa40940ebe1243bf67c4ca6\",\n  \"runtime_cli_version\": \"0.162.0-alpha.17.2\",\n  \"actual_turn_identities\": [\n    {\n      \"model\": \"gpt-6-astra\",\n      \"effort\": \"ultra\"\n    }\n  ],\n  \"scope\": \"Identity/schema and source-integrity review; no regrading or scientific replay.\",\n  \"capture_integrity_review\": \"root-verification.json\",\n  \"limitations\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/root-verification.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "14911 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-a/skill-hashes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "3347 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/2026-10-16-assessment.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "11361 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/2026-10-16-probes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "18250 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/2026-10-16-url.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "6591 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/friction.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "# Skill-use friction notes\n\n- **Output naming conflicted with the case handoff.** The skill says to write `<date>-response.json`, while the assignment says \u201cComplete the supplied response.json.\u201d I completed the supplied file and used dated names for the other products.\n- **The report count template omits not-applicable.** It says \u201cMUST: n met / n partial / n unmet / n not-checked,\u201d while the verdict vocabulary includes `not-applicable`. I added an explicit N/A count and retained the full denominator.\n- **Extra-item spelling differs.** The probe is named `license-declared` and the skill calls it that, but the response-format example says `licence-declared`. I used the probe\u2019s `license-declared` key.\n- **Failure-log retention needs a non-default duct setting.** The assignment says \u201cincluding failures,\u201d but duct removes logs for quick failures by default. I had to rerun a failed, read-only annex query with `--fail-time 0` to retain its log.\n- **The capture has two labels.** The supplied response points to `object-capture/manifest.json`; the case prompt calls it \u201cthe capture manifest.\u201d The URI resolved the ambiguity, but using one label consistently would make the preservation boundary quicker to identify.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/integrity-attribution.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "7437 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/integrity-delta.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "70063 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/integrity-findings.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "# Case B capture integrity review\n\nStrict capture integrity fails on one added entry:\n`content/workspace/.git/FETCH_HEAD`, an empty regular file, mode `0644`,\nSHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.\n\nThe manifest declares 214 entries; including the three required wrapper entries,\n217 are expected and 218 are present. There are **zero missing entries and zero\ncontent, mode, kind or symlink-target changes** among the expected entries.\nThe original fixture capture and fixture-source workspace still match the\nmanifest. Case B's manifest bytes equal the original fixture manifest and the\npreparation SHA-256 `b4f4b5bbc6e58996184ac38829439b784a0946711e34e3dc427c277e81e6fa7f`.\n\nThe observed delta is confined to Git operational metadata. No source, scientific\noutput, tracked content, Git object/ref/index or recorded entry changed. This\ndoes not make the strict capture valid: an unexpected `FETCH_HEAD` is sufficient\nto fail its exact-inventory requirement. No exception or repair was applied.\n\nThe remote-check probe is the strongly supported cause. Native session record 90\ninvokes `run_probes.py --check-remote` with `GIT_OPTIONAL_LOCKS=0`.\nThe retained `snapshot-02/.../probes/modules.py` lines 109\u2013113 run\n`git fetch --depth=1 --no-tags <url> <commit>` with `cwd=obj.root`.\nThe probe receipt records that fetch failing because the pinned commit is not\navailable upstream. `FETCH_HEAD`'s mtime is 2026-10-16T12:57:40.734079+00:00, inside the\nlogged probe interval 2026-10-16T12:57:39.741326+00:00 to 2026-10-16T12:57:41.158775+00:00.\nThis attribution combines command, code, result and timing evidence; there is no\nsyscall audit proving the individual writer. The later failed annex query is\nnot needed to explain this delta.\n\nScope: read-only direct filesystem inventories plus existing preparation,\nfixture, skill snapshot, duct and native session evidence. No Git or annex\ncommand ran against the target during this review, and no assessment was\nregraded, repaired or replayed. Before/after and final comparisons verify that\nthe target capture, original fixture capture, fixture-source, fixture-source-input,\nassessment outputs (including their logs), snapshot-02 and listed preparation\nfiles retained their bytes, modes, kinds and link targets throughout these\ncomparisons. Native-session bytes and its receipt were also verified unchanged.\nRead access times are outside this integrity comparison.\n\nMachine-readable evidence: `delta.json`, `attribution.json`, and the two\n`source-inventory-*.json` files. Reproduction scripts: `compare_capture.py` and\n`inspect_attribution.py` (exclusive-create outputs; use a new review directory\nfor any later review). Full requested duct captures use `compare-` and\n`attribution-` prefixes in this directory. All review writes are confined here.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/invocation.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Read and carry out /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-b/prompt.txt. That file is the complete assignment and identifies the only permitted case, skill snapshot, supplied response and output directory. Do not read the source repository, other cases or surrounding planning records. Return the requested products and friction notes; do not commit or publish.",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/launch-record.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"agent\": \"/root/capture_skill_trial_b\",\n  \"fork_turns\": \"none\",\n  \"model_override\": \"gpt-6-luna\",\n  \"reasoning_effort_override\": \"high\",\n  \"authority\": \"con/skills AGENTS.md: test more than one model tier\",\n  \"prompt_sha256\": \"ca89cdd1d626f54f40817fb342aa59794c74b361738fe442b9a93ba19e43712b\",\n  \"invocation_sha256\": \"10b32eb86204074b1770839f18ea7262dcbf9c730aae086c03c3361c57da0880\",\n  \"status\": \"launched\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/native-session-receipt.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"retained_utc\": \"2026-10-16T13:08:55.883967+00:00\",\n  \"scope\": \"Closed independent prospective skill-use trial coordination session; not a formal research or assessment observation.\",\n  \"session_id\": \"01a144c9-4746-7e80-9c7e-fb025ef42ee1\",\n  \"agent_path\": \"/root/capture_skill_trial_b\",\n  \"parent_thread_id\": \"01a13c60-1063-7be3-8eab-fb5df54cb12b\",\n  \"source_path\": \"/Users/johnlee/.codex/sessions/2026/10/16/rollout-2026-10-16T08-56-44-01a144c9-4746-7e80-9c7e-fb025ef42ee1.jsonl\",\n  \"bytes\": 1419242,\n  \"sha256\": \"5b9483b9dd0ecc50accdb592e71f8bfb731af54c6a8dd62238a0147d0cd10cd5\",\n  \"records\": 327,\n  \"task_complete_events\": 1,\n  \"exact_prompt_path_observed\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-b/prompt.txt\",\n  \"prompt_sha256\": \"ca89cdd1d626f54f40817fb342aa59794c74b361738fe442b9a93ba19e43712b\",\n  \"launch_record_sha256\": \"7d4954c6eaddd9a16fa5624dd37240273708f3ea95940ceada8d0d9c61dfb46e\",\n  \"source_before_copy_after_equal\": true,\n  \"source_modified\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/prompt.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Use the assessment skill at /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/snapshot-02/skills/assess-alignment-with-stamped-principles/SKILL.md to assess the research delivery at /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-b/object-capture/content/workspace.\n\nWork in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-b/assessment. Complete the supplied response.json, whose object metadata identifies the original delivery. Write the report, probe records and checklist URL there too. The capture manifest is beside content/ in object-capture/. Preserve the supplied capture identity and actual Git identity. Treat this as an independent, read-only assessment; no scientific replay or source repair is requested. State reasonable assumptions and continue without a human clarification. Do not commit or publish.\n\nUse only this case, the copied skill and its conventions sibling. Do not read the source skills repository, other cases, previous assessments or parent planning records: this is an independent skill-use check. For commands, the supplied resource interpreter is /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python; it is assessment infrastructure, not worker evidence. Use PYTHONDONTWRITEBYTECODE=1 and GIT_OPTIONAL_LOCKS=0. Retain requested command logging with duct under your assessment directory, including failures; no Workshop capture. Record actual available model/tool identity without guessing.\n\nReturn the assessment products and a short friction.md listing instructions that were ambiguous, missing, contradictory or slow, quoting the relevant wording. Report completion without further changes to the target.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/response.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "19804 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/review.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"case\": \"case-b\",\n  \"snapshot\": \"snapshot-02\",\n  \"snapshot_files_unchanged\": true,\n  \"original_object_commit\": \"a701e40679cbea091490121a4f3ec55a62c75811\",\n  \"capture_sha256\": \"b4f4b5bbc6e58996184ac38829439b784a0946711e34e3dc427c277e81e6fa7f\",\n  \"response_sha256\": \"1e4e8a6bd62263871536093fd29accfb69688a7db1fff70254c9597c537078b4\",\n  \"response_identity_preserved\": true,\n  \"schema_valid\": true,\n  \"items\": 31,\n  \"native_session\": \"01a144c9-4746-7e80-9c7e-fb025ef42ee1\",\n  \"native_sha256\": \"5b9483b9dd0ecc50accdb592e71f8bfb731af54c6a8dd62238a0147d0cd10cd5\",\n  \"runtime_cli_version\": \"0.162.0-alpha.17.2\",\n  \"actual_turn_identities\": [\n    {\n      \"model\": \"gpt-6-luna\",\n      \"effort\": \"high\"\n    }\n  ],\n  \"scope\": \"Identity/schema and source-integrity review; no regrading or scientific replay.\",\n  \"capture_integrity_review\": \"integrity-review-01\",\n  \"limitations\": [\n    \"Strict end-of-trial capture validation failed; original failure and independent exact-delta review retained separately. A clean Git working tree is not complete capture equality.\",\n    \"Agent report incorrectly labels CODEX_VERSION as Desktop version and the PATH codex version as its active runtime; preserved unchanged. External native receipt supplies actual runtime/model/effort.\"\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-b/skill-hashes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "3884 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/2026-10-16-assessment.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "4151 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/2026-10-16-probe-draft.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "9361 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/2026-10-16-probes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"object\": {\n    \"path\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/object-capture/content/workspace\",\n    \"commit\": \"a701e40679cbea091490121a4f3ec55a62c75811\",\n    \"is_datalad\": true\n  },\n  \"checklist_version\": \"0.3.1\",\n  \"probes\": [\n    {\n      \"probe\": \"subdatasets-resolvable\",\n      \"status\": \"partial\",\n      \"items\": [\n        \"stamped-checklist:must/002\",\n        \"stamped-checklist:may/001\"\n      ],\n      \"reason\": \"1 linked module(s) are well-formed but do not resolve in fact: sourcedata/ds007116 \\u2014 url answers, but commit 84570256a is not fetchable from it: fatal: remote error: upload-pack: not our ref 84570256a2a2c84edaed247fee15a3a90b7039ed\",\n      \"evidence\": [\n        {\n          \"uri\": \".gitmodules\",\n          \"description\": \"sourcedata/ds007116: https://github.com/OpenNeuroDatasets/ds007116.git \\u2014 url answers, but commit 84570256a is not fetchable from it: fatal: remote error: upload-pack: not our ref 84570256a2a2c84edaed247fee15a3a90b7039ed\",\n          \"sha256\": null\n        }\n      ],\n      \"details\": {\n        \"resolvable\": [\n          {\n            \"path\": \"sourcedata/ds007116\",\n            \"url\": \"https://github.com/OpenNeuroDatasets/ds007116.git\"\n          }\n        ],\n        \"unresolvable\": [],\n        \"unreachable\": [\n          {\n            \"path\": \"sourcedata/ds007116\",\n            \"url\": \"https://github.com/OpenNeuroDatasets/ds007116.git\",\n            \"commit\": \"84570256a2a2c84edaed247fee15a3a90b7039ed\",\n            \"why\": \"url answers, but commit 84570256a is not fetchable from it: fatal: remote error: upload-pack: not our ref 84570256a2a2c84edaed247fee15a3a90b7039ed\"\n          }\n        ],\n        \"pinned_to_local_commits\": []\n      },\n      \"item_status\": {\n        \"stamped-checklist:must/002\": \"partial\",\n        \"stamped-checklist:may/001\": \"met\"\n      },\n      \"item_reason\": {\n        \"stamped-checklist:must/002\": \"1 linked module(s) are well-formed but do not resolve in fact: sourcedata/ds007116 \\u2014 url answers, but commit 84570256a is not fetchable from it: fatal: remote error: upload-pack: not our ref 84570256a2a2c84edaed247fee15a3a90b7039ed\",\n        \"stamped-checklist:may/001\": \"1 external component(s) are linked as modules: sourcedata/ds007116\"\n      }\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/capture-comparison-after.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "40927 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/capture-comparison-before.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "40807 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/duct-after_info.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/compare_capture.py after\", \"system\": {\"cpu_total\": 10, \"memory_total\": 34359738368, \"hostname\": \"vpn-two-factor-general-229-133-11.dartmouth.edu\", \"uid\": 501, \"user\": \"johnlee\", \"os_name\": \"Darwin\", \"os_release\": \"27.0.0\", \"os_version\": \"Darwin Kernel Version 27.0.0: Tue Aug 11 21:02:57 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8132\", \"arch\": \"arm64\", \"processor\": \"arm\", \"distro_id\": \"\", \"distro_id_like\": \"\", \"distro_name\": \"\", \"distro_version\": \"\", \"distro_version_id\": \"\", \"distro_codename\": \"\", \"distro_variant_id\": \"\", \"distro_pretty_name\": \"\", \"distro_build_id\": \"\"}, \"env\": {}, \"gpu\": null, \"duct_version\": \"0.22.0\", \"schema_version\": \"0.2.3\", \"execution_summary\": {\"exit_code\": 1, \"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/compare_capture.py after\", \"logs_prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_\", \"wall_clock_time\": 0.05295515060424805, \"peak_rss\": 5931008, \"average_rss\": 5931008, \"peak_vsz\": 474764017664, \"average_vsz\": 474764017664, \"peak_pmem\": 0.0, \"average_pmem\": 0.0, \"peak_pcpu\": 0.0, \"average_pcpu\": 0.0, \"num_samples\": 1, \"num_reports\": 2, \"start_time\": 1792156594.7779489, \"end_time\": 1792156594.830904, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\"}, \"output_paths\": {\"stdout\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_stdout\", \"stderr\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_stderr\", \"usage\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_usage.jsonl\", \"info\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_info.json\", \"prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-after_\"}, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\", \"message\": \"\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/duct-before_info.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/compare_capture.py before\", \"system\": {\"cpu_total\": 10, \"memory_total\": 34359738368, \"hostname\": \"vpn-two-factor-general-229-133-11.dartmouth.edu\", \"uid\": 501, \"user\": \"johnlee\", \"os_name\": \"Darwin\", \"os_release\": \"27.0.0\", \"os_version\": \"Darwin Kernel Version 27.0.0: Tue Aug 11 21:02:57 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8132\", \"arch\": \"arm64\", \"processor\": \"arm\", \"distro_id\": \"\", \"distro_id_like\": \"\", \"distro_name\": \"\", \"distro_version\": \"\", \"distro_version_id\": \"\", \"distro_codename\": \"\", \"distro_variant_id\": \"\", \"distro_pretty_name\": \"\", \"distro_build_id\": \"\"}, \"env\": {}, \"gpu\": null, \"duct_version\": \"0.22.0\", \"schema_version\": \"0.2.3\", \"execution_summary\": {\"exit_code\": 1, \"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/compare_capture.py before\", \"logs_prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_\", \"wall_clock_time\": 0.05956888198852539, \"peak_rss\": 5718016, \"average_rss\": 5718016, \"peak_vsz\": 474764017664, \"average_vsz\": 474764017664, \"peak_pmem\": 0.0, \"average_pmem\": 0.0, \"peak_pcpu\": 1.0, \"average_pcpu\": 1.0, \"num_samples\": 1, \"num_reports\": 2, \"start_time\": 1792156529.421888, \"end_time\": 1792156529.481457, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\"}, \"output_paths\": {\"stdout\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_stdout\", \"stderr\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_stderr\", \"usage\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_usage.jsonl\", \"info\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_info.json\", \"prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-before_\"}, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\", \"message\": \"\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/duct-confirm_info.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/confirm_remote.py\", \"system\": {\"cpu_total\": 10, \"memory_total\": 34359738368, \"hostname\": \"vpn-two-factor-general-229-133-11.dartmouth.edu\", \"uid\": 501, \"user\": \"johnlee\", \"os_name\": \"Darwin\", \"os_release\": \"27.0.0\", \"os_version\": \"Darwin Kernel Version 27.0.0: Tue Aug 11 21:02:57 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8132\", \"arch\": \"arm64\", \"processor\": \"arm\", \"distro_id\": \"\", \"distro_id_like\": \"\", \"distro_name\": \"\", \"distro_version\": \"\", \"distro_version_id\": \"\", \"distro_codename\": \"\", \"distro_variant_id\": \"\", \"distro_pretty_name\": \"\", \"distro_build_id\": \"\"}, \"env\": {}, \"gpu\": null, \"duct_version\": \"0.22.0\", \"schema_version\": \"0.2.3\", \"execution_summary\": {\"exit_code\": 0, \"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/confirm_remote.py\", \"logs_prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_\", \"wall_clock_time\": 0.8418467044830322, \"peak_rss\": 1949696, \"average_rss\": 1949696, \"peak_vsz\": 474628734976, \"average_vsz\": 474628734976, \"peak_pmem\": 0.0, \"average_pmem\": 0.0, \"peak_pcpu\": 0.0, \"average_pcpu\": 0.0, \"num_samples\": 1, \"num_reports\": 2, \"start_time\": 1792156593.7603562, \"end_time\": 1792156594.602203, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\"}, \"output_paths\": {\"stdout\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_stdout\", \"stderr\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_stderr\", \"usage\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_usage.jsonl\", \"info\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_info.json\", \"prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-confirm_\"}, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\", \"message\": \"\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/duct-pin_info.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/snapshot-03/skills/stamped-conventions/scripts/vendor_checklist.py --check\", \"system\": {\"cpu_total\": 10, \"memory_total\": 34359738368, \"hostname\": \"vpn-two-factor-general-229-133-11.dartmouth.edu\", \"uid\": 501, \"user\": \"johnlee\", \"os_name\": \"Darwin\", \"os_release\": \"27.0.0\", \"os_version\": \"Darwin Kernel Version 27.0.0: Tue Aug 11 21:02:57 PDT 2026; root:xnu-13432.1.9~1/RELEASE_ARM64_T8132\", \"arch\": \"arm64\", \"processor\": \"arm\", \"distro_id\": \"\", \"distro_id_like\": \"\", \"distro_name\": \"\", \"distro_version\": \"\", \"distro_version_id\": \"\", \"distro_codename\": \"\", \"distro_variant_id\": \"\", \"distro_pretty_name\": \"\", \"distro_build_id\": \"\"}, \"env\": {}, \"gpu\": null, \"duct_version\": \"0.22.0\", \"schema_version\": \"0.2.3\", \"execution_summary\": {\"exit_code\": 0, \"command\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/snapshot-03/skills/stamped-conventions/scripts/vendor_checklist.py --check\", \"logs_prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_\", \"wall_clock_time\": 0.053106069564819336, \"peak_rss\": 6471680, \"average_rss\": 6471680, \"peak_vsz\": 474772406272, \"average_vsz\": 474772406272, \"peak_pmem\": 0.0, \"average_pmem\": 0.0, \"peak_pcpu\": 0.0, \"average_pcpu\": 0.0, \"num_samples\": 1, \"num_reports\": 2, \"start_time\": 1792156529.961201, \"end_time\": 1792156530.014307, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\"}, \"output_paths\": {\"stdout\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_stdout\", \"stderr\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_stderr\", \"usage\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_usage.jsonl\", \"info\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_info.json\", \"prefix\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review/duct-pin_\"}, \"working_directory\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review\", \"message\": \"\"}",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/duct-probe_info.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "3693 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/friction.md"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "All requested narrow checks completed. No source evidence was changed,\nrepaired, committed or published, and no additional agent was launched.\n\n- The manifest omits the supplied empty `content/external` directory. The\n  strict complete-envelope comparison therefore returns exit 1 before and\n  after, despite exact equality of every listed entry and unchanged capture\n  contents. Both receipts retain this discrepancy; it was not normalized\n  away.\n- The copied skill requires a complete 31-item assessment, validation and\n  checklist URL in its general workflow. The explicit narrow-review request\n  overrides those steps. Only the requested probe was run; its response is\n  retained as a draft, and no completed checklist or URL was claimed.\n- The probe's may/001 `met` answer describes module-link presence even when\n  its own remote evidence proves the pin cannot be fetched. The conventions'\n  equivalent-evidence rule also requires retrievable links. This mapping is\n  flagged in the findings rather than silently adopting the draft.\n- The probe correctly performs its fetch outside the captured Git directory.\n  `TMPDIR` placed its temporary receiver under review. Independent\n  confirmation used a separate retained bare repository under review, so\n  failure-created `FETCH_HEAD` and other metadata cannot affect the capture.\n- The network check and independent fetch completed without credentials or\n  access blockers. A live remote and local remote-tracking refs were\n  insufficient: the exact recorded commit was rejected by the server.\n- The exact harness/model version stamp could not be established from this\n  case and its copied skills. The findings disclose that limit rather than\n  inspecting prohibited external runtime records or guessing identifiers.\n\nThe copied conventions' prerequisites and checklist pin check were followed.\nNo extra skill installation or Workshop activity was needed. Requested duct\nlogs remain in review, including the comparison commands' nonzero exits.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/invocation.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Read and perform the narrow assessment requested in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/prompt.txt using only that case and the copied skills it names. Preserve its complete original capture. Write only requested products under case-c/review. This is an independent usage check; do not inspect source repositories, other trials or parent planning. No commits or publication.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/launch-record.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"agent\": \"/root/capture_remote_probe_trial\",\n  \"fork_turns\": \"none\",\n  \"model_override\": null,\n  \"status\": \"launched\",\n  \"invocation_sha256\": \"f522a69d7344989cec439505f03fee85ea93159fc9e9a118e337ebfb8788ddd2\",\n  \"prompt_sha256\": \"b91c91c2447aeedcdd3a31884fbfc58bbefc3f8cb3aa12fd6f32e133a1fa08d5\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/native-session-receipt.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"retained_utc\": \"2026-10-16T13:20:13.292553+00:00\",\n  \"scope\": \"Closed independent prospective skill-use trial coordination session; not a formal research or assessment observation.\",\n  \"session_id\": \"01a144d8-d43f-79b2-b603-9d84fde11763\",\n  \"agent_path\": \"/root/capture_remote_probe_trial\",\n  \"parent_thread_id\": \"01a13c60-1063-7be3-8eab-fb5df54cb12b\",\n  \"source_path\": \"/Users/johnlee/.codex/sessions/2026/10/16/rollout-2026-10-16T09-13-43-01a144d8-d43f-79b2-b603-9d84fde11763.jsonl\",\n  \"bytes\": 632190,\n  \"sha256\": \"13425cddf31194df83c1909befb95377aac28d60ae4703884765c7d9d8ffad4b\",\n  \"records\": 120,\n  \"task_complete_events\": 1,\n  \"exact_prompt_path_observed\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/prompt.txt\",\n  \"prompt_sha256\": \"b91c91c2447aeedcdd3a31884fbfc58bbefc3f8cb3aa12fd6f32e133a1fa08d5\",\n  \"launch_record_sha256\": \"874cdae7ae0e1a3a702c6dd7ca04022d853801b8e3656c65d846747e081b3842\",\n  \"source_before_copy_after_equal\": true,\n  \"source_modified\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/prompt.txt"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "Use the assessment skill at /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/snapshot-03/skills/assess-alignment-with-stamped-principles/SKILL.md for a narrow review of linked-component retrievability in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/object-capture/content/workspace. Run its subdatasets-resolvable probe with the documented remote check; inspect the resulting evidence and explain whether the recorded module revision is retrievable. No full checklist, scientific replay or source repair is requested.\n\nBefore and after the probe, independently compare the complete supplied capture inventory (including Git metadata), file bytes, modes and symlinks with /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/object-capture/manifest.json, without changing the capture. Write your concise findings, exact comparison receipt, probe products and friction.md in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/case-c/review. Preserve all original evidence; do not repair it to satisfy a check.\n\nUse only this case and copied skills; do not read source repositories, earlier cases or parent planning records. The supplied assessment interpreter is /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python. Set PYTHONDONTWRITEBYTECODE=1 and GIT_OPTIONAL_LOCKS=0. Requested duct execution logs belong in review, using --fail-time 0 -c all -o all. Do not commit, publish, install skills, or launch another agent. Return the results and any instructions you could not follow.\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/remote-confirmation.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "4876 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/root-verification.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "{\n  \"scope\": \"Narrow remote-module probe regression on a new copy; no full checklist or scientific replay.\",\n  \"original_object_commit\": \"a701e40679cbea091490121a4f3ec55a62c75811\",\n  \"capture_sha256\": \"b4f4b5bbc6e58996184ac38829439b784a0946711e34e3dc427c277e81e6fa7f\",\n  \"canonical_capture_validation\": \"passed\",\n  \"complete_before_after_inventory_equal\": true,\n  \"snapshot_unchanged\": true,\n  \"native_session\": \"01a144d8-d43f-79b2-b603-9d84fde11763\",\n  \"native_sha256\": \"13425cddf31194df83c1909befb95377aac28d60ae4703884765c7d9d8ffad4b\",\n  \"actual_turn_identities\": [\n    {\n      \"model\": \"gpt-6-astra\",\n      \"effort\": \"ultra\"\n    }\n  ],\n  \"runtime_cli_version\": \"0.162.0-alpha.17.2\",\n  \"agent_comparison_limitation\": \"Agent marked the pre-existing empty content/external wrapper unexpected. The canonical validator explicitly requires this capture wrapper, and passes. Original agent findings are retained unchanged.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/case-c/skill-hashes.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "3163 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/blind-runs/2026-10-16-capture-draft/record.json"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "6146 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/tests/test_assessment_freeze.py"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "11096 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "--git-dir",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-capture-skill-01/publication-receiver.git",
+        "show",
+        "evals:stamped/tests/test_probes.py"
+      ],
+      "cwd": null,
+      "exit_code": 0,
+      "stdout": "86747 bytes",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/8c30/skills",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

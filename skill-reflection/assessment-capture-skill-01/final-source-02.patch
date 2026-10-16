@@ -1,0 +1,123 @@
+diff --git a/skills/assess-alignment-with-stamped-principles/SKILL.md b/skills/assess-alignment-with-stamped-principles/SKILL.md
+index cc9755b..a9e6414 100644
+--- a/skills/assess-alignment-with-stamped-principles/SKILL.md
++++ b/skills/assess-alignment-with-stamped-principles/SKILL.md
+@@ -68,6 +68,9 @@ python3 scripts/run_probes.py <object> --kind <kind> --check-remote \
+     -o <date>-probes.json --response <date>-response.json
+ ```
+ 
++For an existing captured-delivery response, use a separate probe draft (for example, `--response <date>-probe-draft.json`) and record reviewed item evidence with `set` in the original response.
++A probe draft describes the probed Git state; it cannot redefine the original capture.
++
+ `--check-remote` contacts the recorded module urls and fetches the commit each one is pinned to.
+ **Run it whenever the object has a linked module and you have network**: without it the shape check alone reports `met` for a module pinned to a commit that no longer exists upstream, which is a silently wrong answer on the most consequential item there is.
+ Say in the scope line when you could not.
+diff --git a/skills/assess-alignment-with-stamped-principles/scripts/probes/modules.py b/skills/assess-alignment-with-stamped-principles/scripts/probes/modules.py
+index 35df40e..2e7069f 100644
+--- a/skills/assess-alignment-with-stamped-principles/scripts/probes/modules.py
++++ b/skills/assess-alignment-with-stamped-principles/scripts/probes/modules.py
+@@ -7,6 +7,7 @@ from __future__ import annotations
+ 
+ import re
+ import subprocess
++import tempfile
+ 
+ from .common import Evidence, Object, Probe, clip
+ 
+@@ -106,11 +107,15 @@ def subdatasets_resolvable(obj: Object, check_remote: bool = False) -> Probe:
+             commit = recorded.get(mod["path"])
+             if not commit:
+                 continue
+-            fetch = subprocess.run(
+-                ["git", "fetch", "--depth=1", "--no-tags", url, commit],
+-                capture_output=True, text=True, timeout=300,
+-                cwd=str(obj.root),
+-            )
++            # Even a failed fetch creates FETCH_HEAD. Keep all received objects
++            # and metadata outside the assessed delivery.
++            with tempfile.TemporaryDirectory(prefix="stamped-remote-probe-") as receiver:
++                subprocess.run(["git", "init", "--bare", receiver], check=True,
++                               capture_output=True, text=True, timeout=30)
++                fetch = subprocess.run(
++                    ["git", "--git-dir", receiver, "fetch", "--depth=1", "--no-tags", url, commit],
++                    capture_output=True, text=True, timeout=300,
++                )
+             if fetch.returncode != 0:
+                 unreachable.append({**mod, "commit": commit,
+                                     "why": f"url answers, but commit {commit[:9]} is not fetchable from it: "
+diff --git a/skills/assess-alignment-with-stamped-principles/scripts/run_probes.py b/skills/assess-alignment-with-stamped-principles/scripts/run_probes.py
+index 293143b..1fb8c03 100644
+--- a/skills/assess-alignment-with-stamped-principles/scripts/run_probes.py
++++ b/skills/assess-alignment-with-stamped-principles/scripts/run_probes.py
+@@ -252,6 +252,17 @@ def main(argv: list[str] | None = None) -> int:
+     ap.add_argument("--quiet", action="store_true")
+     args = ap.parse_args(argv)
+ 
++    previous = {}
++    if args.response and args.response.exists() and not args.overwrite:
++        try:
++            previous = json.loads(args.response.read_text())
++        except (OSError, json.JSONDecodeError):
++            pass
++        if isinstance(previous, dict) and isinstance(previous.get("object"), dict):
++            if previous["object"].get("capture") is not None:
++                ap.error("--response identifies a captured delivery; keep it and use "
++                         "a separate probe draft path, then review item evidence with set")
++
+     root = args.path.resolve()
+     if not root.is_dir():
+         print(f"error: {root} is not a directory", file=sys.stderr)
+@@ -297,10 +308,6 @@ def main(argv: list[str] | None = None) -> int:
+     if args.response:
+         response = merge_into_response(results, obj, checklist, template, status_value, args.kind)
+         if args.response.exists() and not args.overwrite:
+-            try:
+-                previous = json.loads(args.response.read_text())
+-            except (OSError, json.JSONDecodeError):
+-                previous = {}
+             if previous:
+                 response = keep_judgement(response, previous)
+                 kept = response.pop("_kept_judgement_answers", 0)
+diff --git a/skills/stamped-conventions/references/response-format.md b/skills/stamped-conventions/references/response-format.md
+index d2b6d9e..cf3fac6 100644
+--- a/skills/stamped-conventions/references/response-format.md
++++ b/skills/stamped-conventions/references/response-format.md
+@@ -42,7 +42,7 @@ The app ignores keys it does not know, so one file serves both.
+     "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+   },
+   "extra_items": [
+-    {"key": "licence-declared", "status": "unmet", "reason": "No LICENSE, LICENSES/ or REUSE.toml; paper S.2/D.3 have no checklist item.", "evidence": []}
++    {"key": "license-declared", "status": "unmet", "reason": "No LICENSE, LICENSES/ or REUSE.toml; paper S.2/D.3 have no checklist item.", "evidence": []}
+   ],
+   "object": {"url": "…", "commit": "…", "captured_at": "2026-10-13T12:00:00Z", "kind": "study"},
+   "assessor": {"skill": "assess-alignment-with-stamped-principles", "version": "0.2.0", "harness": "claude-code 2.1.x", "model": "…", "date": "2026-10-13",
+@@ -96,7 +96,7 @@ A report without the stamp cannot be compared against another iteration, so it i
+ 
+ Use this order, so the reader meets the actionable part first:
+ 
+-1. **Verdict line** — `MUST: n met / n partial / n unmet / n not-checked`, then SHOULD and MAY, each with its denominator.
++1. **Verdict line** — `MUST: n met / n partial / n unmet / n not-checked / n not-applicable`, then SHOULD and MAY, each with its full denominator.
+    No single overall score, ever.
+ 2. **What to fix first** — at most five, highest leverage first, each as *what to change* → *why it matters to this project* → *the item ids it closes*.
+ 3. **What the project already does well** — two or three, with citations.
+diff --git a/skills/stamped-conventions/scripts/encode_response.py b/skills/stamped-conventions/scripts/encode_response.py
+index 13b4a36..c7d70cb 100644
+--- a/skills/stamped-conventions/scripts/encode_response.py
++++ b/skills/stamped-conventions/scripts/encode_response.py
+@@ -28,6 +28,7 @@ from __future__ import annotations
+ 
+ import argparse
+ import base64
++import datetime
+ import hashlib
+ import json
+ import pathlib
+@@ -228,6 +229,8 @@ def stamp(response: dict, harness: str | None = None, model: str | None = None,
+             "uri": str(capture), "sha256": digest.hexdigest(),
+         }
+     assessor = response.setdefault("assessor", {})
++    if not assessor.get("date"):
++        assessor["date"] = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+     if harness:
+         assessor["harness"] = harness
+     if model:
