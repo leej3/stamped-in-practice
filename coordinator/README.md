@@ -4,7 +4,8 @@ The authoritative scientific delivery is the complete verified [capture archive]
 It retains dirty, untracked and ignored files, environment bytes, literal links and workspace Git metadata.
 The [original manifest](original-manifest.json), [package index](delivery-01/index.json) and [stop receipt](native-attempt-01/native/worker-end-state.json) identify those exact bytes.
 
-This publisher starts from the actual worker Git history; its checkout does not reconstruct uncommitted scientific outputs.
+This publisher starts from the actual worker Git history.
+The scientific files now visible at the experiment root are unchanged coordinator copies of the original uncommitted delivery; [their manifest](browsable-copy-01/manifest.json) records exact hashes and storage.
 Dataset creation, retention and publication are coordinator actions.
 The [identity record](retention.json) keeps the original capture SHA and worker HEAD separate from later retention commits.
 
