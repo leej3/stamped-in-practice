@@ -3,7 +3,7 @@
 The assessment hold is lifted.
 Round 1 is completing its original 12 research workers and 16 assigned judgments; the science is not being restarted.
 All twelve original research workers have completed.
-Ten assigned primary judgments have completed; two primaries and the preselected worker-07 duplicate are running.
+All twelve primaries and three preselected duplicates have completed; the final assigned duplicate is running.
 One additional completed repair attempt is retained separately.
 The [current ledger](round-1.json) records exact identities and timestamps.
 

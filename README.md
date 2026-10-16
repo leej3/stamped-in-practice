@@ -56,7 +56,7 @@ The tested source and preparation evidence are linked in [`source-version.json`]
 
 Round 1 is completing its original **12 research workers and 16 assigned judgments**; it is not restarting the science.
 All twelve original research workers have finished.
-Ten assigned primaries have finished; two primaries and the preselected worker-07 duplicate are running.
+All twelve primaries and three preselected duplicates have finished; the final assigned duplicate is running.
 One supplementary repair attempt is retained separately.
 The [current status](iterations/narps-v1/assessment-hold.md) and [ledger](iterations/narps-v1/round-1.json) track progress.
 The [measurement disposition](iterations/narps-v1/measurement-disposition-01.md) preserves first-assigned judgments and marks infrastructure-affected measures unavailable.
