@@ -22,7 +22,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'experiments/narps-poster/map-inputs'
 REPO = 'https://github.com/leej3/stamped-in-practice'
-CONDITIONS = [('baseline', 'No supplied skills'), ('discover-general', 'Find useful skills'),
+CONDITIONS = [('baseline', 'No supplied research skills'), ('discover-general', 'Find useful skills'),
               ('discover-science', 'Find research skills'), ('stamped-explicit', 'Use STAMPED skills')]
 
 

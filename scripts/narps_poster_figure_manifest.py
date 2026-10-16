@@ -29,12 +29,15 @@ def main():
         FIGURES / "narps-group-map-manifest.json",
         FIGURES / "narps-spatial-manifest.json",
         FIGURES / "narps-spatial-summary.json",
+        FIGURES / "round-progression-manifest.json",
+        Path("experiments/retained-round-reporting/pooled/poster-outcomes.json"),
         Path("pixi.toml"),
     ]
     sources.extend(Path("scripts") / name for name in (
         "render_narps_group_map.py", "render_narps_spatial.py",
         "extract_narps_spatial.py", "capture_narps_group_map.py",
         "narps_poster_figure_manifest.py",
+        "render_poster_progression.py", "summarize_poster_outcomes.py",
     ))
     manifest = {
         "schema_version": 1,
@@ -45,6 +48,7 @@ def main():
         "figures": [entry(FIGURES / name) for name in (
             "narps-group-map.svg", "narps-group-map.png",
             "narps-spatial-agreement.svg", "narps-spatial-agreement.png",
+            "round-progression.svg", "round-progression.png",
         )],
         "sources": [entry(path) for path in sources],
     }

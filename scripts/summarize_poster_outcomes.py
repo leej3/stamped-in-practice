@@ -14,7 +14,7 @@ import statistics
 import tempfile
 
 LABELS = {
-    "baseline": "No supplied skills",
+    "baseline": "No supplied research skills",
     "discover-general": "Find useful skills",
     "discover-science": "Find research skills",
     "stamped-explicit": "Use STAMPED skills",

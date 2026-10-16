@@ -15,6 +15,7 @@ matplotlib.use("Agg")
 from matplotlib.colors import BoundaryNorm, ListedColormap, LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import numpy as np
+from summarize_poster_outcomes import LABELS
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "experiments/narps-poster/map-inputs/spatial"
@@ -82,7 +83,8 @@ def main():
     for k, condition in enumerate(meta["conditions"]):
         ids = groups[k]
         summary["conditions"].append({
-            **condition, "runs": [meta['records'][i]['run'] for i in ids], 'n': len(ids),
+            **condition, "label": LABELS[condition["id"]],
+            "runs": [meta['records'][i]['run'] for i in ids], 'n': len(ids),
             "positive_in_n_runs_voxel_counts": {str(n): int(np.sum(shared & (frequency[k] == n))) for n in range(13)},
             "native_positive_voxels_per_run": [int(v.sum()) for v in positive[ids]],
             "shared_positive_voxels_per_run": [int((v & shared).sum()) for v in positive[ids]],
@@ -111,7 +113,7 @@ def main():
               affine[0, 3] + affine[0, 0] * (shared.shape[0] - .5),
               affine[1, 3] - affine[1, 1] / 2,
               affine[1, 3] + affine[1, 1] * (shared.shape[1] - .5)]
-    labels = ["No supplied\nskills", "Find useful\nskills", "Find research\nskills", "Use STAMPED\nskills"]
+    labels = ["No supplied\nresearch skills", "Find useful\nskills", "Find research\nskills", "Use STAMPED\nskills"]
     for row in range(4):
         for col, mm in enumerate(meta["display"]["z_cuts_mni_mm"]):
             ax = axes[row, col]

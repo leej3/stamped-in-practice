@@ -3,6 +3,7 @@
 This benchmark owns the scientific figure code, frozen inputs and provenance used by the poster.
 The presentation repository keeps SVG and PNG display copies and a binding to the benchmark revision that produced them.
 The current spatial figures use the 48 original research deliveries from rounds two and three of `narps-neutral-v1`: six analyses per condition per round.
+The round-progression chart displays the existing retained primary outcome summaries for all three rounds.
 
 ## Reproduce the published figures
 
@@ -30,14 +31,35 @@ The outputs are under [`experiments/narps-poster/figures/`](../experiments/narps
 | `narps-group-map.svg` | Original round-two run 09 group t map, native coverage and anatomical vmPFC proxy |
 | `narps-spatial-agreement.svg` | Native positive-FWE detection frequency across 48 R2/R3 analyses, pooled by assigned condition |
 | `narps-spatial-summary.json` | Shared support, per-run detection counts, round membership and condition frequencies |
+| `round-progression.svg` | Scientific adequacy and evaluated checklist items met by condition across rounds one to three |
+| `round-progression-manifest.json` | Exact summary input hash, skill revisions, plotted values, available denominators and rendering provenance |
 | `narps-group-map-manifest.json` | Input, generator, software and output hashes for the example |
 | `narps-spatial-manifest.json` | Input, generator, software, summary and output hashes for the spatial comparison |
 | `poster-figure-manifest.json` | Portable export binding for presentation repositories |
 
-PNG versions accompany both SVGs.
-Both figures use at least 28-point text at a width of 13.5 inches, retaining more than 24 points when placed at 12.5 inches.
-The individual tasks are `pixi run poster-group-map` and `pixi run poster-spatial-map`.
+PNG versions accompany all three SVGs.
+The spatial and group-map figures use at least 28-point text at a width of 13.5 inches, retaining more than 24 points when placed at 12.5 inches.
+The progression chart uses at least 24-point text at a width of 14 inches; display it at 1,344 CSS pixels or wider to retain that print minimum.
+The individual tasks are `pixi run poster-group-map`, `pixi run poster-spatial-map` and `pixi run poster-progression`.
 Their scripts accept `--inputs` and `--output` for isolated offline replay without overwriting retained outputs.
+
+## Round-specific outcomes
+
+The progression renderer reads only [`poster-outcomes.json`](../experiments/retained-round-reporting/pooled/poster-outcomes.json), using its existing `round_conditions` rows.
+It performs no new assessment or scientific analysis.
+Scientific adequacy is the percentage of assessed primary judgments marked supported; this is distinct from support for the neuroscience hypothesis.
+Checklist attainment is the equal-run mean of `met/(met+partial+unmet)` among available primary responses.
+Not-checked and not-applicable items are excluded from that evaluated-item denominator, with their counts retained in the manifest.
+
+Each condition has six assigned workers per round.
+Scientific n is five for round-two research discovery and round-three STAMPED, and six otherwise.
+Checklist n is four for round-one baseline, five for those same two groups, and six otherwise.
+Missing responses are not plotted as zero.
+The lines connect fresh groups of workers and describe differences across rounds; they do not track individual workers or establish a causal skill effect.
+Fixed horizontal offsets make coincident points visible without changing their values.
+
+The label “No supplied research skills” describes the baseline assignment; common runtime system skills remained available.
+The scientific source records retain their original labels, while generated display summaries use the clarified presentation label.
 
 ## Scientific meaning and coverage
 
@@ -128,7 +150,7 @@ Adding rounds or changing eligible scientific outputs requires reviewing the sel
 
 ## Export to the poster
 
-Run `pixi run poster-figures` and copy the four SVG/PNG assets listed in `poster-figure-manifest.json` into the poster's display-assets directory.
+Run `pixi run poster-figures` and copy the six SVG/PNG assets listed in `poster-figure-manifest.json` into the poster's display-assets directory.
 Verify their SHA-256 values against that manifest and record the benchmark checkout revision in the presentation's binding.
 Regenerate the manifest whenever its bound code or root Pixi manifest changes.
 

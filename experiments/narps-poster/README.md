@@ -3,6 +3,7 @@
 The current figures describe all 48 original research deliveries in rounds two and three of `narps-neutral-v1`: six analyses per condition per round.
 No research worker or judge was rerun to produce these figures.
 Original computations and native correction choices are preserved, including analyses with no detections.
+The companion round-progression chart displays the existing retained primary outcome summaries across rounds one to three, with each available denominator preserved.
 
 ## Replay the figures
 
@@ -20,6 +21,9 @@ The generated SVG and PNG files belong to this benchmark; the poster repository 
   NumPy opens the archive without pickle or any external dependency beyond the root environment.
 - [Numerical summary](figures/narps-spatial-summary.json) retains per-run counts and round-specific membership behind the pooled condition maps.
 - [Example provenance](map-inputs/example/provenance.json) binds the complete group-map illustration to the original round-two run 09, including its native coverage and Harvard–Oxford anatomical vmPFC proxy.
+- [Round progression](figures/round-progression.svg) compares scientific adequacy and mean evaluated checklist items met across the three rounds.
+  Its [manifest](figures/round-progression-manifest.json) binds the existing summary input, exact skill revisions, all plotted values and missingness.
+  These are descriptive summaries of fresh groups of workers, not individual trajectories or causal effects.
 
 ## What the spatial figure measures
 

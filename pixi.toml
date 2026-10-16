@@ -44,8 +44,9 @@ readiness-tests = { cmd = "python -m pytest -q tests/test_readiness.py", descrip
 assessment-procedure = { cmd = "python scripts/assessment_procedure.py", description = "Seal or check a formal comparison procedure" }
 poster-group-map = "python scripts/render_narps_group_map.py"
 poster-spatial-map = "python scripts/render_narps_spatial.py"
-poster-figures = { cmd = "python scripts/narps_poster_figure_manifest.py", depends-on = ["poster-group-map", "poster-spatial-map"] }
+poster-figures = { cmd = "python scripts/narps_poster_figure_manifest.py", depends-on = ["poster-group-map", "poster-spatial-map", "poster-progression"] }
 poster-capture-spatial = "python scripts/extract_narps_spatial.py"
 poster-capture-example = "python scripts/capture_narps_group_map.py"
 
 poster-outcomes = "python scripts/summarize_poster_outcomes.py --config experiments/retained-round-reporting/poster-pool.json --output experiments/retained-round-reporting/pooled"
+poster-progression = "python scripts/render_poster_progression.py"

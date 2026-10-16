@@ -4,7 +4,7 @@ Retained rounds: 1, 2, 3.
 
 | Instruction | Assigned runs | Science: supported / assessed | Replay: matching / executed | STAMPED mean met % (n) |
 | --- | ---: | ---: | ---: | ---: |
-| No supplied skills | 18 | 16/18 | 5/5 | 22.6 (16) |
+| No supplied research skills | 18 | 16/18 | 5/5 | 22.6 (16) |
 | Find useful skills | 18 | 13/18 | 2/3 | 23.2 (18) |
 | Find research skills | 18 | 10/17 | 3/7 | 22.3 (17) |
 | Use STAMPED skills | 18 | 10/17 | 3/6 | 32.3 (17) |
