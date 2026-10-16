@@ -1,0 +1,924 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "codex/narps-neutral-r1-11-browsable"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "git@github.com:leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "47e3043969b88adba4f04af6a2cde77982ea8dcb"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n * branch            47e3043969b88adba4f04af6a2cde77982ea8dcb -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "reset",
+      "--hard",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "HEAD is now at 47e3043 chore(retention): preserve original delivery for narps-neutral-r1-11\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "47e3043969b88adba4f04af6a2cde77982ea8dcb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "eece8595d255a766517e32ff10b2e6574d3c4e6a:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "eece8595d255a766517e32ff10b2e6574d3c4e6a",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob d15971272f1cf61c142aa7546bd517c565616edd\tcoordinator/delivery-01/delivery.tar.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-11 browsable coordinator copy"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-11 browsable coordinator copy ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "47e3043969b88adba4f04af6a2cde77982ea8dcb\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "add",
+      "--force-large",
+      "--backend=SHA256E",
+      "--",
+      "results/analysis_mask.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-2mm.nii.gz",
+      "results/atlas/mni152_template_2mm.nii.gz",
+      "results/group_mean_cope.nii.gz",
+      "results/group_t.nii.gz",
+      "results/minus_log10_p_fwe.nii.gz",
+      "results/minus_log10_p_uncorrected.nii.gz",
+      "results/significant_fwe05.nii.gz",
+      "results/vmPFC_atlas_roi.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "add results/analysis_mask.nii.gz \n\n49%   31.98 KiB       363 MiB/s 0s\n100%  64.99 KiB       129 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz \n\n18%   31.98 KiB       539 MiB/s 0s\n100%  176.16 KiB      236 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-2mm.nii.gz \n\n89%   31.98 KiB       459 MiB/s 0s\n100%  35.99 KiB        32 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-1mm.nii.gz \n\n22%   31.98 KiB       539 MiB/s 0s\n100%  143.07 KiB      242 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz \n\n100%  28.43 KiB       455 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-1mm.nii.gz \n\n25%   31.98 KiB       651 MiB/s 0s\n100%  126.12 KiB      280 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-2mm.nii.gz \n\n100%  22.1 KiB        400 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-1mm.nii.gz \n\n1%    31.98 KiB       801 MiB/s 0s\n100%  3.25 MiB        268 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-2mm.nii.gz \n\n6%    31.98 KiB       529 MiB/s 0s\n100%  501.14 KiB      257 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz \n\n10%   31.98 KiB       558 MiB/s 0s\n100%  309.94 KiB      300 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz \n\n53%   31.98 KiB       521 MiB/s 0s\n100%  60.74 KiB       230 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz \n\n12%   31.98 KiB       548 MiB/s 0s\n100%  260.18 KiB      264 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz \n\n64%   31.98 KiB       539 MiB/s 0s\n100%  50 KiB          147 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz \n\n15%   31.98 KiB       548 MiB/s 0s\n100%  214.87 KiB      292 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz \n\n84%   31.98 KiB       529 MiB/s 0s\n100%  38.19 KiB        45 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-1mm.nii.gz \n\n1%    31.98 KiB       548 MiB/s 0s\n100%  6.14 MiB        268 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-2mm.nii.gz \n\n4%    31.98 KiB       822 MiB/s 0s\n100%  896.65 KiB      271 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-1mm.nii.gz \n\n15%   31.98 KiB       539 MiB/s 0s\n100%  208.53 KiB      279 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-2mm.nii.gz \n\n75%   31.98 KiB       529 MiB/s 0s\n100%  42.69 KiB        86 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-1mm.nii.gz \n\n17%   31.98 KiB       568 MiB/s 0s\n100%  193.09 KiB      255 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-2mm.nii.gz \n\n80%   31.98 KiB       496 MiB/s 0s\n100%  40.23 KiB        68 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-1mm.nii.gz \n\n16%   31.98 KiB       446 MiB/s 0s\n100%  205.31 KiB      238 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-2mm.nii.gz \n\n76%   31.98 KiB       529 MiB/s 0s\n100%  42.23 KiB        82 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-1mm.nii.gz \n\n0%    31.98 KiB       601 MiB/s 0s\n100%  13.96 MiB       263 MiB/s 0s\n                                  \nok\nadd results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-2mm.nii.gz \n\n2%    31.98 KiB       529 MiB/s 0s\n100%  2.01 MiB        276 MiB/s 0s\n                                  \nok\nadd results/atlas/mni152_template_2mm.nii.gz \n\n14%   31.98 KiB       521 MiB/s 0s\n100%  224.67 KiB      249 MiB/s 0s\n                                  \nok\nadd results/group_mean_cope.nii.gz \n\n3%    31.98 KiB       637 MiB/s 0s\n100%  1.03 MiB        259 MiB/s 0s\n                                  \nok\nadd results/group_t.nii.gz \n\n3%    31.98 KiB       548 MiB/s 0s\n100%  1.03 MiB        289 MiB/s 0s\n                                  \nok\nadd results/minus_log10_p_fwe.nii.gz \n\n45%   31.98 KiB       558 MiB/s 0s\n100%  71.76 KiB       169 MiB/s 0s\n                                  \nok\nadd results/minus_log10_p_uncorrected.nii.gz \n\n3%    31.98 KiB       679 MiB/s 0s\n100%  1 MiB           258 MiB/s 0s\n                                  \nok\nadd results/significant_fwe05.nii.gz \n\n100%  31.04 KiB       659 MiB/s 0s\n                                  \nok\nadd results/vmPFC_atlas_roi.nii.gz \n\n98%   31.98 KiB       601 MiB/s 0s\n100%  32.69 KiB         6 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/analysis_mask.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s66546--2c88b35880eb8814322a5df81c277844020c1662416375e92bdae4c76f6d0970.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s180388--66c408e78fe04266be5172c5a332d44225c7500545c8aede5956b31a53921622.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s36850--7cc29b28d24b39016a7f284132d737f9bbbe9926c6a92099b9e6428dfd798383.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s146506--109ab2c5b4958185ee061f75aa38c9afc37de273e0b2e02288f4ab12693b60d8.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s29113--586d76a7defd278fcea4d83d301994d7e096aa8272d26e3c7539b4f8ebd588c1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s129144--35635a983af6de9edf1a24aaf9b4bba96f3a4dbdad756e99f058324424f42ced.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s22629--8d399877dbb3ecf1ffd37438a1430fb276babac59baf976793b2a7755617cdff.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s3412276--e1028f4c98641dc6b49667fc60bfa497899bcb6c13772fa9dcedba18ff58d173.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s513170--0a978a190f805bec796a547a444d6b83e170ef47a4955db4337bbba48d2954ac.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s317381--dd61a65b72b5e514808d1c40c518f23607f9f86462255dac800234e48cf2f32a.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s62201--97dcab319b054ede80e53ad414659b1ba86ca8d1a840c30d4402d9d9200bc954.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s266429--74703890d03b2d32a766fc28c7caa50d1b419a479f3fde1651f34edba593305b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s51205--26d8462347ec96a63bff47d17e880fa27ecc79c76c8e525c317a3c860418c202.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s220027--c98c65d1bfb4399a06c6ecfa83e56b2234a49027bdeb2a0ea1f8da404e2de6cf.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s39111--90099fcbdb2e84640a7245be42cd61de1317793203542a4649dfe2dd6d10c880.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s6441470--c0973f4a32d501a0208d5b87de9ef61d3da6eb3a1d32ffe00b632c8c1505c7f5.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s918168--41efdb587a5c965b6f9014e2ac4362ba0929a58083bea179ebe9e1b549c7e5eb.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s213539--32ab3781ed71c011de3fde812760725a2b49eb073f4745f519bef357c971a385.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s43710--ec72eae15911d34d00a27060f2b3a042ffe8f0deefa26d6de64f6b874e13dd04.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s197724--b5b26dfbe147976021639d2f52d7e0c79a1fe6c46e840c8005251ec7f09fe149.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s41196--b7e0c54535885de6f3f04d17461a2959aa1df50bfbe9bd53b713925aabc6f330.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s210234--7a95bb149c3554ee20954b0556f46792496381261feb0eb279fe74f2e60c3590.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s43245--4bc13d87728ec187219ff5ea8a8d35446a873beb96c97db1a84f39896b0f327f.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-1mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s14636981--86e6f300ddde64f05e4259ffe1624f37adc57789928aca175156a8e21c2dfcee.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s2109756--f4201571883bb83e06828e37826b50fd9190f118e6593c906ccbe615b9564321.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/atlas/mni152_template_2mm.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s230063--0d8b8f9574a88657bad490d7f64d804cb11ab77a339882990e8a3786e141c9f3.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1075001--d5792dfa0cbff3fbed6a57b2acd5935cd27951141c82f76a2a1904aff7dd989a.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_t.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1076313--d3db14fceb26d1ce9d39b29a590d6b3915c083c48318bcae92239e0798dc96da.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/minus_log10_p_fwe.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s73480--254dc7c6cb757e5ecda980b8a409e827b7c824cff5430037212ebd890802a937.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/minus_log10_p_uncorrected.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1052390--b15f237c80dbe696f98e5b9904f01f5b0ebc5e6bb22b1b9b02193e0af8b7638c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/significant_fwe05.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s31789--e545e554b1afeba98f5ebed95fd3b31bf63cc090e7d9353b4b6f2c990dede988.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/vmPFC_atlas_roi.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s33478--7ab14238c4cadcb7a80e314a1160077ded305855618db452a4868b61a7873391.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "pre-commit",
+      "run",
+      "--config",
+      "/Users/johnlee/code/CON/stamped-in-practice/.pre-commit-config.yaml",
+      "snapper",
+      "--files",
+      "coordinator/README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 1,
+    "stderr": "",
+    "stdout": "Format prose with Snapper................................................Failed\n- hook id: snapper\n- files were modified by this hook\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "pre-commit",
+      "run",
+      "--config",
+      "/Users/johnlee/code/CON/stamped-in-practice/.pre-commit-config.yaml",
+      "snapper",
+      "--files",
+      "coordinator/README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Format prose with Snapper................................................Passed\n"
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "--force",
+      "--",
+      ".gitattributes",
+      "coordinator/README.md",
+      "coordinator/browsable-copy-01",
+      ".codex/skills/datalad-fsck/LICENSE",
+      ".codex/skills/datalad-fsck/SKILL.md",
+      "analysis/run_analysis.py",
+      "report.md",
+      "results/analysis_mask.nii.gz",
+      "results/atlas/README.md",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-prob-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-cortl-prob-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr0-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr25-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-maxprob-thr50-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-1mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/HarvardOxford-sub-prob-2mm.nii.gz",
+      "results/atlas/fsl/data/atlases/HarvardOxford/labels",
+      "results/atlas/fsl/data/atlases/HarvardOxford/relabel",
+      "results/atlas/fsl/data/atlases/HarvardOxford-Cortical-Lateralized.xml",
+      "results/atlas/fsl/data/atlases/HarvardOxford-Cortical.xml",
+      "results/atlas/fsl/data/atlases/HarvardOxford-Subcortical.xml",
+      "results/atlas/mni152_template_2mm.nii.gz",
+      "results/figure1_whole_brain.png",
+      "results/figure2_vmPFC_participants.png",
+      "results/group_mean_cope.nii.gz",
+      "results/group_t.nii.gz",
+      "results/minus_log10_p_fwe.nii.gz",
+      "results/minus_log10_p_uncorrected.nii.gz",
+      "results/participant_qc.tsv",
+      "results/permutation_max_t.tsv",
+      "results/results.json",
+      "results/significant_fwe05.nii.gz",
+      "results/vmPFC_atlas_roi.nii.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-11-01/publisher",
+    "returncode": 2,
+    "stderr": "",
+    "stdout": "results/atlas/fsl/data/atlases/HarvardOxford/relabel:3: trailing whitespace.\n+for ((i=1; i<22; i++)); do \nresults/atlas/fsl/data/atlases/HarvardOxford/relabel:4: trailing whitespace.\n+  v=`sed -ne \"${i}p\" labels` \nresults/atlas/fsl/data/atlases/HarvardOxford/relabel:9: trailing whitespace.\n+for ((i=2; i<22; i++)); do \n"
+  }
+]
