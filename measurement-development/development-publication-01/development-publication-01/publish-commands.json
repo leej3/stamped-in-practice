@@ -1,0 +1,106 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "20917d21f5c698152b032ecff37374ab4e603a82\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "add",
+      "--",
+      "README.md",
+      "measurement-development",
+      "skill-reflection"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      "README.md",
+      "measurement-development/assessment-operational-live-trial-01/README.md",
+      "skill-reflection/research-skill-revision-01/README.md"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 2,
+    "stdout": "skill-reflection/research-skill-revision-01/independent-review/prospective-clarifications.diff:5: trailing whitespace.\n+ \nskill-reflection/research-skill-revision-01/independent-review/prospective-clarifications.diff:26: trailing whitespace.\n+ \nskill-reflection/research-skill-revision-01/independent-review/prospective-clarifications.diff:49: trailing whitespace.\n+ \n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--name-only"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "README.md\nmeasurement-development/assessment-operational-live-trial-01/.gitattributes\nmeasurement-development/assessment-operational-live-trial-01/README.md\nmeasurement-development/assessment-operational-live-trial-01/key-artifact-manifest.json\nmeasurement-development/assessment-operational-live-trial-01/manifest.json\nmeasurement-development/assessment-operational-live-trial-01/package.py\nmeasurement-development/assessment-operational-live-trial-01/package.stderr\nmeasurement-development/assessment-operational-live-trial-01/package.stdout\nmeasurement-development/assessment-operational-live-trial-01/purpose.json\nmeasurement-development/assessment-operational-live-trial-01/quality-review/review.json\nmeasurement-development/assessment-operational-live-trial-01/trial-and-runtime.tar.gz\nmeasurement-development/assessment-operational-live-trial-01/trial-findings.json\nmeasurement-development/assessment-operational-live-trial-01/trial-verification.json\nmeasurement-development/assessment-operational-live-trial-01/verification.json\nskill-reflection/research-skill-revision-01/.gitattributes\nskill-reflection/research-skill-revision-01/FRICTION.md\nskill-reflection/research-skill-revision-01/README.md\nskill-reflection/research-skill-revision-01/alignment-skill-snapshot.json\nskill-reflection/research-skill-revision-01/figure-comparison.json\nskill-reflection/research-skill-revision-01/independent-review/COMMANDS.md\nskill-reflection/research-skill-revision-01/independent-review/REVIEW.md\nskill-reflection/research-skill-revision-01/independent-review/checks-first-host-python-attempt.json\nskill-reflection/research-skill-revision-01/independent-review/checks.json\nskill-reflection/research-skill-revision-01/independent-review/commands.json\nskill-reflection/research-skill-revision-01/independent-review/followup-01/FOLLOWUP.md\nskill-reflection/research-skill-revision-01/independent-review/followup-01/checks.json\nskill-reflection/research-skill-revision-01/independent-review/followup-01/manifest.json\nskill-reflection/research-skill-revision-01/independent-review/followup-01/verify_additive_evidence.py\nskill-reflection/research-skill-revision-01/independent-review/prospective-clarification-hashes.json\nskill-reflection/research-skill-revision-01/independent-review/prospective-clarifications.diff\nskill-reflection/research-skill-revision-01/independent-review/review-manifest.json\nskill-reflection/research-skill-revision-01/independent-review/review_checks.py\nskill-reflection/research-skill-revision-01/independent-review/reviewer-identity.json\nskill-reflection/research-skill-revision-01/independent-review/source-hashes.json\nskill-reflection/research-skill-revision-01/item-differences.json\nskill-reflection/research-skill-revision-01/item-differences.md\nskill-reflection/research-skill-revision-01/manifest.json\nskill-reflection/research-skill-revision-01/package.py\nskill-reflection/research-skill-revision-01/package.stderr\nskill-reflection/research-skill-revision-01/package.stdout\nskill-reflection/research-skill-revision-01/trial-and-runtime.tar.gz\nskill-reflection/research-skill-revision-01/validation.json\nskill-reflection/research-skill-revision-01/verification.json\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "commit",
+      "-F",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/development-publication-01/message.txt"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Format authored prose with Snapper.......................................Failed\n- hook id: snapper\n- files were modified by this hook\n"
+  }
+]

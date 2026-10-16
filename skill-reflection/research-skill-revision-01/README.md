@@ -7,7 +7,7 @@ These are generic workflow changes; no NARPS answer was inserted.
 A fresh, limited-context alignment trial preserved the supplied input, analysis, summary, figure and report while adding reconstruction and verification evidence.
 The final delivery had 44 files and retained its original Git commit, with uncommitted additions explicitly captured.
 The unchanged analysis produced identical CSV values through both a fresh virtual environment and the supplied environment.
-The regenerated PNGs differed cosmetically from the supplied figure; the original figure and difference evidence remain retained.
+The regenerated PNGs matched each other but differed from the supplied figure; the cause remains unestablished, and the original figure and difference evidence are retained.
 
 The [independent review](independent-review/REVIEW.md) checked the artifacts and disclosed instruction friction and recording limits.
 Its [additive follow-up](independent-review/followup-01/FOLLOWUP.md) verified exact native commands and completion records for the two environment routes, resolving the earlier historical-attribution gap.
@@ -34,3 +34,4 @@ The compressed archive is 378,945,867 bytes, SHA-256 `63f3105cc20b84aa76f1515856
 Absolute environment links are retained literally and may require relocation; no another-host executability is claimed.
 The original [friction report](FRICTION.md), [item differences](item-differences.md) and source review remain separately readable without replacing their raw archived bytes.
 Use the coordinator repository's [retrieval guide](https://github.com/leej3/stamped-in-practice/blob/main/RETRIEVAL.md) for the annex route.
+The [independent publication check](../../measurement-development/development-publication-01/README.md) retrieved the archive and rechecked every member.

@@ -31,3 +31,4 @@ The [package verification](verification.json) records all 41,859 member byte has
 The compressed archive is 375,352,367 bytes, SHA-256 `b9a52cda569cd992f2b48584b98392f594dfa0b9cf70f9d6e30afd40dacea83c`.
 Absolute links remain literal provenance and may need relocation; this is not a portable binary-environment claim.
 Use the coordinator repository's [retrieval guide](https://github.com/leej3/stamped-in-practice/blob/main/RETRIEVAL.md) for the annex route.
+The [independent publication check](../development-publication-01/README.md) retrieved the archive and rechecked every member.
