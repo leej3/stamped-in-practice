@@ -1,0 +1,20 @@
+✨ Pixi task (group-analysis): python analysis/group_analysis.py --permutations 999 --output-dir results/pilot
+Traceback (most recent call last):
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/analysis/group_analysis.py", line 205, in <module>
+    main()
+    ~~~~^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/analysis/group_analysis.py", line 103, in main
+    prob_img = nib.load(atlas.maps)
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/.pixi/envs/default/lib/python3.13/site-packages/nibabel/loadsave.py", line 100, in load
+    filename = _stringify_path(filename)
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/.pixi/envs/default/lib/python3.13/site-packages/nibabel/filename_parser.py", line 42, in _stringify_path
+    return pathlib.Path(filepath_or_buffer).expanduser().as_posix()
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/.pixi/envs/default/lib/python3.13/pathlib/_local.py", line 503, in __init__
+    super().__init__(*args)
+    ~~~~~~~~~~~~~~~~^^^^^^^
+  File "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12/.pixi/envs/default/lib/python3.13/pathlib/_local.py", line 132, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'Nifti1Image'
