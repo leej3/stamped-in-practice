@@ -1,6 +1,7 @@
 # Current comparison status
 
-The sealed tool-neutral comparison is underway: **24 of 72 research workers have started**, **24 have stopped**, and **3 of 96 assigned judgments have started** at this update.
+The sealed tool-neutral comparison is underway: **24 of 72 research workers have started**, **24 have stopped**, and **9 of 96 assigned judgments have started** at this update.
+**6 judgments have completed their dispatches.** Native process completion and formal assessment availability are separate.
 The first round contains 24 workers and 32 judgments.
 Judgment availability and scientific outcomes are reported separately from process completion.
 
@@ -32,6 +33,7 @@ Judgment availability and scientific outcomes are reported separately from proce
 | narps-neutral-r1-04 | discover-science | stopped |
 
 See the [live ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [sealed registration](registration.md) and [allocation](allocation.json).
+The [target-integrity incident record](rounds/round-01/measurement-limitations/target-integrity-01/) documents the two assessment failures observed through batch two; it is a dated snapshot, not a live failure total.
 The registration's zero-start count records its state before launch; it is not the live count.
 The original registration and its hash manifest remain unchanged.
 
