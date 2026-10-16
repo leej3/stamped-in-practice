@@ -18,7 +18,7 @@
       "run": "narps-r1-07",
       "condition": "discover-science",
       "replicate": 1,
-      "status": "judgment-running",
+      "status": "judgments-awaiting-retention",
       "observed_skill_discovery": null,
       "observed_skill_use": null,
       "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/launch",
@@ -85,17 +85,20 @@
         {
           "judgment_id": "judgment-02",
           "evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-02",
-          "status": "running",
+          "status": "completed",
           "started_at": "2026-10-16T03:00:20.086145+00:00",
           "prompt_sha256": "da402850af3467b72d784610571e6a77b0ef53d818d1d176e6f1729e207a731f",
           "workspace": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-02/judgment",
           "procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
           "research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
           "worker_end_state_sha256": "97caecab5ddac2f1b7bfa033e1b20470c263523c6cf88bb1fc34482c0ab55e25",
-          "assessment_scope": "corrected-common-procedure",
+          "assessment_scope": "first-amendment-output-selection-infrastructure-attempt",
           "judgment_role": "primary",
-          "outcome_pooling": "pending-inclusion-gate",
-          "native_thread_id": "01a142a7-422a-7981-84c0-c2040256763b"
+          "outcome_pooling": "excluded-operational-only",
+          "native_thread_id": "01a142a7-422a-7981-84c0-c2040256763b",
+          "returncode": 0,
+          "elapsed_seconds": 404.7611275409581,
+          "finished_at": "2026-10-16T03:07:04.857598+00:00"
         }
       ]
     },
@@ -345,17 +348,31 @@
       "run": "narps-r1-05",
       "condition": "discover-general",
       "replicate": 2,
-      "status": "not-started",
+      "status": "running",
       "observed_skill_discovery": null,
-      "observed_skill_use": null
+      "observed_skill_use": null,
+      "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch",
+      "branch": "codex/narps-r1-05",
+      "repository": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05",
+      "started_at": "2026-10-16T03:07:44.930578+00:00",
+      "starting_commit": "1790207a9b1fc2a31db009942e3290ae6d5db488",
+      "prompt_sha256": "323fd87f691b921c1ef09b26ca5d463f9b9236ca736edf962e702eb0374a4eb9",
+      "native_thread_id": "01a142ae-0bd9-7a51-8212-0f0c52f4a890"
     },
     {
       "run": "narps-r1-03",
       "condition": "baseline",
       "replicate": 3,
-      "status": "not-started",
+      "status": "running",
       "observed_skill_discovery": null,
-      "observed_skill_use": null
+      "observed_skill_use": null,
+      "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-03/launch",
+      "branch": "codex/narps-r1-03",
+      "repository": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-03",
+      "started_at": "2026-10-16T03:09:30.867917+00:00",
+      "starting_commit": "c0a526e292ed73730ce0d14ca53c4ad82505090a",
+      "prompt_sha256": "91c2aabb84b61ae9621f9d992a76592a233ac90ef5ec9411270b0fe2a414b53e",
+      "native_thread_id": "01a142af-a9b1-7fb0-a3d4-13cd3dda1b5f"
     },
     {
       "run": "narps-r1-12",
@@ -390,22 +407,35 @@
       "observed_skill_use": null
     }
   ],
-  "last_updated_at": "2026-10-16T03:03:06.819009+00:00",
-  "formal_workers_started_current": 6,
+  "last_updated_at": "2026-10-16T03:14:26.517245+00:00",
+  "formal_workers_started_current": 8,
   "worker_sessions_completed_current": 6,
   "formal_judgments_started_current": 3,
-  "formal_judgments_completed_current": 2,
+  "formal_judgments_completed_current": 3,
   "assessment_hold": {
     "active": true,
-    "status": "one-corrected-primary-authorized",
+    "status": "output-selection-defect; research-only-resumed",
     "decision": "amendment-01/decision.json",
     "assessment_procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
     "original_research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
     "remaining_queue_gate": [
-      "Actual intended payload retrieval and replay entry execution/comparison evidence; scientific success is not required.",
-      "Aggregation inclusion gate regression tests and independent review."
-    ]
+      "Reviewed explicit generated-output requirement in helper and wrapper, with missing selection rejected before allowance.",
+      "Fresh native development rehearsal through candidate wrapper, then superseding common assessment seal and formal replay evidence."
+    ],
+    "reason": "Corrected replay fetched payloads but broad default output patterns deleted required input/participants.tsv before entry; comparison absent.",
+    "research_status": "Next two allocated workers resumed under original seal, maximum two research sessions; judgments remain held."
   },
-  "native_sessions_running_current": 1,
-  "corrected_judgments_started_current": 1
+  "native_sessions_running_current": 2,
+  "corrected_judgments_started_current": 1,
+  "next_round_prerequisite": {
+    "source": "Explicit user-authorized parent handoff after round1 loop",
+    "action": "Convert iterations/narps-v1 into registered DataLad subdataset/submodule",
+    "timing": "After12 research objects,16 common-procedure judgments, comparison/reflection and skill revision; before round2",
+    "constraints": [
+      "Preserve exact frozen evidence/results/annex keys/provenance",
+      "Prefer pinned installation of existing datasets over copying or re-annexing",
+      "Publish subdataset content/revisions and verify fresh retrieval/path resolution before parent gitlink",
+      "Record structural compatibility changes; keep worker inputs isolated"
+    ]
+  }
 }
