@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import contextlib
+import copy
 import csv
 import hashlib
 import io
@@ -34,6 +35,7 @@ ENCODER_FILES = (
 REPOSITORY = "https://github.com/leej3/stamped-in-practice"
 BRANCH = "codex/stamped-poster-analysis"
 STATUSES = {"met", "partial", "unmet", "not-checked", "not-applicable"}
+MAX_APP_URL_BYTES = 8000
 
 
 def sha(data):
@@ -66,6 +68,8 @@ def readme(rows):
              "Not-checked and not-applicable items therefore change the denominator between the two displays.", "",
              "The filled app maps met to Yes, partial/unmet to No, and not-checked/not-applicable to blank.",
              "It omits evidence, source and assessor metadata, truncates reasons to 250 characters, and shows reasons only for No.",
+             "One filled-form URL would exceed the site's request limit: its undisplayed reasons on Yes/blank answers are omitted to keep the URL below 8,000 bytes.",
+             "All answer states and visible No reasons remain intact; the omitted reasons remain unchanged in the raw JSON.",
              "Use each raw JSON link for the complete authoritative response and distinct verdicts.",
              "Unavailable primary scores remain unlinked dashes; their excluded raw records are retained for inspection.",
              "The poster's pooled checklist table averages the all-item percentages equally across valid runs in each condition.",
@@ -117,6 +121,25 @@ def load_encoder(assessor):
         "repository": "https://github.com/con/skills", "commit": ENCODER_COMMIT,
         "files": files, "operation": "encode canonical answers for display; no assessment",
     }
+
+
+def app_link(response, encoder, checklist):
+    """Fit the site's request limit without changing any visible answer."""
+    with contextlib.redirect_stderr(io.StringIO()):
+        url = encoder.encode(response, checklist)
+    omit_undisplayed = len(url.encode()) > MAX_APP_URL_BYTES
+    if omit_undisplayed:
+        projection = copy.deepcopy(response)
+        for answer in projection["responses"].values():
+            if answer["status"] not in {"partial", "unmet"}:
+                answer["reason"] = ""
+        with contextlib.redirect_stderr(io.StringIO()):
+            url = encoder.encode(projection, checklist)
+    if len(url.encode()) > MAX_APP_URL_BYTES:
+        raise ValueError("Filled-form URL exceeds the checked app transport limit")
+    return url, {"undisplayed_reasons_omitted": omit_undisplayed,
+                 "maximum_url_bytes": MAX_APP_URL_BYTES, "url_bytes": len(url.encode()),
+                 "reason_character_limit": encoder.REASON_MAX}
 
 
 def export(reporting, assessor, output):
@@ -172,7 +195,7 @@ def export(reporting, assessor, output):
                     raise ValueError("Unknown retained checklist status")
                 all_items = len(response["responses"])
                 evaluated = sum(counts[status] for status in ("met", "partial", "unmet"))
-                app_url = evaluated_percent = app_percent = None
+                app_url = app_projection = evaluated_percent = app_percent = None
                 if valid:
                     if set(response["responses"]) != set(checklist.by_id) or response["checklist_version"] != checklist.version:
                         raise ValueError("Admitted response differs from the pinned 31-item checklist")
@@ -181,9 +204,7 @@ def export(reporting, assessor, output):
                         raise ValueError("Authoritative response does not reproduce the reported score")
                     if response["object"]["capture"]["sha256"] != run["delivery_capture_sha256"]:
                         raise ValueError("Response is not bound to the scored original delivery")
-                    # The frozen encoder intentionally truncates web-form reasons.
-                    with contextlib.redirect_stderr(io.StringIO()):
-                        app_url = encoder.encode(response, checklist)
+                    app_url, app_projection = app_link(response, encoder, checklist)
                     evaluated_percent = 100 * counts["met"] / evaluated
                     app_percent = 100 * counts["met"] / all_items
                 exported = EXPORT / "responses" / f'{run["run_id"]}.json'
@@ -198,6 +219,7 @@ def export(reporting, assessor, output):
                     "met_count": counts["met"], "evaluated_count": evaluated, "all_item_count": all_items,
                     "status_counts": dict(counts), "evaluated_met_percent": evaluated_percent,
                     "app_all_items_met_percent": app_percent, "app_url": app_url,
+                    "app_projection": app_projection,
                     "app_url_sha256": sha(app_url.encode()) if app_url else None,
                     "raw_response_path": exported.as_posix(),
                     "raw_response_url": f"https://raw.githubusercontent.com/leej3/stamped-in-practice/{BRANCH}/{exported.as_posix()}",
@@ -214,6 +236,7 @@ def export(reporting, assessor, output):
         "app_all_items_mean_met_percent": "Equal-run mean of the unrounded all-item percentages among admitted primary responses in a condition; this is separate from the plot's evaluated-item mean.",
         "unavailable": "Invalid or unadmitted primary responses have null scores and app links. Their unchanged raw responses and counts are retained for inspection, never included in means.",
         "app_projection": "The frozen encoder maps met to yes, partial/unmet to no, and not-checked/not-applicable to blank. The web form omits evidence, source and assessor metadata; it truncates reasons to 250 characters and shows reasons only for no. The raw JSON is the authoritative complete response.",
+        "app_transport": "URLs must fit within 8,000 bytes. Only when necessary, undisplayed reasons for yes/blank answers are omitted before invoking the frozen encoder; every answer state and visible no reason is preserved. Per-run app_projection records this display-only loss. Exact original reasons remain in the raw response JSON.",
         "source": "Every response is copied byte-for-byte from the member selected by its retained primary judgment, after archive and response hash verification. App URLs are generated from these canonical responses, not reused from potentially stale retained URL files. No responses are regraded or repaired.",
     }
     conditions = []

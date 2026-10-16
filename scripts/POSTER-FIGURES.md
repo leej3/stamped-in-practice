@@ -94,6 +94,10 @@ The recovered round-three run-19 response is selected from the retained archive'
 
 The app maps met to Yes, partial/unmet to No, and not-checked/not-applicable to blank.
 It drops evidence and assessor metadata, truncates reasons to 250 characters and shows reasons only for No. The exact raw response remains authoritative for verdict distinctions and evidence.
+The deployed app rejects oversized request URLs.
+For the single round-two run-08 link that otherwise exceeds 8,000 bytes, the exporter omits only undisplayed reasons on Yes/blank answers before encoding.
+Every answer state and visible No reason is preserved; full original reasons remain unchanged in the raw JSON.
+The index records this projection per run, and export fails if a URL still exceeds the transport limit.
 `checklists/index.json` provides both per-run score definitions, four pooled all-item means, friendly per-condition list links, validity and source identities.
 `checklists/manifest.json` binds the encoder revision and files, original inputs, exporter and every output.
 The reader-facing links use the named benchmark branch; the poster's import binding records the exact benchmark commit and file hashes.

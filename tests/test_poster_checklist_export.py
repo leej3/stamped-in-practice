@@ -38,6 +38,7 @@ def test_response_bytes_scores_and_generated_links_match_originals():
                 assert row["status_counts"] == dict(counts)
                 if not row["checklist_valid"]:
                     assert row["app_url"] is row["evaluated_met_percent"] is row["app_all_items_met_percent"] is None
+                    assert row["app_projection"] is None
                     assert row["exclusion_reasons"]
                     continue
                 url = urlparse(row["app_url"])
@@ -46,13 +47,17 @@ def test_response_bytes_scores_and_generated_links_match_originals():
                 assert params["checklist"] == params["responses_version"] == ["0.3.1"]
                 payload = json.loads(base64.b64decode(params["responses"][0]))
                 assert len(payload["responses"]) == row["all_item_count"] == 31
+                assert len(row["app_url"].encode()) <= exporter.MAX_APP_URL_BYTES
                 for key, answer in response["responses"].items():
-                    assert payload["responses"][key] == {"value": expected[answer["status"]], "reason": answer["reason"][:250]}
+                    value = expected[answer["status"]]
+                    reason = "" if row["app_projection"]["undisplayed_reasons_omitted"] and value != "no" else answer["reason"][:250]
+                    assert payload["responses"][key] == {"value": value, "reason": reason}
                 assert row["evaluated_met_percent"] == pytest.approx(100 * counts["met"] / (counts["met"] + counts["partial"] + counts["unmet"]))
                 assert row["app_all_items_met_percent"] == pytest.approx(100 * counts["met"] / 31)
                 # This original retained URL was stale; the canonical response is authoritative.
                 if row["run_id"] == "narps-neutral-r1-08":
                     assert payload["responses"]["stamped-checklist:must/005"]["value"] == "no"
+    assert [row["run_id"] for row in index["runs"] if row["app_projection"] and row["app_projection"]["undisplayed_reasons_omitted"]] == ["narps-neutral-r2-08"]
     for condition in index["conditions"]:
         valid = [r for r in index["runs"] if r["condition"] == condition["condition"] and r["checklist_valid"]]
         assert condition["checklist_n"] == len(valid)
