@@ -13,6 +13,8 @@ git annex get input/data/
 
 The environment supports `osx-arm64` (macOS 14 or later) and `linux-64`, as recorded in `pixi.toml` and `pixi.lock`.
 
+To update dependencies, use `pixi add <package>` or edit `pixi.toml`, then run `pixi lock`. Re-run analysis, validation, and figure tasks against the fixed inputs. Commit the task changes, then retain the exact validated `pixi.lock` on `codex/env-narps-r1-11` as one commit above the task commit; record its SHA-256 in `results/replay.json`.
+
 ## Run
 
 The main group-analysis entry point is `scripts/group_analysis.py`, exposed as the `group-analysis` Pixi task. The root Pixi environment supplies these tasks:
