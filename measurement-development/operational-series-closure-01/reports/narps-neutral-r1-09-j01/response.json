@@ -1,0 +1,536 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "The full study, inputs, code, and outputs share the captured workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/sources.json",
+          "description": "source maps and provenance are inside the root",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 input pointers resolve to annex objects inside this captured root.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "relative symlink to internal .git/annex/objects",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/sources.json",
+          "description": "54 map URLs and checksums",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "No delivered environment includes or links the required scientific packages.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "imports numpy pandas nibabel scipy matplotlib and nilearn",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "package versions are listed in prose only",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git is used, but the scientific code, report, notebook, figures and results were untracked at worker stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "untracked analysis script at stop",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "tree-clean reports six untracked paths",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex stores all 54 participant maps as large binary inputs.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "annex pointer, with target .git/annex/objects payloads",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The result summary records inputs and seed, but no exact environment or run record links actions to it.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/results/summary.json",
+          "description": "seed and input checksums, no environment identity",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "reported package versions are not an environment specification",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "Report and notebook explain the analysis route, but give no dependency installation instructions.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "links analysis script and results",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/notebooks/narps_gain_group_analysis.ipynb",
+          "description": "notebook runs group_analysis.py",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The notebook identifies and runs the authoritative group-analysis script.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/notebooks/narps_gain_group_analysis.ipynb",
+          "description": "code cell invokes scripts/group_analysis.py",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis script resolves inputs and outputs relative to its own workspace root.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "ROOT derived from __file__",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Required Python packages have no dependency declaration or reproducible installer.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "scientific imports",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "versions listed only as prose",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Python package versions are noted, but OS, Python provisioning, native libraries and other host assumptions are unspecified.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "package versions only",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report lists Python packages, but omits system requirements and installation steps.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "package versions only",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification appears in the complete delivered workspace.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete captured root file inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency update or lock regeneration process is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete captured root contains no environment specification or update instructions",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No pinned environment manifest identifies the environment used for these results.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/results/summary.json",
+          "description": "analysis seed and inputs recorded, no environment pin",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker route publishes the analysis, and no environment specification is shared.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "links only upstream NeuroVault inputs",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete captured root has no publication route",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "No instructions explain obtaining or using an environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "results and script described, no environment setup steps",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "The workspace uses Git for text and git-annex for binary content within one repository.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/.git/config",
+          "description": "annex filters configured",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "annex-managed input",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "unmet",
+      "reason": "The complete stop state has no repeated test record or recurring workflow; shipped outputs evidence one analysis run.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "CI probe found no recognized workflow",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/results/summary.json",
+          "description": "one run summary",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, scripts, results and figures are separated by directories; no environment module is supplied.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input",
+          "description": "captured inputs",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "code",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/results",
+          "description": "derived maps and tables",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: no restricted data or software is identified; the cited input collection is public.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/sources.json",
+          "description": "public NeuroVault collection and map routes",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No safe fresh replay: the worker supplied no environment specification; a replay needs one.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "package versions, not a reconstructable environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented script runs inside the caller environment and creates no disposable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "direct analysis; no environment lifecycle",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment is specified or regularly tested for reconstitution.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete root contains no environment declaration or reconstitution record",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact, container image or executable bundle is archived with the study.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete root inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency update or lock regeneration process is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete captured root contains no environment specification or update instructions",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The independently maintained AO86 maps are identified by collection and per-image retrieval URLs.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/input/sources.json",
+          "description": "collection and 54 source URLs with checksums",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The report and notebook describe how inputs, group script and generated outputs relate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "analysis and output links",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/notebooks/narps_gain_group_analysis.ipynb",
+          "description": "script and result composition",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Input, code and result directories are distinct, but the workflow depends on unversioned environment state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "separate path-based stages",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "environment absent",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The notebook runs the group script, which reads input/ and composes results/ and figures/.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/notebooks/narps_gain_group_analysis.ipynb",
+          "description": "script invocation",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/scripts/group_analysis.py",
+          "description": "inputs and output paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report links the script and result artifacts, and the notebook presents the workflow.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/report.md",
+          "description": "artifact navigation",
+          "sha256": null
+        },
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace/notebooks/narps_gain_group_analysis.ipynb",
+          "description": "guided run-through",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "Reuse terms for the worker-produced analysis code and results are unstated.",
+      "evidence": [
+        {
+          "uri": "capture:73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b#content/workspace",
+          "description": "complete delivered root has no license file"
+        },
+        {
+          "uri": "probes.json",
+          "description": "license-declared probe found no license file"
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "ad3956ae64dcbdd1eec6af4ed21e0b168e478106",
+    "captured_at": "2026-10-16T07:05:36.347041+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-09-j01/canonical/manifest.json",
+      "sha256": "73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "gpt-6.1-sol",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete original capture 73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b; worker stop receipt 297a4c54893deeda6820022be1d5f6f61721d0c8bcc5c794d63f6e4d72f733d2; full operational copy inspected; probe output is assessor-side; no replay attempted because no supplied environment declaration."
+}

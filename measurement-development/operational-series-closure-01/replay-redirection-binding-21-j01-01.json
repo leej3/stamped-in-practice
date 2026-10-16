@@ -1,0 +1,132 @@
+{
+  "kind": "supplemental-native-replay-output-binding",
+  "judgment_id": "narps-neutral-r1-21-j01",
+  "source_snapshot": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-10",
+  "native_events": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-10/evidence/judgments/narps-neutral-r1-21-j01/native-events.jsonl",
+    "sha256": "26a278d2e4727c6d28c9ce2da29d29e94d0f29aca4c6231b768146af0da88580"
+  },
+  "saved_report": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-10/evidence/judgments/narps-neutral-r1-21-j01/supporting/06-replay-record.json",
+    "sha256": "a3ea6bee0ebabae6a677e0a61472a6373f90ce739e60c32c96e84fc1d2ace0c8"
+  },
+  "reason": "Completed runner invocation redirects stdout; immediately next native command reads that exact stdout path. Its entire decoded JSON equals the saved helper report. No intervening native command, no record rewrite, and exact capture identity. Original same-event-only extraction remains retained.",
+  "native_helper_completion_observed": true,
+  "entrypoint_execution_observed": true,
+  "entrypoint_returncode": 0,
+  "reported_comparison": {
+    "identical": [
+      "results/summary.json",
+      "results/participant_qc.tsv",
+      "results/vmPFC_proxy_subject_values.tsv"
+    ],
+    "within_tolerance": [],
+    "differing": [],
+    "missing_after_rerun": []
+  },
+  "literal_helper_report": {
+    "probe": "fresh-rerun",
+    "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/content/workspace",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/manifest.json",
+      "sha256": "b177304a0a1e893757998b89ef8880db42f2639395a46d1d5570932971830f56"
+    },
+    "commit": "2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8",
+    "captured_at": "2026-10-16T07:41:38.449025+00:00",
+    "scope": "Complete stopped delivery copy; existing environment/cache bytes retained. One documented entrypoint, no repair or automatic retrieval; selected outputs only.",
+    "entry": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python code/analyze.py --permutations 9999 --seed 240519",
+    "outputs": [
+      "results/summary.json",
+      "results/participant_qc.tsv",
+      "results/vmPFC_proxy_subject_values.tsv"
+    ],
+    "rtol": 1e-06,
+    "retrieval_scope": {
+      "adapter_input_retrieval": "none; uses captured inputs",
+      "entrypoint_network_byte_limit": null,
+      "entrypoint_downloads": "Documented dependency installs/downloads are not byte-metered",
+      "max_get_gb": 5.0,
+      "max_get_gb_scope": "Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch"
+    },
+    "observation_only_capture_issues": [],
+    "workdir": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-21-j01/attempt-01/judgment/replay/content/workspace",
+    "original_output_sha256": {
+      "results/summary.json": "9108955682f5eb73b824482ee285c67f3745dbdbd4075b28cfaea6f84661f100",
+      "results/participant_qc.tsv": "8e2b248ed6b3fb855a1037a24e4dd022b2ea55dc3d159808ee0fd6ab9e396e6b",
+      "results/vmPFC_proxy_subject_values.tsv": "8f141d74a2d31ce6f1fddb8462bfc614b11e8591583f218bdc23f23638a897e6"
+    },
+    "removed_outputs": [
+      "results/participant_qc.tsv",
+      "results/summary.json",
+      "results/vmPFC_proxy_subject_values.tsv"
+    ],
+    "replay_git_overlay": {
+      "core.hooksPath": "/dev/null",
+      "reason": "Disable original checkout hooks in the replay copy; captured config bytes unchanged"
+    },
+    "returncode": 0,
+    "elapsed_seconds": 22.680476333014667,
+    "stdout": "replay/replay.stdout",
+    "stderr": "replay/replay.stderr",
+    "comparison": {
+      "identical": [
+        "results/summary.json",
+        "results/participant_qc.tsv",
+        "results/vmPFC_proxy_subject_values.tsv"
+      ],
+      "within_tolerance": [],
+      "differing": [],
+      "missing_after_rerun": []
+    },
+    "status": "met",
+    "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+  },
+  "events": [
+    {
+      "line": 70,
+      "raw_event_sha256": "53ec257ff68d3a1e9da92dd842bc9d2063a7783e3b94ec179fe26798c7e7269c",
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_36",
+          "type": "command_execution",
+          "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\np='replay-plan.json'\nd=json.load(open(p))\nd['status_before_attempt']='declared and prerequisites inspected'\nd['prerequisites'].append('Nilearn atlas/template acquisition is invoked by the unchanged worker-supplied entrypoint; the adapter does not prefetch. Only documented script behavior may obtain these auxiliary references. No participant input is retrieved.')\nd['limits']='The frozen helper does not prefetch inputs or byte-meter downloads initiated by the documented entrypoint. The scientific participant inputs remain those from the canonical capture.'\nopen(p,'w').write(json.dumps(d,indent=2)+'\\\\n')\nPY\nmkdir -p logs\n\\\"\"'$STAMPED_ASSESSMENT_PYTHON\" \"$STAMPED_ASSESSMENT_RUNNER\" fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" --entry '\"'/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python code/analyze.py --permutations 9999 --seed 240519' --outputs results/summary.json results/participant_qc.tsv results/vmPFC_proxy_subject_values.tsv --workdir replay -o replay-record.json --rtol 1e-6 --timeout 7200 --max-get-gb 5 > logs/replay-launch.stdout 2> logs/replay-launch.stderr\"",
+          "aggregated_output": "",
+          "exit_code": 0,
+          "status": "completed"
+        }
+      }
+    },
+    {
+      "line": 72,
+      "raw_event_sha256": "827645e656a3d4bbfcb1dc998580ad81051bef566977a948b1f96374dddaab96",
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_37",
+          "type": "command_execution",
+          "command": "/opt/homebrew/bin/bash -lc 'cat logs/replay-launch.stdout'",
+          "aggregated_output": "{\"probe\": \"fresh-rerun\", \"source\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/content/workspace\", \"capture\": {\"uri\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/manifest.json\", \"sha256\": \"b177304a0a1e893757998b89ef8880db42f2639395a46d1d5570932971830f56\"}, \"commit\": \"2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8\", \"captured_at\": \"2026-10-16T07:41:38.449025+00:00\", \"scope\": \"Complete stopped delivery copy; existing environment/cache bytes retained. One documented entrypoint, no repair or automatic retrieval; selected outputs only.\", \"entry\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python code/analyze.py --permutations 9999 --seed 240519\", \"outputs\": [\"results/summary.json\", \"results/participant_qc.tsv\", \"results/vmPFC_proxy_subject_values.tsv\"], \"rtol\": 1e-06, \"retrieval_scope\": {\"adapter_input_retrieval\": \"none; uses captured inputs\", \"entrypoint_network_byte_limit\": null, \"entrypoint_downloads\": \"Documented dependency installs/downloads are not byte-metered\", \"max_get_gb\": 5.0, \"max_get_gb_scope\": \"Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch\"}, \"observation_only_capture_issues\": [], \"workdir\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-21-j01/attempt-01/judgment/replay/content/workspace\", \"original_output_sha256\": {\"results/summary.json\": \"9108955682f5eb73b824482ee285c67f3745dbdbd4075b28cfaea6f84661f100\", \"results/participant_qc.tsv\": \"8e2b248ed6b3fb855a1037a24e4dd022b2ea55dc3d159808ee0fd6ab9e396e6b\", \"results/vmPFC_proxy_subject_values.tsv\": \"8f141d74a2d31ce6f1fddb8462bfc614b11e8591583f218bdc23f23638a897e6\"}, \"removed_outputs\": [\"results/participant_qc.tsv\", \"results/summary.json\", \"results/vmPFC_proxy_subject_values.tsv\"], \"replay_git_overlay\": {\"core.hooksPath\": \"/dev/null\", \"reason\": \"Disable original checkout hooks in the replay copy; captured config bytes unchanged\"}, \"returncode\": 0, \"elapsed_seconds\": 22.680476333014667, \"stdout\": \"replay/replay.stdout\", \"stderr\": \"replay/replay.stderr\", \"comparison\": {\"identical\": [\"results/summary.json\", \"results/participant_qc.tsv\", \"results/vmPFC_proxy_subject_values.tsv\"], \"within_tolerance\": [], \"differing\": [], \"missing_after_rerun\": []}, \"status\": \"met\", \"reason\": \"All selected generated outputs were recreated within the frozen comparison tolerance.\"}\n",
+          "exit_code": 0,
+          "status": "completed"
+        }
+      }
+    },
+    {
+      "line": 74,
+      "raw_event_sha256": "a48e9a0e2be56df0a3b8b1a161b398e1c46ee76c3a6d674a47c458bb57ed0460",
+      "event": {
+        "type": "item.completed",
+        "item": {
+          "id": "item_38",
+          "type": "command_execution",
+          "command": "/opt/homebrew/bin/bash -lc 'cat replay-record.json && cat replay/replay.stdout && cat replay/replay.stderr && cat logs/replay-launch.stderr'",
+          "aggregated_output": "{\n  \"probe\": \"fresh-rerun\",\n  \"source\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/content/workspace\",\n  \"capture\": {\n    \"uri\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-21-j01/canonical/manifest.json\",\n    \"sha256\": \"b177304a0a1e893757998b89ef8880db42f2639395a46d1d5570932971830f56\"\n  },\n  \"commit\": \"2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8\",\n  \"captured_at\": \"2026-10-16T07:41:38.449025+00:00\",\n  \"scope\": \"Complete stopped delivery copy; existing environment/cache bytes retained. One documented entrypoint, no repair or automatic retrieval; selected outputs only.\",\n  \"entry\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python code/analyze.py --permutations 9999 --seed 240519\",\n  \"outputs\": [\n    \"results/summary.json\",\n    \"results/participant_qc.tsv\",\n    \"results/vmPFC_proxy_subject_values.tsv\"\n  ],\n  \"rtol\": 1e-06,\n  \"retrieval_scope\": {\n    \"adapter_input_retrieval\": \"none; uses captured inputs\",\n    \"entrypoint_network_byte_limit\": null,\n    \"entrypoint_downloads\": \"Documented dependency installs/downloads are not byte-metered\",\n    \"max_get_gb\": 5.0,\n    \"max_get_gb_scope\": \"Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch\"\n  },\n  \"observation_only_capture_issues\": [],\n  \"workdir\": \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-21-j01/attempt-01/judgment/replay/content/workspace\",\n  \"original_output_sha256\": {\n    \"results/summary.json\": \"9108955682f5eb73b824482ee285c67f3745dbdbd4075b28cfaea6f84661f100\",\n    \"results/participant_qc.tsv\": \"8e2b248ed6b3fb855a1037a24e4dd022b2ea55dc3d159808ee0fd6ab9e396e6b\",\n    \"results/vmPFC_proxy_subject_values.tsv\": \"8f141d74a2d31ce6f1fddb8462bfc614b11e8591583f218bdc23f23638a897e6\"\n  },\n  \"removed_outputs\": [\n    \"results/participant_qc.tsv\",\n    \"results/summary.json\",\n    \"results/vmPFC_proxy_subject_values.tsv\"\n  ],\n  \"replay_git_overlay\": {\n    \"core.hooksPath\": \"/dev/null\",\n    \"reason\": \"Disable original checkout hooks in the replay copy; captured config bytes unchanged\"\n  },\n  \"returncode\": 0,\n  \"elapsed_seconds\": 22.680476333014667,\n  \"stdout\": \"replay/replay.stdout\",\n  \"stderr\": \"replay/replay.stderr\",\n  \"comparison\": {\n    \"identical\": [\n      \"results/summary.json\",\n      \"results/participant_qc.tsv\",\n      \"results/vmPFC_proxy_subject_values.tsv\"\n    ],\n    \"within_tolerance\": [],\n    \"differing\": [],\n    \"missing_after_rerun\": []\n  },\n  \"status\": \"met\",\n  \"reason\": \"All selected generated outputs were recreated within the frozen comparison tolerance.\"\n}\n[fetch_atlas_aal] Dataset directory found: /Users/johnlee/nilearn_data/aal_3v2\n{\n  \"n\": 54,\n  \"df\": 53,\n  \"excluded_ids\": [],\n  \"mask\": \"intersection of nonzero voxels in all 54 effect maps\",\n  \"mask_voxels\": 198029,\n  \"mask_fraction_grid\": 0.21916651448998678,\n  \"shape\": [\n    97,\n    115,\n    81\n  ],\n  \"affine\": [\n    [\n      2.0,\n      0.0,\n      0.0,\n      -96.0\n    ],\n    [\n      0.0,\n      2.0,\n      0.0,\n      -132.0\n    ],\n    [\n      0.0,\n      0.0,\n      2.4000000953674316,\n      -78.0\n    ],\n    [\n      0.0,\n      0.0,\n      0.0,\n      1.0\n    ]\n  ],\n  \"direction\": \"positive\",\n  \"permutations\": 9999,\n  \"seed\": 240519,\n  \"permutation_p_resolution\": 0.0001,\n  \"maxT_FWE_alpha_0.05_voxels\": 24,\n  \"clusters\": [\n    {\n      \"cluster\": 1,\n      \"voxels\": 17,\n      \"peak_t\": 6.617173194885254,\n      \"peak_mni_mm\": [\n        -26.0,\n        -102.0,\n        -3.599997043609619\n      ]\n    },\n    {\n      \"cluster\": 2,\n      \"voxels\": 2,\n      \"peak_t\": 5.760898590087891,\n      \"peak_mni_mm\": [\n        26.0,\n        -98.0,\n        -1.1999969482421875\n      ]\n    },\n    {\n      \"cluster\": 3,\n      \"voxels\": 5,\n      \"peak_t\": 6.1934027671813965,\n      \"peak_mni_mm\": [\n        30.0,\n        -94.0,\n        -8.399997234344482\n      ]\n    }\n  ],\n  \"max_t_95pct\": 5.360785007476807,\n  \"max_t_99pct\": 5.824070453643799,\n  \"smallest_fwe_p\": 0.0012,\n  \"smallest_uncorrected_p\": 9.311564027968496e-09,\n  \"smallest_BH_FDR_p\": 0.0015338923129023508,\n  \"BH_FDR_q05_voxels\": 210,\n  \"peak_t_voxel\": {\n    \"ijk\": [\n      35,\n      15,\n      31\n    ],\n    \"mni_mm\": [\n      -26.0,\n      -102.0,\n      -3.599997043609619\n    ],\n    \"aal_label\": [\n      \"Background\"\n    ],\n    \"mean\": 0.1121266782283783,\n    \"sd\": 0.12451834231615067,\n    \"t\": 6.617173194885254,\n    \"uncorrected_p\": 9.311563964331526e-09,\n    \"maxT_fwe_p\": 0.0012000000569969416\n  },\n  \"vmPFC_proxy\": {\n    \"definition\": \"AAL3v2 bilateral Frontal_Med_Orb and Rectus labels intersected with common support; broad anatomical proxy, secondary only\",\n    \"labels\": [\n      \"Frontal_Med_Orb_L\",\n      \"Frontal_Med_Orb_R\",\n      \"Rectus_L\",\n      \"Rectus_R\"\n    ],\n    \"voxels\": 2400,\n    \"mean\": -0.0037172341253608465,\n    \"sd_between_participants\": 0.0914141908288002,\n    \"ci95_t\": [\n      -0.028668505127861958,\n      0.021234036877140264\n    ],\n    \"t\": -0.29881551861763,\n    \"p_one_sided_uncorrected\": 0.616875410079956,\n    \"loo_mean_min\": -0.008790605701506138,\n    \"loo_mean_max\": -0.00040728444582782686,\n    \"loo_all_positive\": false,\n    \"voxelwise_maxT_FWE_p_min_in_proxy\": 0.7881,\n    \"voxelwise_FWE_q05_voxels_in_proxy\": 0,\n    \"voxelwise_BH_q05_voxels_in_proxy\": 1,\n    \"voxelwise_BH_min_q_in_proxy\": 0.049861718150031785,\n    \"max_t_in_proxy\": 4.1918477635940805\n  },\n  \"participant_map_mean_range\": [\n    -0.1336837292313111,\n    0.10376128285557927\n  ]\n}\n\u2714 The default environment has been installed.\n",
+          "exit_code": 0,
+          "status": "completed"
+        }
+      }
+    }
+  ],
+  "scope": "Two-command native evidence chain; not outer shell exit alone, no scientific replay performed by coordinator."
+}

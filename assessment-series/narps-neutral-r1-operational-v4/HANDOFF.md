@@ -1,3 +1,14 @@
+## Closure update
+
+The fixed32-attempt queue and extraction watcher04 have completed, each exit0.
+No formal assessment session remains active.
+Exact queue/batch/watcher receipts are retained in [closure evidence](../../measurement-development/operational-series-closure-01/README.md).
+Do not restart this queue or replace any attempt.
+The earlier process snapshots below are historical.
+
+All further formal launches are held for the supplied-procedure allocation exposure described in the [viability record](synthesis/viability.md).
+Local full-support packaging may continue, but it does not launch agents or claim pending Hub payloads are retrievable.
+
 # Active-series handoff
 
 Monitor the existing queue.

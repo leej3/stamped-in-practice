@@ -1,0 +1,53 @@
+{
+  "kind": "preserved-checklist-response-identity-issue",
+  "judgment_id": "narps-neutral-r1-23-j01",
+  "source_snapshot": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-05",
+  "source_index_sha256": "7e71fe870e3cfb7da7e855943c9470df6b593b65d6b081e6c80bd6111e94957d",
+  "sources": {
+    "response": {
+      "path": "evidence/judgments/narps-neutral-r1-23-j01/response.json",
+      "sha256": "f4525126e6a64ddb65ec5030a8b8b1513a9f9ff51d22798cf131c7c77cea152f"
+    },
+    "report": {
+      "path": "evidence/judgments/narps-neutral-r1-23-j01/report.md",
+      "sha256": "941f331da178bcaa2642bfea93263465fa8d184acead34431cb0c04d4ec24ed9"
+    },
+    "delivery_capture": {
+      "path": "evidence/initial/runs/15/delivery_capture/delivery_capture.json",
+      "sha256": "9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59"
+    },
+    "native": {
+      "procedure_status": {
+        "path": "evidence/judgments/narps-neutral-r1-23-j01/native-procedure-status.json",
+        "sha256": "cb414086675d15bcb742a640e7a7f3740bc196e81cababf9121ab4f31db61f10"
+      },
+      "result": {
+        "path": "evidence/judgments/narps-neutral-r1-23-j01/native-result.json",
+        "sha256": "5ba41afa83c2aed518700a8ea9abdbb4d46b56d602c778eb6c243c6cc5f9e217"
+      }
+    },
+    "output_binding": {
+      "path": "evidence/judgments/narps-neutral-r1-23-j01/output-binding.json",
+      "sha256": "c16f0da5e7d854b7443155cd733cc7c8bb3bf796eb271d2bb8cf5a156b1dbb28"
+    }
+  },
+  "exact_response_object": {
+    "url": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59",
+    "commit": "afb62884c70115b6e46a92ddcd1d17bbf4f33544",
+    "captured_at": "2026-10-16T07:14:56.253754+00:00",
+    "kind": "study"
+  },
+  "issue": {
+    "area": "response",
+    "message": "object.capture differs from the original delivery capture",
+    "role": "primary",
+    "run_id": "narps-neutral-r1-23"
+  },
+  "finding": "Raw response.object has no capture member. Its url contains the correct capture digest, but this is not the sealed required object.capture structure. No repair or equivalence substitution is made.",
+  "measure_states": {
+    "inclusion_status": "eligible",
+    "response_status": "invalid",
+    "extraction_status": "explicit"
+  },
+  "decision": "Retain raw checklist response and frozen invalid checklist status. Preserve independently validated structured scientific extraction, native admission and effort. Continue read-only snapshots despite this known aggregator issue; any new issue requires inspection. No replacement judgment or replay."
+}

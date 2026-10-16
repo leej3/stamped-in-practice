@@ -1,0 +1,453 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All worker materials are nested in the common workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The 54 input maps are linked through the in-boundary annex object store, and cohort metadata is under input/.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/participants.tsv",
+          "description": "input/participants.tsv in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The script imports external software packages, but they are neither specified in an environment nor included as submodules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Git is present, but the code, report, results and figures were untracked at worker stop, so version control did not capture the complete delivered work.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:results/summary.json",
+          "description": "results/summary.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex tracks all 54 large participant maps as binary content.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "input/data/sub-001_hypo1_cope.nii.gz in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "No run provenance record names an exact environment used for the reported outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "No README.md or Makefile with installation and usage instructions is present; command guidance is in report.md.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report identifies the analysis script and gives the command to run it from the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis script locates inputs and outputs from its own file path and uses relative project paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Required Python packages are imported but no environment specification declares them.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "No host configuration assumptions or system requirements are documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No README or environment specification gives a system requirements and dependencies list.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is tracked with the code.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment update process or tracked environment specification is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No pinned environment specification is provided for exact reconstruction.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment specification is available through a worker-declared access route.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "No instructions explain how to obtain and use a computational environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "A single Git repository is used, and git-annex is used for the large input maps.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "unmet",
+      "reason": "The stop state contains one analysis run and no CI or recurring test process.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:results/summary.json",
+          "description": "results/summary.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, analysis code, results and figures occupy distinct directories, but environment files are absent and module relationships are not documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        },
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:results/summary.json",
+          "description": "results/summary.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "The supplied maps and metadata are not identified as restricted data or software.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "No fresh-container, clean-VM or batch-job test is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "No disposable execution environment is supplied or documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "There is no exact environment specification or recurring reconstitution test.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifacts are archived in the worker stop state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment specification or update process is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "There are no linked submodules; the input dataset is carried through git-annex inside the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:input/sources.json",
+          "description": "input/sources.json in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "unmet",
+      "reason": "The folder structure is visible but no document explains the module relationships.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "The delivery does not describe module interfaces or independent update procedures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "No independently composed modules or orchestration mechanism are declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:analysis/group_analysis.py",
+          "description": "analysis/group_analysis.py in canonical capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "The report provides a starting command, but no guide to navigating or composing the project directories.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59:report.md",
+          "description": "report.md in canonical capture",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": "capture:sha256:9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59",
+    "commit": "afb62884c70115b6e46a92ddcd1d17bbf4f33544",
+    "captured_at": "2026-10-16T07:14:56.253754+00:00",
+    "kind": "study"
+  },
+  "assessor": {
+    "skill": "frozen independent assessor",
+    "version": "source_commit 9852d8360f9519d21d11099b45f5deb8ba80cb28",
+    "harness": "frozen assessment runner",
+    "model": "external frozen assessor",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assessment runtime source_commit 9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "checklist 0.3.1"
+    ]
+  },
+  "scope": "Independent assessment of the complete stopped delivery: STAMPED checklist, scientific adequacy, route check and replay eligibility. One representative access HEAD check per declared host; no replay because worker-supplied prerequisites are absent."
+}

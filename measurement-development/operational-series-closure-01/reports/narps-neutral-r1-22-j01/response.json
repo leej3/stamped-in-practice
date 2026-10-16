@@ -1,0 +1,597 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "reason": "All captured workspace content is under the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "reason": "All 54 input-map links resolve within the captured workspace to retained annex objects.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/data/",
+          "description": "Participant-map links are internal workspace paths; the complete capture retains their annex content.",
+          "sha256": null
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/.git/annex/objects/",
+          "description": "Retained annex object bytes are inside the common root.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "reason": "No delivered environment specification or vendored external software dependencies are present.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "reason": "Git is used, but the report, analysis, cache and results were untracked at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "git status --short --ignored (operational copy)",
+          "description": "Probe observed ?? REPORT.md, ?? analyze.py, ?? atlas_cache/, ?? results/; worker stop receipt records the same stop state.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83",
+          "sha256": "cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "reason": "The 54 large participant maps are tracked as annex pointers with retained annex content.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/.git/annex/",
+          "description": "Captured annex object store and 54 input links.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "reason": "The worker report names a Python executable and packages but does not capture or link an exact environment to the result run.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83",
+          "sha256": "cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "reason": "The report gives a reproduction command but no installation instructions or complete dependency setup.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "reason": "The report clearly names analyze.py and gives a command to reproduce the outputs; the script and outputs were present at stop.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/analyze.py",
+          "description": "Worker analysis script at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "abb28e87b1d03c0d7bcd8effac1bb9afa785fe5004a44ff7e31d017e91790dac"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/results/summary.json",
+          "description": "Reported numeric output exists in the worker stop delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "reason": "The documented reproduction command embeds a host-specific absolute interpreter path.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Line 43 gives an absolute path to the common-environment Python binary.",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "reason": "No dependency declaration specifies all required software; the report lists package names only.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "reason": "The only run route depends on a machine-specific interpreter path without documenting its host assumptions.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "reason": "The report lists Python packages but gives no system requirements, versions or installation route.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "reason": "No environment specification is included in the captured project or worker-tracked state.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "reason": "No dependency-update process or tracked environment specification is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "reason": "No pinned environment manifest or container digest is supplied for exact environment recreation.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "reason": "No worker-supplied environment specification is available to share and use.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "reason": "The report gives a command but no instructions for obtaining or setting up its environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "reason": "Git and git-annex are used for project files and large input maps.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/.git/annex/",
+          "description": "Annex-backed input maps.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "reason": "No CI configuration is present; equivalent repeated-testing history was not independently established. Inspect worker-run history to settle this.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "reason": "Inputs and results have separate folders, but code and environment are not separated into modules.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/",
+          "description": "Input data and metadata folder.",
+          "sha256": null
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/analyze.py",
+          "description": "Worker analysis script at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "abb28e87b1d03c0d7bcd8effac1bb9afa785fe5004a44ff7e31d017e91790dac"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/results/",
+          "description": "Separate derived-output folder.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "reason": "N/A: no restricted data or software is identified in this public-input group-analysis delivery.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/sources.json",
+          "description": "Sources identify the supplied public study inputs.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "reason": "The worker stop record supplies no evidence that the workflow was tested in a fresh container, batch job, clean VM or cloud instance.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83",
+          "sha256": "cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "reason": "No disposable or isolated execution environment is declared or supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "reason": "No worker environment specification is supplied; equivalent repeated environment-reconstitution history was not independently established.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "reason": "The delivered atlas cache is archived, but no executable environment artifact or dependency environment is supplied.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/atlas_cache/README.md",
+          "description": "Captured dataset cache exists.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "reason": "No environment specification or update process is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "reason": "N/A: the delivery has no independently maintained project components; input maps are captured annex data and runtime packages are dependencies.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/data/",
+          "description": "Captured participant maps are annex-backed data, not linked project components.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "reason": "The report lists key files but does not document module boundaries and how components relate or recombine.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "reason": "Input and results paths are distinct, but no explicit modular boundary or interface makes independent updates safe.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/analyze.py",
+          "description": "Worker analysis script at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "abb28e87b1d03c0d7bcd8effac1bb9afa785fe5004a44ff7e31d017e91790dac"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/",
+          "description": "Input module directory.",
+          "sha256": null
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/results/",
+          "description": "Results directory.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "reason": "N/A: no composed project modules or independently maintained components are present.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Worker report at stop state; original capture SHA-256 62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "reason": "The report provides a reproducibility file list that helps readers navigate the script and outputs.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/REPORT.md",
+          "description": "Reproducibility files section, lines 31\u201344.",
+          "sha256": "87a86bc213b9e8157957666a1263c32249e4ff4ae5d2a677a115aaf89c743248"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "The complete worker delivery declares no reuse license; coordinator capture availability is not a worker publication route.",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen runner probe output; saved assessment artifact",
+          "sha256": "3b236dd3900c227beba5a721a730a95ee5c70a8d56741006794ca61de73c3cc4"
+        },
+        {
+          "uri": "capture://62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1/content/workspace/input/sources.json",
+          "description": "Source metadata does not declare a project reuse license.",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "8a84ddc3eec68d0b7513f9a15ce37174288b36b7",
+    "captured_at": "2026-10-16T06:59:04.514702+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-22-j01/canonical/manifest.json",
+      "sha256": "62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "independent judgement with frozen probes",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete original stopped delivery; one frozen probe sweep and one complete-delivery replay; no declared worker access route"
+}

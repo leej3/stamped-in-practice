@@ -1,29 +1,25 @@
 # Current comparison status
 
-**Round one is complete: all 24 workers and all 32 assigned judges have stopped.** The frozen gate admitted 21 judgments (17 primary and four duplicate); eleven are unavailable because assessment inspection changed annex database metadata.
-The [synthesis and figures](rounds/round-01/synthesis/README.md) retain fixed denominators, scientific findings, checklist evidence, observed skill actions and effort.
+**Round one and its separately registered reassessment are complete; all further formal launches are held.** The original24 workers are unchanged.
+The original32 judgments admitted21 and lost11 to annex-metadata integrity failures.
+The separate operational v4 series admitted all32, with32 available scientific judgments and30 valid checklist responses.
 
-All 24 complete original deliveries and their browsable scientific files, support archives, assigned judgments and native publication proofs are published and independently retrieved.
-The study registry distinguishes worker capture/HEAD identities from later coordinator commits.
-Coordinator preservation earns no worker credit.
+Read the [separate reassessment synthesis and figures](assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md), [measurement viability and current hold](assessment-series/narps-neutral-r1-operational-v4/synthesis/viability.md), and unchanged [original synthesis](rounds/round-01/synthesis/README.md).
+Duplicate judgments disagree on67/248 item comparisons and5/8 scientific categories; these results do not establish a skill benefit or grading reliability.
 
-The remaining 48 research attempts and 64 judgments in the original allocation have not launched.
-Further research awaits the [measurement viability decision](rounds/round-01/synthesis/viability.md): the original series remains intact, and any repaired all-object assessment must be separately registered rather than selectively replacing failed measurements.
-No skill-effect claim crosses that boundary silently.
+The supplied assessment procedure exposed allocation records.
+Exact native evidence shows04-j01 displayed its own condition.
+The completed32 observations remain unchanged; future launches await a reviewed context-projection correction and a declared measurement boundary.
+The remaining48 research attempts and64 judgments have not launched, and the formal research-skill pin has not changed.
 
-The [candidate research guidance and trial evidence](skill-reflection/research-skill-revision-01/README.md) are published on a separate development branch.
-The registered round-one skill pin remains unchanged.
-The separately registered [assessment-only series](assessment-series/narps-neutral-r1-operational-v4/README.md) reassesses all 24 original deliveries and the same eight duplicate slots under one reviewed procedure.
-Its identity-guard correction passed all 24 original bindings and rejected 1,752 substitutions; the never-launched preparation seal is retained.
-The separate series is running in its fixed order, with at most three native judges at once; [progress](assessment-series/narps-neutral-r1-operational-v4/progress.json) records the latest completed control snapshot.
-Further research remains held for measurement viability.
-Read the [active-series handoff](assessment-series/narps-neutral-r1-operational-v4/HANDOFF.md) before any continuation; published control snapshots do not establish present liveness.
-[Complete support publication receipts](assessment-series/narps-neutral-r1-operational-v4/publication/batch-01/README.md) are being added separately; current Hub transfer failures delay some remote archives without interrupting judging.
+All24 original deliveries and their original-series support are published and independently retrieved.
+For the new series, all32 stopped sessions are fully retained locally and have verified Git/Entire identities. Native Hub retrieval is complete for5 and pending for27; full-support archives have separate status. See [every immutable native proof and exact transport scope](assessment-series/narps-neutral-r1-operational-v4/synthesis/SESSIONS.md).
+No evidence was discarded; Hub recovery remains pending without further retries.
 
+The [prospective research-guidance revision](skill-reflection/research-skill-revision-01/README.md) and [unlaunched round-two preparation](rounds/round-02/preparation-01/source-skill-binding.json) remain candidates.
+There is no preset spending, token or elapsed-time cap, no outcome-selected extension and no replacement of primary labels with favorable duplicate grades.
 
-See the [completion ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [judgment dispatches](rounds/round-01/judging/), [sealed registration](registration.md) and [allocation](allocation.json).
-The registration's zero-start count describes its prelaunch state.
-Its original records and hashes remain unchanged.
-
-There is no preset spending, token or elapsed-time cap and no extension selected to obtain favorable results.
-Separate workspaces and native profiles reduce shared context; the same-user host is not an operating-system containment boundary.
+Read the [controller handoff](assessment-series/narps-neutral-r1-operational-v4/HANDOFF.md) and published control closure before any continuation.
+Historical PID/process snapshots do not establish current liveness.
+The completed queue must not be restarted.
+Detailed registration, frozen records and prior progress remain available in this subdataset.

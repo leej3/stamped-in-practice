@@ -1,0 +1,559 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "One common workspace root contains the input, analysis code, figures and results.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/study-task.md",
+          "description": "task and workspace inputs are inside the common root",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "analysis code is inside the common root",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 maps and metadata are included under input/ and referenced with paths relative to the analysis script.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "54 map assets and upstream provenance are inside the workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "uses ROOT-relative input/data and input/participants.tsv",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The analysis depends on external Python libraries, but no environment file or linked software submodule supplies them.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "imports NumPy, pandas, NiBabel, SciPy, Nilearn and Matplotlib",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/upstream-methods.md",
+          "description": "describes fixed upstream inputs; it does not package group-analysis software",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "At worker stop, the analysis script, report, figures and results were untracked; HEAD contains supplied inputs rather than the analysis state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/.git/index",
+          "description": "Captured worker-stop Git index, compared with the complete stop inventory and committed tree",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "Analysis script present in the complete delivery but absent from captured HEAD",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "Scientific report present in the complete delivery but absent from captured HEAD",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The worker-stop inventory identifies all 54 supplied participant maps as git-annex pointers with annex keys and content digests.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Representative supplied participant map; worker-stop inventory records annex pointer source mode and key",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "54 maps and retrieved-byte provenance",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The report names package versions, but no execution record binds generated results to an exact environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "reports Python and package versions without a lock or run record",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/results/summary.json",
+          "description": "contains analysis settings, not an environment identity",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "No README or Makefile gives installation and usage instructions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "lists outputs and script but has no installation/usage procedure",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report identifies code/group_analysis.py as the analysis script, and it contains the full group workflow and output writes.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "Reproducibility files names code/group_analysis.py",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "complete analysis entry script",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The script derives paths from __file__ and uses workspace-relative input and output directories.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "ROOT = Path(__file__).resolve().parents[1]; relative paths",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Required Python libraries are absent from a tracked environment specification; the frozen runtime also lacks NiBabel.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "external library imports",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "lists versions but no dependency declaration",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "not-checked",
+      "reason": "The report names a Python version and package versions, but does not state host-level requirements; evidence is insufficient to establish that all host assumptions are documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "environment description",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "There is no README or environment specification with a complete system and dependency list that can be installed.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "version names alone provide no installation instructions",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "external imports",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the stopped workspace or tracked tree.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/.git/index",
+          "description": "Captured Git index has no staged environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "Report names software versions but no installable specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No process for updating dependency declarations is supplied, and no dependency declaration exists to update.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "no maintenance process",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "external imports without environment file",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No frozen package manifest, container digest or equivalent exact environment artifact is included.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "lists package versions only",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "data source provenance, not environment capture",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment artifact is available for an authorized recipient to retrieve and use.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/.git/config",
+          "description": "Captured repository configuration contains no worker-declared remote",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "No environment artifact is listed or published",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "No documentation explains how to obtain or use an environment specification; none is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "no environment retrieval or installation instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "not-checked",
+      "reason": "The work is one repository, but the primary code and results were untracked at worker stop; there are no separately maintained components to compare.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/.git/index",
+          "description": "Captured worker-stop index used with complete inventory to distinguish staged from untracked content",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "Analysis component in the complete delivery",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No regular workflow testing or CI evidence is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "documents one analysis but no repeat-testing process",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code and results occupy separate directories; environment definitions are absent and the modular relationships are undocumented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/participants.tsv",
+          "description": "participant metadata input",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "analysis module",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/results/summary.json",
+          "description": "derived output module",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "No restricted data or software is identified; supplied maps and metadata have public upstream provenance.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "public NeuroVault and OpenNeuro provenance",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No evidence shows testing in a fresh container, batch job, clean VM or cloud instance.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "no clean-host testing claim or record",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The workflow script does not create or invoke a disposable environment for an execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "runs directly in the caller environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "There is no exact environment specification or record of its reconstitution tests.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "Reports versions but no environment reconstitution evidence",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "Depends on external libraries without a supplied environment file",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived in the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "Lists reproducibility artifacts but no environment archive",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "External dependencies are imported, not archived",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No process tracks dependency changes because no environment specification is provided.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "No dependency update process is documented",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/participants.tsv",
+          "description": "Supplied data, no environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "No independently maintained software or dataset component is configured as a submodule; participant maps are included as annex-backed inputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "Data provenance identifies included maps; no independently maintained component is identified",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/.git/config",
+          "description": "Repository configuration for captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The input/code/results folders show basic module boundaries, but documentation does not explain how to recombine components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/participants.tsv",
+          "description": "input data module",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "analysis module",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "lists artifacts but no module-composition guidance",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "There is not enough evidence that these folders can be independently updated without breaking the workflow.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "fixed relative path relationships",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "unmet",
+      "reason": "No composition mechanism such as submodules or orchestration is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/input/sources.json",
+          "description": "data provenance only",
+          "sha256": null
+        },
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/code/group_analysis.py",
+          "description": "single script consumes local inputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "The report lists the main code and result artifacts, but no navigation or usage guide explains how to move between modules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture://44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878/content/workspace/report.md",
+          "description": "reproducibility file list",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8",
+    "captured_at": "2026-10-16T11:25:50+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-06-j02/canonical/manifest.json",
+      "sha256": "44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "frozen-assessment-source:9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "frozen-assessment-environment:3552d5003a2485b6405805236d5c54e7ed42f097"
+    ]
+  },
+  "scope": "Complete stopped-delivery inspection; check worker-declared upstream routes; replay not checked because no worker-supplied installable environment specification and nibabel is unavailable in the frozen runtime."
+}

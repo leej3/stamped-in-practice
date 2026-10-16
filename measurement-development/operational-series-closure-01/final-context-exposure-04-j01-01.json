@@ -1,0 +1,51 @@
+{
+  "kind": "bounded-disclosed-native-context-exposure",
+  "judgment_id": "narps-neutral-r1-04-j01",
+  "script": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/add-context-exposure.py",
+    "sha256": "3cc21ef83615bac1002fc6a3beba876809dda300fcaf9001acd7e69c354c244d"
+  },
+  "snapshot_index": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-11/index.json",
+    "sha256": "2737380bb88b4ac609736fefc496e3ad1a98c1ecc72d434c7011b33b0622ad13"
+  },
+  "native_events": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-11/evidence/judgments/narps-neutral-r1-04-j01/native-events.jsonl",
+    "sha256": "8a93cfae188d95d90456f59561ed191a9c6b61e57c65c096b28d866ef9dbdace"
+  },
+  "event_line": 10,
+  "raw_event_sha256": "73b8929a38f0dd8d179056a054eccc91f32262a889b8021d41a811200f0eb806",
+  "native_command": "/opt/homebrew/bin/bash -lc 'cat \"$STAMPED_ASSESSMENT_VERSION\"; cat \"$STAMPED_PROCEDURE\"; cat \"$(dirname \"$(dirname \"$STAMPED_WORKER_STOP_RECEIPT\")\")/judge-target.json\"; cat \"$STAMPED_DELIVERY_MANIFEST\"; cat \"$STAMPED_OPERATIONAL_MANIFEST\"; cat \"$STAMPED_WORKER_STOP_RECEIPT\"; find \"$(dirname \"$STAMPED_PROCEDURE\")/frozen-inputs/coordinator-guidance\" -maxdepth 2 -type f -print'",
+  "native_command_status": "completed",
+  "native_command_exit_code": 0,
+  "native_output_sha256": "654e5fde06fdc36b923b3ac1b76a34ad900b1d74dd40f1836e30928e00acea11",
+  "procedure_output_bytes_with_trailing_newline_sha256": "6f25ebbec5310442e8fd3fd20bd20682ecb5653b350362119af3e825a2668084",
+  "embedded_allocation_sha256": "a4678aa8dbc52d7d46ba5bd659746d81a48427a0a29a1f17f651b5821127889c",
+  "embedded_original_allocation_record": {
+    "run": "narps-neutral-r1-04",
+    "condition": "discover-science",
+    "replicate": 2,
+    "wave": 8,
+    "launch_position": 3
+  },
+  "native_output_excerpt": {
+    "start_line": 30,
+    "end_line": 44,
+    "quote": "        \"result_commit\": \"eece8595d255a766517e32ff10b2e6574d3c4e6a\",\n        \"run\": \"narps-neutral-r1-20\",\n        \"seed_commit\": \"eece8595d255a766517e32ff10b2e6574d3c4e6a\",\n        \"worker_end_state_sha256\": \"2a4e6c7fb90f34d785dac103f30c16eca11ac566bf6405e80b910d11e6f5a100\"\n      },\n      {\n        \"delivery_capture_sha256\": \"2afd81ca5fdfaa03e85f2d3e65b04aac9f4b3d90eb39f95c2497266e4cf3cdc7\",\n        \"result_commit\": \"eece8595d255a766517e32ff10b2e6574d3c4e6a\",\n        \"run\": \"narps-neutral-r1-08\",\n        \"seed_commit\": \"eece8595d255a766517e32ff10b2e6574d3c4e6a\",\n        \"worker_end_state_sha256\": \"77c8a710004eeb6bc42610e3a53bb6905ac963c8746604860256cf30491dde98\"\n      },\n      {\n        \"delivery_capture_sha256\": \"33a09d4cca1ff0dfd711b954e140e94c53309fa3eb938ee0d86f62a158f7bdfa\",\n        \"result_commit\": \"eece8595d255a766517e32ff10b2e6574d3c4e6a\","
+  },
+  "report": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-11/evidence/judgments/narps-neutral-r1-04-j01/report.md",
+    "sha256": "40394699f0ee2f55d83f584cc85f11e2a9a199a37375606d8d1ba7d0e710cd68"
+  },
+  "report_disclosure": {
+    "start_line": 74,
+    "end_line": 74,
+    "quote": "The assessment accepts the frozen 0.3.1 checklist and distinguishes item attainment from scientific adequacy, the worker's reported conclusion, and replay availability. The map coverage concern is judged from the supplied code and results; no substitute analysis was run. No treatment assignment was inferred. The worker report says a workspace-local `jupyter-notebook` skill was selected as a reproducibility aid; this assistance exposure is recorded and was not used as grading evidence. While locating the supplied assessor inputs, I mistakenly displayed an external bundled procedure containing unrelated allocation/assignment records; I did not use those records or other workers' outputs, judgments, summaries, or assignments as grading evidence."
+  },
+  "scientific_record": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-11/evidence/judgments/narps-neutral-r1-04-j01/scientific-judgment.json",
+    "sha256": "867bb7219dd2086fc34ee30ff2a66187b9516e0b84b017df6c46e003695b8136"
+  },
+  "observation": "The native command displayed the sealed supplied procedure, including its embedded allocation/assignment records. The report acknowledges this exposure and denies using those records as grading evidence.",
+  "limits": "The record establishes displayed content, not whether it influenced judgment. No inference of influence, no adjudication, no regrading, no replacement or exclusion. This is a bounded citation for one disclosed case; it is not an exhaustive exposure audit."
+}

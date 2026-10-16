@@ -9,7 +9,7 @@ The original [round-one synthesis](../../rounds/round-01/synthesis/README.md) re
 The [final native trial](../../measurement-development/assessment-operational-live-trial-02/README.md) and [never-launched identity-guard failure](../../measurement-development/assessment-registration-admission-01/README.md) explain the version boundary; exact review and admission checks are retained in preparation-evidence/.
 
 Before continuing, read the [active-series handoff](HANDOFF.md) and reconcile the existing native sessions.
-The series is running; see the [control progress](progress.json) and [final preparation review](../../measurement-development/assessment-operational-followup-01/README.md).
-All 32 assigned attempts will be retained regardless of grade, replay or admission.
-Later research remains held until this separate series supports a measurement-viability decision.
+The series is complete; see the [synthesis and figures](synthesis/README.md), [control progress](progress.json) and [final preparation review](../../measurement-development/assessment-operational-followup-01/README.md).
+All32 assigned attempts are retained regardless of grade, replay or admission.
+All further formal launches are held for the [supplied-context defect and measurement-boundary review](synthesis/viability.md).
 The original research-skill pin is unchanged.
