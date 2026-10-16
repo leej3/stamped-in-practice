@@ -14,6 +14,7 @@ import shutil
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
+import tempfile
 import tomllib
 
 from research_conditions import CONDITIONS, assignment
@@ -808,6 +809,18 @@ def replay_arguments(manifest, arguments, target, output):
     for path in (args.workdir, args.output):
         if not path.resolve().is_relative_to(output.resolve()):
             raise SystemExit("Formal replay evidence must stay under STAMPED_JUDGE_OUTPUT")
+    if (output / "formal-replay-attempt.json").exists():
+        raise SystemExit("Formal replay allowance already consumed; retain this attempt")
+    collisions = [str(path) for path in (args.workdir, args.output) if os.path.lexists(path)]
+    overlap = args.output.resolve().is_relative_to(args.workdir.resolve())
+    if collisions or overlap:
+        reason = "Replay workdir/output must be new separate paths; do not mkdir the workdir"
+        with tempfile.NamedTemporaryFile(mode="w", prefix="formal-replay-preflight-",
+                suffix=".json", dir=output, delete=False) as stream:
+            json.dump({"status": "rejected-before-attempt", "reason": reason,
+                       "arguments": arguments, "existing_paths": collisions}, stream, indent=2)
+            stream.write("\n")
+        raise SystemExit(reason)
     if is_neutral(manifest):
         from delivery_snapshot import validate_capture
         identity = validate_capture(Path(os.environ["STAMPED_DELIVERY_MANIFEST"]))

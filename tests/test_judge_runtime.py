@@ -152,3 +152,41 @@ def test_projected_captured_replay_executes_and_preserves_one_attempt(projected_
     assert (output / 'formal-replay-attempt.json').is_file()
     with pytest.raises(SystemExit, match='already consumed'):
         assessment.main()
+
+
+@pytest.mark.parametrize('collision', ['directory', 'file', 'dangling-link', 'output', 'overlap'])
+def test_replay_path_preflight_preserves_evidence_and_attempt(projected_judge, monkeypatch, collision):
+    _, environment, _, _, output, _ = projected_judge
+    workdir, report = output / 'replay', output / 'replay.json'
+    if collision == 'directory':
+        workdir.mkdir()
+        (workdir / 'kept').write_text('unchanged')
+    elif collision == 'file':
+        workdir.write_text('unchanged')
+    elif collision == 'dangling-link':
+        workdir.symlink_to(output / 'missing')
+    elif collision == 'output':
+        report.write_text('unchanged')
+    else:
+        report = workdir / 'report.json'
+    runtime = assessment.runtime_context()
+    arguments = ['--path', environment['STAMPED_JUDGE_TARGET'], '--entry', 'never executed',
+                 '--outputs', 'result.csv', '--workdir', str(workdir), '--output', str(report)]
+    with pytest.raises(SystemExit, match='new separate paths'):
+        procedure.replay_arguments(runtime, arguments, Path(environment['STAMPED_JUDGE_TARGET']), output)
+    assert not (output / 'formal-replay-attempt.json').exists()
+    records = list(output.glob('formal-replay-preflight-*.json'))
+    assert len(records) == 1
+    assert json.loads(records[0].read_text())['status'] == 'rejected-before-attempt'
+    if collision == 'directory':
+        assert (workdir / 'kept').read_text() == 'unchanged'
+    elif collision == 'file':
+        assert workdir.read_text() == 'unchanged'
+    elif collision == 'dangling-link':
+        assert workdir.is_symlink()
+    elif collision == 'output':
+        assert report.read_text() == 'unchanged'
+    arguments[-3], arguments[-1] = str(output / 'fresh-replay'), str(output / 'fresh-report.json')
+    assert procedure.replay_arguments(runtime, arguments, Path(environment['STAMPED_JUDGE_TARGET']), output) == arguments
+    with pytest.raises(SystemExit, match='already consumed'):
+        procedure.replay_arguments(runtime, arguments, Path(environment['STAMPED_JUDGE_TARGET']), output)

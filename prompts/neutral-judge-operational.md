@@ -53,6 +53,8 @@ A successful replay is not a prerequisite for accepting other evidence or comple
 Use a separate new writable replay copy of the canonical original complete delivery, preserving needed uncommitted and ignored files.
 Never replay in the inspection copy.
 The frozen runner makes this separate copy from the canonical capture.
+Pass a nonexistent `--workdir` and a nonexistent output file; do not create the workdir first.
+A rejected path preflight is recorded separately and does not consume the single replay attempt; choose fresh paths before scientific execution.
 Reconstruct the environment only through instructions or dependency declarations that the worker actually supplied; do not add missing declarations, repair code, infer a replacement pipeline or modify the source object.
 
 Before replay, declare the exact command, prerequisites, scientific output selection and comparison rule.
