@@ -1,5 +1,9 @@
 # Compare research outcomes
 
+This is the methodological plan for comparing scientific conclusions, research practices, replay and effort.
+For the completed study's findings and reporting corrections, start with [the results guide](docs/results.md).
+The [registered iteration design](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/registration.md) identifies the actual sealed plan; this coordinator document alone is not evidence of which version a completed run used.
+
 Freeze this plan with the study guidance, assessment procedure and common run settings before the first formal round.
 Keep preparation pilots and the completed `narps-v1` development round separate from the prospective tool-neutral comparison.
 

@@ -1,5 +1,15 @@
 # Launch research workers and judges
 
+This is the implementation guide for running new research workers and assessments.
+For the completed study, start with [results and interpretation](../docs/results.md); for the branch and dataset layout, use the [repository map](../docs/repository-map.md).
+The completed comparison's historical controllers must not be restarted.
+
+The launcher gives each worker an independent repository containing the selected scientific inputs and its assigned guidance.
+Judges inspect the retained delivery separately.
+Use the sections below when preparing a new run, together with the [coordinator prompt](../prompt.md) and [comparison plan](../comparison-plan.md).
+
+## Host setup
+
 The native launcher defaults to `~/.config/<coordinator-directory-name>/launch.json`; use `--host-config` to select an explicit host file.
 For a checkout named `stamped-in-practice`, the default is `~/.config/stamped-in-practice/launch.json`; existing `stamped-ai-research-next` checkouts retain their earlier default.
 These identify the CLI, source environment, approved hooks, provenance resolver and annex remote.

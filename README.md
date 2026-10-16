@@ -1,76 +1,56 @@
-# Improving STAMPED research skills
+# STAMPED in Practice
+
+Can reusable research guidance help AI agents do sound science and leave work that other researchers can inspect and reproduce?
+This project tests that question by comparing four ways of assisting agents on the same neuroscience task, then revising the STAMPED guidance between rounds.
+STAMPED describes research objects that are **self-contained, tracked, actionable, modular, portable, ephemeral and distributable**.
 
 <img src="assets/workbench.png" alt="STAMPED workbench" width="280">
 
-This repository is a workshop for improving STAMPED research skills.
-It compares four ways of assisting agents with scientific studies, evaluates the resulting research objects using a versioned assessment, and uses that evidence to revise the skills.
-The question is whether the guidance helps agents do sound science with more thorough, efficient and consistent reproducibility.
+## Start here
 
-Each iteration tests a pinned skill revision on selected studies: run matched agents, assess their work independently, compare outcomes and effort, then improve and compress the reusable guidance.
-Study inputs and scientific outputs belong to study submodules; iteration subdatasets connect that work to changes in the skills.
+- **Understand the findings:** [Results and their interpretation](docs/results.md) explains the completed comparison, the poster's measures and the main limitations.
+- **Find your way around:** [Repository map](docs/repository-map.md) explains why links open different branches and where to find inputs, original analyses and assessments.
+- **Explore the poster:** [Poster and figure guide](docs/poster.md) connects the presentation to readable explanations and the underlying evidence.
+- **Use or inspect the guidance:** [Research skills and assessment](docs/skills.md) distinguishes the instructions given to researchers from the checklist used to assess their work.
+- **Download files or reproduce work:** [Retrieval guide](RETRIEVAL.md) explains what is readable on GitHub and how to retrieve larger files.
 
-The broader hypothesis concerns both humans and agents; this experiment tests agents.
-Repeated baseline runs help distinguish improvements from ordinary variability.
-Results from one study do not establish transfer to other studies.
+## What we compared
 
-| Condition | Added assistance |
+Agents analyzed the same 54 participant brain maps from NARPS, a study of how different teams analyze a common neuroscience dataset.
+Each agent addressed the same question about responses to potential gains in a gambling task.
+We compared the scientific adequacy of their conclusions, evidence of reproducible research practices, replay attempts and effort.
+
+| Condition | Instructions added to the scientific task |
 | --- | --- |
 | Baseline | No supplied research skills or discovery instruction |
 | General discovery | Find, install and use skills useful for the task |
 | Reproducible-science discovery | Find, install and use skills for scientific quality and reproducibility |
-| Explicit pinned STAMPED | Invoke the supplied, versioned STAMPED workflows |
+| Explicit STAMPED | Use the supplied, versioned STAMPED research workflows |
 
-All conditions receive the same scientific task and common resources.
-We record assigned assistance separately from what agents actually discover, install and use, including unsuccessful attempts.
-These comparisons measure assistance strategies: wording can affect behavior even without skill use.
-The explicit STAMPED condition directly tests the guidance we are improving.
+The completed comparison has three rounds, with six fresh agents per condition per round: **72 research attempts and 96 judgments**, including duplicate assessments.
+The explicit STAMPED guidance changed between rounds; the other conditions provide repeated comparisons.
+What agents were asked to use and what they actually used are recorded separately.
 
-During preparation, the assessor and its runtime can improve alongside the other skills.
-Formal runs begin from a fresh clone with shallow history.
-Comparable assessment series keep their assessor and runtime fixed; necessary repairs define a separate series.
+## What we learned
 
-To start or resume a coordinator, give it this repository and a request such as:
+The retained results show that scientific adequacy and checklist attainment are different outcomes.
+A higher fraction of STAMPED items met does not necessarily accompany a better-supported scientific conclusion.
+The corrected reporting makes 70 primary scientific assessments and 68 valid checklists available across the 72 attempts.
+It preserves missing assessments and the original reporting failures.
 
-> Follow `prompt.md` using `studies/narps`.
-> First read the selected iteration's pinned `STATUS.md` and reconcile any active runs.
-> Continue its registered next step; select and seal a new registration only when no existing one applies.
+The study also exposed challenges in the experiment itself: assessment can constrain the practices it is intended to observe, judges can disagree, and prolonged repairs can postpone fresh tests of improved guidance.
+These are useful lessons for designing the next comparison.
+This small, adaptive study does **not** establish a causal skill benefit or transfer to other scientific tasks.
+Read [the results guide](docs/results.md) before interpreting the poster's tables or graphs.
 
-| Location | Purpose |
-| --- | --- |
-| `prompt.md` | The research, assessment and skill-improvement loop |
-| `AGENTS.md` | Instructions for the coordinator |
-| `iterations/<iteration>/` | An iteration subdataset with revisions, linked trials, assessments, comparisons and reasons for changes |
-| `studies/<study>/` | A versioned study submodule |
-| `studies/<study>/input/` | The scientific prompt and verified data supplied to research workers |
-| `studies/<study>/coordinator-guidance/` | Evaluation guidance and reference material for the coordinator and judges |
-| `studies/<study>/results/<run>/` | An experiment submodule containing the worker's research object, assessments and execution records |
-| `skills/` | Evolving `con/skills`; each iteration records the exact tested revision and development branch |
-| `assessment/` | The selected assessor version, identified by `assessment-version.json` |
+## How this repository works
 
-Keep iteration, study and experiment submodules uninitialized until needed.
-Open selected paths and retrieve their required annex content; the coordinator tree retains their exact commits without expanding every experiment.
-The [retrieval guide](RETRIEVAL.md) gives the current NARPS payload route and commands for a selected experiment.
+`main` is the entrance and coordinator toolkit.
+Studies, comparison records and individual research deliveries are separate versioned datasets, linked here as Git submodules.
+Some are hosted on other branches of this same GitHub repository, so a link can open a different directory tree without leaving the project.
+Those branches preserve distinct research objects; they are not all pending changes to merge into `main`.
+The [repository map](docs/repository-map.md) explains each destination and how exact revisions remain traceable.
 
-The intended result is transferable guidance: an independent agent can use these skills with a researcher's own data and hypothesis to produce scientifically useful, rigorous and convenient research.
-The products are improved shareable skills, evidence about their impact, and a STAMPED research object documenting the whole workshop.
-Figures summarize scientific outcomes, reproducibility, effort and variability.
-
-NARPS is the first formal study.
-The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
-
-The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
-Its workflow mandates and assessment changes are disclosed.
-The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
-The [completed three-round readout](https://github.com/leej3/stamped-in-practice/blob/b44366c4d38200e3e362db8587400819ea968644/final-synthesis/README.md) retains all 72 assigned research workers and 96 operational judgments, with the earlier original round-one assessment kept separately.
-The original frozen reporting gate rejected all judgments in rounds two and three because the registered worker source revisions differed from the original seal; those historical rejection tables remain intact.
-A [subsequent authorized reporting correction](https://github.com/leej3/stamped-in-practice/blob/b44366c4d38200e3e362db8587400819ea968644/final-synthesis/REPORTING-CORRECTION.md) makes 70 of 72 primary scientific records and 68 of 72 primary checklists available across the three rounds, retaining individual failures without new research or judges.
-Round-one duplicate judgments also showed substantial disagreement, and a supplied-procedure exposure limits blinding.
-This comparison does not establish a skill benefit, reduced variability or transfer to another study.
-The [lessons](https://github.com/leej3/stamped-in-practice/blob/b44366c4d38200e3e362db8587400819ea968644/final-synthesis/LESSONS.md) explain what the retained evidence supports.
-
-The tested research-skill revisions were `f2e74ea3`, `d83d7d66` and the final [`32660661`](https://github.com/con/skills/commit/326606610af6c261876c92032ca1f89f6d3ad1f1).
-Operational assessor `9852d836`, source `4f72ef49` and Luna/high remained frozen; prospective changes retained on main were not adopted.
-No further tuning or runs are pending.
-
-The [publication record](https://github.com/leej3/stamped-in-practice/blob/b44366c4d38200e3e362db8587400819ea968644/final-synthesis/PUBLICATION.md) distinguishes complete local captures, published Git references, hosted Entire verification and pending annex retrieval.
-Read the [pinned completed status](https://github.com/leej3/stamped-in-practice/blob/b44366c4d38200e3e362db8587400819ea968644/STATUS.md) before continuing; historical controllers must not be restarted.
+For development, [the coordinator prompt](prompt.md) describes the research loop, [the comparison plan](comparison-plan.md) defines the measures, and [the scripts guide](scripts/README.md) covers execution.
+All assigned runs in the completed comparison have finished.
+Consult its [completion and publication status](docs/results.md#completion-and-access) before planning new work; historical controllers must not be restarted.
