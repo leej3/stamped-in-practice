@@ -21,7 +21,7 @@ from scipy.stats import t as t_dist
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "input/sources.json"
 PARTICIPANTS = ROOT / "input/participants.tsv"
-OUT = ROOT / "results/final"
+OUT = ROOT / "results/final-v2"
 ATLAS_PATH = ROOT / "input/reference/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz"
 N_PERM = 5000
 SEED = 20261016
@@ -228,12 +228,14 @@ def run():
         peak_xyz = peak_record(peak_index)["mni_xyz_mm"]
         display = plotting.plot_stat_map(stat_img, display_mode="ortho", cut_coords=peak_xyz,
                                          threshold=0, cmap="magma", colorbar=True,
-                                         title="Whole-brain max-t FWE p < .05; cyan = vmPFC ROI")
+                                         title="FWE-significant peak; cyan = vmPFC ROI",
+                                         figure=plt.figure(figsize=(12, 5)))
     else:
         display = plotting.plot_stat_map(nib.Nifti1Image(tvol, ref.affine, ref.header),
                                          display_mode="ortho", cut_coords=(0, 35, -10),
                                          threshold=0, cmap="magma", colorbar=True,
-                                         title="Group t map (no positive voxels survive whole-brain FWE p < .05)")
+                                         title="Group t map; no positive voxels survive whole-brain FWE",
+                                         figure=plt.figure(figsize=(12, 5)))
     display.add_contours(roi_img, levels=[.5], colors=["cyan"], linewidths=0.8)
     display.savefig(OUT / "wholebrain-fwe-map.png", dpi=180)
     display.close()
