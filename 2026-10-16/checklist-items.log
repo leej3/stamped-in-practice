@@ -1,0 +1,32 @@
+✔ The default environment has been installed.
+stamped-checklist:must/001	must	S.1	Are all files and directories nested under a common root?
+stamped-checklist:must/002	must	S.1	Are datasets included, linked, or referenced reachable from the code and environment specifications without crossing the boundary of a common root?
+stamped-checklist:must/003	must	S.1	Is external software included in the environment or linked as submodules within the project boundary?
+stamped-checklist:must/004	must	T.1,T.3,T.5	Are version control systems such as `Git` used for code, text, documentation, and configuration files?
+stamped-checklist:must/005	must	T.1,T.3,T.5	Are version control systems such as `git-annex`, DataLad, or `Git` LFS used for large binary data?
+stamped-checklist:must/006	must	T.1,T.3,T.5	Are the exact environment specifications used to generate a set of results included in the provenance records to link computational actions to particular environments?
+stamped-checklist:must/007	must	A.1	Is a `README.md` or `Makefile` included with instructions for installation and usage?
+stamped-checklist:must/008	must	A.1	Is there a clear starting point for users to start reproducing results (e.g., a main script, a workflow definition, or a container image)?
+stamped-checklist:must/009	must	P.1	Are relative paths used in scripts, avoiding hardcoded or system-specific paths like `C:\Users\...` or `/home/user/...`?
+stamped-checklist:must/010	must	P.1	Are all software dependencies included in the environment specification, rather than relying on pre-installed tools?
+stamped-checklist:must/011	must	P.1	Have all assumptions about the host system's configuration been documented (e.g., specific OS versions, required system libraries, or environment variables)?
+stamped-checklist:must/012	must	P.2	Is there a clear list of system requirements and dependencies documented in the README or environment specifications?
+stamped-checklist:must/013	must	P.3	Are environment specifications (e.g., Dockerfiles, `pyproject.toml`, `package.json`) included in the version control system alongside code and data?
+stamped-checklist:must/014	must	P.3	Is there a process for updating environment specifications when dependencies change, and are these updates tracked in version control?
+stamped-checklist:must/015	must	D.1	Are environment specifications (e.g., container digests, frozen package manifests) included to ensure others can attempt to exactly replicate the environment?
+stamped-checklist:must/016	must	D.1	Are environment specifications shared in a way that others can access and use them (e.g., published container images, archived environment files)?
+stamped-checklist:must/017	must	D.1	Is there documentation on how to obtain and use the environment specifications for reproduction?
+stamped-checklist:should/001	should	T.2	Is a common version control system (e.g., `Git`, DVC, `git-annex`, or DataLad) used across all components?
+stamped-checklist:should/002	should	A.2	Is the workflow tested regularly to ensure instructions remain accurate?
+stamped-checklist:should/003	should	M.1	Are raw data, processed data, code, and environment definitions separated into distinct modules?
+stamped-checklist:should/009	should	M.4	Are restricted data or software kept in their own modules?
+stamped-checklist:should/004	should	E.1	Is the pipeline tested in a fresh container, batch job, clean virtual machine, or cloud-based instance?
+stamped-checklist:should/005	should	E.1	Does the workflow spawn disposable environments for each execution, allowing for isolation of runs?
+stamped-checklist:should/006	should	D.2	Are the exact environment specifications used to generate a specific set of results regularly tested to ensure they can be reconstituted as intended?
+stamped-checklist:should/007	should	D.2	Are environment artifacts archived within the research object where possible (e.g., executable binaries, container images)?
+stamped-checklist:should/008	should	D.2	Is there a process for updating environment specifications when dependencies change, and are these updates tracked in version control?
+stamped-checklist:may/001	may	M.2	Are external datasets or software dependencies included as submodules or linked as submodules?
+stamped-checklist:may/002	may	M.2	Is the modular structure documented to clarify how components relate and can be recombined?
+stamped-checklist:may/003	may	M.2	Are modular boundaries defined in a way that allows independent updates without breaking the overall workflow?
+stamped-checklist:may/004	may	M.2	Is there a clear mechanism for composing modules together (e.g., `git` submodules, or container orchestration)?
+stamped-checklist:may/005	may	M.2	Is there documentation or tooling to support users in understanding and navigating the modular structure?

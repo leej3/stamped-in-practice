@@ -1,0 +1,41 @@
+✔ The default environment has been installed.
+usage: run_probes.py [-h] [-o OUTPUT] [--response RESPONSE]
+                     [--only {ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} [{ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} ...]]
+                     [--skip {ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} [{ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} ...]]
+                     [--check-remote] [--allow GLOB [GLOB ...]]
+                     [--kind {dataset,component,study,skill}] [--overwrite]
+                     [--quiet]
+                     path
+
+Run the STAMPED probes over a checked-out research object.
+
+    run_probes.py <path> [-o probes.json] [--response response.json]
+                  [--only NAME ...] [--skip NAME ...] [--check-remote]
+                  [--kind dataset|component|study|skill]
+
+Writes the per-probe results, and optionally a response JSON (the format in
+``../stamped-conventions/references/response-format.md``) in which every item a
+probe speaks to carries that probe's verdict and every other item is left
+``not-checked`` for the assessing session to judge.
+
+The probes never modify the object.  Nothing here replaces the judgement items:
+a response straight out of this script is a draft, not an assessment.
+
+positional arguments:
+  path                  checked-out object to probe
+
+options:
+  -h, --help            show this help message and exit
+  -o, --output OUTPUT   write the probe results here
+  --response RESPONSE   also write a draft response JSON here
+  --only {ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} [{ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} ...]
+                        run just these probes
+  --skip {ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} [{ci-present,clone-weight,derived-have-records,entry-point,env-spec-tracked,inputs-untouched,large-in-annex,license-declared,modules-separated,no-abs-paths,platform-assumptions,run-env-linked,subdatasets-resolvable,tree-clean} ...]
+  --check-remote        contact submodule urls (network)
+  --allow GLOB [GLOB ...]
+                        paths no-abs-paths may skip, for files that genuinely
+                        have to carry a host path
+  --kind {dataset,component,study,skill}
+  --overwrite           replace an existing --response file instead of keeping
+                        its judged answers
+  --quiet

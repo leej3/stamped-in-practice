@@ -1,0 +1,34 @@
+[workspace]
+name = "stamped-in-practice"
+channels = ["conda-forge"]
+platforms = [{ platform = "osx-arm64", macos = "14.0" }, "linux-64"]
+
+[dependencies]
+python = ">=3.11,<3.14"
+git = "*"
+numpy = "*"
+scipy = "*"
+pandas = "*"
+matplotlib-base = "*"
+pyyaml = "*"
+jsonschema = "*"
+pre-commit = "*"
+tomlkit = "*"
+pytest = "*"
+rfc3339-validator = "*"
+nilearn = ">=0.14.1,<0.15"
+
+[pypi-dependencies]
+datalad = "*"
+git-annex = "*"
+con-duct = "*"
+tiktoken = "*"
+pytest-evals = "==0.3.4"
+tox = "*"
+
+[tasks]
+pilot = "python scripts/group_analysis.py --pilot"
+group-analysis = "python scripts/group_analysis.py"
+validate-results = "python scripts/validate_results.py"
+figures = "python scripts/make_figures.py"
+

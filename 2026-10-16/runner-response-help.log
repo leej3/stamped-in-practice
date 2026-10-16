@@ -1,0 +1,39 @@
+✔ The default environment has been installed.
+usage: encode_response.py [-h]
+                          {items,validate,encode,decode,template,set,stamp,table} ...
+
+STAMPED checklist responses: read the items, validate, encode, decode.
+
+The vendored checklist in ``../checklist/`` is the only item source, and this
+script is the only writer of a checklist-app URL.  See
+``../references/response-format.md`` for the response JSON and
+``../references/verdicts.md`` for the statuses.
+
+Subcommands
+-----------
+items      list the pinned items (id, level, principle codes, text)
+set        answer one item in a response JSON, in place (what every run was
+           otherwise writing a merge script for)
+table      the per-item markdown table response-format.md section 4 asks for
+stamp      fill the fields no script can know: harness, model, scope, kind
+validate   check a response JSON against the pin and the app's constraints
+encode     response JSON -> checklist-app URL
+decode     checklist-app URL -> response JSON (how a filled web form becomes
+           reference answers for calibration)
+template   emit a response JSON skeleton with every item not-checked
+
+Exit codes: 0 ok, 1 validation failed, 2 usage.
+
+positional arguments:
+  {items,validate,encode,decode,template,set,stamp,table}
+    items               list the pinned items
+    validate            check a response JSON
+    encode              response JSON -> URL
+    decode              URL -> response JSON
+    template            emit an all-not-checked response JSON
+    set                 answer one item in a response JSON, in place
+    stamp               fill harness, model, scope and kind
+    table               print the per-item markdown table
+
+options:
+  -h, --help            show this help message and exit

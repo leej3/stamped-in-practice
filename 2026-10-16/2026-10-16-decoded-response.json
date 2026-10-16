@@ -1,0 +1,227 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All study inputs, code, configuration, protocol, results and logs are nested under one repository root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "Study maps are annexed under input/data; the only linked module has a resolvable URL.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "Pixi declares analysis libraries and the access tooling; scripts import only declared packages.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/004": {
+      "value": "yes",
+      "reason": "Worker-stop receipt records the requested commit and a clean worktree; code and documentation are Git tracked.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex stores the maps and binary outputs; remote retrieval and fsck verified all task inputs.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/006": {
+      "value": "yes",
+      "reason": "Run records name commands and results/replay.json pins the source commit and exact lock hash.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/007": {
+      "value": "yes",
+      "reason": "README.md documents setup, environment retrieval and use.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "README names the present group-analysis script and Pixi task.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The probe found no host-specific absolute paths in tracked text.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "The environment declares Python, Git, scientific libraries, DataLad and git-annex used by the scripts.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "README documents supported OS families, but the analysis fetches a Nilearn brain mask online without documenting that host network requirement.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "README lists Git, git-annex, Pixi and supported platforms; it omits the online template fetch and tool versions.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/013": {
+      "value": "yes",
+      "reason": "pixi.toml is tracked with the task code and the lock snapshot is tracked on the companion environment branch.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "README gives a pixi lock update procedure; history shows the initial lock snapshot, but no later dependency update following it.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/015": {
+      "value": "yes",
+      "reason": "The exact pixi.lock is retrievable at the companion branch and its SHA-256 matches results/replay.json.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/016": {
+      "value": "yes",
+      "reason": "A researcher can retrieve the exact task branch, all 54 input maps, archived result payloads and the locked environment.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/017": {
+      "value": "yes",
+      "reason": "README explains where to get the lock snapshot, how to install it and how to retrieve maps.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git tracks code, environment and text; git-annex tracks large maps and results; skills is a Git submodule.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "Duct records show repeated manual analysis and validation runs, but no CI or scheduled checks keep instructions current.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "Inputs, scripts, results and environment manifest occupy separate directories/files.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "No license or access terms establish whether any software or data are restricted; declarations would settle this.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "A fresh clone replayed on the same host; scientific outputs matched, but no separate VM, container or cloud host was used.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "Pixi reuses a project environment; each execution does not create and discard an isolated environment.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "The pinned environment was replayed and checked manually, but no recurring CI rebuild verifies it.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "The exact lock is archived in the retrievable companion branch, but executable package artifacts come from external channels.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "Same documented update process as must/014; the initial lock is tracked, with no later update instance.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "The skills module is linked, but study maps use annex and Pixi packages use manifests rather than separate modules.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/002": {
+      "value": "yes",
+      "reason": "README explains the relationship among fixed inputs, group-analysis code, results and environment tasks.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/003": {
+      "value": "yes",
+      "reason": "The map inputs, analysis scripts and environment snapshot can be updated independently within tracked boundaries.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "Pixi tasks compose analysis, validation and figure generation; git-annex retrieves inputs and results.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README links the protocol and input methods and names all reproduction tasks.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    }
+  },
+  "assessor": {
+    "skill": "human",
+    "harness": "checklist web app",
+    "format": 3
+  }
+}

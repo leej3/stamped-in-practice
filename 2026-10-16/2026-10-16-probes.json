@@ -1,0 +1,526 @@
+{
+  "object": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-11/targets/judgment-01",
+    "commit": "284c8768140cbd816d983f8bd2697bd9b541eb25",
+    "is_datalad": false
+  },
+  "checklist_version": "0.3.1",
+  "probes": [
+    {
+      "probe": "ci-present",
+      "status": "unmet",
+      "items": [
+        "stamped-checklist:should/002",
+        "stamped-checklist:should/006"
+      ],
+      "reason": "No CI configuration: nothing checks that the instructions still work.",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no tracked .github/workflows/, .gitlab-ci.yml, .circleci/, .forgejo/workflows/, .gitea/workflows/ in 246 tracked paths",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "configs": []
+      },
+      "item_status": {
+        "stamped-checklist:should/002": "unmet",
+        "stamped-checklist:should/006": "unmet"
+      },
+      "item_reason": {
+        "stamped-checklist:should/002": "No CI configuration: nothing checks that the instructions still work.",
+        "stamped-checklist:should/006": "No CI configuration: the environment behind the results is never rebuilt."
+      }
+    },
+    {
+      "probe": "clone-weight",
+      "status": "met",
+      "items": [],
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ],
+      "details": {},
+      "item_status": {},
+      "item_reason": {}
+    },
+    {
+      "probe": "derived-have-records",
+      "status": "unmet",
+      "items": [
+        "stamped-checklist:must/006"
+      ],
+      "reason": "47 derived file(s) tracked (e.g. results/corrected_voxel_coordinates.png) and no run record or tracked workflow that would re-create any of them.",
+      "evidence": [
+        {
+          "uri": "results/corrected_voxel_coordinates.png",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/exclusions.tsv",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/exclusions.tsv",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/map_qc.tsv",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/mean_effect.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/p_fwe.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/p_uncorrected.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/participant_vmPFC_summary.tsv",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/permutation_max_t.tsv",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/failed_run_20261015T_final/pilot.json",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "candidates": [
+          "results/corrected_voxel_coordinates.png",
+          "results/exclusions.tsv",
+          "results/failed_run_20261015T_final/exclusions.tsv",
+          "results/failed_run_20261015T_final/map_qc.tsv",
+          "results/failed_run_20261015T_final/mean_effect.nii.gz",
+          "results/failed_run_20261015T_final/p_fwe.nii.gz",
+          "results/failed_run_20261015T_final/p_uncorrected.nii.gz",
+          "results/failed_run_20261015T_final/participant_vmPFC_summary.tsv",
+          "results/failed_run_20261015T_final/permutation_max_t.tsv",
+          "results/failed_run_20261015T_final/pilot.json",
+          "results/failed_run_20261015T_final/t_fwe05.nii.gz",
+          "results/failed_run_20261015T_final/t_unthresholded.nii.gz",
+          "results/failed_run_20261015T_final/top_voxels.tsv",
+          "results/failed_run_20261015T_final/vmPFC_participant_effects.png",
+          "results/failed_run_20261015T_final/whole_brain_results.png",
+          "results/first_primary/exclusions.tsv",
+          "results/first_primary/map_qc.tsv",
+          "results/first_primary/mean_effect.nii.gz",
+          "results/first_primary/p_fwe.nii.gz",
+          "results/first_primary/p_uncorrected.nii.gz",
+          "results/first_primary/participant_vmPFC_summary.tsv",
+          "results/first_primary/permutation_max_t.tsv",
+          "results/first_primary/pilot.json",
+          "results/first_primary/summary.json",
+          "results/first_primary/t_fwe05.nii.gz",
+          "results/first_primary/t_unthresholded.nii.gz",
+          "results/first_primary/top_voxels.tsv",
+          "results/first_primary/vmPFC_participant_effects.png",
+          "results/first_primary/whole_brain_results.png",
+          "results/map_qc.tsv",
+          "results/mean_effect.nii.gz",
+          "results/p_fwe.nii.gz",
+          "results/p_uncorrected.nii.gz",
+          "results/participant_global_brain_summary.tsv",
+          "results/participant_vmPFC_summary.tsv",
+          "results/permutation_max_t.tsv",
+          "results/pilot.json",
+          "results/replay.json",
+          "results/report.md",
+          "results/selected_vmPFC_voxel.json",
+          "results/summary.json",
+          "results/t_bonferroni05.nii.gz",
+          "results/t_fwe05.nii.gz",
+          "results/t_unthresholded.nii.gz",
+          "results/top_voxels.tsv",
+          "results/vmPFC_participant_effects.png",
+          "results/whole_brain_results.png"
+        ]
+      },
+      "item_status": {
+        "stamped-checklist:must/006": "unmet"
+      },
+      "item_reason": {
+        "stamped-checklist:must/006": "47 derived file(s) tracked (e.g. results/corrected_voxel_coordinates.png) and no run record or tracked workflow that would re-create any of them."
+      }
+    },
+    {
+      "probe": "entry-point",
+      "status": "met",
+      "items": [
+        "stamped-checklist:must/007",
+        "stamped-checklist:must/008"
+      ],
+      "reason": "must/007 met: README.md has an install/usage/reproduce section. must/008 met: Starting point present: scripts/group_analysis.py.",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "instructions",
+          "sha256": null
+        },
+        {
+          "uri": "scripts/group_analysis.py",
+          "description": "entry point named in the instructions and present",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "readmes": [
+          "README.md"
+        ],
+        "makefiles": [],
+        "named": [
+          "scripts/group_analysis.py"
+        ],
+        "targets": [],
+        "workflow": [],
+        "has_section": true,
+        "documented_targets": [],
+        "missing_targets": []
+      },
+      "item_status": {
+        "stamped-checklist:must/007": "met",
+        "stamped-checklist:must/008": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:must/007": "README.md has an install/usage/reproduce section.",
+        "stamped-checklist:must/008": "Starting point present: scripts/group_analysis.py."
+      }
+    },
+    {
+      "probe": "env-spec-tracked",
+      "status": "partial",
+      "items": [
+        "stamped-checklist:must/010",
+        "stamped-checklist:must/013",
+        "stamped-checklist:must/016"
+      ],
+      "reason": "must/010 not-checked: Specification found: pixi.toml. Dependency completeness is not checked: compare imports and invoked tools with declarations, including local/vendored code. Version pins are separate. must/013 met. must/016 partial.",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "spec environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "skills",
+          "description": "linked module, not installed: cannot be read",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "specs": {
+          "pixi.toml": "spec"
+        },
+        "uninstalled_modules": [
+          "skills"
+        ],
+        "preconditions": [],
+        "remote": "git@github.com:leej3/stamped-in-practice.git",
+        "publication": {
+          "files": {
+            "pixi.toml": {
+              "kind": "git-blob"
+            }
+          },
+          "retrieval_verified": false
+        }
+      },
+      "item_status": {
+        "stamped-checklist:must/010": "not-checked",
+        "stamped-checklist:must/013": "met",
+        "stamped-checklist:must/016": "partial"
+      },
+      "item_reason": {
+        "stamped-checklist:must/010": "Specification found: pixi.toml. Dependency completeness is not checked: compare imports and invoked tools with declarations, including local/vendored code. Version pins are separate.",
+        "stamped-checklist:must/013": "Tracked: pixi.toml.",
+        "stamped-checklist:must/016": "Remote responds and specifications are Git blobs in local HEAD; the remote's exact revision/content was not retrieved. Verify a fresh clone at the assessed revision before marking met."
+      }
+    },
+    {
+      "probe": "inputs-untouched",
+      "status": "not-checked",
+      "items": [],
+      "reason": "1 of 1 module(s) are not installed here, so their state cannot be read: skills",
+      "evidence": [
+        {
+          "uri": "git submodule status",
+          "description": "skills not initialized",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "uninitialized": [
+          "skills"
+        ]
+      },
+      "item_status": {},
+      "item_reason": {}
+    },
+    {
+      "probe": "large-in-annex",
+      "status": "met",
+      "items": [
+        "stamped-checklist:must/005"
+      ],
+      "reason": "git-annex carries the binary content (73 pointer(s) tracked) and no binary blob over 10 MiB is in git.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "no binary blob over 10485760 bytes",
+          "sha256": null
+        },
+        {
+          "uri": ".datalad/config",
+          "description": "git-annex in use for large content",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "mechanism": "git-annex",
+        "annex_pointers": 73,
+        "large_binary": []
+      },
+      "item_status": {
+        "stamped-checklist:must/005": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:must/005": "git-annex carries the binary content (73 pointer(s) tracked) and no binary blob over 10 MiB is in git."
+      }
+    },
+    {
+      "probe": "license-declared",
+      "status": "unmet",
+      "items": [],
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 246 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ],
+      "details": {},
+      "item_status": {},
+      "item_reason": {}
+    },
+    {
+      "probe": "modules-separated",
+      "status": "met",
+      "items": [
+        "stamped-checklist:should/003"
+      ],
+      "reason": "4 kinds of component live in distinct places: inputs in input; code in scripts; derived in results; environment in pixi.toml",
+      "evidence": [
+        {
+          "uri": "input",
+          "description": "inputs module",
+          "sha256": null
+        },
+        {
+          "uri": "scripts",
+          "description": "code module",
+          "sha256": null
+        },
+        {
+          "uri": "results",
+          "description": "derived module",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "environment module",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "found": {
+          "inputs": [
+            "input"
+          ],
+          "code": [
+            "scripts"
+          ],
+          "derived": [
+            "results"
+          ],
+          "environment": [
+            "pixi.toml"
+          ]
+        }
+      },
+      "item_status": {
+        "stamped-checklist:should/003": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:should/003": "4 kinds of component live in distinct places: inputs in input; code in scripts; derived in results; environment in pixi.toml"
+      }
+    },
+    {
+      "probe": "no-abs-paths",
+      "status": "met",
+      "items": [
+        "stamped-checklist:must/009"
+      ],
+      "reason": "No host-specific absolute paths in tracked text files.",
+      "evidence": [
+        {
+          "uri": "probe:no-abs-paths",
+          "description": "scanned 246 tracked paths, 0 /tmp hit(s), 0 host-specific",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "tmp_hits": []
+      },
+      "item_status": {
+        "stamped-checklist:must/009": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:must/009": "No host-specific absolute paths in tracked text files."
+      }
+    },
+    {
+      "probe": "platform-assumptions",
+      "status": "not-checked",
+      "items": [
+        "stamped-checklist:must/011",
+        "stamped-checklist:must/012"
+      ],
+      "reason": "No platform-specific package manager, BSD/GNU-only flag or scheduler command in tracked text \u2014 all a command scan can settle. Whether the documented route needs a mount, a host install, hardware or a service is a reading.",
+      "evidence": [
+        {
+          "uri": "probe:platform-assumptions",
+          "description": "scanned 246 tracked paths for 20 platform-specific commands, 0 hits",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "hits": []
+      },
+      "item_status": {
+        "stamped-checklist:must/011": "not-checked",
+        "stamped-checklist:must/012": "not-checked"
+      },
+      "item_reason": {
+        "stamped-checklist:must/011": "No platform-specific package manager, BSD/GNU-only flag or scheduler command in tracked text \u2014 all a command scan can settle. Whether the documented route needs a mount, a host install, hardware or a service is a reading.",
+        "stamped-checklist:must/012": "No platform-specific package manager, BSD/GNU-only flag or scheduler command in tracked text \u2014 all a command scan can settle. Whether the documented route needs a mount, a host install, hardware or a service is a reading."
+      }
+    },
+    {
+      "probe": "run-env-linked",
+      "status": "not-checked",
+      "items": [
+        "stamped-checklist:must/006",
+        "stamped-checklist:must/015"
+      ],
+      "reason": "must/006 not-checked: No run records, so no record names the environment it ran in. must/015 not-checked: Nothing names an environment to check for a pin.",
+      "evidence": [],
+      "details": {
+        "records": 0,
+        "with_env": 0,
+        "without_env": [],
+        "by_mechanism": {
+          "container": 0,
+          "lockfile": 0,
+          "capture": 0
+        },
+        "unpinned": []
+      },
+      "item_status": {
+        "stamped-checklist:must/006": "not-checked",
+        "stamped-checklist:must/015": "not-checked"
+      },
+      "item_reason": {
+        "stamped-checklist:must/006": "No run records, so no record names the environment it ran in.",
+        "stamped-checklist:must/015": "Nothing names an environment to check for a pin."
+      }
+    },
+    {
+      "probe": "subdatasets-resolvable",
+      "status": "met",
+      "items": [
+        "stamped-checklist:must/002",
+        "stamped-checklist:may/001"
+      ],
+      "reason": "All 1 linked module(s) carry urls that resolve from elsewhere: skills",
+      "evidence": [
+        {
+          "uri": ".gitmodules",
+          "description": "skills: https://github.com/con/skills.git",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "resolvable": [
+          {
+            "path": "skills",
+            "url": "https://github.com/con/skills.git"
+          }
+        ],
+        "unresolvable": [],
+        "unreachable": [],
+        "pinned_to_local_commits": []
+      },
+      "item_status": {
+        "stamped-checklist:must/002": "met",
+        "stamped-checklist:may/001": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:must/002": "All 1 linked module(s) carry urls that resolve from elsewhere: skills",
+        "stamped-checklist:may/001": "1 external component(s) are linked as modules: skills"
+      }
+    },
+    {
+      "probe": "tree-clean",
+      "status": "met",
+      "items": [
+        "stamped-checklist:must/004"
+      ],
+      "reason": "git tracks 70 text, code and configuration file(s), and `git status` is empty including submodules: the committed state is the whole state.",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "70 tracked text/code/config paths of 246 tracked paths",
+          "sha256": null
+        },
+        {
+          "uri": "git status --porcelain",
+          "description": "no output",
+          "sha256": null
+        }
+      ],
+      "details": {
+        "tracked_text": 70
+      },
+      "item_status": {
+        "stamped-checklist:must/004": "met"
+      },
+      "item_reason": {
+        "stamped-checklist:must/004": "git tracks 70 text, code and configuration file(s), and `git status` is empty including submodules: the committed state is the whole state."
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+Target verification:
+git -C "$STAMPED_JUDGE_TARGET" rev-parse HEAD
+
+Pinned runtime:
+"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" check
+"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" response --help
+
+Probe (attempt 1 used the invalid --path option; see runner-probes.log):
+"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" probes "$STAMPED_JUDGE_TARGET" --kind study --check-remote --output "$STAMPED_JUDGE_OUTPUT/2026-10-16/2026-10-16-probes.json" --response "$STAMPED_JUDGE_OUTPUT/2026-10-16/2026-10-16-response.json"
+
+Single authorized replay:
+"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" fresh-rerun --path "$STAMPED_JUDGE_TARGET" --entry "pixi run group-analysis" --workdir "$STAMPED_JUDGE_OUTPUT/2026-10-16/replay-workspace" --output "$STAMPED_JUDGE_OUTPUT/2026-10-16/2026-10-16-fresh-rerun.json" --max-get-gb 5.0 --timeout 7200 --rtol 1e-06 --outputs results/map_qc.tsv results/exclusions.tsv results/mean_effect.nii.gz results/t_unthresholded.nii.gz results/p_fwe.nii.gz results/p_uncorrected.nii.gz results/t_fwe05.nii.gz results/t_bonferroni05.nii.gz results/top_voxels.tsv results/permutation_max_t.tsv results/participant_vmPFC_summary.tsv results/selected_vmPFC_voxel.json results/participant_global_brain_summary.tsv results/summary.json results/vmPFC_participant_effects.png
+
+Response helpers were all run through `assessment.py response`: items, template, set, stamp, table, encode, decode and validate. Their logs, final response and URL are retained here. The runner validate shortcut also passed.
+
+Remote access checks used DataLad clone at `codex/narps-r1-11`, then `datalad get input/data/`, `datalad get results/` and `git annex fsck --fast input/data/ results/`; see the per-attempt logs, including failed shallow/default-branch attempts. The environment branch was cloned and `pixi.lock` was hashed; see `environment-*` artifacts.
