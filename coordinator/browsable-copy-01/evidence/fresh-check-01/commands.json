@@ -1,0 +1,1032 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-22-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "ab4b3d574f78fca8048a305f83ba5a98c666ee3f"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            ab4b3d574f78fca8048a305f83ba5a98c666ee3f -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at ab4b3d5 feat(retention): expose original files for narps-neutral-r1-22\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "ab4b3d574f78fca8048a305f83ba5a98c666ee3f\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "7cc05002aacfc776aa4a6d0f087d28ee740ce0d2",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "7cc05002aacfc776aa4a6d0f087d28ee740ce0d2",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s109995--9867f498a7a54c7108024915d583d8e68639e05bf01e695246f1f2cdd8a98d6e.pdf\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s902981--4a9f9c8c5fc0b93d1396295be6cf25075e21560917262476b8a312f6739039e8.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s39157--5fbc211ffa4e97a69768e1343da93de30799a7e8b3867d2b2cb41baf852452a1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s7109489--aa44bb1767594f560e811cd917fee5833c2f843b81a8febd614db20284b11a34.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s119520--a3721422dffd9ca1345b9c33b95431d719a29d86ef0d5ef0c9806bdf31e9b700.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s902981--166e9b5b6e4fe0c687dd2c5d4262c839c84094a06439d37fd05a5805f8fc976c.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s7109489--422e62c7ee1c523b561c5102ea828b03a06b1c4d14c6f191a832a47d64c4cbf2.nii\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s956452--9d28e017d45bee3295a6aea4e3394c29cdb099a9310a703d476eda4b6739fbe4.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s2931--9eec49c63ea8e493af1a7d324e274be7cc7d17d0f16a890a911e59213a6ed3f3.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s4473--597d2a00b8f703569b8c0f725cbd207563b4b503d9a6a132aed6934af4c8e967.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s207106--60036928735a791fcd1d24d32844703236119134c3b88321d2e08a9dcfda8426.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s2931--9eec49c63ea8e493af1a7d324e274be7cc7d17d0f16a890a911e59213a6ed3f3.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s4723--75cc99fcb2fd01ccd8cfb3ad2ac591eb7d5f3289810afc64649f7547fe6a45fd.mat\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s66275--ed9bb4b6d3d379254a12a342c5b3a7c60e936fef993abf7a593dc9fa4d433916.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s985795--78d963e66277de8223ad7cda50686e4a4ac271b41a98b96ec7c08c44e241cb28.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s70820--1a0b20641b86db2e058c12b262b618acdb2c6b001287b77ef8771b0a31e95b2b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/t_statistic.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s987625--afdf408b8b345ee42c31aa0a90325f3efdfcc36ec4184ce353ebc92126199485.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/vmPFC_proxy_aal3.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s32786--2f45e14c23dae6412d7f458d2724fdfdb459b4957c5c8dd7e5632d68bb74f1e6.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii.gz",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.gz",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7.nii",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_Border.mat",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_List.mat",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.mat",
+      "results/group_mask.nii.gz",
+      "results/mean_effect.nii.gz",
+      "results/p_fwe_maxT.nii.gz",
+      "results/t_statistic.nii.gz",
+      "results/vmPFC_proxy_aal3.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get atlas_cache/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf (from con-hub...) \n\n3%    3.74 KiB         40 KiB/s 2s\n100%  107.42 KiB      851 KiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/AAL3v1.nii (from con-hub...) \n\n0%    3.74 KiB         34 KiB/s 26s\n100%  881.82 KiB        6 MiB/s 0s \n                                   \nok\nget atlas_cache/aal_3v2/AAL3/AAL3v1.nii.gz (from con-hub...) \n\n10%   3.74 KiB         56 KiB/s 0s\n100%  38.24 KiB        14 MiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii (from con-hub...) \n\n0%    7.7 KiB          73 KiB/s 1m35s\n10%   679.67 KiB        3 MiB/s 1s   \n25%   1.66 MiB          5 MiB/s 1s   \n100%  6.78 MiB         50 MiB/s 0s   \n                                     \nok\nget atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.gz (from con-hub...) \n\n3%    3.74 KiB         37 KiB/s 3s\n100%  116.72 KiB       20 MiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7.nii (from con-hub...) \n\n1%    7.7 KiB          54 KiB/s 16s\n100%  881.82 KiB       46 MiB/s 0s \n                                   \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii (from con-hub...) \n\n0%    7.7 KiB          71 KiB/s 1m38s\n24%   1.66 MiB          5 MiB/s 0s   \n100%  6.78 MiB         71 MiB/s 0s   \n                                     \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat (from con-hub...) \n\n1%    7.7 KiB          93 KiB/s 9s\n100%  934.04 KiB       40 MiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat (from con-hub...) \n\n100%  2.86 KiB         47 KiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat (from con-hub...) \n\n100%  4.37 KiB         68 KiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_Border.mat (from con-hub...) \n\n4%    7.7 KiB          92 KiB/s 2s\n100%  202.25 KiB       20 MiB/s 0s\n                                  \nok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_List.mat (from con-hub...) ok\nget atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.mat (from con-hub...) \n\n81%   3.74 KiB         58 KiB/s 0s\n100%  4.61 KiB          1 MiB/s 0s\n                                  \nok\nget results/group_mask.nii.gz (from con-hub...) \n\n12%   7.7 KiB         119 KiB/s 0s\n100%  64.72 KiB        18 MiB/s 0s\n                                  \nok\nget results/mean_effect.nii.gz (from con-hub...) \n\n1%    7.7 KiB         125 KiB/s 7s\n100%  962.69 KiB       26 MiB/s 0s\n                                  \nok\nget results/p_fwe_maxT.nii.gz (from con-hub...) \n\n11%   7.7 KiB         130 KiB/s 0s\n100%  69.16 KiB        32 MiB/s 0s\n                                  \nok\nget results/t_statistic.nii.gz (from con-hub...) \n\n1%    7.7 KiB         124 KiB/s 7s\n100%  964.48 KiB       32 MiB/s 0s\n                                  \nok\nget results/vmPFC_proxy_aal3.nii.gz (from con-hub...) \n\n24%   7.7 KiB         128 KiB/s 0s\n100%  32.02 KiB        24 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "REPORT.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 92c9a362dc86f0cb3457a6314f1991d4f8ce1b4c\tREPORT.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analyze.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c21641a7dc9238c7767f9396a9a29a13b0b7a44b\tanalyze.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/README.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8e3648b5b4e2ee4146e7b38004dfff9da4abedd9\tatlas_cache/README.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 75ef78065dd6e75f522a0a41c742425cc4a50b66\tatlas_cache/aal_3v2/AAL3/AAL3.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f4873105dbde162061be6e779fd15f5da5173eda\tatlas_cache/aal_3v2/AAL3/AAL3_UserGuide_April2024.pdf\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 8f4ae9a9499711bdb4c72880209b41a53b659554\tatlas_cache/aal_3v2/AAL3/AAL3v1.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 1a56b21271d0407f89e1d3be10d4d105355cae9a\tatlas_cache/aal_3v2/AAL3/AAL3v1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.nii.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 40f00023aecb64b0567cddce12b18d028dd4d8c7\tatlas_cache/aal_3v2/AAL3/AAL3v1.nii.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c03e47f27e31bcdd4fea64267a11ee4a2f959894\tatlas_cache/aal_3v2/AAL3/AAL3v1.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 2611239aa9930d268494059871f067b3992a5c28\tatlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 4424203b620e9237c9179f64f5f1c7e4adf190a0\tatlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 40f00023aecb64b0567cddce12b18d028dd4d8c7\tatlas_cache/aal_3v2/AAL3/AAL3v1_1mm.nii.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/AAL3v1_1mm.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c923bad255ab43597e4b8fa5cc0f25c2a79cdf2e\tatlas_cache/aal_3v2/AAL3/AAL3v1_1mm.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob d6a7d4043e87a464b819ece9eabded7e90400ed7\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 43ba2cf9de9eff29e7e13affdfd17d3ba88c65ca\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 0bf8a9ea6bc375a323497ecd29ba7efc6f78ff6a\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.nii\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.xml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 68eab025776999c978b72dcada995b9559eeaf23\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm.xml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c0465e901c45d62a63b1da3ea4623645b2d781ee\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_Border.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 58de9ba22473c4a7ffeda09d360480b51ed58ac6\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_List.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e7493882291ccb7be21cf2d564de54624ecd6ba9\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 6c6da7a10a8891ebf3023b6d24174b446be2c79a\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_1mm_vol.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_Border.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e23a4654dcabcf80999f2a9ff532f51364b4a1b9\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_Border.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_List.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 58de9ba22473c4a7ffeda09d360480b51ed58ac6\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_List.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.mat"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 525959fff99aa4b9956a124a19a24ffd8e84ba9c\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.mat\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 81f7511bc9ecab9d44154dc9c2d684cc5a132cdd\tatlas_cache/aal_3v2/AAL3/ROI_MNI_V7_vol.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_clusters.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7643a0abe79ee4a57bcdc333bd326dbbc7014bf0\tatlas_cache/aal_3v2/AAL3/gin_clusters.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_clusters_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7f47cf26ff087f96c5939a910487362f3006b096\tatlas_cache/aal_3v2/AAL3/gin_clusters_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_det_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 395fc44586856b5e96b2609c33f2924394aa2edb\tatlas_cache/aal_3v2/AAL3/gin_det_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_det_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob fd4775d205d7a996d56315523d4bf48f25849d2b\tatlas_cache/aal_3v2/AAL3/gin_det_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob fbf0049fb8523a86c18ae28daab50206fbaa8fd6\tatlas_cache/aal_3v2/AAL3/gin_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_list_dlabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob ae6f1a33c16b9fd6ad17281a4e14f1df0ff20a4a\tatlas_cache/aal_3v2/AAL3/gin_list_dlabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_list_plabels.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d300431db928a8a0540e4a557540abcce18c32ab\tatlas_cache/aal_3v2/AAL3/gin_list_plabels.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "atlas_cache/aal_3v2/AAL3/gin_rclusters.m"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob f4780c51fb04a6f1ba8abed50330e2395cfef089\tatlas_cache/aal_3v2/AAL3/gin_rclusters.m\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/fwe_clusters.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 1fce1ff831196996c306717e7a6005fec7452cb7\tresults/fwe_clusters.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 4f4e247a3b1dc07de094f4d247958e7e6deabfeb\tresults/group_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c68396032cc36a45e4e87a50b1e212495e13889c\tresults/mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 22bf7d52c583c228e4f91f6312091d4e4eca1656\tresults/p_fwe_maxT.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 01bc93df3b88676e3d55174842b41652f5f0698e\tresults/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 81ef114aca574bcc5260dd6807cc678ba782ec62\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/t_statistic.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c06027b7c064951ab8ed8429c6b47ea84e89fcc5\tresults/t_statistic.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_proxy_aal3.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 20be2f5e11828989a4d6349e3a3437bd4b5b22d4\tresults/vmPFC_proxy_aal3.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_proxy_effects.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob b71c617ec8dfbb38b52ae651d0c72186bd16d68a\tresults/vmPFC_proxy_effects.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/wholebrain_fwe_map.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 632956bc96bc5079a12174e13745a2951908faa6\tresults/wholebrain_fwe_map.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "ab4b3d574f78fca8048a305f83ba5a98c666ee3f\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
