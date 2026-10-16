@@ -9,10 +9,10 @@ In the complete supplied equal-indifference cohort (54 participants), is the mea
 * Unit: participant. No demographic covariates are needed for this one-sample directional hypothesis.
 * Primary inference: one-sided, voxelwise one-sample t statistic over a common coverage mask, calibrated with 9,999 random sign flips and a maximum-t distribution. This controls FWE across the full tested mask at alpha=.05. Seed is 20261015. Monte Carlo adjusted p-values use (1 + exceedances)/(B + 1).
 * Mask: voxels finite in all maps and nonzero in at least one map. The common image coverage and mask size are recorded. This is an operational whole-brain mask from supplied maps; no statistical thresholding or ROI selection defines the inferential mask.
-* vmPFC identification: independent Harvard-Oxford cortical atlas `Frontal Orbital Cortex` or `Subcallosal Cortex`, probability-thresholded at 25%, restricted to the anterior midline (|x| <= 15 mm, y >= 0) and ventral/inferior space (z <= 0). These atlas-defined orbitomedial/subcallosal areas operationalize vmPFC anatomically and are descriptive only; they do not narrow the primary corrected search. The atlas is resampled to the input grid.
+* vmPFC identification: independent Harvard-Oxford cortical atlas `Frontal Orbital Cortex` or `Subcallosal Cortex`, probability-thresholded at 25%, restricted to the anterior midline (|x| <= 15 mm, y >= 0) and ventral/inferior space (z <= 0). These atlas-defined orbitomedial/subcallosal areas operationalize vmPFC anatomically and are descriptive only; they do not narrow the primary corrected search. The pinned atlas volume, label XML, and MNI152 T1 2 mm display template are included under `input/atlas/`; their sources and SHA256 hashes are recorded in `input/atlas/sources.json`.
 * Effect summary: participant mean within the anatomical vmPFC mask, with a two-sided 95% t interval, shown with participant values. Its p-value is descriptive and does not replace whole-brain corrected inference.
 * QC: verify exact 54-person table/image identity, unique IDs, image shape/affine agreement, finite values in the test mask, a nonempty mask and ROI, and report map distributions/coverage. Exclude no participant absent a prespecified integrity failure; any failure stops analysis for review rather than silently excluding a map.
-* Sensitivity: report the parametric one-sample t map at the voxelwise uncorrected threshold only as a diagnostic; it is not evidence for the hypothesis. No significance-driven exclusion or threshold changes.
+* No significance-driven exclusions or threshold changes. The complete cohort is retained if all supplied maps pass the integrity checks.
 
 ## Interpretation limits
 
@@ -20,4 +20,4 @@ AO86 mean-centered and variance-normalized the gain modulator before convolution
 
 ## Inputs and execution
 
-Inputs are the 54 annexed `input/data/*_hypo1_cope.nii.gz` maps and pinned `input/participants.tsv`; their provenance and checksums are in `input/sources.json`. No time-series scans or upstream refitting are used. Run `pixi run group-analysis -- --permutations 9999`; the task writes tables, maps, figures, and machine-readable summary under `results/group-analysis/`. Capture the command with `duct` under `logs/`.
+Inputs are the 54 annexed `input/data/*_hypo1_cope.nii.gz` maps and pinned `input/participants.tsv`; their provenance and checksums are in `input/sources.json`. The atlas and display template are fixed local inputs. No time-series scans or upstream refitting are used. Run `pixi run group-analysis -- --permutations 9999`; the task writes tables, maps, figures, and machine-readable summary under `results/group-analysis/`. Capture the command with `duct` under `logs/`.

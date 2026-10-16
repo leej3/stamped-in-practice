@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import platform
 import time
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import matplotlib
@@ -16,7 +18,7 @@ import nilearn
 import numpy as np
 import pandas as pd
 import scipy
-from nilearn import datasets, image, plotting
+from nilearn import image, plotting
 from scipy import stats
 from threadpoolctl import threadpool_limits
 
@@ -40,6 +42,10 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
 
     participants = pd.read_csv(INPUT / "participants.tsv", sep="\t")
+    source_manifest = json.loads((INPUT / "sources.json").read_text())
+    participant_hash = hashlib.sha256((INPUT / "participants.tsv").read_bytes()).hexdigest()
+    if participant_hash != source_manifest["files"]["participants.tsv"]["sha256"]:
+        raise ValueError("Participant table checksum mismatch")
     paths = sorted((INPUT / "data").glob("*_hypo1_cope.nii.gz"))
     ids_from_maps = [p.name.split("_", 1)[0] for p in paths]
     expected = participants.loc[participants.group.eq("equalIndifference"), "participant_id"].tolist()
@@ -47,6 +53,12 @@ def main() -> None:
         raise ValueError(f"Cohort/map mismatch: table={len(expected)}, maps={len(paths)}")
     by_id = {p.name.split("_", 1)[0]: p for p in paths}
     paths = [by_id[participant_id] for participant_id in expected]
+    for path in paths:
+        relpath = path.relative_to(ROOT).as_posix()
+        expected_hash = source_manifest["files"][relpath]["sha256"]
+        actual_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual_hash != expected_hash:
+            raise ValueError(f"Input checksum mismatch: {relpath}")
 
     images = [nib.load(str(p)) for p in paths]
     ref = images[0]
@@ -73,7 +85,6 @@ def main() -> None:
     sd = X.std(axis=0, ddof=1)
     sem = sd / np.sqrt(n)
     t_obs = np.divide(mean, sem, out=np.zeros_like(mean), where=sem > 0)
-    p_unc = stats.t.sf(t_obs, df=n - 1)
 
     rng = np.random.default_rng(args.seed)
     max_t = np.empty(args.permutations, dtype=np.float64)
@@ -95,12 +106,25 @@ def main() -> None:
     sig = p_fwe <= 0.05
 
     # Atlas anatomical label is independent of the observed effects.
-    atlas = datasets.fetch_atlas_harvard_oxford("cort-prob-2mm", data_dir=str(ROOT / ".local" / "nilearn_data"))
-    labels = list(atlas.labels)
+    atlas_path = INPUT / "atlas" / "HarvardOxford-cort-prob-2mm.nii.gz"
+    atlas_xml = INPUT / "atlas" / "HarvardOxford-Cortical.xml"
+    atlas_manifest = json.loads((INPUT / "atlas" / "sources.json").read_text())
+    for path, expected_hash in [
+        (atlas_path, atlas_manifest["atlas"]["files"][atlas_path.name]),
+        (atlas_xml, atlas_manifest["atlas"]["files"][atlas_xml.name]),
+        (INPUT / "atlas" / "MNI152_T1_2mm.nii.gz", atlas_manifest["display_template"]["sha256"]),
+    ]:
+        if hashlib.sha256(path.read_bytes()).hexdigest() != expected_hash:
+            raise ValueError(f"Atlas/display input checksum mismatch: {path.name}")
+    atlas = nib.load(str(atlas_path))
+    parsed_labels = ET.parse(atlas_xml).getroot().findall(".//label")
+    labels = [None] * (max(int(label.attrib["index"]) for label in parsed_labels) + 1)
+    for label in parsed_labels:
+        labels[int(label.attrib["index"])] = (label.text or "").strip()
     label_indices = [i for i, label in enumerate(labels) if label in {"Frontal Orbital Cortex", "Subcallosal Cortex"}]
     if len(label_indices) != 2:
         raise ValueError("Harvard-Oxford atlas lacks expected orbital/subcallosal labels")
-    prob_img = atlas.maps
+    prob_img = atlas
     prob_data = np.asarray(prob_img.dataobj)
     # Probabilistic atlas is 4D with one volume per cortical label. Use the
     # atlas-defined orbital/subcallosal anatomy, then select anterior midline,
@@ -162,6 +186,10 @@ def main() -> None:
         "max_t_xyz_mm": peak_all_xyz.tolist(),
         "max_t_p_fwe": float(p_fwe[np.argmax(t_obs)]),
         "vmPFC_definition": "Harvard-Oxford cortical atlas Frontal Orbital or Subcallosal Cortex probability >=25%; MNI |x|<=15, y>=0, z<=0",
+        "atlas_sha256": hashlib.sha256(atlas_path.read_bytes()).hexdigest(),
+        "atlas_labels_sha256": hashlib.sha256(atlas_xml.read_bytes()).hexdigest(),
+        "source_manifest": "input/sources.json",
+        "atlas_manifest": "input/atlas/sources.json",
         "vmPFC_n_voxels": n_roi,
         "vmPFC_mean_effect": roi_mean,
         "vmPFC_effect_sd_between_participants": roi_sd,
@@ -197,7 +225,8 @@ def main() -> None:
     t_sig = np.full(shape, 0, dtype=np.float32)
     t_sig[mask] = np.where(sig, t_obs, 0)
     sig_img = nib.Nifti1Image(t_sig, affine)
-    display = plotting.plot_stat_map(sig_img, bg_img=datasets.load_mni152_template(resolution=2),
+    background = nib.load(str(INPUT / "atlas" / "MNI152_T1_2mm.nii.gz"))
+    display = plotting.plot_stat_map(sig_img, bg_img=background,
                                     threshold=0.01, display_mode="ortho", cut_coords=(0, 30, -8),
                                     cmap="cold_hot", colorbar=True,
                                     title="Positive gain effect: whole-brain max-T FWE p <= .05; vmPFC outline")
