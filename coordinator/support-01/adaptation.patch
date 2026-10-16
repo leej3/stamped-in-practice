@@ -1,0 +1,101 @@
+--- verified-run01/prepare.py
++++ configured/prepare.py
+@@ -1,4 +1,4 @@
+-"""Bounded run01 support preservation; external neutral scope override.
++"""Bounded configured support preservation; external neutral scope override.
+ 
+ Reads only closed run evidence and immutable proof files. No Git writes, science
+ execution, credential access, symlink extraction or original-source mutations.
+@@ -15,7 +15,8 @@
+ 
+ ROOT = Path(__file__).resolve().parent
+ B2 = ROOT.parent
+-RUN = 'narps-neutral-r1-01'
++CONFIG = json.loads((ROOT / 'config.json').read_bytes())
++RUN = CONFIG['run']
+ SOURCE = B2 / 'runs' / RUN
+ STOP = 'attempt-01/native/worker-end-state.json'
+ CAPTURE = 'attempt-01/native/original-delivery'
+@@ -162,7 +163,7 @@
+             capture_sha, legacy.digest(SOURCE / STOP))
+     write(ROOT / 'original-archive-reverification.json', original_archive_verification)
+ 
+-    pubroot = B2 / 'publisher-wave-02-01'
++    pubroot = B2 / CONFIG['publication_directory']
+     publication = read(pubroot / 'publication-summary.json')
+     fresh_path = pubroot / publication['independent_retrieval_proof']
+     require(legacy.digest(fresh_path) == publication['independent_retrieval_proof_sha256'],
+@@ -215,20 +216,23 @@
+     registered_path = B2 / 'dataset/rounds/round-01/plan.json'
+     registered = read(registered_path)
+     assigned = [x for x in registered['assigned_judgments'] if x['run'] == RUN]
+-    require(len(assigned) == 1 and assigned[0]['judgment'] == RUN + '-j01', 'Run01 assignment differs')
+-    closure_path = B2 / 'round-01-judge-batch-02/retention-closed.json'
+-    closure = read(closure_path)
+-    check_identity(closure['registered_plan'])
+-    require(closure['preservation_complete'], 'Judge batch retention not closed')
+-    judges = [x for x in closure['judgments'] if x['assignment']['run'] == RUN]
+-    require([x['assignment'] for x in judges] == assigned, 'Closed assigned judgment mismatch')
+-    for judge in judges:
+-        require(judge['preservation_verified'], 'Judge preservation failed')
++    require(assigned, 'No registered judgments for run')
++    closures = [(path, read(path)) for path in sorted(B2.glob('round-01-judge-batch-*/retention-closed.json'))]
++    selected = []
++    for assignment in assigned:
++        matches = [(path, closure, judge) for path, closure in closures
++                   for judge in closure['judgments'] if judge['assignment'] == assignment]
++        require(len(matches) == 1, 'Assigned judgment lacks exactly one closed preservation receipt')
++        selected.append(matches[0])
++    closure_paths = sorted({path for path, _, _ in selected})
++    for path, closure, judge in selected:
++        check_identity(closure['registered_plan'])
++        require(closure['preservation_complete'] and judge['preservation_verified'],
++                'Assigned judge preservation incomplete')
+         for proof in [judge['main_capture_manifest'], judge['main_integrity_audit'],
+-                      judge['main_verification'], judge['main_script'], *judge['external_receipts']]:
++                      judge['main_verification'], judge['main_script'], *judge['external_receipts'],
++                      *closure['helper_files_at_closure']]:
+             check_identity(proof)
+-    for proof in closure['helper_files_at_closure']:
+-        check_identity(proof)
+ 
+     evidence = [DELIVERY + '/' + p for p in ['index.json', 'archive-inventory.json',
+                 'verification.json', 'worker-end-state.json']] + [CAPTURE + '/manifest.json']
+@@ -255,11 +259,12 @@
+     write(stage / 'original-delivery-reconstruction.json', reconstruction)
+ 
+     # Explicit supplemental metadata only, not recipient/publisher cache trees.
+-    proof_paths = [registered_path, closure_path]
+-    proof_paths += [Path(x['path']) for x in closure['helper_files_at_closure']]
++    proof_paths = [registered_path, *closure_paths]
++    for _, closure, _ in selected:
++        proof_paths += [Path(x['path']) for x in closure['helper_files_at_closure']]
+     for directory in [pubroot, pubroot / 'fresh-check-01',
+-                      B2 / 'browsable-publication-r1-01-01',
+-                      B2 / 'browsable-publication-r1-01-01/fresh-check-01']:
++                      B2 / CONFIG['browsable_directory'],
++                      B2 / CONFIG['browsable_directory'] / 'fresh-check-01']:
+         proof_paths += sorted(p for p in directory.iterdir() if p.is_file() and not p.is_symlink())
+     extras = []
+     for source in sorted(set(proof_paths)):
+@@ -274,7 +279,8 @@
+     write(stage / 'supplemental-proof-index.json', extras)
+     for source in [Path(__file__), ROOT / 'sources/package_retention.py',
+                    ROOT / 'sources/package_delivery.py', ROOT / 'test_support.py',
+-                   ROOT / 'tests-result.json', ROOT / 'command.json']:
++                   ROOT / 'tests-result.json', ROOT / 'command.json', ROOT / 'config.json',
++                   ROOT / 'adaptation.patch']:
+         destination = stage / 'coordinator-sources' / source.name
+         destination.parent.mkdir(exist_ok=True)
+         shutil.copyfile(source, destination)
+@@ -295,8 +301,8 @@
+         'exclusion_paths': EXCLUDED, 'complete_path_mapping': 'path-mapping.json',
+         'source_root_mapping': {'source': '.', 'support_archive_member': 'evidence'},
+         'assigned_judgments': assigned,
+-        'closed_judge_proof': 'closure/' + closure_path.relative_to(B2).as_posix(),
+-        'judge_target_as_found': 'No target-as-found subtree exists for run01-j01; closure receipt records the assessed target unchanged. Every existing judgment path is retained.',
++        'closed_judge_proofs': ['closure/' + p.relative_to(B2).as_posix() for p in closure_paths],
++        'judge_target_as_found': 'Every existing judgment and as-found-target subtree is retained exactly; retention integrity is independent of formal assessment admission.',
+         'additional_proofs': 'supplemental-proof-index.json',
+         'legacy_manifest': 'package-manifest.json', 'legacy_plan': 'package-plan.json',
+         'mode_scope': 'Exact regular-file, directory and literal-symlink permission modes; no ownership/timestamp/xattr equivalence claimed.',
