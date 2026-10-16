@@ -25,3 +25,7 @@ No scientific execution or worker credit is implied.
 ## Completed support and assessment
 
 See the [complete support archive and evidence index](support-01/README.md), including the exact independent report and structured response.
+
+## Separate operational assessment
+
+[narps-neutral-r1-13-j01 report and complete evidence](assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-13-j01/support-01/README.md) belong to the separately registered measurement series; the original assessment remains unchanged.
