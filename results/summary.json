@@ -1,0 +1,127 @@
+{
+  "question": "Positive group mean gain-effect cope in equal-indifference group",
+  "run_label": "primary_100pct",
+  "n_supplied": 54,
+  "n_included": 54,
+  "n_excluded": [],
+  "analysis_mask": {
+    "definition": "nonzero cope coverage in >= 100% of included participants",
+    "voxels": 198029,
+    "voxel_volume_mm3": 9.600000381469727
+  },
+  "inference": {
+    "model": "one-sample group mean; participant-level sign flips; max positive t FWE",
+    "alpha": 0.05,
+    "permutations": 9999,
+    "seed": 20261016,
+    "p_resolution": 0.0001,
+    "maxT_95_threshold": 5.381128311157227,
+    "significant_voxels": 24,
+    "smallest_fwe_p": 0.0006
+  },
+  "strongest_voxel": {
+    "ijk": [
+      35,
+      15,
+      31
+    ],
+    "mni_mm": [
+      -26.0,
+      -102.0,
+      -3.599997043609619
+    ],
+    "mean_cope": 0.11212667576209814,
+    "t": 6.617173246302241,
+    "p_uncorrected": 9.311564027968496e-09,
+    "p_fwe": 0.0006
+  },
+  "significant_clusters_26_connected": [
+    {
+      "cluster_id": 1,
+      "voxels": 17,
+      "peak_mni_mm": [
+        -26.0,
+        -102.0,
+        -3.599997043609619
+      ],
+      "peak_t": 6.617173246302241,
+      "min_fwe_p": 0.0006
+    },
+    {
+      "cluster_id": 2,
+      "voxels": 2,
+      "peak_mni_mm": [
+        26.0,
+        -98.0,
+        -1.1999969482421875
+      ],
+      "peak_t": 5.760898732461179,
+      "min_fwe_p": 0.0124
+    },
+    {
+      "cluster_id": 3,
+      "voxels": 5,
+      "peak_mni_mm": [
+        30.0,
+        -94.0,
+        -8.399997234344482
+      ],
+      "peak_t": 6.193402982181888,
+      "min_fwe_p": 0.0034
+    }
+  ],
+  "vmPFC_annotation": {
+    "atlas": "Harvard-Oxford cortical max-probability, threshold 25%, 2 mm",
+    "labels": [
+      "Frontal Medial Cortex",
+      "Subcallosal Cortex",
+      "Frontal Orbital Cortex"
+    ],
+    "voxel_count_within_analysis_mask": 3719,
+    "atlas_voxel_coverage": 0.8537649219467401,
+    "mean_participant_roi_cope": -0.004844336770474911,
+    "sd_participant_roi_cope": 0.07145548611879349,
+    "mean_cope_95pct_t_interval": [
+      -0.024347930059447777,
+      0.014659256518497955
+    ],
+    "t_53": -0.49819071457179975,
+    "one_sided_unadjusted_p": 0.6897946335298815,
+    "minimum_whole_brain_FWE_p_in_ROI": 0.7801,
+    "significant_voxels_in_ROI": 0,
+    "positive_participant_roi_estimates": 21,
+    "one_sided_sign_test_p_descriptive": 0.9620476352554493,
+    "median_participant_roi_cope": -0.011611619964241982,
+    "leave_one_out_mean_range": [
+      -0.009301656857132912,
+      -0.0014491059118881822
+    ]
+  },
+  "cross_check": {
+    "scipy_ttest_1samp_voxels": 200,
+    "max_abs_t_difference": 4.440892098500626e-16,
+    "permuted_scipy_ttest_voxels": 100,
+    "permuted_max_abs_t_difference": 4.440892098500626e-16
+  },
+  "runtime_environment": {
+    "python": "3.13.16 | packaged by conda-forge | (main, Oct 13 2026, 16:52:03) [Clang 21.1.8 ]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "nibabel": "5.4.2",
+    "nilearn": "0.14.1",
+    "pandas": "3.0.6"
+  },
+  "annotation_atlas": {
+    "retrieval": "nilearn.datasets.fetch_atlas_harvard_oxford('cort-maxprob-thr25-2mm')",
+    "cache_file": "/Users/johnlee/nilearn_data/fsl/data/atlases/HarvardOxford/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz",
+    "sha256": "586d76a7defd278fcea4d83d301994d7e096aa8272d26e3c7539b4f8ebd588c1"
+  },
+  "source_sha256": {
+    "participant_table": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf",
+    "sources_manifest": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+    "study_task": "e92bf2e0c0db4cc49688cce9f9dfff8a236fc4ec151c09961719f49f31310cc8",
+    "upstream_methods": "508d832c8787ed8303c3de101c2c76f40a3aa5dec53e6993dc2a49c4b7bcf90b"
+  },
+  "analysis_code_sha256": "b4ca57b37ceefd56574a6dcd0d86ccdef46ccf6ddcf7f128107e4f716749b3f3"
+}
