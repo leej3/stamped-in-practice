@@ -37,7 +37,7 @@ Their reported regional means ranged from approximately −0.011 to +0.012 upstr
 These regional intervals are not the required whole-brain-corrected tests.
 The rows analyze the same participants and different regions; averaging them or treating them as independent study replications would be misleading.
 
-![Reported regional estimates](../synthesis/figures/reported-regional-estimates.png)
+[![Reported regional estimates](previews/reported-regional-estimates.png)](../synthesis/figures/reported-regional-estimates.pdf)
 
 Primary scientific judgments were six qualified, five supported and one not supported.
 The three baseline analyses were qualified; general discovery had one supported and two qualified; science discovery had one of each; all three explicit STAMPED analyses were supported.
@@ -49,7 +49,7 @@ The adverse judgment for worker 08 raised image-coverage and zero-filling concer
 Anatomical choices, missing-data treatment, upstream scaling and the scope of the reported inference remained scientific questions even when execution succeeded.
 These are judge-reported findings, retained with their cited evidence rather than independently regraded here.
 
-![Scientific adequacy and hypothesis outcome](../synthesis/figures/scientific-outcomes.png)
+[![Scientific adequacy and hypothesis outcome](previews/scientific-outcomes.png)](../synthesis/figures/scientific-outcomes.pdf)
 
 ## Workflow evidence, replay and judgment variability
 
@@ -57,7 +57,7 @@ The item-level view shows more complete recorded workflow evidence for explicit 
 It also shows residual environment and recurring-validation gaps.
 There is no summed quality score: the checklist's MUST, SHOULD and MAY categories have different purposes, and tool-specific probes and evidence availability limit interpretation.
 
-![Checklist evidence](../synthesis/figures/checklist-evidence.png)
+[![Checklist evidence](previews/checklist-evidence.png)](../synthesis/figures/checklist-evidence.pdf)
 
 Ten of the 372 primary item ratings are unavailable in the comparable tables because their cited measurement depended on failed assessor infrastructure.
 The raw ratings remain present.
@@ -86,7 +86,7 @@ The item differences justify keeping judgments and evidence visible rather than 
 | Science discovery | 13.15 | 10.99–37.71 | 1 supported, 1 qualified, 1 not supported |
 | Explicit STAMPED | 31.70 | 12.51–39.78 | 3 supported |
 
-![Worker effort](../synthesis/figures/worker-effort.png)
+[![Worker effort](previews/worker-effort.png)](../synthesis/figures/worker-effort.pdf)
 
 Total native worker-session time was 224.01 minutes, primary assessment time 110.06 minutes, duplicate time 33.53 minutes and supplementary repair time 6.75 minutes.
 These are sums of elapsed session times, not elapsed project duration, CPU time or provider billing.
@@ -127,26 +127,28 @@ Transfer beyond this one study remains untested.
 
 ## Evidence and reproduction
 
+The inline previews link to the original PDF figures; their [rendering record](previews/provenance.json) identifies the unchanged sources.
+
 The [registered allocation](../allocation.json), [measurement disposition](../replay/disposition.json), [exact extraction index](../replay/index.json) and [aggregation provenance](../synthesis/aggregate/aggregation.json) connect every displayed outcome to retained source bytes.
 The [raw judgments](../synthesis/aggregate/judgments.tsv), [item ratings](../synthesis/aggregate/items.tsv), [comparable items](../synthesis/aggregate/comparable_items.tsv), [version strata](../synthesis/aggregate/version_strata.tsv), [duplicate pairs](../synthesis/aggregate/pairs.tsv) and [operations](../synthesis/aggregate/operations.tsv) remain separate tables.
 The [regional estimates](../replay/reported-scientific-estimates.json) retain exact report quotations and result identities; [method excerpts](../synthesis/scientific-method-excerpts.json) support interpretation without replacing the original reports.
 
 | Worker | Original scientific commit | Delivered object and later retention | First-assigned assessment | Skill-use evidence |
 | --- | --- | --- | --- | --- |
-| 01 | `d90a3355` | [research object](../study/results/narps-r1-01/) | [primary](../study/results/narps-r1-01/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-01/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 02 | `e0a8fb1a` | [research object](../study/results/narps-r1-02/) | [primary](../study/results/narps-r1-02/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-02/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 03 | `abf95b00` | [research object](../study/results/narps-r1-03/) | [primary](../study/results/narps-r1-03/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-03/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 04 | `a424c3e8` | [research object](../study/results/narps-r1-04/) | [primary](../study/results/narps-r1-04/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-04/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 05 | `e2d266ea` | [research object](../study/results/narps-r1-05/) | [primary](../study/results/narps-r1-05/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-05/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 06 | `32d9cabf` | [research object](../study/results/narps-r1-06/) | [primary](../study/results/narps-r1-06/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-06/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 07 | `f30190d8` | [research object](../study/results/narps-r1-07/) | [primary](../study/results/narps-r1-07/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-07/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 08 | `42e95720` | [research object](../study/results/narps-r1-08/) | [primary](../study/results/narps-r1-08/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-08/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 09 | `2ad7c466` | [research object](../study/results/narps-r1-09/) | [primary](../study/results/narps-r1-09/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-09/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 10 | `62d247e4` | [research object](../study/results/narps-r1-10/) | [primary](../study/results/narps-r1-10/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-10/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 11 | `284c8768` | [research object](../study/results/narps-r1-11/) | [primary](../study/results/narps-r1-11/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-11/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
-| 12 | `40164f01` | [research object](../study/results/narps-r1-12/) | [primary](../study/results/narps-r1-12/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](../study/results/narps-r1-12/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 01 | `d90a3355` | [research object](https://github.com/leej3/stamped-in-practice/tree/6c0c006580890a030c572d488f584a91ce0d611d) | [primary](https://github.com/leej3/stamped-in-practice/blob/6c0c006580890a030c572d488f584a91ce0d611d/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/6c0c006580890a030c572d488f584a91ce0d611d/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 02 | `e0a8fb1a` | [research object](https://github.com/leej3/stamped-in-practice/tree/e4c9d6081fce411ddb4c0e0a192c28951851ab93) | [primary](https://github.com/leej3/stamped-in-practice/blob/e4c9d6081fce411ddb4c0e0a192c28951851ab93/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/e4c9d6081fce411ddb4c0e0a192c28951851ab93/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 03 | `abf95b00` | [research object](https://github.com/leej3/stamped-in-practice/tree/26353278a7878ae5856653a5b52303825397354c) | [primary](https://github.com/leej3/stamped-in-practice/blob/26353278a7878ae5856653a5b52303825397354c/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/26353278a7878ae5856653a5b52303825397354c/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 04 | `a424c3e8` | [research object](https://github.com/leej3/stamped-in-practice/tree/d235957b1f9ae7924cce6bf88e6edc1abc042e17) | [primary](https://github.com/leej3/stamped-in-practice/blob/d235957b1f9ae7924cce6bf88e6edc1abc042e17/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/d235957b1f9ae7924cce6bf88e6edc1abc042e17/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 05 | `e2d266ea` | [research object](https://github.com/leej3/stamped-in-practice/tree/432423a3243d9c07c3a257d4b259ca34c6ae97e0) | [primary](https://github.com/leej3/stamped-in-practice/blob/432423a3243d9c07c3a257d4b259ca34c6ae97e0/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/432423a3243d9c07c3a257d4b259ca34c6ae97e0/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 06 | `32d9cabf` | [research object](https://github.com/leej3/stamped-in-practice/tree/b154c398ea8c3e665fe86c44f1b98a655e591757) | [primary](https://github.com/leej3/stamped-in-practice/blob/b154c398ea8c3e665fe86c44f1b98a655e591757/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/b154c398ea8c3e665fe86c44f1b98a655e591757/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 07 | `f30190d8` | [research object](https://github.com/leej3/stamped-in-practice/tree/0e75969608722fb87be7a71360b4ecebb616bbea) | [primary](https://github.com/leej3/stamped-in-practice/blob/0e75969608722fb87be7a71360b4ecebb616bbea/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/0e75969608722fb87be7a71360b4ecebb616bbea/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 08 | `42e95720` | [research object](https://github.com/leej3/stamped-in-practice/tree/cd247c871bf980c73c77bc10531c263dd7c892e5) | [primary](https://github.com/leej3/stamped-in-practice/blob/cd247c871bf980c73c77bc10531c263dd7c892e5/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/cd247c871bf980c73c77bc10531c263dd7c892e5/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 09 | `2ad7c466` | [research object](https://github.com/leej3/stamped-in-practice/tree/d1358ddf52767ce1a06c2e944fc8b2f68d75cf04) | [primary](https://github.com/leej3/stamped-in-practice/blob/d1358ddf52767ce1a06c2e944fc8b2f68d75cf04/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/d1358ddf52767ce1a06c2e944fc8b2f68d75cf04/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 10 | `62d247e4` | [research object](https://github.com/leej3/stamped-in-practice/tree/9384fa182cec08fa0153c0c739a6e32468de7399) | [primary](https://github.com/leej3/stamped-in-practice/blob/9384fa182cec08fa0153c0c739a6e32468de7399/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/9384fa182cec08fa0153c0c739a6e32468de7399/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 11 | `284c8768` | [research object](https://github.com/leej3/stamped-in-practice/tree/99c8161731bf40433b9dcd9247cf8838eaaed8de) | [primary](https://github.com/leej3/stamped-in-practice/blob/99c8161731bf40433b9dcd9247cf8838eaaed8de/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/99c8161731bf40433b9dcd9247cf8838eaaed8de/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
+| 12 | `40164f01` | [research object](https://github.com/leej3/stamped-in-practice/tree/0cde5574168261b0beb676ffff6e61e67bdecfcc) | [primary](https://github.com/leej3/stamped-in-practice/blob/0cde5574168261b0beb676ffff6e61e67bdecfcc/coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md) | [observed skills](https://github.com/leej3/stamped-in-practice/blob/0cde5574168261b0beb676ffff6e61e67bdecfcc/coordinator/retention-01/indexable/retention/skill-use-observations.json) |
 
-The analysis source and resolved environment are retained under `analysis/`; `execution/` contains the requested Duct metadata, stdout/stderr and resource samples for the final aggregation and figures. The [verification record](../synthesis/verification.json) records exact reference hashes and matching aggregation tables.
+The analysis source and resolved environment are retained under [`synthesis/analysis/`](../synthesis/analysis/); [`synthesis/execution/`](../synthesis/execution/) contains the requested Duct metadata, stdout/stderr and resource samples for the final aggregation and figures. The [verification record](../synthesis/verification.json) records exact reference hashes and matching aggregation tables.
 This replay aggregates frozen evidence; it does not execute the twelve scientific analyses or reassess them.
 
 For standalone access and replay, follow [dataset instructions](../DATASET.md).
