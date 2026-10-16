@@ -131,3 +131,55 @@ The checklist mean gives equal weight to each run's fraction `met / (met + parti
 
 Retrieve annexed archives and tables with the root Pixi environment, following [the retrieval guide](../../RETRIEVAL.md).
 The small pooled JSON and TSV reports are ordinary Git content.
+
+## One-time round-three refresh
+
+Run this from an isolated reporting checkout only after the existing round-three extraction has a closed snapshot (32 closed launchers, zero pending slots).
+This is the user-authorized reporting refresh: no new research, judges, replay, regrading, or modification of the original files.
+Set `REPORTING_SNAPSHOT` to the exact completed snapshot directory if its final name differs below.
+The independently approved round-binding digest is supplied literally; do not replace it with a digest calculated from an edited binding file.
+
+```sh
+set -e
+REPORTING_STATE=/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1
+REPORTING_SNAPSHOT="$REPORTING_STATE/round-03-operational-extraction-01/snapshot-final-01"
+REPORTING_DEST=experiments/retained-round-reporting/round-03
+REPORTING_SCRATCH=$(mktemp -d)
+
+test -f "$REPORTING_SNAPSHOT/snapshot.json"
+test ! -e "$REPORTING_DEST"
+mkdir "$REPORTING_DEST"
+
+pixi run python scripts/package_retained_reporting.py \
+  --snapshot "$REPORTING_SNAPSHOT" \
+  --reporting-registration "$REPORTING_STATE/round-03-assessment-registration-01/original-registration.json" \
+  --assessment-pin "$REPORTING_STATE/round-03-operational-extraction-01/sealed-source/assessment-version.json" \
+  --output "$REPORTING_SCRATCH/packaged" \
+  --archive "$REPORTING_DEST/input.tar.gz" \
+  > "$REPORTING_DEST/input-manifest.json"
+
+REPORTING_ARCHIVE_SHA=$(pixi run python -c \
+  'import json,sys; print(json.load(open(sys.argv[1]))["archive"]["sha256"])' \
+  "$REPORTING_DEST/input-manifest.json")
+
+if pixi run python scripts/reaggregate_retained_reporting.py \
+  --archive "$REPORTING_DEST/input.tar.gz" \
+  --archive-sha256 "$REPORTING_ARCHIVE_SHA" \
+  --scratch "$REPORTING_SCRATCH/reconstructed" \
+  --output "$REPORTING_DEST/analysis" \
+  --source-repository "$PWD" \
+  --assessor "$PWD/assessment" \
+  --round-bindings experiments/retained-round-reporting/bindings/round-bindings.json \
+  --round-bindings-sha256 afde668d22b417d2796ace3cf13a44b432f15628c7dad85bf92afa663ff666ee
+then
+  REPORTING_EXIT=0
+else
+  REPORTING_EXIT=$?
+fi
+test "$REPORTING_EXIT" -eq 0 || test "$REPORTING_EXIT" -eq 2
+```
+
+The new destination prevents accidental replacement of a prior refresh.
+Retain the scratch directories, execution receipts, original failures and reporter exclusions for review.
+No whitespace-link repair is selected for round three by this command; any separately observed extraction defect needs its own exact retained-link and capture evidence.
+Add the completed round to the poster pool only after reviewing the existing admission results and the native evidence for selected-output reproduction.
