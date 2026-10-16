@@ -21,7 +21,7 @@ Follow that page's current download status: an annex pointer shown by GitHub is 
 | Research loop and skill bundle | [Skills guide](skills.md) | An explanation of the research workflows, assessor and tested revisions |
 | Outcome table and progression graph | [Results guide](results.md) | Definitions of scientific adequacy, replay and checklist attainment, followed by round-level evidence |
 | Brain map and spatial agreement figure | [Scientific figure guide](https://github.com/leej3/stamped-in-practice/blob/codex/stamped-poster-analysis/experiments/narps-poster/README.md) | What the figures measure, their source deliveries and how to rebuild them |
-| Assessment and revision lessons | [Methodological lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) | Observations about measurement, environment guidance and limits of the comparison |
+| Assessment and revision lessons | [Methodological lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) | Lessons about assessment design, coordination, model capability, dependencies and infrastructure support |
 | Original research objects | [Repository map: read a run](repository-map.md#read-a-run-in-context) | How to find an agent's delivered report, code, results and subsequent assessment |
 
 ## Interpret the scientific figures

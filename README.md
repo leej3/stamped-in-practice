@@ -38,10 +38,12 @@ A higher fraction of STAMPED items met does not necessarily accompany a better-s
 The corrected reporting makes 70 primary scientific assessments and 68 valid checklists available across the 72 attempts.
 It preserves missing assessments and the original reporting failures.
 
-The study also exposed challenges in the experiment itself: assessment can constrain the practices it is intended to observe, judges can disagree, and prolonged repairs can postpone fresh tests of improved guidance.
-These are useful lessons for designing the next comparison.
-This small, adaptive study does **not** establish a causal skill benefit or transfer to other scientific tasks.
-Read [the results guide](docs/results.md) before interpreting the poster's tables or graphs.
+The main lessons concern how to design the whole research process: assessment that recognizes scientifically useful work, precise coordination rules that let rounds finish, capable judges, and shared guidance on dependencies and tools.
+John's experience also points to the difficulty of asking Luna to handle scientific reasoning and reproducibility practices together, and to the hidden effort of preparing tracking and cluster infrastructure.
+The [lessons for the next study](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) explain these observations and priorities for better benchmarking, isolation, capture and skill evolution.
+
+The approach is promising, but this small, adaptive study does not establish a causal skill benefit or transfer to other scientific tasks.
+Read [the results guide](docs/results.md) for the poster's measures and their interpretation.
 
 ## How this repository works
 

@@ -24,6 +24,18 @@ The [pooled results and denominator definitions](https://github.com/leej3/stampe
 That page is on the presentation-analysis branch because it derives summaries from retained judgments; it does not replace the original research or assessment records.
 See [the poster guide](poster.md) for the scientific figures and plotting sources.
 
+## What we learned about doing this work
+
+Assessment is part of the research system: its requirements can shape the work it is meant to evaluate.
+It needs to recognize scientifically appropriate approaches without turning one preferred workflow into the definition of success.
+Coordination needs equally careful design, with precise completion rules that prevent repeated repairs from trapping agents inside one round.
+
+John's reflection is that the combined demands of science and STAMPED practices exceeded what Luna handled well here, despite the short core computation.
+The next study should use more capable, calibrated judges and give every worker explicit guidance on established scientific libraries and recoverable dependencies.
+Preparing tracking, directories and cluster access can help agents, but that coordinator effort is itself part of the cost of reusable science.
+
+Read [the full lessons and next-study priorities](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) for the implications for benchmarking, container isolation, comprehensive capture and skill evolution.
+
 ## Why there are original and corrected reports
 
 The completed study retained all 72 research attempts and 96 operational judgments.
@@ -51,7 +63,7 @@ Replay evidence is also narrower than a blanket reproducibility claim.
 Among admitted primary judgments, 21 native entrypoint executions were observed: 13 complete selected-output matches, five partial matches and three nonzero exits.
 A selected-output match does not prove that every artifact can be recreated on another machine.
 
-The [methodological lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) explain how assessment design, environment instructions and the measurement failure informed later work.
+The [methodological lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) connect assessment design, model capability, coordination, dependency guidance and infrastructure support to the next experiment.
 The [comparison plan](../comparison-plan.md) defines the intended distinctions between scientific outcomes, practices, effort and missing evidence.
 
 ## Completion and access
