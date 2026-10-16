@@ -5,7 +5,7 @@ For the completed study's findings and reporting corrections, start with [the re
 The [registered iteration design](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/registration.md) identifies the actual sealed plan; this coordinator document alone is not evidence of which version a completed run used.
 
 Freeze this plan with the study guidance, assessment procedure and common run settings before the first formal round.
-Keep preparation pilots and the completed `narps-v1` development round separate from the prospective tool-neutral comparison.
+Keep preparation pilots and the [completed development trial](docs/trials.md) separate from subsequent comparisons.
 
 - Scientific adequacy: classify the report as **supported**, **qualified**, **not supported**, or **unable to assess**, citing evidence.
   These describe whether reasoning and evidence support the reported conclusion, including a defensible absence of positive findings; they do not require the scientific hypothesis to be confirmed.

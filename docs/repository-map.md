@@ -23,12 +23,16 @@ The parent repository's submodule link records that exact version even when the 
 | --- | --- | --- |
 | Overall question and findings | [Project overview](../README.md), [results guide](results.md) | Reader-facing summaries on `main` |
 | Scientific question and input data | [NARPS study introduction](https://github.com/leej3/stamped-in-practice/blob/codex/study-narps/README.md) | The `codex/study-narps` dataset, linked locally as `studies/narps/`; its `input/` contains the worker task and data sources |
-| Completed three-round comparison | [Reporting correction and completed results](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/REPORTING-CORRECTION.md) | The `codex/iteration-narps-neutral-v1` dataset, linked as `iterations/narps-neutral-v1/`; read the correction before the older frozen tables |
+| Completed three-round comparison | [Completed study introduction](../iterations/narps-study-runs/) | The `codex/iteration-narps-neutral-v1` dataset, linked as `iterations/narps-study-runs/`; its introduction explains the completed outcomes and supporting records |
 | Design and assignment of runs | [Registered design](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/registration.md) | The planned comparison; later amendments and reporting changes must also be considered |
 | Original research deliveries | [Study's delivery guide](https://github.com/leej3/stamped-in-practice/blob/codex/study-narps/README.md#research-deliveries) | `results/<run>/` links to independent experiment repositories; later coordinator records are separate from the agent's work |
 | Poster summaries and plotting inputs | [Poster guide](poster.md) | The `codex/stamped-poster-analysis` branch holds reporting and presentation work derived from retained deliveries |
 | Research guidance and assessor | [Skills guide](skills.md) | Separate research and assessment revisions in `con/skills`, selected by `skills/` and `assessment/` |
-| Earlier development work | [Development comparison introduction](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-v1/DATASET.md) | `iterations/narps-v1/` used different workflow requirements; do not pool it with the three-round comparison |
+| Earlier development work | [Development trial introduction](../iterations/trial-with-failed-results-reporting/) | `iterations/trial-with-failed-results-reporting/` used different workflow requirements; do not pool it with the three-round comparison |
+
+The descriptive submodule names are the current navigation names.
+Historical branch names and run IDs remain unchanged so old evidence links continue to resolve.
+See [the trial history](trials.md) for the relationship between these completed datasets.
 
 ## Read a run in context
 

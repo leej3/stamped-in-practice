@@ -15,7 +15,7 @@ With the selected iteration and assessor available, run in the coordinator envir
 
 ```sh
 pixi run python scripts/aggregate_comparison.py \
-  --allocation iterations/narps-neutral-v1/allocation.json \
+  --allocation iterations/narps-study-runs/allocation.json \
   --index /path/to/extraction-index.json \
   --assessment-procedure-sha256 <registered-procedure-sha256> \
   --output /path/to/comparison-report-01
@@ -153,7 +153,7 @@ Medians/ranges are unavailable when workers' valid item sets differ. Duplicate c
 
 ## Historical development comparison
 
-Schema version 2 and assessment-amendment support remain for the earlier `narps-v1` development evidence.
+Schema version 2 and assessment-amendment support remain for the earlier development trial evidence.
 Its planned allocation, mixed assessment versions and repaired supplementary attempts are not part of the neutral comparison.
 Use its own registration, accepted amended seal, assessor pin and human-directed disposition when reproducing those tables.
 The [historical guide](https://github.com/leej3/stamped-in-practice/blob/73b521343ca21081702a7252bf38fd12f6f6204a/scripts/AGGREGATION.md) retains those detailed contracts and amendment-specific instructions at an immutable revision.

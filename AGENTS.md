@@ -2,7 +2,7 @@
 
 Follow `prompt.md` to iterate on reusable skills using the study submodules selected by the user.
 The unit of iteration is a pinned skill revision; study-specific preparation and findings stay in their submodules.
-The completed `iterations/narps-v1/` subdataset is development evidence; preserve its frozen records and original outcomes.
+The completed `iterations/trial-with-failed-results-reporting/` subdataset is development evidence; preserve its frozen records and original outcomes.
 Use a separately registered stable protocol for subsequent comparable rounds, with coordinator preservation separated from worker requirements.
 
 - Derive resource requirements from the user prompt, applicable system skills and memory.
