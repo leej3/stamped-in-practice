@@ -1,0 +1,2312 @@
+{
+  "created_at": "2026-10-16T09:39:22.471332+00:00",
+  "source_commit": "5473a6d508e23069dbd446e70f4162c369987856",
+  "expected_aggregation_exit": 2,
+  "actual_aggregation_exit": 2,
+  "only_expected_target_integrity_issues": true,
+  "assigned32": true,
+  "retention_commit_scope": "Snapshot of coordinator registry at extraction; later support descendants do not alter original capture or response identities.",
+  "figures_visual_review": "All actual-data PNGs inspected: labels/legends legible, fixed denominators and missingness visible, no clipping. Synthetic attrition preview kept only in review evidence.",
+  "sources": [
+    {
+      "path": "attrition/.gitattributes",
+      "sha256": "281ecc0271b9cdcc73d41b711879f3edfa4f00dc03736b2846904cbdffdb2d87"
+    },
+    {
+      "path": "attrition/assessment-attrition.json",
+      "sha256": "5c4e8925a58f8852863165c456777ad3c71857966033a12405da9d635fd7674b"
+    },
+    {
+      "path": "attrition/assessment-attrition.pdf",
+      "sha256": "416a524524d15008b7e02c4047a02c853986229dc2bf41674cc5814c8d53d9df"
+    },
+    {
+      "path": "attrition/assessment-attrition.png",
+      "sha256": "da9238ab8e337d377755f61d5fae283351843dee17f4b392d6e89be876ea5c4c"
+    },
+    {
+      "path": "attrition/assessment-attrition.svg",
+      "sha256": "2d200e97e5a795e69e810f5e612c5fb0483c541d3fa1930d9d75093aead32ee7"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-05-j02/manifest-to-as-found-delta.json",
+      "sha256": "17996ceae7ff6c8d92cfdd6790e2112c6e40633834bfa8dcf42177f4274a9f9b"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-05-j02/verification.json",
+      "sha256": "3c242543ba6b447a5ee8df2f211592ef070ef545d711e21089814aa1e513bba1"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-08-j01/manifest-to-as-found-delta.json",
+      "sha256": "7584e0b1297447943f1ee3436a8532bdaeaae5c9ae732b2d2d6bc401a6b49dc4"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-08-j01/verification.json",
+      "sha256": "02b0145d4027bbb4f5f21c92040079f12dbd5d1fd2d1affffb225ea03bb020ae"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-08-j02/manifest-to-as-found-delta.json",
+      "sha256": "d305861c2897741f8e92d0991d3f2bead288e18034c3776c8526722f072415f4"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-08-j02/verification.json",
+      "sha256": "aaec434965958bbf22d64216be47c5df834cac39a401ee7430f513aa701f3597"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-11-j02/manifest-to-as-found-delta.json",
+      "sha256": "91ecb4b838d5b48a58a5cbb94500b124fbdaa5f6b5d65076c4ec87fb0f882444"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-11-j02/verification.json",
+      "sha256": "549462504806753557a596becbaa707a6169b67c570053e95363888b90800b49"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-13-j01/manifest-to-as-found-delta.json",
+      "sha256": "8de356ce14166b4dfade3245cdbd0089f0fee4c4905b8029820e3f2f9187ea46"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-13-j01/verification.json",
+      "sha256": "b39ddd9db9fce164a9201e19dbd7081404b3917774b9472c2b9afffdd92331ed"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-16-j01/manifest-to-as-found-delta.json",
+      "sha256": "a3fcdd6a91af5820260c93282fc912d02dc9e7c76ef8cfc2175ed02936e8dc5b"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-16-j01/verification.json",
+      "sha256": "746d2efd6d1664dc8d8b0639d2bcfa47738a43bb29d547e745743d739bae6ce7"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-18-j01/manifest-to-as-found-delta.json",
+      "sha256": "8185f847e7c0623a553446c4d4a299676cf09f2796272c06d9c82be63f99220d"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-18-j01/verification.json",
+      "sha256": "5653a4847c724d805d6d72cac0886668731a6a33223e2ec514d67e883636b7d5"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-19-j01/manifest-to-as-found-delta.json",
+      "sha256": "2e6d824cc2def1d98428b4ea377b3f6fc7ccafc3b8bd73b490ff8cb1f9b70b05"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-19-j01/verification.json",
+      "sha256": "b08d97b760b85c8ee6e09014ec2e25985a2d3453f6bf34cdd1ca6636c9268801"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-22-j01/manifest-to-as-found-delta.json",
+      "sha256": "1b55c9284e15c1d12d0747af48b24dc884991d3008573b236f752c4817ae399d"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-22-j01/verification.json",
+      "sha256": "05aa79f8d18026b4357f7996b85fd9810306a7357f150e37a6b43bd11d92963a"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-22-j02/manifest-to-as-found-delta.json",
+      "sha256": "53cdc033cd878c9a8ad9f5c334824243f7443d0fa3688964df9a8542094a05da"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-22-j02/verification.json",
+      "sha256": "330ae0ed1d192d1b3585a5c61cb1bfdfebea38373031bc1f741de1e72b9b2840"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-23-j01/manifest-to-as-found-delta.json",
+      "sha256": "bb2e0d060ac65b18b4eae53471a0c06c2697c3d05ef100379a1d64b56c70af0f"
+    },
+    {
+      "path": "attrition/evidence/narps-neutral-r1-23-j01/verification.json",
+      "sha256": "65fc83ce13bfbb35e91a7393904b8b0df2a41c8f74b63b5d11ee680b93c44ed6"
+    },
+    {
+      "path": "code/aggregate_comparison.py",
+      "sha256": "a34acd137182a6d21efbcca46ddfda9c3c2655b59fdd1039b4dcd2fdad9f410f"
+    },
+    {
+      "path": "code/assessment-version.json",
+      "sha256": "27d75f55b892856b2e5b025515c07c37632a377b3e4314c894fdb0d7ae13c6c4"
+    },
+    {
+      "path": "code/comparison_figures.py",
+      "sha256": "90ccccf1bb638b40dc7e94fc31a4d4ba7c1d5364a0de94b3ceb4d739f18e6bf8"
+    },
+    {
+      "path": "code/pixi.toml",
+      "sha256": "c3d25ec5d2893105ac23ed186c22f1b515848ef79517a474d1ab10b17945f350"
+    },
+    {
+      "path": "code/prepare-synthesis.py",
+      "sha256": "f863565e1eb88546fd65f082eefa755d56accaab6e8d3336208f8122ad4298fa"
+    },
+    {
+      "path": "code/render_assessment_attrition.py",
+      "sha256": "22d3cb5c7b523ccf42ef7b8f17aa16eec3dc273774f5029e2fa7f6c1688856f1"
+    },
+    {
+      "path": "code/render_round_summary.py",
+      "sha256": "02b02fa7d4c59e1a12f5b4b1a7e5dc746166e74ad0011673b50ee648af459e82"
+    },
+    {
+      "path": "condition-summary.tsv",
+      "sha256": "17bd7da0707d8b715baa05f1bbacbe094be9a41fcffd9ee31153cd2b68f9c856"
+    },
+    {
+      "path": "extraction/aggregate.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/aggregate.stdout",
+      "sha256": "5ab3ae405c88f4baf524a0c64549e00ec8932a99dff53fcf358adf5dfb6e95b4"
+    },
+    {
+      "path": "extraction/analysis/aggregation.json",
+      "sha256": "37fa292ec2456ff5b8bdb81f9a9d1dbfe37e8d618bee060188fa0162f2a542eb"
+    },
+    {
+      "path": "extraction/analysis/cells.jsonl",
+      "sha256": "6f3bf2f83443db8bf353b092ddb0eb5abce9d2dae3bf7ee44bc5e2f904f52a27"
+    },
+    {
+      "path": "extraction/analysis/cells.tsv",
+      "sha256": "ca68ed6d3dd1a87736bbc9b7bdffa509be8c7710d185abe3e4e494dbe3147be3"
+    },
+    {
+      "path": "extraction/analysis/comparable_counts.jsonl",
+      "sha256": "d4419c07b0b9e364f1ac3d16ffeb7a5cb6616fe1a23108391909af21d83e233d"
+    },
+    {
+      "path": "extraction/analysis/comparable_counts.tsv",
+      "sha256": "e89c43f606117cb252e3d939efab1bd061a801a44f24326bbde42497fb62723b"
+    },
+    {
+      "path": "extraction/analysis/comparable_items.jsonl",
+      "sha256": "624a67759aa0b550141f6eadc10db6a045ce20692976c9990540d404f09173b5"
+    },
+    {
+      "path": "extraction/analysis/comparable_items.tsv",
+      "sha256": "637dbf1a53a2a4dc3824c13e7a938a31ee49c9715997ed94f1734b038e617114"
+    },
+    {
+      "path": "extraction/analysis/counts.jsonl",
+      "sha256": "7feb478703b48ad32bf8d9d6ff2e5fbf9a7a9ba1a6015832a0cb158ab3c2ea2c"
+    },
+    {
+      "path": "extraction/analysis/counts.tsv",
+      "sha256": "048aa91cda0bea8c9d1992a16e7e0ff21a64836f9c79684e6251296bf87a35d3"
+    },
+    {
+      "path": "extraction/analysis/disagreement.jsonl",
+      "sha256": "019188e11e940651191428c1e64472d3da172be0d6587dcafa002f9add20e221"
+    },
+    {
+      "path": "extraction/analysis/disagreement.tsv",
+      "sha256": "05afa58e408497626628660959d43b41f75521ea86f9707dfea09e24b5dc49be"
+    },
+    {
+      "path": "extraction/analysis/duplicate-disagreement.png",
+      "sha256": "256209d694d850301897004344b18b36c423e79fe69d2f7525e3665faa156e72"
+    },
+    {
+      "path": "extraction/analysis/duplicate-disagreement.svg",
+      "sha256": "b709f8623bd161f2d6578193b4bd51b741f2d3385db0bf557dd986464216b6d5"
+    },
+    {
+      "path": "extraction/analysis/effort.jsonl",
+      "sha256": "1a7c46757fc9d751e670f5366013f229837e09c973d3699a707fdf460b1c7716"
+    },
+    {
+      "path": "extraction/analysis/effort.png",
+      "sha256": "bf1a72f8d56bc218987b9c7e2b0279c3529b64dbc50b62e76050ca588c53540a"
+    },
+    {
+      "path": "extraction/analysis/effort.svg",
+      "sha256": "9e069cab8120a4d10ef62abae9a06b0d7fc4792b02b3025f8c82234427af06b6"
+    },
+    {
+      "path": "extraction/analysis/effort.tsv",
+      "sha256": "cb560d138b381781ec9ae5fad30c451b5aaec940a23b6ca153be3e637a8bae39"
+    },
+    {
+      "path": "extraction/analysis/excluded_attempts.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/excluded_attempts.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/analysis/issues.jsonl",
+      "sha256": "d0d0657601040723a46dcaf11b4b24335070ebf6289225708295dca5e9800a30"
+    },
+    {
+      "path": "extraction/analysis/issues.tsv",
+      "sha256": "deb883a65fd4e15fdc885c6e5a57c2e5f747ae99eab7ca93fbc1540ae63656c9"
+    },
+    {
+      "path": "extraction/analysis/item-statuses.png",
+      "sha256": "7f937612b3714421a416c91e2868a4bbb04812a1f651ea670a3e6c064234cedb"
+    },
+    {
+      "path": "extraction/analysis/item-statuses.svg",
+      "sha256": "93e692cb91aa7d5b5b4c995d40378fab8d501cdbd9f5a099e7e444ccda1511a3"
+    },
+    {
+      "path": "extraction/analysis/items.jsonl",
+      "sha256": "624a67759aa0b550141f6eadc10db6a045ce20692976c9990540d404f09173b5"
+    },
+    {
+      "path": "extraction/analysis/items.tsv",
+      "sha256": "637dbf1a53a2a4dc3824c13e7a938a31ee49c9715997ed94f1734b038e617114"
+    },
+    {
+      "path": "extraction/analysis/judgments.jsonl",
+      "sha256": "d7da137239d7dffdc68065d5e7c191497703873f74a7b2e4f4523aeecd9ac955"
+    },
+    {
+      "path": "extraction/analysis/judgments.tsv",
+      "sha256": "f09693eab828c91081a68c93c0ec5aa65dabee073dc5e30c750f9287dbc4b4d5"
+    },
+    {
+      "path": "extraction/analysis/measure_validity.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/measure_validity.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/analysis/operations.jsonl",
+      "sha256": "46113c27491d3e481c1efab062b91b48e164196b5c47c1d4d8818416cd5d4d88"
+    },
+    {
+      "path": "extraction/analysis/operations.tsv",
+      "sha256": "746366352a6b3c28399a110a4a12ca1d2841fd9d127d4d2ba3267c34bfd7dc09"
+    },
+    {
+      "path": "extraction/analysis/pairs.jsonl",
+      "sha256": "0aeea74c36b0b8500d5a29098411e9d8f1615b1d6f6bb2be9da6fc59081a258f"
+    },
+    {
+      "path": "extraction/analysis/pairs.tsv",
+      "sha256": "344d32997fa4f3cc2d3a7145042791ba6cffe5402f077628885807c782ede795"
+    },
+    {
+      "path": "extraction/analysis/recurring-outcomes.png",
+      "sha256": "8ee36f1093a2dc489e8360cad4f728b752041f007698211703ff23d77fe44dbe"
+    },
+    {
+      "path": "extraction/analysis/recurring-outcomes.svg",
+      "sha256": "d469cf065aefa3f5a7e421480fd1e1eedd22498f025e220dbb87f01f797d87de"
+    },
+    {
+      "path": "extraction/analysis/runs.jsonl",
+      "sha256": "446e4ec7167745f748655f505dc5748c6dc044ab3fa1188e0f8025b6124edc5f"
+    },
+    {
+      "path": "extraction/analysis/runs.tsv",
+      "sha256": "ff3d78c9793a659ed72984963e0f039e2cd54569bfea1db72cc3ada8f4a0e515"
+    },
+    {
+      "path": "extraction/analysis/scientific-adequacy.png",
+      "sha256": "cb8e47eb0666edf3a5d17c90d552fb7a3e17c88abc3b410e39f1211271449284"
+    },
+    {
+      "path": "extraction/analysis/scientific-adequacy.svg",
+      "sha256": "efec37e734dfa1201e4b88070fbdb46782fe30356a0204762a6cdf03d837522c"
+    },
+    {
+      "path": "extraction/analysis/supplementary_attempts.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/supplementary_attempts.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/analysis/supplementary_items.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/supplementary_items.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/analysis/version_cells.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/version_cells.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/analysis/version_strata.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/analysis/version_strata.tsv",
+      "sha256": "46ff3e2117629255c62b011cae6134c6b7b2ae5958a7e022c6533110ca2b6ab2"
+    },
+    {
+      "path": "extraction/build-extraction.py",
+      "sha256": "9f9d5a05bea62dd2ad339660eac7760c6934e4dfb6831ed03c30aa7fec4cb4b9"
+    },
+    {
+      "path": "extraction/build.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "extraction/build.stdout",
+      "sha256": "33ec015ae4237be48fcf14c12c4a6abd0f9bdf7d7193646d4df3113535ecf0dc"
+    },
+    {
+      "path": "extraction/command.json",
+      "sha256": "8b83ad7b109f619bb0b647900dcffff4d9eba14eae08b9faec8786a73796ad25"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/capture-manifest.json",
+      "sha256": "68b83ae17508a0293ee1ae60d80ce07321a3d0598bc484b990ca852b64f07441"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/input-boundary.json",
+      "sha256": "045d52eb62c8cbdb23234776a8bf257b864f0e3afb6a91cfa9028d961cbb1bfd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/canonical-replay-record.json",
+      "sha256": "933121300cfd970cff5fc110d2ce7b44ce59dc1c4d07b2f32a553cb8efc20fac"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/coordinator-extraction.json",
+      "sha256": "074f7aeaff1620afde6e1a9db1b69e572c1bf12bfafff124f6dbe6a5b4ef1d35"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/narps-neutral-r1-01-j01-native-evidence-0.json",
+      "sha256": "1a0bff839d4834195fcadb984443ea135f0195e3cd341db45ca35d628a9dd09d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/native-procedure_status.json",
+      "sha256": "3e965504948583c0bf232da522c624e79b73019a8a767e2c13c7916526291aef"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/native-result.json",
+      "sha256": "1a0bff839d4834195fcadb984443ea135f0195e3cd341db45ca35d628a9dd09d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/native-token-usage.json",
+      "sha256": "cffa67e7de1eb4a725279ddb2d709521deae8c75c3df4019a9f36dd0592034f3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/output_binding.json",
+      "sha256": "86779215c897895838686905c7320abfa658161a6a4a936d9d8fc6ba6534ed95"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/replay-evidence.json",
+      "sha256": "634873a8fecf315bff167d21f7d063b364611a1f3a21c6ae2485236cbe41ea47"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/report.md",
+      "sha256": "02f0b1f618bfbe39877c0bd4e8b1fb8eae6b0f62f84c20ebdbb7f7d892cc6887"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/response.json",
+      "sha256": "2188c0b786a2deed4cd7b6cea970d67718996deb3ed1cd8671312f989bf13f80"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/judgments/narps-neutral-r1-01-j01/source-binding-evidence.json",
+      "sha256": "e1c9bce2e6cbf8e1ab2f38f4d85c774a430cdb0a80fafbbc98e466b3f13c6eed"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/native-result.json",
+      "sha256": "4afccd46f59a30e140f356acc9bb5d9e88caa461d60ab02aecd7054d8cd72705"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/native-token-usage.json",
+      "sha256": "deae24ea760258c0add4d547d6e860aef8a14bb001129a4b5e7108bb76d9e7e8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-01/worker-end-state.json",
+      "sha256": "5abbf4f219bb1db48ef909c3056e76e866329eaa24115562b0feb68b8f4f9a67"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/capture-manifest.json",
+      "sha256": "b8c5ed926b870d7d78ec6ecc4fbccd218f12523802ded9d082f032d901fd9aec"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/input-boundary.json",
+      "sha256": "4fb29d626b68735ea8ea037cf124a21e105e313696f5e505ce1139b6a40a274e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/coordinator-extraction.json",
+      "sha256": "cb1ed4a24e7ee2851ca8ece69b5c0844df4ac0ab07be2082c212afb4c7ec421a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/narps-neutral-r1-02-j01-native-evidence-0.json",
+      "sha256": "9781b0037e8903a5117cd44a3e68f057857271f0c3ad22586bfdfda86f5abf1a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/native-procedure_status.json",
+      "sha256": "91a8234bb8cce0a0d1a4572807a3bc460c4318e67e2e783ec5b9157761906c16"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/native-result.json",
+      "sha256": "9781b0037e8903a5117cd44a3e68f057857271f0c3ad22586bfdfda86f5abf1a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/native-token-usage.json",
+      "sha256": "58cb0b46e2943d76b27e9941972d0f14d5851481cefc3474bae78a3f41d01a13"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/output_binding.json",
+      "sha256": "4dac502815f2f07bbb8f03b82e241503683bf4881504ce1d8f8e8f66567a6ab0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/report.md",
+      "sha256": "739dd47e71b15229dd44f0fe13a4032b5af59fa991660f59b4ea4a82685efbef"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/response.json",
+      "sha256": "81e93b5a6002c9802bea48aa0b838bc304e7bf62fd3b23e7174d01a27411e188"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/judgments/narps-neutral-r1-02-j01/source-binding-evidence.json",
+      "sha256": "afd31ab13f9cfa80f5745a2232194ae8cff00be17d5a923f9e6e18527a52b7a0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/native-result.json",
+      "sha256": "63afa6c01fde421353eff9156268726f877f248db1d8624ddf5b556baf3a3bc5"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/native-token-usage.json",
+      "sha256": "85bf5eeac675aac680b2eb29cf1665e6df5cf192b3b8132224a79d3bba075704"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-02/worker-end-state.json",
+      "sha256": "82f54530325e3ea11b0ac50513a18c3dbf514b94ba460933d28b4efd6744267d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/capture-manifest.json",
+      "sha256": "b321a85c15f4ada27df7bfdb1a8ac1083c4cf328f8db985598daefa0c322444f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/input-boundary.json",
+      "sha256": "6b7b4bc900775694a4a540c8ed877fd55a1f3b53517614958937d921034728b3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/coordinator-extraction.json",
+      "sha256": "6ede27c3be7d053ddf970be5f12409451f48a779f0d3988ffbde3f7b14053f34"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/narps-neutral-r1-03-j01-native-evidence-0.json",
+      "sha256": "9d5d44f523e8525e8a8bce990ed8af8695f718c178d764c93d1b31b3c51d0e0b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/native-procedure_status.json",
+      "sha256": "ef182d1a5610087fb39dbc21db1cb4fd9bc6d214246c1c53ff15c6ec1c3d6f26"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/native-result.json",
+      "sha256": "9d5d44f523e8525e8a8bce990ed8af8695f718c178d764c93d1b31b3c51d0e0b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/native-token-usage.json",
+      "sha256": "faf70f649d378b09b3d16214a1395ad63431158dd54b3bc107563e5a79c346bb"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/output_binding.json",
+      "sha256": "71557c25dd55f2f6bcd381ee7ecc9d9bed162eb387cbb2708707187f5418657c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/report.md",
+      "sha256": "b351a2e67dbea6d6b502698a4f5d937b7727f823f595926eb0f613783e447200"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/response.json",
+      "sha256": "a4912d727d14934f81997c5b7248fa0dfded27c920e5cab2c5d69ec06163c6fe"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j01/source-binding-evidence.json",
+      "sha256": "ae18d1e01666e0795bb0ccea39a48aa55d92f4fe09c0ee95ffa24a21383514b2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/coordinator-extraction.json",
+      "sha256": "6f9a9225ac628824e45346ef3114973e653bf897f868932215593e48a507b787"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/narps-neutral-r1-03-j02-native-evidence-0.json",
+      "sha256": "a1ede0fda65a5d45b5d493d1178db904b924d7bf0c4c42907a958cefc09a0eae"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/native-procedure_status.json",
+      "sha256": "ef182d1a5610087fb39dbc21db1cb4fd9bc6d214246c1c53ff15c6ec1c3d6f26"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/native-result.json",
+      "sha256": "a1ede0fda65a5d45b5d493d1178db904b924d7bf0c4c42907a958cefc09a0eae"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/native-token-usage.json",
+      "sha256": "b3fa47b8ac40a1af7fa654274c9afb256bd9eb6b8243239bac80eaadb64a12ad"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/output_binding.json",
+      "sha256": "1887813dc775fa23e2f6f3e9dcefb01757103a580bbbb96bd049ae8fb671041a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/report.md",
+      "sha256": "c04960965413b032b20172ecef1e255ce23242a420477ede255b8da596454bbd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/response.json",
+      "sha256": "9e203914b7ea32a4d05b9d996b21f6f07e295b72d54d72dd757407dba37ac42f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/judgments/narps-neutral-r1-03-j02/source-binding-evidence.json",
+      "sha256": "4f41fb027529402b3709f1453b3d6d2b7506a133473acb478fb520b83caf3ddf"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/native-result.json",
+      "sha256": "24489fd7419818b46018520feb38ad2d2e7b72eda393820c627c6f6ced0a564f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/native-token-usage.json",
+      "sha256": "d7e30754d169eb99934e6b48cee994fb3db5faf61d6aa4b806f53b88984e2a57"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-03/worker-end-state.json",
+      "sha256": "2d6b098f70edec77b7994f1bc00a9ec902dc6a1c324607c6b5c0572584e1cb68"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/capture-manifest.json",
+      "sha256": "be9dfce22879dc38b64f8b9cc6bda8a262258c88cb8bf5a7e14d691d479f9b07"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/input-boundary.json",
+      "sha256": "7503910c63dd89a7c1807d5278e0ff53a9b3a76be342bd875854da0e4bf4da1f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/coordinator-extraction.json",
+      "sha256": "b54e5eb6a5e013a8c382a423bf2e6a151fb5e2e9fc130ae19b72971ef9deb82c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/narps-neutral-r1-04-j01-native-evidence-0.json",
+      "sha256": "2d9f516124a02ffa3e42259c5587ddffc6988e41050dd348e3f10aec34795aa9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/native-procedure_status.json",
+      "sha256": "c604e100584c42460347de381d3f4e722cd2e260cf0fbaffc3a9ef7cb1033496"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/native-result.json",
+      "sha256": "2d9f516124a02ffa3e42259c5587ddffc6988e41050dd348e3f10aec34795aa9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/native-token-usage.json",
+      "sha256": "4d83bf0ff64b9e5a41897f21ccac444f2026c804b3f80d8a9e3f9187ef6853f3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/output_binding.json",
+      "sha256": "2ebbd588ac8c2330355836b303d80f27f5d517695af3596184f4259c6caacca8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/report.md",
+      "sha256": "d894d1245517febac1ce41d0a6ce54c1cbacba8eb3b105847a600051327d7318"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/response.json",
+      "sha256": "dcb2bd60f572da6cec2b9a1adc356092fd3dd0dd3ce0ac714f8b0ab5fd83695c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/source-binding-evidence.json",
+      "sha256": "f1da46e2b82395fcffefc393f32ff4743125c105b27be3a4b530c6c60681434e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/native-result.json",
+      "sha256": "2801072cf65514e20c3b10a39e7e4d7bc29c0f0dbc6b2b5b52c7834e62929c49"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/native-token-usage.json",
+      "sha256": "9b238f5c6be60e422e54d8165fe6f4ad90a5fdb6d20224b3c98a930f808145e2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-04/worker-end-state.json",
+      "sha256": "9ab6225380d209a80080f4dc103d01732df70183b3b1b24a4b5f11518d28dfb4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/capture-manifest.json",
+      "sha256": "62fae7a1b4cf57bb811b88cb718ed01596b5d9b784e996e678b4851cadefbd0d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/input-boundary.json",
+      "sha256": "4d00c0b93a205a7f4a16cd5a7f579350a7e15ff315de696ec613be64236bdf24"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/coordinator-extraction.json",
+      "sha256": "6b76ef47f50b3d42cd5194208f7b88954e98f113766881d07f18555c2c97bc4f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/narps-neutral-r1-05-j01-native-evidence-0.json",
+      "sha256": "84740ead2791eca9aab2c7838393d01ca8419ee98069cac07775a436efcc5bd2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/native-procedure_status.json",
+      "sha256": "1a3301f4e242c754da413c158f9843b392198c5d52b88c3a24f6e62d67a4f0ae"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/native-result.json",
+      "sha256": "84740ead2791eca9aab2c7838393d01ca8419ee98069cac07775a436efcc5bd2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/native-token-usage.json",
+      "sha256": "10bea3a9c7d359c76446df6cd3bba11046d65e79d3a741ab996a250780342e1d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/output_binding.json",
+      "sha256": "1c22ea18ec9e1bff3f5ab156e60dbdd918ec84c7bbfc376329e8f29522915f80"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/report.md",
+      "sha256": "aa3e03ab7ed694b126128d785d2a5eacad025c8d6a3b0f8352261af91e7bd234"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/response.json",
+      "sha256": "6162401f4934e4219d00eab19e6b30371d54bc759cfecb29a50fc47b6e13b1a9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j01/source-binding-evidence.json",
+      "sha256": "0482e72b8166ace3d1107313c024809edd9260fc819edb455a51fea467ab36ca"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/coordinator-extraction.json",
+      "sha256": "e4a7ca8605cadf1e629afa4caa29fa4c127af1b3534f81bd866b1a776fb7351f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/manual-extraction-supplement.json",
+      "sha256": "05b4ef1c9510a03364e65c59fd4bdaf70fb171b5211eabeb9358acada3b4eb97"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/narps-neutral-r1-05-j02-native-evidence-0.json",
+      "sha256": "cfbbec75e89281402cf413dbf960e40b015f0aca4a7f7f34acf05c8ae09f4867"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/native-procedure_status.json",
+      "sha256": "1a3301f4e242c754da413c158f9843b392198c5d52b88c3a24f6e62d67a4f0ae"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/native-result.json",
+      "sha256": "cfbbec75e89281402cf413dbf960e40b015f0aca4a7f7f34acf05c8ae09f4867"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/native-token-usage.json",
+      "sha256": "6189c84610c64593a1681fe998c5545398e1746027ce7273fb4489f218562d29"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/output_binding.json",
+      "sha256": "77df9b04f5e76e56e32e37274d9c0b522b5526f8c02dcfbdf0980d78ad842569"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/report.md",
+      "sha256": "c18ce3302e2ad9baa79f97e6494f0c018f625a3b65ac237498e2864b1e75700a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/response.json",
+      "sha256": "8feb5163c38ebae6df5151be6b96fadd6b3e16fe6571b05060ddc0fdf67a3bcd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/judgments/narps-neutral-r1-05-j02/source-binding-evidence.json",
+      "sha256": "62d6e2ba5f56e1089d0bc9adb65fed3affb7adb3a9c615fb5115d802ce894787"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/native-result.json",
+      "sha256": "ea8dcb9648d960bf494c43e7d5883b60e969d7c82c5127a8ef07a97b5604cb40"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/native-token-usage.json",
+      "sha256": "673536d96e0fc859192b6860cbeaf27baedee77477509ebfb26bf83c5ebd8086"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-05/worker-end-state.json",
+      "sha256": "2cbea3294b9b3c2e5985990c6c541f58aef039df1fd9e507cb685af2f2ccadb1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/capture-manifest.json",
+      "sha256": "44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/input-boundary.json",
+      "sha256": "a32db8ab89c99b2b808533c9cbbb2019f26d1b68ed60a08b8364f029fb9fa3a0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/coordinator-extraction.json",
+      "sha256": "587a54bb09d369b5ad9c16a23667a669596a23f1a3c55e4f33fafdebfaa60c29"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/narps-neutral-r1-06-j01-native-evidence-0.json",
+      "sha256": "64c7bedbf7a4640c42738566d519fac6f4b220fad8bd3223691a4d269628cde3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/native-procedure_status.json",
+      "sha256": "6ba2933e345893ab0407dcf352874675423b911b76b55645b86cb8bc90ccb4f3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/native-result.json",
+      "sha256": "64c7bedbf7a4640c42738566d519fac6f4b220fad8bd3223691a4d269628cde3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/native-token-usage.json",
+      "sha256": "8cc52505930466557558861a76d380ce405b68dc02f2083574e8e69b054028ef"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/output_binding.json",
+      "sha256": "e59dfc2e4f4d2870a102f21aaa712a0ade99f6645ae1fcf39c9734c9d0890d62"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/report.md",
+      "sha256": "21d23f079d0864edd07b0b6d2869b02924b01de41781833029a71a832c3cf349"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/response.json",
+      "sha256": "5c2b7f82907b1060ee354bf63ed06ed4fa6e4c2739d231068c1aca7efee40669"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j01/source-binding-evidence.json",
+      "sha256": "bd1920d5ba96fc9d6f0bb4cf689caf8acb53526a8f77e4d456ba1cdda45ee0f2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/coordinator-extraction.json",
+      "sha256": "3a543c14e2d8fd9741cc6fe0dd765d95f374a10df1ca4e84092dd888f7cfe516"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/narps-neutral-r1-06-j02-native-evidence-0.json",
+      "sha256": "52144332bda559889e089672c1b3ae4ae08cdef77e1f66f340bdd18c93f15cf9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/native-procedure_status.json",
+      "sha256": "6ba2933e345893ab0407dcf352874675423b911b76b55645b86cb8bc90ccb4f3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/native-result.json",
+      "sha256": "52144332bda559889e089672c1b3ae4ae08cdef77e1f66f340bdd18c93f15cf9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/native-token-usage.json",
+      "sha256": "a3781c88b19a1033c3686e00882d2fa5f2db90c9fc3b1d3e9e547ee899843b89"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/output_binding.json",
+      "sha256": "2c4d45acecbfc1a411efb58a8e4b2014fa44b681db91196ca81c9144a43c419b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/report.md",
+      "sha256": "5a3ded99441f690f49f7eb6113a8dd2a14696ea5092cbff080d549d8d6aa5c7e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/response.json",
+      "sha256": "a144ca26513a7ec02027ac208121be2f32c00ff7b9a47c37c1754dd4aa17a554"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/judgments/narps-neutral-r1-06-j02/source-binding-evidence.json",
+      "sha256": "dfc23c491a9becd1991042dbde6257095e5d78ee0d5adec9c23847818533b069"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/native-result.json",
+      "sha256": "66a81026722872f7ceefbf73c6460f27824df421567280bdc42cba7c5810d183"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/native-token-usage.json",
+      "sha256": "97308e279164ed9119463d37df29ab8655dca2ec49eb4ce94ce387f2c9da3975"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-06/worker-end-state.json",
+      "sha256": "ebf92e88edc21d3312725711918512cf15c0fe25c083e95a5ee51cce6dd36640"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/capture-manifest.json",
+      "sha256": "a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/input-boundary.json",
+      "sha256": "e508db3182469847034c2d830e472bf329b6900b66d739555764e90f516e7231"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/coordinator-extraction.json",
+      "sha256": "f807aa0cd1e9cad8530cbe4de0bc3d9c6c7c63a92a1661cbb1f7a6eb16e0f946"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/narps-neutral-r1-07-j01-native-evidence-0.json",
+      "sha256": "de98975fe138b82f6cf7a6ee7c377ce45a4c1f669cc4b50dc0d54eef3f09a613"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/native-procedure_status.json",
+      "sha256": "90b04512212fdb4a157b80091cb8a2bc4b82a56f6fd686be90e617fd69ef3141"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/native-result.json",
+      "sha256": "de98975fe138b82f6cf7a6ee7c377ce45a4c1f669cc4b50dc0d54eef3f09a613"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/native-token-usage.json",
+      "sha256": "3eebb6d5d775901ff818dc911c5a6ab9311bd3a796d876ae3badc377d0b138e2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/output_binding.json",
+      "sha256": "69e8b96060c8c6fbc5a9f30e1117a98e7634cc572baaa9d8724cb1548d3135d1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/report.md",
+      "sha256": "fe4776cef5f2972afe871e94f5221290974d1eb116ac7677356f0ee238ce093b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/response.json",
+      "sha256": "49b153c7e757a9ab5cfbfa70d971fe704428afe27f63d9da810f8c3ac4d2d5e1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j01/source-binding-evidence.json",
+      "sha256": "9f45dff5100e01ad91e575d3cdcc0f6cacb5bd47013066a0ae0ac72ebfc254de"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/coordinator-extraction.json",
+      "sha256": "3b3c84a650196e6f9256c7f53243ab84fda4677ccecf4f7df345d97d2e511556"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/manual-extraction-supplement.json",
+      "sha256": "a46103085e778e3a03b5ae09279654868ea841b16c7502ff2041111054ad88c1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/narps-neutral-r1-07-j02-native-evidence-0.json",
+      "sha256": "6fc97c840693e9397ac2bf222b7d012cbe463d652f26c7c280d491c98dd9ee87"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/native-procedure_status.json",
+      "sha256": "90b04512212fdb4a157b80091cb8a2bc4b82a56f6fd686be90e617fd69ef3141"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/native-result.json",
+      "sha256": "6fc97c840693e9397ac2bf222b7d012cbe463d652f26c7c280d491c98dd9ee87"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/native-token-usage.json",
+      "sha256": "b55d8ee94e018ad5d7e1a558ba63a6faa4e3e7da159906d6de6433ecbbf68372"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/output_binding.json",
+      "sha256": "a66b6d64f7a3af9773384e3f137177f5352e2d295b2400c464fc5427d2d321dd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/report.md",
+      "sha256": "a4b225a8eca2eed8b0bf28cfb4af880d3bd2a7ea7f75dad2727e86f5c9e13f63"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/response.json",
+      "sha256": "f06a0c56729d0fc2a6d45c2425f9d69e5d640ae9ffcc397ead00f8efb7a519c0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/judgments/narps-neutral-r1-07-j02/source-binding-evidence.json",
+      "sha256": "002448368e6462cb198025b073a157c7f8f2815e7884cfb4126b947ffdd6eff2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/native-result.json",
+      "sha256": "800b302d508647ba5773f47ead35fd2583afa5f6cdad629ca71fbfffcdb35c49"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/native-token-usage.json",
+      "sha256": "7fe2c10ba174f21591785cf69c54c89cf85b30f30b90494d4ac775c0388724c9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-07/worker-end-state.json",
+      "sha256": "f5893d27e5a793fefd9e6f206399753c64f3efc45f362fb0d28b0f9b5ceac95d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/capture-manifest.json",
+      "sha256": "2afd81ca5fdfaa03e85f2d3e65b04aac9f4b3d90eb39f95c2497266e4cf3cdc7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/input-boundary.json",
+      "sha256": "12dfe52b3301f08dceb24601be36002c4db6f7ae1450238ed397b6ca66137dff"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/coordinator-extraction.json",
+      "sha256": "001967d33d277b4d2d2dce262ff3462cf869617ed35b622d6a4d53e6dc5b43d1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/narps-neutral-r1-08-j01-native-evidence-0.json",
+      "sha256": "58e31badb984fbeecfe6cfc3a11ab0aad0519c7ed8777f0fb58f3de2e822da6a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/native-procedure_status.json",
+      "sha256": "30f5145ba12109195c905e95b03da173c78788827f36dfff68b81c45aaa291d2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/native-result.json",
+      "sha256": "58e31badb984fbeecfe6cfc3a11ab0aad0519c7ed8777f0fb58f3de2e822da6a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/native-token-usage.json",
+      "sha256": "be458eb52dc21ae7a4c8e8ac6f9068195f3ae3cafb67073fd7a0ed58dc00d812"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/output_binding.json",
+      "sha256": "ade9263028fe82dd19076d887362487df860b6c8159866842bf624b41581d1e6"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/report.md",
+      "sha256": "375fdc964c7f5979d649b0a74a224237c8147faaa992bf4ab9acb5c5341a8468"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/response.json",
+      "sha256": "a7c349d77ec321477671a6a4455b21d6bdccefe064c0cdb0ff97af212b46425d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j01/source-binding-evidence.json",
+      "sha256": "d40600089c208eb639fbf38f5e248030df9a0a97e78583337bdb79bba34f9d8e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/canonical-replay-record.json",
+      "sha256": "c10c0f865e8beae5e7f317252f89b5fc9044ea8171c3c97fe18acebc7cbae861"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/coordinator-extraction.json",
+      "sha256": "69b1b9e32f15b85166fe8c1c4ef92a5b05ca66cbcdf5d21166d7e9b6aad9a113"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/narps-neutral-r1-08-j02-native-evidence-0.json",
+      "sha256": "acef058b4ddaea338acf7f0820b025039d638c4c57bc2a194ee333bd414f3607"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/native-procedure_status.json",
+      "sha256": "30f5145ba12109195c905e95b03da173c78788827f36dfff68b81c45aaa291d2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/native-result.json",
+      "sha256": "acef058b4ddaea338acf7f0820b025039d638c4c57bc2a194ee333bd414f3607"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/native-token-usage.json",
+      "sha256": "094c8935c443020ac78f9d298c03bef6cbeda16b0a01b12adb0a8de18e60a867"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/output_binding.json",
+      "sha256": "62b9f609d1d481ba35588dc76f47015f12856312c7e0fc4609b4150b5dc57f06"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/replay-evidence.json",
+      "sha256": "92300e7f0698d20dae52ea5db6ee895f11180efc617fa3b82acb5bc22af29abc"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/report.md",
+      "sha256": "263807769e9c8f329ee23fdba1fea1183efce090aa0afc19b92d39b20bf200e3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/response.json",
+      "sha256": "bdf8a3cc1bd7fc0d7a3c5376f16f2ff3ddc99112f02eb4b5d4ca6f32ad495350"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/judgments/narps-neutral-r1-08-j02/source-binding-evidence.json",
+      "sha256": "2625cde74ae0bcee32b0df10d1075b923832e436080a51f5045a242e0143a505"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/native-result.json",
+      "sha256": "7403e2466acd2546272213ae11da04ff6d83333c0be4cb6de598fedded4fe205"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/native-token-usage.json",
+      "sha256": "8cfe9c14a67674f89675463e811b392585cc7d71d67fc9bead8b85e47a947d4f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-08/worker-end-state.json",
+      "sha256": "77c8a710004eeb6bc42610e3a53bb6905ac963c8746604860256cf30491dde98"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/capture-manifest.json",
+      "sha256": "73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/input-boundary.json",
+      "sha256": "fa3ad50929c012b50ee911da74b85f7a8c56f5ef5d002cef533b7acbf7476f3c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/canonical-replay-record.json",
+      "sha256": "585155e60446ed48b7c3e255a3f56c7d6a196dd6435fcdd9976281bffe2e046e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/coordinator-extraction.json",
+      "sha256": "b2b5a85c6b5f1d108c605340e80006da07764cc7923477d24818b56b7c295c41"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/narps-neutral-r1-09-j01-native-evidence-0.json",
+      "sha256": "dd6cc949fab7e57bd4e05e076a1041f0e244eff2841fdc96ced5b99fcd549ba1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/narps-neutral-r1-09-j01-replay-evidence-0.json",
+      "sha256": "585155e60446ed48b7c3e255a3f56c7d6a196dd6435fcdd9976281bffe2e046e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/native-procedure_status.json",
+      "sha256": "f43a9a5485343deb39737e3ee3e08ea95ea9d538d707ae62c98e8cb698068a66"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/native-result.json",
+      "sha256": "dd6cc949fab7e57bd4e05e076a1041f0e244eff2841fdc96ced5b99fcd549ba1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/native-token-usage.json",
+      "sha256": "e7605cab6b55672b30db29bf087fc9b78b8993ebbe704fac6d2e3afa71fb995a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/output_binding.json",
+      "sha256": "71f0ce34abeee4dc731cb2bb2cfb598281d009c3a427bc912eac8ae509e31c9b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/replay-evidence.json",
+      "sha256": "9aea67b7e731e3ec9ab305251f3b55212b95f70660ab1ab23e57de865580af04"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/report.md",
+      "sha256": "022b5fffec984802eea60ab00854fd453c006e0bb45f552373f023054b60a62a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/response.json",
+      "sha256": "f70d3228a6b854f0f3cb4fa759770ab1656f471c3c2032792e4af6fc8434d4f4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/judgments/narps-neutral-r1-09-j01/source-binding-evidence.json",
+      "sha256": "ccfd86d40d98d78a03442983c0e017be8fe0b10e9564b4f80253d0ca78c4461e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/native-result.json",
+      "sha256": "5c7e8975428c6689e26ff34a2d7e6492e725c1ec9b172f2628d8d92c55f70679"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/native-token-usage.json",
+      "sha256": "4a45f00a7880369d57a16421a7f901a731ec582efc28778bc27229502543d82a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-09/worker-end-state.json",
+      "sha256": "297a4c54893deeda6820022be1d5f6f61721d0c8bcc5c794d63f6e4d72f733d2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/capture-manifest.json",
+      "sha256": "30c1789617c94c9281de732c088ff1cb50ca8c42114be533237ab3e53e76d06f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/input-boundary.json",
+      "sha256": "9e3880eddf1cc6de2bba1cf03f9591ea43e91a8af745a31f8e1e95951c97a75c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/coordinator-extraction.json",
+      "sha256": "687eb53b78d1f55b38cf451661aa901299adc3359ca8e531a7a4cea7bdbf99be"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/manual-extraction-supplement.json",
+      "sha256": "8e1985d856a1a72b5d9378dea38f243adb9b59d454e06e6afa4d72d7c7a3793e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/narps-neutral-r1-10-j01-native-evidence-0.json",
+      "sha256": "be0cb4eaa0e5c1abba794ded4bbcc8474b13c4d99ee50132e49fdb486c088da1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/native-procedure_status.json",
+      "sha256": "05a72aa0c4975e67aa5c0e7acac95b5ce2dba12cfec623f9469002479248faee"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/native-result.json",
+      "sha256": "be0cb4eaa0e5c1abba794ded4bbcc8474b13c4d99ee50132e49fdb486c088da1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/native-token-usage.json",
+      "sha256": "8d85ae2832b5f2aa7d710727c551f85dc550a636aed65bf7b9962585af7c20d4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/output_binding.json",
+      "sha256": "0fc63edb23737b752f7fb94135ce10ce3e333e43f97263f06c78cb2a5a2b3bd1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/report.md",
+      "sha256": "16c7f0a1f409c0737c647c7013ef6adf75bb3fd710f03a73025d522f0203ef26"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/response.json",
+      "sha256": "ac12554ee861942aa8ebe5fca9af70146cfccf25451076dec22bcaee8758aa2a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/judgments/narps-neutral-r1-10-j01/source-binding-evidence.json",
+      "sha256": "c0be16c35dce6874ed66281ebce504cb6a63884e0a2e5f814be372c47422d193"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/native-result.json",
+      "sha256": "becec367cdc4ade00b07967b4a9be050c4ebbbfe331a6168ec3a50a1dd406a1d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/native-token-usage.json",
+      "sha256": "0884d5a490c226334abf2426272938377d6a8c61348934ae09a3ded2699c5fcd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-10/worker-end-state.json",
+      "sha256": "48129fa8fe6dbcf60b02077ede0587888bc760ebd714bffd490c9a5c11f541fa"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/capture-manifest.json",
+      "sha256": "33a09d4cca1ff0dfd711b954e140e94c53309fa3eb938ee0d86f62a158f7bdfa"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/input-boundary.json",
+      "sha256": "d6991bcfb6627bc6e11f165c23b5e5864451f69c2fc4f381e73e9685f6712a0e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/coordinator-extraction.json",
+      "sha256": "9dabd8301a422a3a02101fee411fd8771a96c37a25368f35efad702d02ead74b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/narps-neutral-r1-11-j01-native-evidence-0.json",
+      "sha256": "2241701ed2bffa6d8222e9a525352286e4d6e2f90ce0d244f84335b71f17d1fc"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/native-procedure_status.json",
+      "sha256": "1de5f6685fb57a9d356f974344b71abc7f8dfd2811c5e842fc58cf789d0ed771"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/native-result.json",
+      "sha256": "2241701ed2bffa6d8222e9a525352286e4d6e2f90ce0d244f84335b71f17d1fc"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/native-token-usage.json",
+      "sha256": "4ec7f28ea8a9fa7a603f3262c6eaa9190a2d609a8cc446d4c20063fd7f3db703"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/output_binding.json",
+      "sha256": "5d78da46c1f34d49dcb945062b3b7fd38ef7a4f1c318798b2210557d3d9cba26"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/report.md",
+      "sha256": "408f53dd190b04515ae8943bccd213ea8d2ed4d5ee0388fbb4421afa20576145"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/response.json",
+      "sha256": "d0fb61fe68f379e24337f7d0e83f01aa356f8978e0c3d22c26874fafe52d1837"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j01/source-binding-evidence.json",
+      "sha256": "26bcffee93dd997fd42859f1fe9e4224851b0df3ac92422153713b9fe961df08"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/canonical-replay-record.json",
+      "sha256": "41135daea98ed09ba220c9b35110bb793a698af9ad2e27bbd258b56b4401d68f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/coordinator-extraction.json",
+      "sha256": "6df91b2b5463c16863bef6afa2ec47c4eda71b2b914ca37a2b61bfe10e396318"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/manual-extraction-supplement.json",
+      "sha256": "ae23e5c1c4b3c5ca061a25e6037ff46306a1953dee90a1adc0c94cfabd641471"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/narps-neutral-r1-11-j02-native-evidence-0.json",
+      "sha256": "b51e64c7c12919b6340f238e4aac6f2f827545128a014e8b58b88cf9189e478a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/native-procedure_status.json",
+      "sha256": "1de5f6685fb57a9d356f974344b71abc7f8dfd2811c5e842fc58cf789d0ed771"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/native-result.json",
+      "sha256": "b51e64c7c12919b6340f238e4aac6f2f827545128a014e8b58b88cf9189e478a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/native-token-usage.json",
+      "sha256": "1c7066b120e2993411ff6da8d150c179513a8ef83b54fca59e1224917145d830"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/output_binding.json",
+      "sha256": "73a2275a23a050ee6994a236d9100e0e1f1f37522ab90eb2682eea1b9db8326a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/replay-evidence.json",
+      "sha256": "e3e157d33b83cb6173ea4565d77c129f143afbfcb4343c5cf25e228c19d68542"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/report.md",
+      "sha256": "49e2ba969b37daf4918ee009236bdf78a48861954121c6f9aa352c07642366dc"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/response.json",
+      "sha256": "abdd1d100040e5eb6cc51b1a08a421d8dfa1e2097ce9954a1b460e0fe87c9e95"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/judgments/narps-neutral-r1-11-j02/source-binding-evidence.json",
+      "sha256": "d7c681ae1054fa16250319a19b35340e489d93899ce169630dc226b3193b5952"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/native-result.json",
+      "sha256": "3267f5c3be925f8552bb7c6e0ad585ca443a05bd51ee2ed1e707f56d852eb3fa"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/native-token-usage.json",
+      "sha256": "493276f606eb0da6ded4951984dc259f344870f12670ff38ff881e51f5c32f7f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-11/worker-end-state.json",
+      "sha256": "326729607bc2dd9e90676b27d7204dd180cee4b3cdc2491383b6ec65728910b1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/capture-manifest.json",
+      "sha256": "783faf61b2b84a56c1a82f46c5dceb88ecba15be11981f2c55870311f89e09c9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/input-boundary.json",
+      "sha256": "3401a4485fc91e748b345013e239dfcb4178add878b57095b932e54df2c88402"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/canonical-replay-record.json",
+      "sha256": "8baab538583129bf846d04b2e277bf8526918bf13aa804b3790376af56b265f7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/coordinator-extraction.json",
+      "sha256": "e277faf1a1c86e9af21b65b52fa17c5b284df4f753c26cf98111f403e133f131"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/narps-neutral-r1-12-j01-native-evidence-0.json",
+      "sha256": "93ac599e3cc1dc9fa355f1167dc316ae69dde75658c8377d3ecc8fd029eb838b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/native-procedure_status.json",
+      "sha256": "f8d78474b5c50e37569017c0d8c221fee8110649c437f6c6e3f06cf4314b139e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/native-result.json",
+      "sha256": "93ac599e3cc1dc9fa355f1167dc316ae69dde75658c8377d3ecc8fd029eb838b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/native-token-usage.json",
+      "sha256": "89fb4ccc1622a72db9008409e91307354df9d6ad2ce660996335b267ebb5b7ce"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/output_binding.json",
+      "sha256": "95b505c90791215cbf37e197cabe38382d3ef75b938afe4de50e3aa8ca5e68f4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/replay-evidence.json",
+      "sha256": "f817f69893a3762270ea331093a6bf312d8905da0a94cb6ea378a045f2cc30f6"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/report.md",
+      "sha256": "b42c6d98bc7fc823a76aaa05f87257585983dbd0136d7120c95a9a5f43705899"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/response.json",
+      "sha256": "de01ba91bb870596024be7b656b360252e00440a639412410c5068523a524fe6"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/judgments/narps-neutral-r1-12-j01/source-binding-evidence.json",
+      "sha256": "b9f2617d73620b091973d067a4427284db92e8ecda13914082880fd89af605c8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/native-result.json",
+      "sha256": "285521292318c8f2e59af6553544e45550b9dbc250e2a3784b212bc6efa88292"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/native-token-usage.json",
+      "sha256": "81d670405d4db21f2fd72ec9d4b32239a85401b81f6bd9cfe7130be1a6cd963e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-12/worker-end-state.json",
+      "sha256": "d3e36b3b599d2f9051f291dff8b9b684985533128423a1e859dd2669814eb57e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/capture-manifest.json",
+      "sha256": "4cb6043b8fa2409c631a8c49a0b0b5ea0feec21e0162f4e924f9c08d1be8939f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/input-boundary.json",
+      "sha256": "ab8a4c846648ee7fec373046b6277601c716c7bcf71ebb526ee4cf872d50a8e1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/canonical-replay-record.json",
+      "sha256": "6bd019cd2e45a37ab0c1a6b72c13c64138523c94ab17b198cf0750d1a2ba1fd4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/coordinator-extraction.json",
+      "sha256": "90639a1bd2cf6b174b31013d883b2a8c160e0c9e3e9045eaeaae06d3d6bcc883"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/narps-neutral-r1-13-j01-native-evidence-0.json",
+      "sha256": "31431eb260ba36503b737b9f166f452199afa8406ed9718cf13b953b18f6d5ac"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/narps-neutral-r1-13-j01-replay-evidence-0.json",
+      "sha256": "6bd019cd2e45a37ab0c1a6b72c13c64138523c94ab17b198cf0750d1a2ba1fd4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/native-procedure_status.json",
+      "sha256": "d8d8dc8ced6af4c1e65a0c52b4e2c82cbcf5dfeb501af34c117f0aa01a62f0c0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/native-result.json",
+      "sha256": "31431eb260ba36503b737b9f166f452199afa8406ed9718cf13b953b18f6d5ac"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/native-token-usage.json",
+      "sha256": "07e56e1784e488d3d7487b4d58cbd53c318aaf9e34201d959ea0d4bd6bd824ba"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/output_binding.json",
+      "sha256": "444ba4a29a7e65b196807b15ff22dc1ab7bd65ec6747fc29278d7983d26269d2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/replay-evidence.json",
+      "sha256": "89025acf395a2628b5a9879299a887cfabd6ffcf589012a315f2d526b1d5d6eb"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/report.md",
+      "sha256": "b91627f53927b47a9a66d9fe5cedca0d1321c3e7c4cf93054a98a63175faf364"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/response.json",
+      "sha256": "cf13eaf551f4430489fd64b5f035a7539f7aaede437565ef778f378b0cd9d192"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/judgments/narps-neutral-r1-13-j01/source-binding-evidence.json",
+      "sha256": "987243896827749237cad6153ffe2b049cb8826e1d06dec7f9b73660f38a6cc2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/native-result.json",
+      "sha256": "4cbff80219ad98e7b3f5c31adb541b1bf37a60061a5edd010135d3a25fdca216"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/native-token-usage.json",
+      "sha256": "1bbe351154ba37ef3cd63d5c22840bb03ca945c0931754271347707340dfa5aa"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-13/worker-end-state.json",
+      "sha256": "b989c63ef99528772a7594ef4adba6eb1e961ef6c9c087485740c28468bb9d06"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/capture-manifest.json",
+      "sha256": "5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/input-boundary.json",
+      "sha256": "c149e48d415daff3e61b3e6a724a948b9a56c40c6607cefc1cc2ce14e85fbc6f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/coordinator-extraction.json",
+      "sha256": "5e804b292a7239cd3f6bbb16d5b520dfe9ed9bf86b7f1d5c9d0f9436883c3911"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/narps-neutral-r1-14-j01-native-evidence-0.json",
+      "sha256": "88e4553b792e2da1e8edcce245b5c457efaa6e7a9742735159faf7fb4e6a9441"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/native-procedure_status.json",
+      "sha256": "fb80444edbfd602afb43bab8985d25cca3a237e3131c2ac51c33b9e7e0fc92b7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/native-result.json",
+      "sha256": "88e4553b792e2da1e8edcce245b5c457efaa6e7a9742735159faf7fb4e6a9441"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/native-token-usage.json",
+      "sha256": "cf6e9f8cacc4c2e8bcd65ec1288f4a26ae1a571d723253fdec56355e8d5adf3f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/output_binding.json",
+      "sha256": "32a11f2875a95d1133ea9c2c51c88e74b1f3af2c2dd1b0e65d28cbb6a9e2ca58"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/report.md",
+      "sha256": "41d8cce41cfff4cbac59def39cbac3273523f6f50ad052c23886a49ece9af70c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/response.json",
+      "sha256": "6b9d6655a3673ad00d4d3a11914e1de4fc847a8263c5a894d6bc95c8f8b7f242"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/judgments/narps-neutral-r1-14-j01/source-binding-evidence.json",
+      "sha256": "05021d29d5c93a627f190f6d7c752cd620da160c358583a8f1bf7e522bd563cb"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/native-result.json",
+      "sha256": "e2b54e3553b656649cc786f1c1e5556a1ade244ead9b8b6613d03116e21aee37"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/native-token-usage.json",
+      "sha256": "b86fed1922e93ed7de4ede9b92c596dbdd3e4b502a9b14ce6cfc8c9ff58fbfe0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-14/worker-end-state.json",
+      "sha256": "c83be225e164a4b27fc8686b54fee9f01c10f38dcc2b42ac4564b770b0127640"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/capture-manifest.json",
+      "sha256": "f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/input-boundary.json",
+      "sha256": "03ec4879f26308878eb7fcddca487f023b7ea2968d1607f57d24a4fe394c44a7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/coordinator-extraction.json",
+      "sha256": "5e404ef67b6968ff08e6507effa5dfe32d2312d0c601ae5114a0d152ad494646"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/narps-neutral-r1-15-j01-native-evidence-0.json",
+      "sha256": "2a7585bbd8f44ec21c7048fc4a00bae3d576dd2b729c981bdec12322cfdf2d68"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/native-procedure_status.json",
+      "sha256": "e50a1e456e439669536706df330697687ce1856a8656c73d549e9ab052e86fd5"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/native-result.json",
+      "sha256": "2a7585bbd8f44ec21c7048fc4a00bae3d576dd2b729c981bdec12322cfdf2d68"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/native-token-usage.json",
+      "sha256": "c96a55a97b9766f465addda254cc23f5c6e7a6cc09ce653abb7315cedb3b3fe8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/output_binding.json",
+      "sha256": "78ef96e4c1fbc8da2d2ba67a457b0cef5ff22defa4300fca7a2c13ac9e335623"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/report.md",
+      "sha256": "f61ae24f79eb3a0bbdcaa3d373d0fa2e314192ce9b32925ae883cec4e2779131"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/response.json",
+      "sha256": "96c0b9d26ff500e250e6d58f84a9ef845df19e2f8bdc42e462c600764f9db0a4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j01/source-binding-evidence.json",
+      "sha256": "827978509e96f074b44e73d16c63b5a0435e66e7de8a3f764776425dd6e5c231"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/coordinator-extraction.json",
+      "sha256": "3a0eb25c6c84863afe8c6c81152b73fac63581ef6f090a54666471f3e5ca57c8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/narps-neutral-r1-15-j02-native-evidence-0.json",
+      "sha256": "1abe6ec0071bfe8b830cdd542f1c1a578802b85d559268a0cce2ab5007b7aaad"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/native-procedure_status.json",
+      "sha256": "e50a1e456e439669536706df330697687ce1856a8656c73d549e9ab052e86fd5"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/native-result.json",
+      "sha256": "1abe6ec0071bfe8b830cdd542f1c1a578802b85d559268a0cce2ab5007b7aaad"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/native-token-usage.json",
+      "sha256": "166562bb7fca86e3087c453a2ded5c456a68cb131a2dfc56e34be525e4aece73"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/output_binding.json",
+      "sha256": "76f4f1b84658c8a5e6849d7a88c29d77c10882ee12499d7a67ba017ccbbd846d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/report.md",
+      "sha256": "6161e37351c55afbc897414d9c064a8db2d73fdde7f9858d4c65d04b450f07a9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/response.json",
+      "sha256": "f58e343cb1b9f23f26447f4c6902b47ca914a168c267a272a9e293deedf59c11"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/judgments/narps-neutral-r1-15-j02/source-binding-evidence.json",
+      "sha256": "476313c7b57ee8b44b2dab665a5300e6d6281ecc47c8da49c188f321c1f41d27"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/native-result.json",
+      "sha256": "0cdc659a8cde5ae8b861e1dd5d43aa2464d24c5523707e2909454de8f8f6d769"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/native-token-usage.json",
+      "sha256": "4fbe92a5bf309b78d7a958f6ad377d17549dd9cbaa5182afab8f4602a6d970d3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-15/worker-end-state.json",
+      "sha256": "0ce203b9e453a0252fbf93d01ea2ce98d99c5731f6cfb76b20c566d26bb7365a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/capture-manifest.json",
+      "sha256": "1bc0f46ef4ad58e9f70bb654d761eb330f15d1c87929ad165d414907dd7d0f68"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/input-boundary.json",
+      "sha256": "9a42c70b6e89e4b223c48325e092bdf6f64cb55ffe9aa6254040e285a88f1fd9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/coordinator-extraction.json",
+      "sha256": "fca1c626e52d3e5f133dbd753cd27bd250dcc88bd969d1da32ac52e05daf952f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/narps-neutral-r1-16-j01-native-evidence-0.json",
+      "sha256": "49654f460ae40d6a5574c323cda3c777d1f39bb28d43f9aaa9bf0a2e40d4b457"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/native-procedure_status.json",
+      "sha256": "23278919ae7c01af0d0df8bd49bc72c96c56aceb3122b491a9367a99427cb24c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/native-result.json",
+      "sha256": "49654f460ae40d6a5574c323cda3c777d1f39bb28d43f9aaa9bf0a2e40d4b457"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/native-token-usage.json",
+      "sha256": "7453c98b3409710fe088ad408ad537934e5744ebd1e8e5ca60e7b1fb5a2e62c2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/output_binding.json",
+      "sha256": "3bb133fdebd5065734a4286ce8cb2fb48e731d3a64dc9243616083b726a71b56"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/report.md",
+      "sha256": "22a7e78bf214af32e55a68e9e53a04a35eef70ed501408af13c6f5c9d58be4c9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/response.json",
+      "sha256": "80f1630715353efb6b2d6fd4d2dd7d4b0f9b436639e3a3331716f1308673d437"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/judgments/narps-neutral-r1-16-j01/source-binding-evidence.json",
+      "sha256": "722d0291fff2670d8b0e614c27b6cb7324067683538e0e6f0cca3de33ceed0e0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/native-result.json",
+      "sha256": "0d35a4f1657f87caf0a36ec9802b25b6f6c0e3fb2f83176f39b11eb7b5f9153d"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/native-token-usage.json",
+      "sha256": "891abbabc781ae37d8c08c2339ab3b7a3f074e67936984ecd76bcc8b5c35f4f4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-16/worker-end-state.json",
+      "sha256": "17bbce762c9dc4b3e7c27f16479e30072174e2fd5dac626ab71bf147ee863588"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/capture-manifest.json",
+      "sha256": "5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/input-boundary.json",
+      "sha256": "783764b8ceb1ac1a759640805c3fa44c312a3062ee414581e8ade150b9b0cad4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/canonical-replay-record.json",
+      "sha256": "2bde165fa017f046f466f8c2c09fe7c8cfb72f1082acc18721461529143f6e92"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/coordinator-extraction.json",
+      "sha256": "dc34adc97c36aec1910e480ad09d894fcab3fb892da95a6e5e697acb45f5a7dd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/narps-neutral-r1-17-j01-native-evidence-0.json",
+      "sha256": "9b32d349382b8d0ef968c831aa924e5d0d05640535ba544d1678328df4251591"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/narps-neutral-r1-17-j01-replay-evidence-0.json",
+      "sha256": "2bde165fa017f046f466f8c2c09fe7c8cfb72f1082acc18721461529143f6e92"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/native-procedure_status.json",
+      "sha256": "9f7b90add6ceec0ffb11a578b1cbf269cf87fb80a0e87b1625d71cdc6e38f098"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/native-result.json",
+      "sha256": "9b32d349382b8d0ef968c831aa924e5d0d05640535ba544d1678328df4251591"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/native-token-usage.json",
+      "sha256": "7cdb243bc99d1e80b6ffcb0420c20d0d4049cc65429c77c1df61264529dc0b72"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/output_binding.json",
+      "sha256": "fddc392e7c5fcf1b0b18fd2ca907e2b7bfe4ca8e2cd024053a5af1a943a7f411"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/replay-evidence.json",
+      "sha256": "795287e78ce5c144564bfe29137aed3e7909a5e7d9558b89c58bfb92f1b255ec"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/report.md",
+      "sha256": "d5c6230d41e1b44f739710e8bdf4b9f196f8917ab8313d6ac19b76f1d3e287bb"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/response.json",
+      "sha256": "62ac962b39c0649aa9c6ed42d4879a8c0c455d1d6e03051e7444d12bb1e36856"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/source-binding-evidence.json",
+      "sha256": "4fd56d64bbf9483f4d69bf8381a50a018e01e37be44581882a850f2038bf9ac1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/native-result.json",
+      "sha256": "8ab29601715b1b96f7c7417237bc90bae0f653dd52717e379d2e279da4c06e2a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/native-token-usage.json",
+      "sha256": "a038931197628bf9df5e52e0eef822a3d3a30de46c0e2dd947005bf4c4769f05"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-17/worker-end-state.json",
+      "sha256": "032361148ea1f213f1360b9ab2eb408288dc978cae37befebf9527c1169130a2"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/capture-manifest.json",
+      "sha256": "e72b24b4fadd4e55dc6cb69acb18172372637f551fa6a40c3d99eb68f6ec29da"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/input-boundary.json",
+      "sha256": "4cf24d0af962d651565a457487a0a95d66221b68774b8cd78f179701a35b42cd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/coordinator-extraction.json",
+      "sha256": "b5a5924fca53480f76737983576ec4dedba9fdc230f3da9eb949fb2101fb748c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/narps-neutral-r1-18-j01-native-evidence-0.json",
+      "sha256": "29b4caa579806a579fe96db319ce61c3c4d9d86c798cf0a5f878b4e9a2e640a7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/native-procedure_status.json",
+      "sha256": "590edb372bb66c65a229d155df82fed79deebdf28cf249477183337f9f97870a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/native-result.json",
+      "sha256": "29b4caa579806a579fe96db319ce61c3c4d9d86c798cf0a5f878b4e9a2e640a7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/native-token-usage.json",
+      "sha256": "9af0f86734aa21c9780b519f13c2b785a050c948dd2a50401904e92460bb1412"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/output_binding.json",
+      "sha256": "9b2cf35643798a5ebde3aeea176b312437e85eac8ec5bb136ddc242fd8749ad7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/report.md",
+      "sha256": "0cc6cf50e9a023c7aef13de4c6043ae50f739a0dde7782551182025fad8b6bda"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/response.json",
+      "sha256": "c735b96ca8e6e54998bb7ed6c32d3e8e3f15bcbeb4f0ca04b0e5e5b35b392200"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/judgments/narps-neutral-r1-18-j01/source-binding-evidence.json",
+      "sha256": "1f1dd837737af83b97a4b2404827588fb5abc7e052ef76aac32319e085132c55"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/native-result.json",
+      "sha256": "42bf1e0e77bd72549c3681757c8d1ac2596dc70e4021f701f252f51801f204d0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/native-token-usage.json",
+      "sha256": "b5b62b0e852ebb9f435578873b972ebca10941a23a00e4884838dcd1a4138551"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-18/worker-end-state.json",
+      "sha256": "8c1924f5440d677d80e9a94cf2f34f1ebafabebf6334dada68cb63392b74eec9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/capture-manifest.json",
+      "sha256": "3d05d8750a1d869cef98d6b221d945d97e8297b0c81f3f4ebc4ed10643e04ec1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/input-boundary.json",
+      "sha256": "27802a90af2f35a22c97533ea9262a5207491e27d28cd55088bb6053d1147389"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/coordinator-extraction.json",
+      "sha256": "e600da3e299110fecff538fc03c328389a90168a94b16b4ac5ba93875a69ab11"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/narps-neutral-r1-19-j01-native-evidence-0.json",
+      "sha256": "f64dbbdaf34cb27ee31249848774128fa32af28814a1409c26d6bf3a80730660"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/native-procedure_status.json",
+      "sha256": "d39db2b209b507072a5555a949d4475fdc482826dcb9f2a0b189c865bc599275"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/native-result.json",
+      "sha256": "f64dbbdaf34cb27ee31249848774128fa32af28814a1409c26d6bf3a80730660"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/native-token-usage.json",
+      "sha256": "9d780f591702c92b4221751dfbd9854b4ba847a5251983c91f020bbbfc9ab76e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/output_binding.json",
+      "sha256": "92369769d3e286a98a016bf2a1451edc7a42797979a491abb487621dd88c6a20"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/report.md",
+      "sha256": "1a6bd11cf80d70c2c817c518f2c33745a908c36df0ab120daede4bd5f00a14c4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/response.json",
+      "sha256": "44e0b1c5807626196c0e349a1b84b0e43263b2171d44db6f18e79579ad974020"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/judgments/narps-neutral-r1-19-j01/source-binding-evidence.json",
+      "sha256": "5f1312920e9164f6029defe819f089ef62559fcc245ac90cb864580ca82c8863"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/native-result.json",
+      "sha256": "900a58d9819c1965526c826b441b73c91881a07653e12de463b089f4a72a51ed"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/native-token-usage.json",
+      "sha256": "08fde5d740901f2f2b7b2eaa6acb0bd965f5c2f889d2dfdacb0fe6b16c68cf4b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-19/worker-end-state.json",
+      "sha256": "b1af21635199a76129667fb740712c8840b192c2d2f25e921b15e21df55e8614"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/capture-manifest.json",
+      "sha256": "8c58f2ad4f7217840ed53d63437da4101513952d049c15d85357a0391846b75b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/input-boundary.json",
+      "sha256": "9508aacb8998104d8d578f323cea7377c18c5757e678f5862a7c0d4f95f2ba93"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/canonical-replay-record.json",
+      "sha256": "63962c41b377f8af754958bbf1882ad2519fe86420811914982aa4f4ef4a822c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/coordinator-extraction.json",
+      "sha256": "69a179a175f7ab7cab2ce2f08d6b44b795ca7712bec19fb5d199ec6a2d1d15e8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/manual-extraction-supplement.json",
+      "sha256": "945897119e2b135706d3c2771c63128389e1620936429922613acfe7e6ec07de"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/narps-neutral-r1-20-j01-native-evidence-0.json",
+      "sha256": "ffa3b817712efe5d0c50e155277521597cce0d35fd10869dd0008dfc73f3465a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/native-procedure_status.json",
+      "sha256": "cc094cc62f2c173a385bf0416532a66d152cb72bc4f908bd0de908ea639d2cc7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/native-result.json",
+      "sha256": "ffa3b817712efe5d0c50e155277521597cce0d35fd10869dd0008dfc73f3465a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/native-token-usage.json",
+      "sha256": "36422056c45f36856d183b59bade11de3476f6140792a40fe8eafcd51a2c967f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/output_binding.json",
+      "sha256": "375a03942fd94b1b67c3385b0154326177bfc26b74328d82e71659522709f5b6"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/replay-evidence.json",
+      "sha256": "10310e3d9cc61ec681cb311f7c529b6514d44c211026161bbce80a247237163e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/report.md",
+      "sha256": "fe17621fa81b7ce8866aafdd9bd68456cbba10788a76ccbb7a18b50c6ee3c388"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/response.json",
+      "sha256": "4f9407ffa2aa76d00f9ebb81adda0c9f67c518dc62cb420f66a98dd79b1c066f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/source-binding-evidence.json",
+      "sha256": "69aed5c73e309ed6b080b73ef65b1a2a9eb7f6c91abae2ddb2fca904a9b1be8c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/native-result.json",
+      "sha256": "68bf90fb4a9db02685b8e925472356e98048489c2cb6da26a7b68fec43be1c8e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/native-token-usage.json",
+      "sha256": "fa55d263befd5414087a72d243bb8235f2f6f41fe977253dd3e34d2570325308"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-20/worker-end-state.json",
+      "sha256": "2a4e6c7fb90f34d785dac103f30c16eca11ac566bf6405e80b910d11e6f5a100"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/capture-manifest.json",
+      "sha256": "b177304a0a1e893757998b89ef8880db42f2639395a46d1d5570932971830f56"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/input-boundary.json",
+      "sha256": "c4e8389b69bae4f28dd8e6913a433471d7a3a28d5b2e203a776e454d23bba0de"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/coordinator-extraction.json",
+      "sha256": "5c2fe2289214e8ec204ed3aeef48f69d8ea693d6aff3974f78f5c9f65681bd0b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/manual-extraction-supplement.json",
+      "sha256": "0600aea79b92afcbd590b67745128167706170b98d50de902da5c2bf61ae5c5e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/narps-neutral-r1-21-j01-native-evidence-0.json",
+      "sha256": "83b7c84a8919bb435f8d20ae65c9fc93a860c498ba5a20f2344f9bc50ee757c0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/native-procedure_status.json",
+      "sha256": "aab83f621e1fc2fbed29efc134f1d0a87250c3f118ee401be56bd090ff2cfce4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/native-result.json",
+      "sha256": "83b7c84a8919bb435f8d20ae65c9fc93a860c498ba5a20f2344f9bc50ee757c0"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/native-token-usage.json",
+      "sha256": "a02b4690be191073d3f772458b4f8acebd5c8eda15d07ff69bd449528deb1671"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/output_binding.json",
+      "sha256": "c5bb8e1c456bfe391ea842ae7fe7c8f51a0d24d3b54eb43327843f0f418225a8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/report.md",
+      "sha256": "8a684593eea30c42bc1d0755a69de9171e7613a2732bbc128d629ea634251ebe"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/response.json",
+      "sha256": "2aa5cb93f60b2b55ea49784301d46c22759fdfda9f8c4623f6a800522224e867"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/judgments/narps-neutral-r1-21-j01/source-binding-evidence.json",
+      "sha256": "786eba4cf70ea88dc15c045dd6a814b6ef7ae680f65b805e7b6e791a76e3040a"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/native-result.json",
+      "sha256": "375edd72f64ad05e7efc266ae62b61ea7fd910e61c8949c5a3ddb723e13ca0db"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/native-token-usage.json",
+      "sha256": "8de2b2d473d31d9bdbb43a0c1bdc4de6bbada96c5e4c0c5a7d096e2d2c54148f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-21/worker-end-state.json",
+      "sha256": "64f8b28772b83e7ab21706a5f90b6880d6fc8ee9b431ec608b4bb8a7220b112b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/capture-manifest.json",
+      "sha256": "62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/input-boundary.json",
+      "sha256": "0e1dc8147c54ee559658382ef8e986295789d1a761ff082f10e32504e72de4f9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/coordinator-extraction.json",
+      "sha256": "4b5618cfcd475e03960e73ef0f686dd3e4d08f795280352eee51011c284cbffc"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/narps-neutral-r1-22-j01-native-evidence-0.json",
+      "sha256": "a38a4430c94645ed5c1cefa409549a1c390f2cbdea7d17e3008dc8050d09fcdf"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/native-procedure_status.json",
+      "sha256": "dbba7e1967b66e378c85593e2383c02592d586eaf0b43b05f490f43f4f64963e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/native-result.json",
+      "sha256": "a38a4430c94645ed5c1cefa409549a1c390f2cbdea7d17e3008dc8050d09fcdf"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/native-token-usage.json",
+      "sha256": "bf141275853126f484100183389c01edd4dffbc3c6b14c84fe73df34cb050cd3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/output_binding.json",
+      "sha256": "29d3f19a6caf17489a309392047bd724afc42ed85170e555ca6a0e3f3a38e0c3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/report.md",
+      "sha256": "5f4d3ae1201a42799c6c13cce4ff770bbfc7d823c3024539bddaf298d81a11c8"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/response.json",
+      "sha256": "b3fd9e72ca267eea8d3a942feed5f007d295c89f4c1cb45feb6c6aa900808008"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/source-binding-evidence.json",
+      "sha256": "d5f3367f75a60549552a682a12f607110f3ebe770680715c512f107da5e05084"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/canonical-replay-record.json",
+      "sha256": "343a861467d717986b68c72709180d2eaea15250b996215006ca91a2f9da41f5"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/coordinator-extraction.json",
+      "sha256": "8f5109485f4a7ba9e4540614f14d0965dcd69e32aaa563a65bd9d60d31612373"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/narps-neutral-r1-22-j02-native-evidence-0.json",
+      "sha256": "a041eea117fadd78e5eb9843899a3d9c7a77a82942c2e19c0fdb1967a7e8d8fe"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/native-procedure_status.json",
+      "sha256": "dbba7e1967b66e378c85593e2383c02592d586eaf0b43b05f490f43f4f64963e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/native-result.json",
+      "sha256": "a041eea117fadd78e5eb9843899a3d9c7a77a82942c2e19c0fdb1967a7e8d8fe"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/native-token-usage.json",
+      "sha256": "09402164b4eb9c30b251192f8bf04863e9cc51c391d552cdaec25e807179afcd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/output_binding.json",
+      "sha256": "4a890fcd0e8451e69c904fa3e6c6d02dfbef011b4fd7637529b4ef04dbee0112"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/replay-evidence.json",
+      "sha256": "ff37450d4c3d9a9ade7b9e960a49c9dd09d8341001ae930c53e6913939f9ce83"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/report.md",
+      "sha256": "4abf9bf2a495740f31229dd939285dfc30ebd097194583a583bad4dc2015329e"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/response.json",
+      "sha256": "e657bad15f0470bbad2e9f7640f67e01c298a457905977327fa1f4600244ff08"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j02/source-binding-evidence.json",
+      "sha256": "645f577501697023d972a950f8232fe22cc7b00aa01f75aa184a2778808d9a33"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/native-result.json",
+      "sha256": "10e3ea87d3b4a9033641185a0e5e553ed64105cba2859f29fb28e9f9d5b02187"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/native-token-usage.json",
+      "sha256": "2888c16eafc5b27bf278373e836c4f42e8c2708caf93af0f759229e96358d0fe"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-22/worker-end-state.json",
+      "sha256": "cac1a272faf44f4e459f21af394256880b4c98e91e94a44b6939cc92cba45c83"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/capture-manifest.json",
+      "sha256": "9370db020f9b437ca3a96b2e171d89d3d52cc94554a3d62d23da0b0ca71fcb59"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/input-boundary.json",
+      "sha256": "cb6b9a61750886820428d93ec000ec9ae0e340fd09a36b9892e6fbefadac3a89"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/coordinator-extraction.json",
+      "sha256": "c88bccae889bcb8a57b2eca2440609fa9a5e7cb7e40476f6d2abfdeebdbc6d8f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/manual-extraction-supplement.json",
+      "sha256": "37540fff3d78ebf7083b2d68706e4523d7f00b536a004b16fa6bba7d97526d02"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/narps-neutral-r1-23-j01-native-evidence-0.json",
+      "sha256": "c7e6e96a160ca460c6325774a3102b61e6839dc6efcaed8d9e823466c88dd25c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/native-procedure_status.json",
+      "sha256": "934ae0bc84d197a953f14e39cd3b197898a6cd1a82a524be9339a35f291e3681"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/native-result.json",
+      "sha256": "c7e6e96a160ca460c6325774a3102b61e6839dc6efcaed8d9e823466c88dd25c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/native-token-usage.json",
+      "sha256": "fe32a3ed82a35634efae9102105862da366932d0244e32c8f20b005e84cb528c"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/output_binding.json",
+      "sha256": "c714cdaee56c006d46debb4738f8f114bd65aee86b06e02547922ce59e283ece"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/report.md",
+      "sha256": "5342cda0a43657f84108d2daad7f94cb6f56f1402b1a4d8c12b8ce4a7fade79f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/response.json",
+      "sha256": "291477c2b0f3dc17f948c3bad911bd1b93b915f053b4d47cfcbf2319c6d989ee"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/source-binding-evidence.json",
+      "sha256": "9f992cc3e316b5b685f3751651d2c23e1fc6eb64509c15f5a8bd9517c4a071bd"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/native-result.json",
+      "sha256": "99715de2b12b579289c91b42f12291119b023a219600b0dfe62cca690289cb71"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/native-token-usage.json",
+      "sha256": "388018b5c7a44f2d2fca8b9e415235c51e187c2c65e0412e5ec2f8951057eed9"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-23/worker-end-state.json",
+      "sha256": "3b5ffe64ed346c032607faeb5f1530569673b6ead2d4c908af264b69ee1dfb61"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/capture-manifest.json",
+      "sha256": "76ac670f9e4cce6766e693dd8c5530c28998efb09d91bbeb09fbb3ef8198c311"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/input-boundary.json",
+      "sha256": "bf01e28e0dfd29a0197ffdbbebab1df74cfde7a551f3e29e9f2e26e7e5872b50"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/coordinator-extraction.json",
+      "sha256": "30b7ba3e7afe9f7ad3654a2ac9f26a4969d33883e462f4ce6ff9f5a975780c6f"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/manual-extraction-supplement.json",
+      "sha256": "5d0a858ffe90dc8592846f244cd504d36cee2eaa9e2eb96e6a04e3aec9e012f6"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/narps-neutral-r1-24-j01-native-evidence-0.json",
+      "sha256": "f7daa1ef1397cd30ae5978df1bce62db5f94268095f0c78a07f9f92a491236c3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/native-procedure_status.json",
+      "sha256": "572ba7267eed03867498dee9a1833c6abcd2d1c2ff12c35114eafa2c0a062438"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/native-result.json",
+      "sha256": "f7daa1ef1397cd30ae5978df1bce62db5f94268095f0c78a07f9f92a491236c3"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/native-token-usage.json",
+      "sha256": "d6dc0b731faa7165e9b70416d4835e0b3abdbf0de17d36b4d98eb058887b7db7"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/output_binding.json",
+      "sha256": "c84149ada43e4f4e0af73546ca93db14f7bd46014467df937d020fb971ecaace"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/report.md",
+      "sha256": "ec2d2ace46a95d1739113e7f7e2d87bbd1bbfb751fd6c9f803cdcffbe7e1fe99"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/response.json",
+      "sha256": "f6c2ce6dee137fcce96c7328adbd8344d94ba47b4e428ef2ddbc55cb8917a16b"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/source-binding-evidence.json",
+      "sha256": "af0e21913a877cdf274efabf8ed4cb0c2739058c3aa26c244fabd5988045f668"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/native-result.json",
+      "sha256": "d8a7214e746e0da62b04ded04ab936512ec87c30f5f3294eeff026c925846c31"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/native-token-usage.json",
+      "sha256": "c3ca9a30fa7d707fe447c00b3556bc11d7519244506a2eff69085d5e33878bb4"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/procedure-status.json",
+      "sha256": "82b44360bf119b4cd2b41d736e971cb2c30d442ca4a223b282cc22a788dd7420"
+    },
+    {
+      "path": "extraction/evidence/narps-neutral-r1-24/worker-end-state.json",
+      "sha256": "5ad824c80a4e1753c8598a7588eec39dc8b65e69de91ccd20a0dd7da4dfc0e0b"
+    },
+    {
+      "path": "extraction/evidence/procedure.json",
+      "sha256": "b011f6e68dc6838e736f1ae2ad70d52896dab9b848d6f33950b4d35dd86b1521"
+    },
+    {
+      "path": "extraction/index.json",
+      "sha256": "51d5f3cc64e09ff4054c84c8b2dd78b71e44cc0712ddce4b8adef6bbe1135885"
+    },
+    {
+      "path": "figures/.gitattributes",
+      "sha256": "abb01fdded51332d0cf5f50d03aad84485480f5d0a3e7eb82f6fd6e781954e5d"
+    },
+    {
+      "path": "figures/duplicate-disagreement.png",
+      "sha256": "3121d4a66bc84305c2452f6a8989df2d1d5c6706aecdb2a8a3d68ab375734e23"
+    },
+    {
+      "path": "figures/duplicate-disagreement.svg",
+      "sha256": "08abf893265b911f213dbcb757b0944201bdf6d30099a9632e5de282f5fcffe7"
+    },
+    {
+      "path": "figures/effort.png",
+      "sha256": "45d3b5da350abcb1404052d78a2e9ea946f5ca7598f6e4fcffa05910513bae7a"
+    },
+    {
+      "path": "figures/effort.svg",
+      "sha256": "a7246d675b0f5bb43b94521a39ea898d564bb9ff05e82ca4850b0d66f15472ed"
+    },
+    {
+      "path": "figures/item-statuses.png",
+      "sha256": "5940ec65b0e355470a498e36239e5983389a58b0a71c9e89c7cf133a6edc54f4"
+    },
+    {
+      "path": "figures/item-statuses.svg",
+      "sha256": "54728db99a32f0b2217c7c013df3422ca6551a7739dda47734197501310f9667"
+    },
+    {
+      "path": "figures/observed-skill-actions.png",
+      "sha256": "acc89efb5c64d97ff174ec001b547661946f79bb431fd91c63532775d993171c"
+    },
+    {
+      "path": "figures/observed-skill-actions.svg",
+      "sha256": "3100b3a9d22d866fa9e136bb0b7db134a96be247dc5cf9d7787c121f2ac8899d"
+    },
+    {
+      "path": "figures/presentation.json",
+      "sha256": "27c1e3bf20aa72d0f771cce60d47cf84769f562ba921401efa5ec7756f3ac256"
+    },
+    {
+      "path": "figures/recurring-outcomes.png",
+      "sha256": "8ed43cd145e9c286385cfc1733063d8033a4a46024a899e6b72fea9c36e394f4"
+    },
+    {
+      "path": "figures/recurring-outcomes.svg",
+      "sha256": "feb558a2c5c6db232586ce4c4b4f163ecfe89c043b4bd998bed0b702f57a4605"
+    },
+    {
+      "path": "figures/research-token-usage.png",
+      "sha256": "b9325d76342c12cb773b7af5b0bf0d2efad0a576626ce9804ccc61fca539df61"
+    },
+    {
+      "path": "figures/research-token-usage.svg",
+      "sha256": "5fd3e2a453c137d614518ada2e323b403a197f581225ba03c474ae30a15388e6"
+    },
+    {
+      "path": "figures/scientific-adequacy.png",
+      "sha256": "ae1eda0faced8abde8fe495d0310cec6b807894a57f15c2a97d1192d99559d12"
+    },
+    {
+      "path": "figures/scientific-adequacy.svg",
+      "sha256": "73ea38e9e5025b00c5771c25af5b0955004adf6d7362a4bbd27f2bf0e66d6cdf"
+    },
+    {
+      "path": "summary.json",
+      "sha256": "49af4b097cab601b60589a0ece2affd97264bc6aa156b7a30ddb4fd629d3bb0d"
+    },
+    {
+      "path": "tables/counts.jsonl",
+      "sha256": "7feb478703b48ad32bf8d9d6ff2e5fbf9a7a9ba1a6015832a0cb158ab3c2ea2c"
+    },
+    {
+      "path": "tables/disagreement.jsonl",
+      "sha256": "019188e11e940651191428c1e64472d3da172be0d6587dcafa002f9add20e221"
+    },
+    {
+      "path": "tables/effort.jsonl",
+      "sha256": "1a7c46757fc9d751e670f5366013f229837e09c973d3699a707fdf460b1c7716"
+    },
+    {
+      "path": "tables/items.jsonl",
+      "sha256": "23385e41b238480b4b9ae4c5215d178b2bb7aecd7f3a491fdaf0dc2aa5f12f2d"
+    },
+    {
+      "path": "tables/judgments.jsonl",
+      "sha256": "2a5f9448268927dba76fac662ecd516828f9687d3197ff1dfd643fa5e855d592"
+    },
+    {
+      "path": "tables/operations.jsonl",
+      "sha256": "46113c27491d3e481c1efab062b91b48e164196b5c47c1d4d8818416cd5d4d88"
+    },
+    {
+      "path": "tables/runs.jsonl",
+      "sha256": "86d714a9f2bc0740c8979e1029d094e84a49678f4c8d33c15c1cee0acb5f1f0e"
+    }
+  ]
+}

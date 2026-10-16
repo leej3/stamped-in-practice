@@ -1,0 +1,336 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "c0cf4af1db0a7822ef84ad745b867e3e8c41bbf7\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-21-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-21-support-01' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-21-support-01        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-21-support-01\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-21-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "c0cf4af1db0a7822ef84ad745b867e3e8c41bbf7\trefs/heads/codex/narps-neutral-r1-21-support-01\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy coordinator/support-01/support.tar.gz (to con-hub...) \n\n0%    31.98 KiB        66 MiB/s 0s\n3%    831.59 KiB        4 MiB/s 7s\n34%   10 MiB           46 MiB/s 0s\n92%   27.21 MiB        86 MiB/s 0s\n100%  29.46 MiB        80 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/publisher",
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   7639aa9..8eb596b  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "c0cf4af1db0a7822ef84ad745b867e3e8c41bbf7"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            c0cf4af1db0a7822ef84ad745b867e3e8c41bbf7 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "HEAD is now at c0cf4af chore(retention): publish run 21 complete support evidence\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-21 independent complete support receiver"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-21 independent complete support receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "coordinator/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s30891072--2c9818d0437aa89cf804f526aaa9a762322465111683b61c8b3772eb7203ec09.tar.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "coordinator/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get coordinator/support-01/support.tar.gz (from con-hub...) \n\n0%    7.7 KiB         122 KiB/s 4m7s\n0%    103.95 KiB      479 KiB/s 1m2s\n1%    223.89 KiB      588 KiB/s 50s \n1%    359.83 KiB      657 KiB/s 45s \n2%    511.75 KiB      730 KiB/s 40s \n2%    678.32 KiB      807 KiB/s 36s \n3%    863.58 KiB      926 KiB/s 31s \n4%    1.05 MiB       1016 KiB/s 28s \n4%    1.27 MiB          1 MiB/s 25s \n5%    1.49 MiB          1 MiB/s 25s \n6%    1.73 MiB          1 MiB/s 22s \n7%    2 MiB             1 MiB/s 20s \n8%    2.29 MiB          1 MiB/s 19s \n9%    2.58 MiB          1 MiB/s 18s \n10%   2.9 MiB           2 MiB/s 17s \n11%   3.22 MiB          2 MiB/s 16s \n12%   3.58 MiB          2 MiB/s 14s \n13%   3.94 MiB          2 MiB/s 14s \n15%   4.33 MiB          2 MiB/s 13s \n16%   4.72 MiB          2 MiB/s 12s \n17%   5.15 MiB          2 MiB/s 11s \n19%   5.58 MiB          2 MiB/s 11s \n20%   6.04 MiB          2 MiB/s 10s \n22%   6.51 MiB          2 MiB/s 9s  \n24%   7 MiB             2 MiB/s 9s  \n25%   7.49 MiB          2 MiB/s 8s  \n27%   8.01 MiB          3 MiB/s 8s  \n29%   8.55 MiB          3 MiB/s 7s  \n31%   9.11 MiB          3 MiB/s 7s  \n33%   9.69 MiB          3 MiB/s 6s  \n35%   10.28 MiB         3 MiB/s 6s  \n37%   10.89 MiB         3 MiB/s 6s  \n39%   11.52 MiB         3 MiB/s 5s  \n41%   12.14 MiB         3 MiB/s 5s  \n43%   12.76 MiB         3 MiB/s 5s  \n46%   13.44 MiB         3 MiB/s 4s  \n48%   14.13 MiB         3 MiB/s 4s  \n50%   14.73 MiB         3 MiB/s 4s  \n52%   15.44 MiB         3 MiB/s 4s  \n54%   16.05 MiB         3 MiB/s 4s  \n57%   16.81 MiB         4 MiB/s 3s  \n59%   17.5 MiB          3 MiB/s 3s  \n62%   18.23 MiB         4 MiB/s 3s  \n64%   18.9 MiB          3 MiB/s 3s  \n67%   19.72 MiB         4 MiB/s 2s  \n69%   20.43 MiB         4 MiB/s 2s  \n72%   21.26 MiB         4 MiB/s 2s  \n75%   22.18 MiB         5 MiB/s 1s  \n78%   23.01 MiB         4 MiB/s 1s  \n82%   24.09 MiB         5 MiB/s 0s  \n85%   25.05 MiB         4 MiB/s 1s  \n88%   26.07 MiB         5 MiB/s 0s  \n93%   27.42 MiB         7 MiB/s 0s  \n97%   28.6 MiB          6 MiB/s 0s  \n100%  29.46 MiB         6 MiB/s 0s  \n                                    \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "4a78149cb06d25c13e66816923e107c608720146",
+      "c0cf4af1db0a7822ef84ad745b867e3e8c41bbf7"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ".gitattributes\ncoordinator/README.md\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/canonical-report.md\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/canonical-response.json\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/extraction.json\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/manual-extraction-supplement.json\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/native-result.json\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/output-binding.json\ncoordinator/judgments/narps-neutral-r1-21-j01/assessment/source-binding-evidence.json\ncoordinator/support-01/README.md\ncoordinator/support-01/adaptation-complete.patch\ncoordinator/support-01/adaptation.patch\ncoordinator/support-01/close.py\ncoordinator/support-01/command.json\ncoordinator/support-01/config.json\ncoordinator/support-01/execution.json\ncoordinator/support-01/execution.stderr\ncoordinator/support-01/execution.stdout\ncoordinator/support-01/original-archive-reverification.json\ncoordinator/support-01/package-plan.json\ncoordinator/support-01/prepare.py\ncoordinator/support-01/proof-index.json\ncoordinator/support-01/publication-files.json\ncoordinator/support-01/result.json\ncoordinator/support-01/reused-validation.json\ncoordinator/support-01/run.py\ncoordinator/support-01/scope/NEUTRAL-SCOPE-OVERRIDE.json\ncoordinator/support-01/scope/original-delivery-reconstruction.json\ncoordinator/support-01/scope/package-manifest.json\ncoordinator/support-01/scope/package-plan.json\ncoordinator/support-01/scope/path-mapping.json\ncoordinator/support-01/selection-test.py\ncoordinator/support-01/selection-test.stderr\ncoordinator/support-01/selection-test.stdout\ncoordinator/support-01/selection-validation.json\ncoordinator/support-01/source-before.json\ncoordinator/support-01/sources/package_delivery.py\ncoordinator/support-01/sources/package_retention.py\ncoordinator/support-01/support-archive-inventory.json\ncoordinator/support-01/support.tar.gz\ncoordinator/support-01/test_support.py\ncoordinator/support-01/tests-result.json\ncoordinator/support-01/tests.stderr\ncoordinator/support-01/tests.stdout\ncoordinator/support-01/validation-scope-supplement.json\ncoordinator/support-01/verification.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD^"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4a78149cb06d25c13e66816923e107c608720146\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "4a78149cb06d25c13e66816923e107c608720146:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-21-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]

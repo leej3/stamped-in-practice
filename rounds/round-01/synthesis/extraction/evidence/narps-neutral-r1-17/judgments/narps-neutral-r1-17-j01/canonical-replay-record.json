@@ -1,0 +1,33 @@
+{
+  "status": "not-checked",
+  "attempts_used": 0,
+  "maximum_attempts": 1,
+  "timeout_seconds": 7200,
+  "max_retrieval_gb": 5.0,
+  "source": "Original complete stopped delivery; no Git-only clone substituted.",
+  "copy": "No replay copy was made because a necessary environment prerequisite could not be reconstructed from worker-supplied files.",
+  "documented_entrypoint": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/group_analysis.py",
+  "documented_source": "README.md; report/analysis-report.md repeats this command; protocol.md declares the analysis.",
+  "prerequisites": [
+    "The command depends on a coordinator-side absolute Python executable outside the delivery.",
+    "No pixi.toml, pixi.lock, requirements file, container definition, or other worker-supplied environment specification is present. The coordinator receipt says its optional environment resources were outside the worker delivery."
+  ],
+  "outputs_selected": [
+    "results/mean_effect.nii.gz",
+    "results/t_positive.nii.gz",
+    "results/p_fwe_positive.nii.gz",
+    "results/significant_fwe_mask.nii.gz",
+    "results/analysis_mask.nii.gz",
+    "results/participant_qc.tsv",
+    "results/vmPFC_participant_estimates.tsv",
+    "results/summary.json",
+    "results/max_t_null.npy",
+    "results/analysis_log.txt",
+    "figures/vmPFC_roi_estimates.png",
+    "figures/wholebrain_fwe.png"
+  ],
+  "comparison_rule_if_runnable": "Compare the numeric participant/ROI summaries and voxelwise mean, t and FWE p maps at frozen rtol 1e-6; require identical discovery and ROI-intersection masks. Treat timestamps, logs and presentation-only PNG metadata as non-scientific. No comparisons were made.",
+  "decision": "Do not execute with the assessor environment or coordinator-side environment: that would substitute an environment the worker did not supply. The documented command exists, but its necessary prerequisite is external and prohibited for reconstruction.",
+  "helper": "Frozen fresh-rerun helper not invoked; no safe complete-delivery replay could be established under the declared environment boundary.",
+  "scientific_outputs_shipped": "Existing files were inspected as delivery evidence only; none are counted as replay evidence."
+}

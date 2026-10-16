@@ -1,0 +1,109 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "49bc45701aace216c15611a2236d505fdae07efa\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD^"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4bc90e8b9ff761303d82291a201f6f3d8c634a89\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-02-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/publisher",
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   4bc90e8..49bc457  HEAD -> codex/narps-neutral-r1-02-support-01\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "49bc45701aace216c15611a2236d505fdae07efa"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            49bc45701aace216c15611a2236d505fdae07efa -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "Previous HEAD position was 4bc90e8 chore(retention): publish run 02 complete support evidence\nHEAD is now at 49bc457 chore(retention): retain independent support publication proof\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD^"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "4bc90e8b9ff761303d82291a201f6f3d8c634a89\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "HEAD^",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "coordinator/support-01/publication-evidence/commit-message.txt\ncoordinator/support-01/publication-evidence/evidence-manifest.json\ncoordinator/support-01/publication-evidence/finish-proof.py\ncoordinator/support-01/publication-evidence/prepare-commands.json\ncoordinator/support-01/publication-evidence/prepare.py\ncoordinator/support-01/publication-evidence/prepare.stderr\ncoordinator/support-01/publication-evidence/prepare.stdout\ncoordinator/support-01/publication-evidence/prepared.json\ncoordinator/support-01/publication-evidence/publish-verify-commands.json\ncoordinator/support-01/publication-evidence/publish-verify.py\ncoordinator/support-01/publication-evidence/publish-verify.stderr\ncoordinator/support-01/publication-evidence/publish-verify.stdout\ncoordinator/support-01/publication-evidence/result.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/fresh-recipient",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]

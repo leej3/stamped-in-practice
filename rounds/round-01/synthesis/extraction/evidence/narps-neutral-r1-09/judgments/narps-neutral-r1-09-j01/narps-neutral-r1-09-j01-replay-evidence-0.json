@@ -1,0 +1,33 @@
+{
+  "status": "not-checked",
+  "attempts_used": 0,
+  "attempt_limit": 1,
+  "entrypoint_documentation": "report.md reproducible materials identifies scripts/group_analysis.py; no invocation or install instructions are given.",
+  "declared_candidate_command": "python scripts/group_analysis.py",
+  "prerequisites_required": [
+    "Python and NumPy, SciPy, pandas, Matplotlib, NiBabel, Nilearn at versions reported in report.md",
+    "Nilearn MNI template available from local cache or retrieval source"
+  ],
+  "prerequisites_worker_supplied_for_reconstruction": false,
+  "reason": "The worker supplied no environment/dependency declaration or setup instructions. A common interpreter and optional manifest were coordinator resources, not worker-supplied reconstruction instructions. No source repair or environment inference was allowed.",
+  "scientific_outputs_selected_for_a_candidate_replay": [
+    "results/summary.json",
+    "results/fwe_clusters.csv",
+    "results/group_t_unthresholded.nii.gz",
+    "results/p_fwe_signflip_maxT.nii.gz",
+    "results/group_t_fwe05_positive.nii.gz",
+    "results/vmPFC_subject_means.csv",
+    "figures/whole_brain_fwe_and_vmpfc.png",
+    "figures/posterior_fwe_cluster.png",
+    "figures/whole_brain_fwe_glassbrain.png",
+    "figures/vmpfc_participant_effects.png"
+  ],
+  "comparison_rule": "If prerequisites were supplied, compare numerical summary fields, CSV numeric columns and NIfTI scientific values with rtol=1e-6 (the frozen scope); ignore timestamps, logs, prose, formatting and figure rendering differences. No comparison was made.",
+  "limits": {
+    "timeout_seconds": 7200,
+    "max_get_gb": 5.0
+  },
+  "copy_or_execution": "No replay copy was created and no target code was executed. Shipped results are inspected artifacts only, not replay evidence.",
+  "generated_artifacts": [],
+  "commands_attempted": []
+}

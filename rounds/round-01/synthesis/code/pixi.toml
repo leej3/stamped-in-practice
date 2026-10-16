@@ -1,0 +1,42 @@
+[workspace]
+name = "stamped-in-practice"
+channels = ["conda-forge"]
+platforms = [{ platform = "osx-arm64", macos = "14.0" }, "linux-64"]
+
+[dependencies]
+python = ">=3.11,<3.14"
+git = "*"
+numpy = "*"
+scipy = "*"
+pandas = "*"
+matplotlib-base = "*"
+pyyaml = "*"
+jsonschema = "*"
+pre-commit = "*"
+tomlkit = "*"
+pytest = "*"
+rfc3339-validator = "*"
+
+[pypi-dependencies]
+datalad = "*"
+git-annex = "*"
+con-duct = "*"
+tiktoken = "*"
+pytest-evals = "==0.3.4"
+tox = "*"
+
+[tasks]
+launch = { cmd = "python scripts/prepare_launch.py --model gpt-6-luna --effort high", description = "Launch one fresh research worker from selected study inputs" }
+judge = { cmd = "python scripts/prepare_launch.py --role judge --model gpt-6-luna --effort high", description = "Judge one original research delivery in a fresh session" }
+launcher-tests = { cmd = "python -m pytest -q tests/test_launch.py tests/test_assessment_runner.py tests/test_assessment_procedure.py tests/test_worker_end_state.py tests/test_judge_workspace.py tests/test_judge_materialization.py tests/test_delivery_snapshot.py tests/test_neutral_protocol.py tests/test_captured_replay.py", env = { PYTEST_DISABLE_PLUGIN_AUTOLOAD = "1" }, description = "Check input isolation, judging, timing and frozen helper execution" }
+datalad-report = { cmd = "datalad -f json rerun --report", description = "Inspect a native DataLad run record" }
+datalad-replay = { cmd = "datalad rerun", description = "Replay a native DataLad run" }
+assessment-check = { cmd = "python scripts/assessment.py check", description = "Verify the frozen assessor and install its recorded runtime" }
+assessment-probes = { cmd = "python scripts/assessment.py probes", description = "Collect evidence using the frozen assessor" }
+assessment-validate = { cmd = "python scripts/assessment.py validate", description = "Validate a completed assessment response" }
+assessment-rerun = { cmd = "python scripts/assessment.py fresh-rerun", description = "Run an authorized replay with the frozen assessor" }
+
+readiness = { cmd = "python scripts/readiness.py", description = "Run user-defined resource checks and retain evidence" }
+readiness-tests = { cmd = "python -m pytest -q tests/test_readiness.py", description = "Check resource readiness receipts with local fixtures" }
+
+assessment-procedure = { cmd = "python scripts/assessment_procedure.py", description = "Seal or check a formal comparison procedure" }

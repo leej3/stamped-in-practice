@@ -1,0 +1,26 @@
+{
+  "status": "not-checked",
+  "source": "original complete delivery; unchanged target",
+  "entrypoint_documented": "python analysis.py --permutations 5000 --seed 20261016",
+  "prerequisite": "A reconstructible Python environment with numpy, scipy, pandas, nibabel, matplotlib is required. The delivery has no dependency declaration. The notebook points to an absolute external interpreter path; the instruction prohibits following external paths.",
+  "declared_outputs": [
+    "results/group_mean_cope.nii.gz",
+    "results/group_t_map.nii.gz",
+    "results/voxelwise_fwe_p.nii.gz",
+    "results/fwe_significant_mask.nii.gz",
+    "results/common_support_mask.nii.gz",
+    "results/permutation_max_t.npy",
+    "results/fwe_clusters.tsv",
+    "results/fwe_significant_voxels.tsv",
+    "results/results.json",
+    "results/included_participants.tsv",
+    "results/figures/group_gain_effect.png"
+  ],
+  "selection_basis": "Exact generated paths written by analysis.py; all are generated artifacts, excluding supplied inputs, metadata and source code.",
+  "planned_comparison": "For NIfTI/NPY and table scientific quantities, compare numerical values with rtol=1e-6; ignore timestamps/log prose and figure encoding differences. Fixed seed and 5,000 permutations make the outputs deterministic under the same environment.",
+  "attempts": 0,
+  "reason": "No replay attempted because the required runtime cannot be reconstructed from worker-supplied declarations without following the notebook's absolute external environment path or inventing a substitute environment.",
+  "limits": {"timeout_seconds": 7200, "max_get_gb": 5.0, "maximum_attempts": 1},
+  "stdout": null,
+  "stderr": null
+}

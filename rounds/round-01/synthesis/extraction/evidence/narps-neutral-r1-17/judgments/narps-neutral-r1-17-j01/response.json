@@ -1,0 +1,605 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "Complete delivery is under one workspace root, including code, inputs, reports, results and retained annex objects.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 maps and metadata are supplied under input/; their retained annex targets resolve within the delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/manifest-verification.json",
+          "description": "Independent verification record: 1,174 capture entries and 58 input hashes matched.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "group_analysis.py imports external Python packages, but the delivery has no environment specification or linked software module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Delivered group-analysis implementation and imported dependencies.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git tracks supplied inputs, but the analysis code, protocol, report, figures and results were untracked at worker stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "report/analysis-report.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "All 54 large maps are annex-backed, and captured annex payloads match the worker-stop hashes.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/manifest-verification.json",
+          "description": "Independent verification record: 1,174 capture entries and 58 input hashes matched.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Run notes name a command and package versions, but do not identify a supplied exact environment specification for these outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/run_history.md",
+          "description": "Worker-provided narrative of analysis and replay events.",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Machine-readable group estimates, inference, versions and participant count.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "README documents use and links the report, but offers no way to obtain or install its externally located runtime.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "README gives a starting command for the delivered analysis/group_analysis.py entry point.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "partial",
+      "reason": "The documented command hardcodes a host-specific absolute interpreter path, although script data paths are relative.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The script imports NumPy, NiBabel, pandas, SciPy, Nilearn and Matplotlib; no delivered environment declares these dependencies.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "The external interpreter path is host-specific; the delivery does not document a portable host setup or its system requirements.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Machine-readable group estimates, inference, versions and participant count.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No installable dependency or system-requirement list accompanies the documented execution route.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Delivered group-analysis implementation and imported dependencies.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the complete stopped workspace.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or dependency-update command/process is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Delivered group-analysis implementation and imported dependencies.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "Package versions are listed, but no lockfile or frozen environment specification is delivered.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker publication route or environment artifact is recorded; .git/config has no remote, and coordinator delivery is not worker access.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".git/config",
+          "description": "Captured worker repository configuration; no remote URL is configured.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "README names an external absolute interpreter path but gives no route to obtain the environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Machine-readable group estimates, inference, versions and participant count.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "One Git repository contains source inputs, while the analysis code and remaining scientific deliverables were untracked at worker stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "report/analysis-report.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "Run history records a replay, but regular testing frequency or an ongoing repeated-test process is not established.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "results/run_history.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, analysis, results, figures and report are in separate directories; no environment component is supplied.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "protocol.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivery identifies no restricted data or software component; its source maps are public NARPS derivatives.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Input provenance, original source URLs and per-map hashes.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "Run history describes replay in the same environment; no fresh container, VM, batch job or cloud run is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/run_history.md",
+          "description": "Worker-provided narrative of analysis and replay events.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented workflow reuses a long-lived default environment path and does not create a disposable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "results/run_history.md",
+          "description": "Worker-provided narrative of analysis and replay events.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to test for reconstitution; the recorded replay reused the same external environment.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "results/run_history.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "The delivery contains no archived environment, executable package set or container image.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency-update process is declared or tracked; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: there are no independently maintained project components; runtime packages are dependencies, and input maps are internal annex content.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Evidence record.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-17/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": "Frozen probe output; see named probe and item status.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "Protocol and README explain the input, analysis, result and figure relationship and link the main report.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "protocol.md",
+          "description": "Worker-provided analysis protocol, estimand, cohort, mask and inference decisions.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Input/code/output directories are separated, but the missing environment and untracked code weaken independent updates.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "protocol.md",
+          "description": "Worker-provided analysis protocol, estimand, cohort, mask and inference decisions.",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Delivered group-analysis implementation and imported dependencies.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The analysis script composes the workflow by reading input/ and writing named files under results/ and figures/.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "Delivered group-analysis implementation and imported dependencies.",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README links the report and protocol and identifies the directories holding code, results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Worker-provided usage instructions and documented execution command.",
+          "sha256": null
+        },
+        {
+          "uri": "protocol.md",
+          "description": "Worker-provided analysis protocol, estimand, cohort, mask and inference decisions.",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "e929d623d8de313d2ecdd97911ea8487077af580",
+    "captured_at": "2026-10-16T06:38:30.918918+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-17-j01/manifest.json",
+      "sha256": "5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API session",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.2.0",
+      "stamped-conventions@0.2.0"
+    ]
+  },
+  "scope": "Complete captured worker-stop delivery; manifest verified; inspected full capture and ran frozen probes. Scientific replay not checked because no worker-supplied environment specification exists and the documented interpreter is outside the delivery."
+}

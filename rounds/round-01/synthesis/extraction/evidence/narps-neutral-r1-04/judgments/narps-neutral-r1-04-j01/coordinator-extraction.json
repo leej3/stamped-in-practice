@@ -1,0 +1,60 @@
+{
+  "run_id": "narps-neutral-r1-04",
+  "role": "primary",
+  "judgment": {
+    "judgment_id": "narps-neutral-r1-04-j01",
+    "report": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/attempt-01/judgment/2026-10-16-assessment.md",
+      "sha256": "d894d1245517febac1ce41d0a6ce54c1cbacba8eb3b105847a600051327d7318"
+    },
+    "response": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/attempt-01/judgment/2026-10-16-response.json",
+      "sha256": "dcb2bd60f572da6cec2b9a1adc356092fd3dd0dd3ce0ac714f8b0ab5fd83695c"
+    },
+    "native": {
+      "procedure_status": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/attempt-01/native/procedure-status.json",
+        "sha256": "c604e100584c42460347de381d3f4e722cd2e260cf0fbaffc3a9ef7cb1033496"
+      },
+      "result": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/attempt-01/native/result.json",
+        "sha256": "2d9f516124a02ffa3e42259c5587ddffc6988e41050dd348e3f10aec34795aa9"
+      }
+    },
+    "output_binding": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judgment-extractions/narps-neutral-r1-04-j01/output-binding.json",
+      "sha256": "2ebbd588ac8c2330355836b303d80f27f5d517695af3596184f4259c6caacca8"
+    },
+    "adequacy": {
+      "extraction_status": "explicit",
+      "category": "qualified",
+      "excerpt": {
+        "quote": "**Scientific adequacy: qualified.** The analysis provides a defensible whole-brain-corrected test of the supplied participant gain-effect coefficients and appropriately separates the vmPFC hypothesis from the posterior visual-cortex finding. The qualification is about missing-coverage handling: `analysis.py` defines support from finite, nonzero voxels, retains voxels with support from at least 90% of participants, then uses every participant value at those voxels. Any zero representing absent spatial coverage is therefore included as a measured zero; no explicit participant coverage masks are supplied to distinguish an actual zero coefficient from outside-analysis support. At most five of 54 maps can lack support at a retained voxel. This may pull a group estimate toward zero, and the supplied evidence cannot establish whether it does so in the vmPFC or elsewhere. The report discloses the 90% rule but describes it as accommodating variation rather than explaining this zero-as-observation assumption. This warrants qualification, not rejection of the analysis.",
+        "start_line": 9,
+        "end_line": 9
+      }
+    },
+    "conclusion": {
+      "quote": "Reported hypothesis outcome:** no positive vmPFC effect is supported by this analysis under the required whole-brain-corrected inference. The anatomical ROI mean is \u22120.0041 (95% t interval \u22120.0250 to 0.0169; descriptive one-sided uncorrected p=.651), and no voxel in the AAL3v2 vmPFC approximation is in the positive max-T FWE significant mask. The whole-brain maximum is in posterior occipital cortex (t=6.62, pFWE=.00060); it does not support the vmPFC claim. This is lack of corrected evidence at the analysis's precision, not evidence that the true effect is exactly zero.",
+      "start_line": 11,
+      "end_line": 11
+    }
+  },
+  "operations": [
+    {
+      "operation_id": "narps-neutral-r1-04-j01-native",
+      "stage": "judging",
+      "actor": "judge",
+      "judgment_role": "primary",
+      "status": "succeeded",
+      "scope": "native independent judgment session elapsed wall time; process completion, not scientific adequacy or billing",
+      "duration_s": 474.3494654169772,
+      "evidence": [
+        {
+          "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-04/judgments/narps-neutral-r1-04-j01/attempt-01/native/result.json",
+          "sha256": "2d9f516124a02ffa3e42259c5587ddffc6988e41050dd348e3f10aec34795aa9"
+        }
+      ]
+    }
+  ]
+}

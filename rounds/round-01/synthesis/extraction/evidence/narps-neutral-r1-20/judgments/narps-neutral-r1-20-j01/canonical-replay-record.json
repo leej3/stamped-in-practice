@@ -1,0 +1,28 @@
+{
+  "plan": "replay-plan.json",
+  "source": "original complete delivery at STAMPED_JUDGE_TARGET; replay helper made a separate writable copy preserving the complete captured workspace",
+  "attempts": 1,
+  "command": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/analyze.py",
+  "prerequisite": "Documented common Python environment at the exact path in report.md; no reconstruction, repair, or target modification",
+  "selected_generated_outputs": [
+    "results/summary.json",
+    "results/participant_qc.csv"
+  ],
+  "comparison_rule": "Frozen helper rtol=1e-6; selected files compared byte-identically. Other preexisting figures and NIfTI outputs were not claimed as replay evidence.",
+  "limits": {
+    "timeout_seconds": 7200,
+    "max_get_gb": 5.0
+  },
+  "result": "met; return code 0; elapsed 11.85 seconds; both selected outputs identical",
+  "assessor_malfunction": null,
+  "records": {
+    "helper_result": "replay.json",
+    "stdout": "replay-work/replay.stdout",
+    "stderr": "replay-work/replay.stderr",
+    "outer_stdout": "commands/replay.stdout",
+    "outer_stderr": "commands/replay.stderr"
+  },
+  "environment_scope": "The documented interpreter was available on this assessment host. This does not establish availability of the same host-local environment to another recipient.",
+  "helper_command": "/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/bin/python /Users/johnlee/code/CON/stamped-in-practice/scripts/assessment.py fresh-rerun --path /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-20-j01/content/workspace --entry \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/analyze.py\" --outputs results/summary.json results/participant_qc.csv --workdir /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/attempt-01/judgment/replay-work --output /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/judgments/narps-neutral-r1-20-j01/attempt-01/judgment/replay.json --rtol 1e-06 --timeout 7200 --max-get-gb 5.0",
+  "comparison_scope_note": "The worker entrypoint also regenerated other outputs in the copy as a side effect; they were not selected or compared. The replay copy preserves them separately."
+}

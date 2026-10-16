@@ -1,0 +1,110 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e50df11c3a465d4863c7371d4ee8e402bc933848\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-23-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-23-support-01' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-23-support-01        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-23-support-01\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-23-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e50df11c3a465d4863c7371d4ee8e402bc933848\trefs/heads/codex/narps-neutral-r1-23-support-01\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy coordinator/support-01/support.tar.gz (to con-hub...) \n\n0%    31.98 KiB        61 MiB/s 5s\n0%    735.64 KiB        3 MiB/s 1m39s\n3%    10.18 MiB        47 MiB/s 7s   \n8%    27.11 MiB        84 MiB/s 3s   \n13%   44.04 MiB        85 MiB/s 3s   \n17%   57.5 MiB         62 MiB/s 4s   \n21%   70.4 MiB         58 MiB/s 4s   \n24%   81.84 MiB        57 MiB/s 4s   \n27%   92.99 MiB        54 MiB/s 4s   \n31%   105.01 MiB       60 MiB/s 3s   \n34%   117.01 MiB       57 MiB/s 3s   \n38%   128.72 MiB       58 MiB/s 3s   \n41%   140.96 MiB       59 MiB/s 3s   \n44%   151.46 MiB       50 MiB/s 3s   \n48%   163.83 MiB       59 MiB/s 3s   \n51%   174.76 MiB       52 MiB/s 3s   \n54%   186.32 MiB       58 MiB/s 2s   \n57%   196.78 MiB       52 MiB/s 2s   \n60%   205.02 MiB       41 MiB/s 3s   \n61%   208.37 MiB       16 MiB/s 8s   \n61%   208.96 MiB        2 MiB/s 1m23s\n63%   217.14 MiB       41 MiB/s 3s   \n64%   220.92 MiB        3 MiB/s 45s  \n68%   232.7 MiB        59 MiB/s 1s   \n70%   241.1 MiB        39 MiB/s 2s   \n72%   248.28 MiB       34 MiB/s 2s   \n74%   253.47 MiB       25 MiB/s 3s   \n74%   253.59 MiB       75 KiB/s 20m16s\n77%   263.71 MiB       43 MiB/s 1s    \n78%   266.46 MiB        1 MiB/s 51s   \n81%   277.27 MiB       50 MiB/s 1s    \n82%   280.8 MiB        18 MiB/s 3s    \n82%   280.89 MiB       56 KiB/s 18m51s\n85%   290.95 MiB       46 MiB/s 1s    \n86%   293.39 MiB        1 MiB/s 37s   \n89%   304.73 MiB       49 MiB/s 0s    \n90%   307.16 MiB        1 MiB/s 28s   \n93%   319.34 MiB       59 MiB/s 0s    \n94%   322.25 MiB        2 MiB/s 13s   \n98%   337.52 MiB       76 MiB/s 0s    \n100%  343.06 MiB       86 MiB/s 0s    \n                                      \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-23-01/publisher",
+    "returncode": 128,
+    "stderr": "ssh: connect to host github.com port 22: Operation timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "stdout": ""
+  }
+]

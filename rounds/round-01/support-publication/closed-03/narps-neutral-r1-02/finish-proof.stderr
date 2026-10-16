@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/finish-proof.py", line 35, in <module>
+    run(['git','push','origin','HEAD:refs/heads/'+row['branch']],repo)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/support-publication-r1-02-01/finish-proof.py", line 13, in run
+    save(ROOT/'finish-commands.json',commands);p.check_returncode();return p.stdout.strip()
+                                               ~~~~~~~~~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'HEAD:refs/heads/codex/narps-neutral-r1-02-support-01']' returned non-zero exit status 128.

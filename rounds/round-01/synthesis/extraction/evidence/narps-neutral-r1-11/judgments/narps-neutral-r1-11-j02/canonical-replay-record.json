@@ -1,0 +1,42 @@
+{
+  "status": "not-checked",
+  "attempts_used": 1,
+  "target_command_executed": false,
+  "attempt": {
+    "runner_command": "assessment.py fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" --entry \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/run_analysis.py\" --outputs results/group_mean_cope.nii.gz results/group_t.nii.gz results/minus_log10_p_uncorrected.nii.gz results/minus_log10_p_fwe.nii.gz results/significant_fwe05.nii.gz results/analysis_mask.nii.gz results/vmPFC_atlas_roi.nii.gz results/participant_qc.tsv results/permutation_max_t.tsv results/figure1_whole_brain.png results/figure2_vmPFC_participants.png results/results.json --workdir \"$STAMPED_JUDGE_OUTPUT/replay-work\" --rtol 1e-6 --timeout 7200 --max-get-gb 5.0",
+    "entrypoint": "Exact command documented in report.md",
+    "prerequisites": [
+      "Documented interpreter path on this host",
+      "Complete original delivery copy with supplied atlas/template and inputs",
+      "No dependency installation or source modification"
+    ],
+    "outputs": [
+      "results/group_mean_cope.nii.gz",
+      "results/group_t.nii.gz",
+      "results/minus_log10_p_uncorrected.nii.gz",
+      "results/minus_log10_p_fwe.nii.gz",
+      "results/significant_fwe05.nii.gz",
+      "results/analysis_mask.nii.gz",
+      "results/vmPFC_atlas_roi.nii.gz",
+      "results/participant_qc.tsv",
+      "results/permutation_max_t.tsv",
+      "results/figure1_whole_brain.png",
+      "results/figure2_vmPFC_participants.png",
+      "results/results.json"
+    ],
+    "comparison_rule": "Frozen helper intended exact byte comparison for image/figure/JSON outputs and numeric table comparison at rtol=1e-6; timestamps, logs and prose are not scientific quantities."
+  },
+  "assessor_malfunction": {
+    "observed": "The helper failed during preflight capture validation with ValueError: Capture file list differs (missing or unexpected entries). The original analysis command did not start.",
+    "captured_stderr": "2026-10-16-fresh-rerun.stderr",
+    "observed_capture_difference": "After the probe pass, .git/annex/keysdb/db-shm and db-wal were absent versus the initially verified manifest. All other previously checked file hashes matched; no repair was attempted.",
+    "attribution": "The difference appeared after the assessor probe pass and concerns transient Git-annex SQLite sidecars. Treat as assessor-side measurement interference/malfunction, not worker scientific behavior."
+  },
+  "limits": {
+    "timeout_seconds": 7200,
+    "max_get_gb": 5.0,
+    "maximum_attempts": 1,
+    "scientific_replay_measurement": "unavailable",
+    "reason": "The sole attempt stopped before materializing or executing the target because capture validation failed."
+  }
+}

@@ -1,0 +1,614 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "The study files, inputs, cache, code and results sit beneath one workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "names the delivered results and code",
+          "sha256": null
+        },
+        {
+          "uri": "analyze.py",
+          "description": "uses workspace-relative input and result paths",
+          "sha256": null
+        },
+        {
+          "uri": "input/participants.tsv",
+          "description": "cohort metadata",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 maps and metadata are included under input; their annex links resolve within the captured root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "identifies the 54 source maps",
+          "sha256": null
+        },
+        {
+          "uri": "probe:large-in-annex",
+          "description": "54 in-root annex pointers",
+          "sha256": null
+        },
+        {
+          "uri": "input/upstream-methods.md",
+          "description": "describes supplied effects",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Python packages and atlas software are not declared in a delivered environment or linked software module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "imports NumPy, pandas, SciPy, NiBabel, Nilearn and Matplotlib",
+          "sha256": null
+        },
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "reproduction command points to an external interpreter",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git-annex tracks supplied maps, but the analysis code, report, cache and results were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:tree-clean",
+          "description": "REPORT.md, analyze.py, atlas_cache/ and results/ uncommitted",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "worker stop receipt and seed commit identify supplied versus worker-created state",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "source data manifest",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex holds the 54 large map payloads; the probe found 54 tracked pointers.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "probe:large-in-annex",
+          "description": "54 annex pointers, no oversized Git binary",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "lists 54 map files",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "No exact environment is linked to the generated results; the report names only an external interpreter path.",
+      "source": "probe:derived-have-records+probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "lists generated maps and command but no environment pin",
+          "sha256": null
+        },
+        {
+          "uri": "probe:derived-have-records",
+          "description": "missed untracked generated artifacts",
+          "sha256": null
+        },
+        {
+          "uri": "probe:run-env-linked",
+          "description": "no run records with environment identity",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "worker stop inventory has no environment capture",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "REPORT.md gives usage but no installation route; it relies on an external absolute interpreter.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "probe:entry-point",
+          "description": "README/Makefile not found",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "contains reproduction command and file guide",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "REPORT.md names analyze.py as the reproduction entrypoint, and that script is included.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files and command",
+          "sha256": null
+        },
+        {
+          "uri": "analyze.py",
+          "description": "group-analysis entrypoint",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "unmet",
+      "reason": "REPORT.md embeds an absolute host path to the Python interpreter.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "absolute interpreter path",
+          "sha256": null
+        },
+        {
+          "uri": "probe:no-abs-paths",
+          "description": "only scanned tracked text; analyze.py and report were untracked",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The imports used by analyze.py have no delivered dependency specification.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "imports scientific packages",
+          "sha256": null
+        },
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no tracked environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The documented command assumes an external host path; OS and other host requirements are not documented.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "absolute common-environment interpreter path",
+          "sha256": null
+        },
+        {
+          "uri": "probe:platform-assumptions",
+          "description": "host review required",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No system-requirements or dependency list explains how to obtain the external interpreter and packages.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "provides a command, not setup requirements",
+          "sha256": null
+        },
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no environment specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the worker delivery or Git-tracked project.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "specs empty",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "complete worker-stop inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or dependency-update process is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "no environment update instructions",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The delivery contains no pinned environment specification for exact reconstruction.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "probe:run-env-linked",
+          "description": "no environment pin",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "worker-stop inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment specification or project publication route is recorded; the Git config has no remote.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "remote null",
+          "sha256": null
+        },
+        {
+          "uri": ".git/config",
+          "description": "no remote section",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The report gives an external interpreter path but does not explain how to obtain or install that environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files",
+          "sha256": null
+        },
+        {
+          "uri": "probe:entry-point",
+          "description": "installation instructions not found",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git-annex versions inputs, while the study code and results are outside the worker-stop commit.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:large-in-annex",
+          "description": "annex input pointers",
+          "sha256": null
+        },
+        {
+          "uri": "probe:tree-clean",
+          "description": "code and results uncommitted",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No recurring test record is evident; the capture cannot establish whether external or manual repeat checks occurred.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no recognized CI; inspect equivalent records",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "single worker-stop record; no recurring test record",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs and results have separate directories, but code is at root and no environment module exists.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "probe:modules-separated",
+          "description": "only inputs separated",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "describes input, script and results",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: delivered source data and software are public; there is no restricted component to isolate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "public NeuroVault and OpenNeuro sources",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "Fresh-environment replay was not checked because the exact capture inventory failed verification and no worker environment is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "external environment command",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/judgment/delivery-verification.json",
+          "description": "exact delivery verification failure prevented complete-copy replay",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "analyze.py runs in the named external interpreter and does not create a disposable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "direct script execution",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "invokes an existing interpreter",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "There is no pinned environment specification or recurring reconstitution check.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no specification",
+          "sha256": null
+        },
+        {
+          "uri": "probe:run-env-linked",
+          "description": "no recorded environment test",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact or dependency lock is archived in the delivery.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-22/judgments/narps-neutral-r1-22-j01/attempt-01/worker-end-state.json",
+          "description": "complete capture inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is declared or tracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:env-spec-tracked",
+          "description": "no environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "REPORT.md",
+          "description": "no update procedure",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "External source maps are independently identified in input/sources.json; all payloads are included and annex-backed under input/.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "identifies source maps and pinned cohort metadata",
+          "sha256": null
+        },
+        {
+          "uri": "probe:large-in-annex",
+          "description": "54 map payloads are present in the input boundary",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "REPORT.md explains file roles, but gives no complete modular map or environment boundary.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "lists code, results and summary artifacts",
+          "sha256": null
+        },
+        {
+          "uri": "probe:modules-separated",
+          "description": "environment module absent",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Input and result paths are distinct, but code and atlas cache are not defined as independently updateable components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "single script reads input and writes results",
+          "sha256": null
+        },
+        {
+          "uri": "atlas_cache/README.md",
+          "description": "cache role only",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The included analyze.py composes the input and atlas cache into results through workspace-relative paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analyze.py",
+          "description": "reads input/ and atlas_cache/, writes results/",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "REPORT.md explains the report figures, code, summaries, maps and QC files.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "REPORT.md",
+          "description": "Reproducibility files",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "8a84ddc3eec68d0b7513f9a15ce37174288b36b7",
+    "captured_at": "2026-10-16T06:59:04.514702+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-22-j01/manifest.json",
+      "sha256": "62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "OpenAI Codex API",
+    "model": "gpt-6-luna",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Worker stop was 2026-10-16T06:59Z; coordinator manifest matches its receipt hash. Assessment Git inspection likely altered annex SQLite state: manifest check found only .git/annex/keysdb/db hash mismatch. No replay; this assessor-side issue is not a worker verdict."
+}

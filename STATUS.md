@@ -1,46 +1,19 @@
 # Current comparison status
 
-The sealed tool-neutral comparison is underway: **24 of 72 research workers have started**, **24 have stopped**, and **27 of 96 assigned judgments have started** at this update.
-**24 judgments have completed their dispatches.** Native process completion and formal assessment availability are separate.
-The first round contains 24 workers and 32 judgments.
-Judgment availability and scientific outcomes are reported separately from process completion.
+**Round one is complete: all 24 workers and all 32 assigned judges have stopped.** The frozen gate admitted 21 judgments (17 primary and four duplicate); eleven are unavailable because assessment inspection changed annex database metadata.
+The [synthesis and figures](rounds/round-01/synthesis/README.md) retain fixed denominators, scientific findings, checklist evidence, observed skill actions and effort.
 
-| Run | Assigned assistance | State |
-| --- | --- | --- |
-| narps-neutral-r1-20 | discover-general | stopped |
-| narps-neutral-r1-08 | baseline | stopped |
-| narps-neutral-r1-11 | discover-science | stopped |
-| narps-neutral-r1-01 | baseline | stopped |
-| narps-neutral-r1-17 | stamped-explicit | stopped |
-| narps-neutral-r1-12 | discover-science | stopped |
-| narps-neutral-r1-03 | discover-science | stopped |
-| narps-neutral-r1-15 | discover-general | stopped |
-| narps-neutral-r1-07 | stamped-explicit | stopped |
-| narps-neutral-r1-10 | discover-general | stopped |
-| narps-neutral-r1-22 | baseline | stopped |
-| narps-neutral-r1-13 | stamped-explicit | stopped |
-| narps-neutral-r1-02 | baseline | stopped |
-| narps-neutral-r1-09 | discover-general | stopped |
-| narps-neutral-r1-14 | discover-science | stopped |
-| narps-neutral-r1-23 | baseline | stopped |
-| narps-neutral-r1-18 | discover-general | stopped |
-| narps-neutral-r1-05 | stamped-explicit | stopped |
-| narps-neutral-r1-24 | stamped-explicit | stopped |
-| narps-neutral-r1-19 | discover-science | stopped |
-| narps-neutral-r1-16 | baseline | stopped |
-| narps-neutral-r1-06 | discover-general | stopped |
-| narps-neutral-r1-21 | stamped-explicit | stopped |
-| narps-neutral-r1-04 | discover-science | stopped |
+All 24 complete original deliveries and their browsable scientific files, support archives, assigned judgments and native publication proofs are published and independently retrieved.
+The study registry distinguishes worker capture/HEAD identities from later coordinator commits.
+Coordinator preservation earns no worker credit.
 
-See the [live ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [sealed registration](registration.md) and [allocation](allocation.json).
-The [target-integrity incident record](rounds/round-01/measurement-limitations/target-integrity-01/) documents the two assessment failures observed through batch two; it is a dated snapshot, not a live failure total.
-The registration's zero-start count records its state before launch; it is not the live count.
-The original registration and its hash manifest remain unchanged.
+The remaining 48 research attempts and 64 judgments in the original allocation have not launched.
+Further research awaits the [measurement viability decision](rounds/round-01/synthesis/viability.md): the original series remains intact, and any repaired all-object assessment must be separately registered rather than selectively replacing failed measurements.
+No skill-effect claim crosses that boundary silently.
 
-Each wave has three native sessions, and the next research wave starts after all three stop naturally.
-All eight research waves finish before the round's independently randomized judging queue begins.
-There is no preset spending, token or elapsed-time cap and no replacement selected for a favorable result.
+See the [completion ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [judgment dispatches](rounds/round-01/judging/), [sealed registration](registration.md) and [allocation](allocation.json).
+The registration's zero-start count describes its prelaunch state.
+Its original records and hashes remain unchanged.
 
-Stopped deliveries include uncommitted and ignored files; their capture identities remain separate from actual worker Git HEADs and later coordinator preservation.
+There is no preset spending, token or elapsed-time cap and no extension selected to obtain favorable results.
 Separate workspaces and native profiles reduce shared context; the same-user host is not an operating-system containment boundary.
-Coordinator retention and outer-session Duct capture earn no worker-practice credit.
