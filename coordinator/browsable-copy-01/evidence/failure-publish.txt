@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-flow-01/publish.py", line 20, in <module>
+    assert run(['git','ls-remote','origin','refs/heads/'+commit['branch']]).stdout.strip()==''
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-flow-01/publish.py", line 13, in run
+    if not allow:p.check_returncode()
+                 ~~~~~~~~~~~~~~~~~~^^
+  File "/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/lib/python3.13/subprocess.py", line 509, in check_returncode
+    raise CalledProcessError(self.returncode, self.args, self.stdout,
+                             self.stderr)
+subprocess.CalledProcessError: Command '['git', 'ls-remote', 'origin', 'refs/heads/codex/narps-neutral-r1-15-browsable']' returned non-zero exit status 128.
