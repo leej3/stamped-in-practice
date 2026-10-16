@@ -54,5 +54,5 @@ Figures summarize scientific outcomes, reproducibility, effort and variability.
 NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
-The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/4b6a8b34b6387150ea2a805bf48bbf5c159f8452/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
+The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed; the next stable comparison will keep coordinator preservation separate from worker guidance.
