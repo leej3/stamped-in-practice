@@ -17,7 +17,7 @@ The separately registered [assessment-only series](assessment-series/narps-neutr
 Its identity-guard correction passed all 24 original bindings and rejected 1,752 substitutions; the never-launched preparation seal is retained.
 The separate series is running in its fixed order, with at most three native judges at once; [progress](assessment-series/narps-neutral-r1-operational-v4/progress.json) records the latest completed control snapshot.
 Further research remains held for measurement viability.
-The latest control snapshot records 12 completed attempts out of 32.
+The latest control snapshot records 19 completed attempts out of 32.
 [Complete support publication receipts](assessment-series/narps-neutral-r1-operational-v4/publication/batch-01/README.md) are being added separately; current Hub transfer failures delay some remote archives without interrupting judging.
 
 

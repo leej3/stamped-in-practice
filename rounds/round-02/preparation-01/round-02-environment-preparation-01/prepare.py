@@ -1,0 +1,10 @@
+from pathlib import Path
+import subprocess,json,hashlib
+B=Path('/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1');R=B/'round-02-environment-preparation-01';C=Path('/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice');cs=[]
+def run(a):
+ p=subprocess.run(a,cwd=C,text=True,capture_output=True);cs.append({'argv':a,'cwd':str(C),'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr});(R/'commands.json').write_text(json.dumps(cs,indent=2)+'\n');p.check_returncode();return p.stdout.strip()
+before=hashlib.sha256((C/'pixi.lock').read_bytes()).hexdigest();run(['pixi','install','--locked']);run(['pixi','run','--locked','launch','--help'])
+code="from pathlib import Path; import sys,json,argparse;sys.path.insert(0,'scripts');import assessment_procedure as p; B=Path('/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1');C=Path.cwd();m=p.load_procedure(B/'dataset/procedure.json','b011f6e68dc6838e736f1ae2ad70d52896dab9b848d6f33950b4d35dd86b1521');p.check_sources(m,C,C/'studies/narps','9068886f91615b2c69578bdaa6042a858f4d9011');h=json.loads(Path('/Users/johnlee/.config/stamped-in-practice/launch-neutral.json').read_bytes());h.update(role='research',capture_execution=True,common_resources=B/'dataset/resources/common-resources.md');a=argparse.Namespace(**h);p.check_settings(m,a);p.check_host(m,a);p.check_readiness(m,B/'readiness-01/result.json');p.check_native(m,Path(h['cli']),Path(h['codex_home']),'research');print(json.dumps({'source_host_settings_native_readiness':True,'python':sys.executable}))"
+proof=run(['pixi','run','--locked','python','-c',code]);after=hashlib.sha256((C/'pixi.lock').read_bytes()).hexdigest();assert before==after
+assert run(['git','status','--porcelain'])==''
+(R/'result.json').write_text(json.dumps({'verified':True,'cwd':str(C),'lock_sha256':before,'lock_unchanged':True,'locked_install':True,'launch_cli_help_imports_passed':True,'checks':json.loads(proof),'no_worker_seed_or_native_session_created':True},indent=2)+'\n');print((R/'result.json').read_text())

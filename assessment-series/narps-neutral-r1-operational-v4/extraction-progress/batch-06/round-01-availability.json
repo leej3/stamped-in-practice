@@ -1,0 +1,1036 @@
+{
+  "kind": "round-one-assessment-measure-availability",
+  "round": 1,
+  "scope": "Only the 24 original round-one workers and 32 newly assigned operational-v4 judgments; 24 primary and 8 duplicate. Future rounds are outside current-series missingness.",
+  "full_registered_allocation": {
+    "workers": 72,
+    "judgments": 96
+  },
+  "current_series_allocation": {
+    "workers": 24,
+    "judgments": 32,
+    "primary": 24,
+    "duplicate": 8
+  },
+  "future_rounds": {
+    "workers": 48,
+    "judgments": 64,
+    "status": "pending-outside-current-series"
+  },
+  "counts": {
+    "launcher_native_states": {
+      "launcher-closed-native-finalized": 18,
+      "pending": 14
+    },
+    "admission": {
+      "eligible": 18,
+      "pending": 14
+    },
+    "checklist": {
+      "valid": 17,
+      "pending": 14,
+      "invalid": 1
+    },
+    "scientific_availability": {
+      "available": 18,
+      "pending": 14
+    },
+    "scientific_extraction_among_finalized": {
+      "explicit": 18
+    },
+    "replay_record_availability": {
+      "retained": 18,
+      "pending": 14
+    },
+    "hypothesis_conclusion_available": 18,
+    "slots_with_retained_replay_record": 18,
+    "replay_records_with_matching_capture": 10,
+    "replay_reported_statuses_by_record": {
+      "not-checked": 14,
+      "met": 4
+    },
+    "replay_explicit_attempted_false_records": 2,
+    "replay_explicit_zero_attempt_records": 9,
+    "replay_reported_entrypoint_returncodes": {
+      "0": 4
+    }
+  },
+  "interpretation": "Completion is evidenced by finalized launcher/native receipts. Admission, checklist validity, structured science validity and replay reporting remain separate. Replay records are retained literal fields: no helper success, entrypoint execution, or reproduction is inferred from process exit or prose. Duplicates never fill primary gaps.",
+  "sources": [
+    {
+      "path": "index.json",
+      "sha256": "737dc5262658560debc66c49e22b81726336d142a727fbb093c59c331546582d"
+    },
+    {
+      "path": "analysis/aggregation.json",
+      "sha256": "f7b51f121577eeeda6f2dbf507aa0f3f04af1a4fc61243c268b3c584ba635d88"
+    },
+    {
+      "path": "analysis/judgments.jsonl",
+      "sha256": "e2316f29ea7b936d382cd8ca81af0112d188a1bad2e083d531028d29960de52c"
+    },
+    {
+      "path": "extraction-decisions.json",
+      "sha256": "086550f297a942ffb390181eebc7fc54e55cd70d6766499c1268829c7c178570"
+    },
+    {
+      "path": "supporting-records.json",
+      "sha256": "12d3b6ec3eb8f144bb872c04dae0b884b155c9aefeb2240a498f37de36b743aa"
+    },
+    {
+      "path": "replay-native-observations.json",
+      "sha256": "8b4b4b3eab7e109444a3cc6b640eea54e95e4797783eb5afea0e251f90683680"
+    }
+  ],
+  "rows": [
+    {
+      "judgment_id": "narps-neutral-r1-20-j01",
+      "run_id": "narps-neutral-r1-20",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-20-j01",
+          "label": "replay record",
+          "native_final_link": "</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-20-j01/attempt-01/judgment/fresh-rerun.json>",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-20-j01/supporting/06-fresh-rerun.json",
+            "sha256": "8678c344151edb1784375d4bb7414311bd05d0dc5b57864b5cb47577d0ba4ecc"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-20-j01/attempt-01/judgment/fresh-rerun.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempted": true,
+            "probe": "fresh-rerun"
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "8c58f2ad4f7217840ed53d63437da4101513952d049c15d85357a0391846b75b",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-08-j01",
+      "run_id": "narps-neutral-r1-08",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-08-j02",
+      "run_id": "narps-neutral-r1-08",
+      "role": "duplicate",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-08-j02",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-08-j02/attempt-01/judgment/replay-record.json",
+          "selection_source": "unique exact relative link in canonical report; no basename-only fallback",
+          "original_final_link_error": "'/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-08-j02/attempt-01/judgment/replay-record.json' is not in the subpath of '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-08-j02/attempt-01/judgment'",
+          "selection_report": {
+            "path": "evidence/judgments/narps-neutral-r1-08-j02/supporting-selection-report.md",
+            "sha256": "3f3008ca81c18843628004940da0a42d28bff702164aec0ab39d376618c0547d"
+          },
+          "selection_excerpt": {
+            "quote": "[replay-record.json](replay-record.json)",
+            "start_line": 95,
+            "end_line": 95
+          },
+          "raw_final_unchanged": true,
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-08-j02/supporting/06-replay-record.json",
+            "sha256": "da6139be69346ddb2ad3737e1aa6e92667d0d853c85c21960309a3756cd87860"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-08-j02/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "reason": "The delivery has no dependency declaration or reconstructable environment; the recorded run used a shared environment outside the delivery, and analysis.py calls Nilearn template data loading. Reconstructing it would require adding or retrieving prerequisites not supplied by the worker."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "2afd81ca5fdfaa03e85f2d3e65b04aac9f4b3d90eb39f95c2497266e4cf3cdc7",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-11-j01",
+      "run_id": "narps-neutral-r1-11",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-11-j02",
+      "run_id": "narps-neutral-r1-11",
+      "role": "duplicate",
+      "condition": "discover-science",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-11-j02",
+          "label": "Replay record",
+          "native_final_link": "replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-11-j02/supporting/07-replay-record.json",
+            "sha256": "295372c6ba2c4bb8abfd15277070e0d82e5782b16c7c8bb306fbabf23665ad69"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-11-j02/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "reason": "The only documented interpreter is an external absolute path, and the stopped workspace contains no dependency/environment declaration from which to reconstruct it. Using the assessor interpreter would substitute an undeclared environment. No replay copy or run was made."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-01-j01",
+      "run_id": "narps-neutral-r1-01",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-01-j01",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/attempt-01/judgment/replay/replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-01-j01/supporting/06-replay-record.json",
+            "sha256": "f706c27209457d8ff34d3639e55468fed446821eb16c5fa1c80854a0497151d4"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-01-j01/attempt-01/judgment/replay/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": {
+              "helper_invocations": 2,
+              "scientific_executions": 0,
+              "maximum_scientific_executions": 1
+            },
+            "comparison": {
+              "rtol": 1e-06,
+              "numeric_tables": "frozen helper tolerance",
+              "images": "byte comparison",
+              "timestamp_log_prose_formatting": "not selected scientific outputs"
+            },
+            "reason": "First frozen helper invocation failed before materialization because its workdir already existed. The frozen adapter then reported the formal replay allowance consumed and refused the second invocation. No target entrypoint ran and no scientific comparison was made. This assessor invocation/setup failure is separate from target behavior."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-17-j01",
+      "run_id": "narps-neutral-r1-17",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-17-j01",
+          "label": "Replay record",
+          "native_final_link": "replay/replay.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-17-j01/supporting/07-replay.json",
+            "sha256": "ef05fa535c45a11271a3847569be8d70c24081d522be82abaa69e55b53186185"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-17-j01/attempt-01/judgment/replay/replay.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "met",
+            "probe": "fresh-rerun",
+            "returncode": 0,
+            "elapsed_seconds": 24.020541916019283,
+            "comparison": {
+              "identical": [
+                "results/participant_qc.tsv",
+                "results/vmPFC_participant_estimates.tsv",
+                "results/mean_effect.nii.gz",
+                "results/t_positive.nii.gz",
+                "results/p_fwe_positive.nii.gz",
+                "results/significant_fwe_mask.nii.gz",
+                "results/analysis_mask.nii.gz",
+                "results/summary.json",
+                "results/max_t_null.npy",
+                "results/analysis_log.txt",
+                "figures/vmPFC_roi_estimates.png",
+                "figures/wholebrain_fwe.png"
+              ],
+              "within_tolerance": [],
+              "differing": [],
+              "missing_after_rerun": []
+            },
+            "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-12-j01",
+      "run_id": "narps-neutral-r1-12",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-12-j01",
+          "label": "replay record",
+          "native_final_link": "replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-12-j01/supporting/07-replay-record.json",
+            "sha256": "5bbf94835152499e6aed887f4b2aab86f7ee0689aab8b4fc80e8d2e43add3b7c"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-12-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": [
+              {
+                "command_record": "formal-replay-attempt.json",
+                "stdout": "replay-runner.stdout",
+                "stderr": "replay-runner.stderr",
+                "outcome": "Failed before materialization because the requested workdir already existed; no target code ran."
+              },
+              {
+                "command_record": "replay-runner-2.command.json",
+                "stdout": "replay-runner-2.stdout",
+                "stderr": "replay-runner-2.stderr",
+                "outcome": "Wrapper rejected invocation because formal replay allowance was consumed; no copy or target execution."
+              }
+            ],
+            "comparison": "Unavailable; no generated replay outputs."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "783faf61b2b84a56c1a82f46c5dceb88ecba15be11981f2c55870311f89e09c9",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-03-j01",
+      "run_id": "narps-neutral-r1-03",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-03-j02",
+      "run_id": "narps-neutral-r1-03",
+      "role": "duplicate",
+      "condition": "discover-science",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-15-j01",
+      "run_id": "narps-neutral-r1-15",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-15-j01",
+          "label": "Replay record",
+          "native_final_link": "</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/replay-record.json>",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-15-j01/supporting/05-replay-record.json",
+            "sha256": "c76d2d5f115ee1e721d53550cf64e941a2afdaf984508110d4779b53b967dd1e"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "reason": "The worker supplied no dependency declaration from which to reconstruct the documented Python environment. The code also fetches an atlas at runtime. No package installation, retrieval, code repair, or execution in the inspection copy was performed."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-15-j02",
+      "run_id": "narps-neutral-r1-15",
+      "role": "duplicate",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-15-j02",
+          "label": "Replay record",
+          "native_final_link": "replay.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-15-j02/supporting/07-replay.json",
+            "sha256": "2f976f6a029b3052485544fb3ef3247bf0777c9b1f7d7235af3a73d64630a6a1"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j02/attempt-01/judgment/replay.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "comparison": {
+              "rule": "Compare participant QC identities, group means and t maps, max-T FWE p-values and discoveries, ROI mask and summaries; require exact participant set and metadata; compare numeric arrays at rtol 1e-6 with atol justified as zero for deterministic outputs. Ignore timestamps, logs and image encoding differences; inspect figure content separately.",
+              "tolerance": {
+                "rtol": 1e-06,
+                "atol": 0.0
+              }
+            }
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-07-j01",
+      "run_id": "narps-neutral-r1-07",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-07-j02",
+      "run_id": "narps-neutral-r1-07",
+      "role": "duplicate",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-10-j01",
+      "run_id": "narps-neutral-r1-10",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-10-j01",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-10-j01/attempt-01/judgment/replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-10-j01/supporting/07-replay-record.json",
+            "sha256": "47fc66374d7e7633900c8d7a87926c0777faba5edf7e2d63ee6df8aab8dabe7a"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-10-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-22-j01",
+      "run_id": "narps-neutral-r1-22",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-22-j01",
+          "label": "replay record",
+          "native_final_link": "</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j01/attempt-01/judgment/replay/replay-result.json>",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-22-j01/supporting/05-replay-result.json",
+            "sha256": "408fe3a64c504993970df7b85cf1c0fc7bd2d71a73fbb7c334dd8f73363dbf12"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j01/attempt-01/judgment/replay/replay-result.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "met",
+            "probe": "fresh-rerun",
+            "returncode": 0,
+            "elapsed_seconds": 10.961706999922171,
+            "comparison": {
+              "identical": [
+                "results/fwe_clusters.tsv",
+                "results/group_mask.nii.gz",
+                "results/mean_effect.nii.gz",
+                "results/p_fwe_maxT.nii.gz",
+                "results/participant_qc.tsv",
+                "results/summary.json",
+                "results/t_statistic.nii.gz",
+                "results/vmPFC_proxy_aal3.nii.gz",
+                "results/vmPFC_proxy_effects.png",
+                "results/wholebrain_fwe_map.png"
+              ],
+              "within_tolerance": [],
+              "differing": [],
+              "missing_after_rerun": []
+            },
+            "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "62844be8e123ee4970d90409a641082a3126743ee3b90d914b2b5ef26a50aaf1",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-22-j02",
+      "run_id": "narps-neutral-r1-22",
+      "role": "duplicate",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-22-j02",
+          "label": "replay record",
+          "native_final_link": "replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-22-j02/supporting/06-replay-record.json",
+            "sha256": "2e56982f5c7c7e652c436bfbd6118ac025becb003eea3022e97fbb2f974316b0"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-22-j02/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "reason": "The sole documented interpreter is an absolute path in an external common-environment directory not included in the captured delivery. Reconstructing or substituting it would violate the replay scope. No replay copy or command execution was initiated."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-13-j01",
+      "run_id": "narps-neutral-r1-13",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-13-j01",
+          "label": "Replay record",
+          "native_final_link": "</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-13-j01/attempt-01/judgment/replay.json>",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-13-j01/supporting/05-replay.json",
+            "sha256": "3ca867c99c42341a976984dba3cb7b143620f4fd495342522f524cf897257a23"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-13-j01/attempt-01/judgment/replay.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempted": false,
+            "reason": "The only documented interpreter is outside the capture and external absolute targets are out of scope; no dependency declaration permits reconstruction. No substitute interpreter or source repair was used."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "4cb6043b8fa2409c631a8c49a0b0b5ea0feec21e0162f4e924f9c08d1be8939f",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-02-j01",
+      "run_id": "narps-neutral-r1-02",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-02-j01",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/2026-10-16-replay.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-02-j01/supporting/04-2026-10-16-replay.json",
+            "sha256": "7c1bc38b93be1fe40ff8a844b41ca259441839ac87c492df27966149dd987d61"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-02-j01/attempt-01/judgment/2026-10-16-replay.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "met",
+            "probe": "fresh-rerun",
+            "returncode": 0,
+            "elapsed_seconds": 3.7708455830579624,
+            "comparison": {
+              "identical": [
+                "results/summary.json",
+                "results/vmPFC_subject_estimates.tsv",
+                "results/wholebrain_fwe_clusters.tsv"
+              ],
+              "within_tolerance": [],
+              "differing": [],
+              "missing_after_rerun": []
+            },
+            "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "b8c5ed926b870d7d78ec6ecc4fbccd218f12523802ded9d082f032d901fd9aec",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-09-j01",
+      "run_id": "narps-neutral-r1-09",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-09-j01",
+          "label": "replay record",
+          "native_final_link": "replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-09-j01/supporting/07-replay-record.json",
+            "sha256": "3e4158bc6167dfe2b878c9af6418a504eccedcbe75d751ecf81f4ffd295e5210"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-09-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "runner_record": null,
+            "attempt_command": null,
+            "reason": "No safe reconstruction can be established from the worker's supplied declarations: report.md lists package versions, but the delivery contains no environment specification or install instructions. The assessor environment was not substituted."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-14-j01",
+      "run_id": "narps-neutral-r1-14",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-23-j01",
+      "run_id": "narps-neutral-r1-23",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "invalid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-23-j01",
+          "label": "Replay record",
+          "native_final_link": "replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-23-j01/supporting/05-replay-record.json",
+            "sha256": "975c6a26be9706e28efdaf383783553a784d6f7a9441fcab826ea4864dd94b65"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-23-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempted": false
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-18-j01",
+      "run_id": "narps-neutral-r1-18",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-05-j01",
+      "run_id": "narps-neutral-r1-05",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-05-j02",
+      "run_id": "narps-neutral-r1-05",
+      "role": "duplicate",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-24-j01",
+      "run_id": "narps-neutral-r1-24",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-24-j01",
+          "label": "Replay record",
+          "native_final_link": "</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/replay-record.json>",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-24-j01/supporting/07-replay-record.json",
+            "sha256": "eb7d3bf12f83d6358e9887f6f5103ceb67987a117fb5f9bb43da7491d3bb9ea2"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": null,
+          "capture_matches_original": null
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-19-j01",
+      "run_id": "narps-neutral-r1-19",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-16-j01",
+      "run_id": "narps-neutral-r1-16",
+      "role": "primary",
+      "condition": "baseline",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-06-j01",
+      "run_id": "narps-neutral-r1-06",
+      "role": "primary",
+      "condition": "discover-general",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-06-j01",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-06-j01/attempt-01/judgment/replay-record.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-06-j01/supporting/07-replay-record.json",
+            "sha256": "323b59ec490f0d122e0d38dc90410f61a11d2cf3bc556f3b77a5d14f29c18f24"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-06-j01/attempt-01/judgment/replay-record.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "not-checked",
+            "attempts": 0,
+            "reason": "No exact invocation is documented, and no installable environment/dependency specification is supplied. Inferring a command or reconstructing dependencies would go beyond the worker's instructions."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878",
+          "capture_matches_original": true
+        }
+      ]
+    },
+    {
+      "judgment_id": "narps-neutral-r1-06-j02",
+      "run_id": "narps-neutral-r1-06",
+      "role": "duplicate",
+      "condition": "discover-general",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-21-j01",
+      "run_id": "narps-neutral-r1-21",
+      "role": "primary",
+      "condition": "stamped-explicit",
+      "launcher_native_state": "pending",
+      "admission": "pending",
+      "checklist": "pending",
+      "scientific_extraction": "missing",
+      "scientific_availability": "pending",
+      "replay_record_availability": "pending",
+      "hypothesis_conclusion_available": false,
+      "replay_records": []
+    },
+    {
+      "judgment_id": "narps-neutral-r1-04-j01",
+      "run_id": "narps-neutral-r1-04",
+      "role": "primary",
+      "condition": "discover-science",
+      "launcher_native_state": "launcher-closed-native-finalized",
+      "admission": "eligible",
+      "checklist": "valid",
+      "scientific_extraction": "explicit",
+      "scientific_availability": "available",
+      "replay_record_availability": "retained",
+      "hypothesis_conclusion_available": true,
+      "replay_records": [
+        {
+          "judgment_id": "narps-neutral-r1-04-j01",
+          "label": "Replay record",
+          "native_final_link": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-04-j01/attempt-01/judgment/2026-10-16-replay.json",
+          "selection_source": "native final exact link",
+          "artifact": {
+            "path": "evidence/judgments/narps-neutral-r1-04-j01/supporting/04-2026-10-16-replay.json",
+            "sha256": "eda998f95797f88f8b37a33b6e3673b1b6a8e61a1f8f5777b27bc257625d2350"
+          },
+          "source_path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-04-j01/attempt-01/judgment/2026-10-16-replay.json",
+          "availability": "retained",
+          "literal_replay_fields": {
+            "status": "met",
+            "probe": "fresh-rerun",
+            "returncode": 0,
+            "elapsed_seconds": 20.318339124904014,
+            "comparison": {
+              "identical": [
+                "results/significant_components.tsv",
+                "results/group_mean_effect.nii.gz",
+                "results/group_tstat.nii.gz",
+                "results/neglog10_p_fwe.nii.gz",
+                "results/significant_fwe_mask.nii.gz",
+                "results/group_coverage_mask.nii.gz",
+                "results/aal3_vmPFC_localization_mask.nii.gz",
+                "results/participant_map_qc.tsv",
+                "results/participant_vmPFC_effects.tsv",
+                "results/group_results.json",
+                "results/max_t_null.npy",
+                "output/figures/group_gain_maps.png",
+                "output/figures/vmPFC_participant_effects.png"
+              ],
+              "within_tolerance": [],
+              "differing": [],
+              "missing_after_rerun": []
+            },
+            "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+          },
+          "replay_field_scope": "Judge-authored or helper-reported fields, copied literally. Missing fields remain unavailable; helper completion and entrypoint execution are not inferred from status.",
+          "reported_capture_sha256": "be9dfce22879dc38b64f8b9cc6bda8a262258c88cb8bf5a7e14d691d479f9b07",
+          "capture_matches_original": true
+        }
+      ]
+    }
+  ],
+  "native_replay_evidence": {
+    "status_counts": {
+      "judge-authored-replay-record": 5,
+      "native-helper-output-bound": 4,
+      "record-unavailable-or-capture-unbound": 8,
+      "helper-shaped-record-native-binding-unavailable": 1
+    },
+    "native_helper_completions": 4,
+    "observed_entrypoint_executions": 4
+  }
+}

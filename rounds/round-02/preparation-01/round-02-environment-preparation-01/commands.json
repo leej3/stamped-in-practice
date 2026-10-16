@@ -1,0 +1,51 @@
+[
+  {
+    "argv": [
+      "pixi",
+      "install",
+      "--locked"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "\u2714 The default environment has been installed.\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "launch",
+      "--help"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "usage: prepare_launch.py [-h] [--host-config HOST_CONFIG] [--repo REPO]\n                         --branch BRANCH --base BASE [--kind {worktree,clone}]\n                         [--clone-path CLONE_PATH]\n                         [--judge-workspace JUDGE_WORKSPACE]\n                         --evidence EVIDENCE [--env-manifest ENV_MANIFEST]\n                         [--duct-executable DUCT_EXECUTABLE]\n                         [--approved-hooks APPROVED_HOOKS]\n                         [--trust-sync TRUST_SYNC] [--resolver RESOLVER]\n                         [--checkpoint-repo CHECKPOINT_REPO]\n                         [--annex-remote ANNEX_REMOTE]\n                         [--annex-git-url ANNEX_GIT_URL]\n                         [--annex-url ANNEX_URL] [--study STUDY]\n                         [--reference REFERENCE] [--cli CLI]\n                         [--seconds SECONDS] [--review-seconds REVIEW_SECONDS]\n                         [--model MODEL] [--effort EFFORT]\n                         [--role {research,judge}] [--codex-home CODEX_HOME]\n                         [--prepare-only] [--capture-execution]\n                         [--condition {baseline,discover-general,discover-science,stamped-explicit,skills}]\n                         [--protocol {legacy,neutral-v1}]\n                         [--common-resources COMMON_RESOURCES]\n                         [--skills-source SKILLS_SOURCE]\n                         [--seed-receipt SEED_RECEIPT]\n                         [--delivery-capture DELIVERY_CAPTURE]\n                         [--declared-artifacts DECLARED_ARTIFACTS]\n                         [--run-mode {development,formal}]\n                         [--procedure PROCEDURE]\n                         [--procedure-sha256 PROCEDURE_SHA256]\n                         [--resource-readiness RESOURCE_READINESS]\n                         [--worker-end-state WORKER_END_STATE]\n\nCreate, prepare and launch a fresh native session using existing host tools.\nNever pushes. All generated evidence belongs outside the new worker checkout.\n\noptions:\n  -h, --help            show this help message and exit\n  --host-config HOST_CONFIG\n  --repo REPO\n  --branch BRANCH\n  --base BASE           Coordinator revision pinning study/resources/skills;\n                        result revision for judges\n  --kind {worktree,clone}\n  --clone-path CLONE_PATH\n  --judge-workspace JUDGE_WORKSPACE\n                        Separate judge session/output repository; default:\n                        EVIDENCE/judgment\n  --evidence EVIDENCE\n  --env-manifest ENV_MANIFEST\n  --duct-executable DUCT_EXECUTABLE\n  --approved-hooks APPROVED_HOOKS\n  --trust-sync TRUST_SYNC\n  --resolver RESOLVER\n  --checkpoint-repo CHECKPOINT_REPO\n  --annex-remote ANNEX_REMOTE\n  --annex-git-url ANNEX_GIT_URL\n  --annex-url ANNEX_URL\n  --study STUDY         Installed study submodule; workers receive only its\n                        committed input/ tree\n  --reference REFERENCE\n                        Optional coordinator evaluation guidance file, judges\n                        only\n  --cli CLI\n  --seconds SECONDS     Explicit hard limit; 0 waits for completion\n  --review-seconds REVIEW_SECONDS\n  --model MODEL\n  --effort EFFORT\n  --role {research,judge}\n  --codex-home CODEX_HOME\n                        Prepared isolated public profile, without private\n                        global instructions\n  --prepare-only\n  --capture-execution   Request execution capture: outer native wrapper for\n                        neutral-v1; worker instructions for legacy\n  --condition {baseline,discover-general,discover-science,stamped-explicit,skills}\n  --protocol {legacy,neutral-v1}\n  --common-resources COMMON_RESOURCES\n                        Neutral workers: frozen optional resource facts,\n                        outside worker inputs\n  --skills-source SKILLS_SOURCE\n                        Installed repository containing the pinned research\n                        skill directories\n  --seed-receipt SEED_RECEIPT\n                        Neutral judges: original coordinator-only input\n                        receipt\n  --delivery-capture DELIVERY_CAPTURE\n                        Neutral judges: complete original-delivery manifest\n  --declared-artifacts DECLARED_ARTIFACTS\n                        Neutral workers: explicit external artifact paths with\n                        declaration provenance\n  --run-mode {development,formal}\n  --procedure PROCEDURE\n                        Sealed comparison procedure, formal runs only\n  --procedure-sha256 PROCEDURE_SHA256\n                        Registered SHA-256 of the sealed procedure\n  --resource-readiness RESOURCE_READINESS\n                        Completed readiness result.json, formal runs only\n  --worker-end-state WORKER_END_STATE\n                        External worker-stop receipt; required for formal\n                        judges\n",
+    "stderr": "\u2728 Pixi task (launch): python scripts/prepare_launch.py --model gpt-6-luna --effort high --help: (Launch one fresh research worker from selected study inputs)\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "python",
+      "-c",
+      "from pathlib import Path; import sys,json,argparse;sys.path.insert(0,'scripts');import assessment_procedure as p; B=Path('/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1');C=Path.cwd();m=p.load_procedure(B/'dataset/procedure.json','b011f6e68dc6838e736f1ae2ad70d52896dab9b848d6f33950b4d35dd86b1521');p.check_sources(m,C,C/'studies/narps','9068886f91615b2c69578bdaa6042a858f4d9011');h=json.loads(Path('/Users/johnlee/.config/stamped-in-practice/launch-neutral.json').read_bytes());h.update(role='research',capture_execution=True,common_resources=B/'dataset/resources/common-resources.md');a=argparse.Namespace(**h);p.check_settings(m,a);p.check_host(m,a);p.check_readiness(m,B/'readiness-01/result.json');p.check_native(m,Path(h['cli']),Path(h['codex_home']),'research');print(json.dumps({'source_host_settings_native_readiness':True,'python':sys.executable}))"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "{\"source_host_settings_native_readiness\": true, \"python\": \"/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/.pixi/envs/default/bin/python\"}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

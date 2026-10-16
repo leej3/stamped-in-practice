@@ -12,3 +12,6 @@ No worker, seed commit, model session or new research seal was created.
 The copied checks preserve commands and identities.
 Their duplicate materialized input and skill snapshot directories are represented by their exact inventories and already published source revisions; original study and skill payloads remain authoritative.
 The initial round-two plan and original registration remain unchanged until the launch decision is recorded.
+
+The exact ignored coordinator lock was installed with `pixi install --locked`, without a fresh solve.
+The candidate’s own launcher help/imports and source, host, settings, native and readiness guards pass from its intended directory. The prepared dispatcher binds the exact original allocation and prospective skill/source identity and still rejects the unchanged `planned` round-two plan.

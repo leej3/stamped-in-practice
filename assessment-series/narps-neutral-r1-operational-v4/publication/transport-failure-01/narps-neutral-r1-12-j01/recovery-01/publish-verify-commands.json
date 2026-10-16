@@ -1,0 +1,94 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "60d576b7f9ff682dab37bb00817a6288a0889c8d\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "Everything up-to-date\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "60d576b7f9ff682dab37bb00817a6288a0889c8d\trefs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01\n"
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annex-uuid",
+      "6215ce45-8f0f-4062-9bc0-d04781b4cd11"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annex-ignore",
+      "false"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-12-j01/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 1,
+    "stderr": "copy: 1 failed\n",
+    "stdout": "copy coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-12-j01/support-01/support.tar.gz (unable to connect to HTTP server: Network.Socket.connect: <socket: 20>: timeout (Operation timed out)) failed\n"
+  }
+]

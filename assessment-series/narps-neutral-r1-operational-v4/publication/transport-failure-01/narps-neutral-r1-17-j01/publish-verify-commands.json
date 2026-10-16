@@ -1,0 +1,70 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-17-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0ba05b59d9341b49e944b8a23d1271e302f684b6\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-17-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-17-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-17-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-17-j01-operational-v4-support-01' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-17-j01-operational-v4-support-01        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-17-j01-operational-v4-support-01\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-17-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-17-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0ba05b59d9341b49e944b8a23d1271e302f684b6\trefs/heads/codex/narps-neutral-r1-17-j01-operational-v4-support-01\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-17-j01/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-17-j01-01/publisher",
+    "returncode": 1,
+    "stderr": "  502 Proxy Error\n  502 Bad Gateway\ncopy: 1 failed\n",
+    "stdout": "copy coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-17-j01/support-01/support.tar.gz (to con-hub...) \n\n0%    31.98 KiB        61 MiB/s 6s\n0%    767.62 KiB        4 MiB/s 1m48s\n2%    9.4 MiB          43 MiB/s 8s   \n5%    17.87 MiB        42 MiB/s 8s   \n5%    18.21 MiB         1 MiB/s 4m11s\n5%    20.49 MiB        11 MiB/s 31s  \n8%    32.17 MiB        58 MiB/s 6s   \n12%   44.42 MiB        61 MiB/s 5s   \n14%   53.35 MiB        42 MiB/s 7s   \n14%   55 MiB          929 KiB/s 6m3s \n17%   66.31 MiB        55 MiB/s 5s   \n18%   70.15 MiB         2 MiB/s 2m39s\n21%   82.71 MiB        56 MiB/s 5s   \n22%   86.55 MiB         4 MiB/s 1m13s\n23%   88.89 MiB         9 MiB/s 31s  \n23%   89.24 MiB         1 MiB/s 3m18s\n25%   97.26 MiB        39 MiB/s 7s   \n28%   107.45 MiB       51 MiB/s 5s   \n30%   115.82 MiB       42 MiB/s 6s   \n33%   125.59 MiB       49 MiB/s 5s   \n35%   133.4 MiB        39 MiB/s 6s   \n37%   142.84 MiB       47 MiB/s 5s   \n40%   152.74 MiB       50 MiB/s 4s   \n42%   161.51 MiB       44 MiB/s 5s   \n44%   171.17 MiB       48 MiB/s 4s   \n47%   180.19 MiB       45 MiB/s 4s   \n49%   188.22 MiB       39 MiB/s 4s   \n50%   194.03 MiB       29 MiB/s 6s   \n50%   194.16 MiB       76 KiB/s 42m54s\n53%   204.4 MiB        51 MiB/s 3s    \n56%   213.71 MiB       38 MiB/s 4s    \n56%   217.27 MiB        2 MiB/s 1m25s \n60%   229.01 MiB       58 MiB/s 2s    \n61%   235.67 MiB       29 MiB/s 5s    \n61%   236.45 MiB      453 KiB/s 5m35s \n65%   248.25 MiB       51 MiB/s 2s    \n66%   255.63 MiB       33 MiB/s 3s    \n67%   256.12 MiB      299 KiB/s 7m20s \n69%   267.21 MiB       53 MiB/s 2s    \n71%   272.49 MiB       26 MiB/s 4s    \n71%   272.74 MiB      150 KiB/s 12m46s\n74%   284.3 MiB        58 MiB/s 1s    \n75%   290.08 MiB       24 MiB/s 3s    \n76%   291.83 MiB        1 MiB/s 1m31s \n79%   303.38 MiB       54 MiB/s 1s    \n80%   307.32 MiB        2 MiB/s 37s   \n83%   319.22 MiB       54 MiB/s 1s    \n85%   326.47 MiB       33 MiB/s 1s    \n85%   326.5 MiB        18 KiB/s 53m50s\n88%   338.93 MiB       56 MiB/s 0s    \n89%   342.58 MiB        2 MiB/s 22s   \n92%   354.86 MiB       59 MiB/s 0s    \n94%   359.76 MiB        3 MiB/s 9s    \n97%   374.16 MiB       72 MiB/s 0s    \n98%   378.69 MiB       23 MiB/s 0s    \n98%   378.94 MiB      146 KiB/s 40s   \n100%  384.75 MiB       69 MiB/s 0s    \n                                      \n\n                                      \n\n0%    31.98 KiB        19 MiB/s 20s\n0%    671.67 KiB        3 MiB/s 2m3s\n1%    3.25 MiB         13 MiB/s 29s \n1%    4.25 MiB         65 KiB/s 1h40m\n5%    18.58 MiB        72 MiB/s 5s   \n9%    35.8 MiB         86 MiB/s 4s   \n14%   52.47 MiB        83 MiB/s 4s   \n18%   69.68 MiB        84 MiB/s 3s   \n21%   81.05 MiB        43 MiB/s 6s   \n22%   83.08 MiB         5 MiB/s 1m   \n23%   87.89 MiB        24 MiB/s 12s  \n27%   102.33 MiB       72 MiB/s 3s   \n31%   118.75 MiB       82 MiB/s 3s   \n35%   134.65 MiB       77 MiB/s 3s   \n39%   149.15 MiB       72 MiB/s 3s   \n42%   162.3 MiB        65 MiB/s 3s   \n46%   177.76 MiB       77 MiB/s 2s   \n51%   194.37 MiB       83 MiB/s 2s   \n55%   211.49 MiB       85 MiB/s 2s   \n59%   228.61 MiB       86 MiB/s 1s   \n64%   245.04 MiB       82 MiB/s 1s   \n68%   261.68 MiB       76 MiB/s 1s   \n73%   279.02 MiB       86 MiB/s 1s   \n77%   295.89 MiB       84 MiB/s 1s   \n81%   312.85 MiB       85 MiB/s 0s   \n86%   329.68 MiB       84 MiB/s 0s   \n90%   346.17 MiB       82 MiB/s 0s   \n94%   363.26 MiB       85 MiB/s 0s   \n99%   380.35 MiB       85 MiB/s 0s   \n100%  384.75 MiB       87 MiB/s 0s   \n                                     \n\n                                     \nfailed\n"
+  }
+]

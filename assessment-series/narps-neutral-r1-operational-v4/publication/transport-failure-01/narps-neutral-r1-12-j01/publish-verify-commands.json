@@ -1,0 +1,70 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "60d576b7f9ff682dab37bb00817a6288a0889c8d\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-12-j01-operational-v4-support-01' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-12-j01-operational-v4-support-01        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-12-j01-operational-v4-support-01\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "60d576b7f9ff682dab37bb00817a6288a0889c8d\trefs/heads/codex/narps-neutral-r1-12-j01-operational-v4-support-01\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-12-j01/support-01/support.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/operational-support-publication-r1-12-j01-01/publisher",
+    "returncode": 1,
+    "stderr": "  Remote con-hub not usable by git-annex; setting annex-ignore\n  https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git/config download failed: Proxy Error\ngit-annex: cannot determine uuid for con-hub (perhaps you need to run \"git annex sync\"?) (remote.con-hub.annex-ignore is set)\n\n",
+    "stdout": "\n\n"
+  }
+]
