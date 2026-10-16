@@ -1,0 +1,227 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "The study inputs, code, environment, run logs, and results sit under one repository root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All 54 source map URLs returned manifest-matching bytes and SHA-256; code reads the in-root input/data paths.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "Analysis libraries are declared in pixi.toml; the atlas cache is included in results/.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/004": {
+      "value": "yes",
+      "reason": "Git tracks the code and documentation, and the assessed worker stop was clean.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "Git-annex tracks the large map and atlas payloads; no large binary is a Git blob.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The release log records command and host, but no lock or exact environment pin links outputs to a full environment.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "No README or Makefile gives installation and usage; results/report.md has only a reproduction command.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The documented Pixi command starts scripts/group_analysis.py and is recorded in the release log.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "Tracked analysis code uses paths relative to its repository root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "Analysis imports are declared in pixi.toml, but the documented pixi run also assumes Pixi is installed on the host.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "Pixi lists macOS and Linux targets, but host Pixi installation and network access for atlas retrieval are not documented.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "Package dependencies and target platforms are listed, but Pixi setup and host requirements are not.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/013": {
+      "value": "yes",
+      "reason": "pixi.toml is tracked with the analysis code and data.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency update or lock regeneration process is declared in the environment specification or report.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "pixi.toml uses broad version ranges and no pixi.lock pins the resolved environment.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "The worker stop and remote branch share this commit; all 54 maps fetch, but annexed results and atlas payloads failed fresh-clone retrieval.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report gives a Pixi command, but omits how to install Pixi and obtain a pinned environment.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git and git-annex track the code, maps, cached atlas, and results within one dataset.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "No CI configuration checks the workflow or keeps its instructions accurate.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "Inputs, analysis code, results, and environment specification occupy distinct paths.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: supplied data and declared software are public; no restricted component is present.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "The fresh clone could not retrieve annex payloads, so the analysis entrypoint never ran.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The documented Pixi environment is reused on the host; no disposable container or job environment is declared.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No CI rebuilds and tests the environment used for the results.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "The object contains specifications and atlas cache files, but no archived executable environment or package image.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No process for updating dependencies is declared or tracked; this duplicates must/014.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "The external dataset is annexed within this repository, not linked as a submodule.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "Directories separate inputs, code, results, and environment, but recombination is not documented.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Inputs and code are separable by path, but the script expects fixed filenames and results layout.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "The object has no module composition mechanism; the workflow is a single repository command.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/005": {
+      "value": "no",
+      "reason": "The report links the analysis and key outputs, but no root README explains repository navigation.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    }
+  },
+  "assessor": {
+    "skill": "human",
+    "harness": "checklist web app",
+    "format": 3
+  }
+}

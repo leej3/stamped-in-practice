@@ -1,0 +1,1 @@
+First report writer attempt: `cat > "$OUT/2026-10-16-assessment.md" <<EOF` used an unquoted heredoc around Markdown containing backticks and variables; then it attempted to append the response table and report footer. Bash expanded Markdown contents.
