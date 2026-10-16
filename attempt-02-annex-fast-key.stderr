@@ -1,0 +1,154 @@
+Invalid option `--key'
+
+Usage: git-annex COMMAND
+
+  git-annex - manage files with git, without checking their contents in
+
+  Commonly used commands:
+
+  add             add files to annex
+  addcomputed     add computed files to annex
+  addurl          add urls to annex
+  assist          add files and sync changes with remotes
+  assistant       daemon to add files and automatically sync changes
+  copy            copy content of files to/from another repository
+  drop            remove content of files from repository
+  edit            same as unlock
+  export          export a tree of files to a special remote
+  get             get content of annexed files
+  help            display help
+  import          add a tree of files to the repository
+  importfeed      import files from podcast feeds
+  lock            undo unlock command
+  mirror          mirror content of files to/from another repository
+  move            move content of files to/from another repository
+  multicast       multicast file distribution
+  pull            pull content from remotes
+  push            push content to remotes
+  put             send content of files to other repositories
+  recompute       recompute computed files
+  remotedaemon    persistent communication with remotes
+  rmurl           record file is not available at url
+  satisfy         transfer and drop content as configured
+  status          show the working tree status (deprecated)
+  sync            synchronize local repository with remotes
+  undo            undo last change to a file or directory (deprecated)
+  unlock          unlock files for modification
+  watch           daemon to watch for changes and autocommit
+  webapp          launch webapp
+
+  Repository setup commands:
+
+  adjust          enter adjusted branch
+  config          configuration stored in git-annex branch
+  configremote    changes special remote configuration
+  dead            hide a lost repository or key
+  describe        change description of a repository
+  disableremote   stop using a remote
+  enable-tor      enable tor hidden service
+  enableremote    enables git-annex to use a remote
+  extendcluster   add an gateway to a cluster
+  group           add a repository to a group
+  groupwanted     get or set groupwanted expression
+  init            initialize git-annex
+  initcluster     initialize a new cluster
+  initremote      creates a special (non-git) remote
+  maxsize         configure maximum size of repositoriy
+  mincopies       configure minimum number of copies
+  numcopies       configure desired number of copies
+  p2p             configure peer-2-peer links between repositories
+  renameremote    changes name of special remote
+  required        get or set required content expression
+  schedule        get or set scheduled jobs
+  semitrust       return repository to default trust level
+  trust           trust a repository
+  ungroup         remove a repository from a group
+  untrust         do not trust a repository
+  updatecluster   update records of cluster nodes
+  updateproxy     update records with proxy configuration
+  vicfg           edit configuration in git-annex branch
+  wanted          get or set preferred content expression
+
+  Repository maintenance commands:
+
+  addunused       add back unused files
+  dropunused      drop unused file content
+  expire          expire inactive repositories
+  filter-branch   filter information from the git-annex branch
+  fix             fix up pointers to annexed content
+  forget          prune git-annex branch history
+  fsck            find and fix problems
+  merge           merge changes from remotes
+  repair          recover broken git repository
+  unused          look for unused file content
+  upgrade         upgrade repository
+
+  Query commands:
+
+  find            lists available files
+  findcomputed    lists computed files
+  findkeys        lists available keys
+  info            information about an item or the repository
+  inprogress      access files while they're being downloaded
+  list            show which remotes contain files
+  log             shows location log
+  map             generate map of repositories
+  oldkeys         list keys used for old versions of files
+  version         show version info
+  whereis         lists repositories that have file content
+  whereused       lists repositories that have file content
+
+  Metadata commands:
+
+  metadata        sets or gets metadata of a file
+  vadd            add subdirs to current view
+  vcycle          switch view to next layout
+  vfilter         filter current view
+  view            enter a view branch
+  vpop            switch back to previous view
+
+  Utility commands:
+
+  migrate         switch data to different backend
+  reinit          initialize repository, reusing old UUID
+  reinject        inject content of file back into annex
+  unannex         undo accidental add command
+  uninit          de-initialize git-annex and clean out repository
+
+  Plumbing commands:
+
+  calckey         calculate key for a file
+  checkpresentkey check if key is present in remote
+  contentlocation looks up content for a key
+  diffdriver      git diff driver
+  dropkey         drops annexed content for specified keys
+  examinekey      prints information from a key
+  filter-process  long running git filter process
+  findref         lists files in a git ref (deprecated)
+  fromkey         adds a file using a specific key
+  lookupkey       looks up key used for file
+  matchexpression checks if a preferred content expression matches
+  p2phttp         communicate in P2P protocol over http
+  post-receive    run by git post-receive hook
+  pre-commit      run by git pre-commit hook
+  readpresentkey  read records of where key is present
+  registerurl     registers an url for a key
+  rekey           change keys used for files
+  reregisterurl   updates url registration information
+  resolvemerge    resolve merge conflicts
+  restage         estages unlocked files in the git index
+  setkey          sets annexed content for a key
+  setpresentkey   change records of where key is present
+  smudge          git smudge filter
+  transferkey     transfers a key from or to a remote
+  transferrer     transfers content
+  unregisterurl   unregisters an url for a key
+
+  Testing commands:
+
+  benchmark       benchmark git-annex commands
+  fuzztest        generates fuzz test files
+  sim             simulate a network of repositories
+  test            run built-in test suite
+  testremote      test transfers to/from a remote
+

@@ -1,0 +1,9 @@
+GIT_TERMINAL_PROMPT=0 git ls-remote https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git refs/heads/codex/narps-r1-02
+
+datalad clone https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone"
+
+git -C "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone" checkout e0a8fb1ae78b457a38ff7102825b1d8bc63119b4
+
+datalad get -r "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone/input/data" "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone/results/group_mean_gain_effect.nii.gz" "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone/results/group_tstat.nii.gz"
+
+git -C "$STAMPED_JUDGE_OUTPUT/remote-retrieval/clone" annex fsck input/data results/group_mean_gain_effect.nii.gz results/group_tstat.nii.gz

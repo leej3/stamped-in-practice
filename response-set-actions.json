@@ -1,0 +1,643 @@
+[
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/001",
+      "status": "met",
+      "reason": "All required files are under the repository root; annex payloads resolve through the documented remote.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "Inputs, code, environment and results are repository paths.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02/judgment-01/judgment/remote-get.stdout",
+          "description": "Exact-commit clone fetched 54 participant maps and 2 group maps.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02/judgment-01/judgment/remote-fsck-full.stdout",
+          "description": "All 56 annex payloads passed checksum verification.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/002",
+      "status": "met",
+      "reason": "All 54 maps and cohort metadata are included under input/; sources.json preserves original provenance links.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Reads maps and metadata through repository-relative paths.",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Manifest identifies source images and cohort provenance.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/003",
+      "status": "met",
+      "reason": "Analysis libraries and TemplateFlow are declared in pixi.toml; nibabel is a Nilearn dependency.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Declares Python, NumPy, SciPy, pandas, matplotlib, Nilearn and TemplateFlow.",
+          "sha256": null
+        },
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Imports the declared analysis stack.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/004",
+      "status": "met",
+      "reason": "Git tracks the committed analysis and the worker-stop receipt records a clean tree at this commit.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02/judgment-01/worker-end-state.json",
+          "description": "Worker stopped at this HEAD with empty porcelain status.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/005",
+      "status": "met",
+      "reason": "Large maps use Git-annex pointers rather than Git blobs.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "no binary blob over 10485760 bytes",
+          "sha256": null
+        },
+        {
+          "uri": ".datalad/config",
+          "description": "git-annex in use for large content",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/006",
+      "status": "partial",
+      "reason": "Run logs record command and exit status, but no exact lock or environment hash links results to a pinned environment.",
+      "source": "probe:derived-have-records+judgement",
+      "evidence": [
+        {
+          "uri": "logs/final-analysis-releaseinfo.json",
+          "description": "Con-duct record captures command, host and successful exit.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Uses wildcard versions and no pixi.lock is tracked at this commit.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/007",
+      "status": "unmet",
+      "reason": "No README or Makefile provides installation and usage instructions.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "No README.md or Makefile is tracked at the assessed commit.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/008",
+      "status": "met",
+      "reason": "The report names the runnable script and exact pixi command; scripts/analyze.py is the analysis entry point.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility",
+          "description": "Documents NARPS_N_PERM=4999 pixi run python scripts/analyze.py.",
+          "sha256": null
+        },
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Executable group-analysis starting point.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/009",
+      "status": "met",
+      "reason": "The analysis resolves inputs and outputs relative to its own repository root.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "scripts/analyze.py",
+          "description": "ROOT is derived from __file__; data and outputs are relative.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/010",
+      "status": "met",
+      "reason": "Imports are covered by pixi.toml directly or through declared Nilearn dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Uses NumPy, SciPy, pandas, matplotlib, nibabel, Nilearn and TemplateFlow.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "Declares these packages directly or via Nilearn transitive requirements.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/011",
+      "status": "partial",
+      "reason": "Pixi platform targets are stated, but Pixi installation and TemplateFlow network access are undocumented host prerequisites.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Lists macOS 14 arm64 and linux-64 targets.",
+          "sha256": null
+        },
+        {
+          "uri": "results/report.md#Reproducibility",
+          "description": "Invokes pixi and analysis fetches TemplateFlow assets without documenting setup/network requirements.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/012",
+      "status": "partial",
+      "reason": "Package requirements are listed, but the host Pixi bootstrap and required network access are not documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Lists package dependencies and platforms.",
+          "sha256": null
+        },
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Fetches TemplateFlow mask and T1 assets at runtime.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/013",
+      "status": "met",
+      "reason": "pixi.toml is version-controlled with the analysis.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "spec environment specification",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/014",
+      "status": "unmet",
+      "reason": "No environment lock/update command or dependency-update history establishes a repeatable update process.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "No lockfile or regeneration instructions are present.",
+          "sha256": null
+        },
+        {
+          "uri": "git log -- pixi.toml",
+          "description": "Only the initial specification is tracked.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/015",
+      "status": "partial",
+      "reason": "pixi.toml is shared, but wildcard versions and the absence of pixi.lock do not freeze the environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Contains unconstrained * dependencies and version ranges.",
+          "sha256": null
+        },
+        {
+          "uri": "git ls-files pixi.lock",
+          "description": "No lock snapshot at assessed commit.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/016",
+      "status": "partial",
+      "reason": "The hub currently serves the exact commit and all annex payloads, but the receipt cannot attribute annex publication to the worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02/judgment-01/judgment/remote-fsck-full.stdout",
+          "description": "All 56 annex payloads passed full checksum verification after retrieval.",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-02/judgment-01/worker-end-state.json",
+          "description": "Records remote Git refs, not annex copy timing.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "unverified-claim"
+      ]
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "must/017",
+      "status": "unmet",
+      "reason": "The report gives a command but does not explain how to install or obtain the environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility",
+          "description": "Lists the run command only.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "No environment setup or retrieval instructions.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/001",
+      "status": "met",
+      "reason": "Git versions text and code while Git-annex tracks large binary content within the same repository.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": ".gitattributes and repository files are tracked in Git.",
+          "sha256": null
+        },
+        {
+          "uri": "results/group_mean_gain_effect.nii.gz",
+          "description": "Large result is a Git-annex pointer.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/002",
+      "status": "unmet",
+      "reason": "There is no CI configuration that checks the documented workflow.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no tracked .github/workflows/, .gitlab-ci.yml, .circleci/, .forgejo/workflows/, .gitea/workflows/ in 143 tracked paths",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/003",
+      "status": "met",
+      "reason": "Inputs, analysis code, results and environment specification occupy distinct paths.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "input",
+          "description": "inputs module",
+          "sha256": null
+        },
+        {
+          "uri": "scripts",
+          "description": "code module",
+          "sha256": null
+        },
+        {
+          "uri": "results",
+          "description": "derived module",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "environment module",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/009",
+      "status": "not-applicable",
+      "reason": "N/A: the object contains no restricted data or software component; the supplied maps are publicly retrievable.",
+      "source": "judgement",
+      "evidence": [],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/004",
+      "status": "not-checked",
+      "reason": "The only replay attempt was invalidated when the runner deleted input/participants.tsv before execution; no retry was authorized.",
+      "source": "probe:fresh-rerun+judgement",
+      "evidence": [
+        {
+          "uri": "2026-10-16-fresh-rerun.json",
+          "description": "Runner removed input/participants.tsv then the command failed with FileNotFoundError.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/005",
+      "status": "unmet",
+      "reason": "pixi run reuses the project environment; no disposable environment is created per execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md#Reproducibility",
+          "description": "Runs through the persistent project-local Pixi environment.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/006",
+      "status": "unmet",
+      "reason": "No locked environment or CI job regularly tests environment reconstitution.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "Unpinned dependencies; no lockfile tracked.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/007",
+      "status": "unmet",
+      "reason": "The environment is described by package declarations only; no environment artifacts are archived.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "No package cache, container image or executable environment artifact.",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "References packages without archiving them.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "should/008",
+      "status": "unmet",
+      "reason": "No environment update command is declared and no update instance appears in history.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "No dependency regeneration instructions.",
+          "sha256": null
+        },
+        {
+          "uri": "git log -- pixi.toml",
+          "description": "No tracked update instance.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "may/001",
+      "status": "unmet",
+      "reason": "No external data or software is included through submodules; maps use annex and packages use Pixi.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".gitmodules",
+          "description": "No submodules declared.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data and pixi.toml",
+          "description": "Use annex and package specifications instead.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "may/002",
+      "status": "unmet",
+      "reason": "Directories separate inputs, code and results, but no document explains modular composition.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md",
+          "description": "Describes analysis, not module relationships.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "may/003",
+      "status": "unmet",
+      "reason": "All components share one repository and the script assumes fixed paths; boundaries are not independently versioned.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Hard-wires input and results directories under one root.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "may/004",
+      "status": "unmet",
+      "reason": "No module composition mechanism is provided beyond the single analysis script.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "scripts/analyze.py",
+          "description": "Directly loads inputs and writes results within one repository.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "helper": "response set",
+    "arguments": {
+      "item": "may/005",
+      "status": "partial",
+      "reason": "The results report links figures and names the analysis command, but gives no guide to the input/code/environment boundaries.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/report.md",
+          "description": "Links figures and states the entry command.",
+          "sha256": null
+        },
+        {
+          "uri": "git ls-files",
+          "description": "No top-level README.md or module map is tracked.",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    }
+  }
+]
