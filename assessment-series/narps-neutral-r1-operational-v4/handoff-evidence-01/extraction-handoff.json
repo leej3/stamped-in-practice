@@ -1,0 +1,90 @@
+{
+  "kind": "extraction-agent-handoff",
+  "created_at": "2026-10-16T11:33:09.188033+00:00",
+  "scope": "Pause interactive agent only; extraction watcher and fixed assessment queue continue.",
+  "watcher": {
+    "pid": 55619,
+    "exec_session_id": 98640,
+    "script": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/watch-closed-batches-02.py",
+    "control_directory": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/closed-batch-watcher-02",
+    "next_batch": 8,
+    "behavior": "Reads immutable batch result only; creates additive snapshot. Retains aggregate exit2 and continues only exact known23-j01 response issue with other pipeline steps0 and no extraction failures; stops on new issues."
+  },
+  "latest_complete_snapshot": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-operational-extraction-01/snapshot-batch-07",
+  "identities": {
+    "index.json": "e205228e51c6873a20c60b9154e8018a2e75908142e3bc96f11c89216ba88007",
+    "snapshot.json": "b1541912a97cd4537db2a9ff2cc7633b2dff8d5047d402830a7d296ff8d34ec7",
+    "round-01-availability.json": "8970f8706bc907e9a3a08d3059581d149f2f84e4cb74245746cbce19f433ea50",
+    "replay-native-observations.json": "07165b96e163b5f04efcfe2ecf0673a37e46a20c3005501ebb9d612b04ddb3ac",
+    "processing-result.json": "77e04c0e75d23104d0834a6abe8ecbc31e74a6971e3b6de5ecf732e527b2d113",
+    "round-01-summary/presentation.json": "a56eed5de9497577f83bf9c79893ca69902ca0919cbc34ae5f9c6c17ded54e54"
+  },
+  "counts": {
+    "launcher_native_states": {
+      "launcher-closed-native-finalized": 21,
+      "pending": 11
+    },
+    "admission": {
+      "eligible": 21,
+      "pending": 11
+    },
+    "checklist": {
+      "valid": 20,
+      "pending": 11,
+      "invalid": 1
+    },
+    "scientific_availability": {
+      "available": 21,
+      "pending": 11
+    },
+    "scientific_extraction_among_finalized": {
+      "explicit": 21
+    },
+    "replay_record_availability": {
+      "retained": 21,
+      "pending": 11
+    },
+    "hypothesis_conclusion_available": 21,
+    "slots_with_retained_replay_record": 21,
+    "replay_records_with_matching_capture": 10,
+    "replay_reported_statuses_by_record": {
+      "not-checked": 17,
+      "met": 4
+    },
+    "replay_explicit_attempted_false_records": 4,
+    "replay_explicit_zero_attempt_records": 10,
+    "replay_reported_entrypoint_returncodes": {
+      "0": 4
+    }
+  },
+  "native_replay_evidence": {
+    "status_counts": {
+      "judge-authored-replay-record": 5,
+      "native-helper-output-bound": 4,
+      "record-unavailable-or-capture-unbound": 11,
+      "helper-shaped-record-native-binding-unavailable": 1
+    },
+    "native_helper_completions": 4,
+    "observed_entrypoint_executions": 4
+  },
+  "known_issue_receipts": [
+    "checklist-identity-issue-23-j01-01.json",
+    "scientific-binding-23-j01-01.json"
+  ],
+  "inspection": [
+    "Read closed-batch-watcher-02/batch-NN.json and batch-NN-issue-check.json. Poll exec session98640 if still accessible, or ps PID55619.",
+    "On new issue inspect snapshot-batch-NN/analysis/issues.jsonl, extraction-failures.json, processing-result.json and commands/snapshot-batch-NN-*/{result.json,stdout,stderr}. Preserve all files and raw judgments.",
+    "Do not rerun an existing snapshot name. After evidential diagnosis, create a separately named watcher revision/control directory starting with the next unprocessed batch. Continue a known issue only with exact retained issue equality; never modify frozen aggregation acceptance.",
+    "If a snapshot attempt failed before completion, retain it and use a new additive output name for a retry; update final reproduction source explicitly if final snapshot is named differently."
+  ],
+  "pending_work": [
+    "Let batches8..11 close and extract; verify32 launcher completions and0 pending independently from native/admission/measure validity.",
+    "Review final snapshot counts by primary/duplicate roles; optionally add a role-separated availability report (not yet implemented).",
+    "Run prepared final-relocation-01/validate.py exactly once using common-environment Python via run-recorded.py; it requires final snapshot-batch-11, copies evidence, denies original evidence paths, uses exact main reporting commit2f641a9134b9740a3ee859d8f2bd2d7e487fe957 and expects equal frozen/relocated returncode (0or2), all36 table bytes and unchanged frozen identities. Outputs remain additive.",
+    "Visually inspect all final round-01-summary PNGs. Short effort titles and pending/unavailable science caption are in own presentation-v1 scripts; sealed figure source untouched.",
+    "Final review20-j01 setup failure before replay entrypoint and judge-authored helper-shaped JSON; should/004 alreadynotchecked, preserve raw answer and independent measures. No regrading or replacement.",
+    "Write final concise evidence report with exact hashes, separate32slot measures, original72/96allocation and future48/64pending outside currentseries; report known23 checklist failure and replay limits.",
+    "No commits, pushes, model launches, scientific replay, source changes or publication from this agent. Coordinator owns dispatch/publication."
+  ],
+  "final_relocation_prepared_script_sha256": "e934840ef22eb21a92798433873cf2c5a4ff35927c45cb37204535f29bd11af3"
+}
