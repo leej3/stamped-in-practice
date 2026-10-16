@@ -2,7 +2,7 @@
   "schema_version": 1,
   "comparison_id": "narps-v1",
   "registered_at": "2026-10-16T00:23:13.793083+00:00",
-  "status": "registered-awaiting-readiness",
+  "status": "registered-ready",
   "formal_workers_started": 0,
   "procedure": {
     "path": "procedure.json",
@@ -73,17 +73,15 @@
     }
   },
   "resource_gate": {
-    "path": "readiness/result.json",
-    "sha256": "ce6a086a8fb48e450b57c82c8e77613f7d40933f314627b5948dfae593456354",
-    "ready": false,
-    "unmet_requirements": [
-      "annex-round-trip"
-    ],
-    "next_step": "Unlock the host credential vault, rerun readiness into a new evidence directory, and retain both attempts before starting formal workers."
+    "path": "readiness-02/result.json",
+    "sha256": "18e51bafd3ee2ea76863979c3dd669d6c490ca93eb7624cee419267a1951d8a1",
+    "ready": true,
+    "unmet_requirements": [],
+    "prior_attempt": "readiness/result.json"
   },
   "publication": {
-    "git_records": "Publish with this registration commit",
-    "annex_evidence": "Pending credential unlock; see evidence/retention.json"
+    "git_records": "Published with the registration and readiness commits",
+    "annex_evidence": "Published and independently retrieved; see evidence/retention.json and evidence/access-evidence-publication.json"
   },
   "scope_notes": [
     "No formal scientific runs are included in preparation evidence.",
@@ -92,5 +90,11 @@
     "The worker model is gpt-6-luna with high reasoning effort; no hard termination deadline, progress review at 5400 seconds.",
     "Duct logging is requested for scientific workers and is retained with each experiment.",
     "Do not regenerate this seal or alter the allocation to repair an access failure."
-  ]
+  ],
+  "budget_policy": {
+    "source": "User clarification: no preset budget; complete a scientifically useful, presentable comparison.",
+    "spending_cap": null,
+    "hard_runtime_limit_seconds": 0,
+    "design_scope": "Preserve the registered 36-worker, 48-judgment, three-round design. Report favorable, null and adverse results equally; additional studies require a separate registration."
+  }
 }

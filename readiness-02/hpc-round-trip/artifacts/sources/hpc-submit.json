@@ -1,0 +1,18 @@
+{
+  "at": "2026-10-15T21:52:44.235637+00:00",
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=10",
+    "unity",
+    "bash",
+    "-s"
+  ],
+  "script": "set -eu\nmkdir -p /work/pi_d31548v_dartmouth_edu/stamped/readiness-20261015-1755\ncd /work/pi_d31548v_dartmouth_edu/stamped/readiness-20261015-1755\nsbatch --parsable --partition=cpu --time=00:02:00 --mem=128M --cpus-per-task=1 --job-name=stamped-readiness --output=job-%j.out --error=job-%j.err --wrap='hostname; printf \"stamped-readiness-ok\\n\"'\n",
+  "returncode": 0,
+  "stdout": "65726805\n",
+  "stderr": "sbatch: INFO: Note that 128 MB per node is a small amount. Did you mean 128g?\n",
+  "remote_directory": "/work/pi_d31548v_dartmouth_edu/stamped/readiness-20261015-1755"
+}
