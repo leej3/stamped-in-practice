@@ -1,0 +1,159 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--name-only"
+    ],
+    "returncode": 0,
+    "stdout": "scripts/AGGREGATION.md\nscripts/aggregate_comparison.py\ntests/test_aggregate_relocation.py\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "returncode": 0,
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "show",
+      "-s",
+      "--format=%B",
+      "8de6636ff1bad6b2ec51b0baa30cbb670b3e89da"
+    ],
+    "returncode": 0,
+    "stdout": "fix(reporting): resolve retained evidence after relocation\n\nRead archived artifacts through an explicit path-and-digest map without\nrewriting original receipts or falling back to old absolute paths.\nRecord the reporting map independently from the sealed assessment.\n\nValidate unchanged tables against retained outputs with original evidence\npaths disabled; retain original frozen reporting artifacts separately.\n\nCo-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "commit",
+      "-F",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/reporting-relocation-integration-01/message.txt"
+    ],
+    "returncode": 0,
+    "stdout": "[main 2f641a9] fix(reporting): resolve retained evidence after relocation\n 3 files changed, 155 insertions(+)\n create mode 100644 tests/test_aggregate_relocation.py\n",
+    "stderr": "Format prose with Snapper................................................Passed\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "2f641a9134b9740a3ee859d8f2bd2d7e487fe957\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "2f641a9134b9740a3ee859d8f2bd2d7e487fe957:scripts/AGGREGATION.md"
+    ],
+    "returncode": 0,
+    "stdout": "49109608570f63c20e9db2acf802c03727775418\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "8de6636ff1bad6b2ec51b0baa30cbb670b3e89da:scripts/AGGREGATION.md"
+    ],
+    "returncode": 0,
+    "stdout": "49109608570f63c20e9db2acf802c03727775418\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "2f641a9134b9740a3ee859d8f2bd2d7e487fe957:scripts/aggregate_comparison.py"
+    ],
+    "returncode": 0,
+    "stdout": "12854f55f719522ad27f1066f427a340e91314cb\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "8de6636ff1bad6b2ec51b0baa30cbb670b3e89da:scripts/aggregate_comparison.py"
+    ],
+    "returncode": 0,
+    "stdout": "12854f55f719522ad27f1066f427a340e91314cb\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "2f641a9134b9740a3ee859d8f2bd2d7e487fe957:tests/test_aggregate_relocation.py"
+    ],
+    "returncode": 0,
+    "stdout": "57d6d27fee821cb196931e26d0b13a239217e0fb\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "8de6636ff1bad6b2ec51b0baa30cbb670b3e89da:tests/test_aggregate_relocation.py"
+    ],
+    "returncode": 0,
+    "stdout": "57d6d27fee821cb196931e26d0b13a239217e0fb\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:main"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   9b7325d..2f641a9  HEAD -> main\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/main"
+    ],
+    "returncode": 0,
+    "stdout": "2f641a9134b9740a3ee859d8f2bd2d7e487fe957\trefs/heads/main\n",
+    "stderr": ""
+  }
+]

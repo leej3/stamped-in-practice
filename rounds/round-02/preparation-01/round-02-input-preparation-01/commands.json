@@ -1,0 +1,145 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "9068886f91615b2c69578bdaa6042a858f4d9011\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "studies/narps"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "Submodule path 'studies/narps': checked out '221074f0ab291f0d2a0d919a2dd02e52a584f6b1'\n",
+    "stderr": "Cloning into '/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps'...\nFrom https://github.com/leej3/stamped-in-practice\n * branch            221074f0ab291f0d2a0d919a2dd02e52a584f6b1 -> FETCH_HEAD\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps",
+    "returncode": 0,
+    "stdout": "221074f0ab291f0d2a0d919a2dd02e52a584f6b1\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "round-two selected supplied inputs"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps",
+    "returncode": 0,
+    "stdout": "init round-two selected supplied inputs \n\nok\n(recording state in git...)\n",
+    "stderr": "  Remote origin not usable by git-annex; setting annex-ignore\n  https://github.com/leej3/stamped-in-practice.git/config download failed: Not Found\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "supplied-input-cache",
+      "/Users/johnlee/code/CON/stamped-in-practice/studies/narps"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "supplied-input-cache",
+      "--",
+      "input"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps",
+    "returncode": 0,
+    "stdout": "get input/data/sub-001_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        92 MiB/s 0s\n100%  1.71 MiB        131 MiB/s 0s\n                                  \nok\nget input/data/sub-003_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       100 MiB/s 0s\n100%  1.68 MiB        208 MiB/s 0s\n                                  \nok\nget input/data/sub-005_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       113 MiB/s 0s\n100%  1.76 MiB        212 MiB/s 0s\n                                  \nok\nget input/data/sub-009_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       110 MiB/s 0s\n100%  1.66 MiB        197 MiB/s 0s\n                                  \nok\nget input/data/sub-011_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       112 MiB/s 0s\n100%  1.74 MiB        192 MiB/s 0s\n                                  \nok\nget input/data/sub-013_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        74 MiB/s 0s\n100%  1.68 MiB        208 MiB/s 0s\n                                  \nok\nget input/data/sub-015_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       107 MiB/s 0s\n100%  1.72 MiB        219 MiB/s 0s\n                                  \nok\nget input/data/sub-017_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.71 MiB        206 MiB/s 0s\n                                  \nok\nget input/data/sub-019_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        71 MiB/s 0s\n100%  1.71 MiB        209 MiB/s 0s\n                                  \nok\nget input/data/sub-021_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        74 MiB/s 0s\n100%  1.74 MiB        208 MiB/s 0s\n                                  \nok\nget input/data/sub-025_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        77 MiB/s 0s\n100%  1.72 MiB        216 MiB/s 0s\n                                  \nok\nget input/data/sub-027_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       108 MiB/s 0s\n100%  1.73 MiB        206 MiB/s 0s\n                                  \nok\nget input/data/sub-029_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       110 MiB/s 0s\n100%  1.71 MiB        219 MiB/s 0s\n                                  \nok\nget input/data/sub-033_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        77 MiB/s 0s\n100%  1.68 MiB        209 MiB/s 0s\n                                  \nok\nget input/data/sub-035_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        77 MiB/s 0s\n100%  1.69 MiB        213 MiB/s 0s\n                                  \nok\nget input/data/sub-037_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        71 MiB/s 0s\n100%  1.72 MiB        189 MiB/s 0s\n                                  \nok\nget input/data/sub-039_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       103 MiB/s 0s\n100%  1.69 MiB        196 MiB/s 0s\n                                  \nok\nget input/data/sub-041_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        93 MiB/s 0s\n100%  1.72 MiB        166 MiB/s 0s\n                                  \nok\nget input/data/sub-043_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.69 MiB        188 MiB/s 0s\n                                  \nok\nget input/data/sub-045_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.73 MiB        196 MiB/s 0s\n                                  \nok\nget input/data/sub-047_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        72 MiB/s 0s\n100%  1.68 MiB        210 MiB/s 0s\n                                  \nok\nget input/data/sub-049_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       127 MiB/s 0s\n100%  1.74 MiB        145 MiB/s 0s\n                                  \nok\nget input/data/sub-051_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        79 MiB/s 0s\n100%  1.67 MiB        208 MiB/s 0s\n                                  \nok\nget input/data/sub-053_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        19 MiB/s 0s\n100%  1.68 MiB        200 MiB/s 0s\n                                  \nok\nget input/data/sub-055_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        72 MiB/s 0s\n100%  1.71 MiB        210 MiB/s 0s\n                                  \nok\nget input/data/sub-057_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       103 MiB/s 0s\n100%  1.73 MiB        205 MiB/s 0s\n                                  \nok\nget input/data/sub-059_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        76 MiB/s 0s\n100%  1.7 MiB         210 MiB/s 0s\n                                  \nok\nget input/data/sub-061_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        77 MiB/s 0s\n100%  1.7 MiB         191 MiB/s 0s\n                                  \nok\nget input/data/sub-063_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        72 MiB/s 0s\n100%  1.7 MiB         210 MiB/s 0s\n                                  \nok\nget input/data/sub-067_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        83 MiB/s 0s\n100%  1.69 MiB        215 MiB/s 0s\n                                  \nok\nget input/data/sub-069_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        78 MiB/s 0s\n100%  1.69 MiB        210 MiB/s 0s\n                                  \nok\nget input/data/sub-071_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        82 MiB/s 0s\n100%  1.71 MiB        217 MiB/s 0s\n                                  \nok\nget input/data/sub-073_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       102 MiB/s 0s\n100%  1.7 MiB         213 MiB/s 0s\n                                  \nok\nget input/data/sub-075_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        81 MiB/s 0s\n100%  1.69 MiB        213 MiB/s 0s\n                                  \nok\nget input/data/sub-077_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        76 MiB/s 0s\n100%  1.67 MiB        175 MiB/s 0s\n                                  \nok\nget input/data/sub-079_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        71 MiB/s 0s\n100%  1.69 MiB        212 MiB/s 0s\n                                  \nok\nget input/data/sub-081_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       117 MiB/s 0s\n100%  1.73 MiB        214 MiB/s 0s\n                                  \nok\nget input/data/sub-083_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        75 MiB/s 0s\n100%  1.69 MiB        203 MiB/s 0s\n                                  \nok\nget input/data/sub-085_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.65 MiB        213 MiB/s 0s\n                                  \nok\nget input/data/sub-087_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       109 MiB/s 0s\n100%  1.74 MiB        188 MiB/s 0s\n                                  \nok\nget input/data/sub-089_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        79 MiB/s 0s\n100%  1.66 MiB        214 MiB/s 0s\n                                  \nok\nget input/data/sub-093_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       116 MiB/s 0s\n100%  1.7 MiB         197 MiB/s 0s\n                                  \nok\nget input/data/sub-095_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       105 MiB/s 0s\n100%  1.65 MiB        213 MiB/s 0s\n                                  \nok\nget input/data/sub-099_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        74 MiB/s 0s\n100%  1.74 MiB        210 MiB/s 0s\n                                  \nok\nget input/data/sub-103_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.73 MiB        214 MiB/s 0s\n                                  \nok\nget input/data/sub-105_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.71 MiB        205 MiB/s 0s\n                                  \nok\nget input/data/sub-107_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        79 MiB/s 0s\n100%  1.72 MiB        210 MiB/s 0s\n                                  \nok\nget input/data/sub-109_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        73 MiB/s 0s\n100%  1.71 MiB        168 MiB/s 0s\n                                  \nok\nget input/data/sub-113_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       122 MiB/s 0s\n100%  1.74 MiB        206 MiB/s 0s\n                                  \nok\nget input/data/sub-115_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        79 MiB/s 0s\n100%  1.71 MiB        216 MiB/s 0s\n                                  \nok\nget input/data/sub-117_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       107 MiB/s 0s\n100%  1.66 MiB        207 MiB/s 0s\n                                  \nok\nget input/data/sub-119_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB       108 MiB/s 0s\n100%  1.67 MiB        198 MiB/s 0s\n                                  \nok\nget input/data/sub-121_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        77 MiB/s 0s\n100%  1.68 MiB        214 MiB/s 0s\n                                  \nok\nget input/data/sub-123_hypo1_cope.nii.gz (from supplied-input-cache...) \n\n2%    31.98 KiB        78 MiB/s 0s\n100%  1.66 MiB        207 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice/studies/narps",
+    "returncode": 0,
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "submodule",
+      "status"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/4af0/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "-9852d8360f9519d21d11099b45f5deb8ba80cb28 assessment\n-9a8bd5eb1cf09cd55365cb41cbe5135f85022aa0 iterations/narps-neutral-v1\n-851f3905ab26d0a9ac6deb7c52f85bd085cc54ff iterations/narps-v1\n-d83d7d66a9060be6afae57336124afdcfc1743e9 skills\n 221074f0ab291f0d2a0d919a2dd02e52a584f6b1 studies/narps (221074f)\n",
+    "stderr": ""
+  }
+]
