@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-16T15:24:07.833190+00:00",
+  "commands": [
+    {
+      "argv": [
+        "sysctl",
+        "-n",
+        "hw.logicalcpu",
+        "hw.physicalcpu",
+        "hw.memsize"
+      ],
+      "returncode": 0,
+      "stdout": "00.stdout",
+      "stderr": "00.stderr"
+    },
+    {
+      "argv": [
+        "vm_stat"
+      ],
+      "returncode": 0,
+      "stdout": "01.stdout",
+      "stderr": "01.stderr"
+    },
+    {
+      "argv": [
+        "memory_pressure"
+      ],
+      "returncode": 0,
+      "stdout": "02.stdout",
+      "stderr": "02.stderr"
+    },
+    {
+      "argv": [
+        "ps",
+        "-axo",
+        "pid,ppid,%cpu,%mem,rss,etime,command"
+      ],
+      "returncode": 0,
+      "stdout": "03.stdout",
+      "stderr": "03.stderr"
+    },
+    {
+      "argv": [
+        "df",
+        "-h",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1"
+      ],
+      "returncode": 0,
+      "stdout": "04.stdout",
+      "stderr": "04.stderr"
+    }
+  ]
+}
