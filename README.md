@@ -2,9 +2,20 @@
 
 This repository analyzes the 54 supplied participant gain-effect maps at the group stage. It does not rerun preprocessing or participant models. See [`protocol/analysis-plan.md`](protocol/analysis-plan.md) and [`input/upstream-methods.md`](input/upstream-methods.md) for the estimand and fixed upstream constraints.
 
+## Install
+
+Use Git, git-annex, and Pixi. For the exact validated environment, check out the companion branch `codex/env-narps-r1-11`; it is one commit above the task commit and tracks the exact `pixi.lock`. From that checkout, install dependencies and retrieve the maps:
+
+```sh
+pixi install --locked
+git annex get input/data/
+```
+
+The environment supports `osx-arm64` (macOS 14 or later) and `linux-64`, as recorded in `pixi.toml` and `pixi.lock`.
+
 ## Run
 
-The root Pixi environment supplies dependencies and the task:
+The main group-analysis entry point is `scripts/group_analysis.py`, exposed as the `group-analysis` Pixi task. The root Pixi environment supplies these tasks:
 
 ```sh
 pixi run group-analysis
