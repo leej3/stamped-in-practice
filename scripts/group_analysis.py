@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """One-sample voxelwise max-t permutation analysis for NARPS H1."""
 from __future__ import annotations
+import argparse
 import hashlib
 import json
 import platform
@@ -37,6 +38,9 @@ def sha256(path: Path) -> str:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--pilot", action="store_true", help="inspect the first map and stop")
+    args = parser.parse_args()
     started = time.time()
     manifest = json.loads((INPUT / "sources.json").read_text())
     participants = pd.read_csv(INPUT / "participants.tsv", sep="\t")
@@ -46,6 +50,27 @@ def main() -> None:
         raise ValueError("Unexpected group in cohort table")
     files = manifest["files"]
     ids = participants.participant_id.tolist()
+    if args.pilot:
+        pid = ids[0]
+        rel = f"data/{pid}_hypo1_cope.nii.gz"
+        path = INPUT / rel
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        img = nib.load(str(path))
+        data = np.asarray(img.dataobj, dtype=np.float32)
+        observed = sha256(path)
+        expected = files[rel]["sha256"]
+        pilot = {"participant_id": pid, "sha256_ok": observed == expected,
+                 "shape": list(img.shape), "voxel_sizes_mm": nib.affines.voxel_sizes(img.affine).tolist(),
+                 "finite_fraction": float(np.isfinite(data).mean()), "min": float(np.nanmin(data)),
+                 "max": float(np.nanmax(data)), "mean": float(np.nanmean(data)),
+                 "std": float(np.nanstd(data)), "map_type": manifest["map_type"],
+                 "spatial_reference": manifest["spatial_reference"]}
+        (OUT / "pilot.json").write_text(json.dumps(pilot, indent=2) + "\n")
+        print(json.dumps(pilot, indent=2))
+        if not pilot["sha256_ok"] or pilot["finite_fraction"] != 1:
+            raise RuntimeError("Pilot checksum or finite-value check failed")
+        return
     checks, exclusions, images = [], [], []
     reference_shape = reference_affine = None
     for pid in ids:
