@@ -260,6 +260,21 @@ def research_procedure(manifest):
                 raise SystemExit("Invalid retained commit identity")
         if not re.fullmatch(r"[0-9a-f]{64}", item["worker_end_state_sha256"]):
             raise SystemExit("Invalid retained stop receipt digest")
+    previous = amendment.get("supersedes_assessment_procedure")
+    if previous is not None:
+        if not isinstance(previous, dict) or set(previous) != {"json", "sha256"}:
+            raise SystemExit("Invalid superseded assessment seal reference")
+        require_equal(sha256(previous["json"].encode()), previous["sha256"],
+                      "superseded assessment seal digest")
+        earlier = json.loads(previous["json"])
+        require_equal(earlier.get("version"), 2, "superseded assessment seal version")
+        research_procedure(earlier)
+        require_equal(earlier["assessment_amendment"]["research_procedure_json"], original,
+                      "supersession preserves original research seal bytes")
+        current = {item["run"]: item for item in retained}
+        for item in earlier["assessment_amendment"]["retained_objects"]:
+            require_equal(current.get(item["run"]), item,
+                          "supersession preserves retained object " + item["run"])
     return research
 
 
@@ -396,6 +411,8 @@ def replay_instruction(manifest):
     return ("\nFrozen formal replay scope: " + json.dumps(manifest["replay"], sort_keys=True) +
             "\nUse fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" with an explicit --entry from the "
             "object's documentation, and --workdir and --output under STAMPED_JUDGE_OUTPUT. "
+            "Pass explicit --outputs naming documented generated outputs; exclude inputs, "
+            "reference resources and installed skill assets. "
             "The wrapper permits one attempt, including an unsuccessful attempt.\n")
 
 
@@ -462,6 +479,11 @@ def seal(args):
             "scope": "assessment-only", "research_procedure_json": original.decode(),
             "research_procedure_sha256": args.research_procedure_sha256,
             "retained_objects": json.loads(Path(args.retained_objects).read_text())})
+        if getattr(args, "supersedes_procedure", None):
+            previous = Path(args.supersedes_procedure).read_bytes()
+            load_procedure(args.supersedes_procedure, args.supersedes_procedure_sha256)
+            manifest["assessment_amendment"]["supersedes_assessment_procedure"] = {
+                "json": previous.decode(), "sha256": args.supersedes_procedure_sha256}
         research_procedure(manifest)
     check_sources(manifest, coordinator, args.study, base)
     check_host(manifest, args)
@@ -480,7 +502,7 @@ def replay_arguments(manifest, arguments, target, output):
     parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument("--path", type=Path, required=True)
     parser.add_argument("--entry", required=True)
-    parser.add_argument("--outputs", nargs="+")
+    parser.add_argument("--outputs", nargs="+", required=True)
     parser.add_argument("--in-container")
     parser.add_argument("--workdir", type=Path, required=True)
     parser.add_argument("-o", "--output", type=Path, required=True)
@@ -532,6 +554,9 @@ def main():
     parser.add_argument("--research-procedure-sha256")
     parser.add_argument("--retained-objects", type=Path,
                         help="Exact already completed worker identities for an amendment")
+    parser.add_argument("--supersedes-procedure", type=Path,
+                        help="Earlier immutable assessment-only seal superseded by this amendment")
+    parser.add_argument("--supersedes-procedure-sha256")
     for name in ("env-manifest", "cli", "codex-home", "approved-hooks", "trust-sync", "resolver"):
         parser.add_argument("--" + name, type=Path)
     parser.add_argument("--model", default="gpt-6-luna")
@@ -544,6 +569,9 @@ def main():
     amendment_flags = (args.research_procedure, args.research_procedure_sha256, args.retained_objects)
     if any(amendment_flags) and (args.action != "seal" or not all(amendment_flags)):
         parser.error("Assessment amendment sealing requires all three original-seal/retention flags")
+    supersession = (args.supersedes_procedure, args.supersedes_procedure_sha256)
+    if any(supersession) and (not all(supersession) or not all(amendment_flags)):
+        parser.error("Assessment supersession requires both prior-seal flags and an assessment amendment")
     for name in ("env_manifest", "cli", "codex_home", "approved_hooks", "trust_sync", "resolver"):
         value = getattr(args, name)
         if not value:

@@ -424,6 +424,7 @@ def test_replay_is_exact_target_single_attempt_and_uses_fixed_comparison_setting
     output = tmp_path / "judge-output"
     output.mkdir()
     arguments = ["--path", str(args.study), "--entry", "pixi run reproduce",
+                 "--outputs", "results/*.tsv",
                  "--workdir", str(output / "replay"), "--output", str(output / "replay.json")]
     with pytest.raises(SystemExit, match="replay rtol"):
         procedure.replay_arguments(manifest, arguments + ["--rtol", "0.5"], args.study, output)
@@ -434,6 +435,32 @@ def test_replay_is_exact_target_single_attempt_and_uses_fixed_comparison_setting
     with pytest.raises(SystemExit, match="already consumed"):
         procedure.replay_arguments(manifest, arguments, args.study, output)
     assert procedure.replay_arguments(manifest, ["--help"], args.study, output) == ["--help"]
+
+
+def test_missing_output_selection_keeps_allowance_and_participant_input(comparison, tmp_path, capsys):
+    args, manifest = comparison
+    participant = args.study / "input/participants.tsv"
+    participant.write_text("participant_id\tvalue\nsub-01\t2\n")
+    generated = args.study / "results/summary.tsv"
+    generated.parent.mkdir()
+    generated.write_text("mean\n2\n")
+    output = tmp_path / "judge-output"
+    output.mkdir()
+    workdir = output / "replay"
+    arguments = ["--path", str(args.study), "--entry", "python analysis.py",
+                 "--workdir", str(workdir), "--output", str(output / "replay.json")]
+    before = {path: path.read_bytes() for path in (participant, generated)}
+    with pytest.raises(SystemExit) as error:
+        procedure.replay_arguments(manifest, arguments, args.study, output)
+    assert error.value.code == 2
+    assert "--outputs" in capsys.readouterr().err
+    assert not (output / "formal-replay-attempt.json").exists()
+    assert not workdir.exists()
+    assert all(path.read_bytes() == content for path, content in before.items())
+    selected = arguments + ["--outputs", "results/summary.tsv"]
+    assert procedure.replay_arguments(manifest, selected, args.study, output) == selected
+    receipt = json.loads((output / "formal-replay-attempt.json").read_text())
+    assert receipt["arguments"] == selected
 
 
 def test_prepare_routes_judge_setup_and_execution_to_separate_repository(comparison, tmp_path, monkeypatch):
@@ -494,6 +521,7 @@ def test_replay_cannot_keep_old_outputs_or_clone_an_unpinned_remote(comparison, 
     args, manifest = comparison
     with pytest.raises(SystemExit):
         procedure.replay_arguments(manifest, ["--path", str(args.study), "--entry", "make",
+            "--outputs", "results/*.tsv",
             "--workdir", str(tmp_path / "replay"), "--output", str(tmp_path / "result.json"), *extra],
             args.study, tmp_path)
     assert not (tmp_path / "formal-replay-attempt.json").exists()

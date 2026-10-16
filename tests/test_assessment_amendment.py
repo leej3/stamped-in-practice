@@ -115,3 +115,32 @@ def test_amendment_load_roundtrip_and_original_seal_unchanged(amendment, tmp_pat
     loaded = procedure.load_procedure(path, procedure.sha256(path.read_bytes()))
     assert procedure.research_procedure(loaded) == original
     assert procedure.load_procedure(args.output, args.procedure_sha256) == original
+
+
+def test_supersession_preserves_exact_prior_seal_and_retained_identities(amendment):
+    _, original, updated, _ = amendment
+    previous = json.dumps(updated, indent=2) + "\n"
+    updated["assessment_amendment"]["supersedes_assessment_procedure"] = {
+        "json": previous, "sha256": procedure.sha256(previous.encode())}
+    assert procedure.research_procedure(updated) == original
+    broken = copy.deepcopy(updated)
+    broken["assessment_amendment"]["supersedes_assessment_procedure"]["json"] += "\n"
+    with pytest.raises(SystemExit, match="superseded assessment seal digest"):
+        procedure.research_procedure(broken)
+    broken = copy.deepcopy(updated)
+    broken["assessment_amendment"]["retained_objects"][0]["result_commit"] = "3" * 40
+    with pytest.raises(SystemExit, match="supersession preserves retained object"):
+        procedure.research_procedure(broken)
+
+
+def test_supersession_cannot_change_original_research_bytes(amendment):
+    _, _, updated, _ = amendment
+    earlier = copy.deepcopy(updated)
+    earlier["assessment_amendment"]["research_procedure_json"] += "\n"
+    earlier["assessment_amendment"]["research_procedure_sha256"] = procedure.sha256(
+        earlier["assessment_amendment"]["research_procedure_json"].encode())
+    content = json.dumps(earlier)
+    updated["assessment_amendment"]["supersedes_assessment_procedure"] = {
+        "json": content, "sha256": procedure.sha256(content.encode())}
+    with pytest.raises(SystemExit, match="supersession preserves original research seal bytes"):
+        procedure.research_procedure(updated)
