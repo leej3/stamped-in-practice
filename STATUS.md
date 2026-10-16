@@ -1,6 +1,6 @@
 # Current comparison status
 
-The sealed tool-neutral comparison is underway: **12 of 72 research workers have started**, **11 have stopped**, and **0 of 96 assigned judgments have started** at this update.
+The sealed tool-neutral comparison is underway: **15 of 72 research workers have started**, **14 have stopped**, and **0 of 96 assigned judgments have started** at this update.
 The first round contains 24 workers and 32 judgments.
 No scientific outcomes have been assessed.
 
@@ -16,8 +16,11 @@ No scientific outcomes have been assessed.
 | narps-neutral-r1-15 | discover-general | stopped |
 | narps-neutral-r1-07 | stamped-explicit | stopped |
 | narps-neutral-r1-10 | discover-general | stopped |
-| narps-neutral-r1-22 | baseline | running |
+| narps-neutral-r1-22 | baseline | stopped |
 | narps-neutral-r1-13 | stamped-explicit | stopped |
+| narps-neutral-r1-02 | baseline | stopped |
+| narps-neutral-r1-09 | discover-general | stopped |
+| narps-neutral-r1-14 | discover-science | running |
 
 See the [live ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [sealed registration](registration.md) and [allocation](allocation.json).
 The registration's zero-start count records its state before launch; it is not the live count.

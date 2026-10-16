@@ -1,0 +1,719 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            23c2cb0f0fe443d21bea4f8bb57101e5d89ae932 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "HEAD is now at 23c2cb0 chore(retention): preserve original delivery for narps-neutral-r1-20\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "eece8595d255a766517e32ff10b2e6574d3c4e6a",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-20 independent retention receiver"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-20 independent retention receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s101303875--fcc4fb1e21f20770ad62e2c5d3cc8d592d258ba6429bce494a025749e2a2d5a3.tar.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get coordinator/delivery-01/delivery.tar.gz (from con-hub...) \n\n0%    3.74 KiB         53 KiB/s 31m16s\n0%    407.81 KiB        2 MiB/s 48s   \n1%    711.65 KiB      697 KiB/s 2m20s \n1%    1.15 MiB          2 MiB/s 43s   \n3%    2.6 MiB           7 MiB/s 12s   \n6%    5.68 MiB         15 MiB/s 5s    \n10%   10.1 MiB         22 MiB/s 3s    \n16%   15.45 MiB        27 MiB/s 3s    \n23%   22.59 MiB        36 MiB/s 2s    \n33%   31.54 MiB        45 MiB/s 1s    \n44%   42.56 MiB        55 MiB/s 0s    \n58%   56.25 MiB        65 MiB/s 0s    \n72%   69.79 MiB        66 MiB/s 0s    \n83%   80.06 MiB        33 MiB/s 0s    \n97%   93.74 MiB        68 MiB/s 0s    \n100%  96.61 MiB        76 MiB/s 0s    \n                                      \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "-r",
+      "HEAD",
+      "coordinator"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d16622a2f54613be5d2a062fceb6bb06815fa0db\tcoordinator/README.md\n100644 blob fc885ce87ec480af1dadab1bea3c90037252a63d\tcoordinator/delivery-01/archive-inventory.json\n100644 blob 429edb5d81faa36e9ea606b34e8919ebfad6e4af\tcoordinator/delivery-01/command.json\n120000 blob 1f6f8ed339fae86fc5cb0ac40a8b5cb43cfe0b5d\tcoordinator/delivery-01/delivery.tar.gz\n100644 blob 3b5b434949e39ae11df91869fb48d9262214df9d\tcoordinator/delivery-01/index.json\n100644 blob c9a4d15cf99890f06d094ce8fddd17eafb408fc9\tcoordinator/delivery-01/result.json\n100644 blob 9822ce32356a309df70c89106a709416b1016aa4\tcoordinator/delivery-01/sources/delivery_snapshot.py\n100644 blob 94d474f06669cf20db95ff1b3bbc7b8a7cb133ad\tcoordinator/delivery-01/sources/package_delivery.py\n100644 blob fc5905622dd804923e94f51bf3215abcf858586a\tcoordinator/delivery-01/verification.json\n100644 blob 98597033aa714c49cba2c87e86d461939303b546\tcoordinator/delivery-01/worker-end-state.json\n100644 blob b2caabbb60b473d4b78d917751a4400d338e7b7c\tcoordinator/files.json\n100644 blob 0a46b385b898c32cfeaa88587de0739ddf3278b5\tcoordinator/native-attempt-01/checkout.json\n100644 blob 6253bf9a3a308632abbc9db629f6baad8aad992c\tcoordinator/native-attempt-01/environment.json\n100644 blob 556854c7fb92f88495a2107c39b93a27bf2c7772\tcoordinator/native-attempt-01/input-boundary.json\n100644 blob 19dc94b2b9e036f94bee215f7c9eec0a603aba0a\tcoordinator/native-attempt-01/native/condition-assignment.json\n100644 blob 4173bce98e0ae242ff21819eb6f18b48d9f5fca8\tcoordinator/native-attempt-01/native/events.jsonl\n100644 blob e400145ffa92da4986e9b91c9b124dd0e7e272ea\tcoordinator/native-attempt-01/native/execution/run_info.json\n100644 blob f3ec48934c112c11f1f5a8544f672602ebf3c09e\tcoordinator/native-attempt-01/native/execution/run_stderr\n100644 blob 4173bce98e0ae242ff21819eb6f18b48d9f5fca8\tcoordinator/native-attempt-01/native/execution/run_stdout\n100644 blob 6194c920d2f39cd9558d2484b5a3381a30b54169\tcoordinator/native-attempt-01/native/execution/run_usage.jsonl\n100644 blob 461f7ec5843cfe1283706b0460871e3e1884a8ec\tcoordinator/native-attempt-01/native/final.txt\n100644 blob 21bb678daf65bfc9971eb2f410f5ac65fd40a18f\tcoordinator/native-attempt-01/native/launch.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/native/procedure-status.json\n100644 blob b3bbe36d0d669e16471c3cd794c1cefa953dc0a4\tcoordinator/native-attempt-01/native/prompt-preflight.json\n100644 blob 888f94380d17cbde010af8b4883d316d122dd1e9\tcoordinator/native-attempt-01/native/prompt.txt\n100644 blob 7d56dc5c9862efb00f93889cc24df0c98124dd01\tcoordinator/native-attempt-01/native/result.json\n100644 blob 2bf55a08811548a3ea54217d14d5ea3416341443\tcoordinator/native-attempt-01/native/skill-observations.json\n100644 blob f3ec48934c112c11f1f5a8544f672602ebf3c09e\tcoordinator/native-attempt-01/native/stderr.txt\n100644 blob 98597033aa714c49cba2c87e86d461939303b546\tcoordinator/native-attempt-01/native/worker-end-state.json\n100644 blob 5cc8f3b9a4836eb96ee1c571e10f77ecae0f8f09\tcoordinator/native-attempt-01/preparation.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/procedure-status.json\n100644 blob 0e6564d092da6566cf9e83a452ac994b8b9955d2\tcoordinator/native-attempt-01/procedure.json\n100644 blob 888f94380d17cbde010af8b4883d316d122dd1e9\tcoordinator/native-attempt-01/research-prompt.md\n100644 blob 797eb3f74017bb7b5635892216de80ec5411fa10\tcoordinator/native-attempt-01/resource-readiness.json\n100644 blob 8767e5f065d9b3e8054e62f464818e8f625382da\tcoordinator/original-manifest.json\n100644 blob fc2ea3d4e34d5809efdb991af8614bf8df88a8fc\tcoordinator/packaging-execution/delivery-package-01-execution.json\n100644 blob b397a20bb18e57c18c213605515a82be704638cb\tcoordinator/packaging-execution/delivery-package-01-launch.json\n100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\tcoordinator/packaging-execution/delivery-package-01-stderr.log\n100644 blob 106c188a14703939d3018690efab3c743c0ec547\tcoordinator/packaging-execution/delivery-package-01-stdout.log\n100644 blob bfd76f0f663cd1146ae5b799dc8e02194a6fcc52\tcoordinator/retention.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-20",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "5efd44bb8b71ee0c5b0d9c677588dd4a9b0ba224"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            5efd44bb8b71ee0c5b0d9c677588dd4a9b0ba224 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "HEAD is now at 5efd44b chore(retention): preserve original delivery for narps-neutral-r1-08\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "5efd44bb8b71ee0c5b0d9c677588dd4a9b0ba224\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "eece8595d255a766517e32ff10b2e6574d3c4e6a",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-08 independent retention receiver"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-08 independent retention receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s102454983--984fd854d162cda6f85d4e47a5a3e5fa23366eacc690803919a20572d698804a.tar.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get coordinator/delivery-01/delivery.tar.gz (from con-hub...) \n\n0%    7.69 KiB        128 KiB/s 13m4s\n0%    407.81 KiB        2 MiB/s 49s  \n7%    6.72 MiB         31 MiB/s 2s   \n12%   11.37 MiB        23 MiB/s 3s   \n16%   16.02 MiB        23 MiB/s 3s   \n21%   20.68 MiB        23 MiB/s 3s   \n26%   25.41 MiB        24 MiB/s 3s   \n33%   31.87 MiB        32 MiB/s 2s   \n37%   36.53 MiB        23 MiB/s 2s   \n44%   42.72 MiB        30 MiB/s 1s   \n48%   47.27 MiB        23 MiB/s 2s   \n53%   51.78 MiB        22 MiB/s 2s   \n58%   56.43 MiB        23 MiB/s 1s   \n63%   61.07 MiB        23 MiB/s 1s   \n67%   65.49 MiB        22 MiB/s 1s   \n72%   70.08 MiB        23 MiB/s 1s   \n77%   74.79 MiB        24 MiB/s 0s   \n81%   79.43 MiB        23 MiB/s 0s   \n86%   83.94 MiB        23 MiB/s 0s   \n95%   93.13 MiB        45 MiB/s 0s   \n100%  97.71 MiB        24 MiB/s 0s   \n                                     \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "-r",
+      "HEAD",
+      "coordinator"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 616b0f69e2eef6ad38dee66bc9d101e257cd31b5\tcoordinator/README.md\n100644 blob 67742014a92ba1e7cc3d41b445c5b4b1647608ed\tcoordinator/delivery-01/archive-inventory.json\n100644 blob baac0f858b592e7fd85589dcebc27ab181170e0d\tcoordinator/delivery-01/command.json\n120000 blob ae2283458fe22982222d4d6152c45006956620bd\tcoordinator/delivery-01/delivery.tar.gz\n100644 blob cc56fe663b0c3abab4829a00a34826e046282d97\tcoordinator/delivery-01/index.json\n100644 blob e9bef5249ef6f08a9bf6fb8e1e2d29aa467ef2ae\tcoordinator/delivery-01/result.json\n100644 blob 9822ce32356a309df70c89106a709416b1016aa4\tcoordinator/delivery-01/sources/delivery_snapshot.py\n100644 blob 94d474f06669cf20db95ff1b3bbc7b8a7cb133ad\tcoordinator/delivery-01/sources/package_delivery.py\n100644 blob 4afa81e1e0d4ca145b221de1d996e630753694af\tcoordinator/delivery-01/verification.json\n100644 blob 002d6d4110df307d17198d916e4219ce60d500ab\tcoordinator/delivery-01/worker-end-state.json\n100644 blob f0891cde1fc791f614f4b9f37f5592b29f603b3b\tcoordinator/files.json\n100644 blob 4a7c1ea6c16ce4440abd7e414d46842c4c40c8f6\tcoordinator/native-attempt-01/checkout.json\n100644 blob 6253bf9a3a308632abbc9db629f6baad8aad992c\tcoordinator/native-attempt-01/environment.json\n100644 blob c86308918eab7a5607b33225aa21c9f5515c9025\tcoordinator/native-attempt-01/input-boundary.json\n100644 blob d30c2feee450821c8ea0b46ef89fe8838c553d0b\tcoordinator/native-attempt-01/native/condition-assignment.json\n100644 blob f5f382b07f5f11c33a6a747876c3d2fb84b70eac\tcoordinator/native-attempt-01/native/events.jsonl\n100644 blob d974b5370097856dbab0ef63c4e8282ee78808fa\tcoordinator/native-attempt-01/native/execution/run_info.json\n100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\tcoordinator/native-attempt-01/native/execution/run_stderr\n100644 blob f5f382b07f5f11c33a6a747876c3d2fb84b70eac\tcoordinator/native-attempt-01/native/execution/run_stdout\n100644 blob 3737da3e9633dc66540ecf69baff663d61d60f35\tcoordinator/native-attempt-01/native/execution/run_usage.jsonl\n100644 blob 52c8ee1052b3c97d8eaec087bf3b2ecd7beac6ec\tcoordinator/native-attempt-01/native/final.txt\n100644 blob 4ffc49e1799e3ae2de294588d1f9780cf7b9efb0\tcoordinator/native-attempt-01/native/launch.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/native/procedure-status.json\n100644 blob 3879c4274c898d3b20170d7a8f89b725f58f87a5\tcoordinator/native-attempt-01/native/prompt-preflight.json\n100644 blob df64ef37830ce28f33c456ee41c990e16a9f69fd\tcoordinator/native-attempt-01/native/prompt.txt\n100644 blob 14c3c5c7f57e5d0ebb8e19e255fb387eaedde24e\tcoordinator/native-attempt-01/native/result.json\n100644 blob 8f04959ae3f8043db0a3b6217a0bffdd0bac1108\tcoordinator/native-attempt-01/native/skill-observations.json\n100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\tcoordinator/native-attempt-01/native/stderr.txt\n100644 blob 002d6d4110df307d17198d916e4219ce60d500ab\tcoordinator/native-attempt-01/native/worker-end-state.json\n100644 blob f82a199c8a3b7664619667aeac568c45c2992b24\tcoordinator/native-attempt-01/preparation.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/procedure-status.json\n100644 blob 0e6564d092da6566cf9e83a452ac994b8b9955d2\tcoordinator/native-attempt-01/procedure.json\n100644 blob df64ef37830ce28f33c456ee41c990e16a9f69fd\tcoordinator/native-attempt-01/research-prompt.md\n100644 blob 797eb3f74017bb7b5635892216de80ec5411fa10\tcoordinator/native-attempt-01/resource-readiness.json\n100644 blob 0925d957f6d43a1a27c28999a068a68c60ab6e04\tcoordinator/original-manifest.json\n100644 blob 84b846cafea84a5ea46e8dc97babc9ca202ade87\tcoordinator/packaging-execution/delivery-package-01-execution.json\n100644 blob c2f451b2bfa10ef25d9888ca5e52c1512969e27b\tcoordinator/packaging-execution/delivery-package-01-launch.json\n100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\tcoordinator/packaging-execution/delivery-package-01-stderr.log\n100644 blob 9c4df8e14b0e070cb1c7934551ca95152d058e22\tcoordinator/packaging-execution/delivery-package-01-stdout.log\n100644 blob 3d667e6bac9413016be184ae40223a060bfffc9f\tcoordinator/retention.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "5efd44bb8b71ee0c5b0d9c677588dd4a9b0ba224\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-08",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "47e3043969b88adba4f04af6a2cde77982ea8dcb"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            47e3043969b88adba4f04af6a2cde77982ea8dcb -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "HEAD is now at 47e3043 chore(retention): preserve original delivery for narps-neutral-r1-11\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "47e3043969b88adba4f04af6a2cde77982ea8dcb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "eece8595d255a766517e32ff10b2e6574d3c4e6a",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "narps-neutral-r1-11 independent retention receiver"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init narps-neutral-r1-11 independent retention receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s154851373--a01adeb4b62caeb575ea287a40bceca563a03c0eb805bcdcc88e8096f6e12af5.tar.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "coordinator/delivery-01/delivery.tar.gz"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get coordinator/delivery-01/delivery.tar.gz (from con-hub...) \n\n0%    6.81 KiB        107 KiB/s 23m35s\n0%    407.81 KiB        2 MiB/s 1m15s \n3%    4.31 MiB         20 MiB/s 7s    \n12%   17.94 MiB        68 MiB/s 1s    \n22%   32.39 MiB        72 MiB/s 1s    \n31%   46.22 MiB        69 MiB/s 1s    \n41%   60.24 MiB        70 MiB/s 1s    \n50%   73.89 MiB        68 MiB/s 1s    \n60%   87.97 MiB        70 MiB/s 0s    \n69%   101.31 MiB       66 MiB/s 0s    \n78%   114.89 MiB       67 MiB/s 0s    \n88%   129.34 MiB       72 MiB/s 0s    \n97%   143.8 MiB        72 MiB/s 0s    \n100%  147.68 MiB       71 MiB/s 0s    \n                                      \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "-r",
+      "HEAD",
+      "coordinator"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 30c4ac01651f9dcac019da1e86829946e3d5185a\tcoordinator/README.md\n100644 blob ddea5fb02ab2cb2191efaffd9a190f10938f6189\tcoordinator/delivery-01/archive-inventory.json\n100644 blob 8db7d44c67112a1907256c1467342237cc1303fa\tcoordinator/delivery-01/command.json\n120000 blob d15971272f1cf61c142aa7546bd517c565616edd\tcoordinator/delivery-01/delivery.tar.gz\n100644 blob ba622ceac03b52109bb0ec263e157a531188106d\tcoordinator/delivery-01/index.json\n100644 blob 087643e239bb9285c15ba459d20b4f3ca6a2adc7\tcoordinator/delivery-01/result.json\n100644 blob 9822ce32356a309df70c89106a709416b1016aa4\tcoordinator/delivery-01/sources/delivery_snapshot.py\n100644 blob 94d474f06669cf20db95ff1b3bbc7b8a7cb133ad\tcoordinator/delivery-01/sources/package_delivery.py\n100644 blob c0f2ac35d3d6c542b846ce829c02026fee7198a1\tcoordinator/delivery-01/verification.json\n100644 blob e96df3b28779d2a44fe4985ee337761e64191dca\tcoordinator/delivery-01/worker-end-state.json\n100644 blob 803f471255a235a04ed8abf6b75bf0e36abe23ca\tcoordinator/files.json\n100644 blob b8e4384f76a412ae4427d930db1992fa710d060d\tcoordinator/native-attempt-01/checkout.json\n100644 blob 6253bf9a3a308632abbc9db629f6baad8aad992c\tcoordinator/native-attempt-01/environment.json\n100644 blob b7bb44114a623ffa543c4295b5bcbd0f70277ca3\tcoordinator/native-attempt-01/input-boundary.json\n100644 blob 0b446f44c4b4c89b46fdaaa82eae2a5112cb4a16\tcoordinator/native-attempt-01/native/condition-assignment.json\n100644 blob b2bb1ace5b242c151c9abbc8c89df8f415d1b414\tcoordinator/native-attempt-01/native/events.jsonl\n100644 blob 74e5081dbd6b1c5ba86a7a0fec2479b99db0a3d7\tcoordinator/native-attempt-01/native/execution/run_info.json\n100644 blob 93a9c6c1d6c9be5291f9fb0d7c6151ca7b90e083\tcoordinator/native-attempt-01/native/execution/run_stderr\n100644 blob b2bb1ace5b242c151c9abbc8c89df8f415d1b414\tcoordinator/native-attempt-01/native/execution/run_stdout\n100644 blob 60ec2dbe4e913bb47b1483d952fad9823fbc5431\tcoordinator/native-attempt-01/native/execution/run_usage.jsonl\n100644 blob 6db4a96d8d03495e22e938204f37dc8402c73955\tcoordinator/native-attempt-01/native/final.txt\n100644 blob 6c04ddff79022ded01080f6f2e5575056f8bd4b6\tcoordinator/native-attempt-01/native/launch.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/native/procedure-status.json\n100644 blob 876ada89fc49b14714957c1a0d7a198b5e233fc7\tcoordinator/native-attempt-01/native/prompt-preflight.json\n100644 blob 060f404a640efada34e79fecb1afbd24f821ef95\tcoordinator/native-attempt-01/native/prompt.txt\n100644 blob 6e28dd3e5834d360b626a62f20ec2dc06de81e84\tcoordinator/native-attempt-01/native/result.json\n100644 blob 3a8cdd87cc92442a4c14e36615be8bc4a5049852\tcoordinator/native-attempt-01/native/skill-observations.json\n100644 blob 93a9c6c1d6c9be5291f9fb0d7c6151ca7b90e083\tcoordinator/native-attempt-01/native/stderr.txt\n100644 blob e96df3b28779d2a44fe4985ee337761e64191dca\tcoordinator/native-attempt-01/native/worker-end-state.json\n100644 blob d47d1171554dd866038653e3a1d0ffa12e26e5f7\tcoordinator/native-attempt-01/preparation.json\n100644 blob a2a0e2fb894500fb538fa4d805b42dd80a0eb62b\tcoordinator/native-attempt-01/procedure-status.json\n100644 blob 0e6564d092da6566cf9e83a452ac994b8b9955d2\tcoordinator/native-attempt-01/procedure.json\n100644 blob 060f404a640efada34e79fecb1afbd24f821ef95\tcoordinator/native-attempt-01/research-prompt.md\n100644 blob 797eb3f74017bb7b5635892216de80ec5411fa10\tcoordinator/native-attempt-01/resource-readiness.json\n100644 blob 46a655904f2e8afe09908fe96a971a4d972c576d\tcoordinator/original-manifest.json\n100644 blob 0acf75f5f56600ed960d04fd76d7c62c09271bda\tcoordinator/packaging-execution/delivery-package-01-execution.json\n100644 blob 54b68a84cd428068f3294882a4bdc18376caa443\tcoordinator/packaging-execution/delivery-package-01-launch.json\n100644 blob e69de29bb2d1d6434b8b29ae775ad8c2e48c5391\tcoordinator/packaging-execution/delivery-package-01-stderr.log\n100644 blob 1993f20f883bcefe79c60950a567651ef96e890c\tcoordinator/packaging-execution/delivery-package-01-stdout.log\n100644 blob 0e072c2a7c56fb6be02921b98c9ca7473510fa21\tcoordinator/retention.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "47e3043969b88adba4f04af6a2cde77982ea8dcb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/publisher-wave-01-01/root-fresh-check-01/narps-neutral-r1-11",
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
