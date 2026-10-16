@@ -1,0 +1,619 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-18-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "85cb4ad96bea8bc03e3039cd12c38e3b2d91dc31"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            85cb4ad96bea8bc03e3039cd12c38e3b2d91dc31 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at 85cb4ad feat(retention): expose original files for narps-neutral-r1-18\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "85cb4ad96bea8bc03e3039cd12c38e3b2d91dc31\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "d69d995c4e571e6e7b588248b785b07138972555",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "d69d995c4e571e6e7b588248b785b07138972555",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_fwer05_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s4192--e4fcc6042c290ac029f16a5741a15e84c7a0072e8907572edef1cd69a76d78ac.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s774682--ca96235fdfd7f506901a3f99018cb2c59de63f04c1de7d47545ce9cd2e122a55.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_p_fwer_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s47475--695e0a8807ab26ef7948c5e45f7d4ae1a5e936fbdf05841a42b1989506f08b23.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s772785--2e9f0aa95c2f9f59cf28c1a585f88574f71c9a7e0bf5cfba98f2a00945c52bc1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/voxel_results.tsv.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s6971842--5adcbc4c36934ec3f97570450d227b587bb7d60926dcd6f9d8b9d0584e8c9a95.tsv.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "results/group_fwer05_positive.nii.gz",
+      "results/group_mean_cope.nii.gz",
+      "results/group_p_fwer_positive.nii.gz",
+      "results/group_t_positive.nii.gz",
+      "results/voxel_results.tsv.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get results/group_fwer05_positive.nii.gz (from con-hub...) \n\n91%   3.74 KiB         51 KiB/s 0s\n100%  4.09 KiB          2 MiB/s 0s\n                                  \nok\nget results/group_mean_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         55 KiB/s 13s\n13%   95.95 KiB       459 KiB/s 1s \n27%   207.9 KiB       548 KiB/s 1s \n43%   322.45 KiB      550 KiB/s 0s \n61%   463.78 KiB      688 KiB/s 0s \n81%   611.45 KiB      736 KiB/s 0s \n100%  756.53 KiB      891 KiB/s 0s \n                                   \nok\nget results/group_p_fwer_positive.nii.gz (from con-hub...) \n\n8%    3.74 KiB         52 KiB/s 0s\n100%  46.36 KiB         1 MiB/s 0s\n                                  \nok\nget results/group_t_positive.nii.gz (from con-hub...) \n\n1%    7.7 KiB         120 KiB/s 6s\n25%   191.91 KiB      912 KiB/s 0s\n53%   399.81 KiB        1 MiB/s 0s\n83%   623.7 KiB         1 MiB/s 0s\n100%  754.67 KiB        1 MiB/s 0s\n                                  \nok\nget results/voxel_results.tsv.gz (from con-hub...) \n\n0%    7.7 KiB         139 KiB/s 48s\n4%    255.88 KiB        1 MiB/s 5s \n8%    527.74 KiB        1 MiB/s 4s \n12%   815.6 KiB         1 MiB/s 4s \n16%   1.09 MiB          1 MiB/s 3s \n21%   1.41 MiB          2 MiB/s 3s \n26%   1.73 MiB          2 MiB/s 3s \n31%   2.08 MiB          2 MiB/s 2s \n37%   2.45 MiB          2 MiB/s 2s \n43%   2.83 MiB          2 MiB/s 2s \n49%   3.23 MiB          2 MiB/s 1s \n55%   3.65 MiB          2 MiB/s 1s \n61%   4.08 MiB          2 MiB/s 1s \n68%   4.53 MiB          2 MiB/s 0s \n75%   5 MiB             2 MiB/s 0s \n83%   5.49 MiB          2 MiB/s 0s \n90%   6 MiB             3 MiB/s 0s \n98%   6.52 MiB          3 MiB/s 0s \n100%  6.65 MiB          3 MiB/s 0s \n                                   \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/LICENSE.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 13e25df86ce06eb6488e6a6bc5c5847f5dedc352\t.skills/jupyter-notebook/LICENSE.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/SKILL.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob e1d1748cac9e9313c8229763751714628d1f6853\t.skills/jupyter-notebook/SKILL.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/agents/openai.yaml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8832dea0a6e64f173f09e77f690dada6a5f73074\t.skills/jupyter-notebook/agents/openai.yaml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/assets/experiment-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a4a0323e567a772456395aee29494b1babee622c\t.skills/jupyter-notebook/assets/experiment-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/assets/jupyter-small.svg"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 472d07fdfca9a558325cc8eaf91e861a44843b3e\t.skills/jupyter-notebook/assets/jupyter-small.svg\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/assets/jupyter.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 51cdf7d3bba730eda85a26a87d1ee65c14da97f0\t.skills/jupyter-notebook/assets/jupyter.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/assets/tutorial-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7001309593a8c10fa34d68870c3a558348f76216\t.skills/jupyter-notebook/assets/tutorial-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/references/experiment-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2d5093b256f328dabb89de16822286c5f2f4dda4\t.skills/jupyter-notebook/references/experiment-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/references/notebook-structure.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 681d36f53d55cb089b1d815bacaac9b363f76fa4\t.skills/jupyter-notebook/references/notebook-structure.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/references/quality-checklist.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5482f282845271ac1614a33135000e18f54d95aa\t.skills/jupyter-notebook/references/quality-checklist.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/references/tutorial-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2a360b089b904299f463f88b5cdae0ea9bdb1123\t.skills/jupyter-notebook/references/tutorial-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".skills/jupyter-notebook/scripts/new_notebook.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 0aba209a63c9744e7eeca5a59a12135b387e5229\t.skills/jupyter-notebook/scripts/new_notebook.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a7831e0330ff6bcf0446a148057b1aebd6d14b98\tanalysis.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/mean_gain_effect.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a711f9f4dd91b8e7392b7a8a28053ad13d959025\tfigures/mean_gain_effect.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/vmPFC_subject_distribution.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob e3dd8fb853954e71453d499ad0893ae50637e0ff\tfigures/vmPFC_subject_distribution.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/whole_brain_maxT.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2b58a0e88a3779e44fdb01fdcd4cd309cb4ac823\tfigures/whole_brain_maxT.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "narps_gain_analysis.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob b4f8ffad9e98055220cc3da402f3f3744112d831\tnarps_gain_analysis.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "reports/report.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob aa918e93e109987ca1073038812ca8a1d9b2dc72\treports/report.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_fwer05_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6ba0ce60a75a2fe6f5503c90c9e21da65faa1589\tresults/group_fwer05_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 25bb3ad2e5aea6ffbfc3bf96b5ea4f41eff8c13c\tresults/group_mean_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_p_fwer_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 0fd8b897a0bc004b0d26cb3da7a4efceeab739b0\tresults/group_p_fwer_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 24ece3220965e56915c99eda9c699261b751349a\tresults/group_t_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2bf7f7172761c1d1ecc6bdf019d7f01e00808ae4\tresults/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 24732442737ee4e0e67fa58f96f6cddc65037c1b\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/top_peaks.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a1f8f7a016511376147d0c1a51e9276fdaea41e9\tresults/top_peaks.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_participant_summary.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob da15b771284addcadd728aad09ea1aec3e16bdb0\tresults/vmPFC_participant_summary.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/voxel_results.tsv.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7381a4da85eccf715e9ce113f1fa1f78bfce29ce\tresults/voxel_results.tsv.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "85cb4ad96bea8bc03e3039cd12c38e3b2d91dc31\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
