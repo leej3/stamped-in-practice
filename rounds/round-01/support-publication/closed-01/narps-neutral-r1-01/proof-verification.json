@@ -1,0 +1,64 @@
+{
+  "verified": true,
+  "commit": "785247b2e54e1f779237f6f7c639575c4040f0ee",
+  "content_parent": "6e8b521d400c0279be65433d87c1d34540dd6447",
+  "evidence_files": 11,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "785247b2e54e1f779237f6f7c639575c4040f0ee"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            785247b2e54e1f779237f6f7c639575c4040f0ee -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "FETCH_HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Previous HEAD position was 6e8b521 chore(retention): publish run 01 complete support evidence\nHEAD is now at 785247b chore(retention): retain independent support publication proof\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD^"
+      ],
+      "returncode": 0,
+      "stdout": "6e8b521d400c0279be65433d87c1d34540dd6447\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD^",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "coordinator/support-01/publication-evidence/commit-message.txt\ncoordinator/support-01/publication-evidence/evidence-manifest.json\ncoordinator/support-01/publication-evidence/prepare-commands.json\ncoordinator/support-01/publication-evidence/prepare.py\ncoordinator/support-01/publication-evidence/prepare.stderr\ncoordinator/support-01/publication-evidence/prepare.stdout\ncoordinator/support-01/publication-evidence/prepared.json\ncoordinator/support-01/publication-evidence/publish-verify-commands.json\ncoordinator/support-01/publication-evidence/publish-verify.py\ncoordinator/support-01/publication-evidence/publish-verify.stderr\ncoordinator/support-01/publication-evidence/publish-verify.stdout\ncoordinator/support-01/publication-evidence/result.json\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "archive_verification": "result.json; ancestor content unchanged"
+}
