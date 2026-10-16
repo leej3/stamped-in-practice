@@ -38,6 +38,8 @@ def main() -> None:
     t_map = np.asarray(t_img.dataobj)
     p_map = np.asarray(p_img.dataobj)
     finite = np.isfinite(t_map) & np.isfinite(p_map)
+    if int(finite.sum()) != summary["n_voxels_tested"]:
+        raise AssertionError("Finite statistic-map support does not match tested voxel count")
     corrected_count = int(np.sum(p_map[finite] <= 0.05))
     peak_xyz = np.asarray(summary["max_t_xyz_mm"], dtype=float)
     peak_ijk = np.rint(nib.affines.apply_affine(np.linalg.inv(t_img.affine), peak_xyz)).astype(int)
@@ -67,6 +69,7 @@ def main() -> None:
         "whole_brain_peak_t": peak_t,
         "whole_brain_peak_p_fwe_recomputed": max_t_p,
         "fwe_voxel_count_recomputed": corrected_count,
+        "tested_voxel_count_checked": int(finite.sum()),
     }
     (OUT / "audit.json").write_text(json.dumps(audit, indent=2) + "\n")
     print(json.dumps(audit, indent=2))
