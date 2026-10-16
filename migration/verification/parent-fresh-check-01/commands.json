@@ -1,0 +1,360 @@
+[
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "--single-branch",
+      "--branch",
+      "main",
+      "https://github.com/leej3/stamped-in-practice.git",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient"
+    ],
+    "returncode": 0,
+    "stdout": "001.stdout",
+    "stderr": "001.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "002.stdout",
+    "stderr": "002.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient",
+      "submodule",
+      "status"
+    ],
+    "returncode": 0,
+    "stdout": "003.stdout",
+    "stderr": "003.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "iterations/narps-v1"
+    ],
+    "returncode": 0,
+    "stdout": "004.stdout",
+    "stderr": "004.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "005.stdout",
+    "stderr": "005.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "submodule",
+      "status"
+    ],
+    "returncode": 0,
+    "stdout": "006.stdout",
+    "stderr": "006.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stdout": "007.stdout",
+    "stderr": "007.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stdout": "008.stdout",
+    "stderr": "008.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "annex",
+      "init",
+      "lean migration retrieval proof"
+    ],
+    "returncode": 0,
+    "stdout": "009.stdout",
+    "stderr": "009.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stdout": "010.stdout",
+    "stderr": "010.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stdout": "011.stdout",
+    "stderr": "011.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stdout": "012.stdout",
+    "stderr": "012.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "annex",
+      "lookupkey",
+      "--",
+      "synthesis/figures/checklist-evidence.png"
+    ],
+    "returncode": 0,
+    "stdout": "013.stdout",
+    "stderr": "013.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "synthesis/figures/checklist-evidence.png"
+    ],
+    "returncode": 0,
+    "stdout": "014.stdout",
+    "stderr": "014.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "study"
+    ],
+    "returncode": 0,
+    "stdout": "015.stdout",
+    "stderr": "015.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study",
+      "submodule",
+      "status"
+    ],
+    "returncode": 0,
+    "stdout": "016.stdout",
+    "stderr": "016.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "results/narps-r1-01"
+    ],
+    "returncode": 0,
+    "stdout": "017.stdout",
+    "stderr": "017.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stdout": "018.stdout",
+    "stderr": "018.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stdout": "019.stdout",
+    "stderr": "019.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "annex",
+      "init",
+      "lean migration retrieval proof"
+    ],
+    "returncode": 0,
+    "stdout": "020.stdout",
+    "stderr": "020.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stdout": "021.stdout",
+    "stderr": "021.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stdout": "022.stdout",
+    "stderr": "022.stderr"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stdout": "023.stdout",
+    "stderr": "023.stderr"
+  },
+  {
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/parent-fresh-check-01/recipient/iterations/narps-v1/study/results/narps-r1-01",
+      "ls-tree",
+      "-r",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "024.stdout",
+    "stderr": "024.stderr"
+  }
+]

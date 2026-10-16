@@ -1,0 +1,45 @@
+name: stamped-evals
+run_id: commands[3]
+env HOME: /Users/johnlee
+env LANG: en_US.UTF-8
+env LANGUAGE: en_US.UTF-8
+env NO_COLOR: 1
+env PATH: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/.tox/stamped-evals/bin:/Users/johnlee/code/CON/stamped-in-practice/.pixi/envs/default/bin:/opt/homebrew/bin:/Users/johnlee/.pixi/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/pkg/env/global/bin:/opt/X11/bin:/Library/Apple/usr/bin:/Library/TeX/texbin:/usr/local/share/dotnet:~/.dotnet/tools:/opt/podman/bin:/Applications/quarto/bin:/Applications/ChatGPT.app/Contents/Resources/codex-cli/codex-path:/Users/johnlee/.codex/tmp/arg0/codex-arg0vLQ6oP:/Users/johnlee/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override:/Users/johnlee/Library/pnpm:/Users/johnlee/.local/bin:/Users/johnlee/google-cloud-sdk/bin:/Users/johnlee/mambaforge/bin:/Users/johnlee/mambaforge/condabin:/Users/johnlee/opt/bin:/Users/johnlee/opt/neovim/bin:/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.6.0/bin:/Users/johnlee/.cache/lm-studio/bin:/Applications/010 Editor.app/Contents/CmdLine:/Users/johnlee/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/fallback:/Applications/ChatGPT.app/Contents/Resources:/Applications/ChatGPT.app/Contents/Resources/codex-cli/CodexCLI.app/Contents/MacOS:/opt/X11/bin/
+env PIP_DISABLE_PIP_VERSION_CHECK: 1
+env PIP_USER: 0
+env PYTHONHASHSEED: 2301048075
+env PYTHONIOENCODING: utf-8
+env SSH_AUTH_SOCK: ***********************************************
+env TMPDIR: /var/folders/dh/6x04w9891gx_4x1t649nc42w0000gn/T/
+env TOX_ENV_DIR: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/.tox/stamped-evals
+env TOX_ENV_NAME: stamped-evals
+env TOX_WORK_DIR: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/.tox
+env VIRTUAL_ENV: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/.tox/stamped-evals
+metadata pid: 6047
+cwd: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills
+allow: /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/.tox/stamped-evals/bin/*
+cmd: python3 /Users/johnlee/.local/share/wt-utils/worktrees/95c5/skills/evals/stamped/harness/calibrate.py
+exit_code: 0
+detected  abs-path-in-script         must/009=unmet
+detected  container-latest           must/015=unmet
+detected  derived-without-record     must/006=partial
+detected  host-mount-path-in-script  must/009=unmet
+detected  host-tool-precondition     must/010=unmet
+detected  large-binary-in-git        must/005=unmet
+detected  large-text-in-git          must/005=met | clone-weight=partial
+detected  outputs-into-inputs        must/004=unmet, should/003=unmet
+detected  outputs-into-inputs-pointer-updated should/003=unmet, must/002=unmet
+detected  outputs-under-inputs       should/003=unmet
+detected  readme-platform-specific-steps must/011=partial
+detected  readme-reproduce-removed   must/007=partial
+detected  readme-wrong-make-target   must/007=partial
+detected  record-container-floating  must/015=unmet
+detected  record-env-stripped        must/006=partial
+detected  relative-subdataset-url    must/002=unmet
+detected  remote-removed             must/016=unmet
+detected  untracked-figure           must/004=unmet
+
+mutants detected: 18/18
+false unmet/partial on the clean object: 0/14 answered items (1 are declared simulations included in that count)
+coverage: 17 items; 3 left not-checked
+  (expected) stamped-checklist:must/016 = partial: the object's own remote is not published

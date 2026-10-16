@@ -1,0 +1,1952 @@
+[
+  {
+    "label": "clone",
+    "argv": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "--single-branch",
+      "--branch",
+      "codex/iteration-narps-v1",
+      "git@github.com:leej3/stamped-in-practice.git",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1941562499850988,
+    "stdout": "001-clone.stdout",
+    "stderr": "001-clone.stderr"
+  },
+  {
+    "label": "head",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005282124970108271,
+    "stdout": "002-head.stdout",
+    "stderr": "002-head.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1805469999089837,
+    "stdout": "003-annex-metadata.stdout",
+    "stderr": "003-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.004906083922833204,
+    "stdout": "004-ignore-github.stdout",
+    "stderr": "004-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.3377015420701355,
+    "stdout": "005-annex-init.stdout",
+    "stderr": "005-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006008040974847972,
+    "stdout": "006-content-route.stdout",
+    "stderr": "006-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.004882790963165462,
+    "stdout": "007-content-endpoint.stdout",
+    "stderr": "007-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.10337575001176447,
+    "stdout": "008-merge-annex.stdout",
+    "stderr": "008-merge-annex.stderr"
+  },
+  {
+    "label": "get-original-payloads",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "evidence/access-evidence-02.tar.gz",
+      "evidence/prelaunch-evidence-01.tar.gz",
+      "synthesis/aggregate/cells.jsonl",
+      "synthesis/aggregate/comparable_items.jsonl",
+      "synthesis/aggregate/comparable_items.tsv",
+      "synthesis/aggregate/duplicate-disagreement-5dfdfa07f8e9.png",
+      "synthesis/aggregate/duplicate-disagreement-c6f01b00ee6a.png",
+      "synthesis/aggregate/effort.png",
+      "synthesis/aggregate/effort.svg",
+      "synthesis/aggregate/item-statuses-5dfdfa07f8e9.png",
+      "synthesis/aggregate/item-statuses-5dfdfa07f8e9.svg",
+      "synthesis/aggregate/item-statuses-c6f01b00ee6a.png",
+      "synthesis/aggregate/item-statuses-c6f01b00ee6a.svg",
+      "synthesis/aggregate/items.jsonl",
+      "synthesis/aggregate/items.tsv",
+      "synthesis/aggregate/judgments.jsonl",
+      "synthesis/aggregate/recurring-outcomes-5dfdfa07f8e9.png",
+      "synthesis/aggregate/recurring-outcomes-5dfdfa07f8e9.svg",
+      "synthesis/aggregate/recurring-outcomes-c6f01b00ee6a.png",
+      "synthesis/aggregate/recurring-outcomes-c6f01b00ee6a.svg",
+      "synthesis/aggregate/scientific-adequacy-5dfdfa07f8e9.png",
+      "synthesis/aggregate/scientific-adequacy-5dfdfa07f8e9.svg",
+      "synthesis/aggregate/scientific-adequacy-c6f01b00ee6a.png",
+      "synthesis/aggregate/scientific-adequacy-c6f01b00ee6a.svg",
+      "synthesis/aggregate/version_cells.jsonl",
+      "synthesis/aggregate/version_cells.tsv",
+      "synthesis/analysis/validated-environment.lock",
+      "synthesis/extraction-source/live-index.json",
+      "synthesis/figures/checklist-evidence.png",
+      "synthesis/figures/checklist-evidence.svg",
+      "synthesis/figures/reported-regional-estimates.png",
+      "synthesis/figures/reported-regional-estimates.svg",
+      "synthesis/figures/scientific-outcomes.png",
+      "synthesis/figures/scientific-outcomes.svg",
+      "synthesis/figures/worker-effort.png",
+      "synthesis/index.json",
+      "synthesis/path-mapping.json"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 2.723748333984986,
+    "stdout": "009-get-original-payloads.stdout",
+    "stderr": "009-get-original-payloads.stderr"
+  },
+  {
+    "label": "complete-original-proof",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "python",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/migration/verify_original.py",
+      "--dataset",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "--output",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/original-files-verification.json"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09235779102891684,
+    "stdout": "010-complete-original-proof.stdout",
+    "stderr": "010-complete-original-proof.stderr"
+  },
+  {
+    "label": "install-selected-resources",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "study",
+      "assessment"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 6.621907167020254,
+    "stdout": "011-install-selected-resources.stdout",
+    "stderr": "011-install-selected-resources.stderr"
+  },
+  {
+    "label": "install-selected-results",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study",
+      "submodule",
+      "update",
+      "--init",
+      "--depth",
+      "1",
+      "--",
+      "results/narps-r1-01",
+      "results/narps-r1-02",
+      "results/narps-r1-03",
+      "results/narps-r1-04",
+      "results/narps-r1-05",
+      "results/narps-r1-06",
+      "results/narps-r1-07",
+      "results/narps-r1-08",
+      "results/narps-r1-09",
+      "results/narps-r1-10",
+      "results/narps-r1-11",
+      "results/narps-r1-12"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 135.4215857499512,
+    "stdout": "012-install-selected-results.stdout",
+    "stderr": "012-install-selected-results.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1920693749561906,
+    "stdout": "013-annex-metadata.stdout",
+    "stderr": "013-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.00686987501103431,
+    "stdout": "014-ignore-github.stdout",
+    "stderr": "014-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.22134470799937844,
+    "stdout": "015-annex-init.stdout",
+    "stderr": "015-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006146040977910161,
+    "stdout": "016-content-route.stdout",
+    "stderr": "016-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005342665943317115,
+    "stdout": "017-content-endpoint.stdout",
+    "stderr": "017-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09056791698094457,
+    "stdout": "018-merge-annex.stdout",
+    "stderr": "018-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-01",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-01",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.0205326660070568,
+    "stdout": "019-get-indexed-evidence-01.stdout",
+    "stderr": "019-get-indexed-evidence-01.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.201692832983099,
+    "stdout": "020-annex-metadata.stdout",
+    "stderr": "020-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005297290976159275,
+    "stdout": "021-ignore-github.stdout",
+    "stderr": "021-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.2239476250251755,
+    "stdout": "022-annex-init.stdout",
+    "stderr": "022-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005980000016279519,
+    "stdout": "023-content-route.stdout",
+    "stderr": "023-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0049695419147610664,
+    "stdout": "024-content-endpoint.stdout",
+    "stderr": "024-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.08907670807093382,
+    "stdout": "025-merge-annex.stdout",
+    "stderr": "025-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-02",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-02",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.9885599580593407,
+    "stdout": "026-get-indexed-evidence-02.stdout",
+    "stderr": "026-get-indexed-evidence-02.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1415020409040153,
+    "stdout": "027-annex-metadata.stdout",
+    "stderr": "027-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0055302499094977975,
+    "stdout": "028-ignore-github.stdout",
+    "stderr": "028-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.21228729200083762,
+    "stdout": "029-annex-init.stdout",
+    "stderr": "029-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005842166021466255,
+    "stdout": "030-content-route.stdout",
+    "stderr": "030-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005290834000334144,
+    "stdout": "031-content-endpoint.stdout",
+    "stderr": "031-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.11064154200721532,
+    "stdout": "032-merge-annex.stdout",
+    "stderr": "032-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-03",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-03",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-02/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.0083474169950932,
+    "stdout": "033-get-indexed-evidence-03.stdout",
+    "stderr": "033-get-indexed-evidence-03.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1412011670181528,
+    "stdout": "034-annex-metadata.stdout",
+    "stderr": "034-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005922625074163079,
+    "stdout": "035-ignore-github.stdout",
+    "stderr": "035-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.25106433406472206,
+    "stdout": "036-annex-init.stdout",
+    "stderr": "036-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.013019375037401915,
+    "stdout": "037-content-route.stdout",
+    "stderr": "037-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.008226749952882528,
+    "stdout": "038-content-endpoint.stdout",
+    "stderr": "038-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.24635341600514948,
+    "stdout": "039-merge-annex.stdout",
+    "stderr": "039-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-04",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-04",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-02/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1727242500055581,
+    "stdout": "040-get-indexed-evidence-04.stdout",
+    "stderr": "040-get-indexed-evidence-04.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1512319579487666,
+    "stdout": "041-annex-metadata.stdout",
+    "stderr": "041-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006301374989561737,
+    "stdout": "042-ignore-github.stdout",
+    "stderr": "042-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.21613299997989088,
+    "stdout": "043-annex-init.stdout",
+    "stderr": "043-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005912375054322183,
+    "stdout": "044-content-route.stdout",
+    "stderr": "044-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005358375026844442,
+    "stdout": "045-content-endpoint.stdout",
+    "stderr": "045-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09251954196952283,
+    "stdout": "046-merge-annex.stdout",
+    "stderr": "046-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-05",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-05",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.8907254580408335,
+    "stdout": "047-get-indexed-evidence-05.stdout",
+    "stderr": "047-get-indexed-evidence-05.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.137356665916741,
+    "stdout": "048-annex-metadata.stdout",
+    "stderr": "048-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.007268708082847297,
+    "stdout": "049-ignore-github.stdout",
+    "stderr": "049-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.2464459160109982,
+    "stdout": "050-annex-init.stdout",
+    "stderr": "050-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006730000022798777,
+    "stdout": "051-content-route.stdout",
+    "stderr": "051-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006075707962736487,
+    "stdout": "052-content-endpoint.stdout",
+    "stderr": "052-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09692899999208748,
+    "stdout": "053-merge-annex.stdout",
+    "stderr": "053-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-06",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-06",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.8756267920834944,
+    "stdout": "054-get-indexed-evidence-06.stdout",
+    "stderr": "054-get-indexed-evidence-06.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1616345000220463,
+    "stdout": "055-annex-metadata.stdout",
+    "stderr": "055-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0065902500646188855,
+    "stdout": "056-ignore-github.stdout",
+    "stderr": "056-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.21703883400186896,
+    "stdout": "057-annex-init.stdout",
+    "stderr": "057-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005985625088214874,
+    "stdout": "058-content-route.stdout",
+    "stderr": "058-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.004990790970623493,
+    "stdout": "059-content-endpoint.stdout",
+    "stderr": "059-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09179437498096377,
+    "stdout": "060-merge-annex.stdout",
+    "stderr": "060-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-07",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-07",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-02/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-03/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.387757542077452,
+    "stdout": "061-get-indexed-evidence-07.stdout",
+    "stderr": "061-get-indexed-evidence-07.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 36.147372333100066,
+    "stdout": "062-annex-metadata.stdout",
+    "stderr": "062-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0065097910119220614,
+    "stdout": "063-ignore-github.stdout",
+    "stderr": "063-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.24221941700670868,
+    "stdout": "064-annex-init.stdout",
+    "stderr": "064-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006037999992258847,
+    "stdout": "065-content-route.stdout",
+    "stderr": "065-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005367917008697987,
+    "stdout": "066-content-endpoint.stdout",
+    "stderr": "066-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09055916592478752,
+    "stdout": "067-merge-annex.stdout",
+    "stderr": "067-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-08",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-08",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.8866681250510737,
+    "stdout": "068-get-indexed-evidence-08.stdout",
+    "stderr": "068-get-indexed-evidence-08.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.2017092501046136,
+    "stdout": "069-annex-metadata.stdout",
+    "stderr": "069-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.009735292056575418,
+    "stdout": "070-ignore-github.stdout",
+    "stderr": "070-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.46697554097045213,
+    "stdout": "071-annex-init.stdout",
+    "stderr": "071-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006572916987352073,
+    "stdout": "072-content-route.stdout",
+    "stderr": "072-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005811167065985501,
+    "stdout": "073-content-endpoint.stdout",
+    "stderr": "073-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.10489608289208263,
+    "stdout": "074-merge-annex.stdout",
+    "stderr": "074-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-09",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-09",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.7247800839832053,
+    "stdout": "075-get-indexed-evidence-09.stdout",
+    "stderr": "075-get-indexed-evidence-09.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.15920691692736,
+    "stdout": "076-annex-metadata.stdout",
+    "stderr": "076-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.005531458999030292,
+    "stdout": "077-ignore-github.stdout",
+    "stderr": "077-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.267893832991831,
+    "stdout": "078-annex-init.stdout",
+    "stderr": "078-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.008211457985453308,
+    "stdout": "079-content-route.stdout",
+    "stderr": "079-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006749166990630329,
+    "stdout": "080-content-endpoint.stdout",
+    "stderr": "080-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.11504487507045269,
+    "stdout": "081-merge-annex.stdout",
+    "stderr": "081-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-10",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-10",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md",
+      "coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json",
+      "coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-01/native/procedure-status.json",
+      "coordinator/retention-01/indexable/judgment-01/native/result.json",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/procedure-status.json",
+      "coordinator/retention-01/indexable/launch/native/result.json",
+      "coordinator/retention-01/indexable/launch/native/worker-end-state.json",
+      "coordinator/retention-01/indexable/retention/judgment-01-output-binding.json",
+      "coordinator/retention-01/indexable/retention/recipient-check-02/result.json"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.2305784169584513,
+    "stdout": "082-get-indexed-evidence-10.stdout",
+    "stderr": "082-get-indexed-evidence-10.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.3785161670530215,
+    "stdout": "083-annex-metadata.stdout",
+    "stderr": "083-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.01845812506508082,
+    "stdout": "084-ignore-github.stdout",
+    "stderr": "084-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.4115826250053942,
+    "stdout": "085-annex-init.stdout",
+    "stderr": "085-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0073748750146478415,
+    "stdout": "086-content-route.stdout",
+    "stderr": "086-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.0065130420261994,
+    "stdout": "087-content-endpoint.stdout",
+    "stderr": "087-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.10646229202393442,
+    "stdout": "088-merge-annex.stdout",
+    "stderr": "088-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-11",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-11",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/judgment-02/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/worker-end-state.json"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.9959272909909487,
+    "stdout": "089-get-indexed-evidence-11.stdout",
+    "stderr": "089-get-indexed-evidence-11.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1492090829415247,
+    "stdout": "090-annex-metadata.stdout",
+    "stderr": "090-annex-metadata.stderr"
+  },
+  {
+    "label": "ignore-github",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006264707888476551,
+    "stdout": "091-ignore-github.stdout",
+    "stderr": "091-ignore-github.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "annex",
+      "init",
+      "independent migration verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.23693408304825425,
+    "stdout": "092-annex-init.stdout",
+    "stderr": "092-annex-init.stderr"
+  },
+  {
+    "label": "content-route",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.006028749980032444,
+    "stdout": "093-content-route.stdout",
+    "stderr": "093-content-route.stderr"
+  },
+  {
+    "label": "content-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.004946958972141147,
+    "stdout": "094-content-endpoint.stdout",
+    "stderr": "094-content-endpoint.stderr"
+  },
+  {
+    "label": "merge-annex",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 0.09039200004190207,
+    "stdout": "095-merge-annex.stdout",
+    "stderr": "095-merge-annex.stderr"
+  },
+  {
+    "label": "get-indexed-evidence-12",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/study/results/narps-r1-12",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--",
+      "coordinator/retention-01/indexable/judgment-01/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/events.jsonl",
+      "coordinator/retention-01/indexable/launch/native/worker-end-state.json"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.070348541950807,
+    "stdout": "096-get-indexed-evidence-12.stdout",
+    "stderr": "096-get-indexed-evidence-12.stderr"
+  },
+  {
+    "label": "original-assessor-contract",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/assessment",
+      "fetch",
+      "--depth",
+      "1",
+      "origin",
+      "0208f82504f15b82b7582f34143ab889dd52c68d"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 1.1733665000647306,
+    "stdout": "097-original-assessor-contract.stdout",
+    "stderr": "097-original-assessor-contract.stderr"
+  },
+  {
+    "label": "reconstruct-comparison",
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/synthesis/analysis/pixi.toml",
+      "python",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/synthesis/analysis/aggregate_comparison.py",
+      "--allocation",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/allocation.json",
+      "--index",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/replay/index.json",
+      "--disposition",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/replay/disposition.json",
+      "--assessor",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/assessment",
+      "--assessment-pin",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/recipient/synthesis/analysis/assessment-version.json",
+      "--assessment-procedure-sha256",
+      "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
+      "--output",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03/aggregate"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-03",
+    "returncode": 0,
+    "elapsed_seconds": 14.14601141703315,
+    "stdout": "098-reconstruct-comparison.stdout",
+    "stderr": "098-reconstruct-comparison.stderr"
+  }
+]

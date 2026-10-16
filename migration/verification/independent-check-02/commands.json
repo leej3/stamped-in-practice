@@ -1,0 +1,53 @@
+[
+  {
+    "label": "clone",
+    "argv": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "--single-branch",
+      "--branch",
+      "codex/iteration-narps-v1",
+      "git@github.com:leej3/stamped-in-practice.git",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02/recipient"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02",
+    "returncode": 0,
+    "elapsed_seconds": 1.3670577500015497,
+    "stdout": "001-clone.stdout",
+    "stderr": "001-clone.stderr"
+  },
+  {
+    "label": "head",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02/recipient",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02",
+    "returncode": 0,
+    "elapsed_seconds": 0.010430125053972006,
+    "stdout": "002-head.stdout",
+    "stderr": "002-head.stderr"
+  },
+  {
+    "label": "annex-metadata",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02/recipient",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/migration-01/independent-check-02",
+    "returncode": 128,
+    "elapsed_seconds": 24.649419208988547,
+    "stdout": "003-annex-metadata.stdout",
+    "stderr": "003-annex-metadata.stderr"
+  }
+]
