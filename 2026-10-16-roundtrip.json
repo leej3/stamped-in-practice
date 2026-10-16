@@ -1,0 +1,227 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All project artifacts reside under this repository root, with annex payloads stored beneath its Git metadata and input sources linked in the tracked manifest.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All 54 fixed maps are in the annex and their declared NeuroVault URLs retrieved with matching sizes and SHA-256 values; task and metadata are inside the root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "Analysis libraries are in pixi.toml, but run logs invoke Pixi and annex inputs require git-annex; neither host tool has a pinned in-object installation route.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/004": {
+      "value": "yes",
+      "reason": "Git tracks code, text and configuration; the worker-stop receipt records a clean tree at this commit.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "Large binary content is stored in git-annex; 58 pointers are tracked and no binary blob over 10 MiB is in Git.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Run logs name the command, but no frozen lock or environment identity links the generated outputs to exact dependencies.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "No README.md or Makefile provides installation and usage instructions.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report links the analysis script, and the recorded command is pixi run python analysis/run_group_analysis.py.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "No host-specific absolute paths were found in tracked text files.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "The script imports are supplied by pixi.toml, but Pixi is required by the recorded command and is not declared or pinned within the environment.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "pixi.toml lists macOS and Linux targets, but Pixi installation and network access for atlas retrieval are not documented for a new host.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "pixi.toml lists Python packages and target platforms; no install instructions identify Pixi, git-annex or network access as system prerequisites.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/013": {
+      "value": "yes",
+      "reason": "The tracked pixi.toml defines the analysis environment alongside code and data.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency update process is documented; pixi.lock is ignored and no tracked lock update process appears in project history.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "pixi.toml uses mutable ranges and wildcards; pixi.lock is ignored and absent from the committed object.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "At worker stop the receipt confirms local annex bytes and matching Git refs, but not recipient retrieval; the public GitHub route could not fetch annex payloads.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "No documentation explains how to obtain and use the environment specification on a new machine.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git tracks code, text and configuration; git-annex tracks large content in the same Git repository model.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "No tracked CI workflow regularly checks that the documented analysis remains executable.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "Inputs, code, results and environment are separated under input/, analysis/, results/ and pixi.toml.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: all input and software sources are public; this object contains no restricted component.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "A same-host clone reproduced 13 outputs exactly; report.md was absent, and replay did not use a container, batch job, clean VM or cloud host.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The recorded pixi run uses a reusable project environment; no workflow creates and discards a separate environment per execution.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No recurring check rebuilds the exact environment used for these results; no exact lock exists, though one current-spec replay matched 13 outputs.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "The object archives the pixi.toml specification but no installed package binaries or environment image.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency update process is documented or tracked; this item duplicates must/014.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "External maps are managed through git-annex and source URLs; the project has no Git submodules.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The report describes inputs, code and results, but does not explain independent module relationships or how to recombine them.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/003": {
+      "value": "yes",
+      "reason": "Input, analysis, result and environment boundaries have distinct paths and interfaces; the script reads the manifest and writes under results/.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "The group-analysis script combines the fixed inputs with the environment and writes the listed results.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report and source manifest help readers locate methods, inputs, code, quality checks, results and figures.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    }
+  },
+  "assessor": {
+    "skill": "human",
+    "harness": "checklist web app",
+    "format": 3
+  }
+}
