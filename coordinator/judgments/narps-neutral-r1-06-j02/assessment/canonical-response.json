@@ -1,0 +1,632 @@
+{
+  "checklist_version": "0.3.1",
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All delivered inputs, code, report, figures, and results are nested under the workspace root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "judge-target.json",
+          "description": "Capture reference_limits is empty; assessed workspace is content/workspace.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data/",
+          "description": "54 relative input links point into the retained in-root .git/annex object store.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All 54 map links resolve to retained Annex objects inside the common root; no external data route is needed.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Lists the 54 selected source maps and identities.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Relative link into .git/annex; capture contains matching Annex payload.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "subdatasets-resolvable did not check the Annex-backed input links; absence of submodules does not establish absence of reachable data.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden",
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "The report names packages and versions, but no environment spec includes the external software dependencies.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Reproducibility files section lists Python and package versions only.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git was used, but report, code, figures, and results were untracked at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "tree-clean lists ?? .codex/, code/, figures/, report.md, and results/.",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "Stop receipt identifies the worker commit; coordinator capture includes uncommitted state.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:tree-clean",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "The 54 large participant maps use Git-annex links and retained payloads.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "input/data/",
+          "description": "54 relative Annex-backed map links; the capture includes Annex object bytes.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Session history records successful runs in the shared supplied Python environment, but no portable environment identity or manifest digest links results to an exact specification.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a143a3-31fb-7263-b4ca-bcf92756e9df/full.jsonl",
+          "description": "Execution events show repeated code/group_analysis.py runs through the shared common-environment interpreter; a failed run was followed by six successful runs.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "Lists package versions but no environment lock identity.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:derived-have-records+probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The report links artifacts but gives no installation and usage instructions or executable setup route.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Reproducibility files section names artifacts but no install or run command.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report identifies code/group_analysis.py as the analysis script, a clear starting point in this small study.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Reproducibility files section links the single analysis script.",
+          "sha256": null
+        },
+        {
+          "uri": "code/group_analysis.py",
+          "description": "Single group-analysis entry script generates listed figures and results.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis script derives paths from its own location and uses relative project paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "code/group_analysis.py",
+          "description": "ROOT is resolved from __file__; inputs and outputs are rooted under the project.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:no-abs-paths",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "Required scientific packages are listed in prose but absent from any dependency/environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Names Python and five package versions; no lockfile, environment file, or container.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The documented route leaves host assumptions unstated, including the Nilearn template availability/network prerequisite.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "code/group_analysis.py",
+          "description": "Calls datasets.load_mni152_template for figure background.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "No OS, system-library, or network/cache setup is documented.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "There is no README or environment specification with setup requirements; the report\u2019s package list is not an installable requirements route.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Package versions appear only in the limitations/reproducibility prose.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is included in the worker\u2019s version-controlled state.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "worker-end-state.json",
+          "description": "Stop receipt distinguishes worker commit from later capture.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update/regeneration process is declared, and no such updates are tracked.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "No environment update command or process.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "No frozen environment artifact or specification lets another researcher reconstruct the reported runtime.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Package versions are descriptive, without a lock or environment file.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:run-env-linked",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "The worker supplied no accessible environment specification or declared authorized route for obtaining one.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": ".git/config",
+          "description": "No remote.origin.url in the captured worker repository.",
+          "sha256": null
+        },
+        {
+          "uri": "access.json",
+          "description": "No worker route to analysis deliverables or environment was declared.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "No documentation explains how to obtain and use an environment specification.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "No environment artifact or acquisition/use instructions.",
+          "sha256": null
+        },
+        {
+          "uri": "access.json",
+          "description": "No worker-declared retrieval route.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git and Git-annex are used for code/history and large participant-map content.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        },
+        {
+          "uri": ".git/config",
+          "description": "Annex filter configuration is present.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "Repeated manual runs are recorded during one work session, but no ongoing or recurring test record shows the workflow is checked regularly.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a143a3-31fb-7263-b4ca-bcf92756e9df/full.jsonl",
+          "description": "Multiple successful manual executions in one session; no recurring CI or scheduled test.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, code, results, and figures have separate directories, but the layout is not fully separated: no environment module, and the report sits at root.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "Describes input, code, results, and figures; does not document modular boundaries.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:modules-separated",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": "no",
+      "reason": "Recorded runs use the existing shared coordinator environment; no fresh container, clean VM, or isolated-environment test is recorded.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": ".entire/metadata/01a143a3-31fb-7263-b4ca-bcf92756e9df/full.jsonl",
+          "description": "Successful invocations use the persistent shared common-environment interpreter.",
+          "sha256": null
+        },
+        {
+          "uri": "replay.json",
+          "description": "Independent fresh replay was not checked because the delivery has no reconstructable setup.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The delivered workflow has no mechanism that creates a disposable environment for each run.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "code/group_analysis.py",
+          "description": "Runs directly in the ambient Python environment; no container or environment manager.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "Only reports ambient package versions.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "There is no exact environment specification to reconstitute and test.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Lists package versions, but no reproducible environment file.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present+probe:run-env-linked",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifacts (container, lockfile, or archived environment) are included.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "Lists software versions only.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No environment update process is declared or tracked; same finding as must/014.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "No regeneration/update command.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: no restricted data or software is identified in this study delivery.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Identifies publicly sourced participant maps; no restricted component is declared.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: there are no independently maintained project subcomponents; ordinary runtime packages and input datasets are assessed elsewhere.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Probe found no submodules; inspected delivery shows no independently maintained subproject."
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Inputs are study data sources, not independently maintained project modules."
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The directory layout is apparent, but documentation does not explain module relationships or recombination.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Lists outputs and source files, but no modular structure description.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "No independently updateable module boundaries or dependency contracts are documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "code/group_analysis.py",
+          "description": "Single script reads fixed input paths and writes fixed output paths.",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "No module boundary description.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "No composition mechanism is documented; the project is one direct script with no module orchestration.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "code/group_analysis.py",
+          "description": "Single script; no workflow/composition file.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Frozen probe sweep; tracked-path-only measures are interpreted against the complete stopped delivery.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report links the script, data methods, summary, QC, maps, permutation table, clusters, and figures.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "Reproducibility files section provides direct artifact links.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "2906eaca49c5a00d3df4b0c2dcd59eba9c8a3fb8",
+    "captured_at": "2026-10-16T07:41:21.554566+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-06-j02/manifest.json",
+      "sha256": "44b45c2d1e80cd01a5c6725623e8bffd63b3732ef2c1f010cdceea08c89f6878"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.2.0",
+    "harness": "OpenAI Codex API",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.2.0"
+    ],
+    "note": "Independent assessment; no prior assessment was available."
+  },
+  "scope": "Complete captured delivery inspected; worker execution history reviewed; replay not checked; coordinator resources distinguished."
+}
