@@ -1,0 +1,272 @@
+[
+  {
+    "label": "init",
+    "argv": [
+      "git",
+      "init",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.014425082947127521,
+    "stdout": "001-init.stdout",
+    "stderr": "001-init.stderr"
+  },
+  {
+    "label": "origin",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "remote",
+      "add",
+      "origin",
+      "git@github.com:leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.007618832984007895,
+    "stdout": "002-origin.stdout",
+    "stderr": "002-origin.stderr"
+  },
+  {
+    "label": "fetch-retention",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "codex/narps-r1-01-retained"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 1.2440919589716941,
+    "stdout": "003-fetch-retention.stdout",
+    "stderr": "003-fetch-retention.stderr"
+  },
+  {
+    "label": "identity",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "rev-parse",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.011300540994852781,
+    "stdout": "004-identity.stdout",
+    "stderr": "004-identity.stderr"
+  },
+  {
+    "label": "checkout",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "checkout",
+      "--detach",
+      "6c0c006580890a030c572d488f584a91ce0d611d"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.19379758392460644,
+    "stdout": "005-checkout.stdout",
+    "stderr": "005-checkout.stderr"
+  },
+  {
+    "label": "parent",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "show",
+      "-s",
+      "--format=%P",
+      "6c0c006580890a030c572d488f584a91ce0d611d"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.027420207974500954,
+    "stdout": "006-parent.stdout",
+    "stderr": "006-parent.stderr"
+  },
+  {
+    "label": "changed-paths",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "diff-tree",
+      "--no-commit-id",
+      "--name-only",
+      "-r",
+      "6c0c006580890a030c572d488f584a91ce0d611d"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.01851691701449454,
+    "stdout": "007-changed-paths.stdout",
+    "stderr": "007-changed-paths.stderr"
+  },
+  {
+    "label": "science-tree-unchanged",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "diff",
+      "d90a335549f43007eac05902859224e6ce2eaada",
+      "6c0c006580890a030c572d488f584a91ce0d611d",
+      "--",
+      ".",
+      ":(exclude)coordinator/retention-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.02281191700603813,
+    "stdout": "008-science-tree-unchanged.stdout",
+    "stderr": "008-science-tree-unchanged.stderr"
+  },
+  {
+    "label": "fetch-annex",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 1.1821323750773445,
+    "stdout": "009-fetch-annex.stdout",
+    "stderr": "009-fetch-annex.stderr"
+  },
+  {
+    "label": "ignore-github-content",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.009485541959293187,
+    "stdout": "010-ignore-github-content.stdout",
+    "stderr": "010-ignore-github-content.stderr"
+  },
+  {
+    "label": "annex-init",
+    "argv": [
+      "pixi",
+      "run",
+      "--as-is",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "annex",
+      "init",
+      "independent retained-object verification"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.38522295805159956,
+    "stdout": "011-annex-init.stdout",
+    "stderr": "011-annex-init.stderr"
+  },
+  {
+    "label": "annex-origin",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.010375250014476478,
+    "stdout": "012-annex-origin.stdout",
+    "stderr": "012-annex-origin.stderr"
+  },
+  {
+    "label": "annex-endpoint",
+    "argv": [
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.010541624971665442,
+    "stdout": "013-annex-endpoint.stdout",
+    "stderr": "013-annex-endpoint.stderr"
+  },
+  {
+    "label": "annex-inventory",
+    "argv": [
+      "pixi",
+      "run",
+      "--as-is",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "annex",
+      "find",
+      "--anything",
+      "--json",
+      "--",
+      "coordinator/retention-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 0.12148450000677258,
+    "stdout": "014-annex-inventory.stdout",
+    "stderr": "014-annex-inventory.stderr"
+  },
+  {
+    "label": "fetch-bundle-content",
+    "argv": [
+      "pixi",
+      "run",
+      "--as-is",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "-C",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01/recipient",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--jobs",
+      "3",
+      "--json",
+      "--",
+      "coordinator/retention-01"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-01/independent-publication-check-01",
+    "returncode": 0,
+    "elapsed_seconds": 20.727127625024877,
+    "stdout": "015-fetch-bundle-content.stdout",
+    "stderr": "015-fetch-bundle-content.stderr"
+  }
+]
