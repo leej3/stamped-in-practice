@@ -24,3 +24,5 @@ All substantive runs were launched through Pixi and captured by duct in this dir
 The first duct invocation used an extra `run` subcommand (`pixi run duct run ...`) and was rejected by duct before starting a child process; it produced no duct record. This invocation error did not launch analysis and was corrected immediately.
 
 The first final-replay duct invocation also used an extra `run` subcommand and was rejected before starting Pixi. The corrected invocation used `duct -p ... pixi run ...`; no analysis ran during the failed invocation.
+
+The published-route check used a fresh GitHub clone of the environment branch, initialized the documented `con-hub` annex remote, fetched its location metadata without pushing, and retrieved the 54 maps, atlas files, and accepted outputs. The locked install, 9,999-permutation replay, exact output comparison, and independent audit all passed; see the `replay-published-final_*`, `compare-published-final_*`, and `validate-published-final_*` duct records.
