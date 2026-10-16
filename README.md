@@ -46,6 +46,8 @@ The exact original delivery is preserved in `coordinator/delivery-01/delivery.ta
 Its manifest digest identifies those bytes; the actual worker Git HEAD may still be the supplied input seed.
 Later coordinator preservation commits do not become worker scientific revisions or earn worker-practice credit.
 Judgments and supplementary execution evidence are added separately as they finish.
+The separately registered operational-copy assessments are retained under `coordinator/assessment-series/narps-neutral-r1-operational-v4/`; the original judgments remain in their earlier paths.
+The registry records each series, slot, procedure and publication identity separately.
 Keep experiment submodules uninitialized until needed.
 
 ## Historical development comparison
