@@ -1,0 +1,91 @@
+[
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/attempt-01/native/original-delivery/content/workspace",
+    "environment_overrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "stdout": "worker-head.txt",
+    "stderr": "worker-head.txt.stderr",
+    "returncode": 0
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "for-each-ref",
+      "--format=%(refname) %(objectname)",
+      "refs/heads/entire",
+      "refs/entire/checkpoints"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/attempt-01/native/original-delivery/content/workspace",
+    "environment_overrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "stdout": "entire-refs.txt",
+    "stderr": "entire-refs.txt.stderr",
+    "returncode": 0
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "ls-tree",
+      "-r",
+      "--name-only",
+      "3b2a217f4f98b4c133fd7b2db5acea9a6f7b5731"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/attempt-01/native/original-delivery/content/workspace",
+    "environment_overrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "stdout": "shadow-00-paths.txt",
+    "stderr": "shadow-00-paths.txt.stderr",
+    "returncode": 0
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "show",
+      "3b2a217f4f98b4c133fd7b2db5acea9a6f7b5731:.entire/metadata/01a1436f-9f56-7c71-a6ec-a1e0980289bd/full.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/attempt-01/native/original-delivery/content/workspace",
+    "environment_overrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "stdout": "shadow-00-full.jsonl",
+    "stderr": "shadow-00-full.jsonl.stderr",
+    "returncode": 0
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.hooksPath=/dev/null",
+      "show",
+      "3b2a217f4f98b4c133fd7b2db5acea9a6f7b5731:.entire/metadata/01a1436f-9f56-7c71-a6ec-a1e0980289bd/prompt.txt"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-03/attempt-01/native/original-delivery/content/workspace",
+    "environment_overrides": {
+      "GIT_OPTIONAL_LOCKS": "0",
+      "GIT_TERMINAL_PROMPT": "0"
+    },
+    "stdout": "shadow-00-prompt.txt",
+    "stderr": "shadow-00-prompt.txt.stderr",
+    "returncode": 0
+  }
+]

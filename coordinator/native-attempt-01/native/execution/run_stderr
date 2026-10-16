@@ -1,0 +1,10 @@
+2026-10-16T06:42:25.398803Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-03/analysis/group_analysis.py:
+    nib.save(affine_img, OUT / "group_mean_effect.nii.gz")
+    nib.save(t_img, OUT / "group_t_map.nii.gz")
+    nib.save(p_img, OUT / "group_maxT_fwe_p.nii.gz")
+2026-10-16T06:42:50.363641Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-03/analysis/group_analysis.py:
+        "maxT_positive_voxels_fwe05": int(sig.sum()),
+        "maxT_min_adjusted_p": float(p_max_t.min()),
+        "bonferroni_t_critical_fwe05": bonf_tcrit,
+2026-10-16T06:43:00.384471Z  WARN codex_analytics::client: failed to send events request: error sending request for url (https://chatgpt.com/backend-api/codex/analytics-events/events)
+2026-10-16T06:43:02.507065Z ERROR codex_core::tools::router: error=exec_command failed: CreateProcess { message: "Rejected(\"`/opt/homebrew/bin/bash -lc \\\"rg -n 'maxT|N_PERM|SEED|sig\\\\\\\\[' analysis/group_analysis.py || true; rm -f results/group_maxT_fwe_p.nii.gz; /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python analysis/group_analysis.py\\\"` rejected: rm -f style commands are not permitted. Use a safer approach\")" }
