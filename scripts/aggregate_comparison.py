@@ -36,8 +36,13 @@ EXCERPT = obj({"quote": TEXT, "start_line": {"type": "integer", "minimum": 1},
 EXTRACTION = obj({"extraction_status": {"enum": ["explicit", "missing", "ambiguous"]},
                   "category": {"enum": [*ADEQUACY, None]}, "excerpt": EXCERPT},
                  ("extraction_status", "category"))
+NATIVE = obj({"procedure_status": ARTIFACT, "result": ARTIFACT})
 JUDGMENT = obj({"judgment_id": TEXT, "response": ARTIFACT, "report": ARTIFACT,
+                "native": NATIVE, "output_binding": ARTIFACT,
                 "adequacy": EXTRACTION, "conclusion": EXCERPT}, ("judgment_id",))
+EXCLUDED = obj({"judgment_id": TEXT, "reason": TEXT,
+                "native": obj({"procedure_status": ARTIFACT, "result": ARTIFACT}),
+                "response": ARTIFACT, "report": ARTIFACT}, ("judgment_id", "reason"))
 OPERATION = obj({
     "operation_id": TEXT,
     "stage": {"enum": ["setup", "worker", "discovery", "installation", "computation",
@@ -45,6 +50,7 @@ OPERATION = obj({
                        "environment-retrieval", "publication", "coordinator"]},
     "actor": {"enum": ["worker", "judge", "coordinator"]},
     "judgment_role": {"enum": ["primary", "duplicate"]},
+    "excluded_attempt_id": TEXT,
     "status": {"enum": ["succeeded", "partial", "failed", "not-attempted",
                         "not-checked", "interrupted", "unknown"]},
     "scope": TEXT, "evidence": {"type": "array", "minItems": 1, "items": ARTIFACT},
@@ -65,11 +71,17 @@ OPERATION = obj({
         "name": TEXT, "value": {"type": "number", "minimum": 0}, "unit": TEXT,
         "scope": TEXT}, ("name", "value", "unit", "scope"))},
 }, ("operation_id", "stage", "actor", "status", "scope", "evidence"))
-INDEX_SCHEMA = obj({"schema_version": {"const": 1}, "runs": {"type": "array", "items": obj({
+INDEX_SCHEMA = obj({"schema_version": {"const": 2},
+    "comparison_provenance": obj({"assessment_seal": ARTIFACT, "research_procedure_sha256": SHA},
+                                  ("assessment_seal", "research_procedure_sha256")),
+    "runs": {"type": "array", "items": obj({
     "run_id": TEXT, "result_commit": COMMIT, "worker_head": COMMIT,
+    "seed_commit": COMMIT, "worker_end_state": ARTIFACT,
+    "worker_native": NATIVE, "worker_input": ARTIFACT,
     "retention_commit": COMMIT, "skill_commit": COMMIT,
     "worker_completion": {"enum": ["pending", "completed", "failed", "interrupted", "unknown"]},
     "judgments": obj({"primary": JUDGMENT, "duplicate": JUDGMENT}),
+    "excluded_attempts": {"type": "array", "items": EXCLUDED},
     "operations": {"type": "array", "items": OPERATION},
 }, ("run_id",))}}, ("schema_version", "runs"))
 
@@ -106,6 +118,7 @@ class Contract:
     items: list
     schema: dict
     lock: dict
+    assessment_pin: dict = None
 
     def validate(self, response, result_commit):
         errors = schema_errors(response, self.schema)
@@ -151,7 +164,8 @@ class Contract:
 
 def load_contract(assessor, pin):
     """Read immutable schema assets, never execute assessor or research code."""
-    revision = parse_json(pin.read_bytes())["source_commit"]
+    assessment_pin = parse_json(pin.read_bytes())
+    revision = assessment_pin["source_commit"]
     if not re.fullmatch(r"[0-9a-f]{40}([0-9a-f]{24})?", revision):
         raise ValueError("Invalid assessor source commit")
 
@@ -168,7 +182,7 @@ def load_contract(assessor, pin):
              for g in checklist["data"] for e in g["entries"] for i in e["items"]]
     if len({i["id"] for i in items}) != len(items):
         raise ValueError("Duplicate canonical checklist item")
-    return Contract(items, parse_json(blob("references/response-schema.json")), lock)
+    return Contract(items, parse_json(blob("references/response-schema.json")), lock, assessment_pin)
 
 
 def allocation_rows(allocation):
@@ -213,6 +227,190 @@ def artifact(reference, base):
     return raw
 
 
+def require_equal(actual, expected, label):
+    if actual != expected:
+        raise ValueError("Provenance mismatch: " + label)
+
+
+def required_fields(value, properties):
+    schema = obj(properties, properties)
+    schema["additionalProperties"] = True
+    errors = schema_errors(value, schema)
+    if errors:
+        raise ValueError("Malformed provenance: " + "; ".join(errors))
+
+
+@dataclass
+class ProvenanceGate:
+    """Bind extractions to a selected seal and independently retained registration."""
+    research: dict
+    research_sha256: str
+    seal: dict = None
+    seal_sha256: str = None
+
+    @classmethod
+    def load(cls, original_bytes, selection, allocation, base, contract, approved_digest=None):
+        if original_bytes is None:
+            raise ValueError("Original registered research procedure is required")
+        research = parse_json(original_bytes)
+        required_fields(research, {"version": {"const": 1}, "status": {"const": "sealed"},
+                                   "comparison_id": TEXT, "conditions": {"type": "array"},
+                                   "assessment": {"type": "object"}})
+        require_equal(research["conditions"], allocation["conditions"], "registered conditions")
+        gate = cls(research, sha256(original_bytes))
+        if selection is None:
+            return gate
+        if approved_digest is None:
+            raise ValueError("Independent approved assessment procedure digest is required")
+        require_equal(selection["assessment_seal"]["sha256"], approved_digest,
+                      "approved assessment procedure digest")
+        require_equal(selection["research_procedure_sha256"], gate.research_sha256,
+                      "registered research digest")
+        seal = parse_json(artifact(selection["assessment_seal"], base))
+        required_fields(seal, {"version": {"const": 2}, "status": {"const": "sealed"},
+            "comparison_id": TEXT, "conditions": {"type": "array"},
+            "assessment": {"type": "object"}, "assessment_amendment": {"type": "object"}})
+        amendment = seal["assessment_amendment"]
+        required_fields(amendment, {"scope": {"const": "assessment-only"},
+            "research_procedure_json": TEXT, "research_procedure_sha256": SHA,
+            "retained_objects": {"type": "array", "minItems": 1, "items": obj({
+                "run": TEXT, "seed_commit": COMMIT, "result_commit": COMMIT,
+                "worker_end_state_sha256": SHA},
+                ("run", "seed_commit", "result_commit", "worker_end_state_sha256"))}})
+        original = amendment["research_procedure_json"].encode()
+        require_equal(sha256(original), gate.research_sha256, "embedded original research bytes")
+        require_equal(amendment["research_procedure_sha256"], gate.research_sha256,
+                      "embedded research digest")
+        for key in ("comparison_id", "conditions", "study", "resources", "starting_environment",
+                    "host_identity", "settings", "replay", "gitmodules_sha256"):
+            if key not in research or key not in seal:
+                raise ValueError("Missing sealed design field: " + key)
+            require_equal(seal[key], research[key], "amendment " + key)
+        changed = {"assessment-version.json", "scripts/assessment_procedure.py",
+                   "scripts/prepare_launch.py", "scripts/launch_native_probe.py"}
+        require_equal(set(seal["fixed_files"]), set(research["fixed_files"]), "fixed-file boundary")
+        for key in set(research["fixed_files"]) - changed:
+            require_equal(seal["fixed_files"][key], research["fixed_files"][key], "fixed file " + key)
+        for key in ("environment_commit", "environment_repository", "sha256"):
+            require_equal(seal["assessment"].get(key), research["assessment"].get(key),
+                          "preserved assessment environment " + key)
+        require_equal(contract.assessment_pin, seal["assessment"], "loaded assessor pin")
+        retained = amendment["retained_objects"]
+        ids = [r["run"] for r in retained]
+        assigned = {r["run_id"] for r in allocation_rows(allocation)}
+        if len(ids) != len(set(ids)) or not set(ids) <= assigned:
+            raise ValueError("Invalid retained run identities in assessment seal")
+        gate.seal, gate.seal_sha256 = seal, selection["assessment_seal"]["sha256"]
+        return gate
+
+    def validate_worker(self, run, stop, base, assignment):
+        if "worker_native" not in run or "worker_input" not in run:
+            raise ValueError("Unlisted worker requires original worker_native and worker_input evidence")
+        status = parse_json(artifact(run["worker_native"]["procedure_status"], base))
+        required_fields(status, {"version": {"const": 1}, "status": {"const": "formal-verified"},
+                                "comparison_id": TEXT, "procedure_sha256": SHA})
+        require_equal(status["comparison_id"], self.research["comparison_id"], "worker comparison")
+        require_equal(status["procedure_sha256"], self.research_sha256, "worker original launch procedure")
+        if "research_procedure_sha256" in status:
+            require_equal(status["research_procedure_sha256"], self.research_sha256,
+                          "worker original research digest")
+        result = parse_json(artifact(run["worker_native"]["result"], base))
+        required_fields(result, {"role": {"const": "research"}, "procedure": {"type": "object"},
+            "starting_commit": COMMIT, "condition": TEXT, "worker_end_state": {"type": "object"},
+            "returncode": {"type": "integer"}, "finished_at": {"type": "string", "format": "date-time"},
+            "native_session_ids": {"type": "array", "minItems": 1, "uniqueItems": True,
+                                   "items": {"type": "string", "format": "uuid"}}})
+        require_equal(result["procedure"], status, "worker procedure receipts")
+        require_equal(result["starting_commit"], run["seed_commit"], "worker seed commit")
+        require_equal(result["condition"], assignment["condition"], "worker assigned condition")
+        for key, expected in (("sha256", run["worker_end_state"]["sha256"]),
+                              ("head_commit", stop["head_commit"]), ("capture_status", "complete")):
+            require_equal(result["worker_end_state"].get(key), expected, "worker stop " + key)
+        seed = parse_json(artifact(run["worker_input"], base))
+        required_fields(seed, {"version": {"const": 2}, "run": TEXT, "condition": TEXT,
+                              "study_input_tree": COMMIT, "source_manifest_sha256": SHA})
+        for key, expected in (("run", run["run_id"]), ("condition", assignment["condition"]),
+                              ("study_input_tree", self.research["study"]["input_tree"]),
+                              ("source_manifest_sha256", self.research["fixed_files"]["pixi.toml"])):
+            require_equal(seed[key], expected, "worker input " + key)
+
+    def validate(self, run, native, base, assignment, *, excluded=False):
+        if not excluded and self.seal is None:
+            raise ValueError("Included judgment requires the amended assessment seal")
+        for key in ("seed_commit", "result_commit", "worker_end_state"):
+            if key not in run:
+                raise ValueError("Judgment provenance requires run " + key)
+        stop = parse_json(artifact(run["worker_end_state"], base))
+        required_fields(stop, {"schema_version": {"const": 1}, "kind": {"const": "worker-end-state"},
+            "capture_status": {"const": "complete"}, "errors": {"const": []}, "head_commit": COMMIT})
+        if "worker_head" in run:
+            require_equal(stop["head_commit"], run["worker_head"], "original worker head")
+        retained_match = False
+        if not excluded:
+            for retained in self.seal["assessment_amendment"]["retained_objects"]:
+                if retained["run"] == run["run_id"]:
+                    retained_match = True
+                    for key in ("seed_commit", "result_commit"):
+                        require_equal(run[key], retained[key], "retained " + key)
+                    require_equal(run["worker_end_state"]["sha256"], retained["worker_end_state_sha256"],
+                                  "retained original worker stop")
+                elif (retained["seed_commit"] == run["seed_commit"] or
+                      retained["result_commit"] == run["result_commit"]):
+                    raise ValueError("Retained object was relabeled as another run")
+            if not retained_match:
+                self.validate_worker(run, stop, base, assignment)
+        status = parse_json(artifact(native["procedure_status"], base))
+        required_fields(status, {"version": {"const": 1}, "status": {"const": "formal-verified"},
+            "comparison_id": TEXT, "procedure_sha256": SHA, "worker_end_state_sha256": SHA})
+        require_equal(status["comparison_id"], self.research["comparison_id"], "comparison identity")
+        digest = self.research_sha256 if excluded else self.seal_sha256
+        require_equal(status["procedure_sha256"], digest, "assessment procedure digest")
+        if not excluded or "research_procedure_sha256" in status:
+            require_equal(status.get("research_procedure_sha256"), self.research_sha256,
+                          "native original research digest")
+        require_equal(status["worker_end_state_sha256"], run["worker_end_state"]["sha256"],
+                      "native original worker stop")
+        result = parse_json(artifact(native["result"], base))
+        required_fields(result, {"role": {"const": "judge"}, "condition": {"type": "null"},
+            "procedure": {"type": "object"},
+            "assessment_pin": {"type": "object"}, "target": {"type": "object"},
+            "target_unchanged": {"const": True}, "returncode": {"type": "integer"},
+            "finished_at": {"type": "string", "format": "date-time"},
+            "native_session_ids": {"type": "array", "minItems": 1, "uniqueItems": True,
+                                   "items": {"type": "string", "format": "uuid"}}})
+        require_equal(result["procedure"], status, "result/procedure-status receipt identity")
+        expected_pin = self.research["assessment"] if excluded else self.seal["assessment"]
+        require_equal(result["assessment_pin"], expected_pin, "native assessor source/runtime pin")
+        required_fields(result["target"], {"schema_version": {"const": 1}, "target_path": TEXT,
+                                           "target_commit": COMMIT, "target_tree": COMMIT})
+        require_equal(result["target"]["target_commit"], run["result_commit"], "native scientific target")
+        return {"procedure_sha256": digest, "research_procedure_sha256": self.research_sha256,
+                "worker_end_state_sha256": run["worker_end_state"]["sha256"],
+                "assessment_pin": expected_pin, "native_session_ids": result["native_session_ids"],
+                "target": result["target"], "returncode": result["returncode"],
+                "finished_at": result["finished_at"]}
+
+
+def validate_output_binding(supplied, check, base):
+    """Verify a retained coordinator attribution; native receipts do not hash outputs."""
+    if not any(key in supplied for key in ("response", "report", "adequacy", "conclusion")):
+        return
+    if "output_binding" not in supplied:
+        raise ValueError("Outcome extraction requires a retained output_binding manifest")
+    binding = parse_json(artifact(supplied["output_binding"], base))
+    required_fields(binding, {"schema_version": {"const": 1},
+        "kind": {"const": "coordinator-assessment-output-binding"},
+        "native_result_sha256": SHA, "native_session_ids": {"type": "array"},
+        "outputs": obj({"response": ARTIFACT, "report": ARTIFACT})})
+    require_equal(binding["native_result_sha256"], supplied["native"]["result"]["sha256"],
+                  "bound native result bytes")
+    require_equal(binding["native_session_ids"], check["native_session_ids"], "bound native sessions")
+    for key in ("response", "report"):
+        if key in supplied:
+            require_equal(binding["outputs"].get(key, {}).get("sha256"), supplied[key]["sha256"],
+                          "bound " + key + " bytes")
+
+
 def excerpt_context(excerpt, report):
     lines = report.splitlines()
     start, end = excerpt["start_line"], excerpt["end_line"]
@@ -229,7 +427,7 @@ def excerpt_text(excerpt, report):
     return excerpt["quote"]
 
 
-def aggregate(allocation, index, base, contract):
+def aggregate(allocation, index, base, contract, research_procedure=None, assessment_procedure_sha256=None):
     errors = schema_errors(index, INDEX_SCHEMA)
     if errors:
         raise ValueError("Invalid extraction index:\n" + "\n".join(errors))
@@ -243,12 +441,12 @@ def aggregate(allocation, index, base, contract):
         indexed[run_id] = run
         if "duplicate" in run.get("judgments", {}) and not assigned[run_id]["duplicate_selected"]:
             raise ValueError("Duplicate judgment was not preselected: " + run_id)
-        for judgment in run.get("judgments", {}).values():
+        for judgment in [*run.get("judgments", {}).values(), *run.get("excluded_attempts", [])]:
             identity = judgment["judgment_id"]
             if identity in judgment_ids:
                 raise ValueError("Repeated judgment ID: " + identity)
             judgment_ids.add(identity)
-            if "result_commit" not in run:
+            if "result_commit" not in run and judgment in run.get("judgments", {}).values():
                 raise ValueError("Judgment requires run result_commit: " + run_id)
         for op in run.get("operations", []):
             identity = (run_id, op["operation_id"])
@@ -257,13 +455,80 @@ def aggregate(allocation, index, base, contract):
             operation_ids.add(identity)
             if op.get("judgment_role") == "duplicate" and not assigned[run_id]["duplicate_selected"]:
                 raise ValueError("Operation names an unselected duplicate: " + run_id)
+            if "excluded_attempt_id" in op:
+                if "judgment_role" in op:
+                    raise ValueError("Excluded attempt operation cannot occupy an assigned judgment role")
+                if op["excluded_attempt_id"] not in {j["judgment_id"] for j in run.get("excluded_attempts", [])}:
+                    raise ValueError("Unknown excluded attempt operation reference")
     tables = {name: [] for name in ("runs", "judgments", "items", "counts", "operations",
-                                    "effort", "issues", "disagreement", "pairs", "cells")}
+                                    "effort", "issues", "disagreement", "pairs", "cells", "excluded_attempts")}
     answers_by_slot = {}
     judgments_by_slot = {}
 
     def issue(run_id, role, area, message):
         tables["issues"].append(dict(run_id=run_id, role=role, area=area, message=str(message)))
+
+    # Validate before extracting any outcomes, including narrative categories.
+    checks, sessions, excluded_hashes = {}, {}, set()
+    gates = {}
+    for excluded in (False, True):
+        try:
+            gates[excluded] = ProvenanceGate.load(research_procedure,
+                None if excluded else index.get("comparison_provenance"), allocation, base, contract,
+                assessment_procedure_sha256)
+        except (OSError, ValueError, TypeError, KeyError) as error:
+            gates[excluded] = str(error)
+    if "comparison_provenance" in index and isinstance(gates[False], str):
+        issue("", "", "comparison-provenance", gates[False])
+    for run_id, record in indexed.items():
+        entries = [(role, j, False) for role, j in record.get("judgments", {}).items()]
+        entries += [("excluded", j, True) for j in record.get("excluded_attempts", [])]
+        for role, supplied, excluded in entries:
+            identity = supplied["judgment_id"]
+            check = dict(inclusion_status="pending")
+            checks[identity] = check
+            if not excluded and set(supplied) == {"judgment_id"}:
+                continue
+            try:
+                gate = gates[excluded]
+                if isinstance(gate, str):
+                    raise ValueError(gate)
+                if "native" not in supplied:
+                    raise ValueError("Judgment requires hashed native procedure-status and finalized result")
+                check.update(gate.validate(record, supplied["native"], base, assigned[run_id], excluded=excluded))
+                if excluded:
+                    for field in ("response", "report"):
+                        if field in supplied:
+                            artifact(supplied[field], base)
+                else:
+                    validate_output_binding(supplied, check, base)
+                check["inclusion_status"] = "excluded" if excluded else "eligible"
+                for session in check["native_session_ids"]:
+                    sessions.setdefault(session, []).append(identity)
+            except (OSError, ValueError, TypeError, KeyError) as error:
+                check.update(inclusion_status="invalid", provenance_error=str(error))
+            if excluded:
+                excluded_hashes.update(supplied[k]["sha256"] for k in ("response", "report") if k in supplied)
+    for identities in sessions.values():
+        if len(identities) > 1:
+            for identity in identities:
+                checks[identity].update(inclusion_status="invalid",
+                                        provenance_error="Native session reused across judgment attempts")
+    for run_id, record in indexed.items():
+        for role, supplied in record.get("judgments", {}).items():
+            check = checks[supplied["judgment_id"]]
+            if any(supplied[k]["sha256"] in excluded_hashes for k in ("response", "report") if k in supplied):
+                check.update(inclusion_status="invalid",
+                             provenance_error="Outcome artifact reused from an excluded original attempt")
+            if check["inclusion_status"] == "invalid":
+                issue(run_id, role, "provenance", check["provenance_error"])
+        for supplied in record.get("excluded_attempts", []):
+            check = checks[supplied["judgment_id"]]
+            tables["excluded_attempts"].append(dict(assigned[run_id], **supplied, **check,
+                comparison_outcomes_included=False, evidence_status=(
+                    "valid" if check["inclusion_status"] == "excluded" else "invalid")))
+            if check["inclusion_status"] == "invalid":
+                issue(run_id, "excluded", "provenance", check["provenance_error"])
 
     for assignment in runs:
         run_id = assignment["run_id"]
@@ -271,16 +536,22 @@ def aggregate(allocation, index, base, contract):
         row = dict(assignment, worker_completion=record.get(
             "worker_completion", "unknown" if record else "pending"))
         row.update({k: record.get(k) for k in
-                    ("result_commit", "worker_head", "retention_commit", "skill_commit")})
+                    ("result_commit", "seed_commit", "worker_head", "worker_end_state",
+                     "worker_native", "worker_input", "retention_commit", "skill_commit")})
         tables["runs"].append(row)
         for role in ("primary", "duplicate") if assignment["duplicate_selected"] else ("primary",):
             supplied = record.get("judgments", {}).get(role, {})
             judgment = dict(assignment, role=role, judgment_id=supplied.get("judgment_id"),
                             result_commit=record.get("result_commit"), response_status="pending",
                             adequacy=None, extraction_status="missing", conclusion=None)
-            judgment.update({k: supplied.get(k) for k in ("response", "report")})
+            judgment.update({k: supplied.get(k) for k in ("response", "report", "native", "output_binding")})
+            judgment.update(checks.get(supplied.get("judgment_id"), {"inclusion_status": "pending"}))
             tables["judgments"].append(judgment)
             judgments_by_slot[run_id, role] = judgment
+            if judgment["inclusion_status"] != "eligible":
+                if judgment["inclusion_status"] == "invalid":
+                    judgment.update(response_status="invalid", extraction_status="invalid")
+                continue
             if "response" in supplied:
                 try:
                     response = parse_json(artifact(supplied["response"], base))
@@ -356,8 +627,13 @@ def aggregate(allocation, index, base, contract):
                 except (OSError, ValueError, UnicodeError) as error:
                     issue(run_id, role, "conclusion", error)
         for operation in record.get("operations", []):
-            op = dict(assignment, **operation, evidence_status="valid")
+            excluded_id = operation.get("excluded_attempt_id")
+            scope = "excluded infrastructure attempt" if excluded_id else (
+                "assigned comparison" if operation.get("judgment_role") else "other operations")
+            op = dict(assignment, **operation, evidence_status="valid", assessment_scope=scope)
             try:
+                if excluded_id and checks[excluded_id]["inclusion_status"] != "excluded":
+                    raise ValueError("Excluded attempt provenance is invalid; cost is unverified")
                 for evidence in operation["evidence"]:
                     artifact(evidence, base)
                 if operation["stage"].endswith("-retrieval"):
@@ -437,6 +713,15 @@ def write_tables(tables, output):
                                  else v for k, v in row.items()})
 
 
+def registered_inputs(allocation_bytes, research_bytes, registration_bytes):
+    """The index cannot nominate a different allocation or original research seal."""
+    registration = parse_json(registration_bytes)
+    require_equal(registration["allocation"]["sha256"], sha256(allocation_bytes), "registered allocation bytes")
+    require_equal(registration["procedure"]["sha256"], sha256(research_bytes), "registered original procedure bytes")
+    require_equal(registration["comparison_id"], parse_json(research_bytes)["comparison_id"],
+                  "registration comparison identity")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--allocation", type=Path, required=True)
@@ -444,18 +729,32 @@ def main(argv=None):
     parser.add_argument("--output", type=Path, required=True, help="New output directory; never overwritten")
     parser.add_argument("--assessor", type=Path, default=ROOT / "assessment")
     parser.add_argument("--assessment-pin", type=Path, default=ROOT / "assessment-version.json")
+    parser.add_argument("--registration", type=Path,
+                        help="Independent original registration; default: allocation sibling registration.json")
+    parser.add_argument("--research-procedure", type=Path,
+                        help="Original seal; default: allocation sibling procedure.json")
+    parser.add_argument("--assessment-procedure-sha256",
+                        help="Approved amended seal digest from the independent amendment record")
     args = parser.parse_args(argv)
     try:
         allocation_bytes, index_bytes = args.allocation.read_bytes(), args.index.read_bytes()
+        research_bytes = (args.research_procedure or args.allocation.with_name("procedure.json")).read_bytes()
+        registration_bytes = (args.registration or args.allocation.with_name("registration.json")).read_bytes()
+        registered_inputs(allocation_bytes, research_bytes, registration_bytes)
         allocation = parse_json(allocation_bytes)
         index = parse_json(index_bytes)
         contract = load_contract(args.assessor, args.assessment_pin)
-        tables = aggregate(allocation, index, args.index.resolve().parent, contract)
+        tables = aggregate(allocation, index, args.index.resolve().parent, contract,
+                           research_bytes, args.assessment_procedure_sha256)
         write_tables(tables, args.output)
         from comparison_figures import render
         render(tables, contract.items, args.output)
-        provenance = {"schema_version": 1, "allocation_sha256": sha256(allocation_bytes),
+        provenance = {"schema_version": 2, "allocation_sha256": sha256(allocation_bytes),
                       "index_sha256": sha256(index_bytes),
+                      "registration_sha256": sha256(registration_bytes),
+                      "research_procedure_sha256": sha256(research_bytes),
+                      "approved_assessment_procedure_sha256": args.assessment_procedure_sha256,
+                      "comparison_provenance": index.get("comparison_provenance"),
                       "tool_sha256": sha256(Path(__file__).read_bytes()),
                       "figures_sha256": sha256(Path(__file__).with_name("comparison_figures.py").read_bytes()),
                       "assessment_pin": parse_json(args.assessment_pin.read_bytes()),

@@ -104,7 +104,7 @@ def render(tables, items, output):
 
     by_scope = defaultdict(list)
     for row in tables["effort"]:
-        by_scope[row["stage"], row["actor"], row["scope"]].append(row)
+        by_scope[row["stage"], row["actor"], row["scope"], row["assessment_scope"]].append(row)
     fig, axes = plt.subplots(max(1, len(by_scope)), 1, figsize=(12, max(4, 3.8 * len(by_scope))), squeeze=False)
     if not by_scope:
         axes[0, 0].axis("off")
