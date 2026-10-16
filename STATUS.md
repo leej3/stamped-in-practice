@@ -1,6 +1,9 @@
+**AI-generated draft — not reviewed by John**
+
 # Current comparison status
 
-**Round-three research is running; round two completed all 24 workers and 32 judgments.** Round two’s frozen reporting gate rejected all 32 judgments because the truthful worker source revision differs from the original research seal.
+**All 24 round-three research workers have finished; their 32 assigned judgments are next under the unchanged procedure.** Round two completed all 24 workers and 32 judgments.
+Round two’s frozen reporting gate rejected all 32 judgments because the truthful worker source revision differs from the original research seal.
 [The completed findings](assessment-series/narps-neutral-r2-operational-v4/synthesis/README.md) retain the exact mismatch, unavailable measures and all original judgments.
 These are provenance admission failures, not scientific failures or zero scores; later gates are unestablished.
 
@@ -9,7 +12,7 @@ Research source `36acf240` preserves the original `b011` procedure and scientifi
 The existing operational judging source `4f72ef49`, assessor `9852d836` and Luna/high settings remain fixed.
 The user-authorized local concurrency limit is 10; timing records disclose scheduling separately from skill effects.
 
-The existing round-three sample is 24 fresh research workers followed by 32 assigned judgments, including eight preselected duplicates.
+The [round-three assessment series](assessment-series/narps-neutral-r3-operational-v4/README.md) binds the 24 original deliveries to 32 assigned judgments, including eight preselected duplicates.
 No further tuning follows round three.
 Failures, missingness and disagreement are outcomes; no retries, repairs, replacements or sample extension are authorized.
 
