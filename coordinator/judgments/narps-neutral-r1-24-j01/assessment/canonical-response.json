@@ -1,0 +1,506 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "Workspace has one root; the manifest verifies all 1,144 workspace entries.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "../../manifest.json",
+          "description": "complete capture; zero workspace hash/link mismatches",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 source maps resolve through relative in-root annex links; cohort and sources are under input/.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "54 maps and source identifiers",
+          "sha256": null
+        },
+        {
+          "uri": "input/data",
+          "description": "sub-001..sub-123 relative links resolve inside .git/annex",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The analysis imports external Python packages, but no environment specification is included in the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "imports NumPy, SciPy, pandas, NiBabel, Nilearn and Matplotlib",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "environment path points outside the delivery",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git tracks supplied inputs, but the analysis, report, figures and results were untracked at worker stop.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "tree-clean: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#tree-clean",
+          "description": null,
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex stores all 54 participant map payloads; the complete capture retains their bytes.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "large-in-annex: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#large-in-annex",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "Results record package versions and parameters, but no exact environment specification is linked to the run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "runtime package versions, seed, permutations and code hash",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "external environment path",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "README instructions identify a script and command, but rely on an absolute environment path absent from this delivery.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "entry-point: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#entry-point",
+          "description": null,
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "partial",
+      "reason": "A main script is documented, but the declared command depends on an external environment unavailable in the workspace.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "entry-point: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#entry-point",
+          "description": null,
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis script builds project paths from __file__ and uses no hardcoded host paths.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "no-abs-paths probe: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#no-abs-paths",
+          "description": null,
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Dependencies are listed in prose, but no environment specification declares all software dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "env-spec-tracked probe: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#env-spec-tracked",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "Python package versions are named, but the required host environment and external atlas retrieval/cache assumptions are not reproducibly specified.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "prepared external environment path",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "atlas cache path and runtime platform",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "README lists Python and package versions, but omits a portable system requirements and dependency specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Run section",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in version control or the complete delivered workspace.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "env-spec-tracked: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#env-spec-tracked",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency update or environment regeneration process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "../../manifest.json",
+          "description": "complete workspace inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "The exact environment specification used for results is outside the delivery and is not linked in a retained run record.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "runtime versions, not a frozen specification",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "external environment manifest path",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published environment or complete research object retrieval route is recorded.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "env-spec-tracked: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#env-spec-tracked",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "README names an external environment path but does not explain how a recipient can obtain it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Run section",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git and annex cover supplied inputs, but scientific code and outputs were outside version control at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "tree-clean and large-in-annex: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No retained schedule or recurring test log establishes regular workflow testing; such run records would settle this.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "ci-present: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#ci-present",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, analysis, results and figures have separate directories, but the environment is external and lacks a module boundary.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "modules-separated: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json#modules-separated",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the declared data and software components are public; no restricted material requires a separate module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "public NeuroVault source",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "The recorded run used the supplied prepared host environment; no fresh container, batch job, VM or cloud run is evidenced.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "macOS runtime platform",
+          "sha256": null
+        },
+        {
+          "uri": "README.md",
+          "description": "prepared external environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "Execution instructions use a shared prepared environment; no per-run disposable environment is provided.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Run section",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "runtime environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute and test.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "env-spec-tracked and ci-present: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-24/judgments/narps-neutral-r1-24-j01/attempt-01/judgment/2026-10-16-probes.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived in the complete delivered workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "../../manifest.json",
+          "description": "complete workspace inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No process for updating dependency specifications is documented; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "no environment update process",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The independently maintained source dataset is identified by its NeuroVault collection and per-map retrieval URLs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "collection and per-image URLs",
+          "sha256": null
+        },
+        {
+          "uri": "neurovault-route-map.headers",
+          "description": "representative map returned HTTP 200",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README and analysis protocol explain input, code, results, figures and how the workflow connects them.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "project layout and run instructions",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/protocol.md",
+          "description": "analysis stages",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "Separate directories are present, but no compatibility contract or independent-update evidence establishes whether modules can change safely.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "describes directory roles",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The README documents a direct composition route: run the analysis script against input/ to generate results/ and figures/.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Run section",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "reads input and writes outputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README links the report and protocol and names the primary inputs, results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "project overview and navigation",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "675620fed8a134102b1b07226fe39d67630ee6f7",
+    "captured_at": "2026-10-16T07:27:26.697274+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-24-j01/manifest.json",
+      "sha256": "76ac670f9e4cce6766e693dd8c5530c28998efb09d91bbeb09fbb3ef8198c311"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "assessment.py@9852d8360f9519d21d11099b45f5deb8ba80cb28",
+      "assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097",
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete worker-stop delivery at commit 675620fed8a134102b1b07226fe39d67630ee6f7; manifest 76ac670f9e4cce6766e693dd8c5530c28998efb09d91bbeb09fbb3ef8198c311 verified. Scientific evidence includes untracked/ignored workspace. Coordinator-preserved state not credited. Replay not checked: environment declaration points outside object. Access checked for source inputs only."
+}
