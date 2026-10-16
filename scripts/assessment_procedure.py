@@ -204,16 +204,88 @@ def load_procedure(path, expected_sha256):
         raise SystemExit("Formal mode requires --procedure-sha256 from the registered seal")
     require_equal(sha256(content), expected_sha256, "procedure manifest SHA-256")
     manifest = json.loads(content)
-    if manifest.get("version") != 1 or manifest.get("status") != "sealed":
-        raise SystemExit("Formal mode requires a version 1 sealed procedure")
+    if manifest.get("version") not in (1, 2) or manifest.get("status") != "sealed":
+        raise SystemExit("Formal mode requires a supported sealed procedure")
     require_equal(manifest["conditions"], list(CONDITIONS), "four research conditions")
     require_equal(manifest["replay"], REPLAY, "supported replay scope")
     expected = set(FIXED_FILES) | {relative_path(manifest["resources"]["path"])}
     require_equal(set(manifest["fixed_files"]), expected, "complete fixed-file boundary")
+    if manifest["version"] == 2:
+        research_procedure(manifest)
+    elif "assessment_amendment" in manifest:
+        raise SystemExit("Assessment amendments require a version 2 seal")
     return manifest
 
 
-def check_sources(manifest, coordinator, study, base=None):
+def research_procedure(manifest):
+    """Resolve the exact original research seal in an assessment-only amendment."""
+    if manifest.get("version") == 1:
+        return manifest
+    amendment = manifest.get("assessment_amendment", {})
+    require_equal(amendment.get("scope"), "assessment-only", "amendment scope")
+    original = amendment.get("research_procedure_json")
+    if not isinstance(original, str):
+        raise SystemExit("Assessment amendment requires the original research seal bytes")
+    require_equal(sha256(original.encode()), amendment.get("research_procedure_sha256"),
+                  "original research seal digest")
+    research = json.loads(original)
+    require_equal(research.get("version"), 1, "original research seal version")
+    require_equal(research.get("status"), "sealed", "original research seal status")
+    require_equal(set(research["fixed_files"]),
+                  set(FIXED_FILES) | {relative_path(research["resources"]["path"])},
+                  "original complete fixed-file boundary")
+    for key in ("comparison_id", "conditions", "study", "resources", "starting_environment",
+                "host_identity", "settings", "replay", "gitmodules_sha256"):
+        require_equal(manifest[key], research[key], "amendment preserves " + key)
+    assessment_changes = {"assessment-version.json", "scripts/assessment_procedure.py",
+                          "scripts/prepare_launch.py", "scripts/launch_native_probe.py"}
+    for name in set(research["fixed_files"]) - assessment_changes:
+        require_equal(manifest["fixed_files"][name], research["fixed_files"][name],
+                      "amendment preserves " + name)
+    for key in ("environment_commit", "environment_repository", "sha256"):
+        require_equal(manifest["assessment"].get(key), research["assessment"].get(key),
+                      "amendment preserves assessor " + key)
+    retained = amendment.get("retained_objects")
+    if not isinstance(retained, list) or not retained:
+        raise SystemExit("Assessment amendment requires retained object identities")
+    seen = set()
+    for item in retained:
+        if set(item) != {"run", "seed_commit", "result_commit", "worker_end_state_sha256"}:
+            raise SystemExit("Invalid retained object identity fields")
+        if not isinstance(item["run"], str) or not item["run"] or item["run"] in seen:
+            raise SystemExit("Retained run identities must be unique")
+        seen.add(item["run"])
+        for field in ("seed_commit", "result_commit"):
+            if not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", item[field]):
+                raise SystemExit("Invalid retained commit identity")
+        if not re.fullmatch(r"[0-9a-f]{64}", item["worker_end_state_sha256"]):
+            raise SystemExit("Invalid retained stop receipt digest")
+    return research
+
+
+def check_worker_sources(manifest, coordinator, study, base):
+    """Validate old research identities without pretending old code is executing."""
+    original = research_procedure(manifest)
+    check_sources(original, coordinator, study, base,
+                  validate_working=manifest.get("version") == 1)
+
+
+def check_retained_target(manifest, seed, seed_commit, result_commit, stop_receipt):
+    if manifest.get("version") == 1:
+        return
+    research_procedure(manifest)
+    for item in manifest["assessment_amendment"]["retained_objects"]:
+        if (item["run"] != seed.get("run") and
+                (item["seed_commit"] == seed_commit or item["result_commit"] == result_commit)):
+            raise SystemExit("A retained object cannot be relabeled as a new run")
+        if item["run"] == seed.get("run"):
+            require_equal(seed_commit, item["seed_commit"], "retained worker seed")
+            require_equal(result_commit, item["result_commit"], "retained scientific result")
+            require_equal(sha256(Path(stop_receipt).read_bytes()), item["worker_end_state_sha256"],
+                          "retained original stop receipt")
+
+
+def check_sources(manifest, coordinator, study, base=None, *, validate_working=True):
     """Read committed identities; reject changed executing code or configuration."""
     ensure_commit(coordinator, manifest["coordinator_commit"])
     environment = manifest["starting_environment"]
@@ -224,12 +296,15 @@ def check_sources(manifest, coordinator, study, base=None):
     for name, digest in manifest["fixed_files"].items():
         require_equal(sha256(committed_file(coordinator, manifest["coordinator_commit"], name)),
                       digest, "sealed source " + name)
-        require_equal(sha256((coordinator / name).read_bytes()), digest, "working " + name)
+        if validate_working:
+            require_equal(sha256((coordinator / name).read_bytes()), digest, "working " + name)
         if base:
             require_equal(sha256(committed_file(coordinator, base, name)), digest,
                           "selected coordinator revision " + name)
-    for content in (committed_file(coordinator, manifest["coordinator_commit"], ".gitmodules"),
-                    (coordinator / ".gitmodules").read_bytes()):
+    configurations = [committed_file(coordinator, manifest["coordinator_commit"], ".gitmodules")]
+    if validate_working:
+        configurations.append((coordinator / ".gitmodules").read_bytes())
+    for content in configurations:
         require_equal(gitmodules_digest(content), manifest["gitmodules_sha256"], "submodule source configuration")
     if base:
         require_equal(gitmodules_digest(committed_file(coordinator, base, ".gitmodules")),
@@ -265,6 +340,8 @@ def check_host(manifest, args):
 
 
 def check_settings(manifest, args):
+    if manifest.get("version") == 2 and args.role != "judge":
+        raise SystemExit("An assessment-only amendment cannot authorize research launches")
     require_equal(launch_settings(args), manifest["settings"][args.role], args.role + " settings")
 
 
@@ -378,6 +455,14 @@ def seal(args):
         "settings": {"research": settings, "judge": dict(settings, capture_execution=False)},
         "replay": REPLAY,
     }
+    if getattr(args, "research_procedure", None):
+        original = Path(args.research_procedure).read_bytes()
+        load_procedure(args.research_procedure, args.research_procedure_sha256)
+        manifest.update(version=2, assessment_amendment={
+            "scope": "assessment-only", "research_procedure_json": original.decode(),
+            "research_procedure_sha256": args.research_procedure_sha256,
+            "retained_objects": json.loads(Path(args.retained_objects).read_text())})
+        research_procedure(manifest)
     check_sources(manifest, coordinator, args.study, base)
     check_host(manifest, args)
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -442,6 +527,11 @@ def main():
     parser.add_argument("--environment-repository", default="origin",
                         help="Repository containing the starting snapshot; defaults to origin")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--research-procedure", type=Path,
+                        help="Original immutable seal for an assessment-only amendment")
+    parser.add_argument("--research-procedure-sha256")
+    parser.add_argument("--retained-objects", type=Path,
+                        help="Exact already completed worker identities for an amendment")
     for name in ("env-manifest", "cli", "codex-home", "approved-hooks", "trust-sync", "resolver"):
         parser.add_argument("--" + name, type=Path)
     parser.add_argument("--model", default="gpt-6-luna")
@@ -451,6 +541,9 @@ def main():
     parser.add_argument("--capture-execution", action="store_true")
     parser.set_defaults(**{k: v for k, v in defaults.items() if k != "repo"})
     args = parser.parse_args()
+    amendment_flags = (args.research_procedure, args.research_procedure_sha256, args.retained_objects)
+    if any(amendment_flags) and (args.action != "seal" or not all(amendment_flags)):
+        parser.error("Assessment amendment sealing requires all three original-seal/retention flags")
     for name in ("env_manifest", "cli", "codex_home", "approved_hooks", "trust_sync", "resolver"):
         value = getattr(args, name)
         if not value:
