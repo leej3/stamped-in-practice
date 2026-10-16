@@ -1,0 +1,23 @@
+usage: encode_response.py set [-h] --item ITEM
+                              --status {met,not-applicable,not-checked,partial,unmet}
+                              --reason REASON [--source SOURCE]
+                              [--evidence EVIDENCE] [--flag FLAGS]
+                              [--drop-evidence]
+                              response
+
+positional arguments:
+  response
+
+options:
+  -h, --help            show this help message and exit
+  --item ITEM           item id, with or without the 'stamped-checklist:'
+                        prefix
+  --status {met,not-applicable,not-checked,partial,unmet}
+  --reason REASON
+  --source SOURCE       probe:<name>, judgement, probe:<name>+judgement,
+                        human:web-app
+  --evidence EVIDENCE   uri, or uri=description; repeatable
+  --flag FLAGS
+  --drop-evidence       clear the evidence already on this item (by default it
+                        is kept when --evidence is not given)
+exit_code=0

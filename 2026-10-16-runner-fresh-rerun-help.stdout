@@ -1,0 +1,60 @@
+usage: fresh_rerun.py [-h] (--url URL | --path PATH) [--entry ENTRY]
+                      [--outputs OUTPUTS [OUTPUTS ...]]
+                      [--in-container CONTAINER] [--rtol RTOL]
+                      [--workdir WORKDIR] [--timeout TIMEOUT] [--keep-outputs]
+                      [--max-get-gb MAX_GET_GB] [-o OUTPUT]
+
+The `fresh-rerun` probe: clone the published object elsewhere and re-run it.
+
+This probe tests re-creation in a fresh clone. Running it on the original host
+does not establish portability to another host; the report records the host.
+
+    fresh_rerun.py --url <published url> [--entry 'make all'] [--in-container IMAGE]
+                   [--outputs 'results/*.tsv' 'figures/*.png'] [--rtol 1e-6]
+                   [--workdir DIR] [-o fresh-rerun.json]
+
+It never touches the original object: everything happens in a temporary clone
+(kept under --workdir when given, so the evidence survives the probe).
+
+Steps
+-----
+1. clone from the published location (``datalad clone`` when available, else
+   ``git clone``) — a clone that fails is already D.1 ``unmet``;
+2. install the modules without content (``datalad get -n -r``) and fetch only
+   what fits under ``--max-get-gb``: an unbounded ``datalad get -r .`` started
+   on the **3.7 TiB** a module of ``///repronim/containers`` makes reachable —
+   87 GB of it had landed before anyone noticed — because that module carries
+   every image the registry knows. The entry point fetches its own declared
+   inputs;
+3. record the checksums the clone *shipped* for the output files, then **remove
+   them**, so that only re-creation counts (``--keep-outputs`` to opt out);
+4. run the entry point, in a container when ``--in-container`` is given;
+5. compare: identical checksums, or numeric agreement within ``--rtol`` for
+   tables, and report anything else as a difference for a human to look at.
+
+Exit code 0 means the probe ran, not that the object reproduced; read
+``status`` in the JSON.
+
+options:
+  -h, --help            show this help message and exit
+  --url URL             published location to clone from (what D.1 promises)
+  --path PATH           local path to clone from (indicative only: does not
+                        test D.1)
+  --entry ENTRY         command to run (default: datalad rerun, else make)
+  --outputs OUTPUTS [OUTPUTS ...]
+                        glob(s) naming the outputs to compare
+  --in-container CONTAINER
+                        apptainer/singularity image to run --entry inside
+  --rtol RTOL           relative tolerance for tables
+  --workdir WORKDIR     keep the clone here instead of a temp dir
+  --timeout TIMEOUT
+  --keep-outputs        do not delete the shipped outputs before the rerun
+                        (for an entry point that regenerates them in place);
+                        by default they are removed so that only re-creation
+                        counts as reproduction
+  --max-get-gb MAX_GET_GB
+                        skip the up-front content fetch when it would exceed
+                        this (default 5 GiB); a module of a container registry
+                        can be hundreds of GB
+  -o, --output OUTPUT
+exit_code=0
