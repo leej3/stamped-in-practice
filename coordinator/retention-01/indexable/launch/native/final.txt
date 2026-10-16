@@ -1,0 +1,21 @@
+## Finding
+
+The positive vmPFC gain-effect hypothesis was **not supported** by whole-brain FWE inference. Of 24 positive voxels surviving max-t correction, none fell in the vmPFC parcels; the strongest peak was posterior occipital. The vmPFC parcel mean was −0.0079 model units (95% t interval −0.0346 to 0.0188). This is a lack of corrected evidence for the hypothesized response, not proof that the true effect is zero.
+
+The analysis used all 54 participants, with no exclusions. One participant flagged by an outlier screen was retained; omitting them for a sensitivity summary did not change the interpretation. The report explains the model, effect-estimate units, uncertainty, and upstream limitations.
+
+- [Scientific report and figures](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-07/results/report.md>)
+- [Analysis code](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-07/scripts/group_analysis.py>)
+- [Machine-readable results](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-07/results/analysis_results.json>) and [cluster table](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-07/results/whole_brain_fwe_clusters.csv>)
+- Final run records, including command metadata and resource usage: `logs/group-analysis-release*`
+
+The report uses bilateral AAL3 `Frontal_Med_Orb` parcels as its explicit vmPFC definition, consistent with the [AAL3 vmPFC mapping](https://academic.oup.com/cercor/article/30/11/5830/5858256); the positive direction follows the [original NARPS Hypothesis 1 instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf).
+
+## Reproducibility and publishing
+
+Installed the `jupyter-notebook`, `validate-data`, and `visualize-data` skills locally in the experiment repository. Output checks and Python compilation passed. Both task and environment branches were published to `origin` and `con-hub`; annexed maps and atlas files were copied to `con-hub`.
+
+- Task commit `f30190d8144a9e15acfa1c0d973eadf0d655c83c` on `codex/narps-r1-07`
+- Environment commit `05d6a84327b69eb168006b50b0304c66ea471a63` on `codex/env-narps-r1-07`, directly above the task commit and containing the validated `pixi.lock`
+
+The working tree is clean on the task branch.
