@@ -1,0 +1,17 @@
+## Finding
+
+The analysis **did not find whole-brain-corrected support for a positive vmPFC gain effect**. None of the 24 voxels passing one-sided whole-brain max-t correction overlapped the vmPFC approximation. Its mean coefficient was −0.0011 (95% t interval −0.0228 to 0.0207); the ROI’s strongest voxel had whole-brain FWE *p* = 0.788. This is not evidence that the true effect is exactly zero.
+
+The corrected voxels were in three small posterior clusters, outside the hypothesized region. Coefficients are in arbitrary model units: the upstream gain regressor was normalized, so these estimates are not BOLD change per currency unit. The report explains the group model, mask, anatomical approximation, quality checks, and limitations. The analysis follows the original positive vmPFC hypothesis; the NARPS paper also describes the lack of a single agreed vmPFC boundary. ([Instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf), [NARPS paper](https://www.nature.com/articles/s41586-020-2314-9))
+
+- [Scientific report](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/results/report.md)
+- [Whole-brain figure](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/results/figures/whole_brain_gain_t_map.png)
+- [vmPFC participant effects](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/results/figures/vmPFC_participant_effects.png)
+- [Analysis code](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/analysis/run_group_analysis.py)
+- [Machine-readable results](/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04/results/group_results.json)
+
+The final duct run succeeded; map checksums and grids were verified, with no participant exclusions. Command output, resource logs, and failed attempts are retained under `logs/`. I installed the PDF skill in the repository at `.local/skills/pdf`.
+
+## Branches and publishing
+
+The task commit is `a424c3e8ae47f9208fa661fc4f974f6b187acb00`. The exact validated lockfile is committed on `codex/env-gain-20261015` as `3b0a406ae1dcd3a925a8be0468c81f84c812149b`, one commit above the task commit. I returned to `codex/narps-r1-04`. Both branches were pushed to `origin` and `con-hub`; annexed result maps and the whole-brain figure were copied to `con-hub`.
