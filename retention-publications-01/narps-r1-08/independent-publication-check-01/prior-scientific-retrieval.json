@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "passed": true,
+  "target": "42e957201315aa8221ba60fbe614119e22639ce8",
+  "started_at": "2026-10-16T01:58:30.897586+00:00",
+  "source_worker_unchanged": true,
+  "coordinator_interventions": [
+    {
+      "action": "publish worker annex metadata conservatively",
+      "source_metadata": "217a24b4fb2ab76a89f41de5a68bdce8cb3d0ae0"
+    }
+  ],
+  "worker_stop_sha256": "37b6cb7641223b20738096045a9b82ac7cadc864b4e196e7ac8235793949433b",
+  "remote_refs": {
+    "refs/heads/codex/env-narps-r1-08": "cfacdef5db5d615d8ecc64b60035fbb3ccdd0a90",
+    "refs/heads/codex/narps-r1-08": "42e957201315aa8221ba60fbe614119e22639ce8"
+  },
+  "published_annex_metadata": "91f3fdb73b1a40b2b8ccd891c44911dc517348be",
+  "independent_empty_store": {
+    "recipient_uuid": "4f7ec887-3790-4e77-903d-b513870e8ebb",
+    "source_uuid": "baef96b9-1de2-4793-bf7c-cb5d339c9bae",
+    "no_alternates": true,
+    "all_payloads_initially_absent": true
+  },
+  "error": null,
+  "finished_at": "2026-10-16T02:09:34.813185+00:00",
+  "retention_validation": {
+    "worker_head_commit": "42e957201315aa8221ba60fbe614119e22639ce8",
+    "result_commit": "42e957201315aa8221ba60fbe614119e22639ce8",
+    "artifacts_match": true
+  },
+  "annex_paths_verified": 72,
+  "annex_bytes_verified": 128676726,
+  "all_stop_paths": 127,
+  "regular_nonannex_files_verified": 55,
+  "materialized_stop_regular_files": [
+    "results/figures/whole_brain_fwe_positive.png"
+  ],
+  "prior_failed_attempt": "result.json",
+  "correction": "The first coordinator check omitted one unlocked annex path. The second used the prepared materialization helper but remote retrieval silently skipped that file; checkpresentkey confirmed it was absent from con-hub. The coordinator separately preserved and uploaded the exact stopped-worker bytes (see ../coordinator-publish-01), after which this independent recipient fetched them and passed the unchanged stop validator. That publication repair is coordinator work, not worker delivery credit. No scientific content was changed.",
+  "environment_snapshot": {
+    "commit": "cfacdef5db5d615d8ecc64b60035fbb3ccdd0a90",
+    "parent": "42e957201315aa8221ba60fbe614119e22639ce8",
+    "changed_paths": [
+      "pixi.lock"
+    ],
+    "lock_mode": "100644",
+    "lock_sha256": "5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21"
+  },
+  "publication_repair_receipt": "../coordinator-publish-01/result.json"
+}
