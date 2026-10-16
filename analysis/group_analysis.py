@@ -72,7 +72,12 @@ def main() -> None:
     # N x voxels, float32 holds the supplied cope precision and limits memory.
     stack = np.stack([np.asarray(img.dataobj, dtype=np.float32) for img in images])
     finite = np.isfinite(stack).all(axis=0)
-    mask = finite & np.any(stack != 0, axis=0)
+    nonzero_support = np.sum(stack != 0, axis=0)
+    union_mask = finite & (nonzero_support > 0)
+    # The inputs do not include subject brain masks. Exact zeros are therefore
+    # treated conservatively as unsupported, and only common nonzero support
+    # enters equal-n group inference.
+    mask = finite & (nonzero_support == len(paths))
     n_vox = int(mask.sum())
     if n_vox == 0:
         raise ValueError("No common nonzero finite voxels")
@@ -177,6 +182,8 @@ def main() -> None:
         "n_participants": n,
         "n_excluded": 0,
         "n_voxels_tested": n_vox,
+        "n_voxels_union_support": int(union_mask.sum()),
+        "n_voxels_partial_support_excluded": int((union_mask & ~mask).sum()),
         "n_voxels_fwe_005": int(sig.sum()),
         "permutations": args.permutations,
         "seed": args.seed,
@@ -199,7 +206,7 @@ def main() -> None:
         "vmPFC_peak_t": float(flat_t[peak_roi]),
         "vmPFC_peak_xyz_mm": peak_roi_xyz.tolist(),
         "vmPFC_peak_p_fwe": float(pvol.reshape(-1)[peak_roi]),
-        "mask_rule": "all-participant finite and nonzero in at least one supplied map",
+        "mask_rule": "all-participant finite and nonzero in every supplied map; exact zeros treated as unsupported",
         "shape": list(shape),
         "affine": affine.tolist(),
         "versions": {"python": platform.python_version(), "numpy": np.__version__, "scipy": scipy.__version__,
@@ -227,9 +234,9 @@ def main() -> None:
     sig_img = nib.Nifti1Image(t_sig, affine)
     background = nib.load(str(INPUT / "atlas" / "MNI152_T1_2mm.nii.gz"))
     display = plotting.plot_stat_map(sig_img, bg_img=background,
-                                    threshold=0.01, display_mode="ortho", cut_coords=(0, 30, -8),
+                                    threshold=0.01, display_mode="ortho", cut_coords=(-26, -102, -3.6),
                                     cmap="cold_hot", colorbar=True,
-                                    title="Positive gain effect: whole-brain max-T FWE p <= .05; vmPFC outline")
+                                    title="Max-t FWE p <= .05; cyan = vmPFC")
     roi_img = nib.Nifti1Image(roi.astype(np.uint8), affine)
     display.add_contours(roi_img, levels=[0.5], colors="#00d7d7", linewidths=1.3)
     display.savefig(OUT / "whole_brain_fwe.png", dpi=180)
