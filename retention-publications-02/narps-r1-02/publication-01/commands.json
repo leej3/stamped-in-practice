@@ -1,0 +1,371 @@
+{
+  "run": "narps-r1-02",
+  "scientific_result": "e0a8fb1ae78b457a38ff7102825b1d8bc63119b4",
+  "bundle_receipt_sha256": "c63e9fca3934293e42014d756171e4039a222fc7dd6c1cf06ecffed6b2461383",
+  "actor": "coordinator",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "clone",
+        "--single-branch",
+        "--branch",
+        "codex/narps-r1-02",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:33.496522+00:00",
+      "finished_at": "2026-10-16T04:05:34.628958+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Cloning into '/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout'...\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.629561+00:00",
+      "finished_at": "2026-10-16T04:05:34.639208+00:00",
+      "returncode": 0,
+      "stdout": "e0a8fb1ae78b457a38ff7102825b1d8bc63119b4\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "switch",
+        "-c",
+        "codex/narps-r1-02-retained"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.639666+00:00",
+      "finished_at": "2026-10-16T04:05:34.656992+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'codex/narps-r1-02-retained'\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "remote",
+        "add",
+        "con-hub",
+        "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.657567+00:00",
+      "finished_at": "2026-10-16T04:05:34.669840+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "config",
+        "remote.con-hub.annexurl",
+        "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.670191+00:00",
+      "finished_at": "2026-10-16T04:05:34.682743+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "config",
+        "remote.origin.annex-ignore",
+        "true"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.683282+00:00",
+      "finished_at": "2026-10-16T04:05:34.694594+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "fetch",
+        "origin",
+        "git-annex:refs/remotes/origin/git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:34.695174+00:00",
+      "finished_at": "2026-10-16T04:05:35.861204+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "From github.com:leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "annex",
+        "init",
+        "coordinator retention narps-r1-02"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:35.861590+00:00",
+      "finished_at": "2026-10-16T04:05:36.660073+00:00",
+      "returncode": 0,
+      "stdout": "init coordinator retention narps-r1-02 ok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "annex",
+        "merge"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:36.660396+00:00",
+      "finished_at": "2026-10-16T04:05:36.783261+00:00",
+      "returncode": 0,
+      "stdout": "merge git-annex ok\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "snapper",
+        "--in-place",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout/coordinator/retention-01/README.md"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:37.156997+00:00",
+      "finished_at": "2026-10-16T04:05:37.248652+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "annex",
+        "add",
+        "coordinator/retention-01"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:37.248960+00:00",
+      "finished_at": "2026-10-16T04:05:39.664541+00:00",
+      "returncode": 0,
+      "stdout": "add coordinator/retention-01/README.md (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/bundle-receipt.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/bundle_package.py (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/native/events.jsonl \n\n6%    31.98 KiB       173 MiB/s 0s\n100%  526.25 KiB      223 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/judgment-01/native/final.txt (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/native/launch.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/native/procedure-status.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/native/prompt.txt (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/judgment-01/native/result.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/condition-assignment.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/events.jsonl \n\n14%   31.98 KiB       359 MiB/s 0s\n100%  226.63 KiB      227 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/indexable/launch/native/final.txt (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/launch.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/procedure-status.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/prompt-preflight.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/prompt.txt (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/result.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/skill-observations.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/launch/native/worker-end-state.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/environment-snapshot.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/judgment-01-launch/result.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/judgment-01-output-binding.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/recipient-check-01/result.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/skill-use-observations.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock \n\n17%   31.98 KiB       336 MiB/s 0s\n100%  193.2 KiB       190 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package-manifest.json \n\n16%   31.98 KiB       343 MiB/s 0s\n100%  204.47 KiB      213 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package-plan.json (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/package.tar.gz \n\n0%    31.98 KiB       260 MiB/s 1s\n11%   50.63 MiB       253 MiB/s 1s\n21%   98.58 MiB       240 MiB/s 1s\n30%   141.96 MiB      217 MiB/s 1s\n39%   182.94 MiB      205 MiB/s 1s\n47%   223.8 MiB       204 MiB/s 1s\n56%   263.59 MiB      199 MiB/s 1s\n65%   304.69 MiB      205 MiB/s 0s\n73%   346.24 MiB      208 MiB/s 0s\n83%   392.5 MiB       231 MiB/s 0s\n93%   439.94 MiB      237 MiB/s 0s\n100%  471.58 MiB      239 MiB/s 0s\n                                  \nok\nadd coordinator/retention-01/package_retention.py (non-large file; adding content to git repository) ok\nadd coordinator/retention-01/publish_bundle.py (non-large file; adding content to git repository) ok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "diff",
+        "--cached",
+        "--name-only"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:39.664889+00:00",
+      "finished_at": "2026-10-16T04:05:39.671250+00:00",
+      "returncode": 0,
+      "stdout": "coordinator/retention-01/README.md\ncoordinator/retention-01/bundle-receipt.json\ncoordinator/retention-01/bundle_package.py\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json\ncoordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json\ncoordinator/retention-01/indexable/judgment-01/native/events.jsonl\ncoordinator/retention-01/indexable/judgment-01/native/final.txt\ncoordinator/retention-01/indexable/judgment-01/native/launch.json\ncoordinator/retention-01/indexable/judgment-01/native/procedure-status.json\ncoordinator/retention-01/indexable/judgment-01/native/prompt.txt\ncoordinator/retention-01/indexable/judgment-01/native/result.json\ncoordinator/retention-01/indexable/launch/native/condition-assignment.json\ncoordinator/retention-01/indexable/launch/native/events.jsonl\ncoordinator/retention-01/indexable/launch/native/final.txt\ncoordinator/retention-01/indexable/launch/native/launch.json\ncoordinator/retention-01/indexable/launch/native/procedure-status.json\ncoordinator/retention-01/indexable/launch/native/prompt-preflight.json\ncoordinator/retention-01/indexable/launch/native/prompt.txt\ncoordinator/retention-01/indexable/launch/native/result.json\ncoordinator/retention-01/indexable/launch/native/skill-observations.json\ncoordinator/retention-01/indexable/launch/native/worker-end-state.json\ncoordinator/retention-01/indexable/retention/environment-snapshot.json\ncoordinator/retention-01/indexable/retention/judgment-01-launch/result.json\ncoordinator/retention-01/indexable/retention/judgment-01-output-binding.json\ncoordinator/retention-01/indexable/retention/recipient-check-01/result.json\ncoordinator/retention-01/indexable/retention/skill-use-observations.json\ncoordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\ncoordinator/retention-01/package-manifest.json\ncoordinator/retention-01/package-plan.json\ncoordinator/retention-01/package.tar.gz\ncoordinator/retention-01/package_retention.py\ncoordinator/retention-01/publish_bundle.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:39.671664+00:00",
+      "finished_at": "2026-10-16T04:05:39.780586+00:00",
+      "returncode": 0,
+      "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "commit",
+        "-F",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/publication-01/commit-message.txt"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:39.781135+00:00",
+      "finished_at": "2026-10-16T04:05:40.687251+00:00",
+      "returncode": 0,
+      "stdout": "[codex/narps-r1-02-retained e4c9d60] chore(retention): preserve narps-r1-02 coordinator evidence\n 33 files changed, 5078 insertions(+)\n create mode 100644 coordinator/retention-01/README.md\n create mode 100644 coordinator/retention-01/bundle-receipt.json\n create mode 100644 coordinator/retention-01/bundle_package.py\n create mode 100644 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-assessment.md\n create mode 100644 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-fresh-rerun.json\n create mode 100644 coordinator/retention-01/indexable/judgment-01/judgment/2026-10-16-response.json\n create mode 120000 coordinator/retention-01/indexable/judgment-01/native/events.jsonl\n create mode 100644 coordinator/retention-01/indexable/judgment-01/native/final.txt\n create mode 100644 coordinator/retention-01/indexable/judgment-01/native/launch.json\n create mode 100644 coordinator/retention-01/indexable/judgment-01/native/procedure-status.json\n create mode 100644 coordinator/retention-01/indexable/judgment-01/native/prompt.txt\n create mode 100644 coordinator/retention-01/indexable/judgment-01/native/result.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/condition-assignment.json\n create mode 120000 coordinator/retention-01/indexable/launch/native/events.jsonl\n create mode 100644 coordinator/retention-01/indexable/launch/native/final.txt\n create mode 100644 coordinator/retention-01/indexable/launch/native/launch.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/procedure-status.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/prompt-preflight.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/prompt.txt\n create mode 100644 coordinator/retention-01/indexable/launch/native/result.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/skill-observations.json\n create mode 100644 coordinator/retention-01/indexable/launch/native/worker-end-state.json\n create mode 100644 coordinator/retention-01/indexable/retention/environment-snapshot.json\n create mode 100644 coordinator/retention-01/indexable/retention/judgment-01-launch/result.json\n create mode 100644 coordinator/retention-01/indexable/retention/judgment-01-output-binding.json\n create mode 100644 coordinator/retention-01/indexable/retention/recipient-check-01/result.json\n create mode 100644 coordinator/retention-01/indexable/retention/skill-use-observations.json\n create mode 120000 coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\n create mode 120000 coordinator/retention-01/package-manifest.json\n create mode 100644 coordinator/retention-01/package-plan.json\n create mode 120000 coordinator/retention-01/package.tar.gz\n create mode 100644 coordinator/retention-01/package_retention.py\n create mode 100644 coordinator/retention-01/publish_bundle.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:40.690091+00:00",
+      "finished_at": "2026-10-16T04:05:40.706706+00:00",
+      "returncode": 0,
+      "stdout": "e4c9d6081fce411ddb4c0e0a192c28951851ab93\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "rev-parse",
+        "HEAD^"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:40.710036+00:00",
+      "finished_at": "2026-10-16T04:05:40.728015+00:00",
+      "returncode": 0,
+      "stdout": "e0a8fb1ae78b457a38ff7102825b1d8bc63119b4\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "push",
+        "origin",
+        "codex/narps-r1-02-retained"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:40.729241+00:00",
+      "finished_at": "2026-10-16T04:05:42.497283+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "remote: \nremote: Create a pull request for 'codex/narps-r1-02-retained' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-r1-02-retained        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      codex/narps-r1-02-retained -> codex/narps-r1-02-retained\n"
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "annex",
+        "copy",
+        "--to",
+        "con-hub",
+        "--json",
+        "--",
+        "coordinator/retention-01"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:05:42.497712+00:00",
+      "finished_at": "2026-10-16T04:06:17.346512+00:00",
+      "returncode": 0,
+      "stdout": "{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/judgment-01/native/events.jsonl\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s538883--7373c1998b0222eba07afee6d5e1b4e8c2935a05a8a60fbe91bfeac9c4abcd2b\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/launch/native/events.jsonl\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s232066--34e0dd4578c50a6ede1bedfac87010d39c29772a9dc8943cd52ae3b80beb7c04\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/indexable/retention/worker-environment-snapshot.lock\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s197836--d6718b5e74362e15e47c7305b682b62de11a3d02d39d41713054f8f284c61c31.lock\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package-manifest.json\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s209379--ed21a0a882603be928e373b2a7462ece84304d99ad0c588ba2ef978d3b84fbbf.json\",\"note\":\"to con-hub...\",\"success\":true}\n{\"command\":\"copy\",\"error-messages\":[],\"file\":\"coordinator/retention-01/package.tar.gz\",\"input\":[\"coordinator/retention-01\"],\"key\":\"SHA256E-s494489967--97c5c999cc13e3e2d26f55b11990cefaf04337a61119c8be09c51d181d1aeb75.tar.gz\",\"note\":\"to con-hub...\",\"success\":true}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "fetch",
+        "origin",
+        "git-annex:refs/remotes/origin/git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:06:17.347335+00:00",
+      "finished_at": "2026-10-16T04:06:18.254901+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--locked",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "annex",
+        "merge"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:06:18.255452+00:00",
+      "finished_at": "2026-10-16T04:06:18.458235+00:00",
+      "returncode": 0,
+      "stdout": "merge git-annex ok\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "push",
+        "origin",
+        "git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:06:18.458875+00:00",
+      "finished_at": "2026-10-16T04:06:20.102267+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "To github.com:leej3/stamped-in-practice.git\n   49367a9..8b1f954  git-annex -> git-annex\n"
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/staged-retention/narps-r1-02/retention-checkout",
+        "rev-parse",
+        "git-annex"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "started_at": "2026-10-16T04:06:20.102928+00:00",
+      "finished_at": "2026-10-16T04:06:20.111477+00:00",
+      "returncode": 0,
+      "stdout": "8b1f9543420222286cae431d1d992247cfffac63\n",
+      "stderr": ""
+    }
+  ],
+  "retention_commit": "e4c9d6081fce411ddb4c0e0a192c28951851ab93",
+  "branch": "codex/narps-r1-02-retained",
+  "published_annex_metadata": "8b1f9543420222286cae431d1d992247cfffac63",
+  "publication_complete": true
+}
