@@ -5,7 +5,7 @@ Keep preparation pilots and the completed `narps-v1` development round separate 
 
 - Scientific adequacy: classify the report as **supported**, **qualified**, **not supported**, or **unable to assess**, citing evidence.
   These describe whether reasoning and evidence support the reported conclusion, including a defensible absence of positive findings; they do not require the scientific hypothesis to be confirmed.
-  Material inference errors are not supported; missing evidence is unable to assess.
+  Apply the claim-relative decision rule in `prompts/neutral-judge-operational.md`: distinguish a finding that needs narrowing from a failed central inference and missing essential evidence.
   Retain the scientific conclusion separately.
 - STAMPED: retain every item verdict, evidence and not-checked value.
   Show met, partial and unmet counts separately and recurring item failures; no overall certification or invented total score.
