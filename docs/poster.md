@@ -19,7 +19,8 @@ Follow that page's current download status: an annex pointer shown by GitHub is 
 | --- | --- | --- |
 | Scientific question and input data | [NARPS study introduction](https://github.com/leej3/stamped-in-practice/blob/codex/study-narps/README.md) | The task, participant maps, source information and input retrieval instructions |
 | Research loop and skill bundle | [Skills guide](skills.md) | An explanation of the research workflows, assessor and tested revisions |
-| Outcome table and progression graph | [Results guide](results.md) | Definitions of scientific adequacy, replay and checklist attainment, followed by round-level evidence |
+| Outcome table and progression graph | [Results guide](results.md) | Definitions of scientific adequacy, replay, the two checklist denominators and the plot's uncertainty bars |
+| Linked checklist scores | [Condition checklist lists](https://github.com/leej3/stamped-in-practice/tree/codex/stamped-poster-analysis/experiments/narps-poster/checklists) | Filled app views and complete original JSON responses for individual runs, grouped by condition |
 | Brain map and spatial agreement figure | [Scientific figure guide](https://github.com/leej3/stamped-in-practice/blob/codex/stamped-poster-analysis/experiments/narps-poster/README.md) | What the figures measure, their source deliveries and how to rebuild them |
 | Assessment and revision lessons | [Methodological lessons](../LESSONS.md) | Lessons about assessment design, coordination, model capability, dependencies and infrastructure support |
 | Original research objects | [Repository map: read a run](repository-map.md#read-a-run-in-context) | How to find an agent's delivered report, code, results and subsequent assessment |
@@ -34,6 +35,8 @@ The spatial agreement figure summarizes **48 deliveries from rounds two and thre
 Color shows the fraction reporting a positive whole-brain corrected finding within their shared tested coverage.
 Agents retained their own analysis methods, so variation reflects the delivered analyses rather than a standardized reanalysis.
 The outcome table and progression chart instead summarize judgments across **all three rounds**, with unavailable records excluded and denominators retained.
+For STAMPED, the table uses the checklist app's all-31-item measure; the progression chart uses only evaluated items.
+The [results guide](results.md#what-the-poster-measures) explains why these percentages differ and how to read the individual points, standard deviations and science confidence intervals.
 
 ## Why the figure links open another branch
 

@@ -15,7 +15,8 @@ The descriptive results do not establish that STAMPED guidance caused better sci
 | Measure | Meaning | What to watch for |
 | --- | --- | --- |
 | Science | Whether an assessment found the analysis fully supported its reported conclusion | A supported conclusion may be a negative finding about the neuroscience hypothesis |
-| STAMPED items met | For each valid checklist, the fraction met among met, partial and unmet items; then averaged equally across runs | Not-checked and not-applicable items are outside this denominator; this is not certification of a whole research object |
+| Table: all checklist items met | For each valid checklist, met / 31; then averaged equally across runs in each condition | Uses the checklist app's all-item denominator, including not-checked and not-applicable items |
+| Progression plot: evaluated checklist items met | For each valid checklist, met / (met + partial + unmet); then averaged equally across runs in each round and condition | Excludes not-checked and not-applicable items, so it is a different measure from the table |
 | Replay | Complete matches of selected outputs among observed native reruns | Some runs were not replayed; partial matches and execution failures remain distinct |
 | Round progression | Summaries for each condition in each round | Each round uses fresh agents, so lines are not trajectories of individual agents |
 | Spatial agreement | How often analyses report a positive corrected finding at a brain location | Agents chose their methods; agreement is not a direct test of scientific correctness or a causal skill effect |
@@ -23,6 +24,25 @@ The descriptive results do not establish that STAMPED guidance caused better sci
 The [pooled results and denominator definitions](https://github.com/leej3/stamped-in-practice/blob/codex/stamped-poster-analysis/experiments/retained-round-reporting/pooled/README.md) lead to every run and round summary.
 That page is on the presentation-analysis branch because it derives summaries from retained judgments; it does not replace the original research or assessment records.
 See [the poster guide](poster.md) for the scientific figures and plotting sources.
+
+### Inspect the checklists behind the table
+
+The table and progression plot answer different questions: how much of the full checklist was met, and how much of the evaluated checklist was met.
+Neither is certification of a whole research object.
+The [condition checklist lists](https://github.com/leej3/stamped-in-practice/tree/codex/stamped-poster-analysis/experiments/narps-poster/checklists) show both fractions for each run, with links to filled checklists in the app and the original response JSON.
+There are 68 valid primary checklists and four unavailable scores; unavailable scores are not treated as zero.
+
+The app offers a convenient view, but it combines some verdict categories and shortens explanations.
+Use the original JSON alongside each link for the complete assessment and evidence.
+The table averages unrounded all-item fractions; individual app percentages are rounded for display.
+
+### Read the progression plot's uncertainty
+
+The checklist panel shows individual runs and the mean plus or minus one sample standard deviation, describing the spread across runs.
+The science panel shows supported / assessed analyses with 95% Wilson intervals, conditional on independent runs.
+These bars do not capture judge uncertainty, missing assessments, shared-host effects or the adaptive study design.
+They should not be read as a complete measure of uncertainty or evidence that the guidance caused a difference.
+
 
 ## What we learned about doing this work
 
