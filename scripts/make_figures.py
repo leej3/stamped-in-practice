@@ -38,7 +38,7 @@ scatter = axes[0].scatter(xyz[:, 1], xyz[:, 2], c=t, cmap="Reds", vmin=0, vmax=f
 axes[0].add_patch(plt.Rectangle((20, -20), 40, 40, fill=False, linestyle="--",
                                 edgecolor="#256D85", linewidth=2, label="vmPFC descriptive box"))
 axes[0].set(xlabel="MNI y (mm; anterior →)", ylabel="MNI z (mm; superior →)",
-            title="Midsagittal coordinate projection")
+            title="Sagittal-coordinate projection (all x)")
 axes[0].legend(frameon=False, loc="best")
 axes[0].grid(alpha=.2)
 axes[1].scatter(xyz[:, 1], xyz[:, 0], c=t, cmap="Reds", vmin=0, vmax=float(t.max()),
