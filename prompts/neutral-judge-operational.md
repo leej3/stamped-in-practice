@@ -29,7 +29,15 @@ Apply the frozen item applicability rules and retain not-checked when evidence i
 Assess the reasoning and evidence for the supplied scientific question separately from STAMPED evidence.
 Classify scientific adequacy as supported, qualified, not supported or unable to assess, citing artifacts and reasoning.
 These labels concern support for the reported conclusion, including a defensible absence of positive findings; they do not require confirmation of the positive hypothesis.
-Use not supported for material inference errors and unable to assess for missing evidence.
+Judge the reported conclusion at its stated scope:
+
+- **supported**: evidence and reasoning justify the conclusion as stated.
+- **qualified**: evidence supports the core finding, but a material limitation requires narrower scope or weaker certainty than reported; state the defensible finding and necessary qualification.
+- **not supported**: a demonstrated material error or contradiction defeats the central inference; a qualification cannot preserve that inference.
+- **unable to assess**: essential evidence is missing or uninterpretable, preventing a judgment of the central inference; identify what is needed.
+
+If available evidence already demonstrates a failed central inference, use not supported even when other evidence is missing; otherwise use unable to assess when the missing evidence prevents judgment.
+Inherent limitations already acknowledged and reflected in the claim, or an unavailable optional replay, do not alone lower scientific adequacy.
 Retain the reported hypothesis outcome separately.
 Also write `scientific-judgment.json` in your assessment directory with exactly these fields: `schema_version` (1), `delivery_capture_sha256` (canonical capture digest), `scientific_adequacy` (one of the four exact labels above), `report` (`path` relative to your assessment directory and `sha256` of the human report), `adequacy_evidence` (`quote`, `start_line`, `end_line`), and `hypothesis_conclusion` (null or the same excerpt fields).
 Each excerpt must appear verbatim within the cited physical report lines; line numbers start at 1.
