@@ -16,6 +16,8 @@ pre-commit = "*"
 tomlkit = "*"
 pytest = "*"
 rfc3339-validator = "*"
+nilearn = ">=0.14.1,<0.15"
+nibabel = ">=5.4.2,<6"
 
 [pypi-dependencies]
 datalad = "*"
@@ -24,4 +26,8 @@ con-duct = "*"
 tiktoken = "*"
 pytest-evals = "==0.3.4"
 tox = "*"
+
+[tasks]
+pilot = { cmd = "duct --output-prefix logs/pilot- --message 'Three-map integrity and geometry pilot' python code/analyze.py --pilot", description = "Check a small sample of participant inputs and group-map structure" }
+analysis = { cmd = "duct --output-prefix logs/group-analysis- --message 'Primary one-sample positive max-t permutation analysis' python code/analyze.py", description = "Run preregistered group inference, QC, tables and figures" }
 
