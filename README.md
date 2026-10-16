@@ -23,3 +23,11 @@ All resource checks now pass in `readiness-02/result.json`; the failed first att
 The cluster check re-verifies an earlier completed job and current SSH access; it does not submit a new job.
 The user specified no preset spending cap; the registered design and frozen assessment remain fixed.
 Record subsequent launches and outcomes alongside this registration rather than changing its allocation or frozen procedure.
+
+## Execution records
+
+The registration records the state before launch; its `formal_workers_started: 0` is a historical count.
+Current run status and immutable launch identities are recorded in `round-1.json`.
+The first three formal workers started from coordinator commit `e86a968be5a03114a279985fadd7ce7274f235aa`; subsequent coordinator record commits do not change their matched base.
+An independent initial-launch audit verified the three input boundaries, isolated profiles, frozen identities and live native capture; its source and results are retained in `initial-launch-audit-01/`.
+The audit examines launch context and does not assess scientific results.
