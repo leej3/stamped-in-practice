@@ -27,3 +27,14 @@ Distinguish available execution resources, coordinator retention duties and requ
 The skill revision should help researchers choose defensible methods and retain interpretable evidence without making one storage or environment tool the scientific objective.
 Removing frozen common requirements requires a declared protocol/version change and qualified cross-round claims; improvement after simultaneous instruction or measurement changes cannot be attributed solely to research skills.
 This review follows the round-one comparison and reflection, together with the already requested iteration-subdataset migration before round two.
+
+Subsequent explicit human steering makes the entire first round development evidence.
+The separation between coordinator preservation and worker guidance is the central methodological lesson: the coordinator preserves all available evidence through DataLad and annex, while research workers should choose tools suited to the science.
+A revised baseline will receive the scientific task, materialized inputs and optional common resources without unsolicited requirements for DataLad, annex, duct, publication, lock branches or an output directory.
+Available capabilities and coordinator-added retention must not earn worker credit.
+
+After the full round-one loop, establish a stable assessment and common scientific setup before the next comparable rounds; assigned skill guidance is then the intended difference.
+Any revised assessment or removal of common workflow requirements defines a new protocol.
+Round one is excluded from the primary progression under that new protocol for this methodological reason, independent of its scores.
+Do not pool old and new setups or attribute their difference solely to improved skills.
+Retain round-one within-round descriptive contrasts, all 16 assigned judgments, the supplementary attempt and their measurement limitations.

@@ -35,3 +35,7 @@ The audit examines launch context and does not assess scientific results.
 Current execution follows the [first-assigned measurement disposition](measurement-disposition-01.md); the [status page](assessment-hold.md) supersedes earlier replay holds.
 The original research seal remains fixed for round one; remaining assigned judgments use the explicitly recorded assessment-only amendment.
 The [common-workflow limitation](common-workflow-limitation-01.md) qualifies the baseline and sets the between-round design review.
+
+Explicit human steering now treats the complete first round as development evidence.
+Finish its original assignments and reflection before changing the setup.
+The original three-round registration above is retained as history; the subsequent stable tool-neutral protocol will be declared separately and will not pool round one into a clean across-round skill comparison.
