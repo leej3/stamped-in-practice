@@ -33,6 +33,38 @@ An honest initial index is:
 This produces 36 pending workers and 48 assigned judgment slots for `narps-v1`, with no invented item verdicts or zero-valued effort measurements.
 The amended digest is unnecessary for an empty index or excluded-attempt-only records.
 
+## Prospective neutral comparison
+
+The separate `neutral-v1` comparison uses extraction `schema_version: 3` with its original version 3 procedure as both research and assessment seal.
+Pass that independently registered procedure digest through `--assessment-procedure-sha256`; `comparison_provenance.assessment_seal` references the same procedure bytes.
+The CLI accepts the neutral registration's `allocation_sha256` and `procedure_sha256` fields as well as the historical nested references.
+Keep the neutral allocation, registration, index and output directory separate from historical development records.
+The current allocation has 72 workers across three rounds, four conditions and six replicates, plus 24 preselected duplicates: 96 assigned judgment slots.
+Every slot retains its allocated judgment ID and dispatch order before evidence arrives.
+Wave and launch-position metadata stay with each assignment.
+
+For a neutral run, retain these distinct identities:
+
+- `seed_commit`: the supplied seed, even when it remains the worker's HEAD.
+- `worker_head` and `result_commit`: the actual stopped worker Git HEAD, or explicit `null` when unavailable.
+  Neither field may contain a capture digest or coordinator preservation commit.
+- `delivery_capture`: a `{ "path": "retained/manifest.json", "sha256": "<manifest digest>" }` reference to exact original-delivery manifest bytes.
+- `retention_commit`: optional later coordinator preservation; it never substitutes for the worker's Git identity.
+
+`worker_input` references the external neutral version 3 seed receipt, not a worker-visible metadata file.
+Together with `worker_native`, the stop receipt and manifest, it binds the condition, run, seed, input tree, common prompt, resources and coordinator source.
+The stop receipt must be version 2; the native judge target must be version 2 and name the same capture digest and nullable Git identity.
+The canonical response's `object.commit` must match that identity and its `object.capture` must name the same digest, including when a Git HEAD exists.
+Original capture URIs remain provenance; manifest and output paths may relocate without changing their bytes.
+Analysis checks manifest metadata and receipt bindings only; it does not traverse or execute captured worker files or replace the frozen launcher's capture validation.
+
+Recorded partial captures and their omissions remain visible and do not create scientific failure verdicts.
+Missing or inconsistent evidence retains the assignment with unavailable outcomes.
+Raw response objects and item verdicts remain in the tables; an optional evidence-bound measurement disposition excludes only named measures from comparable summaries.
+For this single-procedure comparison, both disposition digests are equal and produce one version stratum per round and condition.
+Nonzero process exits, coordinator retention and unavailable replay measurements do not alter a worker's raw judgment.
+The historical amendment rules below continue to apply to schema version 2 analyses.
+
 ## Admission to the comparison
 
 The CLI verifies allocation and original procedure bytes against the independent original `registration.json`.
