@@ -183,3 +183,5 @@ The new destination prevents accidental replacement of a prior refresh.
 Retain the scratch directories, execution receipts, original failures and reporter exclusions for review.
 No whitespace-link repair is selected for round three by this command; any separately observed extraction defect needs its own exact retained-link and capture evidence.
 Add the completed round to the poster pool only after reviewing the existing admission results and the native evidence for selected-output reproduction.
+
+The [publication audit](publication.json) verifies all 94 annex payloads needed by these reporting records and scientific figures by full anonymous download and SHA-256 comparison (84,605,901 bytes total).
