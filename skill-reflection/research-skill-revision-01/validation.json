@@ -1,0 +1,41 @@
+{
+  "guard_cases": [
+    {
+      "case": "existing destination",
+      "exit_code": 2,
+      "stderr": "usage: reproduce.py [-h] --output OUTPUT\nreproduce.py: error: output directory already exists; choose a new path\n",
+      "output_created": "pre-existing untouched"
+    },
+    {
+      "case": "input drift",
+      "exit_code": 2,
+      "stderr": "usage: reproduce.py [-h] --output OUTPUT\nreproduce.py: error: supplied file changed: input/paired-assay.csv; preserve the handoff baseline\n",
+      "output_created": false
+    },
+    {
+      "case": "interpreter mismatch",
+      "exit_code": 2,
+      "stderr": "usage: reproduce.py [-h] --output OUTPUT\nreproduce.py: error: use Python 0.0.0; found 3.13.16\n",
+      "output_created": false
+    },
+    {
+      "case": "package mismatch",
+      "exit_code": 2,
+      "stderr": "usage: reproduce.py [-h] --output OUTPUT\nreproduce.py: error: numpy: expected 0.0.0, found 2.5.4\n",
+      "output_created": false
+    }
+  ],
+  "supplied_bytes_unchanged": {
+    "REPORT.md": true,
+    "code/analyze.py": true,
+    "figures/paired-assay.png": true,
+    "input/paired-assay.csv": true,
+    "results/summary.csv": true
+  },
+  "supplied_environment_run": {
+    "summary": "exact CSV numeric values and columns; zero tolerance",
+    "figure": "byte identity (presentation check only)",
+    "summary_matches": true,
+    "figure_bytes_match": false
+  }
+}

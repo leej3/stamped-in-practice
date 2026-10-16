@@ -1,0 +1,105 @@
+{
+  "scope": "One independent synthetic engineering trial; no NARPS judgments and no general reliability claim.",
+  "overall_observation": "Actual native research and independent native v4 assessment completed; all capture-integrity and scientific-record checks passed. This is not approval to use an unfixed concurrent assessment runner or a claim of general reliability.",
+  "candidate_skill_behavior": {
+    "skills_commit": "56183c3229f8785ab962fb820e4a50f7c11c594b",
+    "delivered_environment_recipe": true,
+    "recipe": "research-worker-01/README.md and requirements.txt",
+    "exact_validation_identity": "research-worker-01/results/summary.json",
+    "worker_validation_scope": "Shared prepared interpreter; one same-environment rerun.",
+    "independent_judge_reconstruction": "Fresh venv from delivered recipe, cached pip wheels, same host; four selected outputs identical.",
+    "remaining_limit": "Direct dependency pins and Python identity are present, but no complete transitive lock or fresh-host proof."
+  },
+  "assessment_trial_findings": [
+    {
+      "kind": "runtime-path-isolation-defect",
+      "observation": "The response helper executes in coordinator root. Relative -o response.json wrote outside the intended judge workspace, posing a collision risk for concurrent judges. Judge copied its generated file into the workspace and removed the stray copy; a later relative-path stamp failed and was rerun with an absolute path.",
+      "evidence": [
+        "relative-response-path-evidence.json",
+        "judgment-01/logs/attempt-ledger.md",
+        "judgment-01/logs/failed-response-stamp.stderr"
+      ],
+      "runtime_modified": false
+    },
+    {
+      "kind": "judge-self-attribution-discrepancy",
+      "self_stamp": {
+        "skill": "assess-alignment-with-stamped-principles",
+        "version": "0.1.0",
+        "harness": "Codex API",
+        "model": "GPT-6",
+        "date": "2026-10-16",
+        "dependencies": [
+          "stamped-conventions@0.1.0"
+        ]
+      },
+      "authoritative_runtime": {
+        "model": "gpt-6-luna",
+        "reasoning_effort": "high",
+        "cli": "0.162.0-alpha.17.2"
+      },
+      "evidence": [
+        "judge-launch-01/native/launch.json",
+        "assessment-procedure-v4.json",
+        "judgment-01/2026-10-16-response.json"
+      ],
+      "response_modified_by_coordinator": false
+    },
+    {
+      "kind": "retrieval-scope-interpretation",
+      "observation": "Judge notes captured replay accepts max-get-gb without metering. Do not interpret this as a blanket 5 GB cap over an arbitrary entrypoint network or dependency installer. The captured CSV required no input retrieval; dependency install used cached pip wheels. Original helper retrieval scope requires separate interpretation.",
+      "evidence": [
+        "judgment-01/replay/assessor-metadata.json",
+        "judgment-01/replay/replay.json",
+        "judgment-01/replay/work/replay.stdout"
+      ]
+    },
+    {
+      "kind": "retained-judge-attribution-concern",
+      "observation": "must/005 is met citing the supplied 167-byte annexed CSV. The report cites no worker-owned annex action; this warrants review against the worker-credit and item-applicability rules. No verdict was replaced.",
+      "original_verdict": {
+        "value": "yes",
+        "reason": "The supplied input is tracked through git-annex and its payload is retained.",
+        "status": "met",
+        "evidence": [
+          {
+            "uri": "input/paired-assay.csv",
+            "description": "Canonical capture SHA-256 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5; annex pointer tracked in Git",
+            "sha256": "c813064473bc75238b3a2d70fe33dcab537dec7cef4cf279977480a1f2cc5bb0"
+          },
+          {
+            "uri": ".git/annex/objects/fJ/0P/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv",
+            "description": "Canonical capture SHA-256 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5; annex payload retained in capture",
+            "sha256": null
+          }
+        ],
+        "source": "probe:large-in-annex",
+        "flags": []
+      },
+      "evidence": [
+        "judgment-01/2026-10-16-assessment.md",
+        "research-launch-01/input-boundary.json"
+      ]
+    }
+  ],
+  "retention": {
+    "native_transcripts": [
+      "research-native-transcripts/manifest.json",
+      "judge-native-transcripts/manifest.json"
+    ],
+    "execution_captures": [
+      "research-launch-01/native/execution",
+      "judge-launch-01/native/execution"
+    ],
+    "original_capture": "research-launch-01/native/original-delivery/manifest.json",
+    "operational_complete_capture": "judge-launch-01/native/operational-retention/original-delivery/manifest.json",
+    "failed_attempts": "native-command-failures.json and judgment-01/logs/attempt-ledger.md; top-level nonzero command counts do not include every failing subcommand in compound commands."
+  },
+  "coverage_limits": [
+    "Only one synthetic teaching fixture and one candidate delivery.",
+    "No NARPS result or judgment was created or replaced.",
+    "Operational delta is empty: no SQLite metadata mutation exception was exercised.",
+    "Allocation was created after native research start but before stop, explicitly recorded in registration.json.",
+    "Native auth links/account caches/private configuration were excluded from retained transcripts; runtime settings hashes are sealed."
+  ]
+}

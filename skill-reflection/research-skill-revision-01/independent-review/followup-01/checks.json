@@ -1,0 +1,105 @@
+{
+  "raw_sha256": "a939dd11cb30a029a8ceb6f99ccff1c4a36aa966d8aed113f96814db4e38b3fa",
+  "raw_matches_expected_hash": true,
+  "excerpt_sha256": "7c99c4215ab11c8e189ba06bb5f085e2da6af87f9fb1c29c2651fd730bc67607",
+  "excerpt_names_correct_raw_hash": true,
+  "raw_line_count": 243,
+  "session_id": "01a14409-d7f2-7dc1-b809-fea21146b572",
+  "line_bindings": [
+    {
+      "line": 95,
+      "kind": "request",
+      "timestamp_matches": true,
+      "call_id_matches": true,
+      "input_matches_exactly": true,
+      "line_sha256": "7068f603a11ae90559064189cdbf1a84f12e395483b688a5894d0edf84f87c97"
+    },
+    {
+      "line": 98,
+      "kind": "response",
+      "timestamp_matches": true,
+      "call_id_matches_request": true,
+      "text_blocks_match_exactly": true,
+      "omitted_nontext_block_types": [],
+      "line_sha256": "47af930529c0b7a9e3b61814f5870ee4e5aaae67dd733c8a80a46e25501eb461"
+    },
+    {
+      "line": 102,
+      "kind": "request",
+      "timestamp_matches": true,
+      "call_id_matches": true,
+      "input_matches_exactly": true,
+      "line_sha256": "c522bbcbe80175e0339eae3a4fb1194d22ecd24a9c8c2f3738904e9c5f2e8873"
+    },
+    {
+      "line": 105,
+      "kind": "response",
+      "timestamp_matches": true,
+      "call_id_matches_request": true,
+      "text_blocks_match_exactly": true,
+      "omitted_nontext_block_types": [],
+      "line_sha256": "e31a78d17b3367f65fb4b49bfcd1b73e01d01a0147e336006b4eb751e9c8f370"
+    },
+    {
+      "line": 112,
+      "kind": "request",
+      "timestamp_matches": true,
+      "call_id_matches": true,
+      "input_matches_exactly": true,
+      "line_sha256": "9ccaa6ef8f16a8f196dcb8c09631663563aa8bbc1b43ae622c39ecd7e0ac8477"
+    },
+    {
+      "line": 116,
+      "kind": "response",
+      "timestamp_matches": true,
+      "call_id_matches_request": true,
+      "text_blocks_match_exactly": true,
+      "omitted_nontext_block_types": [
+        "input_image"
+      ],
+      "line_sha256": "23457818dc35003119d94ba8779a142d114ddd0c14f882b6ea566dda595e8e21"
+    }
+  ],
+  "historical_shell_commands": [
+    "../evidence/verification-venv/bin/python -m pip check > ../evidence/pip-check.log",
+    "../evidence/verification-venv/bin/python code/reproduce.py --output runs/verification-20261016",
+    "pixi run --manifest-path /Users/johnlee/code/CON/stamped-in-practice/pixi.toml --locked python code/reproduce.py --output runs/supplied-environment-20261016",
+    "command -v snapper || true"
+  ],
+  "explicit_fresh_venv_command": "../evidence/verification-venv/bin/python code/reproduce.py --output runs/verification-20261016",
+  "explicit_supplied_environment_command": "pixi run --manifest-path /Users/johnlee/code/CON/stamped-in-practice/pixi.toml --locked python code/reproduce.py --output runs/supplied-environment-20261016",
+  "commands_name_distinct_environment_routes": true,
+  "shell_session_initial": {
+    "chunk_id": "c1322d",
+    "wall_time_seconds": 1.003567542,
+    "session_id": 83657,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "fresh_venv_completion": {
+    "chunk_id": "0b8a4f",
+    "wall_time_seconds": 5.002873708,
+    "session_id": 83657,
+    "original_token_count": 47,
+    "output": "Verification exit 0; receipt: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json\n"
+  },
+  "supplied_environment_completion": {
+    "chunk_id": "6ae1bf",
+    "wall_time_seconds": 4.625e-06,
+    "exit_code": 0,
+    "original_token_count": 57,
+    "output": "Verification exit 0; receipt: /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/supplied-environment-20261016/run.json\n/Users/johnlee/.local/bin/snapper\n"
+  },
+  "polls_bind_same_session": true,
+  "both_outputs_report_verification_exit_zero": true,
+  "fresh_receipt_printed_in_session_matches_retained_receipt": true,
+  "retained_receipt_hashes": {
+    "alignment-trial-01/project/runs/verification-20261016/run.json": "a54100115912748e9555c13ec369de420ee941fa8263077edc43f1326f658cca",
+    "alignment-trial-01/project/runs/supplied-environment-20261016/run.json": "e6074c9c1dbc4a00744436b1c98856f6305bc47bdb6c26f7a2ef44383cab96e5"
+  },
+  "completion_paths_match_retained_receipts": true,
+  "original_review_file_mismatches": [],
+  "original_review_manifest_sha256": "74ec4b17a5d96eb8f327efbefa9b4fae1327a33546265f6a5a57b0c4e4aaba11",
+  "raw_after_review_sha256": "a939dd11cb30a029a8ceb6f99ccff1c4a36aa966d8aed113f96814db4e38b3fa",
+  "review_action": "Read source records and retained receipts; no scientific rerun, project edit, raw-session edit, or original-review edit."
+}

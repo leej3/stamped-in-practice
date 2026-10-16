@@ -1,0 +1,55 @@
+--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/skills/align-with-stamped-principles/SKILL.md
++++ /Users/johnlee/.local/share/wt-utils/worktrees/b9d9/skills/skills/align-with-stamped-principles/SKILL.md
+@@ -31,7 +31,8 @@
+ - Amend a spec-kit constitution only when the project already uses one.
+ 
+ Keep the diff to the project's workflow and instructions.
+-Scientific recomputation or a changed method belongs in [do-full-research-loop](../do-full-research-loop/SKILL.md) and must be within the user's requested scope.
++Verify an unchanged method when needed to test the repaired workflow; preserve the supplied results.
++New analyses or method changes belong in [do-full-research-loop](../do-full-research-loop/SKILL.md) and must be within the user's requested scope.
+ Do not manually patch measurements to make an assessment pass.
+ Honor the project's environment policy, including separate exact lock snapshots where specified.
+ Native DataLad run commits retain their machine-readable message; normal authored commits follow the project's commit convention.
+--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/skills/create-stamped-project/templates/preflight.sh
++++ /Users/johnlee/.local/share/wt-utils/worktrees/b9d9/skills/skills/create-stamped-project/templates/preflight.sh
+@@ -1,5 +1,6 @@
+ #!/bin/sh
+-# Refuse to start work from a state whose results could not be reproduced.
++# Checks for a workflow that uses committed Git state as its run identity.
++# Adapt these guards to the project; they are not the complete STAMPED rubric.
+ #
+ #   ./code/preflight.sh            # before a batch of compute
+ #   ./code/preflight.sh --quiet    # in CI
+@@ -19,9 +20,10 @@
+ say() { [ "$quiet" = 1 ] || printf '%s\n' "$1"; }
+ bad() { printf 'FAIL  %s\n' "$1" >&2; fail=1; }
+ 
+-# must/004 — the committed state is the whole state.
++# This template requires a clean commit; other workflows can identify a complete
++# dirty delivery by a retained content snapshot. Cleanliness alone is not must/004.
+ if [ -n "$(git status --porcelain)" ]; then
+-    bad "the tree is dirty (must/004): commit or stash before executing"
++    bad "this commit-based workflow requires a clean tree before executing"
+ else
+     say "ok    tree is clean"
+ fi
+--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/skills/create-stamped-project/templates/run-recorded.sh
++++ /Users/johnlee/.local/share/wt-utils/worktrees/b9d9/skills/skills/create-stamped-project/templates/run-recorded.sh
+@@ -1,5 +1,6 @@
+ #!/bin/sh
+-# Start a recorded run, with the in-flight marker the pre-commit guard reads.
++# DataLad-oriented recorded-run template with an in-flight commit guard.
++# The plain-Git fallback records changed outputs, not a complete execution log.
+ #
+ #   ./code/run-recorded.sh -m 'collect volumes' -o results/volumes.tsv -- \
+ #       python3 code/collect_volumes.py --input sourcedata/ds007116 --output results/volumes.tsv
+@@ -106,7 +107,8 @@
+ MARKER="$GITDIR/datalad-run-in-flight"
+ cleanup() { rm -f "$MARKER"; }
+ 
+-# Commit before execute: a run that starts from a dirty tree cannot be rerun.
++# This template uses committed Git state as its replay identity.
++# Other workflows can capture a complete dirty state; this wrapper does not.
+ if [ -n "$(git status --porcelain --untracked-files=no)" ]; then
+     printf 'refusing to run: the tree is dirty. Commit first.\n' >&2
+     git status --short >&2

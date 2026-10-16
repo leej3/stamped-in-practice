@@ -1,0 +1,232 @@
+[
+  {
+    "item": "stamped-checklist:must/006",
+    "before": "unmet",
+    "after": "partial",
+    "reason": "New verification runs link commands, source snapshots, pins and output hashes; the original supplied-output runtime remains unknown.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json",
+        "description": "Fresh-environment command, exact versions, source and output hashes.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/supplied-environment-20261016/run.json",
+        "description": "Provided-environment verification receipt.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/HANDOFF.md",
+        "description": "Original historical provenance is not reconstructed.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/2026-10-16-2-probes.json",
+        "description": "Unedited scripted verdict and probe details.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:must/013",
+    "before": "met",
+    "after": "partial",
+    "reason": "The original requirements.txt is versioned; the new exact lock and interpreter specification are delivered but still uncommitted.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/git-inventory.json",
+        "description": "Baseline tracked specification.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/after-manifest.json",
+        "description": "requirements.lock.txt and .python-version are untracked.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/2026-10-16-2-probes.json",
+        "description": "Unedited scripted verdict and probe details.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:must/014",
+    "before": "unmet",
+    "after": "partial",
+    "reason": "README.md gives the executable lock-update and replay process; no dependency-update instance is committed in history yet.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md#updating-dependencies",
+        "description": "Commands and coordinated local Git record procedure.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/git-inventory.json",
+        "description": "No environment-update instance after the initial commit.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:must/015",
+    "before": "unmet",
+    "after": "met",
+    "reason": "The delivered lock pins thirteen runtime packages and .python-version pins the interpreter; a fresh installation reproduced the numeric summary exactly.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/requirements.lock.txt",
+        "description": "Exact package versions; wheel builds and OS are not claimed identical.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/.python-version",
+        "description": "Python 3.13.16.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json",
+        "description": "Verified completed run using these specifications.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/2026-10-16-2-probes.json",
+        "description": "Unedited scripted verdict and probe details.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:should/002",
+    "before": "not-checked",
+    "after": "partial",
+    "reason": "The documented workflow completed twice and a repeat-before-handoff policy is stated; regular testing over time is not established.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md#updating-dependencies",
+        "description": "Repeat verification after changes and before handoff.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json",
+        "description": "First completed check.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/supplied-environment-20261016/run.json",
+        "description": "Second same-day check.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/2026-10-16-2-probes.json",
+        "description": "Unedited scripted verdict and probe details.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:should/004",
+    "before": "not-checked",
+    "after": "met",
+    "reason": "A new isolated venv installed the exact lock and completed the workflow with exact numeric agreement on this same host.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/environment-install.log",
+        "description": "Successful fresh pip installation.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/pip-check.log",
+        "description": "Dependency consistency check.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json",
+        "description": "Fresh-environment run; CSV agrees exactly.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:should/006",
+    "before": "not-checked",
+    "after": "partial",
+    "reason": "One fresh reconstitution of the pinned verification environment succeeded; a policy exists but no regular reconstitution history is established.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/environment-install.log",
+        "description": "One successful fresh lock installation.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md#updating-dependencies",
+        "description": "Future repeat-check policy.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/runs/verification-20261016/run.json",
+        "description": "Completed numeric comparison.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/2026-10-16-2-probes.json",
+        "description": "Unedited scripted verdict and probe details.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:should/008",
+    "before": "unmet",
+    "after": "partial",
+    "reason": "README.md gives the executable lock-update and replay process; no dependency-update instance is committed in history yet.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md#updating-dependencies",
+        "description": "Commands and coordinated local Git record procedure.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/evidence/git-inventory.json",
+        "description": "No environment-update instance after the initial commit.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:may/002",
+    "before": "unmet",
+    "after": "met",
+    "reason": "README.md maps input, computation, environment, supplied outputs and verification snapshots and explains their composition.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md#contents-and-local-handoff",
+        "description": "Explicit roles and relationship map.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/code/reproduce.py",
+        "description": "Composes the declared files without overwriting supplied outputs.",
+        "sha256": null
+      }
+    ]
+  },
+  {
+    "item": "stamped-checklist:may/005",
+    "before": "partial",
+    "after": "met",
+    "reason": "The README provides a contents map, installation/use steps and interpretation of the run records; HANDOFF.md lists changes and remaining limits.",
+    "evidence": [
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/README.md",
+        "description": "Navigation and operating instructions.",
+        "sha256": null
+      },
+      {
+        "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/research-skill-revision-01/alignment-trial-01/project/HANDOFF.md",
+        "description": "Checklist-linked change log and limitations.",
+        "sha256": null
+      }
+    ]
+  }
+]
