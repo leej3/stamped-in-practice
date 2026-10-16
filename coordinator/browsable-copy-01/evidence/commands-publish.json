@@ -1,0 +1,172 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "09de16ea2c04150bade706dfb45c9e69f5861d5a\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-12-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/common_support_mask.nii.gz",
+      "results/fwe_significant_mask.nii.gz",
+      "results/group_mean_cope.nii.gz",
+      "results/group_t_map.nii.gz",
+      "results/permutation_max_t.npy",
+      "results/voxelwise_fwe_p.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/common_support_mask.nii.gz ok\ncopy results/fwe_significant_mask.nii.gz ok\ncopy results/group_mean_cope.nii.gz ok\ncopy results/group_t_map.nii.gz ok\ncopy results/permutation_max_t.npy (to con-hub...) \n\n100%  19.66 KiB        80 MiB/s 0s\n                                  \nok\ncopy results/voxelwise_fwe_p.nii.gz (to con-hub...) \n\n76%   31.98 KiB        50 MiB/s 0s\n100%  41.84 KiB        21 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-12-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-12-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-12-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-12-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-12-browsable' set up to track 'origin/codex/narps-neutral-r1-12-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "36d759b7e5cac251f9561d1af85633b8505a53fc\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "09de16ea2c04150bade706dfb45c9e69f5861d5a\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "36d759b7e5cac251f9561d1af85633b8505a53fc",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   36d759b..6a0f7e3  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "6a0f7e376ca7c72accbe2c4c323610d00407c518\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-12-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "09de16ea2c04150bade706dfb45c9e69f5861d5a\trefs/heads/codex/narps-neutral-r1-12-browsable\n6a0f7e376ca7c72accbe2c4c323610d00407c518\trefs/heads/git-annex\n"
+  }
+]
