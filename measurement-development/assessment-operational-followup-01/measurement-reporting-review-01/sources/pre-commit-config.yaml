@@ -1,0 +1,10 @@
+repos:
+  - repo: local
+    hooks:
+      - id: snapper
+        name: Format prose with Snapper
+        entry: snapper --in-place
+        language: system
+        types: [markdown]
+        # Preserve captured prompts, snapshots and execution records.
+        exclude: ^(iterations|studies/[^/]+/results)/

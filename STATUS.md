@@ -15,7 +15,7 @@ The [candidate research guidance and trial evidence](skill-reflection/research-s
 The registered round-one skill pin remains unchanged.
 The separately registered [assessment-only series](assessment-series/narps-neutral-r1-operational-v4/README.md) reassesses all 24 original deliveries and the same eight duplicate slots under one reviewed procedure.
 Its identity-guard correction passed all 24 original bindings and rejected 1,752 substitutions; the never-launched preparation seal is retained.
-The finalized series is being published before dispatch.
+The separate series is running in its fixed order, with at most three native judges at once; [progress](assessment-series/narps-neutral-r1-operational-v4/progress.json) records the latest completed control snapshot.
 Further research remains held for measurement viability.
 
 
