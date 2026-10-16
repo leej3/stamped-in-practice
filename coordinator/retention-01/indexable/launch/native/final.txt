@@ -1,0 +1,21 @@
+## Result
+
+**The analysis does not support a positive gain-related response in vmPFC.** The bilateral medial orbitofrontal ROI mean was −0.0079 cope (95% t interval −0.0346 to 0.0188; *n* = 54), and no voxel surviving whole-brain max-*t* FWE correction overlapped the ROI. The corrected whole-brain test found 24 positive voxels elsewhere (minimum corrected *p* = .00050). A lack of vmPFC support here does not show that the true effect is zero. The [report](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/results/report.md>) explains the interpretation and limits.
+
+The analysis follows NARPS’s whole-brain reporting instruction and uses a fixed medial orbitofrontal atlas definition to operationalize vmPFC ([NARPS instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf), [NARPS ROI discussion](https://pmc.ncbi.nlm.nih.gov/articles/PMC10233921/), [AAL atlas](https://doi.org/10.1006/nimg.2001.0978)). All 54 maps passed checksum and geometry checks; no participants were excluded. Because participant variance maps were not supplied, the group test is unweighted and cannot propagate first-level uncertainty. The cope values also are not currency-unit slopes.
+
+## Deliverables
+
+- [Analysis code](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/scripts/analyze_gain.py>)
+- [Scientific report and figures](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/results/report.md>)
+- [Machine-readable results](</Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-09/results/results.json>)
+- Duct command, output, resource, and summary records are under `logs/`; large outputs and logs are annexed and available on `con-hub`.
+
+I installed the PDF and Jupyter Notebook skills locally and reviewed their workflows; the requested runnable analysis is delivered as a script with a concise report.
+
+## Validation and commits
+
+`pixi install --locked` succeeded, and the final 10,000-permutation analysis completed. The task branch and environment snapshot were published to `origin` and `con-hub`; annex content was copied to `con-hub`. I returned to the task branch, and the working tree is clean.
+
+- Task commit: `2ad7c466615141d11b81720ff97d61c2d7c23f73`
+- Environment snapshot commit, one commit above the task commit: `e50edef53fdff1c72f4fe268ecbe0828a9a88021`
