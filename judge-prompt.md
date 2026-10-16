@@ -40,6 +40,7 @@ If identifiers or content reveal it, record that blinding limitation without usi
 No human is attached: state necessary assumptions and continue within this fixed scope.
 
 Write the assessment, response JSON, probes, checklist link and replay record to the directory named by `STAMPED_JUDGE_OUTPUT`, outside the assessed checkout.
+Retain every attempt's commands, stdout/stderr, receipts and generated artifacts, including failures; use distinct output paths and leave replay workspaces for coordinator preservation.
 Validate the response with the supplied runner's `validate` action.
 Cite artifact paths and evidence for verdicts, retain `not-checked` where appropriate, and report scientific adequacy and supported findings separately.
 Do not invent an overall score.

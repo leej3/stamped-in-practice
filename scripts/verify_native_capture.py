@@ -6,19 +6,34 @@ Raw transcripts are inspected in memory and hashed, never printed or copied.
 import argparse
 import hashlib
 import json
+import os
 import re
 import shlex
 import subprocess
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 
-def run(argv, cwd):
-    result = subprocess.run(argv, cwd=cwd, capture_output=True, check=False)
+def run(argv, cwd, env=None):
+    result = subprocess.run(argv, cwd=cwd, env=env, capture_output=True, check=False)
     if result.returncode:
         raise RuntimeError(f"Read-only command failed: {argv[0]} (exit {result.returncode})")
     return result.stdout
+
+
+def hosted_metadata(repository, checkpoint):
+    """Prevent Entire's local-checkpoint fallback from proving hosted access."""
+    # Entire requires a Git checkout even with --repo. An empty independent
+    # store has no checkpoint that could satisfy the request locally.
+    environment = {key: value for key, value in os.environ.items()
+                   if not key.startswith("GIT_")}
+    with tempfile.TemporaryDirectory(prefix="stamped-hosted-check-") as directory:
+        run(["git", "init", "--quiet", directory], directory, env=environment)
+        content = run(["entire", "checkpoint", "explain", checkpoint,
+                       "--repo", repository, "--json"], directory, env=environment)
+    return json.loads(content), hashlib.sha256(content).hexdigest()
 
 
 def native_path(value):
@@ -217,8 +232,10 @@ def main():
             raise SystemExit("Uploaded refs differ from expected exact OIDs")
         result["uploaded_refs_verified"] = True
     if args.hosted_repo:
-        hosted = json.loads(run(["entire", "checkpoint", "explain", metadata["checkpoint_id"],
-                                "--repo", args.hosted_repo, "--json"], root))
+        hosted, hosted_digest = hosted_metadata(args.hosted_repo, metadata["checkpoint_id"])
+        result["hosted_lookup"] = {"repository": args.hosted_repo,
+                                   "isolated_empty_git_checkout": True,
+                                   "metadata_sha256": hosted_digest}
         ids = [s["session_id"] for s in hosted.get("sessions", [])]
         result["hosted_verified"] = hosted.get("checkpoint_id") == metadata["checkpoint_id"] and args.session in ids
         result["hosted_session_ids"] = ids

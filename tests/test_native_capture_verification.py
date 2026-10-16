@@ -125,3 +125,41 @@ def test_verifier_requires_linked_commit_change_and_retains_only_metadata(tmp_pa
     assert result["committed_file_sha256"] == hashlib.sha256(b"final formatted synthetic proof\n").hexdigest()
     assert result["file_events"][0]["written_content_sha256"] != result["committed_file_sha256"]
     assert "PRIVATE_REASONING_SENTINEL" not in receipt.read_text() + capsys.readouterr().out
+
+
+@pytest.mark.parametrize('available', [False, True])
+def test_hosted_lookup_cannot_fall_back_to_local_checkpoint(tmp_path, monkeypatch, available):
+    import subprocess
+    source = tmp_path / 'source'
+    subprocess.run(['git', 'init', '--quiet', str(source)], check=True)
+    local_checkpoint = source / '.git/refs/entire/checkpoints/fixture'
+    local_checkpoint.parent.mkdir(parents=True)
+    local_checkpoint.write_text('a' * 40 + '\n')
+    monkeypatch.setenv('GIT_DIR', str(source / '.git'))
+    monkeypatch.setenv('GIT_ALTERNATE_OBJECT_DIRECTORIES', str(source / '.git/objects'))
+    real_run = verify.run
+    observed = []
+    metadata = {'checkpoint_id': 'fixture', 'sessions': [{'session_id': 'actual-hosted-session'}]}
+    def command(argv, cwd, env=None):
+        if argv[0] == 'git':
+            return real_run(argv, cwd, env=env)
+        assert Path(cwd) != source
+        assert (Path(cwd) / '.git').is_dir()
+        assert not any(key.startswith('GIT_') for key in env)
+        assert not subprocess.check_output(['git', 'for-each-ref'], cwd=cwd, env=env)
+        assert argv == ['entire', 'checkpoint', 'explain', 'fixture',
+                        '--repo', 'gh/fixture/project', '--json']
+        observed.append(Path(cwd))
+        if not available:
+            raise RuntimeError('Repository is not onboarded or visible')
+        return json.dumps(metadata).encode()
+    monkeypatch.setattr(verify, 'run', command)
+    if available:
+        actual, digest = verify.hosted_metadata('gh/fixture/project', 'fixture')
+        assert actual == metadata
+        assert digest == hashlib.sha256(json.dumps(metadata).encode()).hexdigest()
+    else:
+        with pytest.raises(RuntimeError, match='not onboarded'):
+            verify.hosted_metadata('gh/fixture/project', 'fixture')
+    assert len(observed) == 1 and not observed[0].exists()
+    assert local_checkpoint.read_text() == 'a' * 40 + '\n'
