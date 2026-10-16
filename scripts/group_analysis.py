@@ -227,6 +227,16 @@ def main() -> None:
         ax.text(.5, .5, "No positive voxel passed\nwhole-brain max-t FWE p ≤ .05", ha="center", va="center", fontsize=13)
     fig.savefig(OUT / "whole_brain_results.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
+    peak_vox = int(np.argmax(t_obs))
+    peak_xyz = xyz[peak_vox]
+    peak_cuts = tuple(float(round(v / 2) * 2) for v in peak_xyz)
+    display = plotting.plot_stat_map(
+        fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
+        colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05
+Peak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
+        black_bg=False, annotate=True, draw_cross=True)
+    display.figure.savefig(OUT / "corrected_peak_localization.png", dpi=180, bbox_inches="tight")
+    plt.close(display.figure)
 
     sig = p_fwe <= ALPHA
     vm_sig = sig & (np.abs(xyz[:, 0]) <= 10) & (xyz[:, 1] >= 20) & (xyz[:, 1] <= 60) & (xyz[:, 2] >= -20) & (xyz[:, 2] <= 20)
