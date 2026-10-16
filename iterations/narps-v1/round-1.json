@@ -67,8 +67,8 @@
           "returncode": 0,
           "elapsed_seconds": 601.3073380419519,
           "finished_at": "2026-10-16T02:23:34.439766+00:00",
-          "assessment_scope": "original-procedure-infrastructure-attempt",
-          "outcome_pooling": "excluded-operational-only",
+          "assessment_scope": "original-procedure",
+          "outcome_pooling": "assigned-with-measure-validity-overlay",
           "infrastructure_attempt_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/retention/judgment-01-infrastructure-attempt.json",
             "sha256": "c3cabf3db199ffdaf70e20b06b1520e5ba4acd740c66f4a3ae9f7d831a57567c"
@@ -80,7 +80,8 @@
           "procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
           "research_procedure_sha256": null,
           "worker_end_state_sha256": "97caecab5ddac2f1b7bfa033e1b20470c263523c6cf88bb1fc34482c0ab55e25",
-          "native_thread_id": "01a1427c-6e26-78a0-9a66-8bec9cdb4503"
+          "native_thread_id": "01a1427c-6e26-78a0-9a66-8bec9cdb4503",
+          "judgment_role": "primary"
         },
         {
           "judgment_id": "judgment-02",
@@ -92,9 +93,9 @@
           "procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
           "research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
           "worker_end_state_sha256": "97caecab5ddac2f1b7bfa033e1b20470c263523c6cf88bb1fc34482c0ab55e25",
-          "assessment_scope": "first-amendment-output-selection-infrastructure-attempt",
-          "judgment_role": "primary",
-          "outcome_pooling": "excluded-operational-only",
+          "assessment_scope": "amendment-01",
+          "judgment_role": "supplementary",
+          "outcome_pooling": "supplementary-only",
           "native_thread_id": "01a142a7-422a-7981-84c0-c2040256763b",
           "returncode": 0,
           "elapsed_seconds": 404.7611275409581,
@@ -155,8 +156,8 @@
           "returncode": 0,
           "elapsed_seconds": 613.0664606249193,
           "finished_at": "2026-10-16T02:28:51.611975+00:00",
-          "assessment_scope": "original-procedure-infrastructure-attempt",
-          "outcome_pooling": "excluded-operational-only",
+          "assessment_scope": "original-procedure",
+          "outcome_pooling": "assigned-with-measure-validity-overlay",
           "infrastructure_attempt_evidence": {
             "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-08/retention/judgment-01-infrastructure-attempt.json",
             "sha256": "f87c8c342b4f4597ee5795581bdd0d94bcc28756817116788e15978805067b91"
@@ -168,7 +169,8 @@
           "procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
           "research_procedure_sha256": null,
           "worker_end_state_sha256": "37b6cb7641223b20738096045a9b82ac7cadc864b4e196e7ac8235793949433b",
-          "native_thread_id": "01a14281-167c-7473-8dce-52de3f342896"
+          "native_thread_id": "01a14281-167c-7473-8dce-52de3f342896",
+          "judgment_role": "primary"
         }
       ]
     },
@@ -176,7 +178,7 @@
       "run": "narps-r1-09",
       "condition": "discover-science",
       "replicate": 3,
-      "status": "worker-completed-awaiting-judgment",
+      "status": "judgments-awaiting-retention",
       "observed_skill_discovery": null,
       "observed_skill_use": null,
       "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-09/launch",
@@ -213,7 +215,27 @@
         "native_capture_verified": true,
         "uploaded_refs_verified": true,
         "hosted_verified": true
-      }
+      },
+      "judgments": [
+        {
+          "judgment_id": "judgment-01",
+          "evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-09/judgment-01",
+          "status": "completed",
+          "started_at": "2026-10-16T03:19:55.639090+00:00",
+          "prompt_sha256": "d500cb7963c954a22f943a8359e557f679e84371ccd20f26a91092a81a124eda",
+          "workspace": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-09/judgment-01/judgment",
+          "procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
+          "research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
+          "worker_end_state_sha256": "967589659becc46c4f8b64f6a015204d80bf9e95f9cde98cd1a233567528adc7",
+          "assessment_scope": "amendment-01",
+          "judgment_role": "primary",
+          "outcome_pooling": "assigned-with-measure-validity-overlay",
+          "native_thread_id": "01a142b9-3231-7831-854e-22e9f74c5afd",
+          "returncode": 0,
+          "elapsed_seconds": 709.7511793749873,
+          "finished_at": "2026-10-16T03:31:45.402132+00:00"
+        }
+      ]
     },
     {
       "run": "narps-r1-02",
@@ -348,7 +370,7 @@
       "run": "narps-r1-05",
       "condition": "discover-general",
       "replicate": 2,
-      "status": "running",
+      "status": "worker-completed-awaiting-judgment",
       "observed_skill_discovery": null,
       "observed_skill_use": null,
       "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-05/launch",
@@ -357,13 +379,27 @@
       "started_at": "2026-10-16T03:07:44.930578+00:00",
       "starting_commit": "1790207a9b1fc2a31db009942e3290ae6d5db488",
       "prompt_sha256": "323fd87f691b921c1ef09b26ca5d463f9b9236ca736edf962e702eb0374a4eb9",
-      "native_thread_id": "01a142ae-0bd9-7a51-8212-0f0c52f4a890"
+      "native_thread_id": "01a142ae-0bd9-7a51-8212-0f0c52f4a890",
+      "finished_at": "2026-10-16T03:30:04.516025+00:00",
+      "worker_elapsed_seconds": 1339.5679777499754,
+      "worker_returncode": 0,
+      "worker_head_commit": "e2d266ea0ca7cc52e9ecab358e0f5a8c9085f6b9",
+      "worker_end_state_sha256": "c6fe206a8a09efc1e8d103ea6583de93bb384473cc97cf1d2a445870980c5c4e",
+      "worker_end_state_capture_status": "complete",
+      "environment_snapshot": {
+        "source_commit": "5d4eaf55e265823a8cb7308a9c6adbc35c86c21e",
+        "branch": "codex/env-narps-r1-05-20261015",
+        "parent": "e2d266ea0ca7cc52e9ecab358e0f5a8c9085f6b9",
+        "sha256": "5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21",
+        "working_lock_at_stop": "present; byte-identical to worker snapshot",
+        "attribution": "worker-created snapshot; recovered without resolving environment"
+      }
     },
     {
       "run": "narps-r1-03",
       "condition": "baseline",
       "replicate": 3,
-      "status": "running",
+      "status": "worker-completed-awaiting-judgment",
       "observed_skill_discovery": null,
       "observed_skill_use": null,
       "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-03/launch",
@@ -372,23 +408,61 @@
       "started_at": "2026-10-16T03:09:30.867917+00:00",
       "starting_commit": "c0a526e292ed73730ce0d14ca53c4ad82505090a",
       "prompt_sha256": "91c2aabb84b61ae9621f9d992a76592a233ac90ef5ec9411270b0fe2a414b53e",
-      "native_thread_id": "01a142af-a9b1-7fb0-a3d4-13cd3dda1b5f"
+      "native_thread_id": "01a142af-a9b1-7fb0-a3d4-13cd3dda1b5f",
+      "finished_at": "2026-10-16T03:15:43.869438+00:00",
+      "worker_elapsed_seconds": 372.9900593330385,
+      "worker_returncode": 0,
+      "worker_head_commit": "abf95b00c02fb55d16c4d269926c1428cedc0574",
+      "worker_end_state_sha256": "0b9a32f0325f154a2bfff6b739d0c2d845d4f6dc1008890e0c9fdfdef339dee2",
+      "worker_end_state_capture_status": "complete",
+      "environment_snapshot": {
+        "source_commit": "4f72cf98a82f21fb282eff1096fd00ba50fedd08",
+        "branch": "codex/env-narps-r1-03",
+        "parent": "abf95b00c02fb55d16c4d269926c1428cedc0574",
+        "sha256": "20e6a8aec591446f6a0e5a8b8b8b288ba01bd37f501e72e3bfac0d43e5f207e4",
+        "working_lock_at_stop": "absent",
+        "attribution": "worker-created snapshot; recovered without resolving environment"
+      },
+      "independent_retention_evidence": {
+        "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-03/retention/recipient-check-01/result.json",
+        "sha256": "f93d2c6c91c3b8294d98503cbd1cd1e692731014cc245a22a3269718ec9bb595"
+      },
+      "coordinator_native_capture_verification": {
+        "receipt": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-03/retention/native-capture-02.json",
+        "native_capture_verified": true,
+        "uploaded_refs_verified": true,
+        "hosted_verified": true
+      }
     },
     {
       "run": "narps-r1-12",
       "condition": "stamped-explicit",
       "replicate": 3,
-      "status": "not-started",
+      "status": "running",
       "observed_skill_discovery": null,
-      "observed_skill_use": null
+      "observed_skill_use": null,
+      "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-12/launch",
+      "branch": "codex/narps-r1-12",
+      "repository": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-12",
+      "started_at": "2026-10-16T03:19:14.081822+00:00",
+      "starting_commit": "a1c69a956b640ddaae7fcb5340ce8e435234c848",
+      "prompt_sha256": "ee6dae2eb560f408da608489a414af5cfb8c1fbfa42f0264d4efa5c9fa58890a",
+      "native_thread_id": "01a142b8-91be-7d83-955e-6946378bd08f"
     },
     {
       "run": "narps-r1-04",
       "condition": "discover-general",
       "replicate": 1,
-      "status": "not-started",
+      "status": "running",
       "observed_skill_discovery": null,
-      "observed_skill_use": null
+      "observed_skill_use": null,
+      "launch_evidence": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-04/launch",
+      "branch": "codex/narps-r1-04",
+      "repository": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-04",
+      "started_at": "2026-10-16T03:34:14.544906+00:00",
+      "starting_commit": "6a77ec022d7e23eb36534d3b76926674a2f37f40",
+      "prompt_sha256": "323fd87f691b921c1ef09b26ca5d463f9b9236ca736edf962e702eb0374a4eb9",
+      "native_thread_id": "01a142c6-4d47-7470-ae10-09e44d61f931"
     },
     {
       "run": "narps-r1-11",
@@ -407,35 +481,34 @@
       "observed_skill_use": null
     }
   ],
-  "last_updated_at": "2026-10-16T03:14:26.517245+00:00",
-  "formal_workers_started_current": 8,
-  "worker_sessions_completed_current": 6,
-  "formal_judgments_started_current": 3,
-  "formal_judgments_completed_current": 3,
+  "last_updated_at": "2026-10-16T03:34:32.382717+00:00",
+  "formal_workers_started_current": 10,
+  "worker_sessions_completed_current": 8,
+  "formal_judgments_started_current": 4,
+  "formal_judgments_completed_current": 4,
   "assessment_hold": {
-    "active": true,
-    "status": "output-selection-defect; research-only-resumed",
-    "decision": "amendment-01/decision.json",
+    "active": false,
+    "status": "assigned-assessments-resumed-with-validity-overlays",
+    "decision": "measurement-disposition-01.md",
+    "disposition": "measurement-disposition-01.json",
     "assessment_procedure_sha256": "5dfdfa07f8e9488a79bbddb27df75a76ad5484941ac1d0efb197b0b3126994b5",
     "original_research_procedure_sha256": "c6f01b00ee6a4469be70eb8c85cc8a2553e6ef616e3b7fb8bc46707acaae4bd4",
-    "remaining_queue_gate": [
-      "Reviewed explicit generated-output requirement in helper and wrapper, with missing selection rejected before allowance.",
-      "Fresh native development rehearsal through candidate wrapper, then superseding common assessment seal and formal replay evidence."
-    ],
-    "reason": "Corrected replay fetched payloads but broad default output patterns deleted required input/participants.tsv before entry; comparison absent.",
-    "research_status": "Next two allocated workers resumed under original seal, maximum two research sessions; judgments remain held."
+    "remaining_queue_gate": [],
+    "reason": "Explicit human steering: successful replay is not a round-completion gate; preserve first-assigned primaries and mark infrastructure-affected measures unavailable.",
+    "research_status": "Complete original allocation under original driver and unchanged round-one skills."
   },
   "native_sessions_running_current": 2,
-  "corrected_judgments_started_current": 1,
   "next_round_prerequisite": {
     "source": "Explicit user-authorized parent handoff after round1 loop",
     "action": "Convert iterations/narps-v1 into registered DataLad subdataset/submodule",
-    "timing": "After12 research objects,16 common-procedure judgments, comparison/reflection and skill revision; before round2",
+    "timing": "After 12 research objects, 16 assigned judgments, comparison/reflection and skill revision; before round 2",
     "constraints": [
       "Preserve exact frozen evidence/results/annex keys/provenance",
       "Prefer pinned installation of existing datasets over copying or re-annexing",
       "Publish subdataset content/revisions and verify fresh retrieval/path resolution before parent gitlink",
       "Record structural compatibility changes; keep worker inputs isolated"
     ]
-  }
+  },
+  "assigned_judgments_started_current": 3,
+  "assigned_judgments_completed_current": 3
 }
