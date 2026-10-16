@@ -1,0 +1,65 @@
+{
+  "scope": "One prospective synthetic mechanism trial; no formal NARPS outcome, no favorable-grade gate, no new launch approval.",
+  "source": "934ce120b455bb2cc2c346573c3533d523c2f562",
+  "runtime": "b6dfd55cef04393c5deb990c5f57fcad2118bbf0",
+  "native_session": "01a144c1-ad4f-7d81-a5c1-caef43cb2d4e",
+  "checks": {
+    "mechanical": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/mechanical-verification.json",
+      "sha256": "7963d7deeeaf34596e56941ff3a58a4cff26250bfb4f9b9a3a7a456d823ed324"
+    },
+    "context_and_replay": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/native-context-and-replay-verification.json",
+      "sha256": "48acfc0a17bcfbd0b768cdb971509e45ef6d1a019bcb0d937fbea9bc98561d72"
+    },
+    "native_retention": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/native-session-retention-01/receipt.json",
+      "sha256": "aea439f83e9485aac30cfa4ea3d0a1eb98252e6be37083777242583ebe2709c9"
+    }
+  },
+  "native_failed_commands": [
+    {
+      "native_line": 24,
+      "item_id": "item_12",
+      "exit_code": 2,
+      "classification": "Unsupported top-level items action on the wrapper; supplied wrapper response subcommands remained available."
+    },
+    {
+      "native_line": 31,
+      "item_id": "item_16",
+      "exit_code": 1,
+      "classification": "Direct system Python call to encode_response lacked jsonschema; frozen runner interpreter remained available."
+    },
+    {
+      "native_line": 47,
+      "item_id": "item_24",
+      "exit_code": 127,
+      "classification": "Shell quoting split --evidence options into separate commands in a batch of response edits; earlier edit commands in the shell still ran."
+    },
+    {
+      "native_line": 51,
+      "item_id": "item_26",
+      "exit_code": 127,
+      "classification": "Second response-edit batch had the same shell quoting/--evidence failure; retained final response validated but this is not evidence of frictionless use."
+    }
+  ],
+  "record_quality_limit": "Some command-summary/stdout-named files were written or edited by the judge after execution. They are retained as judge-authored records; raw native command events remain authoritative.",
+  "coordinator_audit_failures": [
+    {
+      "path": "commands/actual-context-and-replay-01",
+      "reason": "Post-stop audit used nonexistent response_metadata key instead of response_identity; exact failed script/log retained and corrected second audit passed."
+    }
+  ],
+  "reviewed_behavior": [
+    "Actual child-shell environment matches judge-only runtime projection; full procedure not exported.",
+    "Eight named supplied metadata/config/prompt files omit allocation/coordinator fields and known full-seal paths; this is not filesystem isolation.",
+    "Separate probe-draft.json and formal response.json observed; final31items and projected metadata validated.",
+    "One native fresh-venv replay ran; its exact helper output matches retained report, four selected output hashes equal canonical originals.",
+    "Canonical/protected delivery remains exact; final operational delta is two missing permitted annex sidecars, no rejected changes."
+  ],
+  "limits": [
+    "Unchanged scientific rubric and assessor9852; one mechanism demonstration, no reliability/general blinding inference.",
+    "Same host and dependency download/cache use; no cross-host portability claim.",
+    "Original observations and all failed commands are unchanged."
+  ]
+}

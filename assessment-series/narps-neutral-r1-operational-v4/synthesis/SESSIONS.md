@@ -4,6 +4,7 @@ These are new sessions in the separate operational v4 series.
 Git and hosted identity checks passed for all 32.
 Five native publication bundles also completed fresh Hub retrieval; the other 27 remain partial.
 These counts do not describe the separate full-support archive publication.
+[All 32 support branches, reports and archive pointers](../../../measurement-development/operational-support-publication-01/README.md) are now directly linked: 2 full-support archives were independently retrieved earlier, and 30 are retained locally with Hub transfer pending.
 
 | Slot | Immutable Git proof | Hosted session | Native Hub closure |
 |---|---|---|---|

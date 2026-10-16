@@ -1,0 +1,190 @@
+{
+  "mechanical_checks_passed": true,
+  "scope": "One synthetic mechanism trial, unchanged scientific criteria; no favorable grade criterion or general reliability inference.",
+  "native_session_ids": [
+    "01a144c1-ad4f-7d81-a5c1-caef43cb2d4e"
+  ],
+  "source_commit": "934ce120b455bb2cc2c346573c3533d523c2f562",
+  "runtime_commit": "b6dfd55cef04393c5deb990c5f57fcad2118bbf0",
+  "procedure_sha256": "d9c435aa136c31b1e6f3bd5008baae5ff3104ee72210f8374d3e9015176b24a3",
+  "projection_sha256": "849361f6bda40f714f069961454afc618982461918497ddc4f7d0bbfc0419432",
+  "original_capture_sha256": "5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5",
+  "canonical_unchanged": true,
+  "protected_unchanged": true,
+  "final_operational_unchanged": false,
+  "permitted_metadata_changes": [
+    {
+      "change": "missing",
+      "path": "content/workspace/.git/annex/keysdb/db-shm"
+    },
+    {
+      "change": "missing",
+      "path": "content/workspace/.git/annex/keysdb/db-wal"
+    }
+  ],
+  "rejected_changes": [],
+  "final_operational_capture": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judge-launch-01/native/operational-retention/original-delivery/manifest.json",
+    "sha256": "68218a8ef8dbb5dfc793444452991eea29f8f2ecfa3d528106ce5d776996d702"
+  },
+  "delta_receipt": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judge-launch-01/native/operational-retention/operational-delta.json",
+    "sha256": "c81958ebf6a6b19177da3b618736701711eaa4340c586d6d131b656c46a1b663"
+  },
+  "response": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judgment-01/response.json",
+    "sha256": "3bf88a62b8cb170490287bc5fc70251b667c59f557f51371fc1fe6314f8cad1b",
+    "items": 31,
+    "schema_valid": true,
+    "projected_identity_valid": true
+  },
+  "scientific_record": {
+    "structured_scientific": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judgment-01/scientific-judgment.json",
+      "sha256": "0765e27b58f14e11f40fc77ab150737391cdb831c0a0bd608b879aa406e37188"
+    },
+    "scientific_report": {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judgment-01/assessment-report.md",
+      "sha256": "d62ccb5bbb84d4eb9eaa0ed8e389b3ede004ca0857ce43f35dde5c8304306130"
+    },
+    "adequacy": {
+      "extraction_status": "explicit",
+      "category": "supported",
+      "excerpt": {
+        "quote": "**Scientific adequacy: supported.** This label is separate from STAMPED attainment and the reported hypothesis outcome. Independent arithmetic from all twelve rows of `input/paired-assay.csv` gives mean after-minus-before change 0.4166667, SD 0.3761850, SE 0.1085953, 95% t interval [0.1776501, 0.6556832], and a two-sided paired t test *t*(11)=3.8368773, *p*=0.0027614. These agree with the shipped summary and report. The figure shows each of the twelve changes, zero, and the mean interval. The protocol describes correct pairing, independent sample-level differences, and a suitable t model without severe skew or influential outliers, and acknowledges that n=12 limits diagnostics and makes the interval sensitive. The report limits interpretation to the supplied synthetic pairs and disclaims causal, biological, and assay-validity conclusions. The inference is therefore supported for the stated teaching target, conditional on those assumptions; it is not support for real assay behavior.",
+        "start_line": 80,
+        "end_line": 80
+      }
+    },
+    "conclusion": {
+      "quote": "The two-sided paired t test of a zero mean change gave *t*(11) = 3.837, *p* = 0.0028.",
+      "start_line": 82,
+      "end_line": 82
+    }
+  },
+  "native_helper_events": 26,
+  "native_failed_commands": 4,
+  "replay_record": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judgment-01/fresh-rerun.json",
+    "sha256": "1bc4219acdc8c85b9f9f5e84957b23275de0b5c4b2d34999e4c23996b66fe150",
+    "status": "met",
+    "entry": "python -m venv .venv && . .venv/bin/activate && python -m pip install -r requirements.txt && python analysis/run_analysis.py",
+    "returncode": 0,
+    "comparison": {
+      "identical": [
+        "results/paired-differences.csv",
+        "results/summary.json",
+        "results/report.md",
+        "figures/paired-changes.png"
+      ],
+      "within_tolerance": [],
+      "differing": [],
+      "missing_after_rerun": []
+    },
+    "workdir": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-context-native-trial-01/judgment-01/replay-01",
+    "retrieval_scope": {
+      "adapter_input_retrieval": "none; uses captured inputs",
+      "entrypoint_network_byte_limit": null,
+      "entrypoint_downloads": "Documented dependency installs/downloads are not byte-metered",
+      "max_get_gb": 5.0,
+      "max_get_gb_scope": "Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch"
+    },
+    "native_event_binding": "Requires separate exact command/output review; this record alone is not execution evidence."
+  },
+  "fixed_source_files": [
+    {
+      "path": "assessment-version.json",
+      "sha256": "27d75f55b892856b2e5b025515c07c37632a377b3e4314c894fdb0d7ae13c6c4"
+    },
+    {
+      "path": "comparison-plan.md",
+      "sha256": "8eee2f97776ee540be15ba03e21af4a7c2bd2a40bde12002ba430af4b2b054a4"
+    },
+    {
+      "path": "conditions.json",
+      "sha256": "2d41f2690f427f468ddec46c8d40944d28a21f2013315dde8c1e4618b29d79c5"
+    },
+    {
+      "path": "pixi.toml",
+      "sha256": "c3d25ec5d2893105ac23ed186c22f1b515848ef79517a474d1ab10b17945f350"
+    },
+    {
+      "path": "prompt.md",
+      "sha256": "f6189db0f0ad1eb94c3596c1fc25cbc4fd20753b0d9d34673fd092b6079d4311"
+    },
+    {
+      "path": "prompts/neutral-judge-operational.md",
+      "sha256": "bb7bdc29134a4f41431d195ede744aa223439451c2642535d702be656b1b9053"
+    },
+    {
+      "path": "prompts/neutral-judge.md",
+      "sha256": "0b9557b6fc73d9aebf34d70a71a3fa86b0e2bd9a9e80169df374be150cd576e1"
+    },
+    {
+      "path": "prompts/neutral-worker-common.md",
+      "sha256": "cb2431489d8f92c6737bb07017c88a24a784ae51fd15d655a122d9938d96429b"
+    },
+    {
+      "path": "protocols/neutral-v1/synthetic-requirements.json",
+      "sha256": "6505fd121fb46a382e5570f385b32a0aac96edf113a9d11c1ced77ca34f8b29d"
+    },
+    {
+      "path": "scripts/aggregate_comparison.py",
+      "sha256": "a58e39170be822bd992dbfb86f115ea90f5c9eeb5e63b7b553cc4b01234eb18f"
+    },
+    {
+      "path": "scripts/assessment.py",
+      "sha256": "10d21f9c5b7acf5ba1556a107384710256943d28f28e1fcaa5e1385cc180bbf7"
+    },
+    {
+      "path": "scripts/assessment_procedure.py",
+      "sha256": "f2ddefe9c07bf31e9c3e0583ee5e927266d60a24f27829aa53a8d03250f7fbf1"
+    },
+    {
+      "path": "scripts/commit_provenance_hook.py",
+      "sha256": "3b7b0265e1525df78e0fb2c318c1a8cea481cd0ab1947bd562a918581b6cc4a4"
+    },
+    {
+      "path": "scripts/delivery_snapshot.py",
+      "sha256": "ef575e07cf2f7ce9759f5ebec318dc562a89c0ecc3a10a94083787d2dbd1f997"
+    },
+    {
+      "path": "scripts/judge_workspace.py",
+      "sha256": "4543c56d22b081c3e0d24d5771b801d311e839de7656b2295c227fc26f502dd5"
+    },
+    {
+      "path": "scripts/launch_native_probe.py",
+      "sha256": "d15e60ac8baab850994a3d4a9e926f8596b8f4b9594c871fa1062b4673e081d3"
+    },
+    {
+      "path": "scripts/prepare_checkout.py",
+      "sha256": "a6a195afe621a6abf7df1aa7e202022831f3e3a7a9cb07dd2b7c3e468a79ae95"
+    },
+    {
+      "path": "scripts/prepare_launch.py",
+      "sha256": "fa54a66e0590f3178ce34a8523aeba08af59876d95e99b5d71b8d90fe80605ef"
+    },
+    {
+      "path": "scripts/readiness.py",
+      "sha256": "0e8aef2cb58df17be12687ccdf7deb9721fdf58c4f0c94fecdfbec8edd40d4af"
+    },
+    {
+      "path": "scripts/research_conditions.py",
+      "sha256": "f706c769726429e276103d4bc15401d4d5e8c19471b7dba548341d204fa6248a"
+    },
+    {
+      "path": "scripts/scientific_judgment.py",
+      "sha256": "b125ebae705fd704f32f0d10c466174b9133cc66c47fa5006cc149d1cf4d1ecf"
+    },
+    {
+      "path": "scripts/study_seed.py",
+      "sha256": "a72592b36cbe3756857486255c2f690c26b96d83c674f1090fe547945dc0578f"
+    },
+    {
+      "path": "scripts/worker_end_state.py",
+      "sha256": "bf74b09dd0971444884479a70e28ad83d52f70b9c88b72aea3eefc2673844d78"
+    }
+  ],
+  "hub_transfers": false,
+  "original_observations_regraded": false
+}
