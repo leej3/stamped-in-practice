@@ -31,6 +31,10 @@ def main():
         FIGURES / "narps-spatial-summary.json",
         FIGURES / "round-progression-manifest.json",
         Path("experiments/retained-round-reporting/pooled/poster-outcomes.json"),
+        Path("experiments/retained-round-reporting/pooled/run-outcomes.json"),
+        EXPERIMENT / "checklists/index.json",
+        EXPERIMENT / "checklists/manifest.json",
+        EXPERIMENT / "checklists/README.md",
         Path("pixi.toml"),
     ]
     sources.extend(Path("scripts") / name for name in (
@@ -38,7 +42,10 @@ def main():
         "extract_narps_spatial.py", "capture_narps_group_map.py",
         "narps_poster_figure_manifest.py",
         "render_poster_progression.py", "summarize_poster_outcomes.py",
+        "export_poster_checklists.py",
     ))
+    checklist_manifest = json.loads((ROOT / EXPERIMENT / "checklists/manifest.json").read_text())
+    sources.extend(Path(row["path"]) for row in checklist_manifest["outputs"] if "/responses/" in row["path"])
     manifest = {
         "schema_version": 1,
         "repository": "https://github.com/leej3/stamped-in-practice",

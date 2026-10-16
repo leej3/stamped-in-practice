@@ -1,0 +1,407 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All supplied workspace artifacts are nested in the repository root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "Participant maps and metadata are under input/ and analysis paths are repository relative.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/input/participants.tsv",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "Python dependencies are declared in requirements.txt.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "The repository exists, but report, code, dependency file, figures and results were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/REPORT.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Participant maps use git-annex in the recorded stop state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/input/data/",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "Runtime and package versions are recorded, but results are not linked to an immutable environment artifact.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/results/group_results.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "analysis/README.md gives installation and usage instructions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The README and report identify the main script and exact reproduction commands.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "Analysis paths derive from the script location; no hardcoded host paths were found.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/run_group.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "met",
+      "reason": "requirements.txt pins the direct Python package dependencies.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "partial",
+      "reason": "The result records the worker OS and architecture but does not fully state host assumptions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/results/group_results.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "met",
+      "reason": "README identifies Python 3.13 and requirements.txt lists the packages.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "requirements.txt was untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency update process is documented in the stopped delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "partial",
+      "reason": "Direct dependencies are pinned, but there is no complete platform-specific lockfile.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared route to obtain a published or archived environment was found.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/.git/config",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "met",
+      "reason": "analysis/README.md explains how to install and use the supplied dependency file.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git and git-annex are present, but scientific artifacts were untracked at stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/run_group.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "A pilot and independent numerical validation are supplied; no regular automated test process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/results/independent_validation.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "met",
+      "reason": "Input, analysis, result and figure files are separated by directory.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "No restricted data or software is identified in the stopped delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/input/sources.json",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No worker evidence establishes a fresh-container, batch or clean-VM test.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "not-checked",
+      "reason": "No disposable environment per run is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "The only permitted replay could not reconstitute the documented environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No archived environment artifact is included in the stopped delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No tracked environment update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/requirements.txt",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "The delivery does not use external submodules or linked components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/.git/config",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "Directories distinguish inputs, analysis, results and figures; their relationships are only lightly described.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "Independent update boundaries between modules are not established.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "No separate components require a composition mechanism.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/run_group.py",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "partial",
+      "reason": "README and report guide readers to the main analysis artifacts.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1#content/workspace/analysis/README.md",
+          "description": null,
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [],
+  "object": {
+    "url": null,
+    "commit": "82443e43a1171f47c085c5e0fadc9e8132a12053",
+    "captured_at": "2026-10-16T16:55:12.565633+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-09-j01/canonical/manifest.json",
+      "sha256": "794cdbd43e94970c2643887f261be89131d348e93c742f67f737491d9e2abfc1"
+    }
+  },
+  "assessor": {
+    "skill": "frozen independent assessment",
+    "version": "1",
+    "harness": "independent-judge",
+    "model": "Codex GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "frozen-assessment-runner@1 (source commit 9852d8360f9519d21d11099b45f5deb8ba80cb28)",
+      "STAMPED checklist 0.3.1"
+    ]
+  },
+  "scope": "Complete stopped delivery inspection; one documented replay; no retrieval route found"
+}

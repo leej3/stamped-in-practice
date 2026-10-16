@@ -1,0 +1,589 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "The complete workspace is organized under one project root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The supplied maps and metadata are within the root and reached through project-relative script paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/group_analysis.py",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The required Python environment is outside the project and external software is not included as a submodule.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/resources/nilearn/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "At worker stop the analysis code, report, protocol, figures and results were untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/figures/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Large participant maps use git-annex and are materialized in the captured workspace.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/annex/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Runtime versions and run history are recorded, but the exact environment is not linked to this result set.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/run_history.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "The README gives a command, but lacks installation guidance and depends on a host-specific interpreter path.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The README names the analysis script as a clear starting point.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/group_analysis.py",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis script derives input and output paths relative to its own project root.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis/group_analysis.py",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "No complete dependency specification is supplied; package versions appear only in report prose.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report/analysis-report.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "No portable host or system configuration requirements are documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report lists Python package versions, but omits installation steps and system requirements.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report/analysis-report.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is included in the worker-tracked project.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No process for updating dependency specifications is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "Runtime versions are recorded, but no frozen manifest or container identity permits exact environment reconstruction.",
+      "source": "probe:run-env-linked",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published environment artifact or project retrieval route is declared.",
+      "source": "probe:run-env-linked",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The README points to a local interpreter path but does not explain how a researcher obtains a reusable environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Inputs are in Git and annex, but core analysis and reporting materials were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker Git metadata.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; captured status showed this directory untracked.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "unmet",
+      "reason": "A same-environment replay is recorded, but no recurring or automated workflow test is documented.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/run_history.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Input, code, results, figures and report have separate directories, but the environment is not separated or captured.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/figures/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "The project does not identify restricted data or software that needs a separate module.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "Worker replay history does not show a fresh container, job or clean host; evaluator replay is not worker practice.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/run_history.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "No disposable environment per execution is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "Worker history describes same-environment replay, not environment reconstitution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/run_history.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact is archived inside the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency specification update process is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "partial",
+      "reason": "External data and some software are referenced, but not composed as project submodules.",
+      "source": "probe:subdatasets-resolvable",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/resources/nilearn/",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The README and protocol describe the input, analysis, result and reporting roles and link them.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories are separated, but no independent update contract for modules is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "partial",
+      "reason": "A single analysis invocation composes the project inputs and code; no broader module composition mechanism is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis/group_analysis.py",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README and protocol links help readers navigate the report and analysis decisions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/protocol.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; worker-stop evidence at this capture-relative path.",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "licence-declared",
+      "status": "unmet",
+      "reason": "No project licence declaration is present in the worker-stop root.",
+      "evidence": [
+        {
+          "uri": "content/workspace/README.md",
+          "description": "Canonical capture SHA-256 5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22; no licence or reuse terms are supplied in the README."
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "e929d623d8de313d2ecdd97911ea8487077af580",
+    "captured_at": "2026-10-16T06:38:30.918918+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-17-j01/canonical/manifest.json",
+      "sha256": "5dd86ac67e52dd77cb1d69b913060eb4c644b88d9dcf50d577a18967fee0fc22"
+    }
+  },
+  "assessor": {
+    "skill": "independent-assessment",
+    "version": "runner source 9852d8360f9519d21d11099b45f5deb8ba80cb28; environment 3552d5003a2485b6405805236d5c54e7ed42f097",
+    "harness": "Codex (independent assessment)",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "STAMPED checklist 0.3.1"
+    ]
+  },
+  "scope": "Complete worker stop delivery; STAMPED checklist, worker-declared access route, scientific adequacy, and one documented replay"
+}

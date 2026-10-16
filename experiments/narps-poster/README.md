@@ -3,11 +3,12 @@
 The current figures describe all 48 original research deliveries in rounds two and three of `narps-neutral-v1`: six analyses per condition per round.
 No research worker or judge was rerun to produce these figures.
 Original computations and native correction choices are preserved, including analyses with no detections.
-The companion round-progression chart displays the existing retained primary outcome summaries across rounds one to three, with each available denominator preserved.
+The companion round-progression chart displays the existing retained primary outcome summaries across rounds one to three, with Wilson intervals for scientific adequacy and individual checklist scores with mean plus/minus sample SD. Each available denominator is preserved. The [filled checklist lists](checklists/README.md) link the separate app-compatible all-item scores to the original responses.
 
 ## Replay the figures
 
-Retrieve the annex payloads under this directory using the benchmark's retrieval instructions, then run `pixi run poster-figures` at the repository root.
+Retrieve the annex payloads and retained-round input archives, initialize the frozen `assessment` submodule for its URL encoder, then run `pixi run poster-figures` at the repository root.
+The [figure instructions](../../scripts/POSTER-FIGURES.md) give the exact preparation commands.
 Rendering is offline: the frozen inputs, source records and plotting code are all here.
 The generated SVG and PNG files belong to this benchmark; the poster repository imports display copies using `figures/poster-figure-manifest.json`.
 
@@ -22,8 +23,11 @@ The generated SVG and PNG files belong to this benchmark; the poster repository 
 - [Numerical summary](figures/narps-spatial-summary.json) retains per-run counts and round-specific membership behind the pooled condition maps.
 - [Example provenance](map-inputs/example/provenance.json) binds the complete group-map illustration to the original round-two run 09, including its native coverage and Harvard–Oxford anatomical vmPFC proxy.
 - [Round progression](figures/round-progression.svg) compares scientific adequacy and mean evaluated checklist items met across the three rounds.
-  Its [manifest](figures/round-progression-manifest.json) binds the existing summary input, exact skill revisions, all plotted values and missingness.
+  Its [manifest](figures/round-progression-manifest.json) binds the existing summary and run inputs, exact skill revisions, all plotted values, interval methods and missingness.
   These are descriptive summaries of fresh groups of workers, not individual trajectories or causal effects.
+- [Filled checklists](checklists/README.md) expose all 72 primary response records and 68 valid filled forms, with per-condition all-item means for the pooled poster table.
+  The table's `met/31` measure is separate from the plot's `met/(met+partial+unmet)` measure.
+  Exact source bytes and hashes accompany the app's simplified answer display; four invalid or unadmitted primary scores remain unavailable.
 
 ## What the spatial figure measures
 

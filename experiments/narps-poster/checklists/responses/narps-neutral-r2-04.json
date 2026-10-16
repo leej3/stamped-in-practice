@@ -1,0 +1,618 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All essential maps, metadata, code, report, figures and results are inside one captured workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; complete cohort under content/workspace/input/",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; analysis entry under content/workspace/",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The script reads maps and metadata through paths relative to its root; all referenced scientific inputs are within the captured root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; ROOT-relative input paths",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; source inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Python dependencies are named in the report but no delivered environment specification installs them.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; environment paragraph names packages only",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "At worker stop, the analysis, report, figures and results were untracked; the captured HEAD contains only the supplied seed.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "probe:tree-clean",
+          "description": "Operational-copy probe: four worker-created paths were untracked",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/HEAD",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; original HEAD 447429ce6b992313fd5ad4fc326519db7a4f839a",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; worker-created file untracked at stop",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; worker-created file untracked at stop",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large participant maps are annex-backed; this input mechanism was present in the supplied seed, not established as worker-created.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "probe:large-in-annex",
+          "description": "Operational-copy probe found 54 annex pointers; coordinator-seeded, not worker-created",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; retained annex-backed input path",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; 54-map input inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "A run summary records results, but does not link the producing action to an exact environment specification.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/run-summary.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; records output statistics but no environment identity",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; package names and Python version only",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Probe did not recognize a run record; run-summary.json was inspected manually",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "The report identifies the script but gives no install or invocation instructions, and no README or Makefile supplies them.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; reproducibility list, no command or install steps",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy entry-point probe found no README with setup instructions or Makefile",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "analysis.py is a direct main script and the report identifies it as the analysis workflow.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; executable main guard",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; names analysis.py as workflow",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Probe missed the untracked main script; manually inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis uses root-relative pathlib paths and the tracked text has no system-specific absolute paths.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; ROOT-relative paths",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy scan found no host-specific absolute paths in tracked text",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "The script imports six third-party packages, but the stopped workspace contains no environment specification.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; NumPy, pandas, NiBabel, SciPy, Matplotlib and Nilearn imports",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy environment probe found no tracked specification",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "met",
+      "reason": "The report names Python 3.13.16 and the needed Python packages; the script shows no additional OS, mount, GPU or service assumptions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; environment paragraph",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; local relative-path Python workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report names Python 3.13.16 and six packages, but omits package versions and a complete system-requirement list.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; incomplete environment paragraph",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the stopped workspace or versioned with the code.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy environment probe found no tracked specification",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; source present but environment file absent from complete inventory",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or reproducible update command is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; environment paragraph gives no update process",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/HEAD",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; no tracked updates beyond supplied seed",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No frozen package manifest, container digest or other exact environment specification is supplied.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy environment probe found no tracked specification",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; versions absent for named packages",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker publication or authorized retrieval route for the complete object and its environment was recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; no remote configured",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/judgments/narps-neutral-r2-04-j01/attempt-01/worker-end-state.json",
+          "description": "Worker-stop receipt SHA-256 9102d56d7e9af8e750ea208a0c4139834e73e6f5c23a92e4f19b91ec36655e92; no worker publication route recorded",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The report names packages but gives no instructions to obtain or install an environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; no environment acquisition/use procedure",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Operational-copy entry-point and environment probes",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git-annex tracks the supplied maps, but the worker-created code, report and results remained untracked at stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probe:tree-clean",
+          "description": "Operational-copy probe found four untracked paths",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/HEAD",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; captured seed commit",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; worker-created code file untracked at stop",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; annex-backed supplied input",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No CI configuration or repeat-test record is present in the reviewed project files; equivalent historical testing cannot be established from this capture.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "No recognized CI configuration",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/run-summary.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; one result summary, no repeated-test history",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs and derived files are separated from the script, but there is no environment module; the probe missed the root script and results/figures.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; inputs",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; code",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; derivatives",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "Probe recognized only input/ as a module",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-checked",
+      "reason": "The metadata points to public sources but states no reuse or restriction terms; whether any supplied data/software are restricted is not established.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; public source URLs, no license field",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "No license file detected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "Shipped outputs imply a completed analysis, but no record says it ran in a fresh container, batch job, VM or cloud instance.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/run-summary.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; result summary lacks execution host/container",
+          "sha256": null
+        },
+        {
+          "uri": "replay-record.json",
+          "description": "Assessment replay was not checked because prerequisites could not be reconstructed",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The only delivered workflow is a Python script; it does not create or dispose an isolated environment for each run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; script imports and writes outputs without environment orchestration",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; supplied Python environment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute or test regularly.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "probes.json",
+          "description": "No tracked environment specification",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; package names without pins",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment image, package archive or other environment artifact is included.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; environment described but not archived",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json",
+          "description": "No environment spec detected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process or tracked updates are supplied; this repeats must/014 by checklist design.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; no update instructions",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/HEAD",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; no worker update commit",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained project modules are included; supplied data are within the common root and Python packages are runtime dependencies.",
+      "source": "judgement"
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The report explains the input maps, group script, result maps/tables and figures and links the principal artifacts.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; Methods and Reproducibility files sections",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Input, code and result locations are distinct, but no formal module boundaries or environment module are defined.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; input module",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; code at root",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; derived outputs",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "analysis.py composes supplied participant maps and metadata into the results and figures using root-relative paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/analysis.py",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; input-to-output workflow",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report links and describes the main analysis, input methods, result tables/maps and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "Canonical capture 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; Reproducibility files section",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "447429ce6b992313fd5ad4fc326519db7a4f839a",
+    "captured_at": "2026-10-16T15:29:58.554511Z",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-04-j01/canonical/manifest.json",
+      "sha256": "6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex API agent",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Canonical original complete capture SHA-256 6356d2c9870cc2696be61d96f784fd3a503e30a9d9ec89240dabf151b0e3af8a; worker-stop receipt shows complete capture with no omissions. Assessed unchanged operational copy; coordinator preservation excluded from worker credit. No worker retrieval route; no replay because delivered environment could not be reconstructed."
+}

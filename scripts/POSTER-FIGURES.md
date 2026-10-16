@@ -12,12 +12,17 @@ From the benchmark root, retrieve the annexed inputs using the repository's retr
 ```sh
 pixi install
 pixi run datalad get experiments/narps-poster/map-inputs
+git submodule update --init assessment
+pixi run datalad get experiments/retained-round-reporting/round-*/input.tar.gz \
+  experiments/retained-round-reporting/round-*/analysis/judgments.jsonl \
+  experiments/retained-round-reporting/round-*/analysis/issues.tsv
 pixi run poster-figures
 ```
 
 Rendering uses only the frozen local inputs.
-No study submodules, participant images, research workers, new judgments or external services are needed once those payloads have been retrieved.
-The root environment supplies NumPy, Matplotlib and NiBabel; Nilearn is used when refreshing captured inputs.
+No study submodules, participant images, research workers, new judgments or external services are needed once those payloads and the frozen assessor source have been retrieved.
+The assessor is used only for its pinned checklist URL encoder; it does not run an assessment.
+The root environment supplies NumPy, Matplotlib, SciPy and NiBabel; Nilearn is used when refreshing captured inputs.
 
 The spatial figures were validated with the lock preserved on the companion [environment snapshot branch](https://github.com/leej3/stamped-in-practice/tree/codex/env-stamped-poster-analysis-20261016).
 Retrieve that `pixi.lock` and use `pixi install --locked` when reproducing that exact environment.
@@ -32,7 +37,7 @@ The outputs are under [`experiments/narps-poster/figures/`](../experiments/narps
 | `narps-spatial-agreement.svg` | Native positive-FWE detection frequency across 48 R2/R3 analyses, pooled by assigned condition |
 | `narps-spatial-summary.json` | Shared support, per-run detection counts, round membership and condition frequencies |
 | `round-progression.svg` | Scientific adequacy and evaluated checklist items met by condition across rounds one to three |
-| `round-progression-manifest.json` | Exact summary input hash, skill revisions, plotted values, available denominators and rendering provenance |
+| `round-progression-manifest.json` | Summary and run input hashes, skill revisions, plotted values, interval methods, available denominators and rendering provenance |
 | `narps-group-map-manifest.json` | Input, generator, software and output hashes for the example |
 | `narps-spatial-manifest.json` | Input, generator, software, summary and output hashes for the spatial comparison |
 | `poster-figure-manifest.json` | Portable export binding for presentation repositories |
@@ -42,24 +47,59 @@ The spatial and group-map figures use at least 28-point text at a width of 13.5 
 The progression chart uses at least 24-point text at a width of 14 inches; display it at 1,344 CSS pixels or wider to retain that print minimum.
 The individual tasks are `pixi run poster-group-map`, `pixi run poster-spatial-map` and `pixi run poster-progression`.
 Their scripts accept `--inputs` and `--output` for isolated offline replay without overwriting retained outputs.
+The progression renderer also accepts `--runs` for its original per-run measurements.
+`pixi run poster-checklists` exports filled-checklist links and exact response copies under `experiments/narps-poster/checklists/`.
 
 ## Round-specific outcomes
 
-The progression renderer reads only [`poster-outcomes.json`](../experiments/retained-round-reporting/pooled/poster-outcomes.json), using its existing `round_conditions` rows.
+The progression renderer reads [`poster-outcomes.json`](../experiments/retained-round-reporting/pooled/poster-outcomes.json) and [`run-outcomes.json`](../experiments/retained-round-reporting/pooled/run-outcomes.json), cross-checking original per-run values against the existing `round_conditions` rows.
 It performs no new assessment or scientific analysis.
 Scientific adequacy is the percentage of assessed primary judgments marked supported; this is distinct from support for the neuroscience hypothesis.
+Its bars are 95% Wilson score intervals from SciPy's `binomtest(...).proportion_ci(method="wilson")`.
+These intervals assume independent runs with a common success probability within each condition and round, conditional on the available judgments.
 Checklist attainment is the equal-run mean of `met/(met+partial+unmet)` among available primary responses.
 Not-checked and not-applicable items are excluded from that evaluated-item denominator, with their counts retained in the manifest.
+Small points show the 68 individual valid primary scores; large markers and bars show the mean and plus/minus one sample standard deviation (`ddof=1`).
+Sample SD describes observed worker-score variation, not a confidence interval or standard error.
+Neither panel's bars capture judge disagreement, missing or excluded judgments, shared-host or model dependence, or other design uncertainties.
 
 Each condition has six assigned workers per round.
 Scientific n is five for round-two research discovery and round-three STAMPED, and six otherwise.
 Checklist n is four for round-one baseline, five for those same two groups, and six otherwise.
 Missing responses are not plotted as zero.
 The lines connect fresh groups of workers and describe differences across rounds; they do not track individual workers or establish a causal skill effect.
-Fixed horizontal offsets make coincident points visible without changing their values.
+Fixed horizontal offsets make coincident points and bars visible without changing their values; individual points use deterministic offsets ordered by run ID.
+SD endpoints are not clipped to the percentage domain; the axis expands if needed.
 
 The label “No supplied research skills” describes the baseline assignment; common runtime system skills remained available.
 The scientific source records retain their original labels, while generated display summaries use the clarified presentation label.
+
+## Filled checklists and the separate all-item score
+
+The poster's pooled checklist table uses the app-compatible all-item mean, a separate measure from the evaluated-item progression plot.
+For each valid primary response, that score is `100 * met / 31`.
+Each condition's pooled value averages these unrounded percentages equally across admitted runs; missing responses are not zeroes.
+The checklist app displays each individual score rounded to a whole percentage.
+
+The [checklist lists](../experiments/narps-poster/checklists/README.md) retain all 72 run slots and link 68 valid scores to filled forms, with exact raw response JSON beside each link.
+Four scores remain unavailable: round-one runs 16 and 23, round-two run 05, and round-three run 20.
+Their original excluded responses and the retained reasons remain available for inspection.
+No duplicate judgment substitutes for a primary.
+
+The exporter joins the pooled run table to its selected primary judgment, verifies the retained archive and response hashes, and copies the canonical response bytes without changing an answer.
+It verifies that each admitted response reproduces the original evaluated score, then invokes the encoder from frozen assessor commit `9852d8360f9519d21d11099b45f5deb8ba80cb28`.
+All app links are newly derived display projections of those original answers.
+This avoids missing URLs and the stale round-one run-08 URL, whose `must/005` value disagrees with its canonical response.
+The recovered round-three run-19 response is selected from the retained archive's `corrections/` member.
+
+The app maps met to Yes, partial/unmet to No, and not-checked/not-applicable to blank.
+It drops evidence and assessor metadata, truncates reasons to 250 characters and shows reasons only for No. The exact raw response remains authoritative for verdict distinctions and evidence.
+`checklists/index.json` provides both per-run score definitions, four pooled all-item means, friendly per-condition list links, validity and source identities.
+`checklists/manifest.json` binds the encoder revision and files, original inputs, exporter and every output.
+The reader-facing links use the named benchmark branch; the poster's import binding records the exact benchmark commit and file hashes.
+
+`tests/test_poster_progression.py` checks reference Wilson endpoints, sample-SD interpretation, equal run weighting, source agreement and deterministic replay.
+`tests/test_poster_checklist_export.py` checks all original response bytes, URL answers, scores, missingness, stale-link correction and deterministic export, and rejects an altered archive identity.
 
 ## Scientific meaning and coverage
 
@@ -152,6 +192,7 @@ Adding rounds or changing eligible scientific outputs requires reviewing the sel
 
 Run `pixi run poster-figures` and copy the six SVG/PNG assets listed in `poster-figure-manifest.json` into the poster's display-assets directory.
 Verify their SHA-256 values against that manifest and record the benchmark checkout revision in the presentation's binding.
+The same binding includes the checklist index, readable lists, all original response copies and their export manifest.
 Regenerate the manifest whenever its bound code or root Pixi manifest changes.
 
 Keep scientific generators, input snapshots and provenance in this benchmark.

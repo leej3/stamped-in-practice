@@ -1,0 +1,691 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "The workspace, inputs, code, results and environment file are all under one root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md",
+          "description": "Workspace contents and layout.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Code uses the workspace root and relative input/output paths.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The 54 input maps and metadata are within the root; annex payloads are present in the captured copy.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/input/participants.tsv",
+          "description": "Cohort metadata is in input/.",
+          "sha256": "faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/input/sources.json",
+          "description": "Input map checksums/source identity; maps are in input/data/.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "probes.json#probe=subdatasets-resolvable",
+          "description": "Probe only checked submodules; complete copy contains the inputs.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "environment.yml declares the external Python packages imported by the group analysis.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Python and direct package dependencies.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Imports numpy, pandas, scipy, matplotlib, nibabel and nilearn.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Worker code, documentation, environment and results remained uncommitted at stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=tree-clean",
+          "description": "Git status at the operational copy: README, analysis, environment, protocol, report and results are untracked.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/report.md",
+          "description": "Scientific report delivered outside the worker commit.",
+          "sha256": "ffc6c016c1d28ebfa1e41b458d38c43a2cb3bb91337d083103ae7b271b964ce4"
+        }
+      ],
+      "source": "probe:tree-clean",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "All 54 large participant maps are tracked as git-annex pointers with payloads in the complete capture.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=large-in-annex",
+          "description": "Probe found 54 annex pointers.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/input/sources.json",
+          "description": "The map set and byte checksums are enumerated.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/.git/config",
+          "description": "Original workspace Git config identifies git-annex; probe cited absent .datalad/config, so its evidence route is questioned.",
+          "sha256": "eb164ee279d1b514f63d4a745f9adf53157cc38a0a870d485b518342c04b6e23"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Input is an annex symlink into the captured payload store.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/.git/annex/objects/fW/JZ/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz",
+          "description": "Materialized participant-map payload retained in the complete capture.",
+          "sha256": "baf3440fbc7f5f59dea28d231e9c5eb9cf00a15b6924342f4b79e7faf56a929a"
+        }
+      ],
+      "source": "probe:large-in-annex+judgement",
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Results record software versions and input/atlas hashes, but do not identify an exact environment specification used for the accepted run.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=run-env-linked",
+          "description": "Probe missed untracked run evidence in the complete delivery.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/provenance.json",
+          "description": "Provenance lists software versions and data hashes, not the environment.yml hash or an immutable environment lock.",
+          "sha256": "b0d4b02422c93a783089eb28f8894ab2b692a7ed323b6e90223b6469916e7149"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/attempts/accepted_run.log",
+          "description": "Accepted run output; no environment digest recorded.",
+          "sha256": "b408cc6bbdb70415ddde0e36cf9ec958bc172a3b1dee449f2eb3f7741de089db"
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "value": "yes",
+      "reason": "README gives a reproduce command and describes the environment and output layout.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=entry-point",
+          "description": "Probe scanned tracked paths only.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L3-L13",
+          "description": "Reproduce section and usage instructions.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "README identifies analysis/run_analysis.py as the start point for regenerating results.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L7-L11",
+          "description": "Documented entrypoint.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Executable analysis entrypoint.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The script resolves input and results relative to its own location; it does not hardcode host paths for files.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "ROOT derives from __file__; INPUT and OUT are relative.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:no-abs-paths+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "The listed Python dependencies cover the analysis imports; no additional external command is invoked.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Declares Python and all imported third-party packages.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Imports and execution path.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "The prepared interpreter path is documented, but the route assumes that exact host path and an available/downloadable Nilearn atlas cache.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=platform-assumptions",
+          "description": "Probe command scan did not read untracked docs or runtime resource calls.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L13",
+          "description": "Absolute prepared-interpreter and shared-recipe paths.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Nilearn fetch/load calls for atlas and MNI resources.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "Python dependencies are listed, but the atlas/cache or network prerequisite and the required shared host environment are not reproducibly provisioned within the workspace.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Python package list.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L13",
+          "description": "Host path and shared environment instructions.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Atlas/template fetch calls.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "environment.yml exists in the stopped delivery but is untracked at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=env-spec-tracked",
+          "description": "Git probe found no tracked environment specification.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Environment spec in the complete stopped workspace.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update or lock-regeneration process is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md",
+          "description": "Reproduction/environment instructions contain no update process.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Pinned direct versions but no regeneration command.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "environment.yml pins direct package versions but does not freeze transitive resolution or identify the precise shared environment used.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=run-env-linked",
+          "description": "No exact environment pin in run records.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Direct pins only.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/provenance.json",
+          "description": "Version list without a lock/environment hash.",
+          "sha256": "b0d4b02422c93a783089eb28f8894ab2b692a7ed323b6e90223b6469916e7149"
+        }
+      ],
+      "source": "probe:run-env-linked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker-declared route publishes the environment specification; local coordinator delivery does not establish worker access.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=env-spec-tracked",
+          "description": "No tracked environment spec or publication route found.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L13",
+          "description": "References a local absolute shared recipe path.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "README explains the run command but the environment route relies on an absolute shared-host path; the local environment.yml has no creation command.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L13",
+          "description": "Run and environment instructions.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Package declaration without create instructions.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git-annex versions the input map pointers, but worker code, documentation, environment and derived results are untracked.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=large-in-annex",
+          "description": "Inputs use annex.",
+          "sha256": null
+        },
+        {
+          "uri": "probes.json#probe=tree-clean",
+          "description": "Worker-created content remains outside version control.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "The stop state shows debugging runs and one accepted run, but not a regular testing cadence; periodic records would settle this.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=ci-present",
+          "description": "No recognized CI configuration.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/attempts/README.md",
+          "description": "Attempts describe iterative runs, not a regular schedule.",
+          "sha256": "824583e214fc9751d197b4f1f3873fde43da3707a801ccd3f35c1bc618d87ba8"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "The delivery separates inputs, analysis code, environment, and generated results into distinct paths.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=modules-separated",
+          "description": "Probe counted only tracked paths.",
+          "sha256": null
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L15-L26",
+          "description": "Contents enumerates input, analysis, environment and results.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: supplied inputs and software are public; there is no restricted component to isolate.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/input/sources.json",
+          "description": "Public OpenNeuro inputs and source references.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Public packages from conda-forge.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "Run logs establish a successful local execution, not a fresh container/VM/clean-host test; an independent fresh environment run would settle it.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/attempts/accepted_run.log",
+          "description": "Successful run evidence without a fresh-host record.",
+          "sha256": "b408cc6bbdb70415ddde0e36cf9ec958bc172a3b1dee449f2eb3f7741de089db"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L13",
+          "description": "Uses a supplied prepared interpreter.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The documented command invokes a persistent prepared interpreter and does not create or discard an execution environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L5-L11",
+          "description": "Direct interpreter invocation.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Environment is specified, not spawned per run.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": null,
+      "reason": "One successful run is recorded, but no repeated environment reconstruction or exact lock exists; a second clean reconstruction and run would settle it.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/results/attempts/accepted_run.log",
+          "description": "Single accepted run.",
+          "sha256": "b408cc6bbdb70415ddde0e36cf9ec958bc172a3b1dee449f2eb3f7741de089db"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "No transitive lock.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "A package specification is included, but executable environment artifacts or a frozen package archive are not.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "Environment recipe is present.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L11-L13",
+          "description": "Shared environment is referenced outside the object.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency-update or lock-regeneration process is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md",
+          "description": "No update process.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/environment.yml",
+          "description": "No lock regeneration command.",
+          "sha256": "a6755bf5e4830debba4a940addf64a3a23b3217a11f5beae3c647f179f64a628"
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: there are no independently maintained project modules; inputs are included in this workspace and packages are ordinary environment dependencies.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "probes.json#probe=subdatasets-resolvable",
+          "description": "No submodules; complete delivery has internal inputs and no independent project components.",
+          "sha256": null
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "value": "yes",
+      "reason": "README and protocol explain the input, group-analysis, environment and result components and their relation.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L15-L26",
+          "description": "Contents and entrypoint.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/protocol.md",
+          "description": "Estimand, inputs, model and output decisions.",
+          "sha256": "4b171cdf329b1a4b930da697bfed3fd18d27e2cb92a7d341c26b261c1f56c3e6"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "yes",
+      "reason": "The code, fixed inputs, environment spec and generated results have distinct paths and explicit interfaces.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Reads input/ and writes results/.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L15-L26",
+          "description": "Separates environment and analysis instructions.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "analysis/run_analysis.py composes the local inputs, dependencies and result generation through a single documented entrypoint.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L7-L11",
+          "description": "Documented entrypoint and data/result paths.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/analysis/run_analysis.py",
+          "description": "Input-to-output orchestration.",
+          "sha256": "c599f79d318aad3061edefc29ba1265096c2e20e5c1d9468d95fd139e3a21b92"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README contents and protocol guide readers through inputs, analysis, results and the fixed upstream model.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/README.md#L15-L26",
+          "description": "Navigational contents and upstream-methods pointer.",
+          "sha256": "4ecdcb3d7aa72c0bbcfe53df04f9d0938c63485052d2f20c7a2a9a93db0a333b"
+        },
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/protocol.md",
+          "description": "Method and decision documentation.",
+          "sha256": "4b171cdf329b1a4b930da697bfed3fd18d27e2cb92a7d341c26b261c1f56c3e6"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "Reuse terms are not stated in a LICENSE, LICENSES/, REUSE.toml or equivalent project license notice.",
+      "evidence": [
+        {
+          "uri": "canonical-capture:9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490:content/workspace/",
+          "description": "Complete delivered workspace has no license declaration; worker stop capture is complete.",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-23-j01/canonical/manifest.json",
+    "commit": "767f76ed3d12c3a7ff9fb23989358c768b301bc5",
+    "captured_at": "2026-10-16T15:28:19.117232+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-23-j01/canonical/manifest.json",
+      "sha256": "9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex (OpenAI API; frozen assessment runner v4)",
+    "model": "GPT-6 (exact serving revision unavailable)",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Complete original delivery at canonical capture 9cfe9198ef0910fbf826de24e1df2123bccbf2cb1f955899613e9e1774b6b490; worker stop receipt 0f9c6d34a3f8c32825cb9098e0c99249636fbc87bb07ca603b42f0764394dff5; inspected the operational copy, retained capture identity and original HEAD; replay not checked because documented interpreter is an external absolute host target."
+}

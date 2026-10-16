@@ -1,0 +1,660 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "One complete project root contains inputs, code, report, reference and outputs.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Project map and reproduction instructions.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "input/study-task.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/study-task.md: Scientific scope.",
+          "sha256": "e92bf2e0c0db4cc49688cce9f9dfff8a236fc4ec151c09961719f49f31310cc8"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "All required maps, cohort metadata and atlas resource are within the root.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/sources.json: Inputs and their upstream provenance.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        },
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/data/sub-001_hypo1_cope.nii.gz: Example delivered map.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": "reference/atlas_source.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; reference/atlas_source.md: Bundled anatomical resource.",
+          "sha256": "c5f4c607fc4744ff7bf274d42b9a5631848d0392af43f18067cc956568f2c21a"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "The requirements file declares all external Python packages used by the analysis.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Pinned direct Python dependencies.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Imports and analysis dependencies.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "Git contains the supplied input baseline, while the worker analysis, report and results remained untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Untracked worker usage guide.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Untracked worker analysis code.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        },
+        {
+          "uri": "report.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; report.md: Untracked worker report.",
+          "sha256": "040ceb836b6f0f1c8c55094ee8dc4abbc2997d26ebfaf0816245d12ae2c82a80"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-18-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db; attributes the stop state and supplied files.",
+          "sha256": "b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db"
+        }
+      ],
+      "source": "probe:tree-clean+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "value": null,
+      "reason": "Large inputs are annex pointers in the supplied baseline; worker stop evidence does not attribute their tracking to the worker.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/data/sub-001_hypo1_cope.nii.gz: Annex pointer present in captured tree.",
+          "sha256": "54382f26e4b41976cc9e9f2f1ffa814108320028217da1deca23efce9c63a2a2"
+        },
+        {
+          "uri": ".git/config",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; .git/config: Annex filter configuration at worker stop.",
+          "sha256": "753f8cd1593d6c005d6ab0c34b987fda7373bbeb61b939ad893ebcdea9ba5fbc"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-18-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db; attributes the stop state and supplied files.",
+          "sha256": "b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db"
+        }
+      ],
+      "source": "probe:large-in-annex+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "Available run and result records do not identify the exact environment that generated the shipped results.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/run_notes.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/run_notes.md: Run notes describe attempts but do not pin the environment.",
+          "sha256": "aac0c8c6386033a2878b2afd548de8530b277bd0b28a4f2da75c0efd396cd82e"
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/summary.json: Saved analysis result lacks environment identity.",
+          "sha256": "95dc6e4bd8b0a20e863b4a78b3e77377630ab28a4a0786d8fa57de152192dade"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "yes",
+      "reason": "README gives installation and usage commands for the analysis and validation scripts.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Reproduce section.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The documented analysis/run_analysis.py command is a clear starting point.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Reproduce section.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Runnable entrypoint.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "probe:entry-point+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "Analysis paths are anchored to the script location; no host-specific paths are needed.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: ROOT is derived from __file__ and paths are relative to it.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "The declared Python packages cover imported scientific and plotting libraries; Python 3.13.16 is documented.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: All six direct packages and versions.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Python and dependency setup.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "Python and thread settings are documented, but the route also relies on network availability for Nilearn visualization data without stating it as a host requirement.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Environment and run commands.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Nilearn template loader for a figure background.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "Python and packages are listed; the documented execution route omits the external template retrieval requirement.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Requirements section.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Visualization template call.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "probe:platform-assumptions+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "The environment files are present in the delivery but were not version-controlled at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Delivered requirements file.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": ".python-version",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; .python-version: Delivered Python pin.",
+          "sha256": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency update or lock regeneration process is declared.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Pinned list without update instructions.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: No dependency update process in project instructions.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "Python and direct package versions are pinned, but transitive resolution is not locked.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Direct pins only.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": ".python-version",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; .python-version: Python version pin.",
+          "sha256": "2d82946ffb2ecf549699ebb86ecbbe663bbc19d53c49c681a1a425f003f80ddb"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker-published project or environment retrieval route is declared; only upstream input URLs are available.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: No project publication route.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/sources.json: Input-only URLs.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "probe:env-spec-tracked+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "value": "yes",
+      "reason": "README explains how to create the virtual environment, install requirements and run both scripts.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Reproduce section.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "One Git/annex repository holds supplied inputs, but worker-authored code and outputs were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Worker code file.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/summary.json: Worker result file.",
+          "sha256": "95dc6e4bd8b0a20e863b4a78b3e77377630ab28a4a0786d8fa57de152192dade"
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/judgments/narps-neutral-r3-18-j01/attempt-01/worker-end-state.json",
+          "description": "Worker stop receipt; SHA-256 b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db; attributes the stop state and supplied files.",
+          "sha256": "b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "Run notes record several validation and analysis attempts, but no recurring or scheduled test mechanism.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "results/run_notes.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/run_notes.md: Documented one-off execution and validation history.",
+          "sha256": "aac0c8c6386033a2878b2afd548de8530b277bd0b28a4f2da75c0efd396cd82e"
+        },
+        {
+          "uri": "analysis/validate_results.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/validate_results.py: Independent result-check script.",
+          "sha256": "d9f92f8d5d37960e56831b221a77b150ac8b8e25b6718e4ffd6c700a8894f271"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Input, analysis, reference and result directories are separated, but remain one repository rather than independent modules.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Directory and output map.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "probe:modules-separated+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: the supplied data and software dependencies are public; no restricted component is present.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/sources.json: Public source routes and data collection.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "The fresh replay did not execute: the frozen helper rejected its pre-existing destination; no replacement attempt was allowed.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Documented entrypoint.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "results/run_notes.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/run_notes.md: Worker-run context.",
+          "sha256": "aac0c8c6386033a2878b2afd548de8530b277bd0b28a4f2da75c0efd396cd82e"
+        },
+        {
+          "uri": "fresh-rerun.json",
+          "description": "Assessment record for the sole failed helper invocation; no target execution occurred.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The README creates a reusable local .venv and does not create a disposable environment per execution.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Persistent virtual environment instructions.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No complete transitive environment lock exists to reconstitute and test against the result-producing environment.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Direct package pins only.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; results/summary.json: No environment identity.",
+          "sha256": "95dc6e4bd8b0a20e863b4a78b3e77377630ab28a4a0786d8fa57de152192dade"
+        }
+      ],
+      "source": "probe:ci-present+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment image, binaries or archived environment are included.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: Dependency recipe only.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No dependency update process is declared or tracked; duplicate of must/014.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; requirements.txt: No update procedure.",
+          "sha256": "189073982bae94c8d275f2cc3faba7f88b280ef417b065f1c211f0d375ecfafb"
+        }
+      ],
+      "source": "judgement",
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "N/A: no independently maintained project modules are linked; source data are included in the project and ordinary packages are environment dependencies.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Project layout.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; input/sources.json: Provenance for included source inputs.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "probe:subdatasets-resolvable+judgement",
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "value": "yes",
+      "reason": "README describes the input, analysis, reference and result roles and their relationship.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Project map and key outputs.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Directory boundaries support separate edits, but they are not independently versioned and generated results depend on the analysis and input structure.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Project layout and entrypoint.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "The analysis script directly loads bundled inputs and writes results; validation is a separate documented command.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Run commands.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        },
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; analysis/run_analysis.py: Input and output paths.",
+          "sha256": "ab929878f9764e58e90427952c49cbc7357981ac2e32433c3c91830139cf8d72"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README names the report, protocol, code, validation, tables, maps and figures for navigation.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "Capture 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; README.md: Key outputs.",
+          "sha256": "9eced94be7caace91e0aa64a497b7fb4aff06777359a9ee3c8d427356c53480b"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "d0ad0ea69075111a6de1229d1b5eeb1aa710d550",
+    "captured_at": "2026-10-16T17:05:34.456772+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-18-j01/canonical/manifest.json",
+      "sha256": "63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Frozen assessment runner; API harness version unavailable",
+    "model": "GPT-6 (exact deployment unavailable)",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Canonical complete delivery SHA-256 63b15bca6ad4b5e49ea10285ea71214404249f2383dd0f9048cf3a83715648e0; original HEAD d0ad0ea69075111a6de1229d1b5eeb1aa710d550; worker stop receipt b833a7e96aa7ca5d8f8c757a90ec04bc925a4b3ade6ed21b53967126d325b6db. Inspected operational copy; integrity matched except allowed annex keysdb byte change. Replay not checked after helper setup failure."
+}

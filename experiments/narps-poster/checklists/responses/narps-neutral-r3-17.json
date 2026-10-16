@@ -1,0 +1,561 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered content sits under the single workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The supplied participant maps and metadata are inside input/ and the analysis references them with workspace-relative paths.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "Required external Python software is neither included nor declared as a project environment or submodule.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "The captured worker stop has the analysis code, report, notebook, figures, and results untracked, so Git does not version the complete research state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/.git/index",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large input maps are annex-backed tracked pointers; the worker stop commit carries their pointer state.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The results record package versions but no exact environment specification is linked to the run.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "The notebook and report provide a run instruction, but the required README or Makefile with installation and usage instructions is absent.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The notebook identifies code/group_analysis.py as the executable entry point and gives the root-level command to run it.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The executable script constructs paths relative to its own location and workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "No environment specification declares the imported dependencies or versions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "not-checked",
+      "reason": "Host requirements are not documented; more information is needed to assess assumptions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "The report and notebook do not provide a clear system requirements/dependency list or installation instructions.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is included in the worker stop workspace or commit.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "not-checked",
+      "reason": "The delivery does not establish a process for updating dependency specifications.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No pinned environment specification is supplied for exact reconstitution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment specification or worker publication route is supplied for others to retrieve.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "There are no instructions for obtaining or using an environment specification.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git is used for the input pointers and metadata, but primary analytical code and all derived artifacts are untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/index",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "There is no evidence of repeated workflow testing or CI.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code, results, and figures have separate directories, but no environment module is defined.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/figures",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "No restricted datasets or software are identified in this delivery.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/input/sources.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No fresh-container, batch, clean-VM, or cloud test is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "not-checked",
+      "reason": "No disposable environment process is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "No exact environment specification exists to reconstitute and test.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifacts are archived in the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "not-checked",
+      "reason": "No environment update process can be established; duplicate of must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "No independently maintained software or dataset component is organized as a submodule.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/.git/config",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "The notebook and report explain how input, code, results, figures, and the analysis relate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories separate some concerns, but they are not independently managed components.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/code/group_analysis.py",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/input/participants.tsv",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/results/summary.json",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "No independent modules are present that need a composition mechanism.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The notebook and report guide readers to the main script and outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "content/workspace/group_analysis.ipynb",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        },
+        {
+          "uri": "content/workspace/report.md",
+          "description": "capture-relative evidence inspected",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No licence or reuse terms were declared in the captured project.",
+      "evidence": [
+        {
+          "uri": "content/workspace",
+          "description": "The complete captured workspace has no licence file or metadata.",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "c5e927c2c46296ba59886bffc66dc165f9cf2c78",
+    "captured_at": "2026-10-16T16:46:02.560040+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r3-operational-v4/targets/narps-neutral-r3-17-j01/canonical/manifest.json",
+      "sha256": "9caec40f60d64f664726edd255c87a99225f70fa81314a02c97ffcdea26d2fa9"
+    }
+  },
+  "assessor": {
+    "skill": "frozen-assessment-runner",
+    "version": "9852d8360f9519d21d11099b45f5deb8ba80cb28",
+    "harness": "Codex",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "assessment-runtime@3552d5003a2485b6405805236d5c54e7ed42f097",
+      "stamped-checklist@0.3.1"
+    ],
+    "note": "External assessor and runtime pinned by assessment-version.json; runner check passed before use. Repeated response helper invocation then reported local pixi.lock drift; remaining item answers were written with its pinned encode_response.py helper."
+  },
+  "scope": "Complete worker stop delivery; scientific review; frozen probes; no replay (worker environment not declared); no access route to test; operational copy checked against captured bytes."
+}

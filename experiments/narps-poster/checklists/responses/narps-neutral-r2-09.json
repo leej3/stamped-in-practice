@@ -1,0 +1,596 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered project files sit under the workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 input maps and annex payloads are captured within the workspace.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/sources.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/.git/annex/objects/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "The README points to an external interpreter; no in-boundary environment or software module is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "partial",
+      "reason": "Git exists, but the analysis, report, figures and results were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/report.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "Git-annex links and captured payloads hold the 54 large participant maps.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/.git/annex/objects/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Run logs and package versions exist, but no exact environment spec is linked to the result-generating run.",
+      "source": "probe:derived-have-records+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/attempts/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "README gives a run command, but not how to install or obtain its absolute-path interpreter.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "README identifies the group-analysis script and gives its launch command.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The tracked-path probe missed the untracked script; the script uses root-relative input/output paths.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "ROOT is derived from the script path; inputs and outputs are joined beneath it",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Package versions are recorded, but there is no dependency or environment specification.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The recorded platform/path is not documented as a host requirement.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No clear system-requirement and dependency list or installable environment spec is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the captured workspace.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No environment specification or tracked update process is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/attempts/attempt_history.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No frozen environment specification is supplied for reconstruction.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-published environment or authorized researcher retrieval route is documented.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/.git/config",
+          "description": "No worker remote URL is configured",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "partial",
+      "reason": "README names a supplied interpreter, but gives no instructions to obtain or recreate it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "met",
+      "reason": "Git and Git-annex manage the code/input repository and large maps together.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/.git/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "partial",
+      "reason": "Several attempts and a same-environment replay are recorded, but no regular test schedule is shown.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/attempts/attempt_history.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/replay_validation.txt",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Directories separate inputs, code, results and figures, but not an environment module.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/",
+          "description": "Fixed participant maps and metadata",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/",
+          "description": "Analysis protocol and code",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/",
+          "description": "Derived tables, maps and run records",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/figures/",
+          "description": "Generated result visualizations",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "mapping-questioned"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "No restricted data or software is identified for this public-data analysis.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/upstream-methods.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/sources.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "unmet",
+      "reason": "The worker replay used the same interpreter; no fresh container, VM or batch test is recorded.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/replay_validation.txt",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "Execution reuses an external fixed interpreter instead of spawning a disposable environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "unmet",
+      "reason": "Package versions are recorded, but no exact environment spec is available to reconstitute and test.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/summary.json",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifact or archived environment specification is included.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment-update process or tracked specification exists; this duplicates must/014.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/attempts/attempt_history.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "No independently maintained submodule/component is used; fixed maps are included through annex.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README explains the relationship among inputs, protocol, code, results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directory roles are clear, but code and derived modules are not independently versioned or released.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/input/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/results/",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The documented entrypoint composes the input directory and produces result/figure directories.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        },
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/analysis/run_group.py",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README directs users to the report, methods, protocol, script, results and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf#content/workspace/README.md",
+          "description": "Evidence in original captured workspace",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "a724b670072a95a253e752be8336783858df768a",
+    "captured_at": "2026-10-16T16:13:34+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r2-operational-v4/targets/narps-neutral-r2-09-j01/canonical/manifest.json",
+      "sha256": "427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex native session",
+    "model": "gpt-6-luna",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "stamped-conventions@0.1.0",
+      "frozen-assessment-runner@7d16037883b5ec059caa5cb4828f64ca926a3ddb37fd086267caf69c3cb01913"
+    ]
+  },
+  "scope": "Canonical complete delivery 427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf; worker stop a9631f7d2444a4a5398d2f95105b851d14464b4522080cd2349ffdc40ab614f5; full capture inspected; one separate complete-copy replay; worker access route not declared."
+}
