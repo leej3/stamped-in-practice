@@ -34,6 +34,18 @@ def obj(properties, required=()):
 
 
 ARTIFACT = obj({"path": TEXT, "sha256": SHA}, ("path", "sha256"))
+ROUND_BINDINGS_SCHEMA = obj({
+    "schema_version": {"const": 1}, "comparison_id": TEXT,
+    "allocation_sha256": SHA, "research_procedure_sha256": SHA,
+    "rounds": {"type": "array", "minItems": 1, "items": obj({
+        "round": {"type": "integer", "minimum": 1},
+        "coordinator_source_commit": COMMIT, "research_guidance_commit": COMMIT,
+        "source_skill_binding": ARTIFACT,
+        "authorization": {"type": "array", "minItems": 1, "items": ARTIFACT},
+    }, ("round", "coordinator_source_commit", "research_guidance_commit",
+        "source_skill_binding", "authorization"))},
+}, ("schema_version", "comparison_id", "allocation_sha256",
+    "research_procedure_sha256", "rounds"))
 CAPTURE = obj({"uri": TEXT, "sha256": SHA}, ("uri", "sha256"))
 EXCERPT = obj({"quote": TEXT, "start_line": {"type": "integer", "minimum": 1},
                "end_line": {"type": "integer", "minimum": 1}},
@@ -334,6 +346,95 @@ def required_fields(value, properties):
         raise ValueError("Malformed provenance: " + "; ".join(errors))
 
 
+def round_bindings(config, base, research_bytes, allocation, allocation_sha256, repository):
+    """Verify an explicit reporting correction; never rewrite a research seal."""
+    if config is None:
+        return {}
+    errors = schema_errors(config, ROUND_BINDINGS_SCHEMA)
+    if errors:
+        raise ValueError("Invalid round bindings: " + "; ".join(errors))
+    research = parse_json(research_bytes)
+    require_equal(research["version"], 3, "round bindings require neutral research")
+    for key, expected in (("comparison_id", research["comparison_id"]),
+                          ("allocation_sha256", allocation_sha256),
+                          ("research_procedure_sha256", sha256(research_bytes))):
+        require_equal(config[key], expected, "round binding " + key)
+
+    def git(*args):
+        return subprocess.check_output(["git", "--no-replace-objects", "-C", str(repository),
+                                        *args], stderr=subprocess.PIPE)
+
+    def tree(revision):
+        require_equal(git("cat-file", "-t", revision).strip(), b"commit", "source commit type")
+        entries = {}
+        for row in git("ls-tree", "-r", "-z", "--full-tree", revision).split(b"\0"):
+            if row:
+                identity, path = row.split(b"\t", 1)
+                entries[path.decode()] = tuple(identity.decode().split())
+        return entries
+
+    def modules(revision, entries):
+        require_equal(entries.get(".gitmodules", ())[:2], ("100644", "blob"),
+                      "regular source .gitmodules")
+        result = {}
+        for row in git("config", "--blob", revision + ":.gitmodules", "--null", "--list").split(b"\0"):
+            if row:
+                key, value = row.decode().split("\n", 1)
+                if key in result:
+                    raise ValueError("Duplicate source .gitmodules key: " + key)
+                result[key] = value
+        return result
+
+    original = research["coordinator_commit"]
+    original_tree = tree(original)
+    original_modules = modules(original, original_tree)
+    from assessment_procedure import gitmodules_digest
+    require_equal(gitmodules_digest(git("show", original + ":.gitmodules")),
+                  research["gitmodules_sha256"], "original source .gitmodules digest")
+    allocated = {r["round"]: r for r in allocation["rounds"]}
+    bindings = {}
+    for row in config["rounds"]:
+        number = row["round"]
+        if number not in allocated or number in bindings:
+            raise ValueError("Unknown or duplicate bound round")
+        for reference in row["authorization"]:
+            if not artifact(reference, base).strip():
+                raise ValueError("Empty round authorization artifact")
+        receipt = parse_json(artifact(row["source_skill_binding"], base))
+        for key, expected in (("round", number), ("comparison_id", research["comparison_id"]),
+                ("original_allocation_sha256", allocation_sha256),
+                ("research_procedure_sha256", sha256(research_bytes)),
+                ("coordinator_source_commit", row["coordinator_source_commit"]),
+                ("research_guidance_commit", row["research_guidance_commit"]),
+                ("study_input_tree", research["study"]["input_tree"]),
+                ("worker_assignments", allocated[number]["launch_order"]),
+                ("assigned_judgments", allocated[number]["judgment_dispatch_order"])):
+            require_equal(receipt.get(key), expected, "round source receipt " + key)
+        source = row["coordinator_source_commit"]
+        current_tree = tree(source)
+        changed = {p for p in original_tree.keys() | current_tree.keys()
+                   if original_tree.get(p) != current_tree.get(p)}
+        if changed - {"skills", ".gitmodules"}:
+            raise ValueError("Round source changes fixed paths: " + ", ".join(sorted(changed)))
+        require_equal(current_tree.get("skills"),
+                      ("160000", "commit", row["research_guidance_commit"]),
+                      "round source skills gitlink")
+        current_modules = modules(source, current_tree)
+        branch_key = "submodule.skills.branch"
+        require_equal({k: v for k, v in current_modules.items() if k != branch_key},
+                      {k: v for k, v in original_modules.items() if k != branch_key},
+                      "unchanged non-branch .gitmodules configuration")
+        for key, expected in (("submodule.skills.path", "skills"),
+                ("submodule.skills.url", receipt.get("research_guidance_repository")),
+                (branch_key, receipt.get("research_guidance_branch"))):
+            require_equal(current_modules.get(key), expected, "round skills " + key)
+        for path, digest in research["fixed_files"].items():
+            require_equal(sha256(git("show", source + ":" + path)), digest,
+                          "round frozen file " + path)
+        bindings[number] = row
+    return bindings
+
+
 @dataclass
 class ProvenanceGate:
     """Bind extractions to a selected seal and independently retained registration."""
@@ -341,13 +442,14 @@ class ProvenanceGate:
     research_sha256: str
     seal: dict = None
     seal_sha256: str = None
+    rounds: dict = None
 
     @property
     def neutral(self):
         return self.research["version"] == 3
 
     @classmethod
-    def load(cls, original_bytes, selection, allocation, base, contract, approved_digest=None):
+    def load(cls, original_bytes, selection, allocation, base, contract, approved_digest=None, rounds=None):
         if original_bytes is None:
             raise ValueError("Original registered research procedure is required")
         research = parse_json(original_bytes)
@@ -357,7 +459,7 @@ class ProvenanceGate:
         require_equal(research["conditions"], allocation["conditions"], "registered conditions")
         if "comparison_id" in allocation:
             require_equal(research["comparison_id"], allocation["comparison_id"], "allocated comparison")
-        gate = cls(research, sha256(original_bytes))
+        gate = cls(research, sha256(original_bytes), rounds=rounds)
         if selection is None:
             return gate
         if approved_digest is None:
@@ -452,13 +554,21 @@ class ProvenanceGate:
             require_equal(result["worker_end_state"].get(key), expected, "worker stop " + key)
         seed = parse_json(artifact(run["worker_input"], base))
         if self.neutral:
+            binding = self.rounds.get(assignment["round"]) if self.rounds else None
+            source = binding["coordinator_source_commit"] if binding else self.research["coordinator_commit"]
+            if binding:
+                expected_skill = (binding["research_guidance_commit"]
+                                  if assignment["condition"] == "stamped-explicit" else None)
+                require_equal(seed.get("skills_commit"), expected_skill, "bound worker supplied skills")
+                if expected_skill is not None and "skill_commit" in run:
+                    require_equal(run["skill_commit"], expected_skill, "indexed supplied research skills")
             required_fields(seed, {"version": {"const": 3}, "protocol": {"const": "neutral-v1"},
                 "run": TEXT, "condition": TEXT, "seed_commit": COMMIT,
                 "coordinator_commit": COMMIT, "study_input_tree": COMMIT,
                 "common_prompt_sha256": SHA, "common_resources_sha256": SHA})
             for key, expected in (("run", run["run_id"]), ("condition", assignment["condition"]),
                                   ("seed_commit", run["seed_commit"]),
-                                  ("coordinator_commit", self.research["coordinator_commit"]),
+                                  ("coordinator_commit", source),
                                   ("study_input_tree", self.research["study"]["input_tree"]),
                                   ("common_prompt_sha256", self.research["fixed_files"][
                                       "prompts/neutral-worker-common.md"]),
@@ -754,11 +864,14 @@ def comparable_cell_summary(counts, items, identities, kind, group, status):
 
 
 def aggregate(allocation, index, base, contract, research_procedure=None, assessment_procedure_sha256=None,
-              *, disposition=None, disposition_base=None, allocation_sha256=None):
+              *, disposition=None, disposition_base=None, allocation_sha256=None,
+              round_binding_config=None, round_binding_base=None, source_repository=ROOT):
     errors = schema_errors(index, INDEX_SCHEMA)
     if errors:
         raise ValueError("Invalid extraction index:\n" + "\n".join(errors))
     runs = allocation_rows(allocation)
+    bound_rounds = round_bindings(round_binding_config, round_binding_base or base,
+        research_procedure, allocation, allocation_sha256, source_repository)
     planned_judgments = allocated_judgments(allocation, runs)
     planned_ids = {row["judgment"] for row in planned_judgments.values()}
     assigned = {r["run_id"]: r for r in runs}
@@ -820,7 +933,7 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
         try:
             gates[excluded] = ProvenanceGate.load(research_procedure,
                 None if excluded else index.get("comparison_provenance"), allocation, base, contract,
-                assessment_procedure_sha256)
+                assessment_procedure_sha256, rounds=bound_rounds)
             if gates[excluded].neutral != (index["schema_version"] == 3):
                 raise ValueError("Neutral procedures require extraction index schema_version 3")
             if gates[excluded].neutral and len(planned_judgments) != len(runs) + sum(
@@ -1269,6 +1382,12 @@ def main(argv=None):
     parser.add_argument("--disposition-sha256", help="Expected exact measurement disposition bytes")
     parser.add_argument("--source-manifest", type=Path,
                         help="Retained source-path/copy manifest for relocated evidence; every copy is hash-checked")
+    parser.add_argument("--round-bindings", type=Path,
+                        help="Explicit authorized source/skill bindings; does not change the original seal")
+    parser.add_argument("--round-bindings-sha256",
+                        help="Required independent digest when --round-bindings is supplied")
+    parser.add_argument("--source-repository", type=Path, default=ROOT,
+                        help="Local Git object store containing original and bound coordinator commits")
     args = parser.parse_args(argv)
     location_token = ARTIFACT_LOCATIONS.set(None)
     try:
@@ -1283,6 +1402,12 @@ def main(argv=None):
         allocation = parse_json(allocation_bytes)
         index = parse_json(index_bytes)
         contract = load_contract(args.assessor, args.assessment_pin)
+        binding_bytes = args.round_bindings.read_bytes() if args.round_bindings else None
+        if bool(args.round_bindings) != bool(args.round_bindings_sha256):
+            raise ValueError("--round-bindings and --round-bindings-sha256 must be supplied together")
+        if binding_bytes is not None:
+            require_equal(sha256(binding_bytes), args.round_bindings_sha256, "approved round binding bytes")
+        binding_config = parse_json(binding_bytes) if binding_bytes is not None else None
         disposition_bytes = args.disposition.read_bytes() if args.disposition else None
         if args.disposition_sha256 and disposition_bytes is None:
             raise ValueError("--disposition-sha256 requires --disposition")
@@ -1303,7 +1428,10 @@ def main(argv=None):
                            research_bytes, args.assessment_procedure_sha256,
                            disposition=parse_json(disposition_bytes) if disposition_bytes else None,
                            disposition_base=args.disposition.resolve().parent if args.disposition else None,
-                           allocation_sha256=sha256(allocation_bytes))
+                           allocation_sha256=sha256(allocation_bytes),
+                           round_binding_config=binding_config,
+                           round_binding_base=args.round_bindings.resolve().parent if args.round_bindings else None,
+                           source_repository=args.source_repository)
         write_tables(tables, args.output)
         from comparison_figures import render
         render(tables, contract.items, args.output)
@@ -1328,6 +1456,9 @@ def main(argv=None):
                       "are separate. Missing observations are not verdicts; replay success is not required."}
         if resolution is not None:
             provenance["artifact_resolution"] = resolution
+        if binding_config is not None:
+            provenance["round_bindings"] = {"sha256": sha256(binding_bytes), "record": binding_config,
+                "scope": "Authorized research source/skill bindings only; original seals and all downstream checks retained"}
         (args.output / "aggregation.json").write_text(json.dumps(provenance, indent=2) + "\n")
         print(f"{len(tables['runs'])} assigned workers; {len(tables['issues'])} issues; {args.output}")
         return 2 if tables["issues"] else 0

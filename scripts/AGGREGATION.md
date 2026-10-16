@@ -46,6 +46,30 @@ Keep native receipts unchanged and retain the map alongside the copied evidence.
 The report records the map and reporting-tool hashes separately from the frozen assessment identity.
 When updating reporting code for a sealed series, retain its original outputs and verify agreement before using the new report; relocated table reproduction alone does not establish cross-host scientific replay.
 
+## Bind authorized research revisions by round
+
+The neutral research seal retains the initial coordinator source, while later authorized rounds may advance the supplied skills.
+For those rounds, pass `--round-bindings /path/to/round-bindings.json --round-bindings-sha256 <reviewed-file-sha256>` alongside the unchanged original registration, allocation, research procedure and selected assessment seal.
+The independently supplied digest pins the complete reviewed correction, including its authorization references; the program verifies those bytes but does not infer human authorization from prose.
+Without a binding, the original coordinator-source check remains strict.
+
+The binding file uses `schema_version: 1`, `comparison_id`, `allocation_sha256`, `research_procedure_sha256` and a `rounds` array.
+Each round names `round`, `coordinator_source_commit`, `research_guidance_commit`, one `source_skill_binding` artifact and a nonempty `authorization` artifact array.
+Artifact paths resolve relative to the binding file and retain SHA256 hashes of the exact original records.
+The source-skill receipt must bind the same comparison, round, procedure, allocation, input tree, worker assignments, assigned judgments, source and guidance revisions.
+Keep original prelaunch receipts and authorization artifacts unchanged; retain the reporting correction separately.
+
+`--source-repository` selects a local Git object store containing the original and bound coordinator commits; it defaults to this checkout.
+The tool compares immutable trees and permits only the `skills` gitlink and the skills branch in `.gitmodules` to differ.
+It checks the exact guidance gitlink, unchanged submodule URLs and other settings, and every frozen file hash.
+Each worker must retain the original input, prompt and resource identities and use its round's source; explicit-skill workers must also name the exact supplied guidance revision.
+This correction cannot admit changes to assessment code, runtime, study inputs, allocation or the scientific method.
+
+All later capture, assessor, output-binding, response, scientific-record and operational-integrity checks still run.
+In particular, a changed protected copy is still rejected even when its round's source binding is valid.
+Do not treat resolving the source mismatch as proof that every judgment is usable.
+The report records the binding document and digest in `aggregation.json`, alongside the unchanged research and assessment identities.
+
 ## Bind the original delivery
 
 Keep these identities distinct in each run record:
