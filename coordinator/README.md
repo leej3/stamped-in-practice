@@ -16,3 +16,7 @@ Archives preserve external links literally; verification streams members without
 The [independent retrieval check](browsable-copy-01/evidence/fresh-check-01/result.json) fetched the browsable content commit into an empty Git store and verified all 15 copied files and all 58 supplied input files.
 This establishes retrieval through the configured authenticated annex route on the same host; it does not claim scientific replay or cross-host portability.
 Preparation, publication and retrieval commands and outputs are retained with [their file manifest](browsable-copy-01/evidence/manifest.json).
+
+## Completed support and assessment
+
+See the [complete support archive and evidence index](support-01/README.md), including the exact independent report and structured response.
