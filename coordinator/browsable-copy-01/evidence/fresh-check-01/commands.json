@@ -1,0 +1,1167 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-21-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "391f97f0074d3e38cb5bb206c615f43d4857fad2"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            391f97f0074d3e38cb5bb206c615f43d4857fad2 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at 391f97f feat(retention): expose original files for narps-neutral-r1-21\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "391f97f0074d3e38cb5bb206c615f43d4857fad2\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "c40d8c23bc69d70bf58750e7afaae3de72b63fc7",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "c40d8c23bc69d70bf58750e7afaae3de72b63fc7",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s65417--0de1b9e5607e91c3dc7bdcf084ec4c305aa9cb6b29a0eb23f59d23b174e72f36.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s65417--0de1b9e5607e91c3dc7bdcf084ec4c305aa9cb6b29a0eb23f59d23b174e72f36.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s84737--8dc030a3b2fd1993d01b2c052978551c229b9e5f9afeb681af6501747102067e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s65417--0de1b9e5607e91c3dc7bdcf084ec4c305aa9cb6b29a0eb23f59d23b174e72f36.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s944197--e9eb3d54e2ebbdcad709bb054799d66aa64dbb40029a2e39ae67d4771a56a8d1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s40124--7675ee0f7f78066b9ac93b9fbfb1063ae0b2f8ba003861f05ac354393aec4c6a.npy\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/invalid-standard-deviation-denominator/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s84737--8dc030a3b2fd1993d01b2c052978551c229b9e5f9afeb681af6501747102067e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s70758--9088d7d6d5e3ecb4ef4339fdc801e9f39fd25ccf6bbbe367c6360d1a1616d829.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s944197--e9eb3d54e2ebbdcad709bb054799d66aa64dbb40029a2e39ae67d4771a56a8d1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s40124--527ad059ffeaf7c5594d640296522a4f9947cf6e4e632d5ecb6ffa1971daad4d.npy\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s65417--0de1b9e5607e91c3dc7bdcf084ec4c305aa9cb6b29a0eb23f59d23b174e72f36.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s84737--8dc030a3b2fd1993d01b2c052978551c229b9e5f9afeb681af6501747102067e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s65417--0de1b9e5607e91c3dc7bdcf084ec4c305aa9cb6b29a0eb23f59d23b174e72f36.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s944197--e9eb3d54e2ebbdcad709bb054799d66aa64dbb40029a2e39ae67d4771a56a8d1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s208--eb4db4e89c1e2ea72d87163278ad14cfeee80cbc1bcd9631c208e886e0646202.npy\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/pilot/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "results/common_support_mask.nii.gz",
+      "results/invalid-standard-deviation-denominator/common_support_mask.nii.gz",
+      "results/invalid-standard-deviation-denominator/mean_effect.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz",
+      "results/invalid-standard-deviation-denominator/permutation_max_t.npy",
+      "results/invalid-standard-deviation-denominator/t_one_sided.nii.gz",
+      "results/mean_effect.nii.gz",
+      "results/p_fdr_bh.nii.gz",
+      "results/p_fwe_maxT.nii.gz",
+      "results/p_uncorrected.nii.gz",
+      "results/permutation_max_t.npy",
+      "results/pilot/common_support_mask.nii.gz",
+      "results/pilot/mean_effect.nii.gz",
+      "results/pilot/p_fdr_bh.nii.gz",
+      "results/pilot/p_fwe_maxT.nii.gz",
+      "results/pilot/p_uncorrected.nii.gz",
+      "results/pilot/permutation_max_t.npy",
+      "results/pilot/t_one_sided.nii.gz",
+      "results/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get results/common_support_mask.nii.gz (from con-hub...) \n\n12%   7.7 KiB         106 KiB/s 0s\n100%  63.88 KiB       690 KiB/s 0s\n                                  \nok\nget results/invalid-standard-deviation-denominator/common_support_mask.nii.gz (from con-hub...) ok\nget results/invalid-standard-deviation-denominator/mean_effect.nii.gz (from con-hub...) \n\n0%    3.74 KiB         51 KiB/s 19s\n100%  988.46 KiB        6 MiB/s 0s \n                                   \nok\nget results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz (from con-hub...) \n\n5%    3.74 KiB         59 KiB/s 1s\n100%  82.75 KiB        27 MiB/s 0s\n                                  \nok\nget results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz (from con-hub...) ok\nget results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz (from con-hub...) \n\n1%    7.7 KiB          90 KiB/s 10s\n100%  922.07 KiB       22 MiB/s 0s \n                                   \nok\nget results/invalid-standard-deviation-denominator/permutation_max_t.npy (from con-hub...) \n\n20%   7.7 KiB         127 KiB/s 0s\n100%  39.18 KiB        23 MiB/s 0s\n                                  \nok\nget results/invalid-standard-deviation-denominator/t_one_sided.nii.gz (from con-hub...) \n\n1%    7.7 KiB         133 KiB/s 7s\n100%  990.03 KiB       46 MiB/s 0s\n                                  \nok\nget results/mean_effect.nii.gz (from con-hub...) ok\nget results/p_fdr_bh.nii.gz (from con-hub...) ok\nget results/p_fwe_maxT.nii.gz (from con-hub...) \n\n11%   7.7 KiB         141 KiB/s 0s\n100%  69.1 KiB         39 MiB/s 0s\n                                  \nok\nget results/p_uncorrected.nii.gz (from con-hub...) ok\nget results/permutation_max_t.npy (from con-hub...) \n\n10%   3.74 KiB         62 KiB/s 0s\n100%  39.18 KiB        33 MiB/s 0s\n                                  \nok\nget results/pilot/common_support_mask.nii.gz (from con-hub...) ok\nget results/pilot/mean_effect.nii.gz (from con-hub...) ok\nget results/pilot/p_fdr_bh.nii.gz (from con-hub...) ok\nget results/pilot/p_fwe_maxT.nii.gz (from con-hub...) ok\nget results/pilot/p_uncorrected.nii.gz (from con-hub...) ok\nget results/pilot/permutation_max_t.npy (from con-hub...) \n\n100%  208 B             3 KiB/s 0s\n                                  \nok\nget results/pilot/t_one_sided.nii.gz (from con-hub...) ok\nget results/t_one_sided.nii.gz (from con-hub...) ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "README.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 38822e4a75e66ff4daff51913ade399478cc5cef\tREADME.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "code/analyze.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9e8a87d7860eafb67db6474e40f01ed77d144cc5\tcode/analyze.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/invalid-standard-deviation-denominator/participant_qc.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 383c13260f80e8ef9119dc7ead03b3fa5249ca5e\tfigures/invalid-standard-deviation-denominator/participant_qc.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/invalid-standard-deviation-denominator/positive_maxT_FWE.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7b6bf3ac3501f6c8cf94cca061df19a754c4fd9b\tfigures/invalid-standard-deviation-denominator/positive_maxT_FWE.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/invalid-standard-deviation-denominator/tmap_unthresholded.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 69cd53debf55d8721fa40d2edb8429232646e3ce\tfigures/invalid-standard-deviation-denominator/tmap_unthresholded.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/invalid-standard-deviation-denominator/vmPFC_proxy_distribution.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d537ace3eed429aa19795ffd941521d933b277c4\tfigures/invalid-standard-deviation-denominator/vmPFC_proxy_distribution.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/participant_qc.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 383c13260f80e8ef9119dc7ead03b3fa5249ca5e\tfigures/participant_qc.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/pilot/participant_qc.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 383c13260f80e8ef9119dc7ead03b3fa5249ca5e\tfigures/pilot/participant_qc.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/pilot/positive_maxT_FWE.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7b6bf3ac3501f6c8cf94cca061df19a754c4fd9b\tfigures/pilot/positive_maxT_FWE.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/pilot/tmap_unthresholded.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 69cd53debf55d8721fa40d2edb8429232646e3ce\tfigures/pilot/tmap_unthresholded.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/positive_maxT_FWE.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 24f203e350d5666625940b82ed0433666dd4c244\tfigures/positive_maxT_FWE.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/positive_maxT_FWE_peak.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9cdc6f6d23967db1e583f6b0f3d4ee800b832410\tfigures/positive_maxT_FWE_peak.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/tmap_peak_slices.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5bcc36793a4adb1692da546d063c938442b19480\tfigures/tmap_peak_slices.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/tmap_unthresholded.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 69cd53debf55d8721fa40d2edb8429232646e3ce\tfigures/tmap_unthresholded.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/vmPFC_proxy_distribution.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob d537ace3eed429aa19795ffd941521d933b277c4\tfigures/vmPFC_proxy_distribution.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "protocol/analysis-plan.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 03ef62e273febfaf67907a3714602ea181a5ecde\tprotocol/analysis-plan.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "report/report.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9c759e33b83567dbf386895883a642173b0a5fbe\treport/report.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 997d0eaf6199ea314fb462bba0c42bb3f9abfd14\tresults/common_support_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob acc1945e5b515f61ee12a25e3fe71fb24a48dc83\tresults/invalid-standard-deviation-denominator/common_support_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 98657ef38f0a8c231cd026836e80efa711a22df2\tresults/invalid-standard-deviation-denominator/mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 80638e071d36abf08cbef577512333b8e956eb53\tresults/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob acc1945e5b515f61ee12a25e3fe71fb24a48dc83\tresults/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7fe500c36138d703051542418fb224ca4eef9197\tresults/invalid-standard-deviation-denominator/p_uncorrected.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 11d223df28d45898d64862fbc616dbe1569c4b13\tresults/invalid-standard-deviation-denominator/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f5be2c35300cf6a9a26e25bd08aeede73480d4dc\tresults/invalid-standard-deviation-denominator/permutation_max_t.npy\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c46eea2f5658dfabc594dd7843ce48bbea3ad35e\tresults/invalid-standard-deviation-denominator/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob b0167541f62e77922406bdc261d2edbcb1784d61\tresults/invalid-standard-deviation-denominator/t_one_sided.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/vmPFC_proxy_subject_values.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 3c55f6b49d879929611cb6ed8cc8026fb20df062\tresults/invalid-standard-deviation-denominator/vmPFC_proxy_subject_values.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/invalid-standard-deviation-denominator/vmPFC_proxy_summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 17358abde421a079e8c6ba1845fa560296f16746\tresults/invalid-standard-deviation-denominator/vmPFC_proxy_summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 615198dfc633d7d786aa743c11fcf20dbb9f0729\tresults/mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e20c17e305ba2e47a05eae0af194af187a794256\tresults/p_fdr_bh.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob fada376a9be3ab579f90716f5a079e536eb5f96f\tresults/p_fwe_maxT.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 1b0ce6c7e5756a9517953846472463bc50b8bf73\tresults/p_uncorrected.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 11d223df28d45898d64862fbc616dbe1569c4b13\tresults/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob cb379fbffd33393a3aae2acab6bb08fa57d5f14d\tresults/permutation_max_t.npy\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/common_support_mask.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob acc1945e5b515f61ee12a25e3fe71fb24a48dc83\tresults/pilot/common_support_mask.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 98657ef38f0a8c231cd026836e80efa711a22df2\tresults/pilot/mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/p_fdr_bh.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 80638e071d36abf08cbef577512333b8e956eb53\tresults/pilot/p_fdr_bh.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/p_fwe_maxT.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob acc1945e5b515f61ee12a25e3fe71fb24a48dc83\tresults/pilot/p_fwe_maxT.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/p_uncorrected.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7fe500c36138d703051542418fb224ca4eef9197\tresults/pilot/p_uncorrected.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 11d223df28d45898d64862fbc616dbe1569c4b13\tresults/pilot/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/permutation_max_t.npy"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 984cae73e9bad9264aee9f9004adb7a88cd21f5e\tresults/pilot/permutation_max_t.npy\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 26695a5f578dfc49304403816de440a95f4b551a\tresults/pilot/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob b0167541f62e77922406bdc261d2edbcb1784d61\tresults/pilot/t_one_sided.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/pilot-attempt-log.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c2f0b0c9fb26fdecd5c86e71ae0eaaa2539514ce\tresults/pilot-attempt-log.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/run.log"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 834b969a6c881bb75543c29a2764b572e0fc89b7\tresults/run.log\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 668fc64da9bd556854b82e3c262ec5aeb6c26c2e\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 771aa7a862a1099fcdc2db48dc86ffd7748c4440\tresults/t_one_sided.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_proxy_subject_values.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 3c55f6b49d879929611cb6ed8cc8026fb20df062\tresults/vmPFC_proxy_subject_values.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_proxy_summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 4c88652c405512644061ca0c3d54a68cd08fdddd\tresults/vmPFC_proxy_summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "391f97f0074d3e38cb5bb206c615f43d4857fad2\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]

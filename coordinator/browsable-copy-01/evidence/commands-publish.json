@@ -1,0 +1,187 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "391f97f0074d3e38cb5bb206c615f43d4857fad2\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-21-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/common_support_mask.nii.gz",
+      "results/invalid-standard-deviation-denominator/common_support_mask.nii.gz",
+      "results/invalid-standard-deviation-denominator/mean_effect.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz",
+      "results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz",
+      "results/invalid-standard-deviation-denominator/permutation_max_t.npy",
+      "results/invalid-standard-deviation-denominator/t_one_sided.nii.gz",
+      "results/mean_effect.nii.gz",
+      "results/p_fdr_bh.nii.gz",
+      "results/p_fwe_maxT.nii.gz",
+      "results/p_uncorrected.nii.gz",
+      "results/permutation_max_t.npy",
+      "results/pilot/common_support_mask.nii.gz",
+      "results/pilot/mean_effect.nii.gz",
+      "results/pilot/p_fdr_bh.nii.gz",
+      "results/pilot/p_fwe_maxT.nii.gz",
+      "results/pilot/p_uncorrected.nii.gz",
+      "results/pilot/permutation_max_t.npy",
+      "results/pilot/t_one_sided.nii.gz",
+      "results/t_one_sided.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/common_support_mask.nii.gz ok\ncopy results/invalid-standard-deviation-denominator/common_support_mask.nii.gz ok\ncopy results/invalid-standard-deviation-denominator/mean_effect.nii.gz ok\ncopy results/invalid-standard-deviation-denominator/p_fdr_bh.nii.gz (to con-hub...) \n\n39%   31.98 KiB       127 MiB/s 0s\n100%  82.75 KiB       147 MiB/s 0s\n                                  \nok\ncopy results/invalid-standard-deviation-denominator/p_fwe_maxT.nii.gz ok\ncopy results/invalid-standard-deviation-denominator/p_uncorrected.nii.gz ok\ncopy results/invalid-standard-deviation-denominator/permutation_max_t.npy (to con-hub...) \n\n82%   31.98 KiB        36 MiB/s 0s\n100%  39.18 KiB         9 MiB/s 0s\n                                  \nok\ncopy results/invalid-standard-deviation-denominator/t_one_sided.nii.gz ok\ncopy results/mean_effect.nii.gz ok\ncopy results/p_fdr_bh.nii.gz ok\ncopy results/p_fwe_maxT.nii.gz (to con-hub...) \n\n46%   31.98 KiB        75 MiB/s 0s\n100%  69.1 KiB         48 MiB/s 0s\n                                  \nok\ncopy results/p_uncorrected.nii.gz ok\ncopy results/permutation_max_t.npy (to con-hub...) \n\n82%   31.98 KiB       121 MiB/s 0s\n100%  39.18 KiB        24 MiB/s 0s\n                                  \nok\ncopy results/pilot/common_support_mask.nii.gz ok\ncopy results/pilot/mean_effect.nii.gz ok\ncopy results/pilot/p_fdr_bh.nii.gz ok\ncopy results/pilot/p_fwe_maxT.nii.gz ok\ncopy results/pilot/p_uncorrected.nii.gz ok\ncopy results/pilot/permutation_max_t.npy (to con-hub...) \n\n100%  208 B           919 KiB/s 0s\n                                  \nok\ncopy results/pilot/t_one_sided.nii.gz ok\ncopy results/t_one_sided.nii.gz ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-21-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-21-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-21-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-21-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-21-browsable' set up to track 'origin/codex/narps-neutral-r1-21-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "25ff511517002181968bef129c1fc4ebdd0378c2\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "391f97f0074d3e38cb5bb206c615f43d4857fad2\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "25ff511517002181968bef129c1fc4ebdd0378c2",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   25ff511..408b2fd  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "408b2fd7d97d1b329ecbef71dc52645f9309151d\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-21-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "391f97f0074d3e38cb5bb206c615f43d4857fad2\trefs/heads/codex/narps-neutral-r1-21-browsable\n408b2fd7d97d1b329ecbef71dc52645f9309151d\trefs/heads/git-annex\n"
+  }
+]
