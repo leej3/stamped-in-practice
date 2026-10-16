@@ -1,0 +1,22 @@
+--- /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/retention-batch-wave-04-01/run.py
++++ run.py
+@@ -7,7 +7,7 @@
+ import sys
+ 
+ base = Path('/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1')
+-batch = base / 'retention-batch-wave-04-01'
++batch = base / 'round-02-delivery-packaging-01'
+ repo = Path('/Users/johnlee/code/CON/stamped-in-practice')
+ source = repo / 'scripts/package_delivery.py'
+ source_pin = '90d4b4e24daa0bcfcfeb08b4a5dfcb2e6dcf72d5'
+@@ -36,8 +36,8 @@
+ assert pixi and nice
+ rows = []
+ started = now()
+-for suffix in ['10', '22', '13']:
+-    run = 'narps-neutral-r1-' + suffix
++for suffix in [f'{i:02d}' for i in range(1,25)]:
++    run = 'narps-neutral-r2-' + suffix
+     native = base / 'runs' / run / 'attempt-01/native'
+     native_result = native / 'result.json'
+     raw_result = native_result.read_bytes()
