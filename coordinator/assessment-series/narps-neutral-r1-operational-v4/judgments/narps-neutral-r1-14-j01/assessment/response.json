@@ -1,0 +1,534 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All supplied inputs, analysis, outputs and documentation sit under one workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/input/study-task.md",
+          "description": "Canonical capture evidence: input/study-task.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/run_analysis.py",
+          "description": "Canonical capture evidence: analysis/run_analysis.py",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "Code reads the 54 included data/ maps relative to the workspace root.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Representative delivered map at the path used by the script",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "External Python packages are listed, but no environment, bundled software or software submodule is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "At worker stop, the main code, report, figures, results and analysis data were untracked in Git.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/.git/index",
+          "description": "Captured index compared with complete stopped workspace files",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The captured Git tree tracks 54 annex pointers and retains the corresponding annex objects.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/input/data/sub-001_hypo1_cope.nii.gz",
+          "description": "Tracked annex pointer for representative map",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/.git/annex/objects/fW/JZ/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz",
+          "description": "Retained annex content for representative map",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "Outputs are present, but no exact environment specification is linked to their run.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "partial",
+      "reason": "report.md gives usage instructions, but no installation instructions or complete environment setup.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "analysis/run_analysis.py is the documented starting script for reproducing the group analysis.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/run_analysis.py",
+          "description": "Canonical capture evidence: analysis/run_analysis.py",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "unmet",
+      "reason": "The documented reproduction command uses an absolute external interpreter path.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "analysis/software.txt lists versions but does not specify an installable set of dependencies.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "The documented route assumes a prepared external Python environment without documenting host requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "unmet",
+      "reason": "No README or environment specification provides complete system and dependency requirements.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is present in the stopped object.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No process for updating and tracking environment specifications is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "No lockfile, environment capture or container digest supports exact reconstruction.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "The worker supplied no environment specification to share.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "The report does not explain how to obtain or reconstruct the prepared external environment.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git/annex tracks inputs, while the analysis, report and results were untracked at worker stop.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/.git/index",
+          "description": "Captured index compared with complete stopped workspace files",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No repeated workflow-testing record is present; test history would settle regularity.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/run_analysis.py",
+          "description": "Canonical capture evidence: analysis/run_analysis.py",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "met",
+      "reason": "Inputs, code, data, results and figures occupy distinct folders.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/run_analysis.py",
+          "description": "Canonical capture evidence: analysis/run_analysis.py",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/input/sources.json",
+          "description": "Canonical capture evidence: input/sources.json",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/results/summary.json",
+          "description": "Canonical capture evidence: results/summary.json",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: all delivered data and software components are public; no restricted subject is present.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/input/sources.json",
+          "description": "Canonical capture evidence: input/sources.json",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "No fresh-container, clean-VM or comparable execution record is supplied; such a record would settle this.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "No mechanism creates a disposable environment for each execution.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "No exact environment specification exists to assess for repeated reconstitution testing.",
+      "source": "probe:ci-present",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment image, binaries or other environment artifact is archived in the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No process for updating and tracking environment specifications is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/software.txt",
+          "description": "Canonical capture evidence: analysis/software.txt",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "met",
+      "reason": "The external map source is identified in sources.json, bundled as an input, and its public retrieval route is reachable.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/input/sources.json",
+          "description": "Per-map source URLs, participant IDs, sizes and hashes",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "Folders are separated, but the report does not fully document module interfaces or recombination.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "unmet",
+      "reason": "The object does not define independently updateable module boundaries.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/analysis/run_analysis.py",
+          "description": "Canonical capture evidence: analysis/run_analysis.py",
+          "sha256": null
+        },
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "N/A: no independent project modules need to be composed.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report directs readers to the analysis script, inputs, result files and figures.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "capture:5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153#content/workspace/report.md",
+          "description": "Canonical capture evidence: report.md",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "ad3956ae64dcbdd1eec6af4ed21e0b168e478106",
+    "captured_at": "2026-10-16T11:54:53+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-14-j01/canonical/manifest.json",
+      "sha256": "5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "Codex independent assessor",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py",
+    "dependencies": [
+      "assess-alignment-with-stamped-principles@0.1.0",
+      "stamped-conventions@0.1.0"
+    ]
+  },
+  "scope": "Canonical original complete stopped delivery, SHA-256 5e9f3c61bf3b4a0c12292ea55a48a22845d3c6bd27ee091592ef4c87e62ed153; worker stop state distinguished from coordinator preservation; probes run; route HEAD checks; replay not checked because documented external environment is unavailable."
+}
