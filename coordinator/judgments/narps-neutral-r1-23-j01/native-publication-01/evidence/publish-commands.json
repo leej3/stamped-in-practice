@@ -1,0 +1,89 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "publish-head",
+    "returncode": 0,
+    "stderr": "publish-head.stderr",
+    "stdout": "publish-head.stdout"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "publish-status",
+    "returncode": 0,
+    "stderr": "publish-status.stderr",
+    "stdout": "publish-status.stdout"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "publish-remote",
+    "returncode": 0,
+    "stderr": "publish-remote.stderr",
+    "stdout": "publish-remote.stdout"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-23-j01-native-publication"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "branch-absent",
+    "returncode": 0,
+    "stderr": "branch-absent.stderr",
+    "stdout": "branch-absent.stdout"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "coordinator/judgments/narps-neutral-r1-23-j01/native-publication-01/raw-native-transcript.jsonl",
+      "coordinator/judgments/narps-neutral-r1-23-j01/native-publication-01/original-shadow-full.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "upload-transcripts",
+    "returncode": 0,
+    "stderr": "upload-transcripts.stderr",
+    "stdout": "upload-transcripts.stdout"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-23-j01-native-publication",
+      "refs/entire/checkpoints/A6/01M51YHWCF9ZFT0225Y59NNXA6:refs/entire/checkpoints/A6/01M51YHWCF9ZFT0225Y59NNXA6"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/judgments/narps-neutral-r1-23-j01/retention/native-publication-01/publisher",
+    "label": "push-code-and-checkpoint",
+    "returncode": 128,
+    "stderr": "push-code-and-checkpoint.stderr",
+    "stdout": "push-code-and-checkpoint.stdout"
+  }
+]
