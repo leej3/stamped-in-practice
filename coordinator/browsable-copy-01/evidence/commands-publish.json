@@ -1,0 +1,185 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "756f37823b1b0241c6839cc3c9ee049f95ce38cd\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-07-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_csf_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_pd_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_eye_mask.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_face_mask.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_relx_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_tal_nlin_sym_09a.nii.gz",
+      "external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_wm_tal_nlin_sym_09a.nii.gz",
+      "external/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz",
+      "external/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz",
+      "results/pilot_shared_support/group_mean_effect.nii.gz",
+      "results/pilot_shared_support/group_t_positive.nii.gz",
+      "results/pilot_shared_support/p_fwe_maxT_positive.nii.gz",
+      "results/primary_v2_template_mask/group_mean_effect.nii.gz",
+      "results/primary_v2_template_mask/group_t_fwe05_positive.nii.gz",
+      "results/primary_v2_template_mask/group_t_positive.nii.gz",
+      "results/primary_v2_template_mask/p_fwe_maxT_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_csf_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n1%    31.98 KiB       132 MiB/s 0s\n23%   767.62 KiB        4 MiB/s 0s\n100%  3.22 MiB         29 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n1%    31.98 KiB       146 MiB/s 0s\n100%  4.09 MiB         85 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_pd_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n0%    31.98 KiB        77 MiB/s 0s\n10%   1.47 MiB          7 MiB/s 1s\n51%   7.56 MiB         30 MiB/s 0s\n100%  14.85 MiB        76 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n0%    31.98 KiB        44 MiB/s 0s\n100%  14.99 MiB        83 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_eye_mask.nii.gz (to con-hub...) \n\n100%  12.21 KiB        24 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_face_mask.nii.gz (to con-hub...) \n\n100%  1.36 KiB          5 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz (to con-hub...) \n\n48%   31.98 KiB        34 MiB/s 0s\n100%  66.04 KiB        24 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_relx_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n1%    31.98 KiB       128 MiB/s 0s\n100%  4.3 MiB          89 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n0%    31.98 KiB        38 MiB/s 0s\n40%   6 MiB            30 MiB/s 0s\n100%  15.04 MiB        59 MiB/s 0s\n                                  \nok\ncopy external/nilearn-cache/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_wm_tal_nlin_sym_09a.nii.gz (to con-hub...) \n\n1%    31.98 KiB        36 MiB/s 0s\n100%  3.63 MiB        123 MiB/s 0s\n                                  \nok\ncopy external/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz (to con-hub...) \n\n2%    31.98 KiB        66 MiB/s 0s\n100%  1.68 MiB        128 MiB/s 0s\n                                  \nok\ncopy external/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz (to con-hub...) \n\n100%  28.88 KiB        47 MiB/s 0s\n                                  \nok\ncopy results/pilot_shared_support/group_mean_effect.nii.gz (to con-hub...) \n\n4%    31.98 KiB       114 MiB/s 0s\n100%  758.21 KiB      158 MiB/s 0s\n                                  \nok\ncopy results/pilot_shared_support/group_t_positive.nii.gz (to con-hub...) \n\n4%    31.98 KiB        33 MiB/s 0s\n100%  756.62 KiB       61 MiB/s 0s\n                                  \nok\ncopy results/pilot_shared_support/p_fwe_maxT_positive.nii.gz (to con-hub...) \n\n65%   31.98 KiB        48 MiB/s 0s\n100%  48.89 KiB        32 MiB/s 0s\n                                  \nok\ncopy results/primary_v2_template_mask/group_mean_effect.nii.gz (to con-hub...) \n\n4%    31.98 KiB        39 MiB/s 0s\n100%  715.3 KiB        60 MiB/s 0s\n                                  \nok\ncopy results/primary_v2_template_mask/group_t_fwe05_positive.nii.gz (to con-hub...) \n\n72%   31.98 KiB        47 MiB/s 0s\n100%  44.25 KiB        22 MiB/s 0s\n                                  \nok\ncopy results/primary_v2_template_mask/group_t_positive.nii.gz (to con-hub...) \n\n4%    31.98 KiB        34 MiB/s 0s\n100%  713.89 KiB       56 MiB/s 0s\n                                  \nok\ncopy results/primary_v2_template_mask/p_fwe_maxT_positive.nii.gz (to con-hub...) \n\n66%   31.98 KiB       118 MiB/s 0s\n100%  48.8 KiB         73 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-07-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-07-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-07-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-07-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-07-browsable' set up to track 'origin/codex/narps-neutral-r1-07-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "90786f6d2e4ba41792033d6197bdf78c2100b479\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "756f37823b1b0241c6839cc3c9ee049f95ce38cd\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "90786f6d2e4ba41792033d6197bdf78c2100b479",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   90786f6..f39f644  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "f39f644487b1776c3cfd519a33d5a63f8dd4ab92\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-07-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "756f37823b1b0241c6839cc3c9ee049f95ce38cd\trefs/heads/codex/narps-neutral-r1-07-browsable\nf39f644487b1776c3cfd519a33d5a63f8dd4ab92\trefs/heads/git-annex\n"
+  }
+]
