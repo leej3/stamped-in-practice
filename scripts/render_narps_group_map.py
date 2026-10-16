@@ -59,14 +59,14 @@ def verify_snapshot(meta):
         digest = hashlib.sha256((DATA / relative).read_bytes()).hexdigest()
         if digest != source["sha256"]:
             raise ValueError(f"Snapshot hash mismatch: {relative}")
-    if meta["representative_map_run"] != "narps-r1-09":
-        raise ValueError("This illustrative display is bound to run09")
+    if meta["representative_map_run"] != "narps-neutral-r2-09":
+        raise ValueError("This illustrative display is bound to the retained R2-09 delivery")
 
 
 def maps(meta):
     files = {
-        "t": "one_sample_t.nii.gz", "coverage": "common_brain_mask.nii.gz",
-        "fwe": "max_t_fwe_p05_mask.nii.gz", "roi": "vmPFC_AAL_medial_orbitofrontal_mask.nii.gz",
+        "t": "group_t.nii.gz", "coverage": "analysis_mask.nii.gz",
+        "fwe": "positive_fwe_mask.nii.gz", "roi": "vmPFC_mask.nii.gz",
         "anatomy": "anatomical-context.nii.gz",
     }
     images = {key: nib.load(DATA / "maps" / name) for key, name in files.items()}
@@ -80,8 +80,8 @@ def maps(meta):
     mask = data["coverage"].astype(bool)
     sig = data["fwe"].astype(bool)
     roi = data["roi"].astype(bool)
-    if mask.sum() != 198029 or sig.sum() != 24 or (sig & roi).sum() != 0:
-        raise ValueError("Saved map counts differ from run09 summary")
+    if mask.sum() != meta['native_support_voxels'] or sig.sum() != meta['native_positive_voxels'] or (sig & roi).sum() != 0:
+        raise ValueError("Saved map counts differ from the R2-09 summary")
     if np.any(sig & ~mask) or np.any(roi & ~mask):
         raise ValueError("Corrected result or ROI outside analysis coverage")
 
@@ -90,8 +90,8 @@ def maps(meta):
     cmap.set_under(cmap(0))
     cmap.set_over(cmap(1))
     norm = Normalize(-6, 6, clip=True)
-    fig, axes = plt.subplots(1, 3, figsize=(13.5, 6.4))
-    fig.subplots_adjust(left=.012, right=.985, top=.80, bottom=.30, wspace=.045)
+    fig, axes = plt.subplots(1, 3, figsize=(13.5, 7.0))
+    fig.subplots_adjust(left=.012, right=.985, top=.80, bottom=.34, wspace=.045)
     cuts = meta["map_display"]["slice_centers_mni_mm"]
     titles = ["Sagittal", "Coronal", "Axial"]
     for dim, (ax, mm) in enumerate(zip(axes, cuts)):
@@ -124,23 +124,23 @@ def maps(meta):
             ax.set_xlim(-86, 86)
             ax.set_ylim((-63, 89) if dim == 1 else (-114, 84))
             corners = ("L", "R")
-        ax.set_title(f"{titles[dim]}\n{'xyz'[dim]} = {actual_mm:g} mm", fontsize=24, pad=13)
+        ax.set_title(f"{titles[dim]}\n{'xyz'[dim]} = {actual_mm:g} mm", fontsize=28, pad=13)
         for x, letter in zip((.035, .965), corners):
-            ax.text(x, .055, letter, transform=ax.transAxes, ha="center", color="white", fontsize=24, weight="bold")
+            ax.text(x, .055, letter, transform=ax.transAxes, ha="center", color="white", fontsize=28, weight="bold")
         ax.set_xticks([])
         ax.set_yticks([])
         for spine in ax.spines.values():
             spine.set_visible(False)
-    cax = fig.add_axes([.055, .135, .31, .032])
+    cax = fig.add_axes([.055, .15, .31, .032])
     colorbar = fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), cax=cax, orientation="horizontal", ticks=[-6, 0, 6])
     colorbar.ax.set_xticklabels(["≤−6", "0", "≥6"])
-    colorbar.ax.tick_params(labelsize=24, length=0, pad=7)
-    colorbar.ax.set_title("Unthresholded group t", fontsize=24, pad=13, loc="left")
+    colorbar.ax.tick_params(labelsize=28, length=0, pad=7)
+    colorbar.ax.set_title("Unthresholded group t", fontsize=28, pad=13, loc="left")
     fig.legend(handles=[
         Line2D([], [], color="#d7a700", linewidth=4, label="vmPFC region"),
         Line2D([], [], color="#00a88e", linewidth=4, label="Positive FWE p ≤ .05"),
-    ], loc="lower right", bbox_to_anchor=(.985, .07), frameon=False, fontsize=24)
-    fig.text(.055, .018, "Gray anatomy: outside common coverage", fontsize=24, color=INK)
+    ], loc="lower right", bbox_to_anchor=(.985, .08), frameon=False, fontsize=28)
+    fig.text(.055, .018, "Gray anatomy: outside common coverage", fontsize=28, color=INK)
     save(fig, "narps-group-map")
 
 
@@ -153,7 +153,7 @@ def main():
     DATA, OUT = args.inputs.resolve(), args.output.resolve()
     OUT.mkdir(parents=True, exist_ok=True)
     plt.rcParams.update({
-        "font.family": ["Arial", "DejaVu Sans", "sans-serif"], "font.size": 24, "text.color": INK,
+        "font.family": ["Arial", "DejaVu Sans", "sans-serif"], "font.size": 28, "text.color": INK,
         "axes.labelcolor": INK, "axes.titlecolor": INK,
         "xtick.color": INK, "ytick.color": INK,
         "svg.fonttype": "none", "svg.hashsalt": "stamped-narps-poster-2026-10-15",

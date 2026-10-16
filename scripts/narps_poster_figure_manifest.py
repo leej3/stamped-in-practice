@@ -21,6 +21,8 @@ def entry(relative: Path):
 
 def main():
     sources = [
+        EXPERIMENT / 'README.md',
+        EXPERIMENT / 'map-inputs/spatial/selection.json',
         EXPERIMENT / "map-inputs/example/provenance.json",
         EXPERIMENT / "map-inputs/spatial/provenance.json",
         EXPERIMENT / "map-inputs/spatial/spatial-inputs.npz",
@@ -32,7 +34,7 @@ def main():
     sources.extend(Path("scripts") / name for name in (
         "render_narps_group_map.py", "render_narps_spatial.py",
         "extract_narps_spatial.py", "capture_narps_group_map.py",
-        "narps_figure_sources.py", "narps_poster_figure_manifest.py",
+        "narps_poster_figure_manifest.py",
     ))
     manifest = {
         "schema_version": 1,

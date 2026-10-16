@@ -12,7 +12,7 @@ import tempfile
 
 import matplotlib
 matplotlib.use("Agg")
-from matplotlib.colors import BoundaryNorm, ListedColormap
+from matplotlib.colors import BoundaryNorm, ListedColormap, LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -61,43 +61,49 @@ def main():
     shared = arrays["shared_support"]
     native = arrays["native_masks"]
     positive = arrays["native_positive"]
-    if not np.array_equal(shared, native.all(axis=0) & arrays["common_participant_support"]):
+    if not np.array_equal(shared, native.all(axis=0)):
         raise ValueError("Shared support is not the recorded intersection")
     if np.any(positive & ~native):
         raise ValueError("Positive decision outside native tested support")
-    t = arrays["common_t_unique"][arrays["common_t_index"]].astype(np.float64)
-    frequency = np.stack([positive[k:k + 3].sum(axis=0) for k in range(0, 12, 3)])
+    groups = [[i for i, row in enumerate(meta['records']) if row['condition'] == c['id']]
+              for c in meta['conditions']]
+    if [len(ids) for ids in groups] != [12] * 4:
+        raise ValueError('Expected 12 original R2/R3 deliveries per condition')
+    frequency = np.stack([positive[ids].sum(axis=0) for ids in groups])
+    denominators = np.stack([native[ids].sum(axis=0) for ids in groups])
+    if not np.all(denominators[:, shared] == 12):
+        raise ValueError('Incomplete denominator on displayed shared support')
     summary = {
+        'comparison': meta['comparison'], 'rounds': meta['rounds'], 'total_original_deliveries': 48,
         "shared_support_voxels": int(shared.sum()),
-        "all_runs_maximum_pairwise_t_difference": float(np.ptp(t, axis=0).max()),
-        "all_runs_median_pairwise_t_range": float(np.median(np.ptp(t, axis=0))),
         "conditions": [],
-        "interpretation": "Saved group t fields agree to numerical precision on shared support. The observed variation in corrected detections reflects native correction choices: two No supplied skills runs use Bonferroni; all other runs use permutation max-T. This descriptive comparison does not isolate a causal condition effect.",
+        "interpretation": "Descriptive spatial agreement of delivered positive whole-brain FWE decisions. Each condition pools six original analyses from each of rounds 2 and 3. Native methods and computation differences are preserved; no new group inference or causal comparison is performed.",
     }
     for k, condition in enumerate(meta["conditions"]):
-        ids = slice(k * 3, k * 3 + 3)
-        sd = np.std(t[ids], axis=0, ddof=1)
+        ids = groups[k]
         summary["conditions"].append({
-            **condition, "runs": [r["run"] for r in meta["records"][ids]],
-            "maximum_t_sample_sd": float(sd.max()), "median_t_sample_sd": float(np.median(sd)),
-            "maximum_pairwise_t_difference": float(np.ptp(t[ids], axis=0).max()),
-            "positive_in_n_runs_voxel_counts": {str(n): int(np.sum(shared & (frequency[k] == n))) for n in range(4)},
+            **condition, "runs": [meta['records'][i]['run'] for i in ids], 'n': len(ids),
+            "positive_in_n_runs_voxel_counts": {str(n): int(np.sum(shared & (frequency[k] == n))) for n in range(13)},
             "native_positive_voxels_per_run": [int(v.sum()) for v in positive[ids]],
             "shared_positive_voxels_per_run": [int((v & shared).sum()) for v in positive[ids]],
             "positive_voxels_outside_shared_support_per_run": [int((v & ~shared).sum()) for v in positive[ids]],
+            'rounds': [{ 'round': r, 'runs': [meta['records'][i]['run'] for i in ids if meta['records'][i]['round'] == r],
+                        'native_positive_voxels': [int(positive[i].sum()) for i in ids if meta['records'][i]['round'] == r] }
+                       for r in meta['rounds']],
         })
     (OUT / "narps-spatial-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
 
     plt.rcParams.update({
-        "font.family": ["Arial", "DejaVu Sans", "sans-serif"], "font.size": 24, "text.color": INK,
+        "font.family": ["Arial", "DejaVu Sans", "sans-serif"], "font.size": 28, "text.color": INK,
         "axes.titlecolor": INK, "xtick.color": INK, "ytick.color": INK,
         "svg.fonttype": "none", "svg.hashsalt": "stamped-narps-spatial",
         "hatch.color": "#8197a5", "hatch.linewidth": .6,
     })
-    fig, axes = plt.subplots(4, 3, figsize=(13.5, 8.7))
-    fig.subplots_adjust(left=.245, right=.99, top=.91, bottom=.215, wspace=.045, hspace=.14)
-    cmap = ListedColormap(["#f0b650", "#df685a", "#8c206c"])
-    norm = BoundaryNorm([.5, 1.5, 2.5, 3.5], cmap.N)
+    fig, axes = plt.subplots(4, 3, figsize=(13.5, 9.4))
+    fig.subplots_adjust(left=.245, right=.99, top=.88, bottom=.27, wspace=.045, hspace=.14)
+    cmap = LinearSegmentedColormap.from_list('agreement', ['#ffe8a3', '#ef9553', '#d65065', '#6d176d'])
+    cmap = ListedColormap(['#b5b8ba'] + [cmap(x) for x in np.linspace(0, 1, 12)])
+    norm = BoundaryNorm(np.arange(-.5, 13.5), cmap.N)
     anatomy, affine = arrays["anatomy"], arrays["affine"]
     if not np.allclose(affine[:3, :3], np.diag(np.diag(affine[:3, :3]))):
         raise ValueError("This display requires an axis-aligned native image grid")
@@ -127,22 +133,23 @@ def main():
             for spine in ax.spines.values():
                 spine.set_visible(False)
             if row == 0:
-                ax.set_title(f"z = {mm:g} mm", fontsize=24, pad=14)
+                ax.set_title(f"z = {mm:g} mm", fontsize=28, pad=14)
                 for x, letter in ((.045, "L"), (.955, "R")):
-                    ax.text(x, .06, letter, transform=ax.transAxes, ha="center", va="bottom", color="white", fontsize=24)
+                    ax.text(x, .06, letter, transform=ax.transAxes, ha="center", va="bottom", color="white", fontsize=28)
     fig.canvas.draw()
     for row, label in enumerate(labels):
         box = axes[row, 0].get_position()
-        fig.text(.015, (box.y0 + box.y1) / 2, label, fontsize=24, va="center", weight="bold")
-    fig.text(.245, .968, "Posterior axial slices", fontsize=24)
-    fig.text(.245, .16, "Runs with a positive FWE result", fontsize=24)
-    cax = fig.add_axes([.245, .10, .68, .035])
+        fig.text(.015, (box.y0 + box.y1) / 2, label, fontsize=28, va="center", weight="bold")
+    fig.text(.245, .955, "Posterior axial slices · rounds 2 + 3", fontsize=28)
+    fig.text(.245, .22, "Analyses with a positive FWE result", fontsize=28)
+    cax = fig.add_axes([.245, .16, .68, .035])
     colorbar = fig.colorbar(plt.cm.ScalarMappable(norm=norm, cmap=cmap), cax=cax,
-                            orientation="horizontal", ticks=[1, 2, 3])
-    colorbar.ax.set_xticklabels(["1 / 3", "2 / 3", "3 / 3"])
-    colorbar.ax.tick_params(labelsize=24, length=0, pad=7)
+                            orientation="horizontal", ticks=[0, 3, 6, 9, 12])
+    colorbar.ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
+    colorbar.ax.tick_params(labelsize=28, length=0, pad=7)
     colorbar.outline.set_visible(False)
-    fig.text(.015, .018, "Gray: 0/3 · hatched: outside shared coverage", fontsize=24)
+    fig.text(.015, .065, "12 analyses per condition · 6 from each round", fontsize=28)
+    fig.text(.015, .015, "Gray: 0% · hatched: outside shared coverage", fontsize=28)
     OUT.mkdir(exist_ok=True)
     save(fig, "narps-spatial-agreement")
     (OUT / "narps-spatial-manifest.json").write_text(json.dumps({
@@ -153,8 +160,7 @@ def main():
         "software": {"numpy": np.__version__, "matplotlib": matplotlib.__version__},
     }, indent=2) + "\n")
     print(
-        f"Verified {shared.sum():,} shared voxels; maximum pairwise t difference "
-        f"{summary['all_runs_maximum_pairwise_t_difference']:.6g}. "
+        f"Verified 48 original deliveries and {shared.sum():,} shared voxels. "
         "Rendered spatial agreement and saved its numerical summary."
     )
 

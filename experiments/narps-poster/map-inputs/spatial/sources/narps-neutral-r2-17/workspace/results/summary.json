@@ -1,0 +1,92 @@
+{
+  "n_participants": 54,
+  "n_voxels": 210968,
+  "voxel_size_mm": [
+    2.0,
+    2.0,
+    2.4000000953674316
+  ],
+  "mask_rule": "finite and nonzero in at least 90% of the 54 participant maps",
+  "model": "one-sample group mean of participant gain-effect estimates vs 0; one-sided positive test",
+  "whole_brain_inference": {
+    "method": "5,000 participant sign-flips; one-sided maximum t statistic; voxelwise FWE p<.05",
+    "seed": 20261016,
+    "maxT_95_threshold": 5.403197765350342,
+    "significant_voxels": 24,
+    "max_t_observed": 6.617173246302241,
+    "smallest_fwe_p": 0.0009998000399920016,
+    "max_null_p_for_peak": 0.0009998000399920016
+  },
+  "vmPFC_definition": "a priori MNI box: |x|<=15, y=25..65, z=-15..5 mm",
+  "vmPFC": {
+    "voxels": 2400,
+    "mean_coefficient": -0.0027261569818994497,
+    "sd_across_participants_roi_average": 0.0727327671721341,
+    "se_across_participants_of_roi_average": 0.009897675952909975,
+    "ci95_t": [
+      -0.0225783808874026,
+      0.0171260669236037
+    ],
+    "one_sided_roi_average_t": -0.27543405086907735,
+    "one_sided_roi_average_p_uncorrected": 0.6079730977913971,
+    "mean_voxelwise_t": -0.13448365389750994,
+    "max_voxel_t": 2.8469763136867385,
+    "fwe_significant_voxels": 0,
+    "max_voxel_fwe_p": 1.0
+  },
+  "clusters": [
+    {
+      "voxels": 17,
+      "volume_mm3": 163.20000648498532,
+      "peak_t": 6.617173246302241,
+      "peak_p_fwe": 0.0009998000399920016,
+      "peak_mni_x": -26.0,
+      "peak_mni_y": -102.0,
+      "peak_mni_z": -3.599997043609619,
+      "intersects_vmPFC": false
+    },
+    {
+      "voxels": 5,
+      "volume_mm3": 48.000001907348626,
+      "peak_t": 6.193402982181888,
+      "peak_p_fwe": 0.003599280143971206,
+      "peak_mni_x": 30.0,
+      "peak_mni_y": -94.0,
+      "peak_mni_z": -8.399997234344482,
+      "intersects_vmPFC": false
+    },
+    {
+      "voxels": 2,
+      "volume_mm3": 19.20000076293945,
+      "peak_t": 5.760898732461179,
+      "peak_p_fwe": 0.01219756048790242,
+      "peak_mni_x": 26.0,
+      "peak_mni_y": -98.0,
+      "peak_mni_z": -1.1999969482421875,
+      "intersects_vmPFC": false
+    }
+  ],
+  "quality": {
+    "map_count": 54,
+    "excluded_participants": [],
+    "any_nonfinite_values": false,
+    "all_map_sha256_checksums_match_sources_json": true,
+    "finite_fraction_min": 1.0,
+    "zero_fraction_range": [
+      0.24085418153847857,
+      0.25719519011017594
+    ],
+    "participant_in_mask_mean_range": [
+      -0.13653465786735736,
+      0.10570459064730654
+    ]
+  },
+  "software": {
+    "python": "3.13.16",
+    "numpy": "2.5.4",
+    "nibabel": "5.4.2",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6"
+  },
+  "caveat": "Group mean inference treats participant estimates as equally precise; participant variance maps were unavailable."
+}
