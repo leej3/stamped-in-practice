@@ -1,8 +1,8 @@
 # Prospective NARPS assistance comparison
 
-Draft for sealing before any new scientific launch.
-This is a new comparison, provisionally `narps-neutral-v1`; the completed `narps-v1` round is development evidence and is excluded from its outcome estimates.
-No launch, readiness claim or source pin is authorized by this draft alone.
+Registered before the first scientific launch.
+This is the new comparison `narps-neutral-v1`; the completed `narps-v1` round is development evidence and is excluded from its outcome estimates.
+The exact reviewed source, role settings, resource identities and procedure digest are recorded in `registration.json` and `procedure.json`.
 
 ## Scientific task and fixed resources
 
@@ -24,6 +24,7 @@ Its supplied files and prompt omit coordinator history, earlier results, assessm
 The optional common environment is outside the coordinator checkout and is designated unchanged; task-specific changes belong in each workspace.
 Sessions still run as the same host user with broad filesystem access.
 Shared package-download caches, process metadata and neighboring paths may be discoverable; these are residual visibility and contention limits, not enforced containment.
+Native capture also uses the common project GitHub remote, so remote refs are not an access-isolated boundary.
 Retain observed cross-run exposure and service/model drift without relabeling outcomes or claiming perfect blinding.
 
 ## Assignment, replication and sequence
@@ -49,7 +50,9 @@ Do not refill a wave when one worker finishes.
 Start the next wave after all three have stopped.
 This controls scheduling imbalance without claiming identical instantaneous contention.
 No disposable capacity tests are added.
-Judgment order remains separately randomized; judges receive no treatment labels.
+Complete each round's research waves before dispatching its separately randomized judgment queue.
+Do not mix worker and judge sessions within a research wave or provide assessment feedback to workers.
+Judges receive no treatment labels.
 
 The input maps alone require about 0.29 GB for three separate concurrent copies, or 6.94 GB for all 72 retained copies before storage deduplication.
 This is an inventory calculation, not proof of sufficient RAM, disk, CPU or native-service capacity.

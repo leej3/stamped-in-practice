@@ -1,0 +1,65 @@
+[
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "add",
+      "README.md",
+      ".gitmodules",
+      "protocols/neutral-v1/requirements.json",
+      "iterations/narps-neutral-v1"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "returncode": 0,
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "commit",
+      "-F",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/parent-registration.commit.txt"
+    ],
+    "returncode": 0,
+    "stdout": "[main 9f616f2] docs(protocol): register prospective neutral comparison dataset\n 4 files changed, 28 insertions(+), 1 deletion(-)\n create mode 160000 iterations/narps-neutral-v1\n create mode 100644 protocols/neutral-v1/requirements.json\n",
+    "stderr": "Format prose with Snapper................................................Passed\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "main"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   1e07fac..9f616f2  main -> main\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "9f616f2d235558e75412b37f4b3f5d9a19d892fb\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,153 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset",
+    "returncode": 0,
+    "stdout": "9a8bd5eb1cf09cd55365cb41cbe5135f85022aa0\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "--branch",
+      "codex/iteration-narps-neutral-v1",
+      "https://github.com/leej3/stamped-in-practice.git",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient'...\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "9a8bd5eb1cf09cd55365cb41cbe5135f85022aa0\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "submodule",
+      "status"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "-9852d8360f9519d21d11099b45f5deb8ba80cb28 assessment\n-f2e74ea3ed372f966c95692cb0826d56ad5e6a6c skills\n-221074f0ab291f0d2a0d919a2dd02e52a584f6b1 study\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "annex",
+      "init",
+      "neutral-registration-independent-receiver"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "init neutral-registration-independent-receiver ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "resources/common-environment/validated-environment.lock"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/preparation-fresh-check-02/recipient",
+    "returncode": 0,
+    "stdout": "get resources/common-environment/validated-environment.lock (from con-hub...) \n\n4%    7.7 KiB          62 KiB/s 2s\n100%  171.52 KiB        1 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+    "stderr": ""
+  }
+]
