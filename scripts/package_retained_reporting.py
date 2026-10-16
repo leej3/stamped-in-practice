@@ -182,7 +182,7 @@ def selected_link(text, workspace, word, suffix):
     return found[0]
 
 
-def recover_links(package, index, repairs, capture_index):
+def recover_links(package, index, repairs, capture_index, support_requests=()):
     if not repairs:
         return []
     capture_index_ref = package.capture(capture_index, "corrections/original-capture-index.json")
@@ -209,9 +209,11 @@ def recover_links(package, index, repairs, capture_index):
         if final_member["sha256"] != final_ref["sha256"]:
             raise ValueError("Native final differs from closed retention capture")
         before = copy.deepcopy(judgment)
-        added, links = {}, {}
-        for key, suffix in (("report", ".md"), ("response", ".json")):
-            if key in judgment:
+        added, supporting, links = {}, {}, {}
+        outputs = [("report", ".md"), ("response", ".json")]
+        outputs.extend((word, ".json") for target, word in support_requests if target == identity)
+        for key, suffix in outputs:
+            if key in judgment and key in ("report", "response"):
                 continue
             relative, receipt = selected_link(final, workspace, key, suffix)
             if receipt["original_target"] == receipt["original_target"].strip():
@@ -222,9 +224,12 @@ def recover_links(package, index, repairs, capture_index):
                 raise ValueError("Selected retained output is not a regular file")
             ref = package.capture(manifest_source.parent / member_name,
                 f"corrections/{identity}/{key}{suffix}", member["sha256"])
-            added[key], links[key] = ref, dict(receipt, capture_member=member_name,
-                                              output_sha256=ref["sha256"])
-            judgment[key] = ref
+            links[key] = dict(receipt, capture_member=member_name, output_sha256=ref["sha256"])
+            if key in ("report", "response"):
+                added[key] = ref
+                judgment[key] = ref
+            else:
+                supporting[key] = ref
         if not added:
             raise ValueError("No missing output to recover for " + identity)
         binding_ref = package.reference(before["output_binding"])
@@ -235,6 +240,7 @@ def recover_links(package, index, repairs, capture_index):
             "original_judgment": before, "native_result": native_ref, "native_final": final_ref,
             "original_output_binding": binding_ref, "retention_index": capture_index_ref,
             "retention_manifest": manifest_ref, "links": links, "added_outputs": added,
+            "supporting_outputs": supporting,
             "raw_judgments_modified": False, "categories_or_item_answers_changed": False,
             "purpose": "Recover uniquely linked original output files; all admission/schema checks remain required."}
         receipts.append(package.write(f"corrections/{identity}/receipt.json", encoded(receipt)))
@@ -272,6 +278,8 @@ def main():
     parser.add_argument("--snapshot", type=Path)
     parser.add_argument("--output", type=Path)
     parser.add_argument("--recover-whitespace-links", action="append", default=[])
+    parser.add_argument("--recover-whitespace-support", action="append", default=[],
+                        help="JUDGMENT_ID:replay or JUDGMENT_ID:access; retained evidence only, no outcome inference")
     parser.add_argument("--capture-index", type=Path)
     parser.add_argument("--verify", type=Path)
     parser.add_argument("--supplement", type=Path, action="append", default=[])
@@ -299,6 +307,12 @@ def main():
         raise ValueError("Only a complete closed 32-slot snapshot may be packaged")
     if args.recover_whitespace_links and not args.capture_index:
         parser.error("--capture-index is required for extraction corrections")
+    support_requests = []
+    for request in args.recover_whitespace_support:
+        target, separator, word = request.partition(":")
+        if not separator or word not in ("replay", "access") or target not in args.recover_whitespace_links:
+            parser.error("Support recovery must select replay/access for an explicitly corrected judgment")
+        support_requests.append((target, word))
     package = Package(args.snapshot, args.output, args.prior_package)
     if args.prior_package:
         package.capture(args.prior_package / "package.json", "original/prior-package-manifest.json")
@@ -338,7 +352,7 @@ def main():
     for path in sorted((args.snapshot / "evidence/judgments").glob("*/*")):
         if path.name in ("native-final.txt", "source-binding-evidence.json", "completion.json", "dispatch.json"):
             package.capture(path, path.relative_to(args.snapshot).as_posix())
-    corrections = recover_links(package, index, args.recover_whitespace_links, args.capture_index)
+    corrections = recover_links(package, index, args.recover_whitespace_links, args.capture_index, support_requests)
     package.write("index.json", encoded(index))
     package.capture(Path(__file__), "processing-code/package_retained_reporting.py")
     package.finish({"schema_version": 1, "kind": "portable-retained-reporting-inputs",

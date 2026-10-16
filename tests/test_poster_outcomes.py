@@ -81,3 +81,35 @@ def test_partial_output_matches_remain_distinct():
     assert summary["replay_matched_n"] == 0
     assert summary["replay_partial_selected_output_match_n"] == 1
     assert summary["checklist_evaluated_items_mean"] == 10
+
+
+@pytest.mark.parametrize("audit_kind", ["final", "extraction"])
+def test_failed_entrypoint_with_null_comparison_remains_observed(audit_kind):
+    run, primary, items, audit = fixture()
+    row = audit["helper_completions"][0]
+    row.update(entrypoint_returncode=1, reported_comparison=None)
+    if audit_kind == "extraction":
+        audit = {"kind": "native-replay-evidence-extraction", "rows": [{
+            "judgment_id": row["judgment_id"], "status": "native-helper-output-bound",
+            "native_helper_completion_observed": True, "entrypoint_execution_observed": True,
+            "entrypoint_returncode": 1, "literal_comparison": None,
+            "supporting_record": {"judgment_id": row["judgment_id"],
+                "capture_matches_original": True, "reported_capture_sha256": row["capture_sha256"]},
+            "matched_native_events": [row["binding_receipt"]], "evidence": row["binding_receipt"],
+        }]}
+    rows = report.summarize_round(2, [run], [primary], items, [audit])
+    assert rows[0]["native_replay_executed"]
+    assert not rows[0]["native_replay_matched"]
+    summary = report.summarize(rows)[0]
+    assert summary["replay_executed_n"] == 1
+    assert summary["replay_matched_n"] == 0
+    assert summary["replay_partial_selected_output_match_n"] == 0
+    assert summary["replay_execution_unobserved_or_unavailable"] == 0
+    assert summary["scientific_n"] == 1
+
+
+def test_malformed_comparison_is_not_silently_treated_as_missing():
+    _, _, _, audit = fixture()
+    audit["helper_completions"][0]["reported_comparison"] = []
+    with pytest.raises(ValueError, match="comparison must be an object or null"):
+        list(report.replay_records(audit))

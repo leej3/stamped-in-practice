@@ -1,13 +1,13 @@
 # Pooled condition outcomes
 
-Retained rounds: 1, 2.
+Retained rounds: 1, 2, 3.
 
 | Instruction | Assigned runs | Science: supported / assessed | Replay: matching / executed | STAMPED mean met % (n) |
 | --- | ---: | ---: | ---: | ---: |
-| No supplied skills | 12 | 11/12 | 3/3 | 21.1 (10) |
-| Find useful skills | 12 | 10/12 | 1/1 | 23.0 (12) |
-| Find research skills | 12 | 5/11 | 3/5 | 21.9 (11) |
-| Use STAMPED skills | 12 | 8/12 | 2/4 | 25.5 (12) |
+| No supplied skills | 18 | 16/18 | 5/5 | 22.6 (16) |
+| Find useful skills | 18 | 13/18 | 2/3 | 23.2 (18) |
+| Find research skills | 18 | 10/17 | 3/7 | 22.3 (17) |
+| Use STAMPED skills | 18 | 10/17 | 3/6 | 32.3 (17) |
 
 Recorded adequacy of the analysis supporting its conclusion, not direction of the neuroscience hypothesis.
 

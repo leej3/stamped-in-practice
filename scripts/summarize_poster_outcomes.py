@@ -56,6 +56,10 @@ def retained_reference(value):
 def replay_row(row, capture, comparison):
     if not re.fullmatch(r"[0-9a-f]{64}", str(capture)) or type(row.get("entrypoint_returncode")) is not int:
         raise ValueError("Native replay needs an exact capture identity and recorded exit status")
+    if comparison is None:
+        comparison = {}
+    if not isinstance(comparison, dict):
+        raise ValueError("Native replay comparison must be an object or null")
     some_match = bool(comparison.get("identical") or comparison.get("within_tolerance"))
     complete = row["entrypoint_returncode"] == 0 and matched(comparison)
     return {"judgment_id": row["judgment_id"], "capture": capture, "executed": True,
