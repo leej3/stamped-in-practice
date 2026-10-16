@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "key": "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz",
+  "sha256": "f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314",
+  "independent_bytes_identical": true,
+  "recipient": "/Users/johnlee/.local/state/stamped-in-practice/archive-publication-02/independent-recipient",
+  "commands": [
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "git",
+        "annex",
+        "add",
+        "--force",
+        "--backend=SHA256E",
+        "--",
+        "iterations/narps-v1/evidence/access-evidence-02.tar.gz"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 0.4026338340481743,
+      "returncode": 0,
+      "stdout": "add iterations/narps-v1/evidence/access-evidence-02.tar.gz \n\n1%    31.98 KiB        11 MiB/s 0s\n100%  2.12 MiB        208 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "git",
+        "annex",
+        "lookupkey",
+        "--",
+        "iterations/narps-v1/evidence/access-evidence-02.tar.gz"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 0.09060141700319946,
+      "returncode": 0,
+      "stdout": "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "git",
+        "annex",
+        "copy",
+        "--to",
+        "con-hub",
+        "--",
+        "iterations/narps-v1/evidence/access-evidence-02.tar.gz"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 1.3016943749971688,
+      "returncode": 0,
+      "stdout": "copy iterations/narps-v1/evidence/access-evidence-02.tar.gz (to con-hub...) \n\n1%    31.98 KiB        52 MiB/s 0s\n31%   671.67 KiB        3 MiB/s 0s\n100%  2.12 MiB         30 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "git",
+        "annex",
+        "checkpresentkey",
+        "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz",
+        "con-hub"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 0.3644612090429291,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--manifest-path",
+        "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/archive-publication-02/independent-recipient",
+        "annex",
+        "fromkey",
+        "--force",
+        "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz",
+        "access-evidence-02.tar.gz"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 0.13615741697140038,
+      "returncode": 0,
+      "stdout": "(recording state in git...)\nfromkey access-evidence-02.tar.gz ok\n(recording state in git...)\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "pixi",
+        "run",
+        "--manifest-path",
+        "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+        "git",
+        "-C",
+        "/Users/johnlee/.local/state/stamped-in-practice/archive-publication-02/independent-recipient",
+        "annex",
+        "transferkey",
+        "SHA256E-s2223401--f11a87a1137c15b44207cb2dee1c1e1801a39cdff1a0a1847eed72ff66cf8314.tar.gz",
+        "--from",
+        "con-hub"
+      ],
+      "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+      "elapsed_seconds": 1.3814856670796871,
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
