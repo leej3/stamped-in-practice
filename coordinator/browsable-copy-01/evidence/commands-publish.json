@@ -1,0 +1,186 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "619e2097114f8e143a3501d05fbb63b4e4543064\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-13-browsable"
+    ],
+    "returncode": 128,
+    "stderr": "ssh: connect to host github.com port 22: Operation timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-13-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "results/attempt-01-pre-maskfix/mean_cope.nii.gz",
+      "results/attempt-01-pre-maskfix/p_fwe_maxT.nii.gz",
+      "results/attempt-01-pre-maskfix/p_uncorrected.nii.gz",
+      "results/attempt-01-pre-maskfix/tstat.nii.gz",
+      "results/common_coverage_mask.nii.gz",
+      "results/mean_cope.nii.gz",
+      "results/p_fwe_maxT.nii.gz",
+      "results/p_uncorrected.nii.gz",
+      "results/tstat.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy results/attempt-01-pre-maskfix/mean_cope.nii.gz ok\ncopy results/attempt-01-pre-maskfix/p_fwe_maxT.nii.gz (to con-hub...) \n\n47%   31.98 KiB       126 MiB/s 0s\n100%  68.42 KiB       106 MiB/s 0s\n                                  \nok\ncopy results/attempt-01-pre-maskfix/p_uncorrected.nii.gz (to con-hub...) \n\n3%    31.98 KiB        33 MiB/s 0s\n100%  922.07 KiB        7 MiB/s 0s\n                                  \nok\ncopy results/attempt-01-pre-maskfix/tstat.nii.gz ok\ncopy results/common_coverage_mask.nii.gz ok\ncopy results/mean_cope.nii.gz ok\ncopy results/p_fwe_maxT.nii.gz (to con-hub...) \n\n43%   31.98 KiB       137 MiB/s 0s\n100%  74.08 KiB        64 MiB/s 0s\n                                  \nok\ncopy results/p_uncorrected.nii.gz (to con-hub...) \n\n3%    31.98 KiB        44 MiB/s 0s\n100%  931.9 KiB        75 MiB/s 0s\n                                  \nok\ncopy results/tstat.nii.gz ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-13-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-13-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-13-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-13-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-13-browsable' set up to track 'origin/codex/narps-neutral-r1-13-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "fd0a1197d0d44ba9275169b2d44277b67cc54461\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "619e2097114f8e143a3501d05fbb63b4e4543064\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "fd0a1197d0d44ba9275169b2d44277b67cc54461",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   fd0a119..be94df1  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "be94df112acaf2f5b28342a28cd3d53ca1600232\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-13-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "619e2097114f8e143a3501d05fbb63b4e4543064\trefs/heads/codex/narps-neutral-r1-13-browsable\nbe94df112acaf2f5b28342a28cd3d53ca1600232\trefs/heads/git-annex\n"
+  }
+]
