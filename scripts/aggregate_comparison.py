@@ -758,10 +758,10 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
                         # An explicit leading scientific-adequacy label identifies
                         # the verdict even if the same paragraph separately says
                         # that the study's positive hypothesis is not supported.
-                        label = re.match(
+                        labels = set(re.findall(
                             r"^\s*(?:#+\s*)?scientific adequacy\s*:\s*"
-                            r"(not supported|unable to assess|supported|qualified)(?!\w)", plain)
-                        categories = ({label.group(1)} if label else set(re.findall(
+                            r"(not supported|unable to assess|supported|qualified)(?!\w)", plain, re.M))
+                        categories = (labels if labels else set(re.findall(
                             r"(?<!\w)(not supported|unable to assess|supported|qualified)(?!\w)", plain)))
                         if categories != {extraction["category"]}:
                             raise ValueError("Adequacy quote and cited context must name only its selected category")

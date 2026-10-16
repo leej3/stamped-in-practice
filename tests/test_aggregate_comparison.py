@@ -854,3 +854,15 @@ def test_separate_scientific_report_requires_exact_binding(allocation, contract,
     assert actual["adequacy"] is None and result["issues"]
     if failure in {"unbound", "swapped"}:
         assert actual["inclusion_status"] == "invalid"
+
+
+def test_conflicting_explicit_scientific_labels_are_ambiguous(allocation, contract, tmp_path):
+    record = indexed_run(tmp_path, allocation, contract)
+    judgment = record["judgments"]["primary"]
+    text = "Scientific adequacy: supported.\nScientific adequacy: qualified."
+    judgment["report"] = artifact(tmp_path, "conflicting.md", text)
+    judgment["adequacy"] = {"extraction_status": "explicit", "category": "supported", "excerpt": {
+        "quote": "Scientific adequacy: supported.", "start_line": 1, "end_line": 2}}
+    result = collect(allocation, contract, tmp_path, record)
+    actual = next(j for j in result["judgments"] if j["judgment_id"] == "fixture-primary")
+    assert actual["adequacy"] is None and actual["extraction_status"] == "invalid"
