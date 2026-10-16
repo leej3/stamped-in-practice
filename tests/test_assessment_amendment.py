@@ -98,6 +98,19 @@ def test_unregistered_research_source_drift_rejected(amendment):
         procedure.check_worker_sources(updated, args.repo, args.study, changed)
 
 
+@pytest.mark.parametrize("field", ["seed_commit", "result_commit"])
+def test_matching_retained_row_does_not_hide_a_later_collision(amendment, field):
+    _, _, updated, stop = amendment
+    first = updated["assessment_amendment"]["retained_objects"][0]
+    later = dict(first, run="retained-02", seed_commit="3" * 40,
+                 result_commit="4" * 40)
+    later[field] = first[field]
+    updated["assessment_amendment"]["retained_objects"].append(later)
+    with pytest.raises(SystemExit, match="cannot be relabeled"):
+        procedure.check_retained_target(updated, {"run": "retained-01"},
+                                         "1" * 40, "2" * 40, stop)
+
+
 def test_future_run_requires_original_research_source_validation(amendment):
     args, _, updated, stop = amendment
     procedure.check_retained_target(updated, {"run": "future-02"}, "3" * 40, "4" * 40, stop)

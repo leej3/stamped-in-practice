@@ -126,6 +126,7 @@ def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, ret
     from delivery_snapshot import materialize_capture, validate_capture
     seed_path = evidence / "input-boundary.json"
     capture_path = None
+    canonical_path = None
     if args.role == "research":
         seed = make_neutral_seed(args.repo, base_commit, args.study, checkout, args.branch,
                                  args.condition, args.resolver, seed_path, args.common_resources,
@@ -144,7 +145,14 @@ def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, ret
         procedure.require_equal(receipt.get("seed_identities", {}).get("seed_commit"),
                                 seed["seed_commit"], "original supplied seed")
         validate_capture(args.delivery_capture, receipt["capture"]["sha256"])
-        materialized = materialize_capture(args.delivery_capture, checkout)
+        if frozen and frozen["version"] == 4:
+            canonical = materialize_capture(args.delivery_capture, checkout / "canonical")
+            canonical_path = Path(canonical["manifest"])
+            materialized = materialize_capture(canonical_path, checkout / "operational")
+            procedure.check_retained_target(frozen, seed, seed["seed_commit"],
+                canonical["identity"]["commit"], args.worker_end_state, receipt["capture"]["sha256"])
+        else:
+            materialized = materialize_capture(args.delivery_capture, checkout)
         checkout = Path(materialized["target"])
         capture_path = Path(materialized["manifest"])
         identity = materialized["identity"]
@@ -152,7 +160,7 @@ def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, ret
         args.worker_end_state.write_bytes(receipt_bytes)
         brief = evidence / "original-study-prompt.md"
         brief.write_bytes(blob(args.study, seed["study_commit"], "input/study-task.md"))
-        template = (retained / procedure.NEUTRAL_JUDGE if frozen else
+        template = (retained / procedure.judge_template_name(frozen) if frozen else
                     coordinator / procedure.NEUTRAL_JUDGE)
         rubric = retained / frozen["study"]["rubric"] if frozen else None
         reference = (retained / frozen["study"]["reference"]
@@ -179,7 +187,8 @@ def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, ret
     session_checkout = checkout
     if args.role == "judge":
         session_checkout = args.judge_workspace.resolve() if args.judge_workspace else evidence / "judgment"
-        workspace = judge_workspace.initialize(session_checkout, checkout, args.resolver, capture_path)
+        workspace = judge_workspace.initialize(session_checkout, checkout, args.resolver, capture_path,
+                                               canonical_path)
         (evidence / "judge-workspace.json").write_text(json.dumps({
             "workspace": str(session_checkout), "target": workspace}, indent=2) + "\n")
     scripts = coordinator / "scripts"
@@ -211,6 +220,8 @@ def prepare_neutral_launch(args, base_commit, coordinator, frozen, evidence, ret
     if capture_path:
         command += ["--delivery-capture", capture_path, "--worker-end-state", args.worker_end_state,
                     "--judge-workspace", session_checkout]
+    if canonical_path:
+        command += ["--canonical-capture", canonical_path]
     if args.capture_execution:
         command += ["--capture-execution", "--duct-executable", args.duct_executable]
     if args.declared_artifacts:
@@ -326,7 +337,7 @@ def main():
         if args.role == "judge" and not args.worker_end_state:
             parser.error("Formal judges require --worker-end-state from the research launch")
         frozen = procedure.load_procedure(args.procedure, args.procedure_sha256)
-        procedure.require_equal(frozen.get("version") == 3, neutral, "selected launch protocol")
+        procedure.require_equal(procedure.is_neutral(frozen), neutral, "selected launch protocol")
         procedure.check_sources(frozen, coordinator, args.study,
                                 base_commit if args.role == "research" else None)
         procedure.check_host(frozen, args)
@@ -343,7 +354,7 @@ def main():
         (evidence / "resource-readiness.json").write_bytes(args.resource_readiness.read_bytes())
         procedure_receipt.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                                  comparison_id=frozen["comparison_id"])
-        if frozen["version"] == 2:
+        if frozen["version"] in (2, 4):
             procedure_receipt["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     (evidence / "procedure-status.json").write_text(json.dumps(procedure_receipt, indent=2) + "\n")
     if not args.branch.startswith("codex/"):

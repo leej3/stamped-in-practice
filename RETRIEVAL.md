@@ -28,7 +28,8 @@ pixi run git -C "$experiment" annex get --from con-hub -- results/group_tstat.ni
 ```
 
 Replace the experiment and final file path with the ones you need.
-Each experiment's `coordinator/README.md` links its original capture, execution records and manifests; retrieve those annex paths the same way.
+Current tool-neutral experiments link their original captures, execution records and manifests from `coordinator/README.md`.
+Older development experiments use `coordinator/retention-01/README.md`; retrieve the linked annex paths the same way.
 Git's remote configuration is local to a clone, so it must be established for each selected experiment.
 Never put credentials in remote URLs or tracked files.
 

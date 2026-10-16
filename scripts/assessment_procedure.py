@@ -43,6 +43,47 @@ NEUTRAL_REPLAY = dict(REPLAY, source="original-complete-delivery",
                       outputs="explicit documented generated files; protect supplied inputs")
 NEUTRAL_THREAD_ENV = {name: "1" for name in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
     "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS")}
+OPERATIONAL_JUDGE = "prompts/neutral-judge-operational.md"
+OPERATIONAL_FILES = NEUTRAL_FILES + (OPERATIONAL_JUDGE, "scripts/aggregate_comparison.py",
+                                    "scripts/scientific_judgment.py")
+OPERATIONAL_RUNTIME = {
+    "kind": "canonical-capture-complete-operational-copy-v1",
+    "git_optional_locks": "0",
+    "git_config": {"annex.merge-annex-branches": "false", "annex.alwayscommit": "false"},
+    "permitted_metadata_paths": ["content/workspace/.git/annex/keysdb/" + name
+                                  for name in ("db", "db-shm", "db-wal")],
+    "canonical_validation": "exact-before-and-after",
+    "operational_retention": "complete-final-bytes-and-full-delta",
+    "database_logical_equivalence": "not-claimed",
+    "replay_source": "fresh-complete-copy-of-canonical",
+}
+
+
+def is_neutral(manifest):
+    return manifest.get("version") in (3, 4)
+
+
+def git_config_overlay(inherited, settings):
+    """Append Git configuration without dropping existing selectors or overlays."""
+    environment = inherited.copy()
+    try:
+        count = int(environment.get("GIT_CONFIG_COUNT", "0"))
+    except ValueError as error:
+        raise SystemExit("Invalid inherited GIT_CONFIG_COUNT") from error
+    if count < 0 or any("GIT_CONFIG_KEY_" + str(i) not in environment or
+                        "GIT_CONFIG_VALUE_" + str(i) not in environment for i in range(count)):
+        raise SystemExit("Incomplete inherited Git configuration overlay")
+    for index, (key, value) in enumerate(settings.items(), count):
+        environment["GIT_CONFIG_KEY_" + str(index)] = key
+        environment["GIT_CONFIG_VALUE_" + str(index)] = value
+    environment["GIT_CONFIG_COUNT"] = str(count + len(settings))
+    return environment
+
+
+def operational_environment(inherited):
+    environment = git_config_overlay(inherited, OPERATIONAL_RUNTIME["git_config"])
+    environment["GIT_OPTIONAL_LOCKS"] = OPERATIONAL_RUNTIME["git_optional_locks"]
+    return environment
 
 def neutral_environment(manifest, inherited, role):
     environment = inherited.copy()
@@ -67,7 +108,9 @@ def duct_identity(executable):
 
 
 def judge_template_name(manifest):
-    return NEUTRAL_JUDGE if manifest.get("version") == 3 else "judge-prompt.md"
+    if manifest.get("version") == 4:
+        return OPERATIONAL_JUDGE
+    return NEUTRAL_JUDGE if is_neutral(manifest) else "judge-prompt.md"
 
 
 def sha256(content):
@@ -242,17 +285,18 @@ def load_procedure(path, expected_sha256):
         raise SystemExit("Formal mode requires --procedure-sha256 from the registered seal")
     require_equal(sha256(content), expected_sha256, "procedure manifest SHA-256")
     manifest = json.loads(content)
-    if manifest.get("version") not in (1, 2, 3) or manifest.get("status") != "sealed":
+    if manifest.get("version") not in (1, 2, 3, 4) or manifest.get("status") != "sealed":
         raise SystemExit("Formal mode requires a supported sealed procedure")
     require_equal(manifest["conditions"], list(CONDITIONS), "four research conditions")
-    neutral = manifest["version"] == 3
+    neutral = is_neutral(manifest)
     require_equal(manifest["replay"], NEUTRAL_REPLAY if neutral else REPLAY, "supported replay scope")
-    expected = set(NEUTRAL_FILES if neutral else FIXED_FILES) | {relative_path(manifest["resources"]["path"])}
+    files = OPERATIONAL_FILES if manifest["version"] == 4 else NEUTRAL_FILES if neutral else FIXED_FILES
+    expected = set(files) | {relative_path(manifest["resources"]["path"])}
     require_equal(set(manifest["fixed_files"]), expected, "complete fixed-file boundary")
-    if manifest["version"] == 2:
+    if manifest["version"] in (2, 4):
         research_procedure(manifest)
     elif "assessment_amendment" in manifest:
-        raise SystemExit("Assessment amendments require a version 2 seal")
+        raise SystemExit("Assessment amendments require a version 2 or 4 seal")
     if neutral:
         require_equal(manifest.get("protocol"), NEUTRAL_PROTOCOL, "neutral protocol identity")
         require_equal(set(manifest["role_hosts"]), {"research", "judge"}, "role-specific host identities")
@@ -265,6 +309,8 @@ def research_procedure(manifest):
     """Resolve the exact original research seal in an assessment-only amendment."""
     if manifest.get("version") in (1, 3):
         return manifest
+    if manifest.get("version") == 4:
+        return operational_research_procedure(manifest)
     amendment = manifest.get("assessment_amendment", {})
     require_equal(amendment.get("scope"), "assessment-only", "amendment scope")
     original = amendment.get("research_procedure_json")
@@ -307,6 +353,57 @@ def research_procedure(manifest):
     return research
 
 
+def operational_research_procedure(manifest):
+    """Admit only a separately sealed, retained-object assessment of neutral-v1."""
+    amendment = manifest.get("assessment_amendment", {})
+    require_equal(amendment.get("scope"), "assessment-only", "amendment scope")
+    original = amendment.get("research_procedure_json")
+    allocation_bytes = amendment.get("allocation_json")
+    if not isinstance(original, str) or not isinstance(allocation_bytes, str):
+        raise SystemExit("Operational assessment requires original procedure and allocation bytes")
+    require_equal(sha256(original.encode()), amendment.get("research_procedure_sha256"), "original research digest")
+    require_equal(sha256(allocation_bytes.encode()), amendment.get("allocation_sha256"), "original allocation digest")
+    research, allocation = json.loads(original), json.loads(allocation_bytes)
+    require_equal(research.get("version"), 3, "original neutral research version")
+    require_equal(research.get("status"), "sealed", "original neutral research status")
+    require_equal(research.get("protocol"), NEUTRAL_PROTOCOL, "original neutral protocol")
+    require_equal(set(research["fixed_files"]), set(NEUTRAL_FILES) | {relative_path(research["resources"]["path"])},
+                  "original neutral fixed-file boundary")
+    require_equal(set(manifest["fixed_files"]), set(research["fixed_files"]) | (set(OPERATIONAL_FILES) - set(NEUTRAL_FILES)),
+                  "operational fixed-file boundary")
+    for key in ("comparison_id", "conditions", "study", "resources", "starting_environment", "host_identity",
+                "settings", "replay", "gitmodules_sha256", "protocol", "role_hosts", "common_resources_sha256", "assessment"):
+        require_equal(manifest.get(key), research.get(key), "operational assessment preserves " + key)
+    changes = {"scripts/assessment_procedure.py", "scripts/prepare_launch.py", "scripts/launch_native_probe.py",
+               "scripts/judge_workspace.py", "scripts/delivery_snapshot.py", "scripts/assessment.py"}
+    for name in set(research["fixed_files"]) - changes:
+        require_equal(manifest["fixed_files"][name], research["fixed_files"][name], "operational assessment preserves " + name)
+    require_equal(manifest.get("operational_runtime"), OPERATIONAL_RUNTIME, "operational runtime contract")
+    require_equal(allocation.get("comparison_id"), research["comparison_id"], "allocated comparison")
+    require_equal(allocation.get("conditions"), research["conditions"], "allocated conditions")
+    assigned = [row["run"] for group in allocation.get("rounds", []) for row in group["launch_order"]]
+    if not assigned or len(assigned) != len(set(assigned)):
+        raise SystemExit("Operational assessment requires unique original allocated runs")
+    retained, seen = amendment.get("retained_objects"), set()
+    if not isinstance(retained, list) or not retained:
+        raise SystemExit("Operational assessment requires retained complete-delivery identities")
+    for item in retained:
+        if set(item) != {"run", "seed_commit", "result_commit", "worker_end_state_sha256", "delivery_capture_sha256"}:
+            raise SystemExit("Invalid retained complete-delivery identity fields")
+        if item["run"] not in assigned or item["run"] in seen:
+            raise SystemExit("Retained run must be unique and originally allocated")
+        seen.add(item["run"])
+        for field in ("seed_commit", "result_commit"):
+            if field == "result_commit" and item[field] is None:
+                continue
+            if not isinstance(item[field], str) or not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", item[field]):
+                raise SystemExit("Invalid retained commit identity")
+        for field in ("worker_end_state_sha256", "delivery_capture_sha256"):
+            if not isinstance(item[field], str) or not re.fullmatch(r"[0-9a-f]{64}", item[field]):
+                raise SystemExit("Invalid retained delivery digest")
+    return research
+
+
 def check_worker_sources(manifest, coordinator, study, base):
     """Validate old research identities without pretending old code is executing."""
     original = research_procedure(manifest)
@@ -314,19 +411,26 @@ def check_worker_sources(manifest, coordinator, study, base):
                   validate_working=manifest.get("version") in (1, 3))
 
 
-def check_retained_target(manifest, seed, seed_commit, result_commit, stop_receipt):
+def check_retained_target(manifest, seed, seed_commit, result_commit, stop_receipt, capture_sha256=None):
     if manifest.get("version") in (1, 3):
         return
     research_procedure(manifest)
+    matched = False
     for item in manifest["assessment_amendment"]["retained_objects"]:
         if (item["run"] != seed.get("run") and
-                (item["seed_commit"] == seed_commit or item["result_commit"] == result_commit)):
+                (item["seed_commit"] == seed_commit or
+                 (result_commit is not None and item["result_commit"] == result_commit))):
             raise SystemExit("A retained object cannot be relabeled as a new run")
         if item["run"] == seed.get("run"):
             require_equal(seed_commit, item["seed_commit"], "retained worker seed")
             require_equal(result_commit, item["result_commit"], "retained scientific result")
             require_equal(sha256(Path(stop_receipt).read_bytes()), item["worker_end_state_sha256"],
                           "retained original stop receipt")
+            if manifest.get("version") == 4:
+                require_equal(capture_sha256, item["delivery_capture_sha256"], "retained original delivery capture")
+            matched = True
+    if manifest.get("version") == 4 and not matched:
+        raise SystemExit("Operational assessment cannot add an unregistered retained object")
 
 
 def check_sources(manifest, coordinator, study, base=None, *, validate_working=True):
@@ -375,7 +479,7 @@ def check_sources(manifest, coordinator, study, base=None, *, validate_working=T
 
 
 def check_host(manifest, args):
-    if manifest.get("version") == 3:
+    if is_neutral(manifest):
         role = getattr(args, "role", "research")
         require_equal(host_identity(args), manifest["role_hosts"][role]["identity"],
                       role + " native runtime/profile/hook resources")
@@ -399,7 +503,7 @@ def check_host(manifest, args):
 
 
 def check_settings(manifest, args):
-    if manifest.get("version") == 2 and args.role != "judge":
+    if manifest.get("version") in (2, 4) and args.role != "judge":
         raise SystemExit("An assessment-only amendment cannot authorize research launches")
     require_equal(launch_settings(args), manifest["settings"][args.role], args.role + " settings")
 
@@ -416,7 +520,7 @@ def check_readiness(manifest, path):
 
 
 def check_native(manifest, cli, profile, role="research"):
-    identity = manifest["role_hosts"][role]["identity"] if manifest.get("version") == 3 else manifest["host_identity"]
+    identity = manifest["role_hosts"][role]["identity"] if is_neutral(manifest) else manifest["host_identity"]
     require_equal(sha256(cli.read_bytes()), identity["cli_sha256"], "native CLI")
     require_equal(profile_digest(profile), identity["profile_settings_sha256"],
                   "native profile settings")
@@ -427,7 +531,7 @@ def check_native(manifest, cli, profile, role="research"):
 def check_seed(manifest, seed):
     require_equal(seed.get("study_path"), manifest["study"]["path"], "worker study identity")
     require_equal(seed.get("study_input_tree"), manifest["study"]["input_tree"], "worker input tree")
-    if manifest.get("version") == 3:
+    if is_neutral(manifest):
         require_equal(seed.get("protocol"), NEUTRAL_PROTOCOL, "worker protocol")
         require_equal(seed.get("common_prompt_sha256"), manifest["fixed_files"][NEUTRAL_COMMON],
                       "neutral common instructions")
@@ -461,7 +565,7 @@ def retain_inputs(manifest, coordinator, study, destination):
 
 
 def replay_instruction(manifest):
-    if manifest.get("version") == 3:
+    if is_neutral(manifest):
         return ("\nFrozen captured-delivery replay scope: " + json.dumps(manifest["replay"], sort_keys=True) +
                 "\nUse fresh-rerun --path \"$STAMPED_JUDGE_TARGET\" --entry from the original documentation "
                 "with explicit --outputs for generated files and --workdir/--output under STAMPED_JUDGE_OUTPUT. "
@@ -493,8 +597,9 @@ def seal(args):
     if requirements.get("schema_version") != 1 or not requirements.get("requirements"):
         raise SystemExit("--resources requires the public readiness requirements JSON")
     neutral = getattr(args, "protocol", "legacy") == NEUTRAL_PROTOCOL
+    operational = neutral and bool(getattr(args, "research_procedure", None))
     files = {name: sha256(committed_file(coordinator, base, name))
-             for name in (*(NEUTRAL_FILES if neutral else FIXED_FILES), resources)}
+             for name in (*(OPERATIONAL_FILES if operational else NEUTRAL_FILES if neutral else FIXED_FILES), resources)}
     for condition in CONDITIONS:
         assignment(blob(coordinator, base, "conditions.json"), condition)
     selected_guidance = {name for name in (args.rubric, args.reference, *args.guidance_dependency) if name}
@@ -558,10 +663,18 @@ def seal(args):
     if getattr(args, "research_procedure", None):
         original = Path(args.research_procedure).read_bytes()
         load_procedure(args.research_procedure, args.research_procedure_sha256)
-        manifest.update(version=2, assessment_amendment={
+        manifest.update(version=4 if operational else 2, assessment_amendment={
             "scope": "assessment-only", "research_procedure_json": original.decode(),
             "research_procedure_sha256": args.research_procedure_sha256,
             "retained_objects": json.loads(Path(args.retained_objects).read_text())})
+        if operational:
+            if not getattr(args, "allocation", None) or not getattr(args, "allocation_sha256", None):
+                raise SystemExit("Operational amendment requires the original allocation and independent digest")
+            allocation_bytes = Path(args.allocation).read_bytes()
+            require_equal(sha256(allocation_bytes), args.allocation_sha256, "selected allocation digest")
+            manifest["assessment_amendment"].update(allocation_json=allocation_bytes.decode(),
+                                                   allocation_sha256=args.allocation_sha256)
+            manifest["operational_runtime"] = copy.deepcopy(OPERATIONAL_RUNTIME)
         research_procedure(manifest)
     check_sources(manifest, coordinator, args.study, base)
     check_host(manifest, args)
@@ -580,7 +693,7 @@ def replay_arguments(manifest, arguments, target, output):
     parser = argparse.ArgumentParser(allow_abbrev=False)
     parser.add_argument("--path", type=Path, required=True)
     parser.add_argument("--entry", required=True)
-    parser.add_argument("--outputs", nargs="+", required=manifest.get("version") == 3)
+    parser.add_argument("--outputs", nargs="+", required=is_neutral(manifest))
     parser.add_argument("--in-container")
     parser.add_argument("--workdir", type=Path, required=True)
     parser.add_argument("-o", "--output", type=Path, required=True)
@@ -595,7 +708,7 @@ def replay_arguments(manifest, arguments, target, output):
     for path in (args.workdir, args.output):
         if not path.resolve().is_relative_to(output.resolve()):
             raise SystemExit("Formal replay evidence must stay under STAMPED_JUDGE_OUTPUT")
-    if manifest.get("version") == 3:
+    if is_neutral(manifest):
         from delivery_snapshot import validate_capture
         identity = validate_capture(Path(os.environ["STAMPED_DELIVERY_MANIFEST"]))
         target_identity = {"target_commit": identity["commit"], "capture": identity["capture"]}
@@ -642,6 +755,9 @@ def main():
     parser.add_argument("--research-procedure-sha256")
     parser.add_argument("--retained-objects", type=Path,
                         help="Exact already completed worker identities for an amendment")
+    parser.add_argument("--allocation", type=Path,
+                        help="Original neutral allocation bytes for a version 4 assessment amendment")
+    parser.add_argument("--allocation-sha256")
     for name in ("env-manifest", "cli", "codex-home", "approved-hooks", "trust-sync", "resolver"):
         parser.add_argument("--" + name, type=Path)
     parser.add_argument("--model", default="gpt-6-luna")

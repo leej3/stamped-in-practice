@@ -41,6 +41,7 @@ EXTRACTION = obj({"extraction_status": {"enum": ["explicit", "missing", "ambiguo
 NATIVE = obj({"procedure_status": ARTIFACT, "result": ARTIFACT})
 JUDGMENT = obj({"judgment_id": TEXT, "response": ARTIFACT, "report": ARTIFACT,
                 "scientific_report": ARTIFACT,
+                "structured_scientific": ARTIFACT,
                 "native": NATIVE, "output_binding": ARTIFACT,
                 "adequacy": EXTRACTION, "conclusion": EXCERPT}, ("judgment_id",))
 SUPPLEMENTARY = obj(dict(JUDGMENT["properties"], reason=TEXT), ("judgment_id", "reason"))
@@ -331,6 +332,22 @@ class ProvenanceGate:
         seal = parse_json(artifact(selection["assessment_seal"], base))
         if gate.neutral:
             required_fields(research, {"protocol": {"const": "neutral-v1"}})
+            if seal.get("version") == 4:
+                import assessment_procedure as procedure
+                required_fields(seal, {"status": {"const": "sealed"},
+                                      "protocol": {"const": "neutral-v1"}})
+                try:
+                    embedded = procedure.operational_research_procedure(seal)
+                except SystemExit as error:
+                    raise ValueError(str(error)) from error
+                amendment = seal["assessment_amendment"]
+                require_equal(amendment["research_procedure_json"].encode(), original_bytes,
+                              "original neutral research bytes")
+                require_equal(embedded, research, "original neutral research identity")
+                require_equal(parse_json(amendment["allocation_json"]), allocation, "original allocation")
+                require_equal(contract.assessment_pin, research["assessment"], "unchanged neutral assessor pin")
+                gate.seal, gate.seal_sha256 = seal, selection["assessment_seal"]["sha256"]
+                return gate
             require_equal(selection["assessment_seal"]["sha256"], gate.research_sha256,
                           "neutral original assessment seal")
             require_equal(contract.assessment_pin, research["assessment"], "loaded neutral assessor pin")
@@ -459,6 +476,7 @@ class ProvenanceGate:
         if digest not in (self.research_sha256, self.seal_sha256):
             raise ValueError("Judgment names an unapproved assessment version")
         original_version = digest == self.research_sha256
+        operational = bool(not original_version and self.neutral and self.seal.get("version") == 4)
         require_equal(status["procedure_sha256"], digest, "assessment procedure digest")
         if not original_version or "research_procedure_sha256" in status:
             require_equal(status.get("research_procedure_sha256"), self.research_sha256,
@@ -469,7 +487,8 @@ class ProvenanceGate:
         required_fields(result, {"role": {"const": "judge"}, "condition": {"type": "null"},
             "procedure": {"type": "object"},
             "assessment_pin": {"type": "object"}, "target": {"type": "object"},
-            "target_unchanged": {"const": True}, "returncode": {"type": "integer"},
+            "target_unchanged": {"type": "boolean"} if operational else {"const": True},
+            "returncode": {"type": "integer"},
             "finished_at": {"type": "string", "format": "date-time"},
             "native_session_ids": {"type": "array", "minItems": 1, "uniqueItems": True,
                                    "items": {"type": "string", "format": "uuid"}}})
@@ -477,10 +496,12 @@ class ProvenanceGate:
         expected_pin = self.research["assessment"] if original_version else self.seal["assessment"]
         require_equal(result["assessment_pin"], expected_pin, "native assessor source/runtime pin")
         if self.neutral:
-            required_fields(result["target"], {"schema_version": {"const": 2}, "target_path": TEXT,
+            required_fields(result["target"], {"schema_version": {"const": 3 if operational else 2}, "target_path": TEXT,
                                                "target_commit": NULLABLE_COMMIT, "capture": CAPTURE})
             require_equal(result["target"]["capture"]["sha256"], run["delivery_capture"]["sha256"],
                           "native original delivery capture")
+            if operational:
+                self.validate_operational(run, result, base)
         else:
             required_fields(result["target"], {"schema_version": {"const": 1}, "target_path": TEXT,
                                                "target_commit": COMMIT, "target_tree": COMMIT})
@@ -491,7 +512,74 @@ class ProvenanceGate:
                 "target": result["target"], "returncode": result["returncode"],
                 "finished_at": result["finished_at"], **({"original_delivery": {
                     key: stop[key] for key in ("capture", "capture_status", "head_commit", "errors", "omissions")
-                }} if self.neutral else {})}
+                }} if self.neutral else {}), **({"assessment_version": 4,
+                    "operational_integrity": result["operational_integrity"]} if operational else {})}
+
+    def validate_operational(self, run, result, base):
+        """Admit v4 explicitly; the original v3 exact-target gate is unchanged."""
+        from delivery_snapshot import operational_delta, OPERATIONAL_METADATA, OPAQUE_GIT_POLICY
+        import assessment_procedure as procedure
+        matches = [row for row in self.seal["assessment_amendment"]["retained_objects"]
+                   if row["run"] == run["run_id"]]
+        if len(matches) != 1:
+            raise ValueError("Operational judgment requires its prebound original retained object")
+        retained = matches[0]
+        for key in ("seed_commit", "result_commit"):
+            require_equal(run[key], retained[key], "operational retained " + key)
+        for key in ("worker_end_state", "delivery_capture"):
+            require_equal(run[key]["sha256"], retained[key + "_sha256"], "operational retained " + key)
+        required_fields(result, {"canonical_unchanged": {"const": True},
+            "operational_metadata_changed": {"type": "boolean"}, "operational_integrity": {"type": "object"},
+            "operational_runtime": {"type": "object"}, "git_config_overlay": {"type": "object"}})
+        require_equal(result["operational_runtime"], procedure.OPERATIONAL_RUNTIME, "native operational runtime")
+        require_equal(result["procedure"].get("operational_runtime"), procedure.OPERATIONAL_RUNTIME,
+                      "procedure operational runtime")
+        overlay = result["git_config_overlay"]
+        required_fields(overlay, {"inherited_count": {"type": "integer", "minimum": 0},
+            "effective_count": {"type": "integer", "minimum": 2}, "appended": {"type": "object"},
+            "GIT_OPTIONAL_LOCKS": {"const": "0"}})
+        require_equal(overlay["appended"], procedure.OPERATIONAL_RUNTIME["git_config"], "native Git overlay")
+        require_equal(overlay["effective_count"], overlay["inherited_count"] + 2, "preserved Git overlay")
+        target = result["target"]
+        required_fields(target, {"operational_capture": CAPTURE, "canonical_target_path": TEXT,
+            "operational_container_modes": {"type": "object"}, "canonical_container_modes": {"type": "object"}})
+        require_equal(target["operational_capture"]["sha256"], run["delivery_capture"]["sha256"],
+                      "initial complete operational copy")
+        if target["operational_capture"]["uri"] == target["capture"]["uri"]:
+            raise ValueError("Operational and canonical capture must be separate")
+        integrity = result["operational_integrity"]
+        required_fields(integrity, {"schema_version": {"const": 1},
+            "kind": {"const": "assessment-operational-integrity"},
+            "canonical_unchanged": {"const": True}, "protected_unchanged": {"const": True},
+            "canonical_capture": CAPTURE, "operational_initial_sha256": SHA,
+            "capture_status": {"const": "complete"}, "errors": {"const": []}, "omissions": {"const": []},
+            "final_capture": ARTIFACT, "delta": ARTIFACT})
+        require_equal(integrity["canonical_capture"], target["capture"], "canonical identity at stop")
+        require_equal(integrity["operational_initial_sha256"], run["delivery_capture"]["sha256"],
+                      "operational baseline identity")
+        final = parse_json(artifact(integrity["final_capture"], base))
+        required_fields(final, {"schema": {"const": "original-delivery-v1"},
+            "kind": {"const": "retained-container"},
+            "policy": {"type": "object", "properties": {
+                "git_dependencies": {"const": OPAQUE_GIT_POLICY}}, "required": ["git_dependencies"]},
+            "workspace": {"const": "content/workspace"}, "capture_status": {"const": "complete"},
+            "errors": {"const": []}, "omissions": {"const": []}, "entries": {"type": "array"}})
+        delta, permitted, rejected = operational_delta(artifact(run["delivery_capture"], base), final,
+                                                       target["operational_container_modes"])
+        if rejected:
+            raise ValueError("Protected operational content changed: " + str(rejected))
+        expected = {"canonical_capture": target["capture"],
+            "operational_initial_sha256": run["delivery_capture"]["sha256"], "delta": delta,
+            "permitted_metadata_changes": permitted, "rejected_changes": [],
+            "logical_database_equivalence": "not-claimed"}
+        require_equal(parse_json(artifact(integrity["delta"], base)), expected, "full operational delta")
+        for key, value in {"permitted_metadata_changes": permitted, "rejected_changes": [],
+                "permitted_metadata_paths": sorted(OPERATIONAL_METADATA),
+                "logical_database_equivalence": "not-claimed", "target_unchanged": not any(delta.values()),
+                "operational_metadata_changed": bool(permitted)}.items():
+            require_equal(integrity.get(key), value, "operational integrity " + key)
+        for key in ("target_unchanged", "canonical_unchanged", "operational_metadata_changed"):
+            require_equal(result[key], integrity[key], "native " + key)
 
     def validate_capture_identity(self, run, stop, base):
         """Bind retained manifest bytes without executing or rechecking worker files."""
@@ -517,7 +605,7 @@ class ProvenanceGate:
 
 def validate_output_binding(supplied, check, base):
     """Verify a retained coordinator attribution; native receipts do not hash outputs."""
-    if not any(key in supplied for key in ("response", "report", "scientific_report", "adequacy", "conclusion")):
+    if not any(key in supplied for key in ("response", "report", "scientific_report", "structured_scientific", "adequacy", "conclusion")):
         return
     if "output_binding" not in supplied:
         raise ValueError("Outcome extraction requires a retained output_binding manifest")
@@ -525,14 +613,38 @@ def validate_output_binding(supplied, check, base):
     required_fields(binding, {"schema_version": {"const": 1},
         "kind": {"const": "coordinator-assessment-output-binding"},
         "native_result_sha256": SHA, "native_session_ids": {"type": "array"},
-        "outputs": obj({"response": ARTIFACT, "report": ARTIFACT, "scientific_report": ARTIFACT})})
+        "outputs": obj({"response": ARTIFACT, "report": ARTIFACT, "scientific_report": ARTIFACT,
+                        "structured_scientific": ARTIFACT})})
     require_equal(binding["native_result_sha256"], supplied["native"]["result"]["sha256"],
                   "bound native result bytes")
     require_equal(binding["native_session_ids"], check["native_session_ids"], "bound native sessions")
-    for key in ("response", "report", "scientific_report"):
+    for key in ("response", "report", "scientific_report", "structured_scientific"):
         if key in supplied:
             require_equal(binding["outputs"].get(key, {}).get("sha256"), supplied[key]["sha256"],
                           "bound " + key + " bytes")
+
+
+def validate_structured_scientific(supplied, check, base):
+    """A v4 reporting-format failure affects scientific measures only."""
+    from scientific_judgment import parse_record, validate_excerpt
+    if "structured_scientific" not in supplied:
+        raise ValueError("Version 4 scientific measures require scientific-judgment.json")
+    # Original workspace validation uses validate_record. Retained objects may
+    # be annex links or have different storage paths; bind their bytes without
+    # claiming publication layout equivalence.
+    structured = parse_record(artifact(supplied["structured_scientific"], base))
+    require_equal(structured["delivery_capture_sha256"],
+                  check["original_delivery"]["capture"]["sha256"], "structured original capture")
+    require_equal(supplied.get("scientific_report", {}).get("sha256"),
+                  structured["report"]["sha256"], "structured scientific report")
+    report = artifact(supplied["scientific_report"], base).decode("utf-8")
+    validate_excerpt(structured["adequacy_evidence"], report)
+    if structured["hypothesis_conclusion"] is not None:
+        validate_excerpt(structured["hypothesis_conclusion"], report)
+    require_equal(supplied.get("adequacy"), {"extraction_status": "explicit",
+        "category": structured["scientific_adequacy"], "excerpt": structured["adequacy_evidence"]},
+        "explicit scientific category")
+    require_equal(supplied.get("conclusion"), structured["hypothesis_conclusion"], "verbatim hypothesis conclusion")
 
 
 def excerpt_context(excerpt, report):
@@ -860,6 +972,12 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
             extraction = supplied.get("adequacy", {"extraction_status": "missing", "category": None})
             report = None
             report_error = None
+            structured_error = None
+            if judgment.get("assessment_version") == 4:
+                try:
+                    validate_structured_scientific(supplied, judgment, base)
+                except (OSError, ValueError, TypeError, KeyError) as error:
+                    structured_error = str(error)
             try:
                 reports = {key: artifact(supplied[key], base).decode()
                            for key in ("report", "scientific_report") if key in supplied}
@@ -872,13 +990,16 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
                 issue(run_id, role, "report", error)
             try:
                 status = extraction["extraction_status"]
+                if structured_error:
+                    raise ValueError(structured_error)
                 if report_error:
                     raise ValueError("Report is invalid; narrative extraction cannot be verified")
                 if status == "explicit":
                     if report is None or "excerpt" not in extraction or extraction["category"] is None:
                         raise ValueError("Explicit adequacy requires report, category and excerpt")
                     context = excerpt_context(extraction["excerpt"], report)
-                    for text in (extraction["excerpt"]["quote"], context):
+                    for text in (() if judgment.get("assessment_version") == 4 else
+                                 (extraction["excerpt"]["quote"], context)):
                         # Inspect the complete cited lines too: quoting only "supported"
                         # from "not supported" must never reverse a judge's verdict.
                         plain = re.sub(r"[*_'\"\x60]", "", text.casefold())
@@ -902,6 +1023,8 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
                 issue(run_id, role, "adequacy", error)
             if "conclusion" in supplied:
                 try:
+                    if structured_error:
+                        raise ValueError(structured_error)
                     if report is None:
                         raise ValueError("Conclusion requires a hashed report")
                     judgment["conclusion"] = excerpt_text(supplied["conclusion"], report)

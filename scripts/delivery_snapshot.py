@@ -14,6 +14,7 @@ import stat
 
 
 SCHEMA = "original-delivery-v1"
+OPAQUE_GIT_POLICY = "original-dependencies-retained-without-reinterpretation"
 # These are credential/personal stores, not scientific caches. Do not exclude
 # .pixi, .venv, .cache, lockfiles, or other reconstructable environment bytes.
 CREDENTIAL_NAMES = frozenset({
@@ -195,13 +196,17 @@ def _local_head(bundle, entries, dependencies=()):
     return value if value and re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", value) else None
 
 
-def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifacts=None):
+def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifacts=None,
+                  *, inspect_git_dependencies=True):
     """Retain workspace and explicitly declared external artifacts outside it.
 
     A declaration is {path: absolute path, declaration: JSON provenance} (the
     spelling provenance is also accepted). Symlinks are retained, never followed.
     Known credential roots are excluded with a reason. Partial bundles remain
     inspectable and verifiable; consumers decide whether partial is admissible.
+    For an already captured container, inspect_git_dependencies=False preserves
+    its bytes without reinterpreting relocated pointers. Its original manifest
+    remains the authority for dependencies; this does not permit traversal.
     """
     root = Path(workspace).absolute()
     if root.is_symlink() or not root.is_dir():
@@ -244,6 +249,9 @@ def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifac
                 "declared_artifacts": [], "omissions": omissions, "errors": errors,
                 "policy": {"ignored_files": "included", "environment_and_cache_bytes": "included",
                            "symlinks": "preserved without following", "credentials": "excluded with reason"}}
+    if not inspect_git_dependencies:
+        manifest["kind"] = "retained-container"
+        manifest["policy"]["git_dependencies"] = OPAQUE_GIT_POLICY
 
     def fail(path, operation, error):
         errors.append({"path": path, "operation": operation, "error": str(error)})
@@ -330,7 +338,8 @@ def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifac
             fail(relative, "consistency", exc)
     # Pointers outside the retained tree must not pull in other repositories.
     # An approved declaration may independently retain such a dependency.
-    retained_sources = {relative: source for source, relative, _ in checks}
+    retained_sources = ({relative: source for source, relative, _ in checks}
+                        if inspect_git_dependencies else {})
     retained_kinds = {row["path"]: row["kind"] for row in entries}
     git_roots = {source for path, source in retained_sources.items()
                  if PurePosixPath(path).name == ".git" and retained_kinds.get(path) == "directory"}
@@ -359,7 +368,7 @@ def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifac
             break
         git_roots.update(added)
     manifest["git_dependencies"] = []
-    for row in entries:
+    for row in (entries if inspect_git_dependencies else ()):
         path = row["path"]
         parts = PurePosixPath(path).parts
         source = retained_sources.get(path)
@@ -392,7 +401,8 @@ def save_delivery(workspace, output, worker, seed_receipt=None, declared_artifac
                 omissions.append({"path": path, "kind": "git-dependency",
                                   "reason": "Git dependency pointer retained; target not automatically traversed"})
     try:
-        head = _local_head(bundle, entries, manifest["git_dependencies"])
+        head = (_local_head(bundle, entries, manifest["git_dependencies"])
+                if inspect_git_dependencies else None)
     except (OSError, ValueError, UnicodeError) as exc:
         head = None
         fail("content/workspace/.git", "HEAD", exc)
@@ -579,3 +589,107 @@ def materialize_capture(manifest_path, destination):
     copied_identity = validate_capture(copied_manifest, identity["capture"]["sha256"])
     return {"manifest": str(copied_manifest), "target": str(target / manifest["workspace"]),
             "identity": copied_identity}
+
+
+OPERATIONAL_METADATA = frozenset("content/workspace/.git/annex/keysdb/" + name
+                                 for name in ("db", "db-shm", "db-wal"))
+
+
+def capture_container_modes(manifest_path):
+    """Bind materialization wrappers outside the original manifest entry rows."""
+    bundle = Path(manifest_path).absolute().parent
+    modes = {}
+    for name in (".", "content", "content/external", "manifest.json"):
+        metadata = (bundle / name).lstat()
+        expected = stat.S_ISREG if name == "manifest.json" else stat.S_ISDIR
+        if not expected(metadata.st_mode):
+            raise ValueError("Unsafe capture wrapper: " + name)
+        modes[name] = stat.S_IMODE(metadata.st_mode)
+    return modes
+
+
+def operational_delta(original_bytes, retained, container_modes):
+    """Pure inventory comparison; aggregation can verify it without target I/O."""
+    if set(container_modes) != {".", "content", "content/external", "manifest.json"}:
+        raise ValueError("Incomplete operational wrapper identity")
+    baseline = json.loads(original_bytes)
+    prefix = "content/workspace/"
+    actual = {}
+    for row in retained["entries"]:
+        if row["path"] == "content/workspace":
+            name = "."
+        elif row["path"].startswith(prefix):
+            name = row["path"][len(prefix):]
+        else:
+            raise ValueError("Unexpected operational retention root")
+        if name in actual:
+            raise ValueError("Duplicate operational inventory entry")
+        actual[name] = dict(row, path=name)
+    expected = {row["path"]: row for row in baseline["entries"]}
+    if len(expected) != len(baseline["entries"]):
+        raise ValueError("Duplicate canonical inventory entry")
+    expected.update({name: {"path": name, "kind": "directory", "mode": mode}
+                     for name, mode in container_modes.items() if name != "manifest.json"})
+    expected["manifest.json"] = {"path": "manifest.json", "kind": "file",
+        "mode": container_modes["manifest.json"], "size": len(original_bytes),
+        "sha256": _hash(original_bytes)}
+    delta = {
+        "added": [actual[k] for k in sorted(actual.keys() - expected.keys())],
+        "missing": [expected[k] for k in sorted(expected.keys() - actual.keys())],
+        "modified": [{"path": k, "before": expected[k], "after": actual[k]}
+                     for k in sorted(actual.keys() & expected.keys()) if actual[k] != expected[k]],
+    }
+    allowed, rejected = [], []
+    for change, rows in delta.items():
+        for row in rows:
+            path = row["path"]
+            versions = (row["before"], row["after"]) if change == "modified" else (row,)
+            regular = all(v["kind"] == "file" for v in versions)
+            same_mode = change != "modified" or row["before"]["mode"] == row["after"]["mode"]
+            (allowed if path in OPERATIONAL_METADATA and regular and same_mode else rejected).append(
+                {"change": change, "path": path})
+    return delta, allowed, rejected
+
+
+def retain_operational_delta(canonical_manifest, operational_manifest, container_modes, output):
+    """Retain every final byte, then classify only three SQLite paths separately.
+
+    The canonical validator remains strict. This does not claim logical database
+    equivalence, ignore changes, repair targets, or admit arbitrary Git metadata.
+    """
+    canonical_manifest, operational_manifest = map(Path, (canonical_manifest, operational_manifest))
+    original_bytes = _retained_bytes(canonical_manifest.parent, canonical_manifest.name)
+    canonical = validate_capture(canonical_manifest, _hash(original_bytes))
+    # Retain the entire operational bundle, including external evidence and its
+    # original manifest. The new outer capture records mutations without repair.
+    receipt = save_delivery(operational_manifest.parent, output,
+                            {"kind": "assessment-operational-as-found"},
+                            inspect_git_dependencies=False)
+    final_manifest = Path(receipt["capture"]["uri"])
+    validate_capture(final_manifest, receipt["capture"]["sha256"])
+    retained = json.loads(final_manifest.read_bytes())
+    delta, allowed, rejected = operational_delta(original_bytes, retained, container_modes)
+    canonical_after = validate_capture(canonical_manifest, canonical["capture"]["sha256"])
+    if canonical_after != canonical:
+        raise ValueError("Canonical capture identity changed during assessment retention")
+    delta_path = Path(output) / "operational-delta.json"
+    # The outer capture lives below output; the additive delta is outside it.
+    delta_bytes = _json_bytes({"canonical_capture": canonical["capture"],
+        "operational_initial_sha256": _hash(original_bytes), "delta": delta,
+        "permitted_metadata_changes": allowed, "rejected_changes": rejected,
+        "logical_database_equivalence": "not-claimed"})
+    delta_path.write_bytes(delta_bytes)
+    complete = receipt["capture_status"] == "complete"
+    return {"schema_version": 1, "kind": "assessment-operational-integrity",
+        "canonical_capture": canonical["capture"], "canonical_unchanged": True,
+        "operational_initial_sha256": _hash(original_bytes),
+        "target_unchanged": not any(delta.values()) and complete,
+        "operational_metadata_changed": bool(allowed),
+        "protected_unchanged": not rejected and complete,
+        "permitted_metadata_paths": sorted(OPERATIONAL_METADATA),
+        "permitted_metadata_changes": allowed, "rejected_changes": rejected,
+        "logical_database_equivalence": "not-claimed",
+        "final_capture": {"path": str(final_manifest), "sha256": receipt["capture"]["sha256"]},
+        "delta": {"path": str(delta_path), "sha256": _hash(delta_bytes)},
+        "capture_status": receipt["capture_status"], "errors": retained["errors"],
+        "omissions": retained["omissions"]}
