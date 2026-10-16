@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: snapper
+        name: Format authored prose with Snapper
+        entry: snapper --in-place
+        language: system
+        types: [markdown]
+        exclude: ^((resources|rounds|superseded-six-worker-waves|preparation)/|scientific-(task|judging)\.md$)
