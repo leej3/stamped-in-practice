@@ -5,6 +5,7 @@ import argparse
 import hashlib
 import json
 import platform
+import os
 import sys
 import time
 from pathlib import Path
@@ -37,6 +38,30 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
+
+def atomic_output(target: Path, writer) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    suffix = "".join(target.suffixes)
+    temporary = target.with_name(f".{target.stem}.{os.getpid()}.tmp{suffix}")
+    try:
+        writer(temporary)
+        os.replace(temporary, target)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def save_json(value: dict, target: Path) -> None:
+    atomic_output(target, lambda temp: temp.write_text(json.dumps(value, indent=2) + "\n"))
+
+
+def save_tsv(frame: pd.DataFrame, target: Path) -> None:
+    atomic_output(target, lambda temp: frame.to_csv(temp, sep="\t", index=False))
+
+
+def save_figure(fig, target: Path, dpi: int = 180) -> None:
+    atomic_output(target, lambda temp: fig.savefig(temp, dpi=dpi, format="png", bbox_inches="tight"))
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--pilot", action="store_true", help="inspect the first map and stop")
@@ -66,7 +91,7 @@ def main() -> None:
                  "max": float(np.nanmax(data)), "mean": float(np.nanmean(data)),
                  "std": float(np.nanstd(data)), "map_type": manifest["map_type"],
                  "spatial_reference": manifest["spatial_reference"]}
-        (OUT / "pilot.json").write_text(json.dumps(pilot, indent=2) + "\n")
+        save_json(pilot, OUT / "pilot.json")
         print(json.dumps(pilot, indent=2))
         if not pilot["sha256_ok"] or pilot["finite_fraction"] != 1:
             raise RuntimeError("Pilot checksum or finite-value check failed")
@@ -171,7 +196,7 @@ def main() -> None:
     for name, array in [("mean_effect", mean_img_data), ("t_unthresholded", t_img_data),
                         ("p_fwe", p_img_data), ("p_uncorrected", pu_img_data),
                         ("t_fwe05", thresh_img_data), ("t_bonferroni05", bonf_img_data)]:
-        nib.save(nib.Nifti1Image(array, affine, header), OUT / f"{name}.nii.gz")
+        atomic_output(OUT / f"{name}.nii.gz", lambda temp, array=array: nib.save(nib.Nifti1Image(array, affine, header), temp))
 
     ijk = np.argwhere(mask)
     xyz = nib.affines.apply_affine(affine, ijk)
@@ -187,8 +212,8 @@ def main() -> None:
                       "mean_effect": float(mean[idx]), "sd_between_subjects": float(sd[idx]),
                       "t": float(t_obs[idx]), "p_uncorrected_one_sided": float(p_unc[idx]),
                       "p_fwe_max_t": float(p_fwe[idx])})
-    pd.DataFrame(peaks).to_csv(OUT / "top_voxels.tsv", sep="\t", index=False)
-    pd.DataFrame({"max_t_null": null_max}).to_csv(OUT / "permutation_max_t.tsv", sep="\t", index=False)
+    save_tsv(pd.DataFrame(peaks), OUT / "top_voxels.tsv")
+    save_tsv(pd.DataFrame({"max_t_null": null_max}), OUT / "permutation_max_t.tsv")
 
     # Coordinate-defined vmPFC box is used only for a descriptive participant
     # distribution; primary inference remains corrected across the whole mask.
@@ -204,7 +229,7 @@ def main() -> None:
     roi_sd = float(vm_effects.std(ddof=1))
     roi_ci = stats.t.interval(0.95, n - 1, loc=roi_mean, scale=roi_sd / np.sqrt(n))
     participant_summary = pd.DataFrame({"participant_id": [x[0] for x in images], "vmPFC_box_mean_effect": vm_effects})
-    participant_summary.to_csv(OUT / "participant_vmPFC_summary.tsv", sep="\t", index=False)
+    save_tsv(participant_summary, OUT / "participant_vmPFC_summary.tsv")
     roi_indices = np.flatnonzero(vm_roi[mask])
     roi_peak_idx = int(roi_indices[np.argmax(t_obs[roi_indices])])
     roi_peak_subject_values = x[:, roi_peak_idx]
@@ -217,14 +242,14 @@ def main() -> None:
                         "between_subject_sd": roi_peak_sd, "mean_95ci_t": [float(roi_peak_ci[0]), float(roi_peak_ci[1])],
                         "t": float(t_obs[roi_peak_idx]), "p_uncorrected_one_sided": float(p_unc[roi_peak_idx]),
                         "p_fwe_max_t": float(p_fwe[roi_peak_idx])}
-    (OUT / "selected_vmPFC_voxel.json").write_text(json.dumps(roi_peak_summary, indent=2) + "\n")
+    save_json(roi_peak_summary, OUT / "selected_vmPFC_voxel.json")
     global_subject_means = x.mean(axis=1)
     global_mean = float(global_subject_means.mean())
     global_sd = float(global_subject_means.std(ddof=1))
     global_ci = stats.t.interval(0.95, n - 1, loc=global_mean, scale=global_sd / np.sqrt(n))
-    pd.DataFrame({"participant_id": [x[0] for x in images],
-                  "mean_effect_across_brain_mask": global_subject_means}).to_csv(
-                      OUT / "participant_global_brain_summary.tsv", sep="\t", index=False)
+    save_tsv(pd.DataFrame({"participant_id": [x[0] for x in images],
+                           "mean_effect_across_brain_mask": global_subject_means}),
+             OUT / "participant_global_brain_summary.tsv")
     fig, ax = plt.subplots(figsize=(7.2, 4.2), constrained_layout=True)
     ax.scatter(np.arange(n) + 1, vm_effects, color="#356A8A", alpha=.8, s=24)
     ax.axhline(roi_mean, color="#B33C2E", lw=1.5, label=f"mean {roi_mean:.3g}")
@@ -235,7 +260,7 @@ def main() -> None:
     ax.set(xlabel="Participant (cohort table order)", ylabel="Mean participant gain effect (map units)",
            title="Descriptive vmPFC coordinate-box effects")
     ax.legend(frameon=False, loc="best")
-    fig.savefig(OUT / "vmPFC_participant_effects.png", dpi=180)
+    save_figure(fig, OUT / "vmPFC_participant_effects.png")
     plt.close(fig)
 
     t_img = nib.Nifti1Image(t_img_data, affine, header)
@@ -253,13 +278,13 @@ def main() -> None:
         ax = fig.add_axes((0.68, 0.2, 0.30, 0.55))
         ax.axis("off")
         ax.text(.5, .5, "No positive voxel passed\nwhole-brain max-t FWE p ≤ .05", ha="center", va="center", fontsize=13)
-    fig.savefig(OUT / "whole_brain_results.png", dpi=180, bbox_inches="tight")
+    save_figure(fig, OUT / "whole_brain_results.png")
     plt.close(fig)
     display = plotting.plot_stat_map(
         fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
         colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05\nPeak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
         black_bg=False, annotate=True, draw_cross=True)
-    display.savefig(OUT / "corrected_peak_localization.png", dpi=180)
+    atomic_output(OUT / "corrected_peak_localization.png", lambda temp: display.savefig(temp))
     display.close()
 
     sig = p_fwe <= ALPHA
@@ -284,7 +309,7 @@ def main() -> None:
         "python": sys.version.split()[0], "platform": platform.platform(),
         "numpy": np.__version__, "pandas": pd.__version__, "nibabel": nib.__version__, "nilearn": nilearn.__version__
     }
-    (OUT / "summary.json").write_text(json.dumps(summary, indent=2) + "\n")
+    save_json(summary, OUT / "summary.json")
     print(json.dumps(summary, indent=2))
 
 

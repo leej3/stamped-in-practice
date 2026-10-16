@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Create a coordinate-based localization figure from checked group maps."""
 from pathlib import Path
+import os
 import nibabel as nib
 import numpy as np
 import pandas as pd
@@ -8,6 +9,15 @@ from scipy import stats
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+
+def save_figure(fig, target):
+    suffix = "".join(target.suffixes)
+    temp = target.with_name(f".{target.stem}.{os.getpid()}.tmp{suffix}")
+    try:
+        fig.savefig(temp, dpi=180, format="png", bbox_inches="tight")
+        os.replace(temp, target)
+    finally:
+        temp.unlink(missing_ok=True)
 
 ROOT = Path(__file__).resolve().parents[1]
 R = ROOT / "results"
@@ -38,7 +48,7 @@ axes[1].legend(frameon=False, loc="best")
 axes[1].grid(alpha=.2)
 fig.colorbar(scatter, ax=axes, label="Group t statistic at max-t FWE-significant voxel")
 fig.suptitle(f"{len(t)} positive voxels survived whole-brain max-t FWE (p ≤ .05)", fontsize=14)
-fig.savefig(R / "corrected_voxel_coordinates.png", dpi=180)
+save_figure(fig, R / "corrected_voxel_coordinates.png")
 plt.close(fig)
 
 subjects = pd.read_csv(R / "participant_vmPFC_summary.tsv", sep="\t")
@@ -56,6 +66,6 @@ ax.axhline(0, color="black", lw=1, ls="--")
 ax.set(xlabel="Participant (cohort table order)", ylabel="Mean participant gain effect (map units)",
        title="Descriptive vmPFC coordinate-box effects")
 ax.legend(frameon=False, loc="best")
-fig.savefig(R / "vmPFC_participant_effects.png", dpi=180)
+save_figure(fig, R / "vmPFC_participant_effects.png")
 plt.close(fig)
 print(f"saved results/corrected_voxel_coordinates.png ({len(t)} voxels) and participant interval figure")
