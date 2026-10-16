@@ -1,0 +1,24 @@
+{
+  "analysis_code_commit": "8905843f5cec46b2be435654074c5d65b0db76d4",
+  "environment_lock_sha256": "de895db6c4ad2dbb1fd15c9213a7d0e259bb21c38b56a1ca75b389080ac20bd7",
+  "lock_snapshot_commits": [
+    "9a5902e71e1db50798b85c92b6b0826649f81227",
+    "4ed288e74fd7616af01a3c8925177de331575ef7"
+  ],
+  "input_manifest_sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+  "atlas_manifest_sha256": "b7be197e999e250598e69a763ae21c8df632fa4fd7ccbd6f17ca8e481fef4224",
+  "primary_run": {
+    "command": "pixi run group-analysis -- --permutations 9999 --output-dir results/group-analysis",
+    "duct_info": "logs/final-common_2026.10.15T23.33.03-647_info.json",
+    "execution_exit_code": 0
+  },
+  "committed_replay": {
+    "environment_snapshot_commit": "9a5902e71e1db50798b85c92b6b0826649f81227",
+    "command": "pixi run group-analysis -- --permutations 9999",
+    "duct_info": "logs/replay-final-common_2026.10.15T23.40.10-20261015_info.json",
+    "comparison": "results/group-analysis/replay-validation.json",
+    "comparison_command": "pixi run python analysis/compare_replay.py results/group-analysis /tmp/narps-r1-12-replay-final-20261015/replayed",
+    "audit_command": "pixi run validate-results",
+    "same_lock_sha256_as_final_snapshot": true
+  }
+}
