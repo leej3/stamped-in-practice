@@ -55,6 +55,6 @@ NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
 Round 1 has completed all **12 research workers and 16 assigned judgments**, with one supplementary repair attempt retained separately.
-Its [current status](iterations/narps-v1/assessment-hold.md) links the evidence and comparison in progress.
+The [round-one comparison](iterations/narps-v1/synthesis/README.md) presents the findings, evidence and skill reflection.
 The round is development evidence: common workflow mandates and assessment changes limit assistance comparisons.
 The next declared setup will separate coordinator preservation from worker guidance; changes across that boundary will not be presented as a clean skill effect.
