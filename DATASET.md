@@ -1,7 +1,7 @@
-# NARPS round-one development dataset
+# Evidence and retrieval for the development trial
 
 This registered DataLad dataset contains the completed twelve-worker, sixteen-assessment development comparison and its retained supplementary repair attempt.
-Read the [findings and figures](replay/RESULTS.md); the [original registration](README.md), [frozen procedure](procedure.json) and [historical synthesis](synthesis/README.md) remain unchanged.
+Read the [findings and figures](replay/RESULTS.md); the [original registration](historical-registration.md), [frozen procedure](procedure.json) and [historical synthesis](synthesis/README.md) remain unchanged.
 
 The [skill-development record](skill-reflection/README.md) links the revised research guidance, independently versioned assessor and their closed followability trials.
 [Migration verification](migration/VERIFICATION.md) retains independent reconstruction and selective retrieval proofs.
