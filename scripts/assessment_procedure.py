@@ -417,7 +417,9 @@ def check_retained_target(manifest, seed, seed_commit, result_commit, stop_recei
     research_procedure(manifest)
     matched = False
     for item in manifest["assessment_amendment"]["retained_objects"]:
-        if (item["run"] != seed.get("run") and
+        # Neutral deliveries can share an untouched Git seed/HEAD. Version 4
+        # binds the allocated run to its exact stop and capture below instead.
+        if (manifest.get("version") != 4 and item["run"] != seed.get("run") and
                 (item["seed_commit"] == seed_commit or
                  (result_commit is not None and item["result_commit"] == result_commit))):
             raise SystemExit("A retained object cannot be relabeled as a new run")
