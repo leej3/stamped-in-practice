@@ -1,0 +1,551 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All captured workspace content is under the workspace root; participant links resolve within its Git annex tree.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/input/sources.json",
+          "description": "Input inventory and source paths are within the common workspace.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The maps, metadata and analysis inputs are present under the common root; the manifest records reachable retrieval URLs and checksums.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/input/sources.json",
+          "description": "54 map entries and pinned metadata/methods retrieval references.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": "no",
+      "reason": "Python and scientific libraries are external runtime dependencies; no environment specification or software submodule is included at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "README lists Python and dependencies but depends on a pre-existing external interpreter.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "Complete workspace inventory has no tracked environment specification or software submodule.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "no",
+      "reason": "The worker's code, documentation, figures and results were untracked at stop; the captured HEAD is the supplied-input commit.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/analysis/analyze.py",
+          "description": "Scientific code is present but untracked at worker stop.",
+          "sha256": "a881abeea818018c57b767504d18472867da80fac8b13dd8a93d34d2a457dde2"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/scientific-report.md",
+          "description": "Scientific report is present but untracked at worker stop.",
+          "sha256": "9573bd34e4db368eb719e949095019e17dcaf345ab6d8ce5d442bab0378384d0"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": null,
+      "reason": "The annex-backed source pointers were present in the coordinator-supplied baseline, so worker use cannot be attributed. The worker's generated scientific outputs were untracked; no worker annex action is evidenced.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/results/primary_v2_template_mask/summary.json",
+          "description": "Generated NIfTI outputs/provenance exist as worker results outside tracked HEAD.",
+          "sha256": "81e50cce17229e0eed5a518b845355616a167eec507e5b8696a4474d8d093488"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "README identifies generated binary outputs; worker stop status leaves outputs untracked.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The summary records package versions and a command, but no exact environment specification is linked to the results.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/results/primary_v2_template_mask/summary.json",
+          "description": "Software versions and command are recorded, but no lock/specification identity.",
+          "sha256": "81e50cce17229e0eed5a518b845355616a167eec507e5b8696a4474d8d093488"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No worker environment specification exists in the captured workspace.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "README explains usage and names dependencies but gives no portable installation/setup procedure; it assumes an absolute pre-existing interpreter.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Run instructions and package list are present; interpreter path is host-specific.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "README identifies analysis/analyze.py as the starting point; the documented command completed in the one permitted replay.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Documented direct entrypoint.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/analysis/analyze.py",
+          "description": "Runnable group-analysis script.",
+          "sha256": "a881abeea818018c57b767504d18472867da80fac8b13dd8a93d34d2a457dde2"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/009": {
+      "value": "no",
+      "reason": "The analysis script uses paths rooted at its workspace, but the README and recorded provenance command hard-code an absolute interpreter path.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Absolute interpreter path in usage command.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/results/primary_v2_template_mask/summary.json",
+          "description": "Absolute command recorded in provenance.",
+          "sha256": "81e50cce17229e0eed5a518b845355616a167eec507e5b8696a4474d8d093488"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": "no",
+      "reason": "Dependencies are named in README but no environment specification declares and resolves them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Named packages without an installable environment spec.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No lockfile, container definition or project package manifest at worker stop.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": "no",
+      "reason": "README names Python 3.13.16 and a pre-existing shared interpreter, but does not fully document host/system requirements or setup assumptions.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Runtime version is stated, interpreter assumes the originating host path.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": "no",
+      "reason": "The README lists Python and libraries, but omits portable installation details and a complete system requirements list.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Dependency names are present; no reproducible system/setup declaration.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "no",
+      "reason": "No environment specification is included in version control at worker stop.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "Complete captured workspace inventory contains no environment specification; worker outputs are untracked.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No environment update process or tracked environment changes are documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No environment specification or update record is present at worker stop.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "Package versions alone do not provide an exact environment specification for reconstruction.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/results/primary_v2_template_mask/summary.json",
+          "description": "Version list without a lockfile/container digest.",
+          "sha256": "81e50cce17229e0eed5a518b845355616a167eec507e5b8696a4474d8d093488"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "No worker environment specification is present to share.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No environment artifact or specification in captured workspace.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "There are no environment specifications to obtain or use; README assumes an externally prepared interpreter.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "The documented run command uses an existing absolute interpreter.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": "no",
+      "reason": "Git tracks the supplied input baseline, but the worker's analysis code, report and derived results were untracked at stop.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/analysis/analyze.py",
+          "description": "Untracked worker code.",
+          "sha256": "a881abeea818018c57b767504d18472867da80fac8b13dd8a93d34d2a457dde2"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/scientific-report.md",
+          "description": "Untracked worker report.",
+          "sha256": "9573bd34e4db368eb719e949095019e17dcaf345ab6d8ce5d442bab0378384d0"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": null,
+      "reason": "One recorded plotting failure and completed rerun do not establish regular testing frequency.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "No recurring test schedule is documented.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "no",
+      "reason": "Inputs, code, external assets, results and figures have separate directories; no tracked environment module or explicit modular interfaces exist.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Directory/output layout is described.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/research-protocol.md",
+          "description": "Inputs and analysis responsibilities are described.",
+          "sha256": "fd82723ae27072a2dc5c3077756192457bcbc11e9b9a80eb378c33af0a9541c3"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "No restricted data or software component is identified in the captured workspace.",
+      "status": "not-applicable",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/input/sources.json",
+          "description": "Public source URLs and data inventory.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "The evaluator replay is not worker practice; no worker-side clean container/VM test is documented.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "No fresh-environment test record.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": null,
+      "reason": "No worker evidence establishes disposable isolation for executions.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No worker environment or run isolation record is present.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": null,
+      "reason": "No exact environment specification exists whose recurring reconstitution could be checked.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No environment specification or reconstitution record is present.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "No environment artifact is archived in the worker's research object.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No environment archive/image or lockfile is present.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No tracked process for updating environment specifications is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/",
+          "description": "No environment specification or update procedure is present.",
+          "sha256": null
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "The dataset is included through supplied annex pointers and external software is not linked as a submodule.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/input/sources.json",
+          "description": "External dataset provenance is URL-based; no software submodule is described.",
+          "sha256": "919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "README documents major directories and outputs, but does not describe module relationships or recombination.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Directory and output overview.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Input/code/output directories are distinguishable, but independent update boundaries and interfaces are not described.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/research-protocol.md",
+          "description": "Analysis protocol identifies inputs and outputs without modular interface rules.",
+          "sha256": "fd82723ae27072a2dc5c3077756192457bcbc11e9b9a80eb378c33af0a9541c3"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": "no",
+      "reason": "No submodule, orchestration or other module-composition mechanism is documented.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Direct entrypoint is documented; no module composition mechanism.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "README and research protocol give readers an entrypoint, input map inventory, outputs and method structure.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/README.md",
+          "description": "Usage and output map.",
+          "sha256": "b3962989dd4f90de42176285182bf88cf9ea6dc72698fe28237d5de2b872f97e"
+        },
+        {
+          "uri": "capture:a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7:content/workspace/research-protocol.md",
+          "description": "Method and input/output description.",
+          "sha256": "fd82723ae27072a2dc5c3077756192457bcbc11e9b9a80eb378c33af0a9541c3"
+        }
+      ],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 58 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "d857ab1302d13cb660a7a044af07141f44bfa9ba",
+    "captured_at": "2026-10-16T06:48:11.174906+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-07-j02/canonical/manifest.json",
+      "sha256": "a870dc3c816f624dcd1ecd9e513fe56b76cf182e109a2f95963749235a4df8d7"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "frozen external assessor",
+    "model": "Codex GPT-6",
+    "date": "2026-10-16",
+    "drafted_by": "independent-judgement",
+    "dependencies": [
+      "stamped-checklist@0.3.1",
+      "frozen-assessment-runner@1"
+    ]
+  },
+  "scope": "complete stopped delivery, operational inspection, one replay"
+}
