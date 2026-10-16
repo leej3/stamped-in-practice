@@ -2,7 +2,7 @@
 
 # Current comparison status
 
-**All 24 round-three research workers have finished; their 32 assigned judgments are next under the unchanged procedure.** Round two completed all 24 workers and 32 judgments.
+**All 24 round-three research workers have finished; their 32 assigned judgments are running under the unchanged procedure.** Round two completed all 24 workers and 32 judgments.
 Round two’s frozen reporting gate rejected all 32 judgments because the truthful worker source revision differs from the original research seal.
 [The completed findings](assessment-series/narps-neutral-r2-operational-v4/synthesis/README.md) retain the exact mismatch, unavailable measures and all original judgments.
 These are provenance admission failures, not scientific failures or zero scores; later gates are unestablished.

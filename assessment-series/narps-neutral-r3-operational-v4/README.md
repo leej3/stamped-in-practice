@@ -18,3 +18,7 @@ The supplied-procedure context exposure and replay limitations remain disclosed.
 
 The registration includes the exact initial index, original stop/capture identities, allocation and command receipts.
 Bulk payloads remain local where remote publication is pending; no new hosted Entire verification is claimed.
+
+Nine initial native judge sessions started at 17:07:52–55 UTC on 16 October 2026.
+[The start receipt](first-native-starts.json) binds distinct native session identities and launch/preflight hashes.
+The existing queue continues the remaining fixed assignments without outcome-dependent changes.

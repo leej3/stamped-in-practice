@@ -1,3 +1,5 @@
+**AI-generated draft — not reviewed by John**
+
 # Round-two frozen findings
 
 All 32 judgments failed the same frozen worker-input coordinator_commit provenance gate; no admissible science or checklist outcomes.
@@ -92,3 +94,6 @@ The [complete reporting archive](../reporting-package-01/reporting.tar.gz), [mem
 The readable copy above changes navigation and spacing only.
 Its copied evidence is bound by [copy-manifest.json](copy-manifest.json).
 Archive bytes are retained locally in annex; Hub upload and independent remote payload retrieval remain pending.
+
+The [complete native-retention archive](../native-package-01/README.md) separately preserves all 32 stopped assessment attempts and their operational copies.
+It is locally verified and annexed; remote payload delivery and hosted verification remain distinct pending states.
