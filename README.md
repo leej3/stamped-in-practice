@@ -38,10 +38,18 @@ Keep working `pixi.lock` files ignored; retain any validated environment snapsho
 `coordinator-guidance/readiness.json` records preparation of the input package only.
 The coordinator must verify retrieval and its required host resources before sealing or launching a formal comparison.
 
-## Completed experiment retention
+## Research deliveries
 
-The six registered experiments under `results/` pin independently retrieved repositories; `retention-publications.json` lists their exact identities.
-Each retention commit is a direct child of its unchanged scientific result and adds only coordinator evidence, with no worker credit.
-The complete archive includes execution records, original assessments, failed attempts and environment snapshots; directly readable copies of key reports and receipts are under `coordinator/retention-01/indexable/`.
-`retention-publications.json` identifies the separate scientific and retention revisions and hashes the independent publication checks retained by the coordinator.
-Keep these experiment submodules uninitialized until needed.
+The current `narps-neutral-v1` comparison registers independently retrieved deliveries under `results/narps-neutral-*/`.
+See [current comparison status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) and `neutral-retention-publications.json` for published identities.
+The exact original delivery is preserved in `coordinator/delivery-01/delivery.tar.gz`, including dirty, untracked and ignored files within the declared capture roots.
+Its manifest digest identifies those bytes; the actual worker Git HEAD may still be the supplied input seed.
+Later coordinator preservation commits do not become worker scientific revisions or earn worker-practice credit.
+Judgments and supplementary execution evidence are added separately as they finish.
+Keep experiment submodules uninitialized until needed.
+
+## Historical development comparison
+
+The completed `narps-v1` development results occupy `results/narps-r1-*/`; their [synthesis and evidence links](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/replay/RESULTS.md) remain separate from the current comparison.
+`retention-publications.json` preserves the initial six publication records from that development phase, including their scientific and coordinator retention revisions and independent checks.
+Those historical archives and their `coordinator/retention-01/indexable/` reports use the earlier retention layout.
