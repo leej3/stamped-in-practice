@@ -1,23 +1,40 @@
-# NARPS assistance comparison
+# NARPS study runs
 
-This dataset records a prospective comparison of four research-assistance strategies using the same 54 participant effect maps and scientific question.
-The fixed design assigns six independent workers per strategy in each of three rounds: 72 research attempts and 96 independent judgments, including preselected duplicates.
-The final round evaluates the final guidance without further tuning.
+This completed study compared four ways of assisting research agents on the same neuroscience task: no supplied skills, general skill discovery, reproducible-science skill discovery and explicit STAMPED guidance.
+Workers analyzed the same 54 participant effect maps and scientific question, choosing their own methods and delivery practices.
+The purpose was to test and improve research guidance through repeated scientific work.
 
-**Round one is complete: 24 research deliveries and 32 assigned judgments.** Read the [round-one synthesis and figures](rounds/round-01/synthesis/README.md) and [current status](STATUS.md).
-Eleven metadata-related assessment exclusions limit the condition comparison; the [viability disposition](rounds/round-01/synthesis/viability.md) records the prospective measurement boundary.
-The subsequent [research-guidance cold trial](skill-reflection/research-skill-revision-01/README.md) and [native assessment engineering trial](measurement-development/assessment-operational-live-trial-01/README.md) retain candidate improvements, failures and exact version limits separately from those outcomes.
-The [final-source native follow-up](measurement-development/assessment-operational-live-trial-02/README.md) and [predispatch admission hold](measurement-development/assessment-registration-admission-01/README.md) document the remaining measurement boundary.
-The [separate assessment series](assessment-series/narps-neutral-r1-operational-v4/README.md) retains all original objects and assignments under the reviewed measurement boundary.
-The [registration](registration.md), [allocation](allocation.json), [procedure](procedure.json) and [round-one plan](rounds/round-01/plan.json) remain unchanged.
-The completed [development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) remains separate evidence.
-Its mandated workflow and earlier assessment versions prevent pooling it with this tool-neutral design as a clean skill progression.
+**All three rounds are complete: 72 research attempts and 96 operational judgments.** Each round used six fresh workers per condition, with selected deliveries assessed twice to examine judge disagreement.
+Research guidance changed between rounds; the final round tested the final revision without further tuning.
 
-Workers choose their scientific methods, software and delivery practices.
-The coordinator separately preserves complete original deliveries, native records and environment evidence; this work earns no worker-practice credit.
-The independent assessment distinguishes scientific adequacy, hypothesis support, STAMPED evidence and unavailable measurements.
-There is no preset spending, token or elapsed-time cap; the fixed assigned sample is the completion rule.
+## Start with the findings
 
-The registration fixes the scientific task, exact source and resource identities, balanced three-worker schedule and procedure before launch.
-`study/`, `assessment/` and `skills/` are lazy links to existing datasets or source revisions; initialize only what is needed.
-Detailed round records and figures belong here, while the coordinator repository contains reusable launch and analysis code.
+Read [the results and interpretation](https://github.com/leej3/stamped-in-practice/blob/main/docs/results.md) for the outcome measures, poster figures and what the comparison supports.
+The corrected reporting provides 70 primary scientific assessments and 68 valid checklists.
+Scientific adequacy and checklist attainment did not move together consistently, and the study does not establish a causal skill benefit.
+The [project-wide lessons](https://github.com/leej3/stamped-in-practice/blob/main/LESSONS.md) explain what we learned about assessment design, coordination, model capability, dependencies and infrastructure.
+
+## Explore the study records
+
+| Question | Where to look |
+| --- | --- |
+| What was planned? | [Registered design](registration.md), [allocation](allocation.json) and [procedure](procedure.json) |
+| What are the completed outcomes? | [Reporting correction and results](final-synthesis/REPORTING-CORRECTION.md), with links to per-round and per-run summaries |
+| Why did the guidance change? | [Research-skill revisions](skill-reflection/) |
+| What happened during each round? | [Round records](rounds/) and [assessment series](assessment-series/) |
+| Which files can I retrieve? | [Publication and access record](final-synthesis/PUBLICATION.md) |
+| Is execution finished? | [Completed status](STATUS.md) |
+
+Earlier reports describe intermediate states, including the original round-one assessment and later reporting failures.
+They are retained to explain the development history, not as the current completion status.
+The later reporting correction used existing judgments without rerunning workers or changing their grades.
+
+## Where this dataset fits
+
+On the coordinator's main branch, this dataset is linked at `iterations/narps-study-runs/`.
+Its historical identifier is `narps-neutral-v1`; the hosting branch remains `codex/iteration-narps-neutral-v1` to preserve existing evidence links.
+The [trial history](https://github.com/leej3/stamped-in-practice/blob/main/docs/trials.md) explains how this study followed the earlier development trial and how to start a new comparison.
+
+`study/`, `assessment/` and `skills/` link to versioned inputs and guidance; initialize only the components you need.
+Coordinator preservation and later presentation are recorded separately from the workers' original deliveries.
+All assigned execution is finished; historical controllers must not be restarted.
