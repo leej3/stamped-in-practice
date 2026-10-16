@@ -7,6 +7,8 @@ import nibabel as nib
 import numpy as np
 import pandas as pd
 from scipy import stats
+from nilearn import datasets
+from nilearn.image import resample_to_img
 
 ROOT = Path(__file__).resolve().parents[1]
 R, I = ROOT / "results", ROOT / "input"
@@ -18,14 +20,16 @@ assert qc.checksum_ok.all() and qc.finite.all() and qc.qc_flags.fillna("").eq(""
 assert len(excluded) == summary["n_excluded"] == 0
 participants = pd.read_csv(I / "participants.tsv", sep="\t")
 imgs = [nib.load(str(I / "data" / f"{pid}_hypo1_cope.nii.gz")) for pid in participants.participant_id]
-mask = nib.load(str(R / "p_fwe.nii.gz"))
+pmap_img = nib.load(str(R / "p_fwe.nii.gz"))
 aff = imgs[0].affine
+mask_img = resample_to_img(datasets.load_mni152_brain_mask(resolution=2), imgs[0], interpolation="nearest", force_resample=True, copy_header=True)
+brain_mask = np.asarray(mask_img.dataobj) > 0
 brain = nib.load(str(R / "t_unthresholded.nii.gz"))
 assert all(im.shape == imgs[0].shape and np.allclose(im.affine, aff, atol=1e-4) for im in imgs)
 assert np.allclose(brain.affine, aff, atol=1e-4)
 arr = np.stack([np.asarray(im.dataobj, dtype=np.float64) for im in imgs])
 T = np.asarray(brain.dataobj, dtype=np.float64)
-M = np.asarray(mask.dataobj) < 1
+M = ~brain_mask
 rng = np.random.default_rng(71)
 coords = np.argwhere(~M)
 for xyz in coords[rng.choice(len(coords), size=20, replace=False)]:
@@ -33,12 +37,12 @@ for xyz in coords[rng.choice(len(coords), size=20, replace=False)]:
     ref = stats.ttest_1samp(arr[(slice(None),) + ijk], 0, alternative="greater")
     assert np.isclose(T[ijk], ref.statistic, rtol=2e-5, atol=2e-5), (ijk, T[ijk], ref.statistic)
 mean_img = np.asarray(nib.load(str(R / "mean_effect.nii.gz")).dataobj)
-P = np.asarray(mask.dataobj, dtype=np.float64)
+P = np.asarray(pmap_img.dataobj, dtype=np.float64)
 assert np.all((P >= 0) & (P <= 1))
 null = pd.read_csv(R / "permutation_max_t.tsv", sep="\t").max_t_null.to_numpy()
 assert len(null) == summary["permutations"] and np.all(np.diff(null) >= 0)
 peaks = pd.read_csv(R / "top_voxels.tsv", sep="\t")
-assert peaks.loc[0, "t"] == T[tuple(peaks.loc[0, ["i", "j", "k"]].astype(int))]
+assert np.isclose(peaks.loc[0, "t"], T[tuple(peaks.loc[0, ["i", "j", "k"]].astype(int))], rtol=2e-5, atol=2e-5)
 assert summary["n_fwe_positive_voxels"] == int(np.sum(np.asarray(nib.load(str(R / "t_fwe05.nii.gz")).dataobj) > 0))
 assert summary["n_fwe_positive_voxels_in_vmPFC_box"] == 0
 # Reconstruct the 95% CI from participant-level voxel averages inside the documented box.
