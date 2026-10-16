@@ -60,7 +60,7 @@ def load_inputs(limit: int | None = None):
         raise ValueError("Map IDs are duplicated or absent from participant table")
     arrays, img0, checkrows = [], None, []
     for rel, meta in entries:
-        path = ROOT / rel
+        path = ROOT / "input" / rel
         if not path.is_file():
             raise FileNotFoundError(path)
         digest = sha256(path)
