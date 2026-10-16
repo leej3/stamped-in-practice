@@ -100,7 +100,7 @@ def main() -> None:
     label_idx = next((i for i, label in enumerate(labels) if label == "Frontal Medial Cortex"), None)
     if label_idx is None:
         raise ValueError("Harvard-Oxford atlas has no Frontal Medial Cortex label")
-    prob_img = nib.load(atlas.maps)
+    prob_img = atlas.maps
     prob_data = np.asarray(prob_img.dataobj)
     # Probabilistic atlas is 4D with one volume per cortical label.
     prob = image.resample_img(nib.Nifti1Image(prob_data[..., label_idx], prob_img.affine),
