@@ -1,0 +1,75 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "0a05c6ea791ffff4ac60217b7f1e588cc31c9149\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--cached",
+      "--check",
+      "--",
+      ".gitattributes",
+      "coordinator"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n"
+  },
+  {
+    "argv": [
+      "git",
+      "commit",
+      "-F",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-02-01/commit-message.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "[codex/narps-neutral-r1-02-browsable fe56c20] feat(retention): expose original files for narps-neutral-r1-02\n 52 files changed, 5221 insertions(+)\n create mode 100644 README.md\n create mode 100644 analysis/atlases/README.md\n create mode 120000 analysis/atlases/aal_SPM12/aal/ROI_MNI_V4.nii\n create mode 100755 analysis/atlases/aal_SPM12/aal/ROI_MNI_V4.txt\n create mode 100755 analysis/atlases/aal_SPM12/aal/ROI_MNI_V4.xml\n create mode 120000 analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_Border.mat\n create mode 120000 analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_List.mat\n create mode 100755 analysis/atlases/aal_SPM12/aal/aal.m\n create mode 120000 analysis/atlases/aal_SPM12/aal/atlas/AAL.nii\n create mode 100755 analysis/atlases/aal_SPM12/aal/atlas/AAL.xml\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_clusters.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_clusters_plabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_det_dlabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_det_plabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_dlabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_list_dlabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_list_plabels.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/gin_rclusters.m\n create mode 100755 analysis/atlases/aal_SPM12/aal/readme_aal_for_SPM12.txt\n create mode 100644 analysis/atlases/icbm152_2009/COPYING\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_csf_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_pd_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_eye_mask.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_face_mask.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_relx_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_tal_nlin_sym_09a.nii.gz\n create mode 120000 analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_wm_tal_nlin_sym_09a.nii.gz\n create mode 100644 analysis/group_analysis.py\n create mode 100644 coordinator/browsable-copy-01/add-navigation.py\n create mode 100644 coordinator/browsable-copy-01/config.json\n create mode 100644 coordinator/browsable-copy-01/input-manifest.json\n create mode 100644 coordinator/browsable-copy-01/manifest.json\n create mode 100644 coordinator/browsable-copy-01/navigation.json\n create mode 100644 coordinator/browsable-copy-01/plan.json\n create mode 100644 coordinator/browsable-copy-01/prepare.py\n create mode 100644 coordinator/browsable-copy-01/shared-input-route-proof.json\n create mode 100644 figures/mean_effect_vmPFC.png\n create mode 100644 figures/vmPFC_subject_estimates.png\n create mode 100644 figures/wholebrain_fwe.png\n create mode 100644 report.md\n create mode 120000 results/mean_gain_effect.nii.gz\n create mode 120000 results/onesample_t_positive.nii.gz\n create mode 120000 results/p_fwe_bonferroni_positive.nii.gz\n create mode 100644 results/run.log\n create mode 100644 results/summary.json\n create mode 100644 results/vmPFC_subject_estimates.tsv\n create mode 100644 results/wholebrain_fwe_clusters.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "fe56c20199cae0b73fbdd151b04f9426ac163f15\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]

@@ -1,0 +1,195 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "fe56c20199cae0b73fbdd151b04f9426ac163f15\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "origin"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "git@github.com:leej3/stamped-in-practice.git\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-02-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "analysis/atlases/aal_SPM12/aal/ROI_MNI_V4.nii",
+      "analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_Border.mat",
+      "analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_List.mat",
+      "analysis/atlases/aal_SPM12/aal/atlas/AAL.nii",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_csf_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_pd_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_eye_mask.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_face_mask.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_relx_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_tal_nlin_sym_09a.nii.gz",
+      "analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_wm_tal_nlin_sym_09a.nii.gz",
+      "results/mean_gain_effect.nii.gz",
+      "results/onesample_t_positive.nii.gz",
+      "results/p_fwe_bonferroni_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "copy analysis/atlases/aal_SPM12/aal/ROI_MNI_V4.nii (to con-hub...) \n\n2%    31.98 KiB       128 MiB/s 0s\n40%   703.66 KiB        3 MiB/s 0s\n100%  1.72 MiB         22 MiB/s 0s\n                                  \nok\ncopy analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_Border.mat (to con-hub...) \n\n7%    31.98 KiB        33 MiB/s 0s\n100%  438.95 KiB       50 MiB/s 0s\n                                  \nok\ncopy analysis/atlases/aal_SPM12/aal/ROI_MNI_V4_List.mat (to con-hub...) \n\n100%  23.95 KiB        83 MiB/s 0s\n                                  \nok\ncopy analysis/atlases/aal_SPM12/aal/atlas/AAL.nii ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_csf_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_gm_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_pd_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_eye_mask.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_face_mask.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t1_tal_nlin_sym_09a_mask.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_relx_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_t2_tal_nlin_sym_09a.nii.gz ok\ncopy analysis/atlases/icbm152_2009/mni_icbm152_nlin_sym_09a/mni_icbm152_wm_tal_nlin_sym_09a.nii.gz ok\ncopy results/mean_gain_effect.nii.gz (to con-hub...) \n\n3%    31.98 KiB        47 MiB/s 0s\n100%  935.08 KiB       70 MiB/s 0s\n                                  \nok\ncopy results/onesample_t_positive.nii.gz (to con-hub...) \n\n3%    31.98 KiB        23 MiB/s 0s\n100%  937.4 KiB        69 MiB/s 0s\n                                  \nok\ncopy results/p_fwe_bonferroni_positive.nii.gz (to con-hub...) \n\n49%   31.98 KiB        43 MiB/s 0s\n100%  64.7 KiB         25 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "-u",
+      "origin",
+      "HEAD:refs/heads/codex/narps-neutral-r1-02-browsable"
+    ],
+    "returncode": 0,
+    "stderr": "remote: \nremote: Create a pull request for 'codex/narps-neutral-r1-02-browsable' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/narps-neutral-r1-02-browsable        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      HEAD -> codex/narps-neutral-r1-02-browsable\n",
+    "stdout": "branch 'codex/narps-neutral-r1-02-browsable' set up to track 'origin/codex/narps-neutral-r1-02-browsable'.\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "+git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "be94df112acaf2f5b28342a28cd3d53ca1600232\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex ok\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "fe56c20199cae0b73fbdd151b04f9426ac163f15\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "be94df112acaf2f5b28342a28cd3d53ca1600232",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   be94df1..a39d844  git-annex -> git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a39d84439cefaa040330f69519a9061b5f2e0b49\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-02-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 128,
+    "stderr": "ssh: connect to host github.com port 22: Operation timed out\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/heads/codex/narps-neutral-r1-02-browsable",
+      "refs/heads/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "fe56c20199cae0b73fbdd151b04f9426ac163f15\trefs/heads/codex/narps-neutral-r1-02-browsable\na39d84439cefaa040330f69519a9061b5f2e0b49\trefs/heads/git-annex\n"
+  }
+]
