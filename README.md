@@ -62,7 +62,7 @@ The [completed NARPS development comparison](https://github.com/leej3/stamped-in
 Its workflow mandates and assessment changes are disclosed.
 The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
 The [completed round-one reassessment](https://github.com/leej3/stamped-in-practice/blob/a80890e1bce68a7d5bf62a09d3105bba21a3654b/assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md) retains 32 scientific judgments of 24 research deliveries and 30 valid checklists, with figures and links to the unchanged original assessment.
-Duplicate judges disagreed on 67 of 248 checklist decisions and five of eight scientific categories; these results do not establish a skill benefit.
+Duplicate judges disagreed on 67 of 248 checklist decisions and on scientific adequacy in five of eight duplicate pairs; these results do not establish a skill benefit.
 The supplied assessment procedure also exposed treatment assignments, so further formal launches are held for a corrected context boundary.
 The [revised research skills and trials](https://github.com/leej3/stamped-in-practice/blob/a80890e1bce68a7d5bf62a09d3105bba21a3654b/skill-reflection/research-skill-revision-01/README.md) address environment reconstruction, complete deliveries and reference routing.
 The [latest online status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) may be newer than the iteration pinned in this checkout.
