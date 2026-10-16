@@ -38,6 +38,7 @@ EXTRACTION = obj({"extraction_status": {"enum": ["explicit", "missing", "ambiguo
                  ("extraction_status", "category"))
 NATIVE = obj({"procedure_status": ARTIFACT, "result": ARTIFACT})
 JUDGMENT = obj({"judgment_id": TEXT, "response": ARTIFACT, "report": ARTIFACT,
+                "scientific_report": ARTIFACT,
                 "native": NATIVE, "output_binding": ARTIFACT,
                 "adequacy": EXTRACTION, "conclusion": EXCERPT}, ("judgment_id",))
 SUPPLEMENTARY = obj(dict(JUDGMENT["properties"], reason=TEXT), ("judgment_id", "reason"))
@@ -414,7 +415,7 @@ class ProvenanceGate:
 
 def validate_output_binding(supplied, check, base):
     """Verify a retained coordinator attribution; native receipts do not hash outputs."""
-    if not any(key in supplied for key in ("response", "report", "adequacy", "conclusion")):
+    if not any(key in supplied for key in ("response", "report", "scientific_report", "adequacy", "conclusion")):
         return
     if "output_binding" not in supplied:
         raise ValueError("Outcome extraction requires a retained output_binding manifest")
@@ -422,11 +423,11 @@ def validate_output_binding(supplied, check, base):
     required_fields(binding, {"schema_version": {"const": 1},
         "kind": {"const": "coordinator-assessment-output-binding"},
         "native_result_sha256": SHA, "native_session_ids": {"type": "array"},
-        "outputs": obj({"response": ARTIFACT, "report": ARTIFACT})})
+        "outputs": obj({"response": ARTIFACT, "report": ARTIFACT, "scientific_report": ARTIFACT})})
     require_equal(binding["native_result_sha256"], supplied["native"]["result"]["sha256"],
                   "bound native result bytes")
     require_equal(binding["native_session_ids"], check["native_session_ids"], "bound native sessions")
-    for key in ("response", "report"):
+    for key in ("response", "report", "scientific_report"):
         if key in supplied:
             require_equal(binding["outputs"].get(key, {}).get("sha256"), supplied[key]["sha256"],
                           "bound " + key + " bytes")
@@ -593,7 +594,7 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
                     require_equal(identity, decision["judgment_id"], "disposition judgment ID")
                     require_equal(supplied["native"]["result"]["sha256"], decision.get("native_result_sha256"),
                                   "disposition finalized native result")
-                    if any(k in supplied for k in ("response", "report", "adequacy", "conclusion")):
+                    if any(k in supplied for k in ("response", "report", "scientific_report", "adequacy", "conclusion")):
                         require_equal(supplied.get("output_binding", {}).get("sha256"),
                                       decision.get("output_binding_sha256"), "disposition output binding")
                 elif role == "supplementary":
@@ -733,7 +734,12 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
             report = None
             report_error = None
             try:
-                report = artifact(supplied["report"], base).decode() if "report" in supplied else None
+                reports = {key: artifact(supplied[key], base).decode()
+                           for key in ("report", "scientific_report") if key in supplied}
+                narrative_key = "scientific_report" if "scientific_report" in supplied else "report"
+                report = reports.get(narrative_key)
+                if report is not None:
+                    judgment["narrative_source"] = dict(supplied[narrative_key])
             except (OSError, ValueError, UnicodeError) as error:
                 report_error = str(error)
                 issue(run_id, role, "report", error)
@@ -749,8 +755,14 @@ def aggregate(allocation, index, base, contract, research_procedure=None, assess
                         # Inspect the complete cited lines too: quoting only "supported"
                         # from "not supported" must never reverse a judge's verdict.
                         plain = re.sub(r"[*_'\"\x60]", "", text.casefold())
-                        categories = set(re.findall(
-                            r"(?<!\w)(not supported|unable to assess|supported|qualified)(?!\w)", plain))
+                        # An explicit leading scientific-adequacy label identifies
+                        # the verdict even if the same paragraph separately says
+                        # that the study's positive hypothesis is not supported.
+                        label = re.match(
+                            r"^\s*(?:#+\s*)?scientific adequacy\s*:\s*"
+                            r"(not supported|unable to assess|supported|qualified)(?!\w)", plain)
+                        categories = ({label.group(1)} if label else set(re.findall(
+                            r"(?<!\w)(not supported|unable to assess|supported|qualified)(?!\w)", plain)))
                         if categories != {extraction["category"]}:
                             raise ValueError("Adequacy quote and cited context must name only its selected category")
                     judgment.update(adequacy=extraction["category"],

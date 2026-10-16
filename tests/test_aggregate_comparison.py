@@ -125,7 +125,7 @@ def bind_outputs(tmp_path, judgment):
         "schema_version": 1, "kind": "coordinator-assessment-output-binding",
         "native_result_sha256": judgment["native"]["result"]["sha256"],
         "native_session_ids": result["native_session_ids"],
-        "outputs": {k: judgment[k] for k in ("response", "report") if k in judgment}})
+        "outputs": {k: judgment[k] for k in ("response", "report", "scientific_report") if k in judgment}})
 
 
 def collect(allocation, contract, tmp_path, *records):
@@ -815,3 +815,42 @@ def test_incomplete_excluded_attempt_is_retained_without_assigned_outcomes(alloc
     assert len(result["excluded_attempts"]) == 1 and result["excluded_attempts"][0]["evidence_status"] == "invalid"
     assert len(result["judgments"]) == 48 and all(j["inclusion_status"] == "pending" for j in result["judgments"])
     assert not result["items"] and not result["effort"]
+
+
+def test_separate_scientific_report_preserves_hypothesis_distinction(allocation, contract, tmp_path):
+    record = indexed_run(tmp_path, allocation, contract)
+    judgment = record["judgments"]["primary"]
+    judgment["report"] = artifact(tmp_path, "checklist.md", "See the separate scientific assessment.")
+    text = "**Scientific adequacy: supported**, for a bounded null finding. The positive hypothesis is **not supported**."
+    judgment["scientific_report"] = artifact(tmp_path, "science.md", text)
+    judgment["adequacy"] = {"extraction_status": "explicit", "category": "supported", "excerpt": {
+        "quote": text, "start_line": 1, "end_line": 1}}
+    judgment["conclusion"] = dict(judgment["adequacy"]["excerpt"])
+    result = collect(allocation, contract, tmp_path, record)
+    actual = next(j for j in result["judgments"] if j["judgment_id"] == "fixture-primary")
+    assert not result["issues"]
+    assert actual["adequacy"] == "supported" and actual["conclusion"] == text
+    assert actual["narrative_source"] == judgment["scientific_report"]
+    judgment["adequacy"]["category"] = "not supported"
+    assert collect(allocation, contract, tmp_path, record)["issues"]
+
+
+@pytest.mark.parametrize("failure", ["unbound", "swapped", "stale", "stale-checklist"])
+def test_separate_scientific_report_requires_exact_binding(allocation, contract, tmp_path, failure):
+    index, original = gate_bundle(tmp_path, allocation, contract)
+    judgment = index["runs"][0]["judgments"]["primary"]
+    judgment["scientific_report"] = artifact(tmp_path, "science.md", "Scientific adequacy: qualified.")
+    judgment["adequacy"]["excerpt"] = {"quote": "Scientific adequacy: qualified.", "start_line": 1, "end_line": 1}
+    if failure != "unbound":
+        bind_outputs(tmp_path, judgment)
+    if failure == "swapped":
+        judgment["scientific_report"] = artifact(tmp_path, "replacement.md", "Scientific adequacy: supported.")
+    elif failure == "stale":
+        (tmp_path / "science.md").write_text("Scientific adequacy: supported.")
+    elif failure == "stale-checklist":
+        (tmp_path / "report.md").write_text("Changed checklist report")
+    result = from_bundle(allocation, contract, tmp_path, index, original)
+    actual = next(j for j in result["judgments"] if j["judgment_id"] == "fixture-primary")
+    assert actual["adequacy"] is None and result["issues"]
+    if failure in {"unbound", "swapped"}:
+        assert actual["inclusion_status"] == "invalid"

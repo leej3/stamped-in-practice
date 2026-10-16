@@ -283,3 +283,9 @@ Partial comparable subsets remain separate from complete pairs.
 Checklist comparisons are nested within objects, not independent extra workers.
 With three workers per cell, interpret individual observations, counts, medians and ranges descriptively.
 Do not infer significance or reliable variance estimates.
+
+A judge may put its scientific assessment in a separate report.
+Supply the exact `scientific_report` artifact and include its hash in the native-output binding.
+Adequacy and conclusion excerpts then refer to that file; the checklist report remains unchanged.
+An explicit leading “Scientific adequacy:” label determines that category, even when the same paragraph says the positive scientific hypothesis is not supported.
+Unlabeled ambiguous prose remains ambiguous, and a clipped negative label cannot become positive.
