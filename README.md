@@ -56,3 +56,6 @@ The tested source and preparation evidence are linked in [`source-version.json`]
 
 The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/14e22eada5f5af9db83f734ff291298441c3f1f2/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed; the next stable comparison will keep coordinator preservation separate from worker guidance.
+
+The [scientific poster figures](scripts/POSTER-FIGURES.md) are generated here from frozen research outputs with `pixi run poster-figures`.
+Presentation repositories retain display copies linked to this benchmark’s code, inputs and provenance.
