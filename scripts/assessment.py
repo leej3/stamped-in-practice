@@ -18,6 +18,19 @@ def git(*args, cwd=ROOT):
     return subprocess.check_output(["git", *args], cwd=cwd)
 
 
+def runtime_context():
+    """Read only the role projection; full seals remain coordinator inputs."""
+    if os.environ.get("STAMPED_PROCEDURE") or os.environ.get("STAMPED_PROCEDURE_SHA256"):
+        raise SystemExit("Full coordinator procedures are not judge runtime inputs")
+    path = os.environ.get("STAMPED_JUDGE_RUNTIME")
+    if not path:
+        return None
+    runtime = procedure.load_judge_runtime(path, os.environ.get("STAMPED_JUDGE_RUNTIME_SHA256"), os.environ)
+    procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
+                            runtime["fixed_files"]["scripts/assessment.py"], "assessment runner source")
+    return runtime
+
+
 def dispatch_directory(frozen):
     """Keep v4 relative helper paths inside its existing judgment workspace."""
     if not frozen or frozen.get("version") != 4:
@@ -198,13 +211,9 @@ def main():
     remaining = args.arguments
     pin_path = Path(os.environ.get("STAMPED_ASSESSMENT_PIN", ROOT / "assessment-version.json"))
     pin = json.loads(pin_path.read_text())
-    frozen_path = os.environ.get("STAMPED_PROCEDURE")
-    frozen = None
-    if frozen_path:
-        frozen = procedure.load_procedure(frozen_path, os.environ.get("STAMPED_PROCEDURE_SHA256"))
+    frozen = runtime_context()
+    if frozen:
         procedure.require_equal(pin, frozen["assessment"], "assessment runner pin")
-        procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
-                                frozen["fixed_files"]["scripts/assessment.py"], "assessment runner source")
     operational = bool(frozen and frozen.get("version") == 4)
     dispatch_cwd = dispatch_directory(frozen)
     source = Path(os.environ.get("STAMPED_ASSESSMENT_SOURCE", ROOT / "assessment"))
@@ -272,10 +281,9 @@ def main():
 
 if __name__ == "__main__":
     if sys.argv[1:2] == ["--captured-replay"]:
-        frozen = procedure.load_procedure(os.environ["STAMPED_PROCEDURE"],
-                                          os.environ["STAMPED_PROCEDURE_SHA256"])
-        procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
-                                frozen["fixed_files"]["scripts/assessment.py"], "capture replay adapter")
+        frozen = runtime_context()
+        if frozen is None:
+            raise SystemExit("Captured replay requires a judge runtime projection")
         helper = Path(sys.argv[2])
         procedure.require_equal(procedure.sha256(helper.read_bytes()), sys.argv[3], "frozen replay helper")
         raise SystemExit(captured_replay(sys.argv[4:], helper, frozen.get("version") == 4))

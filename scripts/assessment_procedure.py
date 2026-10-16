@@ -305,6 +305,104 @@ def load_procedure(path, expected_sha256):
     return manifest
 
 
+# Only judge-owned objects and helper locations are advertised to the role.
+# Coordinator seals, allocation and other deliveries never belong here.
+JUDGE_BINDINGS = {
+    "STAMPED_JUDGE_OUTPUT", "STAMPED_JUDGE_TARGET", "STAMPED_JUDGE_COMMIT",
+    "STAMPED_ASSESSMENT_RUNNER", "STAMPED_ASSESSMENT_PYTHON",
+    "STAMPED_ASSESSMENT_SOURCE", "STAMPED_ASSESSMENT_PIN",
+    "STAMPED_DELIVERY_MANIFEST", "STAMPED_OPERATIONAL_MANIFEST",
+    "STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR", "STAMPED_WORKER_STOP_RECEIPT",
+    "STAMPED_ASSESSMENT_VERSION",
+}
+
+
+def judge_runtime_projection(manifest, bindings):
+    """Project an already coordinator-validated seal; never copy whole sections."""
+    pin = manifest["assessment"]
+    projected = {
+        "kind": "judge-runtime-projection", "schema_version": 1, "role": "judge",
+        "version": manifest["version"],
+        "assessment": {key: copy.deepcopy(pin[key]) for key in
+            ("version", "source_commit", "environment_commit", "environment_repository", "sha256")
+            if key in pin},
+        "fixed_files": {"scripts/assessment.py": manifest["fixed_files"]["scripts/assessment.py"]},
+        "replay": copy.deepcopy(NEUTRAL_REPLAY if is_neutral(manifest) else REPLAY),
+        "bindings": {key: bindings[key] for key in sorted(JUDGE_BINDINGS) if key in bindings},
+        "worker_stop_receipt_sha256": sha256(Path(bindings["STAMPED_WORKER_STOP_RECEIPT"]).read_bytes()),
+    }
+    if is_neutral(manifest):
+        projected["protocol"] = manifest["protocol"]
+        from delivery_snapshot import validate_capture
+        identity = validate_capture(Path(bindings["STAMPED_DELIVERY_MANIFEST"]))
+        projected["delivery_capture_sha256"] = identity["capture"]["sha256"]
+    validate_judge_runtime(projected)
+    return projected
+
+
+def validate_judge_runtime(runtime):
+    """Validate a closed runtime schema without importing coordinator records."""
+    neutral = is_neutral(runtime)
+    expected = {"kind", "schema_version", "role", "version", "assessment", "fixed_files",
+                "replay", "bindings", "worker_stop_receipt_sha256"}
+    if neutral:
+        expected |= {"protocol", "delivery_capture_sha256"}
+    require_equal(set(runtime), expected, "judge runtime fields")
+    require_equal((runtime["kind"], runtime["schema_version"], runtime["role"]),
+                  ("judge-runtime-projection", 1, "judge"), "judge runtime schema")
+    if runtime["version"] not in (1, 2, 3, 4):
+        raise SystemExit("Unsupported judge runtime procedure version")
+    require_equal(runtime["replay"], NEUTRAL_REPLAY if neutral else REPLAY, "judge replay contract")
+    if neutral:
+        require_equal(runtime["protocol"], NEUTRAL_PROTOCOL, "judge protocol")
+    pin = runtime["assessment"]
+    required_pin = {"source_commit", "environment_commit", "sha256"}
+    if not required_pin <= set(pin) <= required_pin | {"version", "environment_repository"}:
+        raise SystemExit("Unsupported judge assessment pin fields")
+    require_equal(set(pin["sha256"]), {"pixi.toml", "pixi.lock"}, "judge environment files")
+    require_equal(set(runtime["fixed_files"]), {"scripts/assessment.py"}, "judge runner files")
+    for key in ("source_commit", "environment_commit"):
+        if not isinstance(pin[key], str) or not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", pin[key]):
+            raise SystemExit("Invalid judge assessment commit")
+    digests = [*pin["sha256"].values(), *runtime["fixed_files"].values(),
+               runtime["worker_stop_receipt_sha256"]]
+    if neutral:
+        digests.append(runtime["delivery_capture_sha256"])
+    if any(not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value) for value in digests):
+        raise SystemExit("Invalid judge runtime digest")
+    required = JUDGE_BINDINGS - {"STAMPED_DELIVERY_MANIFEST", "STAMPED_OPERATIONAL_MANIFEST",
+        "STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR", "STAMPED_ASSESSMENT_VERSION"}
+    if neutral:
+        required |= {"STAMPED_DELIVERY_MANIFEST", "STAMPED_ASSESSMENT_VERSION"}
+    if runtime["version"] == 4:
+        required |= {"STAMPED_OPERATIONAL_MANIFEST", "STAMPED_SCIENTIFIC_JUDGMENT_VALIDATOR"}
+    require_equal(set(runtime["bindings"]), required, "judge runtime bindings")
+    for key, value in runtime["bindings"].items():
+        if key == "STAMPED_JUDGE_COMMIT":
+            if value and not re.fullmatch(r"[0-9a-f]{40}|[0-9a-f]{64}", value):
+                raise SystemExit("Invalid judge target commit")
+        elif not isinstance(value, str) or not Path(value).is_absolute():
+            raise SystemExit("Judge runtime paths must be absolute")
+    return runtime
+
+
+def load_judge_runtime(path, expected_sha256, environment):
+    content = Path(path).read_bytes()
+    if not expected_sha256:
+        raise SystemExit("Judge runtime requires its launch digest")
+    require_equal(sha256(content), expected_sha256, "judge runtime SHA-256")
+    runtime = validate_judge_runtime(json.loads(content))
+    for key, value in runtime["bindings"].items():
+        require_equal(environment.get(key), value, "judge runtime binding " + key)
+    receipt = json.loads(Path(environment["STAMPED_WORKER_STOP_RECEIPT"]).read_bytes())
+    require_equal(sha256(Path(environment["STAMPED_WORKER_STOP_RECEIPT"]).read_bytes()),
+                  runtime["worker_stop_receipt_sha256"], "judge worker-stop receipt")
+    if is_neutral(runtime):
+        require_equal(receipt["capture"]["sha256"], runtime["delivery_capture_sha256"],
+                      "judge captured delivery binding")
+    return runtime
+
+
 def research_procedure(manifest):
     """Resolve the exact original research seal in an assessment-only amendment."""
     if manifest.get("version") in (1, 3):
