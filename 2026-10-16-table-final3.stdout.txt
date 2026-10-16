@@ -1,0 +1,33 @@
+| item | principles | status | source | evidence | reason |
+|---|---|---|---|---|---|
+| must/001 | S.1 | met | judgement | `git ls-tree -r HEAD` | All tracked object content is within the single repository root. |
+| must/002 | S.1 | met | judgement | `input/sources.json`, `input/data` | The 54 maps and manifest are annexed under input/data; retrieval sources are recorded. |
+| must/003 | S.1 | met | judgement | `pixi.toml` | The analysis dependencies are declared in the Pixi environment specification. |
+| must/004 | T.1,T.3,T.5 | met | probe:tree-clean+judgement | `git status --short`, `/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-03/worker-end-state.json` | Git tracks code, text, documentation and configuration at the committed state. |
+| must/005 | T.1,T.3,T.5 | met | probe:large-in-annex+judgement | `probe:large-in-annex`, `/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-03/judgment/2026-10-16-annex-whereis.jsonl` | git-annex carries the binary maps and outputs; no large binary blobs are stored directly in Git. |
+| must/006 | T.1,T.3,T.5 | unmet | probe:derived-have-records+judgement | `logs/group-analysis-releaseinfo.json`, `pixi.toml` | The run log records a command, but no exact environment is linked to results; no lockfile is tracked. |
+| must/007 | A.1 | unmet | probe:entry-point | `git ls-tree -r --name-only HEAD` | The root has no README.md or Makefile with installation and usage instructions. |
+| must/008 | A.1 | met | probe:entry-point+judgement | `results/report.md`, `scripts/group_analysis.py` | The report gives a reproduction command and names the analysis script. |
+| must/009 | P.1 | met | probe:no-abs-paths | `scripts/group_analysis.py`, `probe:no-abs-paths` | The analysis uses paths relative to its repository root. |
+| must/010 | P.1 | met | judgement | `scripts/group_analysis.py`, `pixi.toml` | All nonstandard imports and analysis libraries are declared in Pixi. |
+| must/011 | P.1 | met | judgement | `pixi.toml`, `results/report.md` | Pixi declares supported platforms; no additional host hardware, scheduler or system library is required. |
+| must/012 | P.2 | met | judgement | `pixi.toml`, `results/report.md` | The environment specification lists Python, analysis packages and supported platforms; the report names the run command. |
+| must/013 | P.3 | met | probe:env-spec-tracked | `pixi.toml` | The environment specification is committed with the analysis. |
+| must/014 | P.3 | unmet | judgement | `pixi.toml` | No dependency-update or environment-regeneration process is documented. |
+| must/015 | D.1 | unmet | judgement | `pixi.toml`, `git ls-tree -r HEAD` | The committed Pixi file has mutable ranges and wildcards; no exact lock snapshot is tracked. |
+| must/016 | D.1 | met | probe:env-spec-tracked+judgement | `2026-10-16-hub-ls-remote.stdout.txt`, `2026-10-16-fresh-rerun.json`, `2026-10-16-replay-map-check-2.stdout.txt`, `pixi.toml` | Researcher retrieval of the exact commit and environment spec succeeded through the recorded Git/DataLad route. |
+| must/017 | D.1 | partial ⚠ (a MUST is not satisfied by partial) | probe:fresh-rerun+judgement | `results/report.md`, `pixi.toml` | The report provides `pixi run`, but omits Pixi installation and environment retrieval instructions. |
+| should/001 | T.2 | met | judgement | `.gitattributes`, `/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-07/judgment-03/judgment/2026-10-16-annex-whereis.jsonl` | Git and git-annex version text and large content within the same repository. |
+| should/002 | A.2 | unmet | probe:ci-present | `probe:ci-present`, `git ls-tree -r --name-only HEAD` | No CI or regular workflow test is defined. |
+| should/003 | M.1 | met | probe:modules-separated | `input`, `scripts`, `results`, `pixi.toml` | Inputs, code, results and environment are kept in distinct paths. |
+| should/004 | E.1 | not-checked | probe:fresh-rerun+judgement | `2026-10-16-fresh-rerun.json`, `logs/group-analysis-releaseinfo.json` | Replay stopped before analysis because the runner deleted input/participants.tsv; a clean fresh-run test that preserves inputs would settle this. |
+| should/005 | E.1 | unmet | judgement | `results/report.md`, `pixi.toml` | The documented command reuses Pixi's environment; no per-run disposable environment is configured. |
+| should/006 | D.2 | unmet | probe:ci-present+judgement | `pixi.toml`, `logs/group-analysis-releaseinfo.json` | There is no exact locked environment to reconstitute or regularly test; run logs do not record one. |
+| should/007 | D.2 | unmet | judgement | `pixi.toml` | The environment is described by a spec but installed artifacts are not archived with the object. |
+| should/008 | D.2 | unmet | judgement | `pixi.toml`, `git log --oneline -- pixi.toml` | No update-and-track process is documented; this duplicates must/014. |
+| should/009 | M.4 | not-applicable | judgement | `input/sources.json`, `pixi.toml` | N/A: the object contains no restricted data or software; sources identify public inputs and dependencies. |
+| may/001 | M.2 | unmet | judgement | `input/data` | External source data are annexed as files rather than included or linked as submodules. |
+| may/002 | M.2 | partial | judgement | `results/report.md`, `input`, `scripts`, `results`, `pixi.toml` | The input/code/results/environment layout is apparent and the report links files, but module relationships are not described as a structure. |
+| may/003 | M.2 | partial | judgement | `scripts/group_analysis.py`, `input/sources.json` | Input, analysis and result boundaries are distinct, though there is no documented contract for updating them independently. |
+| may/004 | M.2 | met | judgement | `results/report.md`, `scripts/group_analysis.py` | The documented Pixi command composes the environment, inputs and analysis script into result generation. |
+| may/005 | M.2 | met | judgement | `results/report.md` | The report links the analysis script and key machine-readable results, supporting navigation. |

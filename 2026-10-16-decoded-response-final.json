@@ -1,0 +1,227 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": "yes",
+      "reason": "All tracked object content is within the single repository root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/002": {
+      "value": "yes",
+      "reason": "The 54 maps and manifest are annexed under input/data; retrieval sources are recorded.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/003": {
+      "value": "yes",
+      "reason": "The analysis dependencies are declared in the Pixi environment specification.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/004": {
+      "value": "yes",
+      "reason": "Git tracks code, text, documentation and configuration at the committed state.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex carries the binary maps and outputs; no large binary blobs are stored directly in Git.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "The run log records a command, but no exact environment is linked to results; no lockfile is tracked.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "The root has no README.md or Makefile with installation and usage instructions.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/008": {
+      "value": "yes",
+      "reason": "The report gives a reproduction command and names the analysis script.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/009": {
+      "value": "yes",
+      "reason": "The analysis uses paths relative to its repository root.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/010": {
+      "value": "yes",
+      "reason": "All nonstandard imports and analysis libraries are declared in Pixi.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/011": {
+      "value": "yes",
+      "reason": "Pixi declares supported platforms; no additional host hardware, scheduler or system library is required.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/012": {
+      "value": "yes",
+      "reason": "The environment specification lists Python, analysis packages and supported platforms; the report names the run command.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/013": {
+      "value": "yes",
+      "reason": "The environment specification is committed with the analysis.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/014": {
+      "value": "no",
+      "reason": "No dependency-update or environment-regeneration process is documented.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/015": {
+      "value": "no",
+      "reason": "The committed Pixi file has mutable ranges and wildcards; no exact lock snapshot is tracked.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/016": {
+      "value": "yes",
+      "reason": "A researcher can retrieve the exact commit and environment spec via the recorded Git/DataLad route.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:must/017": {
+      "value": "no",
+      "reason": "The report provides `pixi run`, but omits Pixi installation and environment retrieval instructions.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/001": {
+      "value": "yes",
+      "reason": "Git and git-annex version text and large content within the same repository.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "No CI or regular workflow test is defined.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "Inputs, code, results and environment are kept in distinct paths.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "N/A: the object contains no restricted data or software; sources identify public inputs and dependencies.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "The replay never reached analysis: the runner removed input/participants.tsv during output cleanup; no fresh-host test can be concluded.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/005": {
+      "value": "no",
+      "reason": "The documented command reuses Pixi's environment; no per-run disposable environment is configured.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "There is no exact locked environment to reconstitute or regularly test; run logs do not record one.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/007": {
+      "value": "no",
+      "reason": "The environment is described by a spec but installed artifacts are not archived with the object.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:should/008": {
+      "value": "no",
+      "reason": "No update-and-track process is documented; this duplicates must/014.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/001": {
+      "value": "no",
+      "reason": "External source data are annexed as files rather than included or linked as submodules.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/002": {
+      "value": "no",
+      "reason": "The input/code/results/environment layout is apparent and the report links files, but module relationships are not described as a structure.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/003": {
+      "value": "no",
+      "reason": "Input, analysis and result boundaries are distinct, though there is no documented contract for updating them independently.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/004": {
+      "value": "yes",
+      "reason": "The documented Pixi command composes the environment, inputs and analysis script into result generation.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    },
+    "stamped-checklist:may/005": {
+      "value": "yes",
+      "reason": "The report links the analysis script and key machine-readable results, supporting navigation.",
+      "status": "met",
+      "evidence": [],
+      "source": "human:web-app"
+    }
+  },
+  "assessor": {
+    "skill": "human",
+    "harness": "checklist web app",
+    "format": 3
+  }
+}
