@@ -1,0 +1,47 @@
+# Independent assessment — NARPS potential gain and vmPFC
+
+**Scientific adequacy: qualified.** The group analysis and its data-specific inference are well reasoned, with a qualification for the approximate vmPFC coordinate box and the map-coverage proxy. **Scientific conclusion: supported as reported.** The report's claim is that this analysis found no whole-brain-corrected vmPFC evidence; it does not claim the true effect is zero. **Reported hypothesis outcome:** no support for a positive vmPFC effect; three small corrected clusters were reported in posterior regions.
+
+## Delivery integrity and scope
+
+The external manifest reports a complete capture with no capture errors or omissions. I checked all 1,167 manifest entries at the capture root, including the separate coordinator-supplied external skill material; no mismatch was found. Within the worker workspace, all 1,092 entries matched: 426 directories, 612 files and 54 symlinks. File bytes, hashes and modes matched, and symlink targets and recorded link hashes matched. The 54 annex payloads are present under the captured `.git/annex` tree and match their manifest content hashes. `judge-target.json` has no reference limits. No external target was followed and no Git command was run through an external `.git` pointer.
+
+The worker stop receipt reports a normal exit at 2026-10-16 07:05:36 UTC, with no capture omissions. The delivered report, script, notebook, figures and results are present in the complete stop workspace. At stop, the analysis and deliverables were untracked; the retained commit is the coordinator's input-materialization commit, not a worker commit. The inputs' storage attribution also identifies the 54 annex objects as coordinator-supplied. Those facts limit worker-practice credit for tracking and large-file handling.
+
+The captured `.entire` and commit metadata expose a Codex-assisted session. I recorded that exposure but did not use the assistance identity or session content as grading evidence.
+
+## Scientific assessment
+
+The report and code analyze the intended 54-person equal-indifference cohort. The participant table contains only that group, and the script checks that the map IDs equal the metadata IDs and that there are 54 maps. It checks image dimensions, affine agreement and finite voxel values, excludes no participants, and keeps a voxel when at least 90% of maps have nonzero estimates. The whole-brain one-sample t analysis uses participant-level sign flips and the maximum positive t statistic across 210,968 voxels to control one-sided familywise error. A parametric Bonferroni sensitivity analysis is also reported.
+
+The reported corrected result is 24 voxels in three small posterior clusters, with the strongest at MNI (−26, −102, −3.6), t(53)=6.62 and max-statistic FWE p≈0.001. The defined vmPFC box has a mean estimate of −0.003 (95% t interval −0.021 to 0.016), and its most positive voxel has whole-brain max-T FWE p≈0.938. The figures inspected are consistent with that spatial interpretation. Thus the analysis supports the narrow conclusion that this dataset and model did not detect a positive vmPFC effect under whole-brain correction.
+
+The analysis appropriately treats the maps as participant effect estimates rather than standardized statistics, and it explains that gain coefficients are not currency-unit effects because the upstream regressor was mean-centered and variance-normalized. It also notes the separate gain/loss models and absent participant variance maps. The 90%-nonzero mask is a defensible way to reduce boundary artifacts, though it treats the remaining possible missing-coverage values as zero. The bilateral coordinate box is transparent but anatomically coarse; no tissue/atlas mask or sensitivity to alternate vmPFC boundaries is shown. These limitations qualify anatomical precision and generalization. Lack of corrected support is not evidence of zero effect, and the posterior clusters do not establish the vmPFC hypothesis.
+
+Evidence: [scientific report](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/report.md), [analysis script](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/scripts/group_analysis.py), [summary results](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/results/summary.json), [cluster table](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/results/fwe_clusters.csv), [participant metadata](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/input/participants.tsv), [fixed upstream methods](/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/judge-targets/narps-neutral-r1-09-j01/content/workspace/input/upstream-methods.md).
+
+## Replay and access
+
+**Replay: not checked; zero attempts used.** The documented candidate entry point is `python scripts/group_analysis.py`; candidate outputs and the intended `rtol=1e-6` scientific comparison rule are recorded in [replay-record.json](2026-10-16-replay-record.json). The worker report lists observed package versions but supplies no installable environment or setup instructions. The available common interpreter and its optional manifest were coordinator resources, so they were not used to reconstruct the worker environment. Shipped results remain inspected evidence only; they are not replay evidence. The frozen 7,200-second and 5 GB limits therefore were not exercised.
+
+**Access:** the intended recipient is a researcher using the declared authorized route. No worker-declared retrieval or publication route was found, so none was tested. Required coverage would include the report, code/notebook, results, figures, participant metadata, methods and all 54 maps. Only the local coordinator-provided capture was tested; coordinator delivery does not show that the worker had made these artifacts accessible. Details are in [access-record.json](2026-10-16-access-record.json).
+
+## Probe disagreements and overrides
+
+- **must/002:** the subdataset probe left this unchecked because it did not recognize supplied annex links; direct inspection verified all 54 links and payloads resolve within the captured root and the analysis reads them.
+- **must/005:** the annex probe found 54 pointers, but the stop boundary attributes those data objects to coordinator-supplied resources, so worker attainment remains not-checked.
+- **must/006:** the derived-record probe marked this not-applicable because it did not recognize untracked products; the complete delivery contains results, but no run-to-environment record, so the item is unmet.
+- **must/008:** the tracked-path entry-point probe missed the untracked script; the report links a usable script starting point, so this item is met.
+- **must/011 and must/012:** command scanning could not settle documented assumptions or system requirements; reading the script and report found undeclared template access and no complete requirements/setup list.
+- **should/008:** this repeats must/014 by checklist design; both are unmet because no environment-update process exists.
+- **may/001:** the subdataset probe could not determine whether independently maintained components exist; inspection found none, so the item is not-applicable.
+
+## STAMPED item assessment
+
+MUST: 4 met / 12 unmet / 1 not-checked. SHOULD: 0 met / 5 unmet / 1 partial / 2 not-checked / 1 not-applicable. MAY: 1 met / 3 unmet / 1 not-applicable. These are per-item results, not an overall score. In particular, the annex mechanism exists in the capture, but must/005 is not-checked for worker attainment because the stop evidence attributes the data storage to coordinator-supplied inputs.
+
+The frozen probes are retained unchanged in [probes.json](probes.json), and the judged per-item table is in [2026-10-16-table.md](2026-10-16-table.md). The probe also found no license or reuse declaration; this is retained as a separate unmet extra item in the response JSON. The probe could not recognize the untracked entry script and therefore missed must/008; inspection of the report and script supports a clear starting point. The probe also marked must/006 not-applicable because no tracked derivative was recognized, while the complete delivery contains generated results; the missing environment-to-run link makes it unmet. Probe outputs and overrides are preserved in the response record.
+
+The checklist URL is saved in [2026-10-16-url.txt](2026-10-16-url.txt). The validated machine-readable answers are in [2026-10-16-response.json](2026-10-16-response.json). Manifest verification is in [manifest-verification.json](manifest-verification.json). Assessor-side command mistakes and their corrections are separately retained in [assessor-command-issues.json](assessor-command-issues.json); none reflects target behavior.
+
+**Provenance:** frozen assessment runner version 1 and its recorded Pixi runtime were checked against the supplied version pin before probes or response actions. Checklist 0.3.1, commit `af259bad`. Object capture manifest SHA-256 `73fc9ea62e9106b5f3562d14654e02b51bde570d8c60ba8727e0a67c3f1f689b`; worker stop receipt SHA-256 `297a4c54893deeda6820022be1d5f6f61721d0c8bcc5c794d63f6e4d72f733d2`.
