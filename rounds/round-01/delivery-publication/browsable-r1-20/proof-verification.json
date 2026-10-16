@@ -1,0 +1,53 @@
+{
+  "commit": "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0",
+  "verified_content_commit": "c5a91d0f40e159f9174868988b8c39da1ece28c0",
+  "additional_evidence_files_verified": 13,
+  "changed_only_coordinator_evidence": true,
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "origin",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0 -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "c5a91d0f40e159f9174868988b8c39da1ece28c0",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0"
+      ],
+      "returncode": 0,
+      "stdout": "coordinator/README.md\ncoordinator/browsable-copy-01/evidence/commands-prepare.json\ncoordinator/browsable-copy-01/evidence/commands-publish.json\ncoordinator/browsable-copy-01/evidence/commit-message.txt\ncoordinator/browsable-copy-01/evidence/commit.json\ncoordinator/browsable-copy-01/evidence/commit.stderr\ncoordinator/browsable-copy-01/evidence/commit.stdout\ncoordinator/browsable-copy-01/evidence/fresh-check-01/commands.json\ncoordinator/browsable-copy-01/evidence/fresh-check-01/result.json\ncoordinator/browsable-copy-01/evidence/manifest.json\ncoordinator/browsable-copy-01/evidence/prepare.py\ncoordinator/browsable-copy-01/evidence/prepared.json\ncoordinator/browsable-copy-01/evidence/publication.json\ncoordinator/browsable-copy-01/evidence/publish.py\ncoordinator/browsable-copy-01/evidence/verify-fresh.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "checkout",
+        "--detach",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "Previous HEAD position was c5a91d0 feat: expose unchanged research files beside their archive\nHEAD is now at b1e9d12 docs: retain browsable delivery publication and retrieval proof\n"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

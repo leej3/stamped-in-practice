@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r1-11",
+  "extracted_at_utc": "2026-10-16T06:42:12.759831+00:00",
+  "assigned_condition": "discover-science",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 79,
+    "complete_turn_observed": true,
+    "limitation": "Observed actions and exact loaded bytes; availability is not use and procedural use is not causal benefit. No per-install elapsed cost inferred from reduced event stream."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "observed git annex fsck --fast input/data after loading datalad-fsck",
+    "notes": [
+      "Loaded datalad-fsck and the first80 lines of datalad-status from community source; installed datalad-fsck locally.",
+      "Observed --fast integrity check verifies presence/size, not payload checksums; no stronger checksum claim is credited by this observation.",
+      "The temporary community clone was removed by the worker before stop; installed skill/license bytes and exact observed source revision remain retained.",
+      "Supplying annex-backed inputs was coordinator infrastructure; the observed integrity check is an action, not an inferred scientific benefit."
+    ],
+    "source_repository": "https://github.com/nipreps/skills-comm",
+    "source_revision": "82edd77ab47a86fece1a901f57851b76f4dcd8eb"
+  },
+  "evidence": {
+    "local_discovery": [
+      {
+        "line": 8,
+        "item_id": "item_3",
+        "event_sha256": "bdd763916ea2e9bb9efe7b9be5359300a1793f6ef5eeaaf9d2c760eeac9d02e4",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_3",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"find input -type f -printf '%p %s bytes\\\\n' | head -120; cat input/upstream-methods.md; cat input/study-task.md; cat input/participants.tsv | head -5; find /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills -maxdepth 3 -iname 'SKILL.md' | head -80\"",
+            "aggregated_output": "find: -printf: unknown primary or operator\n# Fixed upstream analysis\n\nEach map is one participant's unthresholded gain-effect estimate from NARPS team AO86, averaged across four runs.\nThe 54 participants comprise the complete equal-indifference group in OpenNeuro ds001734 version 1.0.4.\nThese are effect estimates, not standardized test statistics or group results.\nMaps are reported in MNI152NLin2009cAsym space.\n\nAO86 used fMRIPrep outputs and nistats participant models.\nTheir reported gain regressor was mean-centered and variance-normalized before HRF convolution; its coefficients must not be interpreted as change per currency unit.\nResponse trials used response-time durations, with separate response-choice and gain modulators.\nNonresponse trials, motion terms, flagged volumes and drift terms were also modeled; runs were combined within participant.\nGain and loss used separate models, so the supplied gain effect is conditional on that modeling choice.\n\nThe reported upstream choices are fixed for this task.\nParticipant variance maps and a complete executable upstream pipeline are not supplied; account for these limits when choosing and interpreting group inference.\n`participants.tsv` retains the source group, age and gender columns.\n`sources.json` identifies each original image, its retrieved-byte checksum, the pinned cohort table and the original methods report.\n# Potential gains and brain activity\n\nDoes increasing potential monetary gain produce a greater fMRI response in the ventromedial prefrontal cortex (vmPFC) in the NARPS equal-indifference group?\n\nTest the hypothesis that this response increases with potential gain.\nParticipants performed a mixed-gambles task, deciding whether to accept gambles with possible gains and losses.\nIn this group, the range of potential gains was twice the range of potential losses.\n\nInvestigate the question at the group-analysis stage using the supplied 54 participant gain-effect maps and metadata.\nPreprocessing and individual modeling are fixed inputs, described in `upstream-methods.md`; do not repeat them or download time-series scans.\nChoose scientifically defensible group models, quality checks, software and visualizations.\nAccount for what the supplied effect estimates measure and the limits of their upstream model.\nUse whole-brain correction for multiple comparisons when evaluating support for the hypothesis, as required by the original study; justify how you identify vmPFC.\n\nProduce a concise scientific report with informative figures and the code and results supporting your conclusions.\nExplain uncertainty, exclusions and limitations, including what a lack of support would mean.\nPrior teams' answers are not ground truth or a required result.\n\nSource: [NARPS original analysis instructions, Hypothesis 1](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf).\nparticipant_id\tgroup\tgender\tage\nsub-001\tequalIndifference\tM\t24\nsub-003\tequalIndifference\tF\t27\nsub-005\tequalIndifference\tM\t27\nsub-009\tequalIndifference\tM\t26\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/review-agent/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-creator/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/openai-docs/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/imagegen/SKILL.md\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      },
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "1bb763a091027169afdc71b8fc1a13565b0bbc7f09a792d91513dd714561a2af",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'find input/data -type f | wc -l; find /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer -type f | head'",
+            "aggregated_output": "       0\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/agents/openai.yaml\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/scripts/github_utils.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/scripts/list-skills.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/scripts/install-skill-from-github.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/LICENSE.txt\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/assets/skill-installer.png\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/assets/skill-installer-small.svg\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installer_loaded": [
+      {
+        "line": 11,
+        "item_id": "item_5",
+        "event_sha256": "9abfd70b84acae4619aa843aabea50941ca8947cec5681d6f1ada1bf47a06e4c",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'ls -la input && cat input/sources.json && cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/SKILL.md'",
+            "aggregated_output": "total 64\ndrwxr-xr-x@  7 johnlee  staff    224 Oct 16 02:24 .\ndrwxr-xr-x@  6 johnlee  staff    192 Oct 16 02:24 ..\ndrwxr-xr-x@ 56 johnlee  staff   1792 Oct 16 02:24 data\n-rw-r--r--@  1 johnlee  staff   1706 Oct 16 02:24 participants.tsv\n-rw-r--r--@  1 johnlee  staff  19843 Oct 16 02:24 sources.json\n-rw-r--r--@  1 johnlee  staff   1483 Oct 16 02:24 study-task.md\n-rw-r--r--@  1 johnlee  staff   1342 Oct 16 02:24 upstream-methods.md\n{\n  \"study\": \"NARPS Hypothesis 1: group inference from fixed participant effects\",\n  \"collection\": \"https://neurovault.org/collections/4932/\",\n  \"team\": \"AO86\",\n  \"image_metadata_api\": \"https://neurovault.org/api/collections/4932/images/?limit=2000\",\n  \"selection\": \"All single-subject unthresholded hypo1 cope images; participant IDs exactly match the 54 equalIndifference participants in the pinned source table.\",\n  \"maps\": 54,\n  \"map_bytes\": 96387264,\n  \"map_type\": \"participant contrast parameter estimate, not a z/t statistic or a group result\",\n  \"spatial_reference\": \"MNI152NLin2009cAsym\",\n  \"upstream_processing_fixed\": true,\n  \"cohort_source\": {\n    \"url\": \"https://raw.githubusercontent.com/OpenNeuroDatasets/ds001734/64ec117560ab58ed0fe1273f3e90887b1768b268/participants.tsv\",\n    \"git_commit\": \"64ec117560ab58ed0fe1273f3e90887b1768b268\",\n    \"sha256\": \"d127d700f9a519338da295ea56455bf7bb46ca572f726da72ef7b57c310687b8\",\n    \"transformation\": \"Select group == equalIndifference; preserve all columns and values.\"\n  },\n  \"methods_source\": {\n    \"url\": \"https://raw.githubusercontent.com/poldrack/narps/0a9d71a5ab435b40dcd50fea82d2961a43f0a3fc/ImageAnalyses/metadata_files/analysis_pipelines_for_analysis.xlsx\",\n    \"git_commit\": \"0a9d71a5ab435b40dcd50fea82d2961a43f0a3fc\",\n    \"sha256\": \"bfb66119c6beb26e5d3fc84638435cf6c49b40e5eb06606bfecaee0aa48d82b7\",\n    \"sheet\": \"Sheet1\",\n    \"header_excel_row\": 2,\n    \"team_id\": \"AO86\"\n  },\n  \"checksum_scope\": \"SHA256 values are computed from retrieved bytes; NeuroVault metadata independently supplies file sizes but no source checksums.\",\n  \"files\": {\n    \"data/sub-001_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-001_hypo1_cope.nii.gz\",\n      \"image_id\": 118651,\n      \"participant_id\": \"sub-001\",\n      \"bytes\": 1794522,\n      \"sha256\": \"baf3440fbc7f5f59dea28d231e9c5eb9cf00a15b6924342f4b79e7faf56a929a\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-003_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-003_hypo1_cope.nii.gz\",\n      \"image_id\": 118661,\n      \"participant_id\": \"sub-003\",\n      \"bytes\": 1762018,\n      \"sha256\": \"a8c9b6276d1597bc43695516c9ac5b2893a8d8408cd053161ceaddbd42dafb20\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-005_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-005_hypo1_cope.nii.gz\",\n      \"image_id\": 118671,\n      \"participant_id\": \"sub-005\",\n      \"bytes\": 1847315,\n      \"sha256\": \"415383874c65fd9e10bb03bf2aa59bfcd1d10650bc5d0560a249e85d52b7b205\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-009_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-009_hypo1_cope.nii.gz\",\n      \"image_id\": 118686,\n      \"participant_id\": \"sub-009\",\n      \"bytes\": 1737182,\n      \"sha256\": \"33af129d8ba13cd4b6175089706c531471be1e0bd7ccd43ece10751c8cc3254c\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-011_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-011_hypo1_cope.nii.gz\",\n      \"image_id\": 118696,\n      \"participant_id\": \"sub-011\",\n      \"bytes\": 1828116,\n      \"sha256\": \"6f74dd449eefa6eff40ec00eb046ec7e8bb13c0b7c2ac1874155a9c166692352\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-013_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-013_hypo1_cope.nii.gz\",\n      \"image_id\": 118701,\n      \"participant_id\": \"sub-013\",\n      \"bytes\": 1760573,\n      \"sha256\": \"bfa79b82f931d81d6387e82b8413f1f889a06f36275ba510554669c84a3c026f\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-015_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-015_hypo1_cope.nii.gz\",\n      \"image_id\": 118711,\n      \"participant_id\": \"sub-015\",\n      \"bytes\": 1805181,\n      \"sha256\": \"5d98f6d74823516768659967f95ef43728584eab024c58af30987783515d7694\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-017_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-017_hypo1_cope.nii.gz\",\n      \"image_id\": 118721,\n      \"participant_id\": \"sub-017\",\n      \"bytes\": 1791857,\n      \"sha256\": \"dca9eac4d6f0ef4e2a3e631b2d10f89c5362863698cec4a7c7b9b14128ae96d9\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-019_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-019_hypo1_cope.nii.gz\",\n      \"image_id\": 118731,\n      \"participant_id\": \"sub-019\",\n      \"bytes\": 1788203,\n      \"sha256\": \"f9df911028e0ee06d230b097d8c7011b3c09f34df436e8854cd959145777533d\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-021_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-021_hypo1_cope.nii.gz\",\n      \"image_id\": 118741,\n      \"participant_id\": \"sub-021\",\n      \"bytes\": 1821886,\n      \"sha256\": \"7dd60d722e243f429633f1c63c9a810afd73d1ffd0e0e68fcdd2bf3790d78db1\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-025_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-025_hypo1_cope.nii.gz\",\n      \"image_id\": 118757,\n      \"participant_id\": \"sub-025\",\n      \"bytes\": 1805994,\n      \"sha256\": \"545945b0a5f7e51d65e2828e76e776fffcbb33b1635bb7272bc0948bfbc6b7b4\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-027_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-027_hypo1_cope.nii.gz\",\n      \"image_id\": 118767,\n      \"participant_id\": \"sub-027\",\n      \"bytes\": 1814109,\n      \"sha256\": \"dffa472f8cfe30b9c2025470924fceb23d30fb881db6b893d436faa8d8dcef2f\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-029_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-029_hypo1_cope.nii.gz\",\n      \"image_id\": 118772,\n      \"participant_id\": \"sub-029\",\n      \"bytes\": 1792367,\n      \"sha256\": \"0ed1be0ce40d1becaec5cf18487670822b8cb5fcbc5ad0ec2cb34d9a3ed7071b\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-033_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-033_hypo1_cope.nii.gz\",\n      \"image_id\": 118787,\n      \"participant_id\": \"sub-033\",\n      \"bytes\": 1765631,\n      \"sha256\": \"04778467af0a6c93d531d30f73c5492384be59044ebd7be3e95862700e2e9117\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-035_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-035_hypo1_cope.nii.gz\",\n      \"image_id\": 118792,\n      \"participant_id\": \"sub-035\",\n      \"bytes\": 1768719,\n      \"sha256\": \"211fd859f33d69891531ad3e5dd66fe0c0891b20c58e6ef8aa21b4d49ff030c9\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-037_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-037_hypo1_cope.nii.gz\",\n      \"image_id\": 118802,\n      \"participant_id\": \"sub-037\",\n      \"bytes\": 1807410,\n      \"sha256\": \"a4d76561e8ba1848572a474afce754310f4ee101cfd99276eb3105289cc0934b\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-039_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-039_hypo1_cope.nii.gz\",\n      \"image_id\": 118812,\n      \"participant_id\": \"sub-039\",\n      \"bytes\": 1775163,\n      \"sha256\": \"744df860cfb8410aae16bcb1742e7390c51306c66959bb19da9f5b57206bba7b\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-041_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-041_hypo1_cope.nii.gz\",\n      \"image_id\": 118822,\n      \"participant_id\": \"sub-041\",\n      \"bytes\": 1801691,\n      \"sha256\": \"f93eeadcd3f57239e4c32c5df2ca2c4013bf424978701bd5beec535ace24669f\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-043_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-043_hypo1_cope.nii.gz\",\n      \"image_id\": 118827,\n      \"participant_id\": \"sub-043\",\n      \"bytes\": 1776243,\n      \"sha256\": \"520f19805c6c4358bc56e9bba290b9b79a80c14385bc7be90e4bd81b3e37e771\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-045_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-045_hypo1_cope.nii.gz\",\n      \"image_id\": 118837,\n      \"participant_id\": \"sub-045\",\n      \"bytes\": 1812100,\n      \"sha256\": \"3826c6daf5a7be7b03ae552847c4a8709a1b86c2498735e6ce80768cd5d0b88e\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-047_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-047_hypo1_cope.nii.gz\",\n      \"image_id\": 118933,\n      \"participant_id\": \"sub-047\",\n      \"bytes\": 1762249,\n      \"sha256\": \"8585e8be8eebe84dd316eeb1f86090a8123f88a8b5d275bc2c39049a3bf4bf34\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-049_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-049_hypo1_cope.nii.gz\",\n      \"image_id\": 118938,\n      \"participant_id\": \"sub-049\",\n      \"bytes\": 1821174,\n      \"sha256\": \"e01dacebea8fa444b7696e90a53e9ab0b3543b0da780ba430875b3fde117e084\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-051_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-051_hypo1_cope.nii.gz\",\n      \"image_id\": 118948,\n      \"participant_id\": \"sub-051\",\n      \"bytes\": 1755787,\n      \"sha256\": \"74e2887ed9eb4252357cdce98eb53b5b8ab2620ee5ee57aee1bc677c0099b2ca\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-053_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-053_hypo1_cope.nii.gz\",\n      \"image_id\": 118958,\n      \"participant_id\": \"sub-053\",\n      \"bytes\": 1760465,\n      \"sha256\": \"a3b3509a0240c5b12a9c63f94f2913e69eeb7fab4fbe92ac1adc62eb45bdd0ba\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-055_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-055_hypo1_cope.nii.gz\",\n      \"image_id\": 118968,\n      \"participant_id\": \"sub-055\",\n      \"bytes\": 1790638,\n      \"sha256\": \"136983cd89668779e26eba6847653f1d765452f8a2d5675fce037f751edb0ea8\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-057_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-057_hypo1_cope.nii.gz\",\n      \"image_id\": 118978,\n      \"participant_id\": \"sub-057\",\n      \"bytes\": 1815775,\n      \"sha256\": \"aafa1a371d72e690f737d2507c9d7bbd20c620377cd294d44555c856a0566496\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-059_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-059_hypo1_cope.nii.gz\",\n      \"image_id\": 118988,\n      \"participant_id\": \"sub-059\",\n      \"bytes\": 1785421,\n      \"sha256\": \"0fa3da37a11640705014665f546ba86735472a8a2b7fdf1b37177a55abd0a65a\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-061_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-061_hypo1_cope.nii.gz\",\n      \"image_id\": 118998,\n      \"participant_id\": \"sub-061\",\n      \"bytes\": 1783701,\n      \"sha256\": \"cb8bc3bf4264fe156348d3c171335b84978eb8d32b0fd331db9f4661dad2bdff\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-063_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-063_hypo1_cope.nii.gz\",\n      \"image_id\": 119008,\n      \"participant_id\": \"sub-063\",\n      \"bytes\": 1786231,\n      \"sha256\": \"2a5458eb314441b01dacfa1bcea9e9a95f983d2994aa6b853ebe1a20b017a467\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-067_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-067_hypo1_cope.nii.gz\",\n      \"image_id\": 119023,\n      \"participant_id\": \"sub-067\",\n      \"bytes\": 1774136,\n      \"sha256\": \"9977321f1f775f04dab881d740ea5cc491dadda07405f2380c61c50e5c3a01fc\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-069_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-069_hypo1_cope.nii.gz\",\n      \"image_id\": 119033,\n      \"participant_id\": \"sub-069\",\n      \"bytes\": 1769792,\n      \"sha256\": \"bd22905ebe789319f082b0fdb6ba7cd5aaf6590fd8424d6c396cd54c0602a318\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-071_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-071_hypo1_cope.nii.gz\",\n      \"image_id\": 119043,\n      \"participant_id\": \"sub-071\",\n      \"bytes\": 1790405,\n      \"sha256\": \"7286639323904bfe851588ce06c68396d535fad2f7ac5de0de1b73c4c17494f4\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-073_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-073_hypo1_cope.nii.gz\",\n      \"image_id\": 119053,\n      \"participant_id\": \"sub-073\",\n      \"bytes\": 1786224,\n      \"sha256\": \"67086bf1f48b14bc095999f6535656649d01da82d1327715c5b3ab89ea6c5f7b\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-075_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-075_hypo1_cope.nii.gz\",\n      \"image_id\": 119063,\n      \"participant_id\": \"sub-075\",\n      \"bytes\": 1774130,\n      \"sha256\": \"b9151e72e3a8a609a23ac73dbd3d6ba8423f271ddd72149cf27c04e25bf9f980\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-077_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-077_hypo1_cope.nii.gz\",\n      \"image_id\": 119073,\n      \"participant_id\": \"sub-077\",\n      \"bytes\": 1754444,\n      \"sha256\": \"79aaf5add3d475590cb7fd82a7fbd32517dbde2cb859824864a2b10d6fafb9ed\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-079_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-079_hypo1_cope.nii.gz\",\n      \"image_id\": 119078,\n      \"participant_id\": \"sub-079\",\n      \"bytes\": 1770837,\n      \"sha256\": \"d505691fdcfa43ad709fca3803c954069afe4e2f2dc865edb5b0812562d1eb8c\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-081_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-081_hypo1_cope.nii.gz\",\n      \"image_id\": 119088,\n      \"participant_id\": \"sub-081\",\n      \"bytes\": 1809179,\n      \"sha256\": \"a8a342b5e333dbff9776b5a4847929737144dc8029830036636eb86c566f4f76\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-083_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-083_hypo1_cope.nii.gz\",\n      \"image_id\": 119098,\n      \"participant_id\": \"sub-083\",\n      \"bytes\": 1770805,\n      \"sha256\": \"76a526c303c406342487da0e5deee5a6ca6b345e9b6ccb052149c4c32f0833ae\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-085_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-085_hypo1_cope.nii.gz\",\n      \"image_id\": 119108,\n      \"participant_id\": \"sub-085\",\n      \"bytes\": 1733793,\n      \"sha256\": \"74b1af4e4b667a70c79b54a10294be744da5538b814057186eae48710520b65a\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-087_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-087_hypo1_cope.nii.gz\",\n      \"image_id\": 119113,\n      \"participant_id\": \"sub-087\",\n      \"bytes\": 1826169,\n      \"sha256\": \"7ecb372d1249cd5368121b1e7b7f7ee33ef5430575097431dcd3f27dcdad7b04\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-089_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-089_hypo1_cope.nii.gz\",\n      \"image_id\": 119123,\n      \"participant_id\": \"sub-089\",\n      \"bytes\": 1742479,\n      \"sha256\": \"3b380ae44cdbf0171d9ec12ff9ecdb47227496cda5ccd5b5cfb09164c5d91846\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-093_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-093_hypo1_cope.nii.gz\",\n      \"image_id\": 119138,\n      \"participant_id\": \"sub-093\",\n      \"bytes\": 1784075,\n      \"sha256\": \"7802aea70713a4be7683921188b92a563d86f221f191a8bac4ee9c4decb33a1c\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-095_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-095_hypo1_cope.nii.gz\",\n      \"image_id\": 119148,\n      \"participant_id\": \"sub-095\",\n      \"bytes\": 1735309,\n      \"sha256\": \"291760d6479e336093a651e33df20deab99e434cba5afbf31fc019c8d1fe816e\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-099_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-099_hypo1_cope.nii.gz\",\n      \"image_id\": 119163,\n      \"participant_id\": \"sub-099\",\n      \"bytes\": 1823271,\n      \"sha256\": \"30b063515e6b538183fe37c561e87e47681756876a8f6a8a607839d8d3de0e42\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-103_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-103_hypo1_cope.nii.gz\",\n      \"image_id\": 119214,\n      \"participant_id\": \"sub-103\",\n      \"bytes\": 1814013,\n      \"sha256\": \"a088633f18ac3e35fc2512e9dc21ec3d92efd06749d4027338ccb448a635919c\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-105_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-105_hypo1_cope.nii.gz\",\n      \"image_id\": 119224,\n      \"participant_id\": \"sub-105\",\n      \"bytes\": 1795447,\n      \"sha256\": \"12a1b50eaa5be6983990c5e77f985f9750340204eaa3fff7e70829f07707e6a2\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-107_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-107_hypo1_cope.nii.gz\",\n      \"image_id\": 119234,\n      \"participant_id\": \"sub-107\",\n      \"bytes\": 1804121,\n      \"sha256\": \"4580aade93323d0d14f9a3a1932a428004a2f657980b5669f9274102bb370802\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-109_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-109_hypo1_cope.nii.gz\",\n      \"image_id\": 119244,\n      \"participant_id\": \"sub-109\",\n      \"bytes\": 1788268,\n      \"sha256\": \"931ba1128720bbaa99e7fce8f036a331581d6d07e00212a1f402eae7959299cb\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-113_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-113_hypo1_cope.nii.gz\",\n      \"image_id\": 119259,\n      \"participant_id\": \"sub-113\",\n      \"bytes\": 1819506,\n      \"sha256\": \"e5f81435ddc2d5703fa4ea37d6597601e71b50f8c53fb6047fb0067c17282c65\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-115_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-115_hypo1_cope.nii.gz\",\n      \"image_id\": 119269,\n      \"participant_id\": \"sub-115\",\n      \"bytes\": 1797041,\n      \"sha256\": \"5046f7c2fa1c5d1be6237d38f631beca13df8a3a8ded11121082838a533a44bf\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-117_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-117_hypo1_cope.nii.gz\",\n      \"image_id\": 119279,\n      \"participant_id\": \"sub-117\",\n      \"bytes\": 1741472,\n      \"sha256\": \"711159acfa23c45ab82903f658cafe0fa539f39e077e451f6b0728fdb359445f\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-119_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-119_hypo1_cope.nii.gz\",\n      \"image_id\": 119289,\n      \"participant_id\": \"sub-119\",\n      \"bytes\": 1752220,\n      \"sha256\": \"01738a10e34e46c5ea1a4a192b9484595ee352d62375095b76726347455aabd7\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-121_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-121_hypo1_cope.nii.gz\",\n      \"image_id\": 119299,\n      \"participant_id\": \"sub-121\",\n      \"bytes\": 1766758,\n      \"sha256\": \"94357665b89cfa1b9157e71aab10f78b49585a790a4a01d9e4693698e185d892\",\n      \"transformation\": \"none\"\n    },\n    \"data/sub-123_hypo1_cope.nii.gz\": {\n      \"url\": \"https://neurovault.org/media/images/4932/sub-123_hypo1_cope.nii.gz\",\n      \"image_id\": 119304,\n      \"participant_id\": \"sub-123\",\n      \"bytes\": 1745649,\n      \"sha256\": \"1219377e08c306753c1e382d431b1e7a55c7143cdc5f800fb65e92fa7e72f888\",\n      \"transformation\": \"none\"\n    },\n    \"participants.tsv\": {\n      \"bytes\": 1706,\n      \"sha256\": \"faca815bcb042144bdb8dcff915f45de0d27650f60416ed76a5a72557341abbf\"\n    },\n    \"study-task.md\": {\n      \"bytes\": 1483,\n      \"sha256\": \"e92bf2e0c0db4cc49688cce9f9dfff8a236fc4ec151c09961719f49f31310cc8\"\n    },\n    \"upstream-methods.md\": {\n      \"bytes\": 1342,\n      \"sha256\": \"508d832c8787ed8303c3de101c2c76f40a3aa5dec53e6993dc2a49c4b7bcf90b\"\n    }\n  }\n}\n---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog_query": [
+      {
+        "line": 15,
+        "item_id": "item_7",
+        "event_sha256": "f219a624104a574178e88d038d2b828b45901c888b53ed23841b2b6a17b25d56",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'ls -la input/data | head -80; python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-eecewc8b/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "total 0\ndrwxr-xr-x@ 56 johnlee  staff  1792 Oct 16 02:24 .\ndrwxr-xr-x@  7 johnlee  staff   224 Oct 16 02:24 ..\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-001_hypo1_cope.nii.gz -> ../../.git/annex/objects/fW/JZ/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-003_hypo1_cope.nii.gz -> ../../.git/annex/objects/Px/VF/MD5E-s1762018--87ead2a2104507d24085d3136b907ea3.nii.gz/MD5E-s1762018--87ead2a2104507d24085d3136b907ea3.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-005_hypo1_cope.nii.gz -> ../../.git/annex/objects/GG/Gk/MD5E-s1847315--a6b5baa23ea6fc0d88e60bef093f477f.nii.gz/MD5E-s1847315--a6b5baa23ea6fc0d88e60bef093f477f.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-009_hypo1_cope.nii.gz -> ../../.git/annex/objects/27/v5/MD5E-s1737182--c78e1eafb7f6d8e4a09975a5a9721700.nii.gz/MD5E-s1737182--c78e1eafb7f6d8e4a09975a5a9721700.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-011_hypo1_cope.nii.gz -> ../../.git/annex/objects/V6/55/MD5E-s1828116--a08c26694622d29085d0ff477e29a87b.nii.gz/MD5E-s1828116--a08c26694622d29085d0ff477e29a87b.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-013_hypo1_cope.nii.gz -> ../../.git/annex/objects/fk/3q/MD5E-s1760573--53bb0262f6b247c292c82ae02c9ac689.nii.gz/MD5E-s1760573--53bb0262f6b247c292c82ae02c9ac689.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-015_hypo1_cope.nii.gz -> ../../.git/annex/objects/g3/XV/MD5E-s1805181--e17002345578911b778f67d3b8239fe7.nii.gz/MD5E-s1805181--e17002345578911b778f67d3b8239fe7.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-017_hypo1_cope.nii.gz -> ../../.git/annex/objects/k3/96/MD5E-s1791857--94f1e4aa88173d0b274894166e19de7e.nii.gz/MD5E-s1791857--94f1e4aa88173d0b274894166e19de7e.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-019_hypo1_cope.nii.gz -> ../../.git/annex/objects/2k/Xg/MD5E-s1788203--4e393ca1a4840daaa619a8a10777e4df.nii.gz/MD5E-s1788203--4e393ca1a4840daaa619a8a10777e4df.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-021_hypo1_cope.nii.gz -> ../../.git/annex/objects/w8/wx/MD5E-s1821886--690002d9801aaec865f73fffa4c09f60.nii.gz/MD5E-s1821886--690002d9801aaec865f73fffa4c09f60.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-025_hypo1_cope.nii.gz -> ../../.git/annex/objects/Jm/GF/MD5E-s1805994--9ea0a89cfa30a64598f2be9b232bfb91.nii.gz/MD5E-s1805994--9ea0a89cfa30a64598f2be9b232bfb91.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-027_hypo1_cope.nii.gz -> ../../.git/annex/objects/6G/WK/MD5E-s1814109--39e98c0c2b628dc03942a4ce1d883486.nii.gz/MD5E-s1814109--39e98c0c2b628dc03942a4ce1d883486.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-029_hypo1_cope.nii.gz -> ../../.git/annex/objects/qQ/kG/MD5E-s1792367--a8f4864747246fed458e132d5e56d5a9.nii.gz/MD5E-s1792367--a8f4864747246fed458e132d5e56d5a9.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-033_hypo1_cope.nii.gz -> ../../.git/annex/objects/2z/pk/MD5E-s1765631--4295cb0bc0e6c8cbed9302c1fbacae51.nii.gz/MD5E-s1765631--4295cb0bc0e6c8cbed9302c1fbacae51.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-035_hypo1_cope.nii.gz -> ../../.git/annex/objects/32/Gk/MD5E-s1768719--f31958d6eebbba76dde9698e9baadc11.nii.gz/MD5E-s1768719--f31958d6eebbba76dde9698e9baadc11.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-037_hypo1_cope.nii.gz -> ../../.git/annex/objects/0x/Pk/MD5E-s1807410--8d91b63dd5b87a230bc86adea56877e7.nii.gz/MD5E-s1807410--8d91b63dd5b87a230bc86adea56877e7.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-039_hypo1_cope.nii.gz -> ../../.git/annex/objects/z2/j9/MD5E-s1775163--0a855fdf4b733d23d09528eab0785cc4.nii.gz/MD5E-s1775163--0a855fdf4b733d23d09528eab0785cc4.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-041_hypo1_cope.nii.gz -> ../../.git/annex/objects/Zm/85/MD5E-s1801691--3a44285e564422fc72915337e2df8da4.nii.gz/MD5E-s1801691--3a44285e564422fc72915337e2df8da4.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-043_hypo1_cope.nii.gz -> ../../.git/annex/objects/9m/xV/MD5E-s1776243--168b758aef9d72402c65cf477d0d9e03.nii.gz/MD5E-s1776243--168b758aef9d72402c65cf477d0d9e03.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-045_hypo1_cope.nii.gz -> ../../.git/annex/objects/pg/8w/MD5E-s1812100--7123ca86fa6b9a0f2f4853c9458cf150.nii.gz/MD5E-s1812100--7123ca86fa6b9a0f2f4853c9458cf150.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-047_hypo1_cope.nii.gz -> ../../.git/annex/objects/WG/q5/MD5E-s1762249--d7f7009182e38831e550887b6a7cfb82.nii.gz/MD5E-s1762249--d7f7009182e38831e550887b6a7cfb82.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-049_hypo1_cope.nii.gz -> ../../.git/annex/objects/M2/jm/MD5E-s1821174--e352e3d3f776f804fcd7953a0ce237fe.nii.gz/MD5E-s1821174--e352e3d3f776f804fcd7953a0ce237fe.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-051_hypo1_cope.nii.gz -> ../../.git/annex/objects/W2/28/MD5E-s1755787--3f04b9d2ffad9ac40c4fc047d097291f.nii.gz/MD5E-s1755787--3f04b9d2ffad9ac40c4fc047d097291f.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-053_hypo1_cope.nii.gz -> ../../.git/annex/objects/7p/13/MD5E-s1760465--5a35acdca0f92ddd35f580fc9234acdc.nii.gz/MD5E-s1760465--5a35acdca0f92ddd35f580fc9234acdc.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-055_hypo1_cope.nii.gz -> ../../.git/annex/objects/Qf/kG/MD5E-s1790638--a44f1ea67937ed5f790b2b20d698c4fa.nii.gz/MD5E-s1790638--a44f1ea67937ed5f790b2b20d698c4fa.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-057_hypo1_cope.nii.gz -> ../../.git/annex/objects/kV/2w/MD5E-s1815775--b45b623f5335900f3cfe1ffdada6eae0.nii.gz/MD5E-s1815775--b45b623f5335900f3cfe1ffdada6eae0.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-059_hypo1_cope.nii.gz -> ../../.git/annex/objects/xx/mx/MD5E-s1785421--79102e07806b4848557594997daeb844.nii.gz/MD5E-s1785421--79102e07806b4848557594997daeb844.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-061_hypo1_cope.nii.gz -> ../../.git/annex/objects/V0/pv/MD5E-s1783701--3287174cb5321b2600e675c95d3f4be2.nii.gz/MD5E-s1783701--3287174cb5321b2600e675c95d3f4be2.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-063_hypo1_cope.nii.gz -> ../../.git/annex/objects/6z/5P/MD5E-s1786231--23c986406f03fdcdb3292eccd1ea7a1e.nii.gz/MD5E-s1786231--23c986406f03fdcdb3292eccd1ea7a1e.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-067_hypo1_cope.nii.gz -> ../../.git/annex/objects/MP/1P/MD5E-s1774136--35aa5386d5ca7067b6428d1d0ece4de0.nii.gz/MD5E-s1774136--35aa5386d5ca7067b6428d1d0ece4de0.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-069_hypo1_cope.nii.gz -> ../../.git/annex/objects/J5/Xk/MD5E-s1769792--57e4314a80985893da176a2be968ab5a.nii.gz/MD5E-s1769792--57e4314a80985893da176a2be968ab5a.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-071_hypo1_cope.nii.gz -> ../../.git/annex/objects/q6/2P/MD5E-s1790405--dfca5fa0bc1e5eb15716c509b27578f8.nii.gz/MD5E-s1790405--dfca5fa0bc1e5eb15716c509b27578f8.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-073_hypo1_cope.nii.gz -> ../../.git/annex/objects/01/vJ/MD5E-s1786224--e1e672d273234eb3b5430a19ed26b8c9.nii.gz/MD5E-s1786224--e1e672d273234eb3b5430a19ed26b8c9.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-075_hypo1_cope.nii.gz -> ../../.git/annex/objects/35/mm/MD5E-s1774130--2c08897308b1c43185851bb40071800c.nii.gz/MD5E-s1774130--2c08897308b1c43185851bb40071800c.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-077_hypo1_cope.nii.gz -> ../../.git/annex/objects/M5/Qv/MD5E-s1754444--11d891a962eaecf587f92effdb5b617a.nii.gz/MD5E-s1754444--11d891a962eaecf587f92effdb5b617a.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-079_hypo1_cope.nii.gz -> ../../.git/annex/objects/P6/46/MD5E-s1770837--30a64b099250f23f2662757b64c7b7d7.nii.gz/MD5E-s1770837--30a64b099250f23f2662757b64c7b7d7.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-081_hypo1_cope.nii.gz -> ../../.git/annex/objects/4Q/JX/MD5E-s1809179--4367c81cd376f61fa02941f5c456d398.nii.gz/MD5E-s1809179--4367c81cd376f61fa02941f5c456d398.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-083_hypo1_cope.nii.gz -> ../../.git/annex/objects/vk/wv/MD5E-s1770805--acc91253a6fe6bffe28faa14df3eefd7.nii.gz/MD5E-s1770805--acc91253a6fe6bffe28faa14df3eefd7.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-085_hypo1_cope.nii.gz -> ../../.git/annex/objects/9J/6Z/MD5E-s1733793--ad9f141c93d3c0dd3739434da07c889a.nii.gz/MD5E-s1733793--ad9f141c93d3c0dd3739434da07c889a.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-087_hypo1_cope.nii.gz -> ../../.git/annex/objects/zZ/q4/MD5E-s1826169--eb0a433ee11c117f233e639c9b296620.nii.gz/MD5E-s1826169--eb0a433ee11c117f233e639c9b296620.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-089_hypo1_cope.nii.gz -> ../../.git/annex/objects/j8/qQ/MD5E-s1742479--c19a798d7cba1c372855888a9024ab32.nii.gz/MD5E-s1742479--c19a798d7cba1c372855888a9024ab32.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-093_hypo1_cope.nii.gz -> ../../.git/annex/objects/p5/9M/MD5E-s1784075--bab4e43254cac593d5026e88abd76312.nii.gz/MD5E-s1784075--bab4e43254cac593d5026e88abd76312.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-095_hypo1_cope.nii.gz -> ../../.git/annex/objects/3J/0w/MD5E-s1735309--97a3089d3d88e7b539723ce47059cb04.nii.gz/MD5E-s1735309--97a3089d3d88e7b539723ce47059cb04.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-099_hypo1_cope.nii.gz -> ../../.git/annex/objects/47/Qw/MD5E-s1823271--4239f3bf7bfdf9f176d9593954f448be.nii.gz/MD5E-s1823271--4239f3bf7bfdf9f176d9593954f448be.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-103_hypo1_cope.nii.gz -> ../../.git/annex/objects/1j/17/MD5E-s1814013--363b10dfb82004161b44ff02ee6514db.nii.gz/MD5E-s1814013--363b10dfb82004161b44ff02ee6514db.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-105_hypo1_cope.nii.gz -> ../../.git/annex/objects/Qz/2W/MD5E-s1795447--0d2e10b282f31b79333df03d7185c7fd.nii.gz/MD5E-s1795447--0d2e10b282f31b79333df03d7185c7fd.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-107_hypo1_cope.nii.gz -> ../../.git/annex/objects/zF/kg/MD5E-s1804121--5b49e871d66e1c1044c7ae399be7dfa6.nii.gz/MD5E-s1804121--5b49e871d66e1c1044c7ae399be7dfa6.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-109_hypo1_cope.nii.gz -> ../../.git/annex/objects/Q9/J7/MD5E-s1788268--539e7f0b6d71a436a8219092adbc52f1.nii.gz/MD5E-s1788268--539e7f0b6d71a436a8219092adbc52f1.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-113_hypo1_cope.nii.gz -> ../../.git/annex/objects/X4/Z6/MD5E-s1819506--71c75230fe451790817cf16b6da9ff58.nii.gz/MD5E-s1819506--71c75230fe451790817cf16b6da9ff58.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-115_hypo1_cope.nii.gz -> ../../.git/annex/objects/3P/gF/MD5E-s1797041--fe43c7de7c84d8f43b58e4aa086b53ba.nii.gz/MD5E-s1797041--fe43c7de7c84d8f43b58e4aa086b53ba.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-117_hypo1_cope.nii.gz -> ../../.git/annex/objects/pW/QW/MD5E-s1741472--1b6b2c3638000fc53dd7fb8dbb61acf7.nii.gz/MD5E-s1741472--1b6b2c3638000fc53dd7fb8dbb61acf7.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-119_hypo1_cope.nii.gz -> ../../.git/annex/objects/7X/FZ/MD5E-s1752220--b816d25a8c2c7bff1aa1edad085b28a8.nii.gz/MD5E-s1752220--b816d25a8c2c7bff1aa1edad085b28a8.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-121_hypo1_cope.nii.gz -> ../../.git/annex/objects/f9/30/MD5E-s1766758--e3eb3d7581b6d2fe23cad501f55633b1.nii.gz/MD5E-s1766758--e3eb3d7581b6d2fe23cad501f55633b1.nii.gz\nlrwxr-xr-x@  1 johnlee  staff   140 Oct 16 02:24 sub-123_hypo1_cope.nii.gz -> ../../.git/annex/objects/4j/FV/MD5E-s1745649--b676063de1663e99a46507e0ceb79fad.nii.gz/MD5E-s1745649--b676063de1663e99a46507e0ceb79fad.nii.gz\n1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "public_search": [
+      {
+        "line": 17,
+        "item_id": "exec-e129646b-a36f-41f7-b667-f8729d109d2d",
+        "event_sha256": "311c72032a220a6502b8bf9bd14c759aa204bbbf1dbfa10196da70ec271da67f",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "exec-e129646b-a36f-41f7-b667-f8729d109d2d",
+            "type": "web_search",
+            "query": "GitHub Codex skill neuroimaging fMRI analysis SKILL.md reproducible research",
+            "action": {
+              "type": "search",
+              "query": "GitHub Codex skill neuroimaging fMRI analysis SKILL.md reproducible research"
+            },
+            "results": [
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search0",
+                "snippet": "2. fmri_rsa_codex_skill ... # SKILL.md ... description | Use this skill when the user asks for RSA / Representational Similarity Analysis on neural data, especially",
+                "title": "fmri_rsa_codex_skill/SKILL.md at main \u00b7 ew2750/fmri_rsa_codex_skill \u00b7 GitHub",
+                "url": "https://github.com/ew2750/fmri_rsa_codex_skill/blob/main/SKILL.md"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search1",
+                "snippet": ".github/workflows | .github/workflows | | ... See SKILL.md for the full workflow, evaluation guidance for reproducible checks, and CHANGELOG.md for release history and unreleased maintenance",
+                "title": "GitHub - LIU-31415/codex-research: Interactive, evidence-grounded literature research Skill for Codex \u00b7 GitHub",
+                "url": "https://github.com/LIU-31415/codex-research"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search2",
+                "snippet": "`mri-ml-sci-python` is a Codex skill for building, modifying, auditing, and reviewing Python workflows for MRI and neuroimaging machine-learning studies, including leakage-safe SHAP analysis. ... >",
+                "title": "GitHub - Learner97/mri-ml-sci-python: Codex skill for publication-grade Python MRI machine learning with leakage-safe SHAP analysis \u00b7 GitHub",
+                "url": "https://github.com/Learner97/mri-ml-sci-python"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search3",
+                "snippet": "`mri-ml-sci-matlab` is a Codex skill for building, modifying, and reviewing MATLAB workflows for MRI and neuroimaging machine learning studies. ... > This skill helps generate",
+                "title": "GitHub - Learner97/mri-ml-sci-matlab \u00b7 GitHub",
+                "url": "https://github.com/Learner97/mri-ml-sci-matlab"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search4",
+                "snippet": "git clone https://github.com/GuoWeimse/codex-research-skills.git ... Use this skill for complete, evidence-traceable analysis of a paper, preprint, thesis, or supporting information. ... The full thre",
+                "title": "codex-research-skills/README.md at main \u00b7 GuoWeimse/codex-research-skills \u00b7 GitHub",
+                "url": "https://github.com/GuoWeimse/codex-research-skills/blob/main/README.md"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search5",
+                "snippet": "SKILL.md | SKILL.md | | ... A Codex skill for paper-oriented research with the user in control of scientific direction. ... When unattended monitoring is",
+                "title": "GitHub - bystander563/research-paper-workflow: Codex skill for autonomous paper research, novelty auditing, experiment iteration, ceiling tuning, and PI decision checkpoints. \u00b7 GitHub",
+                "url": "https://github.com/bystander563/research-paper-workflow"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search6",
+                "snippet": "`skills-comm` gathers Agent Skills that teach LLM agents (Claude Code and other agents that read `SKILL.md`/`AGENTS.md`) how to drive real neuroimaging tools correctly and reproducibly.",
+                "title": "GitHub - nipreps/skills-comm: Neuroimaging community skills repo - making LLMs leverage neuroimaging tools more effectively \u00b7 GitHub",
+                "url": "https://github.com/nipreps/skills-comm"
+              },
+              {
+                "type": "text_result",
+                "domain": "github.com",
+                "ref_id": "turn0search7",
+                "snippet": ".github/workflows | .github/workflows | | ... It turns a research question into traceable evidence, datasets, preregistered experiments, controlled compute, reproducible artifacts, independent review,",
+                "title": "GitHub - shark0304/codex-science: Auditable, reproducible scientific research workbench for Codex \u00b7 GitHub",
+                "url": "https://github.com/shark0304/codex-science"
+              },
+              {
+                "type": "text_result",
+                "domain": "ithub.global.ssl.fastly.net",
+                "ref_id": "turn0search8",
+                "snippet": "leo-lilinxiao / codex-autoresearch Public ... .github/workflows | .github/workflows | | ... SKILL.md | SKILL.md | | ... Autoresearch works for test failures, coverage, type errors,",
+                "title": "GitHub - leo-lilinxiao/codex-autoresearch: Codex Autoresearch Skill \u2014 A self-directed iterative system for Codex that continuously cycles through: modify, verify, retain or discard, and repeat indefinitely. Inspired by Karpathy\u2019s autoresearch concept. \u00b7 GitHub",
+                "url": "https://ithub.global.ssl.fastly.net/leo-lilinxiao/codex-autoresearch"
+              },
+              {
+                "type": "text_result",
+                "domain": "download.plaud.ai",
+                "ref_id": "turn0search9",
+                "snippet": "description | Use for local literature workspaces: organize and read papers, map copied titles to local PDFs, manage paper and survey sources, prepare scoped survey",
+                "title": "codex-paper-reader/SKILL.md at main \u00b7 hwang847/codex-paper-reader \u00b7 GitHub",
+                "url": "https://download.plaud.ai/hwang847/codex-paper-reader/blob/main/SKILL.md"
+              },
+              {
+                "type": "text_result",
+                "domain": "download.plaud.ai",
+                "ref_id": "turn0search10",
+                "snippet": "# SKILL.md ... 1. codex-autoresearch ... Resolve commands from this skill's own directory as `<skill-root>/scripts/autoresearch.py`.",
+                "title": "codex-autoresearch/SKILL.md at main \u00b7 leo-lilinxiao/codex-autoresearch \u00b7 GitHub",
+                "url": "https://download.plaud.ai/leo-lilinxiao/codex-autoresearch/blob/main/SKILL.md"
+              },
+              {
+                "type": "text_result",
+                "domain": "download.plaud.ai",
+                "ref_id": "turn0search11",
+                "snippet": "leo-lilinxiao / codex-autoresearch Public ... .github/workflows | .github/workflows | | ... SKILL.md | SKILL.md | | ... Autoresearch works for test failures, coverage, type errors,",
+                "title": "GitHub - leo-lilinxiao/codex-autoresearch: Codex Autoresearch Skill \u2014 A self-directed iterative system for Codex that continuously cycles through: modify, verify, retain or discard, and repeat indefinitely. Inspired by Karpathy\u2019s autoresearch concept. \u00b7 GitHub",
+                "url": "https://download.plaud.ai/leo-lilinxiao/codex-autoresearch"
+              },
+              {
+                "type": "text_result",
+                "domain": "arxiv.org",
+                "ref_id": "turn0academia12",
+                "snippet": "An agent skill is a folder containing a SKILL.md file with instructions for a language-model agent, optionally accompanied by scripts and reference files. ... Nine",
+                "title": "GitSkills: A Dataset of Agent Skills on GitHub",
+                "url": "https://arxiv.org/abs/2608.10906"
+              },
+              {
+                "type": "text_result",
+                "domain": "arxiv.org",
+                "ref_id": "turn0academia13",
+                "snippet": "Agent skills are SKILL.md instructions and scripts that AI coding agents such as Claude Code and Codex run with the permissions of their user. ...",
+                "title": "Skill Constellations: Tracing the Supply Chain of Agent Skills on GitHub",
+                "url": "https://arxiv.org/abs/2610.11169"
+              },
+              {
+                "type": "text_result",
+                "domain": "arxiv.org",
+                "ref_id": "turn0academia14",
+                "snippet": "We introduce Codex, a GPT language model fine-tuned on publicly available code from GitHub, and study its Python code-writing capabilities.",
+                "title": "Evaluating Large Language Models Trained on Code",
+                "url": "https://arxiv.org/abs/2107.03374"
+              },
+              {
+                "type": "text_result",
+                "domain": "escholarship.org",
+                "ref_id": "turn0search15",
+                "snippet": "Teaching Computational Reproducibility for Neuroimaging ... important for building and maintaining reproducible work\ufb02ows. ... The weekly lectures and labs prepared students with the skills ...",
+                "title": "Teaching Computational Reproducibility for Neuroimaging",
+                "url": "https://escholarship.org/content/qt6327s3vj/qt6327s3vj_noSplash_b03190ac228972cc19364b9ffe035215.pdf?t=snjs42"
+              },
+              {
+                "type": "text_result",
+                "domain": "admin.library.oapen.org",
+                "ref_id": "turn0search16",
+                "snippet": "Optimizing Your Reproducible Neuroimaging Work\ufb02ow ... A worked example\u2014a clustering analysis\u2014with open access neuroimaging ... Key words Neuroimaging, Git, GitHub, Version control, Reproducibility",
+                "title": "Neuromethods  218",
+                "url": "https://admin.library.oapen.org/bitstream/handle/20.500.12657/96088/9781071642603.pdf?isAllowed=y&sequence=1"
+              },
+              {
+                "type": "text_result",
+                "domain": "pure.mpg.de",
+                "ref_id": "turn0search17",
+                "snippet": "barrier to sharing highly processed data derivatives, is Brainlife. ... easier using generic repositories (e.g., OSF, Figshare, Github or Zenodo) ... ming code itself becomes",
+                "title": "Open and reproducible neuroimaging: From study inception to publication",
+                "url": "https://pure.mpg.de/rest/items/item_3377377_8/component/file_3476270/content"
+              },
+              {
+                "type": "text_result",
+                "domain": "arxiv.org",
+                "ref_id": "turn0academia18",
+                "snippet": "We describe a project-based introduction to reproducible and collaborative neuroimaging analysis. ... This allowed us to teach: (a) computational tools to ensure computationally reproducible work,",
+                "title": "Teaching computational reproducibility for neuroimaging",
+                "url": "https://arxiv.org/abs/1806.06145"
+              },
+              {
+                "type": "text_result",
+                "domain": "www.frontiersin.org",
+                "ref_id": "turn0search19",
+                "snippet": "files, which may depend on other files or steps; such chaining is important for building and maintaining reproducible workflows. ... We demonstrated methods and tools",
+                "title": "Teaching Computational Reproducibility for Neuroimaging",
+                "url": "https://www.frontiersin.org/articles/10.3389/fnins.2018.00727/pdf"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "line": 21,
+        "item_id": "exec-7d9d0c7d-ab09-46b0-a30b-830337586593",
+        "event_sha256": "1cf94f9315197df49b32eef2ebef236aaad6d6ab7873f4112311e270f643570c",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "exec-7d9d0c7d-ab09-46b0-a30b-830337586593",
+            "type": "web_search",
+            "query": "https://api.github.com/repos/nipreps/skills-comm/contents/plugins/datalad-cli",
+            "action": {
+              "type": "open_page",
+              "url": "https://api.github.com/repos/nipreps/skills-comm/contents/plugins/datalad-cli"
+            },
+            "results": [
+              {
+                "type": "text_result",
+                "ref_id": "turn2view0",
+                "snippet": "Total lines: 1",
+                "title": "Internal Error"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "selection_rationale": [
+      {
+        "line": 22,
+        "item_id": "item_11",
+        "event_sha256": "716e0d289dc57a318f791029dd92334d7c9d2046a0f775a7a0469855e06b91fc",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_11",
+            "type": "agent_message",
+            "text": "The maps are present as git-annex links, so I\u2019m verifying that the linked image bytes are available and match the manifest before analysis. I also found a neuroimaging community skill collection; I\u2019m checking whether its provenance guidance applies to these supplied derivatives before installing anything."
+          }
+        }
+      },
+      {
+        "line": 33,
+        "item_id": "item_17",
+        "event_sha256": "38aefa69218dae500b58a5f170c1ca29dd38073e30905e2cd84944caa807f3b2",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_17",
+            "type": "agent_message",
+            "text": "The 54 linked maps pass annex integrity checks. I installed the applicable `datalad-fsck` neuroimaging provenance skill in this workspace and used its recommended integrity check. For inference, I\u2019m using a one-sample group model with a one-sided, whole-brain max-statistic permutation correction; vmPFC will be localized independently from atlas anatomy rather than selected from the observed activation."
+          }
+        }
+      }
+    ],
+    "community_clone": [
+      {
+        "line": 28,
+        "item_id": "item_14",
+        "event_sha256": "b9cb099abe6d631b3096c90979af5173493baa5e16b4d19176d8665af6f2ecca",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_14",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'git clone --depth 1 https://github.com/nipreps/skills-comm.git .resources/skills-comm && find .resources/skills-comm/plugins/datalad-cli -maxdepth 4 -name SKILL.md -print && find .resources/skills-comm/plugins/datalad-cli -maxdepth 3 -type f | head -40'",
+            "aggregated_output": "Cloning into '.resources/skills-comm'...\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-status/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-init/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-fsck/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-addurls/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-configuration/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-get/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-diff/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-update/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-siblings/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-container-run/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-export/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-log/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-subdatasets/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-push/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-credentials/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-clone/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-save/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-run/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-untrack/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/references/troubleshooting.md\n.resources/skills-comm/plugins/datalad-cli/references/subdataset-patterns.md\n.resources/skills-comm/plugins/datalad-cli/references/annex-content-states.md\n.resources/skills-comm/plugins/datalad-cli/references/siblings-and-remotes.md\n.resources/skills-comm/plugins/datalad-cli/references/yoda-layout.md\n.resources/skills-comm/plugins/datalad-cli/references/global-options.md\n.resources/skills-comm/plugins/datalad-cli/README.md\n.resources/skills-comm/plugins/datalad-cli/hooks/scripts/datalad-checkpoint.sh\n.resources/skills-comm/plugins/datalad-cli/hooks/hooks.json\n.resources/skills-comm/plugins/datalad-cli/.claude-plugin/plugin.json\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-status/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-init/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-fsck/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-addurls/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-configuration/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-get/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-diff/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-update/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-siblings/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-container-run/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-export/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-log/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-subdatasets/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-push/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-credentials/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-clone/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-save/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-run/SKILL.md\n.resources/skills-comm/plugins/datalad-cli/skills/datalad-untrack/SKILL.md\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "instructions_and_application": [
+      {
+        "line": 30,
+        "item_id": "item_15",
+        "event_sha256": "b34a9aafa20052627e6b86aa89f4764c175a53c667dc231fc3f5863d628896a1",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_15",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat .resources/skills-comm/plugins/datalad-cli/skills/datalad-fsck/SKILL.md && cat .resources/skills-comm/plugins/datalad-cli/skills/datalad-status/SKILL.md | head -80; command -v datalad || true; git annex fsck --fast input/data'",
+            "aggregated_output": "---\nname: datalad-fsck\ndescription: >\n  Auto-invoke when the user wants to check annex integrity, verify dataset content,\n  check for missing or corrupt files, or recover from suspected data corruption.\n  Trigger on \"check annex integrity\", \"verify dataset content\", \"annex fsck\",\n  \"are my files corrupt\", \"check for missing content\", \"fsck\", \"data integrity check\",\n  or /datalad-fsck. Do NOT trigger for general DataLad status checks or `datalad status`.\nargument-hint: [--fast] [path]\nuser-invocable: true\ndisable-model-invocation: false\nallowed-tools: Read, Bash, Glob\n---\n\n# Skill: datalad-fsck\n\nCheck the integrity of annexed file content in a DataLad dataset using `git annex fsck`.\nIdentifies missing, corrupt, or unreachable content and guides recovery.\n\n## Steps\n\n1. **Verify DataLad context** \u2014 check for `.datalad/` in the current directory or a\n   parent:\n   ```bash\n   ls .datalad/ 2>/dev/null\n   ```\n   If no dataset is found, inform the user and stop.\n\n2. **Determine scope** \u2014 ask the user:\n   - **Fast check** (`--fast`): verifies file sizes and presence only. Quick, recommended\n     for routine checks or large datasets. Does **not** verify checksums.\n   - **Full check** (no flag): verifies checksums against stored hashes. Thorough but can\n     take a very long time on large datasets. Only recommend if corruption is suspected or\n     a transfer completed unexpectedly.\n   - **Path-scoped check**: optionally limit to a specific file or directory by passing\n     the path as an argument.\n\n   Warn the user: a full fsck on a large dataset can take a very long time. Recommend\n   `--fast` first unless there is specific reason to suspect checksum-level corruption.\n\n3. **Construct and show command** \u2014 display before executing:\n   ```bash\n   git annex fsck [--fast] [<path>]\n   ```\n   Ask: **\"Ready to run?\"**\n\n4. **Execute and interpret output** \u2014 run the command and summarize results:\n   - **OK**: file is present and (for full check) checksum matches \u2014 no action needed\n   - **corrupt**: checksum mismatch \u2014 file content is damaged\n   - **missing**: file is not present locally\n\n   Report counts of OK / corrupt / missing files.\n\n5. **Suggest recovery based on findings**:\n   - **Missing content**: run `datalad get <path>` to re-fetch from a known remote\n   - **Corrupt content**: drop the corrupt copy with `datalad drop --nocheck <path>`,\n     then re-fetch with `datalad get <path>`\n   - **Unrecoverable** (no remote has the content): inform the user the content is lost\n     and cannot be recovered automatically \u2014 escalate to manual investigation\n\n## Constraints\n\n- Always show the full `git annex fsck` command before executing.\n- Always warn that a full fsck (without `--fast`) can take a very long time on large\n  datasets before starting.\n- Never attempt to auto-repair corrupt files without confirming recovery steps with the\n  user first.\n- Load `${CLAUDE_PLUGIN_ROOT}/../references/troubleshooting.md` when the user needs\n  guidance on recovering from corrupt or missing content beyond simple `datalad get`.\n---\nname: datalad-status\ndescription: >\n  Auto-invoke inside a DataLad dataset (.datalad/ present) when the user asks what has\n  changed, what is modified, what files are untracked, or what the current dataset state\n  is. Trigger on \"what changed\", \"check state\", \"show modified\", \"what's untracked\",\n  \"dataset status\", or /datalad-status. Read-only \u2014 never modifies any files.\nargument-hint: [paths...]\nuser-invocable: true\ndisable-model-invocation: false\nallowed-tools: Read, Bash, Glob\n---\n\n# Skill: datalad-status\n\nInspect the current state of a DataLad dataset \u2014 what files are modified, untracked,\nadded, or deleted \u2014 without making any changes.\n\n## Steps\n\n1. **Verify DataLad context** \u2014 check for `.datalad/` in the current directory or any\n   parent:\n   ```bash\n   ls .datalad/ 2>/dev/null || git rev-parse --show-toplevel\n   ```\n   - **Dataset found**: continue.\n   - **No dataset found**: inform the user and suggest `/datalad-init` or plain `git status`.\n\n2. **Run `datalad status`** \u2014 optionally scoped to paths from `$ARGUMENTS`:\n   ```bash\n   datalad status [paths...]\n   ```\n   Present the full output to the user. Additional flags to mention if relevant:\n   - `--annex` \u2014 shows verbose annex content state (number of copies, remote presence)\n     for each annexed file; useful for understanding data availability\n   - `--untracked=no` \u2014 suppresses untracked files from output (useful in large repos\n     with many untracked directories that would otherwise clutter the output)\n\n3. **Interpret the status symbols** \u2014 explain each symbol present in the output:\n\n   | Symbol | Meaning |\n   |--------|---------|\n   | `modified` | Content changed since last save |\n   | `untracked` | File exists on disk but is not recorded in the dataset |\n   | `deleted` | File was tracked but is now missing from disk |\n   | `added` | New file staged but not yet saved |\n   | `clean` | No changes \u2014 working tree matches the last commit |\n\n   For annexed files, also explain:\n   - **content present**: file pointer exists and content is available locally\n   - **content missing**: file pointer exists but content was dropped (pointer only)\n\n4. **Suggest next actions** \u2014 based on what was found:\n   - Modified or untracked files \u2192 suggest `/datalad-save`\n   - Missing annex content \u2192 suggest `datalad get <path>` to retrieve it\n   - Output files that should have been produced by a command \u2192 suggest `/datalad-run`\n   - Clean working tree \u2192 confirm no action needed\n\n## Constraints\n\n- Read-only \u2014 never run any command that modifies the dataset, stages files, or commits.\n- Always explain every status symbol that appears in the output \u2014 never show raw output\n  without interpretation.\n- If the user asks about a specific path, scope the status command to that path.\n- Do not confuse `datalad status` (dataset state) with `git status` \u2014 they overlap but\n  DataLad status correctly handles annexed files that git would misreport.\n/opt/homebrew/bin/datalad\nfsck input/data/sub-001_hypo1_cope.nii.gz ok\nfsck input/data/sub-003_hypo1_cope.nii.gz ok\nfsck input/data/sub-005_hypo1_cope.nii.gz ok\nfsck input/data/sub-009_hypo1_cope.nii.gz ok\nfsck input/data/sub-011_hypo1_cope.nii.gz ok\nfsck input/data/sub-013_hypo1_cope.nii.gz ok\nfsck input/data/sub-015_hypo1_cope.nii.gz ok\nfsck input/data/sub-017_hypo1_cope.nii.gz ok\nfsck input/data/sub-019_hypo1_cope.nii.gz ok\nfsck input/data/sub-021_hypo1_cope.nii.gz ok\nfsck input/data/sub-025_hypo1_cope.nii.gz ok\nfsck input/data/sub-027_hypo1_cope.nii.gz ok\nfsck input/data/sub-029_hypo1_cope.nii.gz ok\nfsck input/data/sub-033_hypo1_cope.nii.gz ok\nfsck input/data/sub-035_hypo1_cope.nii.gz ok\nfsck input/data/sub-037_hypo1_cope.nii.gz ok\nfsck input/data/sub-039_hypo1_cope.nii.gz ok\nfsck input/data/sub-041_hypo1_cope.nii.gz ok\nfsck input/data/sub-043_hypo1_cope.nii.gz ok\nfsck input/data/sub-045_hypo1_cope.nii.gz ok\nfsck input/data/sub-047_hypo1_cope.nii.gz ok\nfsck input/data/sub-049_hypo1_cope.nii.gz ok\nfsck input/data/sub-051_hypo1_cope.nii.gz ok\nfsck input/data/sub-053_hypo1_cope.nii.gz ok\nfsck input/data/sub-055_hypo1_cope.nii.gz ok\nfsck input/data/sub-057_hypo1_cope.nii.gz ok\nfsck input/data/sub-059_hypo1_cope.nii.gz ok\nfsck input/data/sub-061_hypo1_cope.nii.gz ok\nfsck input/data/sub-063_hypo1_cope.nii.gz ok\nfsck input/data/sub-067_hypo1_cope.nii.gz ok\nfsck input/data/sub-069_hypo1_cope.nii.gz ok\nfsck input/data/sub-071_hypo1_cope.nii.gz ok\nfsck input/data/sub-073_hypo1_cope.nii.gz ok\nfsck input/data/sub-075_hypo1_cope.nii.gz ok\nfsck input/data/sub-077_hypo1_cope.nii.gz ok\nfsck input/data/sub-079_hypo1_cope.nii.gz ok\nfsck input/data/sub-081_hypo1_cope.nii.gz ok\nfsck input/data/sub-083_hypo1_cope.nii.gz ok\nfsck input/data/sub-085_hypo1_cope.nii.gz ok\nfsck input/data/sub-087_hypo1_cope.nii.gz ok\nfsck input/data/sub-089_hypo1_cope.nii.gz ok\nfsck input/data/sub-093_hypo1_cope.nii.gz ok\nfsck input/data/sub-095_hypo1_cope.nii.gz ok\nfsck input/data/sub-099_hypo1_cope.nii.gz ok\nfsck input/data/sub-103_hypo1_cope.nii.gz ok\nfsck input/data/sub-105_hypo1_cope.nii.gz ok\nfsck input/data/sub-107_hypo1_cope.nii.gz ok\nfsck input/data/sub-109_hypo1_cope.nii.gz ok\nfsck input/data/sub-113_hypo1_cope.nii.gz ok\nfsck input/data/sub-115_hypo1_cope.nii.gz ok\nfsck input/data/sub-117_hypo1_cope.nii.gz ok\nfsck input/data/sub-119_hypo1_cope.nii.gz ok\nfsck input/data/sub-121_hypo1_cope.nii.gz ok\nfsck input/data/sub-123_hypo1_cope.nii.gz ok\n(recording state in git...)\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 32,
+        "item_id": "item_16",
+        "event_sha256": "0449f1a4798d74a9f52d76c5fabf98f29eb5da1b3084fc8785ec455dc8352f27",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_16",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"mkdir -p .codex/skills && cp -R .resources/skills-comm/plugins/datalad-cli/skills/datalad-fsck .codex/skills/ && /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python - <<'PY'\nimport nibabel as nib, numpy as np, glob\nf=glob.glob('input/data/*.nii.gz')\nprint('n',len(f))\nfor x in f[:3]:\n im=nib.load(x); a=np.asarray(im.dataobj); finite=np.isfinite(a)\n print(x, im.shape, im.header.get_zooms(), im.affine, 'finite',finite.mean(),'range',np.nanpercentile(a,[0,1,50,99,100]),'nonzero',np.count_nonzero(a)/a.size)\nPY\"",
+            "aggregated_output": "n 54\ninput/data/sub-043_hypo1_cope.nii.gz (97, 115, 81) (np.float32(2.0), np.float32(2.0), np.float32(2.4)) [[   2.           0.           0.         -96.       ]\n [   0.           2.           0.        -132.       ]\n [   0.           0.           2.4000001  -78.       ]\n [   0.           0.           0.           1.       ]] finite 1.0 range [-6.81045812 -0.2873238   0.          0.58819551  6.06371828] nonzero 0.24691247350742346\ninput/data/sub-093_hypo1_cope.nii.gz (97, 115, 81) (np.float32(2.0), np.float32(2.0), np.float32(2.4)) [[   2.           0.           0.         -96.       ]\n [   0.           2.           0.        -132.       ]\n [   0.           0.           2.4000001  -78.       ]\n [   0.           0.           0.           1.       ]] finite 1.0 range [-7.36841693 -0.34114859  0.          0.47270604  7.91475132] nonzero 0.2481354206440117\ninput/data/sub-025_hypo1_cope.nii.gz (97, 115, 81) (np.float32(2.0), np.float32(2.0), np.float32(2.4)) [[   2.           0.           0.         -96.       ]\n [   0.           2.           0.        -132.       ]\n [   0.           0.           2.4000001  -78.       ]\n [   0.           0.           0.           1.       ]] finite 1.0 range [-7.44495522 -0.35970252  0.          0.71769275 10.45257209] nonzero 0.2511147633514285\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "source_revision": [
+      {
+        "line": 62,
+        "item_id": "item_32",
+        "event_sha256": "7403156b7fd0aa9913df16e8026f66b7b37cefd562d30da52d024a779002edf5",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_32",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"git -C .resources/skills-comm rev-parse HEAD && /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python - <<'PY'\nfrom nilearn import __version__ as n\nimport matplotlib\nprint(n,matplotlib.__version__)\nPY\"",
+            "aggregated_output": "82edd77ab47a86fece1a901f57851b76f4dcd8eb\n0.14.1 3.11.2\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "license_and_clone_removal": [
+      {
+        "line": 73,
+        "item_id": "item_38",
+        "event_sha256": "4c2f9c920925eab73cf27473a5f00d0fd01ee5fda99b087c461726f4664ae100",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_38",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cp .resources/skills-comm/LICENSE .codex/skills/datalad-fsck/LICENSE && python -c 'import shutil; shutil.rmtree(\\\".resources/skills-comm\\\")' && git status --short && du -sh .codex results analysis report.md\"",
+            "aggregated_output": "?? .codex/\n?? analysis/\n?? report.md\n?? results/\n 20K\t.codex\n 35M\tresults\n 12K\tanalysis\n8.0K\treport.md\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/events.jsonl",
+      "sha256": "05462ca34e53d957e6d5a632978ff659dda37ef568e6841e1d71702e30ec2703",
+      "bytes": 127132
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/launch.json",
+      "sha256": "099e06174cf00b27350d3656c6cf31fb081aa29f81aa8b56c52b179326605b30",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/result.json",
+      "sha256": "3267f5c3be925f8552bb7c6e0ad585ca443a05bd51ee2ed1e707f56d852eb3fa",
+      "bytes": 6408
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/worker-end-state.json",
+      "sha256": "326729607bc2dd9e90676b27d7204dd180cee4b3cdc2491383b6ec65728910b1",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/skill-observations.json",
+      "sha256": "99c4cabc868b541dd9ffa918fe354145dad1408b143b98ab361ca1137a554b7f",
+      "bytes": 1755
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/condition-assignment.json",
+      "sha256": "0a4d1ada5082d6742246b7257053c9c8010d7bf1af8b9b82a000884c601fc593",
+      "bytes": 692
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-11/attempt-01/native/prompt-preflight.json",
+      "sha256": "e8df39cafffb4675e93ad1755b69aaabf86f43247e255a4f6a2125aada9b9c35",
+      "bytes": 2120
+    }
+  ]
+}

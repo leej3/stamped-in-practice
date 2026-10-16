@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r1-23",
+  "extracted_at_utc": "2026-10-16T07:16:41.479065+00:00",
+  "assigned_condition": "baseline",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 114,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": false,
+    "installation": false,
+    "loaded": false,
+    "application": "no successful skill use observed",
+    "notes": [
+      "One command attempted the path skills/.system/../x with stderr suppressed and an unconditional true fallback. The combined exit0 is not evidence that this path existed or executed.",
+      "No catalog listing, installed skill, entrypoint load or subsequent application was observed. The path probe remains recorded as ambiguous attempted activity."
+    ]
+  },
+  "evidence": {
+    "skill_path_probe": [
+      {
+        "line": 15,
+        "item_id": "item_7",
+        "event_sha256": "2bd122f36d70a3aeae6d67b9cb02f45d4a573e82ba7da47c4820711714083e03",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'find input/data -type f | sort | head -3 && /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-0oxsdnqi/skills/.system/../x 2>/dev/null || true'",
+            "aggregated_output": "",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/events.jsonl",
+      "sha256": "4da5fa98153821af8bf6fff8d487998d32d1d6d9ec7a4ee68c2bf423631e15ec",
+      "bytes": 146233
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/launch.json",
+      "sha256": "feae66628509f944ef11dec50890b9ca14a88b57112c273e0dbc62743fba89a7",
+      "bytes": 5590
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/result.json",
+      "sha256": "99715de2b12b579289c91b42f12291119b023a219600b0dfe62cca690289cb71",
+      "bytes": 6400
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/worker-end-state.json",
+      "sha256": "3b5ffe64ed346c032607faeb5f1530569673b6ead2d4c908af264b69ee1dfb61",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/skill-observations.json",
+      "sha256": "8427df6f09f516707c5e5cec331f90e6b5882ecfb7026dc97037c27c7f40ea9f",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/condition-assignment.json",
+      "sha256": "7caf8fc1e5066bd663e1ed6a4a77cda91a89ce7476d851e1fe5265af7f6ce34e",
+      "bytes": 545
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-23/attempt-01/native/prompt-preflight.json",
+      "sha256": "302904c5163029af4fba74bb3c01ffeccdd890ae354a2fe339f511a5a99d2479",
+      "bytes": 2112
+    }
+  ]
+}

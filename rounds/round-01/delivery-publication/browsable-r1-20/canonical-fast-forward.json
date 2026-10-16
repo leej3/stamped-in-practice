@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-16T07:46:08.042109+00:00",
+  "old": "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932",
+  "new": "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0",
+  "branch": "refs/heads/codex/narps-neutral-r1-20-retained",
+  "proof_sha256": "59d419e7d21f5e45525deb5bcd90f1459b30669980494d395b43314e72208cac",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "fetch",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "From github.com:leej3/stamped-in-practice\n * branch            b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0 -> FETCH_HEAD\n"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "refs/heads/codex/narps-neutral-r1-20-retained"
+      ],
+      "returncode": 0,
+      "stdout": "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932\trefs/heads/codex/narps-neutral-r1-20-retained\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "23c2cb0f0fe443d21bea4f8bb57101e5d89ae932",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/Users/johnlee/.agents/skills/commit-provenance/scripts/resolve.sh"
+      ],
+      "returncode": 0,
+      "stdout": "Co-Authored-By: Codex Desktop 26.1007.71326 (runtime codex-cli 0.162.0-alpha.17.2) / gpt-6-astra <codex@openai.com>\nCodex-Reasoning-Effort: ultra\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "push",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0:refs/heads/codex/narps-neutral-r1-20-retained"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "To github.com:leej3/stamped-in-practice.git\n   23c2cb0..b1e9d12  b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0 -> codex/narps-neutral-r1-20-retained\n"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "git@github.com:leej3/stamped-in-practice.git",
+        "refs/heads/codex/narps-neutral-r1-20-retained"
+      ],
+      "returncode": 0,
+      "stdout": "b1e9d12ec5158036eadfb6ff06a7f8b240ef80e0\trefs/heads/codex/narps-neutral-r1-20-retained\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Fast-forward coordinator publication; original delivery and judged capture unchanged"
+}

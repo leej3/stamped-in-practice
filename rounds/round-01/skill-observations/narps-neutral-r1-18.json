@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r1-18",
+  "extracted_at_utc": "2026-10-16T07:16:41.480164+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 98,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "notebook scaffold and executions observed; intermediate execution failure retained",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "catalog_count": 39,
+    "notes": [
+      "Installed jupyter-notebook in .skills, read entrypoint and experiment/quality references, checked helper usage and scaffolded a notebook.",
+      "Notebook execution to workspace tmp/ first succeeded; a later modified execution failed, then a corrected command succeeded. All variants remain in native evidence.",
+      "Source commit unresolved in observed installation; exact installed bytes and workspace outputs are retained."
+    ]
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 11,
+        "item_id": "item_5",
+        "event_sha256": "b0727803e806c9af97e22738a3ffe811426d8825b23eda797a2ff972d203cda8",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_5",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-lg3fk6w_/skills/.system/skill-installer/SKILL.md && find input/data -maxdepth 1 -type f | wc -l && ls input/data | head'",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n       0\nsub-001_hypo1_cope.nii.gz\nsub-003_hypo1_cope.nii.gz\nsub-005_hypo1_cope.nii.gz\nsub-009_hypo1_cope.nii.gz\nsub-011_hypo1_cope.nii.gz\nsub-013_hypo1_cope.nii.gz\nsub-015_hypo1_cope.nii.gz\nsub-017_hypo1_cope.nii.gz\nsub-019_hypo1_cope.nii.gz\nsub-021_hypo1_cope.nii.gz\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog": [
+      {
+        "line": 15,
+        "item_id": "item_7",
+        "event_sha256": "e6f44c4a64a349fb31f15217da7f0c790ec27281ecfe8d826418f1b0a4cd5599",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-lg3fk6w_/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 18,
+        "item_id": "item_9",
+        "event_sha256": "d2ea1fd4f2a7ed37538970a46632460f15452d825bf6653215bff09e12b24ab0",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-lg3fk6w_/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/jupyter-notebook --dest ./.skills'",
+            "aggregated_output": "Installed jupyter-notebook to ./.skills/jupyter-notebook\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "skill_loaded": [
+      {
+        "line": 20,
+        "item_id": "item_10",
+        "event_sha256": "0eee0fc7909a0a5fec42ec2d1fe95a540e79640794750c8c47c36e079c08e794",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_10",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat .skills/jupyter-notebook/SKILL.md'",
+            "aggregated_output": "---\nname: \"jupyter-notebook\"\ndescription: \"Use when the user asks to create, scaffold, or edit Jupyter notebooks (`.ipynb`) for experiments, explorations, or tutorials; prefer the bundled templates and run the helper script `new_notebook.py` to generate a clean starting notebook.\"\n---\n\n\n# Jupyter Notebook Skill\n\nCreate clean, reproducible Jupyter notebooks for two primary modes:\n\n- Experiments and exploratory analysis\n- Tutorials and teaching-oriented walkthroughs\n\nPrefer the bundled templates and the helper script for consistent structure and fewer JSON mistakes.\n\n## When to use\n- Create a new `.ipynb` notebook from scratch.\n- Convert rough notes or scripts into a structured notebook.\n- Refactor an existing notebook to be more reproducible and skimmable.\n- Build experiments or tutorials that will be read or re-run by other people.\n\n## Decision tree\n- If the request is exploratory, analytical, or hypothesis-driven, choose `experiment`.\n- If the request is instructional, step-by-step, or audience-specific, choose `tutorial`.\n- If editing an existing notebook, treat it as a refactor: preserve intent and improve structure.\n\n## Skill path (set once)\n\n```bash\nexport CODEX_HOME=\"${CODEX_HOME:-$HOME/.codex}\"\nexport JUPYTER_NOTEBOOK_CLI=\"$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py\"\n```\n\nUser-scoped skills install under `$CODEX_HOME/skills` (default: `~/.codex/skills`).\n\n## Workflow\n1. Lock the intent.\nIdentify the notebook kind: `experiment` or `tutorial`.\nCapture the objective, audience, and what \"done\" looks like.\n\n2. Scaffold from the template.\nUse the helper script to avoid hand-authoring raw notebook JSON.\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind experiment \\\n  --title \"Compare prompt variants\" \\\n  --out output/jupyter-notebook/compare-prompt-variants.ipynb\n```\n\n```bash\nuv run --python 3.12 python \"$JUPYTER_NOTEBOOK_CLI\" \\\n  --kind tutorial \\\n  --title \"Intro to embeddings\" \\\n  --out output/jupyter-notebook/intro-to-embeddings.ipynb\n```\n\n3. Fill the notebook with small, runnable steps.\nKeep each code cell focused on one step.\nAdd short markdown cells that explain the purpose and expected result.\nAvoid large, noisy outputs when a short summary works.\n\n4. Apply the right pattern.\nFor experiments, follow `references/experiment-patterns.md`.\nFor tutorials, follow `references/tutorial-patterns.md`.\n\n5. Edit safely when working with existing notebooks.\nPreserve the notebook structure; avoid reordering cells unless it improves the top-to-bottom story.\nPrefer targeted edits over full rewrites.\nIf you must edit raw JSON, review `references/notebook-structure.md` first.\n\n6. Validate the result.\nRun the notebook top-to-bottom when the environment allows.\nIf execution is not possible, say so explicitly and call out how to validate locally.\nUse the final pass checklist in `references/quality-checklist.md`.\n\n## Templates and helper script\n- Templates live in `assets/experiment-template.ipynb` and `assets/tutorial-template.ipynb`.\n- The helper script loads a template, updates the title cell, and writes a notebook.\n\nScript path:\n- `$JUPYTER_NOTEBOOK_CLI` (installed default: `$CODEX_HOME/skills/jupyter-notebook/scripts/new_notebook.py`)\n\n## Temp and output conventions\n- Use `tmp/jupyter-notebook/` for intermediate files; delete when done.\n- Write final artifacts under `output/jupyter-notebook/` when working in this repo.\n- Use stable, descriptive filenames (for example, `ablation-temperature.ipynb`).\n\n## Dependencies (install only when needed)\nPrefer `uv` for dependency management.\n\nOptional Python packages for local notebook execution:\n\n```bash\nuv pip install jupyterlab ipykernel\n```\n\nThe bundled scaffold script uses only the Python standard library and does not require extra dependencies.\n\n## Environment\nNo required environment variables.\n\n## Reference map\n- `references/experiment-patterns.md`: experiment structure and heuristics.\n- `references/tutorial-patterns.md`: tutorial structure and teaching flow.\n- `references/notebook-structure.md`: notebook JSON shape and safe editing rules.\n- `references/quality-checklist.md`: final validation checklist.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "references_loaded": [
+      {
+        "line": 36,
+        "item_id": "item_19",
+        "event_sha256": "2ec238b2ae36317d408e049b860abb267355eb1c5e23ab0d9859461a8ea050db",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_19",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat .skills/jupyter-notebook/references/experiment-patterns.md && cat .skills/jupyter-notebook/references/quality-checklist.md'",
+            "aggregated_output": "# Experiment Patterns\n\nUse this structure for exploratory and experimental work:\n\n- Title and objective: state the question and the success criteria.\n- Setup and reproducibility: import only what you need, set a seed early, and keep configuration in one short cell.\n- Plan: list hypotheses, sweeps, and metrics before running code.\n- Minimal baseline: start with the smallest runnable example and confirm it runs end-to-end before adding complexity.\n- Results and notes: summarize findings in markdown near the relevant code and record key metrics in a small dictionary or table-like structure.\n- Next steps: decide whether to continue, pivot, or stop, and capture follow-up ideas as short bullets.\n# Quality Checklist\n\nBefore delivering a notebook:\n\n- Run it top-to-bottom at least once (or as much as the environment allows).\n- Ensure early cells set all required state; avoid hidden state from prior runs.\n- Keep outputs tidy. Avoid giant outputs when a short summary works.\n- Prefer small tables, key metrics, or short printouts.\n- Keep the narrative skimmable. Use headings and short bullets, and avoid long paragraphs.\n- Leave helpful TODOs only when necessary, and label them clearly.\n- If execution is not possible, call out the risk and how to validate locally.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "helper_usage": [
+      {
+        "line": 38,
+        "item_id": "item_20",
+        "event_sha256": "3a0bf4ccf3fae33a1937396783ade083c87ead05a5caefbebee988b56599321f",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_20",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python .skills/jupyter-notebook/scripts/new_notebook.py --help'",
+            "aggregated_output": "usage: new_notebook.py [-h] [--kind {experiment,tutorial}] --title TITLE\n                       [--out OUT] [--force]\n\nScaffold a Jupyter notebook for experiments or tutorials.\n\noptional arguments:\n  -h, --help            show this help message and exit\n  --kind {experiment,tutorial}\n                        Notebook style to scaffold (default: experiment).\n  --title TITLE         Human-readable notebook title used in the first\n                        markdown cell.\n  --out OUT             Output path for the notebook. Defaults to\n                        output/jupyter-notebook/<slug>.ipynb.\n  --force               Overwrite the output file if it already exists.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "scaffold": [
+      {
+        "line": 47,
+        "item_id": "item_25",
+        "event_sha256": "869d75b11d57da92d815b601cecb6cb954ce8c48545927c714b088517361c383",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_25",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python .skills/jupyter-notebook/scripts/new_notebook.py --kind experiment --title 'NARPS gain effect: equal-indifference group' --out narps_gain_analysis.ipynb && python - <<'PY'\nimport json\np='narps_gain_analysis.ipynb'\nn=json.load(open(p))\nprint(len(n['cells']), [c['cell_type'] for c in n['cells']])\nprint(n['cells'][0]['source'])\nPY\"",
+            "aggregated_output": "Wrote /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/narps_gain_analysis.ipynb using kind=experiment.\n7 ['markdown', 'code', 'markdown', 'code', 'markdown', 'code', 'markdown']\n['# Experiment: NARPS gain effect: equal-indifference group\\n', '\\n', 'Objective:\\n', '- State the question you want to answer.\\n', '- Define the success criteria.\\n']\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "execution_success": [
+      {
+        "line": 80,
+        "item_id": "item_42",
+        "event_sha256": "f5b6ae54719348b6b84d719d07ee9751099cc21d9d63cbd31c009f93c3d8f7ab",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_42",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'mkdir -p tmp && jupyter nbconvert --to notebook --execute --output narps_gain_analysis.executed.ipynb --output-dir tmp --ExecutePreprocessor.timeout=180 narps_gain_analysis.ipynb'",
+            "aggregated_output": "[NbConvertApp] Converting notebook narps_gain_analysis.ipynb to notebook\n/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n  validate(nb)\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:66: RuntimeWarning: divide by zero encountered in matmul\n  sy=signs @ X\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:66: RuntimeWarning: overflow encountered in matmul\n  sy=signs @ X\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:66: RuntimeWarning: invalid value encountered in matmul\n  sy=signs @ X\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:77: RuntimeWarning: divide by zero encountered in matmul\n  xyz=(headers[0].affine @ ijk.T).T[:,:3]\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:77: RuntimeWarning: overflow encountered in matmul\n  xyz=(headers[0].affine @ ijk.T).T[:,:3]\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:77: RuntimeWarning: invalid value encountered in matmul\n  xyz=(headers[0].affine @ ijk.T).T[:,:3]\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:98: RuntimeWarning: divide by zero encountered in matmul\n  val=signs@roi_subj\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:98: RuntimeWarning: overflow encountered in matmul\n  val=signs@roi_subj\n/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py:98: RuntimeWarning: invalid value encountered in matmul\n  val=signs@roi_subj\n{\n  \"n\": 54,\n  \"n_excluded\": 0,\n  \"n_mask_voxels\": 198029,\n  \"mask_coverage_threshold\": 1.0,\n  \"n_permutations\": 5000,\n  \"seed\": 20261016,\n  \"primary_direction\": \"positive, one-sided\",\n  \"maxT_FWER_alpha\": 0.05,\n  \"maxT_threshold_95\": 5.396595001220703,\n  \"global_max_t\": 6.617173235381884,\n  \"global_max_t_coordinate_mni_mm\": [\n    -26.0,\n    -102.0,\n    -3.599997043609619\n  ],\n  \"global_max_p_fwer\": 0.0009998000399920016,\n  \"n_fwer_significant\": 24,\n  \"vmPFC_max_t\": 1.7003842798828679,\n  \"vmPFC_min_p_fwer\": 1.0,\n  \"vmPFC_sphere_center_mni_mm\": [\n    0.0,\n    42.0,\n    -10.0\n  ],\n  \"vmPFC_sphere_radius_mm\": 12,\n  \"vmPFC_voxels\": 742,\n  \"vmPFC_mean_cope\": -0.00782527551948824,\n  \"vmPFC_sd_subject_means\": 0.09957142557500918,\n  \"vmPFC_median_subject_mean\": -0.007196318920626589,\n  \"vmPFC_ci95_t\": [\n    -0.03500304300944232,\n    0.019352491970465836\n  ],\n  \"vmPFC_t\": -0.5775130367597023,\n  \"vmPFC_wilcoxon_p_one_sided\": 0.758577082731166,\n  \"vmPFC_leave_one_out_mean_range\": [\n    -0.012340579647284232,\n    -0.00301927127617062\n  ],\n  \"vmPFC_leave_one_out_t_range\": [\n    -0.9479001128032822,\n    -0.23386462933298524\n  ],\n  \"vmPFC_p_uncorrected_one_sided_t\": 0.7169808137846725,\n  \"vmPFC_p_signflip_one_sided\": 0.7192561487702459,\n  \"whole_brain_permutation_seconds\": 6.491727113723755,\n  \"interpretation_units\": \"upstream contrast parameter estimate; not per currency unit\"\n}\n[NbConvertApp] Writing 243215 bytes to tmp/narps_gain_analysis.executed.ipynb\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      },
+      {
+        "line": 85,
+        "item_id": "item_45",
+        "event_sha256": "0d1686ad5b6fa3a6d4c950f8a84ec520b8a803bd5b2940bb87b67f48e21f797c",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_45",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\np='narps_gain_analysis.ipynb'; n=json.load(open(p))\nfor c in n['cells']:\n if c['cell_type']=='code' and 'prepared_python' in ''.join(c['source']):\n  c['source']='''from pathlib import Path\nimport json, os, subprocess\nimport pandas as pd\n\nroot = Path.cwd()\nprepared_python = \\\"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python\\\"\nrun_env = os.environ.copy()\nrun_env[\\\"MPLBACKEND\\\"] = \\\"Agg\\\"\nsubprocess.run([prepared_python, str(root / \\\"analysis.py\\\")], cwd=root, env=run_env, check=True)\nsummary = json.loads((root / \\\"results/summary.json\\\").read_text())\npd.Series(summary, name=\\\"value\\\")\n'''.splitlines(True)\nopen(p,'w').write(json.dumps(n,indent=1,ensure_ascii=False)+'\\\\n')\nPY\njupyter nbconvert --to notebook --execute --output narps_gain_analysis.executed.ipynb --output-dir tmp --ExecutePreprocessor.timeout=180 narps_gain_analysis.ipynb\"",
+            "aggregated_output": "[NbConvertApp] Converting notebook narps_gain_analysis.ipynb to notebook\n{\n  \"n\": 54,\n  \"n_excluded\": 0,\n  \"n_mask_voxels\": 198029,\n  \"mask_coverage_threshold\": 1.0,\n  \"n_permutations\": 5000,\n  \"seed\": 20261016,\n  \"primary_direction\": \"positive, one-sided\",\n  \"maxT_FWER_alpha\": 0.05,\n  \"maxT_threshold_95\": 5.396595001220703,\n  \"global_max_t\": 6.617173235381884,\n  \"global_max_t_coordinate_mni_mm\": [\n    -26.0,\n    -102.0,\n    -3.599997043609619\n  ],\n  \"global_max_p_fwer\": 0.0009998000399920016,\n  \"n_fwer_significant\": 24,\n  \"vmPFC_max_t\": 1.7003842798828679,\n  \"vmPFC_min_p_fwer\": 1.0,\n  \"vmPFC_sphere_center_mni_mm\": [\n    0.0,\n    42.0,\n    -10.0\n  ],\n  \"vmPFC_sphere_radius_mm\": 12,\n  \"vmPFC_voxels\": 742,\n  \"vmPFC_mean_cope\": -0.00782527551948824,\n  \"vmPFC_sd_subject_means\": 0.09957142557500918,\n  \"vmPFC_median_subject_mean\": -0.007196318920626589,\n  \"vmPFC_ci95_t\": [\n    -0.03500304300944232,\n    0.019352491970465836\n  ],\n  \"vmPFC_t\": -0.5775130367597023,\n  \"vmPFC_wilcoxon_p_one_sided\": 0.758577082731166,\n  \"vmPFC_leave_one_out_mean_range\": [\n    -0.012340579647284232,\n    -0.00301927127617062\n  ],\n  \"vmPFC_leave_one_out_t_range\": [\n    -0.9479001128032822,\n    -0.23386462933298524\n  ],\n  \"vmPFC_p_uncorrected_one_sided_t\": 0.7169808137846725,\n  \"vmPFC_p_signflip_one_sided\": 0.7192561487702459,\n  \"whole_brain_permutation_seconds\": 8.849681854248047,\n  \"interpretation_units\": \"upstream contrast parameter estimate; not per currency unit\"\n}\n[NbConvertApp] Writing 213079 bytes to tmp/narps_gain_analysis.executed.ipynb\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "execution_failure": [
+      {
+        "line": 82,
+        "item_id": "item_43",
+        "event_sha256": "d5c416eb76eedeeb6cf8a31339ae3a0ac1862677c75260d087e9dfd1e33d0b2d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_43",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"python - <<'PY'\nimport json\np='narps_gain_analysis.ipynb'\nn=json.load(open(p))\nfor c in n['cells']:\n if c['cell_type']=='code' and 'subprocess.run' in ''.join(c['source']):\n  c['source']='''from pathlib import Path\nimport json, subprocess\nimport pandas as pd\n\nroot = Path.cwd()\nprepared_python = \\\"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python\\\"\nsubprocess.run([prepared_python, str(root / \\\"analysis.py\\\")], cwd=root, check=True)\nsummary = json.loads((root / \\\"results/summary.json\\\").read_text())\npd.Series(summary, name=\\\"value\\\")\n'''.splitlines(True)\n# Add stable cell IDs for current nbformat.\nfor i,c in enumerate(n['cells']): c.setdefault('id',f'cell-{i:02d}')\nopen(p,'w').write(json.dumps(n,indent=1,ensure_ascii=False)+'\\\\n')\nPY\njupyter nbconvert --to notebook --execute --output narps_gain_analysis.executed.ipynb --output-dir tmp --ExecutePreprocessor.timeout=180 narps_gain_analysis.ipynb\"",
+            "aggregated_output": "[NbConvertApp] Converting notebook narps_gain_analysis.ipynb to notebook\nTraceback (most recent call last):\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py\", line 10, in <module>\n    import matplotlib.pyplot as plt\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/__init__.py\", line 1292, in <module>\n    rcParams['backend'] = os.environ.get('MPLBACKEND')\n    ~~~~~~~~^^^^^^^^^^^\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/__init__.py\", line 784, in __setitem__\n    raise ValueError(f\"Key {key}: {ve}\") from None\nValueError: Key backend: 'module://matplotlib_inline.backend_inline' is not a valid value for backend; supported values are ['gtk3agg', 'gtk3cairo', 'gtk4agg', 'gtk4cairo', 'macosx', 'nbagg', 'notebook', 'qtagg', 'qtcairo', 'qt5agg', 'qt5cairo', 'tkagg', 'tkcairo', 'webagg', 'wx', 'wxagg', 'wxcairo', 'agg', 'cairo', 'pdf', 'pgf', 'ps', 'svg', 'template']\nTraceback (most recent call last):\n  File \"/Users/johnlee/mambaforge/bin/jupyter-nbconvert\", line 10, in <module>\n    sys.exit(main())\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/jupyter_core/application.py\", line 283, in launch_instance\n    super().launch_instance(argv=argv, **kwargs)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/traitlets/config/application.py\", line 1075, in launch_instance\n    app.start()\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/nbconvertapp.py\", line 420, in start\n    self.convert_notebooks()\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/nbconvertapp.py\", line 597, in convert_notebooks\n    self.convert_single_notebook(notebook_filename)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/nbconvertapp.py\", line 563, in convert_single_notebook\n    output, resources = self.export_single_notebook(\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/nbconvertapp.py\", line 487, in export_single_notebook\n    output, resources = self.exporter.from_filename(\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/exporters/exporter.py\", line 201, in from_filename\n    return self.from_file(f, resources=resources, **kw)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/exporters/exporter.py\", line 220, in from_file\n    return self.from_notebook_node(\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/exporters/notebook.py\", line 36, in from_notebook_node\n    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/exporters/exporter.py\", line 154, in from_notebook_node\n    nb_copy, resources = self._preprocess(nb_copy, resources)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/exporters/exporter.py\", line 353, in _preprocess\n    nbc, resc = preprocessor(nbc, resc)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/preprocessors/base.py\", line 48, in __call__\n    return self.preprocess(nb, resources)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/preprocessors/execute.py\", line 103, in preprocess\n    self.preprocess_cell(cell, resources, index)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbconvert/preprocessors/execute.py\", line 124, in preprocess_cell\n    cell = self.execute_cell(cell, index, store_history=True)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/jupyter_core/utils/__init__.py\", line 165, in wrapped\n    return loop.run_until_complete(inner)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/asyncio/base_events.py\", line 647, in run_until_complete\n    return future.result()\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbclient/client.py\", line 1062, in async_execute_cell\n    await self._check_raise_for_error(cell, cell_index, exec_reply)\n  File \"/Users/johnlee/mambaforge/lib/python3.9/site-packages/nbclient/client.py\", line 918, in _check_raise_for_error\n    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)\nnbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:\n------------------\nfrom pathlib import Path\nimport json, subprocess\nimport pandas as pd\n\nroot = Path.cwd()\nprepared_python = \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python\"\nsubprocess.run([prepared_python, str(root / \"analysis.py\")], cwd=root, check=True)\nsummary = json.loads((root / \"results/summary.json\").read_text())\npd.Series(summary, name=\"value\")\n\n------------------\n\n----- stderr -----\nTraceback (most recent call last):\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py\", line 10, in <module>\n    import matplotlib.pyplot as plt\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/__init__.py\", line 1292, in <module>\n    rcParams['backend'] = os.environ.get('MPLBACKEND')\n    ~~~~~~~~^^^^^^^^^^^\n  File \"/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/lib/python3.13/site-packages/matplotlib/__init__.py\", line 784, in __setitem__\n    raise ValueError(f\"Key {key}: {ve}\") from None\nValueError: Key backend: 'module://matplotlib_inline.backend_inline' is not a valid value for backend; supported values are ['gtk3agg', 'gtk3cairo', 'gtk4agg', 'gtk4cairo', 'macosx', 'nbagg', 'notebook', 'qtagg', 'qtcairo', 'qt5agg', 'qt5cairo', 'tkagg', 'tkcairo', 'webagg', 'wx', 'wxagg', 'wxcairo', 'agg', 'cairo', 'pdf', 'pgf', 'ps', 'svg', 'template']\n------------------\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mCalledProcessError\u001b[0m                        Traceback (most recent call last)\nCell \u001b[0;32mIn[1], line 7\u001b[0m\n\u001b[1;32m      5\u001b[0m root \u001b[38;5;241m=\u001b[39m Path\u001b[38;5;241m.\u001b[39mcwd()\n\u001b[1;32m      6\u001b[0m prepared_python \u001b[38;5;241m=\u001b[39m \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124m/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python\u001b[39m\u001b[38;5;124m\"\u001b[39m\n\u001b[0;32m----> 7\u001b[0m \u001b[43msubprocess\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mrun\u001b[49m\u001b[43m(\u001b[49m\u001b[43m[\u001b[49m\u001b[43mprepared_python\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;28;43mstr\u001b[39;49m\u001b[43m(\u001b[49m\u001b[43mroot\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m/\u001b[39;49m\u001b[43m \u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43manalysis.py\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m)\u001b[49m\u001b[43m]\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mcwd\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[43mroot\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mcheck\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[38;5;28;43;01mTrue\u001b[39;49;00m\u001b[43m)\u001b[49m\n\u001b[1;32m      8\u001b[0m summary \u001b[38;5;241m=\u001b[39m json\u001b[38;5;241m.\u001b[39mloads((root \u001b[38;5;241m/\u001b[39m \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mresults/summary.json\u001b[39m\u001b[38;5;124m\"\u001b[39m)\u001b[38;5;241m.\u001b[39mread_text())\n\u001b[1;32m      9\u001b[0m pd\u001b[38;5;241m.\u001b[39mSeries(summary, name\u001b[38;5;241m=\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mvalue\u001b[39m\u001b[38;5;124m\"\u001b[39m)\n\nFile \u001b[0;32m~/mambaforge/lib/python3.9/subprocess.py:528\u001b[0m, in \u001b[0;36mrun\u001b[0;34m(input, capture_output, timeout, check, *popenargs, **kwargs)\u001b[0m\n\u001b[1;32m    526\u001b[0m     retcode \u001b[38;5;241m=\u001b[39m process\u001b[38;5;241m.\u001b[39mpoll()\n\u001b[1;32m    527\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m check \u001b[38;5;129;01mand\u001b[39;00m retcode:\n\u001b[0;32m--> 528\u001b[0m         \u001b[38;5;28;01mraise\u001b[39;00m CalledProcessError(retcode, process\u001b[38;5;241m.\u001b[39margs,\n\u001b[1;32m    529\u001b[0m                                  output\u001b[38;5;241m=\u001b[39mstdout, stderr\u001b[38;5;241m=\u001b[39mstderr)\n\u001b[1;32m    530\u001b[0m \u001b[38;5;28;01mreturn\u001b[39;00m CompletedProcess(process\u001b[38;5;241m.\u001b[39margs, retcode, stdout, stderr)\n\n\u001b[0;31mCalledProcessError\u001b[0m: Command '['/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/common-environment/.pixi/envs/default/bin/python', '/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-18/analysis.py']' returned non-zero exit status 1.\n\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/events.jsonl",
+      "sha256": "1b3290d815dcd78738366b9b40d7885bfaef67e0c3bcdcb354bef89c32e689d7",
+      "bytes": 154015
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/launch.json",
+      "sha256": "4d097b68e713c16e2d411ed12d23aadea5675abbbade21a9c835e51f3e792c46",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/result.json",
+      "sha256": "42bf1e0e77bd72549c3681757c8d1ac2596dc70e4021f701f252f51801f204d0",
+      "bytes": 6408
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/worker-end-state.json",
+      "sha256": "8c1924f5440d677d80e9a94cf2f34f1ebafabebf6334dada68cb63392b74eec9",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/skill-observations.json",
+      "sha256": "704f9686729510837382c6fcdb5fe0c4df3d8f6db7e249f62fdd078d283c3d5d",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/condition-assignment.json",
+      "sha256": "f555c497c24012ff08d577207b8a9d4a7c1a0372fc76ad7a8626f62a040632d8",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-18/attempt-01/native/prompt-preflight.json",
+      "sha256": "9e65e2f3808cede6439e32d095754bad75f73fbd922bb6463bdd9a02e7fb8321",
+      "bytes": 2120
+    }
+  ]
+}

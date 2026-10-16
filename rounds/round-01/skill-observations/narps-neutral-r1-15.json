@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r1-15",
+  "extracted_at_utc": "2026-10-16T07:04:23.795073+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 73,
+    "complete_turn_observed": true,
+    "limitation": "Availability is not use; observed procedural action is not causal benefit. Per-install duration is not inferred from reduced events."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": false,
+    "loaded": true,
+    "application": "installer catalog listing only; no research skill installation observed",
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "catalog_count": 39,
+    "notes": [
+      "Read skill-installer and listed 39 curated entries after an initial scientific computation. No research skill was selected or installed.",
+      "An incomplete shell command failed with syntax error, then was corrected.",
+      "A broad fallback find returned ten other or prior profile paths, including research and judge profile names. The returned output contained skill-installer paths, not their contents or scientific results. This is observed residual same-user visibility; influence is not inferred."
+    ]
+  },
+  "evidence": {
+    "initial_discovery_statement": [
+      {
+        "line": 38,
+        "item_id": "item_19",
+        "event_sha256": "bd9a66ffac6d3d36dcf0fac0521855ff29f665fd1a655f7389de2a2bc582d296",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_19",
+            "type": "agent_message",
+            "text": "The initial run passed every file checksum and image-geometry check, retained all 54 participants, and found no FWE-corrected vmPFC voxels. There are some whole-brain positive peaks outside vmPFC, so I\u2019m checking the figures and adding participant-level ROI output and cluster summaries before writing the report. I\u2019m also checking the available skill catalog for something applicable; there isn\u2019t an analysis skill in the session list so far."
+          }
+        }
+      }
+    ],
+    "installer_loaded": [
+      {
+        "line": 41,
+        "item_id": "item_21",
+        "event_sha256": "3621af20c2851e715f89faa92a371e296550983d481b8f153fc2b2d70e5fb988",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_21",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/SKILL.md'",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "failed_command": [
+      {
+        "line": 43,
+        "item_id": "item_22",
+        "event_sha256": "4da71636a73ebfb0544427c7e021486fe7e8237e6925b5e032f0616300d38bf9",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_22",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'find /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer -maxdepth 2 -type f -print &&'",
+            "aggregated_output": "/opt/homebrew/bin/bash: -c: line 2: syntax error: unexpected end of file\n",
+            "exit_code": 2,
+            "status": "failed"
+          }
+        }
+      }
+    ],
+    "corrected_listing": [
+      {
+        "line": 45,
+        "item_id": "item_23",
+        "event_sha256": "58d590185fce3f67de44a277c99bcc4ae676b439db05ac8a45ceb87e1e94febc",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_23",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'find /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer -maxdepth 2 -type f -print'",
+            "aggregated_output": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/agents/openai.yaml\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/scripts/github_utils.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/scripts/list-skills.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/scripts/install-skill-from-github.py\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/LICENSE.txt\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/assets/skill-installer.png\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/assets/skill-installer-small.svg\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog": [
+      {
+        "line": 47,
+        "item_id": "item_24",
+        "event_sha256": "c07f02723bb6ebaf02b6e7e0b5b8c889f4fd1d0cb457187ab558c71e0b578639",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_24",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-6xouawlx/skills/.system/skill-installer/scripts/list-skills.py'",
+            "aggregated_output": "1. aspnet-core\n2. chatgpt-apps\n3. cli-creator\n4. cloudflare-deploy\n5. define-goal\n6. figma\n7. figma-code-connect-components\n8. figma-create-design-system-rules\n9. figma-create-new-file\n10. figma-generate-design\n11. figma-generate-library\n12. figma-implement-design\n13. figma-use\n14. gh-address-comments\n15. gh-fix-ci\n16. hatch-pet\n17. jupyter-notebook\n18. linear\n19. migrate-to-codex\n20. netlify-deploy\n21. notion-knowledge-capture\n22. notion-meeting-intelligence\n23. notion-research-documentation\n24. notion-spec-to-implementation\n25. openai-docs\n26. pdf\n27. playwright\n28. playwright-interactive\n29. render-deploy\n30. screenshot\n31. security-best-practices\n32. security-ownership-map\n33. security-threat-model\n34. sentry\n35. speech\n36. transcribe\n37. vercel-deploy\n38. winui-app\n39. yeet\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "profile_path_exposure": [
+      {
+        "line": 51,
+        "item_id": "item_20",
+        "event_sha256": "acd3c735b1bd16c4657554fde4761bac7a70cca41ec456249dd6ade1fd71d30e",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_20",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/skills/.system/skill-installer/SKILL.md 2>/dev/null || find /Users/johnlee/.local/state -path '*/skill-installer/SKILL.md' -print | head\"",
+            "aggregated_output": "/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-1ov8ej_e/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ze09fowy/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-judge-a8rq9n2t/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-judge-9rmbpdtl/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/codex-public-20261015/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-znhs_h39/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-xnmyirsv/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-kd7eme6o/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-886f6cqv/skills/.system/skill-installer/SKILL.md\n/Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-ea7z5nbj/skills/.system/skill-installer/SKILL.md\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "selection_statement": [
+      {
+        "line": 72,
+        "item_id": "item_37",
+        "event_sha256": "82e7cb92f3179814c644fc74fca8c8391c6b448a74fb8e979cce350a24e0912d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_37",
+            "type": "agent_message",
+            "text": "## Conclusion\n\nThe analysis did **not support** a positive gain effect in vmPFC: no vmPFC voxels survived one-sided whole-brain FWE correction. The vmPFC average was near zero, with a 95% interval spanning both directions. This is a lack of corrected evidence, not proof that the effect is absent. The test follows NARPS\u2019s positive vmPFC hypothesis and whole-brain reporting requirement ([original instructions](https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf)).\n\nAll 54 maps passed integrity and geometry checks; none were excluded. Whole-brain correction found 24 positive voxels in three small posterior occipital clusters, outside the vmPFC mask.\n\n## Deliverables\n\n- [Scientific report](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/report.md>)\n- [Analysis code](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/analysis/group_analysis.py>)\n- [Numeric results](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/results/summary.json>) and [input quality checks](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/results/input_qc.csv>)\n- [Whole-brain figure](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/figures/whole_brain_mean_and_fwe.png>) and [vmPFC participant figure](</Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-15/figures/vmPFC_participant_effects.png>)\n\nI checked the available skill catalog; it had no applicable neuroimaging or group-analysis skill, so I installed none. The report describes the effect-map scale, model limits, ROI definition, and uncertainty."
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/events.jsonl",
+      "sha256": "170cb3800019470e62f80876d817b17af0a73841196b04509a823e11b3601f25",
+      "bytes": 91882
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/launch.json",
+      "sha256": "545309aa13a95c2b15455020c58d4e642ec0934aa3f8c928466b81e2dbedf4ae",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/result.json",
+      "sha256": "0cdc659a8cde5ae8b861e1dd5d43aa2464d24c5523707e2909454de8f8f6d769",
+      "bytes": 6408
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/worker-end-state.json",
+      "sha256": "0ce203b9e453a0252fbf93d01ea2ce98d99c5731f6cfb76b20c566d26bb7365a",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/skill-observations.json",
+      "sha256": "e71ad88c8b8b1a530b5ccc6a2239cb3d5212253bc9f364d7074907b3f6c2519d",
+      "bytes": 1510
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/condition-assignment.json",
+      "sha256": "f555c497c24012ff08d577207b8a9d4a7c1a0372fc76ad7a8626f62a040632d8",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-15/attempt-01/native/prompt-preflight.json",
+      "sha256": "d37948f6d588e9e88b5d759300759ac812f9fcba0aa4c1caa4421134d232bc49",
+      "bytes": 2120
+    }
+  ]
+}

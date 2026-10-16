@@ -1,0 +1,218 @@
+{
+  "schema_version": 1,
+  "kind": "coordinator-skill-use-observations",
+  "run_id": "narps-neutral-r1-20",
+  "extracted_at_utc": "2026-10-16T06:42:12.755195+00:00",
+  "assigned_condition": "discover-general",
+  "scope": {
+    "scientific_adequacy_assessed": false,
+    "causal_effect_assessed": false,
+    "worker_files_modified": false,
+    "native_stream_line_count": 73,
+    "complete_turn_observed": true,
+    "limitation": "Observed actions and exact loaded bytes; availability is not use and procedural use is not causal benefit. No per-install elapsed cost inferred from reduced event stream."
+  },
+  "observations": {
+    "discovery": true,
+    "installation": true,
+    "loaded": true,
+    "application": "attempted; external PDF acquisition failed before chained text extraction",
+    "notes": [
+      "Curated catalog returned39 entries; worker selected PDF to inspect cited instructions, not a neuroimaging analysis skill.",
+      "Installed PDF entrypoint hash and complete directory are retained in original delivery; upstream commit was not resolved in observed installation evidence.",
+      "The PDF download command exited22; its &&-linked text extraction did not execute. Installation and loading do not establish completed PDF review."
+    ],
+    "source_repository": "https://github.com/openai/skills",
+    "source_revision": null,
+    "catalog_count": 39
+  },
+  "evidence": {
+    "installer_loaded": [
+      {
+        "line": 6,
+        "item_id": "item_2",
+        "event_sha256": "ccf88e02a68365e88a245470e970de5227966bdff4ff2effd326ab3482d79b5e",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_2",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-886f6cqv/skills/.system/skill-installer/SKILL.md && rg --files -g 'AGENTS.md' -g 'upstream-methods.md' -g '*' input . | head -100\"",
+            "aggregated_output": "---\nname: skill-installer\ndescription: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path. Use when a user asks to list installable skills, install a curated skill, or install a skill from another repo (including private repos).\nmetadata:\n  short-description: Install curated skills from openai/skills or other repos\n---\n\n# Skill Installer\n\nHelps install skills. By default these are from https://github.com/openai/skills/tree/main/skills/.curated, but users can also provide other locations. Experimental skills live in https://github.com/openai/skills/tree/main/skills/.experimental and can be installed the same way.\n\nUse the helper scripts based on the task:\n- List skills when the user asks what is available, or if the user uses this skill without specifying what to do. Default listing is `.curated`, but you can pass `--path skills/.experimental` when they ask about experimental skills.\n- Install from the curated list when the user provides a skill name.\n- Install from another repo when the user provides a GitHub repo/path (including private repos).\n\nInstall skills with the helper scripts.\n\n## Communication\n\nWhen listing skills, output approximately as follows, depending on the context of the user's request. If they ask about experimental skills, list from `.experimental` instead of `.curated` and label the source accordingly:\n\"\"\"\nSkills from {repo}:\n1. skill-1\n2. skill-2 (already installed)\n3. ...\nWhich ones would you like installed?\n\"\"\"\n\nAfter installing a skill, tell the user it will be available on their next turn.\n\n## Scripts\n\nAll of these scripts use network, so when running in the sandbox, request escalation when running them.\n\n- `scripts/list-skills.py` (prints skills list with installed annotations)\n- `scripts/list-skills.py --format json`\n- Example (experimental list): `scripts/list-skills.py --path skills/.experimental`\n- `scripts/install-skill-from-github.py --repo <owner>/<repo> --path <path/to/skill> [<path/to/skill> ...]`\n- `scripts/install-skill-from-github.py --url https://github.com/<owner>/<repo>/tree/<ref>/<path>`\n- Example (experimental skill): `scripts/install-skill-from-github.py --repo openai/skills --path skills/.experimental/<skill-name>`\n\n## Behavior and Options\n\n- Defaults to direct download for public GitHub repos.\n- If download fails with auth/permission errors, falls back to git sparse checkout.\n- Aborts if the destination skill directory already exists.\n- Installs into `$CODEX_HOME/skills/<skill-name>` (defaults to `~/.codex/skills`).\n- Multiple `--path` values install multiple skills in one run, each named from the path basename unless `--name` is supplied.\n- Options: `--ref <ref>` (default `main`), `--dest <path>`, `--method auto|download|git`.\n\n## Notes\n\n- Curated listing is fetched from `https://github.com/openai/skills/tree/main/skills/.curated` via the GitHub API. If it is unavailable, explain the error and exit.\n- Private GitHub repos can be accessed via existing git credentials or optional `GITHUB_TOKEN`/`GH_TOKEN` for download.\n- Git fallback tries HTTPS first, then SSH.\n- The skills at https://github.com/openai/skills/tree/main/skills/.system are preinstalled, so no need to help users install those. If they ask, just explain this. If they insist, you can download and overwrite.\n- Installed annotations come from `$CODEX_HOME/skills`.\n./.entire/metadata/01a14362-b204-78e3-9bc8-6df5c271e83a/prompt.txt\n./.entire/tmp/pre-prompt-01a14362-b204-78e3-9bc8-6df5c271e83a.json\n./.entire/.gitignore\n./.entire/logs/entire.log\n./.entire/settings.local.json\n./.git/COMMIT_EDITMSG\n./.git/index\n./.git/refs/heads/git-annex\n./.git/refs/heads/codex/narps-neutral-r1-20\n./.git/refs/annex/last-index\n./.git/entire-session-locks/01a14362-b204-78e3-9bc8-6df5c271e83a.lock\n./.git/entire-session-locks/01a14362-ab5d-7493-8415-f4270fe8781a.lock\ninput/participants.tsv\ninput/upstream-methods.md\ninput/study-task.md\ninput/sources.json\n./.git/HEAD\n./.git/hooks/pre-commit\n./.git/hooks/post-merge\n./.git/hooks/pre-push\n./.git/hooks/commit-msg\n./.git/hooks/prepare-commit-msg.pre-entire\n./.git/hooks/post-rewrite\n./.git/hooks/post-checkout\n./.git/hooks/prepare-commit-msg\n./.git/hooks/post-commit\n./.git/hooks/post-receive\n./.git/annex/sentinal\n./.git/annex/index.lck\n./.git/annex/othertmp.lck\n./.git/annex/sentinal.cache\n./.git/annex/index\n./.git/annex/gitqueue.lck\n./.git/logs/refs/heads/git-annex\n./.git/logs/refs/heads/codex/narps-neutral-r1-20\n./.git/logs/HEAD\n./.git/annex/keysdb/db\n./.git/entire-sessions/01a14362-b204-78e3-9bc8-6df5c271e83a.model\n./.git/entire-sessions/01a14362-b204-78e3-9bc8-6df5c271e83a.banner\n./.git/entire-sessions/01a14362-b204-78e3-9bc8-6df5c271e83a.json\n./.git/entire-sessions/01a14362-b204-78e3-9bc8-6df5c271e83a.agent\n./.git/info/attributes\n./.git/info/exclude\n./.git/annex/keysdb.lck\n./.git/annex/objects/qQ/kG/MD5E-s1792367--a8f4864747246fed458e132d5e56d5a9.nii.gz/MD5E-s1792367--a8f4864747246fed458e132d5e56d5a9.nii.gz\n./.git/annex/objects/47/Qw/MD5E-s1823271--4239f3bf7bfdf9f176d9593954f448be.nii.gz/MD5E-s1823271--4239f3bf7bfdf9f176d9593954f448be.nii.gz\n./.git/objects/25/2adbc6ca7c78a44c5ff1ddf630b731d69e2762\n./.git/objects/25/fb21aba185985746e6f314f4a59b67db9b18a8\n./.git/objects/25/0d299a4e4eed99ad4f96c341a59adedaa7de2e\n./.git/objects/25/1bbe431f7968e239ece85051776021f4f8be56\n./.git/objects/22/a5e6b931de511a097d90de1a444c46b19da700\n./.git/objects/22/10887fd1bcee4cd1054ffedfe785f23e2915c8\n./.git/annex/objects/1j/17/MD5E-s1814013--363b10dfb82004161b44ff02ee6514db.nii.gz/MD5E-s1814013--363b10dfb82004161b44ff02ee6514db.nii.gz\n./.git/objects/14/e015ac30ec48708b36cceb00088c4d84f442ec\n./.git/objects/14/8edd3b4f646ac3bd1c83b474e849871f630c03\n./.git/objects/7f/cb42c452f4a25a97abe878a42b4fb57e5e8098\n./.git/objects/7f/e8af426107cd5cf96caba75335f818f4b6e370\n./.git/objects/13/f3dea258e073575288bb970fd9e53eac7d4c70\n./.git/annex/objects/w8/wx/MD5E-s1821886--690002d9801aaec865f73fffa4c09f60.nii.gz/MD5E-s1821886--690002d9801aaec865f73fffa4c09f60.nii.gz\n./.git/objects/47/d6dd9a15a2ba3fcc5172a5cf57bcf065e16632\n./.git/objects/47/c9c9360f617ddda40c49e4a9e625ee98cc0dc1\n./.git/objects/47/f6bb735e69a49f15a97a1a93b912b479a2c4ab\n./.git/objects/47/ac17d622a5686424adebe7982e749cede5cd19\n./.git/objects/2b/6928c6459120e6865e95bb1d794eae8208fd59\n./.git/objects/2e/9df91b2a0576eea696fef3f450f8af552ad64c\n./.git/annex/objects/2k/Xg/MD5E-s1788203--4e393ca1a4840daaa619a8a10777e4df.nii.gz/MD5E-s1788203--4e393ca1a4840daaa619a8a10777e4df.nii.gz\n./.git/objects/40/3e7bc31c083e3a3c11846ad0db797be6eb6d2d\n./.git/objects/40/58ef35bd8d26e88f2c8d18d0d24c744a179b2d\n./.git/objects/40/0f84608ef2f896eb01e7b746a832f6c27c777c\n./.git/objects/49/fbb97342815ca7cbcd6a106b6867103db07648\n./.git/objects/82/79d76867c101f09d5bd4820d58f98fcbfcce12\n./.git/annex/objects/WG/q5/MD5E-s1762249--d7f7009182e38831e550887b6a7cfb82.nii.gz/MD5E-s1762249--d7f7009182e38831e550887b6a7cfb82.nii.gz\n./.git/objects/1c/0908d67104964819b84f049b88ec4ad55b6822\n./.git/objects/76/afd02e31e47da04388140715c2dde42881ccbf\n./.git/objects/76/ad5904f84d6e2562ab24858ea32577ca29d6c1\n./.git/objects/76/ffbd05fa8df31cc9a3b465f8a6a9a8dce2e4d7\n./.git/objects/76/eaf2bf9580201af7d976e2e5a5f5e31f31f167\n./.git/objects/76/8d12515599396f96ddb418973116574621ef31\n./.git/objects/71/a60e00030154678c6ef05f1bb7af4e44b43a19\n./.git/objects/71/2ecc59a81f78520d962a5a5b5803142f1ff46f\n./.git/annex/objects/X4/Z6/MD5E-s1819506--71c75230fe451790817cf16b6da9ff58.nii.gz/MD5E-s1819506--71c75230fe451790817cf16b6da9ff58.nii.gz\n./.git/objects/1d/a9af95c95966e101022b5c4f17ce72d6846ce7\n./.git/objects/1d/3637a98c93a1bdd00da5f988eda0c7fae3d5d7\n./.git/objects/1d/2263e6cbb118a18fe33403dc84aabd2da3df6d\n./.git/annex/objects/35/mm/MD5E-s1774130--2c08897308b1c43185851bb40071800c.nii.gz/MD5E-s1774130--2c08897308b1c43185851bb40071800c.nii.gz\n./.git/annex/objects/xx/mx/MD5E-s1785421--79102e07806b4848557594997daeb844.nii.gz/MD5E-s1785421--79102e07806b4848557594997daeb844.nii.gz\n./.git/objects/03/ddbdb896c6915bf0ee1250a1b4153d9af24a13\n./.git/objects/03/cb06e2811b36b92ce68f8df8f5c674c9d25cc0\n./.git/objects/bd/e19dde6de0de6e1740ecc1bf4aef69250d8829\n./.git/objects/bd/31939be6f91f9b7e4a2dfd9451288dab750fb1\n./.git/objects/05/f6b1c8d1467acacdd588f1790917feda2b3708\n./.git/objects/e4/2abaf90c348c64b05245f072da7ba15b03b5f4\n./.git/objects/e4/b0777d6cb033a63c5c7f782b56ceb617b22a58\n./.git/objects/6f/f077ea6253bd763dde130a873064668f81cfe5\n./.git/annex/objects/fW/JZ/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz/MD5E-s1794522--2a6f64556ba73c42049c33979409bb66.nii.gz\n./.git/annex/objects/32/Gk/MD5E-s1768719--f31958d6eebbba76dde9698e9baadc11.nii.gz/MD5E-s1768719--f31958d6eebbba76dde9698e9baadc11.nii.gz\n./.git/objects/a5/a304ac3f8626ee4542032429e0934442de6317\n./.git/objects/a5/fbcff15d4c5b825dc18a82898cd2ea6d04d480\n./.git/annex/objects/Jm/GF/MD5E-s1805994--9ea0a89cfa30a64598f2be9b232bfb91.nii.gz/MD5E-s1805994--9ea0a89cfa30a64598f2be9b232bfb91.nii.gz\n./.git/objects/3b/e012b558b6634c4fe77ff9970295ef8eb7b027\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "catalog_query": [
+      {
+        "line": 13,
+        "item_id": "item_6",
+        "event_sha256": "fb89e6f84a96a073df292559a52ccbb53c658fab7298f5e00acf7929007b2b99",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_6",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-886f6cqv/skills/.system/skill-installer/scripts/list-skills.py --format json'",
+            "aggregated_output": "[{\"name\": \"aspnet-core\", \"installed\": false}, {\"name\": \"chatgpt-apps\", \"installed\": false}, {\"name\": \"cli-creator\", \"installed\": false}, {\"name\": \"cloudflare-deploy\", \"installed\": false}, {\"name\": \"define-goal\", \"installed\": false}, {\"name\": \"figma\", \"installed\": false}, {\"name\": \"figma-code-connect-components\", \"installed\": false}, {\"name\": \"figma-create-design-system-rules\", \"installed\": false}, {\"name\": \"figma-create-new-file\", \"installed\": false}, {\"name\": \"figma-generate-design\", \"installed\": false}, {\"name\": \"figma-generate-library\", \"installed\": false}, {\"name\": \"figma-implement-design\", \"installed\": false}, {\"name\": \"figma-use\", \"installed\": false}, {\"name\": \"gh-address-comments\", \"installed\": false}, {\"name\": \"gh-fix-ci\", \"installed\": false}, {\"name\": \"hatch-pet\", \"installed\": false}, {\"name\": \"jupyter-notebook\", \"installed\": false}, {\"name\": \"linear\", \"installed\": false}, {\"name\": \"migrate-to-codex\", \"installed\": false}, {\"name\": \"netlify-deploy\", \"installed\": false}, {\"name\": \"notion-knowledge-capture\", \"installed\": false}, {\"name\": \"notion-meeting-intelligence\", \"installed\": false}, {\"name\": \"notion-research-documentation\", \"installed\": false}, {\"name\": \"notion-spec-to-implementation\", \"installed\": false}, {\"name\": \"openai-docs\", \"installed\": false}, {\"name\": \"pdf\", \"installed\": false}, {\"name\": \"playwright\", \"installed\": false}, {\"name\": \"playwright-interactive\", \"installed\": false}, {\"name\": \"render-deploy\", \"installed\": false}, {\"name\": \"screenshot\", \"installed\": false}, {\"name\": \"security-best-practices\", \"installed\": false}, {\"name\": \"security-ownership-map\", \"installed\": false}, {\"name\": \"security-threat-model\", \"installed\": false}, {\"name\": \"sentry\", \"installed\": false}, {\"name\": \"speech\", \"installed\": false}, {\"name\": \"transcribe\", \"installed\": false}, {\"name\": \"vercel-deploy\", \"installed\": false}, {\"name\": \"winui-app\", \"installed\": false}, {\"name\": \"yeet\", \"installed\": false}]\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "selection_rationale": [
+      {
+        "line": 14,
+        "item_id": "item_7",
+        "event_sha256": "e170e862bd0eb0be9efb8f6e0ebbc6547665f9266b3c80cf9b2196b760434805",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_7",
+            "type": "agent_message",
+            "text": "The curated list has no dedicated neuroimaging-analysis skill. The PDF skill is useful for checking the cited NARPS instructions, so I\u2019ll install it inside this workspace to keep the task-specific setup local. I\u2019ll confirm the full input set and its metadata next."
+          }
+        }
+      }
+    ],
+    "installation": [
+      {
+        "line": 16,
+        "item_id": "item_8",
+        "event_sha256": "69101b526039a2d32ba9bed8b907b6f8928dd1703761efbdf34c4865ad06cd2b",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_8",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc 'python /Users/johnlee/.local/state/stamped-ai-research-next/stamped-research-886f6cqv/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo openai/skills --path skills/.curated/pdf --dest \"$PWD/.codex/skills\"'",
+            "aggregated_output": "Installed pdf to /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/workspaces/narps-neutral-r1-20/.codex/skills/pdf\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "pdf_loaded": [
+      {
+        "line": 18,
+        "item_id": "item_9",
+        "event_sha256": "ac8605a64cd5a618fe902fa1f75ce08d1c45b73b31a184bb23e2ae519bf71eb7",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_9",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"cat .codex/skills/pdf/SKILL.md && ls -l .git/annex/objects | head && git annex find input --format='\"'${file}'\"\\\\n' | wc -l && du -sh .git/annex/objects input\"",
+            "aggregated_output": "---\nname: \"pdf\"\ndescription: \"Use when tasks involve reading, creating, or reviewing PDF files where rendering and layout matter; prefer visual checks by rendering pages (Poppler) and use Python tools such as `reportlab`, `pdfplumber`, and `pypdf` for generation and extraction.\"\n---\n\n\n# PDF Skill\n\n## When to use\n- Read or review PDF content where layout and visuals matter.\n- Create PDFs programmatically with reliable formatting.\n- Validate final rendering before delivery.\n\n## Workflow\n1. Prefer visual review: render PDF pages to PNGs and inspect them.\n   - Use `pdftoppm` if available.\n   - If unavailable, install Poppler or ask the user to review the output locally.\n2. Use `reportlab` to generate PDFs when creating new documents.\n3. Use `pdfplumber` (or `pypdf`) for text extraction and quick checks; do not rely on it for layout fidelity.\n4. After each meaningful update, re-render pages and verify alignment, spacing, and legibility.\n\n## Temp and output conventions\n- Use `tmp/pdfs/` for intermediate files; delete when done.\n- Write final artifacts under `output/pdf/` when working in this repo.\n- Keep filenames stable and descriptive.\n\n## Dependencies (install if missing)\nPrefer `uv` for dependency management.\n\nPython packages:\n```\nuv pip install reportlab pdfplumber pypdf\n```\nIf `uv` is unavailable:\n```\npython3 -m pip install reportlab pdfplumber pypdf\n```\nSystem tools (for rendering):\n```\n# macOS (Homebrew)\nbrew install poppler\n\n# Ubuntu/Debian\nsudo apt-get install -y poppler-utils\n```\n\nIf installation isn't possible in this environment, tell the user which dependency is missing and how to install it locally.\n\n## Environment\nNo required environment variables.\n\n## Rendering command\n```\npdftoppm -png $INPUT_PDF $OUTPUT_PREFIX\n```\n\n## Quality expectations\n- Maintain polished visual design: consistent typography, spacing, margins, and section hierarchy.\n- Avoid rendering issues: clipped text, overlapping elements, broken tables, black squares, or unreadable glyphs.\n- Charts, tables, and images must be sharp, aligned, and clearly labeled.\n- Use ASCII hyphens only. Avoid U+2011 (non-breaking hyphen) and other Unicode dashes.\n- Citations and references must be human-readable; never leave tool tokens or placeholder strings.\n\n## Final checks\n- Do not deliver until the latest PNG inspection shows zero visual or formatting defects.\n- Confirm headers/footers, page numbering, and section transitions look polished.\n- Keep intermediate files organized or remove them after final approval.\ntotal 0\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 01\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 0x\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 1j\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 27\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 2k\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 2z\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 32\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 35\ndrwxr-xr-x@ 3 johnlee  staff  96 Oct 16 02:24 3J\n      54\n 92M\t.git/annex/objects\n 32K\tinput\n",
+            "exit_code": 0,
+            "status": "completed"
+          }
+        }
+      }
+    ],
+    "pdf_web_open": [
+      {
+        "line": 20,
+        "item_id": "exec-62789bfb-385e-4c8f-b510-90c68332207c",
+        "event_sha256": "ecf47b14d054601ba6366e9b57da5e2aaa7f89c91557fbd5358dd6ed161e799c",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "exec-62789bfb-385e-4c8f-b510-90c68332207c",
+            "type": "web_search",
+            "query": "https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf",
+            "action": {
+              "type": "open_page",
+              "url": "https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf"
+            },
+            "results": [
+              {
+                "type": "text_result",
+                "ref_id": "turn0view0",
+                "snippet": "Total lines: 1",
+                "title": "Internal Error"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "tool_availability_probe": [
+      {
+        "line": 23,
+        "item_id": "item_12",
+        "event_sha256": "f5c9d305ff64543cfbb308ea38c22678360c7cd195744bceac98b634d84febb3",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_12",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"ls -la input && git annex find --in=input --format='\"'${file}'\"\\\\n' | head -5 && command -v pdftotext && command -v pdftoppm\"",
+            "aggregated_output": "total 64\ndrwxr-xr-x@  7 johnlee  staff    224 Oct 16 02:24 .\ndrwxr-xr-x@  6 johnlee  staff    192 Oct 16 02:24 ..\ndrwxr-xr-x@ 56 johnlee  staff   1792 Oct 16 02:24 data\n-rw-r--r--@  1 johnlee  staff   1706 Oct 16 02:24 participants.tsv\n-rw-r--r--@  1 johnlee  staff  19843 Oct 16 02:24 sources.json\n-rw-r--r--@  1 johnlee  staff   1483 Oct 16 02:24 study-task.md\n-rw-r--r--@  1 johnlee  staff   1342 Oct 16 02:24 upstream-methods.md\ngit-annex: Uncaught exception ghc-internal:GHC.Internal.Exception.ErrorCall:\n\nthere is no available git remote named \"input\"\n\nWhile handling there is no available git remote named \"input\"\n\n",
+            "exit_code": 1,
+            "status": "failed"
+          }
+        }
+      }
+    ],
+    "pdf_application_attempt": [
+      {
+        "line": 25,
+        "item_id": "item_13",
+        "event_sha256": "605f67430a9c72952607a9bdc833ad272044925d719d3f2b8b200ae67f55a90d",
+        "event": {
+          "type": "item.completed",
+          "item": {
+            "id": "item_13",
+            "type": "command_execution",
+            "command": "/opt/homebrew/bin/bash -lc \"curl -L --fail --max-time 45 https://www.narps.info/files/narps_instructions_for_analysis_teams.pdf -o tmp_instructions.pdf && pdftotext -layout tmp_instructions.pdf - | rg -n -C 3 'Hypothesis 1|vmPFC|whole brain|gain' | head -100\"",
+            "aggregated_output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:03 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:04 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:05 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:06 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:07 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:08 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:09 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:10 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:11 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:12 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:13 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:14 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:15 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:16 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:17 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:18 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:19 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:20 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:21 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:22 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:22 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:23 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:24 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:25 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:26 --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:--  0:00:27 --:--:--     0\r  0    16    0     0    0     0      0      0 --:--:--  0:00:28 --:--:--     0\ncurl: (22) The requested URL returned error: 522\n",
+            "exit_code": 22,
+            "status": "failed"
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/events.jsonl",
+      "sha256": "d80ebb369e731b23de29cd8a44907053cc4e134e782d12a3ff0de2f60461ab01",
+      "bytes": 113390
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/launch.json",
+      "sha256": "1c69dd1b32911665983a7f59ee600d25d28b83b775c42368ffac781db836d801",
+      "bytes": 5598
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/result.json",
+      "sha256": "68bf90fb4a9db02685b8e925472356e98048489c2cb6da26a7b68fec43be1c8e",
+      "bytes": 6407
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/worker-end-state.json",
+      "sha256": "2a4e6c7fb90f34d785dac103f30c16eca11ac566bf6405e80b910d11e6f5a100",
+      "bytes": 45696
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/skill-observations.json",
+      "sha256": "9d9f8c3ae05b62fd12973aba61a4fde613d03f0c5f3462c2d29e22e223dec82c",
+      "bytes": 1746
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/condition-assignment.json",
+      "sha256": "f555c497c24012ff08d577207b8a9d4a7c1a0372fc76ad7a8626f62a040632d8",
+      "bytes": 662
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/runs/narps-neutral-r1-20/attempt-01/native/prompt-preflight.json",
+      "sha256": "b40093a7642baf63b07b4fad3271336cf4164cde7052c00e3c6d3a2888848feb",
+      "bytes": 2120
+    }
+  ]
+}
