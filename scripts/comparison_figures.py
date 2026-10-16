@@ -22,10 +22,10 @@ def save(fig, output, name):
     plt.close(fig)
 
 
-def legend(axis, labels, colors, columns=3):
+def legend(axis, labels, colors, columns=3, anchor=(0.5, -0.13)):
     axis.legend(handles=[Patch(facecolor=color, edgecolor="#cccccc", label=label)
                          for label, color in zip(labels, colors)],
-                loc="upper center", bbox_to_anchor=(0.5, -0.13), ncol=columns,
+                loc="upper center", bbox_to_anchor=anchor, ncol=columns,
                 frameon=False, fontsize=9)
 
 
@@ -85,7 +85,8 @@ def _render_outcomes(tables, items, output, version=None, registered_runs=None):
         axes[1].barh(range(len(groups)), counts, left=left, color=color, edgecolor="white")
         for y, (count, offset) in enumerate(zip(counts, left)):
             if count:
-                axes[1].text(offset + count / 2, y, str(count), ha="center", va="center", fontsize=9)
+                axes[1].text(offset + count / 2, y, str(count), ha="center", va="center", fontsize=9,
+                             color="white" if status == "invalid" else "black")
         left += counts
     assigned = [sum((r["round"], r["condition"]) == group for r in registered_runs) for group in groups]
     axes[1].set_yticks(range(len(groups)), [
@@ -120,7 +121,9 @@ def _render_outcomes(tables, items, output, version=None, registered_runs=None):
         return "assessment missing"
 
     matrix = [[labels.index(item_label(r, i)) for r in runs] for i in items]
-    fig, ax = plt.subplots(figsize=(16, 11))
+    fig, (ax, key) = plt.subplots(2, 1, figsize=(16, 11),
+                                 gridspec_kw={"height_ratios": [31, 1]})
+    key.axis("off")
     if runs:
         categorical(ax, matrix, colors)
     else:
@@ -129,7 +132,7 @@ def _render_outcomes(tables, items, output, version=None, registered_runs=None):
     ax.set_yticks(range(len(items)), [i["id"].split(":")[-1] + " · " + "/".join(i["dimension"]) for i in items])
     ax.set_title(f"Checklist items · primary judgments · {valid}/{len(runs)} valid response files\n"
                  "Registered launch order · B baseline · DG general · DS science · SE explicit", loc="left", pad=15)
-    legend(ax, labels, colors)
+    legend(key, labels, colors, anchor=(0.5, 1))
     fig.tight_layout()
     finish(fig, "item-statuses")
 
@@ -142,8 +145,9 @@ def _render_outcomes(tables, items, output, version=None, registered_runs=None):
     ax.set_yticks(range(len(items)), [i["id"].split(":")[-1] for i in items])
     ax.invert_yaxis()
     ax.set_xlabel(f"Assigned workers per item (n={len(runs)}); missing assessments are not item verdicts")
-    ax.set_title("Recurring item outcomes · partial and unmet remain separate\n"
-                 f"{valid}/{len(runs)} valid response files; no combined certification score", loc="left")
+    ax.set_title("Recurring item outcomes · pooled across conditions and rounds\n"
+                 f"{valid}/{len(runs)} valid response files; descriptive only, not evidence of improvement",
+                 loc="left")
     legend(ax, labels, colors)
     fig.tight_layout()
     finish(fig, "recurring-outcomes")
