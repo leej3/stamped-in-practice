@@ -1,0 +1,449 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/002": {
+      "value": null,
+      "reason": "No submodules or subdatasets: whether external inputs are linked at all needs a reading of the object.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "probe:subdatasets-resolvable",
+      "flags": []
+    },
+    "stamped-checklist:must/003": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/004": {
+      "value": "yes",
+      "reason": "git tracks 14 text, code and configuration file(s), and `git status` is empty including submodules: the committed state is the whole state.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "git ls-files",
+          "description": "14 tracked text/code/config paths of 90 tracked paths",
+          "sha256": null
+        },
+        {
+          "uri": "git status --porcelain",
+          "description": "no output",
+          "sha256": null
+        }
+      ],
+      "source": "probe:tree-clean",
+      "flags": []
+    },
+    "stamped-checklist:must/005": {
+      "value": "yes",
+      "reason": "git-annex carries the binary content (58 pointer(s) tracked) and no binary blob over 10 MiB is in git.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "no binary blob over 10485760 bytes",
+          "sha256": null
+        },
+        {
+          "uri": ".datalad/config",
+          "description": "git-annex in use for large content",
+          "sha256": null
+        }
+      ],
+      "source": "probe:large-in-annex",
+      "flags": []
+    },
+    "stamped-checklist:must/006": {
+      "value": "no",
+      "reason": "11 derived file(s) tracked (e.g. results/analysis_mask.nii.gz) and no run record or tracked workflow that would re-create any of them.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "results/analysis_mask.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/figures/group_mean_vmPFC.png",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/figures/vmPFC_subject_estimates.png",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/fwer_significant_mask.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/group_t.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/mean_cope.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/p_fwer_maxT.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/p_uncorrected.nii.gz",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/report.md",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "derived file with no re-executable record",
+          "sha256": null
+        }
+      ],
+      "source": "probe:derived-have-records",
+      "flags": []
+    },
+    "stamped-checklist:must/007": {
+      "value": "no",
+      "reason": "Neither a README with install/usage instructions nor a Makefile.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "probe:entry-point",
+      "flags": []
+    },
+    "stamped-checklist:must/008": {
+      "value": "no",
+      "reason": "No script, make target or workflow definition that a reader could start from.",
+      "status": "unmet",
+      "evidence": [],
+      "source": "probe:entry-point",
+      "flags": []
+    },
+    "stamped-checklist:must/009": {
+      "value": "no",
+      "reason": "No script depends on a host-specific path, but 2 such mention(s) remain: 2 of them in recorded run output, which is provenance rather than a script.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "results/summary.json#L166",
+          "description": "home path in record: \"/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-03/.pixi/envs/default/bin/python\",",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json#L167",
+          "description": "home path in record: \"/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-03/analyze.py\",",
+          "sha256": null
+        }
+      ],
+      "source": "probe:no-abs-paths",
+      "flags": []
+    },
+    "stamped-checklist:must/010": {
+      "value": null,
+      "reason": "Specification found: pixi.toml. Dependency completeness is not checked: compare imports and invoked tools with declarations, including local/vendored code. Version pins are separate.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "spec environment specification",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/011": {
+      "value": null,
+      "reason": "No platform-specific package manager, BSD/GNU-only flag or scheduler command in tracked text \u2014 all a command scan can settle. Whether the documented route needs a mount, a host install, hardware or a service is a reading.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probe:platform-assumptions",
+          "description": "scanned 90 tracked paths for 20 platform-specific commands, 0 hits",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions",
+      "flags": []
+    },
+    "stamped-checklist:must/012": {
+      "value": null,
+      "reason": "No platform-specific package manager, BSD/GNU-only flag or scheduler command in tracked text \u2014 all a command scan can settle. Whether the documented route needs a mount, a host install, hardware or a service is a reading.",
+      "status": "not-checked",
+      "evidence": [
+        {
+          "uri": "probe:platform-assumptions",
+          "description": "scanned 90 tracked paths for 20 platform-specific commands, 0 hits",
+          "sha256": null
+        }
+      ],
+      "source": "probe:platform-assumptions",
+      "flags": []
+    },
+    "stamped-checklist:must/013": {
+      "value": "yes",
+      "reason": "Tracked: pixi.toml.",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "spec environment specification",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/014": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:must/015": {
+      "value": null,
+      "reason": "Nothing names an environment to check for a pin.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "probe:run-env-linked",
+      "flags": []
+    },
+    "stamped-checklist:must/016": {
+      "value": "no",
+      "reason": "Remote responds and specifications are Git blobs in local HEAD; the remote's exact revision/content was not retrieved. Verify a fresh clone at the assessed revision before marking met.",
+      "status": "partial",
+      "evidence": [
+        {
+          "uri": "pixi.toml",
+          "description": "spec environment specification",
+          "sha256": null
+        }
+      ],
+      "source": "probe:env-spec-tracked",
+      "flags": []
+    },
+    "stamped-checklist:must/017": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/001": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "value": "no",
+      "reason": "No CI configuration: nothing checks that the instructions still work.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no tracked .github/workflows/, .gitlab-ci.yml, .circleci/, .forgejo/workflows/, .gitea/workflows/ in 90 tracked paths",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present",
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "value": "yes",
+      "reason": "3 kinds of component live in distinct places: inputs in input; derived in results; environment in pixi.toml",
+      "status": "met",
+      "evidence": [
+        {
+          "uri": "input",
+          "description": "inputs module",
+          "sha256": null
+        },
+        {
+          "uri": "results",
+          "description": "derived module",
+          "sha256": null
+        },
+        {
+          "uri": "pixi.toml",
+          "description": "environment module",
+          "sha256": null
+        }
+      ],
+      "source": "probe:modules-separated",
+      "flags": []
+    },
+    "stamped-checklist:should/009": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/004": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/005": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/006": {
+      "value": "no",
+      "reason": "No CI configuration: the environment behind the results is never rebuilt.",
+      "status": "unmet",
+      "evidence": [
+        {
+          "uri": "probe:ci-present",
+          "description": "no tracked .github/workflows/, .gitlab-ci.yml, .circleci/, .forgejo/workflows/, .gitea/workflows/ in 90 tracked paths",
+          "sha256": null
+        }
+      ],
+      "source": "probe:ci-present",
+      "flags": []
+    },
+    "stamped-checklist:should/007": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:should/008": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/001": {
+      "value": null,
+      "reason": "No submodules or subdatasets: whether external inputs are linked at all needs a reading of the object.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "probe:subdatasets-resolvable",
+      "flags": []
+    },
+    "stamped-checklist:may/002": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/003": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/004": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    },
+    "stamped-checklist:may/005": {
+      "value": null,
+      "reason": "No probe covers this item; a reading of the object is required.",
+      "status": "not-checked",
+      "evidence": [],
+      "source": "judgement",
+      "flags": []
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "clone-weight",
+      "status": "met",
+      "reason": "No text blob in git exceeds 10 MiB.",
+      "evidence": [
+        {
+          "uri": "git ls-tree -r -l HEAD",
+          "description": "largest text blob under 10485760 bytes",
+          "sha256": null
+        }
+      ]
+    },
+    {
+      "key": "inputs-untouched",
+      "status": "not-applicable",
+      "reason": "N/A: no linked modules, so there is no recorded input state to compare against.",
+      "evidence": []
+    },
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No LICENSE, LICENSES/, REUSE.toml or BIDS License field: reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "probe:license-declared",
+          "description": "no licence file among 90 tracked paths, and no License field in any dataset_description.json",
+          "sha256": null
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": "git@github.com:leej3/stamped-in-practice.git",
+    "commit": "abf95b00c02fb55d16c4d269926c1428cedc0574",
+    "captured_at": "2026-10-16T04:13:40+00:00",
+    "kind": "study"
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": null,
+    "model": null,
+    "date": "2026-10-16",
+    "drafted_by": "scripts/run_probes.py"
+  },
+  "scope": "Probe sweep only; judgement items are left not-checked."
+}
