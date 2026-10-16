@@ -1,0 +1,165 @@
+[
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent round-one synthesis recipient"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "init independent round-one synthesis recipient ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]        git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "rounds/round-01/coordinator-validation/round-closure-01/attrition-figure-review-01/assessment-attrition.pdf",
+      "rounds/round-01/coordinator-validation/round-closure-01/attrition-figure-review-01/assessment-attrition.png",
+      "rounds/round-01/synthesis/extraction/analysis/cells.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/comparable_items.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/comparable_items.tsv",
+      "rounds/round-01/synthesis/extraction/analysis/duplicate-disagreement.png",
+      "rounds/round-01/synthesis/extraction/analysis/effort.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/effort.png",
+      "rounds/round-01/synthesis/extraction/analysis/effort.svg",
+      "rounds/round-01/synthesis/extraction/analysis/item-statuses.png",
+      "rounds/round-01/synthesis/extraction/analysis/item-statuses.svg",
+      "rounds/round-01/synthesis/extraction/analysis/items.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/items.tsv",
+      "rounds/round-01/synthesis/extraction/analysis/judgments.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/judgments.tsv",
+      "rounds/round-01/synthesis/extraction/analysis/operations.jsonl",
+      "rounds/round-01/synthesis/extraction/analysis/recurring-outcomes.png",
+      "rounds/round-01/synthesis/extraction/analysis/recurring-outcomes.svg",
+      "rounds/round-01/synthesis/extraction/analysis/scientific-adequacy.png",
+      "rounds/round-01/synthesis/extraction/analysis/scientific-adequacy.svg",
+      "rounds/round-01/synthesis/figures/effort.svg",
+      "rounds/round-01/synthesis/figures/item-statuses.svg",
+      "rounds/round-01/synthesis/figures/recurring-outcomes.svg",
+      "rounds/round-01/synthesis/figures/scientific-adequacy.svg",
+      "rounds/round-01/synthesis/tables/effort.jsonl",
+      "rounds/round-01/synthesis/tables/items.jsonl",
+      "rounds/round-01/synthesis/tables/judgments.jsonl",
+      "rounds/round-01/synthesis/tables/operations.jsonl"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "get rounds/round-01/coordinator-validation/round-closure-01/attrition-figure-review-01/assessment-attrition.pdf (from con-hub...) \n\n16%   3.74 KiB         48 KiB/s 0s\n100%  22.86 KiB       478 KiB/s 0s\n                                  \nok\nget rounds/round-01/coordinator-validation/round-closure-01/attrition-figure-review-01/assessment-attrition.png (from con-hub...) \n\n4%    3.74 KiB         53 KiB/s 1s\n100%  104.79 KiB        2 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/cells.jsonl (from con-hub...) \n\n5%    7.7 KiB         113 KiB/s 1s\n100%  142.19 KiB        3 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/comparable_items.jsonl (from con-hub...) \n\n2%    7.7 KiB         122 KiB/s 3s\n100%  469.64 KiB       10 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/comparable_items.tsv (from con-hub...) \n\n2%    7.7 KiB         118 KiB/s 3s\n100%  368.71 KiB       24 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/duplicate-disagreement.png (from con-hub...) \n\n3%    3.74 KiB         56 KiB/s 2s\n100%  124.01 KiB       33 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/effort.jsonl (from con-hub...) \n\n7%    7.7 KiB         131 KiB/s 0s\n100%  102.85 KiB       30 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/effort.png (from con-hub...) \n\n3%    7.7 KiB         119 KiB/s 1s\n100%  225.1 KiB        25 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/effort.svg (from con-hub...) \n\n2%    3.74 KiB         60 KiB/s 2s\n100%  156.3 KiB        33 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/item-statuses.png (from con-hub...) \n\n1%    3.74 KiB         59 KiB/s 5s\n100%  345.88 KiB       30 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/item-statuses.svg (from con-hub...) \n\n3%    7.7 KiB         125 KiB/s 1s\n100%  238.69 KiB       20 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/items.jsonl (from con-hub...) ok\nget rounds/round-01/synthesis/extraction/analysis/items.tsv (from con-hub...) ok\nget rounds/round-01/synthesis/extraction/analysis/judgments.jsonl (from con-hub...) \n\n5%    7.7 KiB         123 KiB/s 1s\n100%  164.23 KiB       32 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/judgments.tsv (from con-hub...) \n\n6%    7.7 KiB         125 KiB/s 0s\n100%  128.43 KiB       39 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/operations.jsonl (from con-hub...) \n\n4%    3.74 KiB         64 KiB/s 1s\n100%  105.68 KiB       25 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/recurring-outcomes.png (from con-hub...) \n\n5%    7.7 KiB         116 KiB/s 1s\n100%  152.57 KiB       25 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/recurring-outcomes.svg (from con-hub...) \n\n3%    3.74 KiB         56 KiB/s 2s\n100%  116.75 KiB       26 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/scientific-adequacy.png (from con-hub...) \n\n1%    3.74 KiB         62 KiB/s 4s\n100%  293.71 KiB       26 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/extraction/analysis/scientific-adequacy.svg (from con-hub...) \n\n3%    7.7 KiB         115 KiB/s 2s\n100%  250.65 KiB       28 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/figures/effort.svg (from con-hub...) \n\n4%    3.74 KiB         60 KiB/s 1s\n100%  101.5 KiB        32 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/figures/item-statuses.svg (from con-hub...) \n\n6%    7.7 KiB         119 KiB/s 1s\n100%  137.71 KiB       40 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/figures/recurring-outcomes.svg (from con-hub...) \n\n3%    3.74 KiB         58 KiB/s 1s\n100%  115.73 KiB       33 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/figures/scientific-adequacy.svg (from con-hub...) \n\n3%    3.74 KiB         60 KiB/s 1s\n100%  117.55 KiB       28 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/tables/effort.jsonl (from con-hub...) ok\nget rounds/round-01/synthesis/tables/items.jsonl (from con-hub...) \n\n2%    7.7 KiB          99 KiB/s 4s\n100%  469.67 KiB       22 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/tables/judgments.jsonl (from con-hub...) \n\n6%    7.7 KiB         102 KiB/s 1s\n100%  133.13 KiB       34 MiB/s 0s\n                                  \nok\nget rounds/round-01/synthesis/tables/operations.jsonl (from con-hub...) ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "9ff24fcfaeaeb1d96ba52bf676c11393463ade43\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "rounds/round-01/synthesis/attrition/assessment-attrition.png"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "100644 blob 35778fbb5c27d502e2d5bbe62f4ec06c128b2f09\trounds/round-01/synthesis/attrition/assessment-attrition.png\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "rounds/round-01/synthesis/figures/scientific-adequacy.png"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/round-01-synthesis-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "100644 blob 8290b8cc15074db7e733d1610de3ed98149b8bed\trounds/round-01/synthesis/figures/scientific-adequacy.png\n",
+    "stderr": ""
+  }
+]
