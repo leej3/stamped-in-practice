@@ -1,7 +1,7 @@
 # Current comparison status
 
-The sealed tool-neutral comparison is underway: **24 of 72 research workers have started**, **24 have stopped**, and **9 of 96 assigned judgments have started** at this update.
-**6 judgments have completed their dispatches.** Native process completion and formal assessment availability are separate.
+The sealed tool-neutral comparison is underway: **24 of 72 research workers have started**, **24 have stopped**, and **12 of 96 assigned judgments have started** at this update.
+**9 judgments have completed their dispatches.** Native process completion and formal assessment availability are separate.
 The first round contains 24 workers and 32 judgments.
 Judgment availability and scientific outcomes are reported separately from process completion.
 
