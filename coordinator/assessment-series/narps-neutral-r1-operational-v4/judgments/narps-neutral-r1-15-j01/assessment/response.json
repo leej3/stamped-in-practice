@@ -1,0 +1,534 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All delivered files are nested under one workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "scientific report in common project root; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "All 54 participant maps and metadata are included under input/ and resolve from the analysis script.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "54 map files and cohort table listed inside the delivery; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "relative input path rooted at the script location; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "unmet",
+      "reason": "No environment specification installs or links the analysis dependencies.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "names packages but supplies no installable environment specification; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "imports NumPy, pandas, NiBabel, Nilearn, SciPy and Matplotlib; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "Git omits the worker\u2019s report, analysis code, figures and results.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "present in complete capture but untracked at worker stop; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "git status probe reports analysis/, figures/, report.md and results/ untracked; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "met",
+      "reason": "The 54 large input maps are tracked through git-annex in the captured workspace.",
+      "source": "probe:large-in-annex",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "probe finds 54 annex pointers; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        },
+        {
+          "uri": "input/sources.json",
+          "description": "declares 54 participant input maps; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "unmet",
+      "reason": "The report lists package versions but no run record links these results to an exact environment.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "package versions are stated without a pinned environment or result provenance record; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "results/summary.json",
+          "description": "analysis settings are recorded, but no environment identity; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 df9593e4a9df67cdf50fd355c3ca8e34734ccafc95c78ec67366f79ad5d39f9a",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "unmet",
+      "reason": "The report names artifacts but gives no installation and usage instructions.",
+      "source": "probe:entry-point",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "reproducibility files section lists artifacts without setup or invocation steps; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "The report identifies analysis/group_analysis.py as the complete group-analysis starting point.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "single executable main entry point; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "identifies the script as the complete group analysis; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis resolves inputs and outputs relative to its own location.",
+      "source": "probe:no-abs-paths",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "ROOT is derived from __file__; inputs and outputs are relative; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "unmet",
+      "reason": "Required Python packages are not declared in an environment specification.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "imports external Python packages without dependency declaration; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "package versions appear only as prose; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "unmet",
+      "reason": "Host needs are not documented; the script fetches an atlas at runtime and therefore needs network access.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "fetch_atlas_harvard_oxford retrieves atlas data at runtime; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "does not document network or host prerequisites; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "partial",
+      "reason": "The report lists Python and package versions, but omits installation and host prerequisites.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "lists Python 3.13.16 and package versions; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "runtime atlas retrieval requires network access; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "No environment specification is included in the delivery.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "package versions are prose, not an environment file; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "environment-specification probe finds no tracked specification; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No dependency-update process or command is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "no dependency update or lockfile regeneration process; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "no environment maintenance instructions; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "unmet",
+      "reason": "Package versions in prose do not preserve a complete reproducible environment.",
+      "source": "probe:run-env-linked",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "lists package versions but not a frozen environment manifest; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "run-environment probe finds no pinned environment; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No environment artifact or authorized sharing route is supplied.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "no environment file or published environment route; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "unmet",
+      "reason": "There are no environment specifications to obtain or use.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "no environment acquisition or installation instructions; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "A Git root exists, but the principal worker analysis deliverables are untracked.",
+      "source": "probe:tree-clean+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "worker-stop status shows four untracked research paths; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "analysis code is within the root but outside version control at stop; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "No independently verifiable recurring test record is available; a worker-side run record would settle it.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "reports outputs without documenting repeated workflow checks; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "no recognized CI configuration; manual test history not established",
+          "sha256": null
+        }
+      ],
+      "flags": []
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Inputs, code, figures and results have separate directories; environment files are absent.",
+      "source": "probe:modules-separated",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "probe recognizes input/ as a separated module; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "code is in analysis/; results and figures are separate; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivered inputs and software are public; there is no restricted component to isolate.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "public NeuroVault/OpenNeuro source references; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "not-checked",
+      "reason": "The delivery has no independent record showing whether the pipeline ran in a fresh host; worker execution provenance would settle it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "reports analysis outputs but no host-isolation record; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "not-checked",
+      "reason": "No worker-side record establishes whether runs used disposable environments; execution provenance would settle it.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "contains no disposable environment record; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "No record establishes repeated environment reconstitution tests; a pinned environment plus worker-side test history would settle it.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "no recognized test configuration; no independent reconstitution record",
+          "sha256": null
+        },
+        {
+          "uri": "report.md",
+          "description": "lists package versions but no locked environment or test history; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No environment artifacts are archived with the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "no lockfile, container or environment archive is identified; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No dependency-update process is declared.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "no dependency update process; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "no environment regeneration command; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: no independently maintained project components are included; input datasets are project data, not project modules.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "external source data is materialized within input/; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 919be9b4278c31f7e39ae3d02fcf159eb4ae222a2fb96c90df7c3a92e5fb19cd",
+          "sha256": null
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "no submodule or subdataset component; assessment artifact in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "partial",
+      "reason": "The report links major directories but does not explain how they compose as modules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "lists analysis and result artifacts; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        },
+        {
+          "uri": "analysis/group_analysis.py",
+          "description": "uses input/, results/ and figures/; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 5e4224df7b7a4c1e5d4fb47271604e908bc4313685322d29710f1dfafec8ddfb",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "not-checked",
+      "reason": "The directory layout suggests boundaries, but no module contract or independent-update evidence is supplied.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "lists outputs without describing independent module updates; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "not-applicable",
+      "reason": "N/A: the delivery is one analysis project with no separately composed modules.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "describes one group-analysis script and its artifacts; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "The report links the main analysis script, figures and result files for navigation.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "report.md",
+          "description": "reproducibility files section links named artifacts; canonical capture f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9; file SHA-256 f6804e630acad03d64a4503451751d62b37849c026678a234775f9414737a726",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No license declaration was present in the complete captured workspace; reuse terms are unstated.",
+      "evidence": [
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/judgments/narps-neutral-r1-15-j01/attempt-01/judgment/probes.json",
+          "description": "Frozen license probe found no license file among tracked paths or BIDS License field.",
+          "sha256": "b3c27b3915efe993c598461072ec3c50f1efe927bfd33750cbb9e253c97bc7e2"
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "d857ab1302d13cb660a7a044af07141f44bfa9ba",
+    "captured_at": "2026-10-16T06:43:47.375204+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-series/narps-neutral-r1-operational-v4/targets/narps-neutral-r1-15-j01/canonical/manifest.json",
+      "sha256": "f4ff42772c87811840ea4addf956b2869bc5328ec1ebc32b37c2b523f180e9d9"
+    }
+  },
+  "assessor": {
+    "skill": "frozen STAMPED assessment runner",
+    "version": "1",
+    "harness": "OpenAI Codex independent assessor",
+    "model": "GPT-6",
+    "date": "2026-10-16",
+    "dependencies": [
+      "frozen assessment runtime"
+    ]
+  },
+  "scope": "Complete canonical delivery inspection; no scientific replay because the documented report supplies package versions but no reproducible dependency declaration; worker retrieval route absent."
+}
