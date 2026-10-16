@@ -30,7 +30,7 @@ Formal runs begin from a fresh clone with shallow history and keep their assessm
 
 To start a coordinator, give it this repository and a request such as:
 
-> Follow `prompt.md` using `studies/narps` and its registered comparison in `iterations/narps-v1/`.
+> Follow `prompt.md` using `studies/narps`; select and seal a prospective registration before launching new workers.
 
 | Location | Purpose |
 | --- | --- |
@@ -41,7 +41,7 @@ To start a coordinator, give it this repository and a request such as:
 | `studies/<study>/input/` | The scientific prompt and verified data supplied to research workers |
 | `studies/<study>/coordinator-guidance/` | Evaluation guidance and reference material for the coordinator and judges |
 | `studies/<study>/results/<run>/` | An experiment submodule containing the worker's research object, assessments and execution records |
-| `skills/` | Evolving `con/skills`, pinned to [our development branch](https://github.com/con/skills/tree/codex/pr26-operational-environment) |
+| `skills/` | Evolving `con/skills`, pinned to [our development branch](https://github.com/con/skills/tree/codex/narps-round1-research-guidance) |
 | `assessment/` | The selected assessor version, identified by `assessment-version.json` |
 
 Keep iteration, study and experiment submodules uninitialized until needed.
@@ -54,5 +54,5 @@ Figures summarize scientific outcomes, reproducibility, effort and variability.
 NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
-The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/14e22eada5f5af9db83f734ff291298441c3f1f2/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
+The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/4b6a8b34b6387150ea2a805bf48bbf5c159f8452/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed; the next stable comparison will keep coordinator preservation separate from worker guidance.

@@ -1,7 +1,7 @@
 # Compare research outcomes
 
 Freeze this plan with the study guidance, assessment procedure and common run settings before the first formal round.
-Keep preparation pilots separate.
+Keep preparation pilots and the completed `narps-v1` development round separate from the prospective tool-neutral comparison.
 
 - Scientific adequacy: classify the report as **supported**, **qualified**, **not supported**, or **unable to assess**, citing evidence.
   These describe whether reasoning and evidence support the reported conclusion, including a defensible absence of positive findings; they do not require the scientific hypothesis to be confirmed.
@@ -15,25 +15,30 @@ Keep preparation pilots separate.
   Record the recipient, route, required artifact coverage and host scope.
   Metadata alone does not prove access; verified access to only part of the required research object remains partial.
   Retrieval into a separate clone proves access through that route, not cross-host portability.
-- Operational outcomes: record worker completion, independently verified input/output retrieval, replay success, and coordinator intervention.
+- Operational outcomes: record worker completion, original delivery coverage, independently verified input/output retrieval, replay availability and result, and coordinator intervention.
   Distinguish failure from not attempted or not checked.
+  Interpret scientifically relevant equality or declared tolerance separately from incidental timestamps, report bytes and adapter limitations.
   Retain all assigned runs, including unsuccessful discovery and installation.
 - Effort: report total worker elapsed time, including discovery and installation; separate setup, computation, replay, judging and coordinator time.
   Retain available resource and usage measurements with their scope; missing measurements remain missing.
 
 For each study, condition and round, show individual runs, medians/ranges and outcome counts with denominators.
-With three workers per cell, patterns are descriptive; do not claim reliable variance estimates or significance.
+The prospective series has six workers per cell across three new rounds: 72 workers and 96 assigned judgments, including two preselected duplicates per condition per round.
+Patterns remain exploratory; do not claim reliable variance estimates or significance.
+Show all assigned outcomes and availability denominators; binary proportions may use 95% Wilson intervals with explicit small-sample and independence limitations.
 Method diversity is not itself failure.
 The hypothesis is that successive explicit STAMPED revisions improve scientific adequacy and STAMPED attainment while reducing failures and dispersion of outcomes.
 Report null and adverse patterns equally.
 Discovery conditions test assistance strategies whose retrieved skills may change.
 
-Use a recorded random seed to permute launch order within each round and preselect one object per condition for a second independent judgment.
+Use a recorded random seed to balance launch waves within each round and preselect two objects per condition for a second independent judgment.
 The first assigned judgment is primary regardless of its result; the duplicate measures disagreement and is not an additional worker.
 Report item-level and scientific-adequacy disagreement separately.
 Never select the more favorable judgment.
 
-Keep study inputs, common scientific prompts, comparator instructions, resources, model/settings, budgets and assessment fixed within the comparison.
+Keep study inputs, common scientific prompts, comparator instructions, resources, role-specific model/runtime/settings and assessment fixed within the comparison.
+The fixed sample and declared completion rules determine stopping; there is no preset spending cap or outcome-dependent sample extension.
+The baseline receives scientific resources without unsolicited workflow mandates, and coordinator preservation earns no worker credit.
 Evolve and compress the research skills and their internal prompts only between rounds.
 Record shared operational changes; changes to fixed settings require a new comparison or a documented resolution before continuing.
 The last round uses final skills without tuning on its results.
