@@ -1,0 +1,29 @@
+{
+  "status": "not-checked",
+  "reason": "The complete worker delivery contains no environment declaration or dependency lock, while REPORT.md only refers to a 'supplied Python environment'. The assessor's runtime is coordinator infrastructure and cannot stand in for a worker-supplied prerequisite.",
+  "source": "unchanged complete delivery",
+  "planned_command": "python analysis.py",
+  "working_directory": "workspace root",
+  "documented_prerequisites": [
+    "A supplied Python environment (mentioned in REPORT.md, but not present or identified in the delivery)",
+    "Python distributions imported by analysis.py: numpy, pandas, nibabel, nilearn, scipy and matplotlib"
+  ],
+  "selected_generated_outputs": [
+    "results/summary.json",
+    "results/participant_qc_and_roi.csv",
+    "results/group_mean_effect.nii.gz",
+    "results/t_statistic.nii.gz",
+    "results/p_uncorrected_one_sided.nii.gz",
+    "results/p_fwe_maxT.nii.gz",
+    "figures/group_mean_effect.png",
+    "figures/whole_brain_fwe.png",
+    "figures/vmPFC_participants.png"
+  ],
+  "output_selection_basis": "These exact generated files are named in REPORT.md and created explicitly in analysis.py. No input, metadata or source code is selected for removal.",
+  "comparison_rule_if_prerequisites_were_available": "Compare participant counts, exclusions, tested-mask counts, ROI summary and peak statistics from parsed outputs; compare numeric table/map quantities with rtol=1e-6 and atol=1e-8. Treat figure encoding, prose, timestamps and logs as presentation/provenance differences, not scientific disagreement. A workflow-specific numeric comparison is needed because the frozen helper compares non-table outputs bytewise.",
+  "attempts": 0,
+  "execution_limit_seconds": 7200,
+  "retrieval_limit_gb": 5.0,
+  "frozen_helper_used": false,
+  "reason_helper_not_used": "No worker-supplied environment can be reconstructed. Running with the assessor's coordinator environment would not measure the delivered worker environment."
+}
