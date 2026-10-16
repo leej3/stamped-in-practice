@@ -1,0 +1,513 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-03-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "2660de9aeff8c313ab05d041dbe906a5c55faa09"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            2660de9aeff8c313ab05d041dbe906a5c55faa09 -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at 2660de9 feat(retention): expose original files for narps-neutral-r1-03\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "2660de9aeff8c313ab05d041dbe906a5c55faa09\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "ae033a83ed67fbd73680ee409587c51aafe771c9",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "ae033a83ed67fbd73680ee409587c51aafe771c9",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_bonferroni_fwe_p.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s18076--1f1538474aa3267b6aa7affffe69cc52be07ee871c3a5c5c52b5a2306bed0353.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_t_map.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "results/group_bonferroni_fwe_p.nii.gz",
+      "results/group_mean_effect.nii.gz",
+      "results/group_t_map.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get results/group_bonferroni_fwe_p.nii.gz (from con-hub...) \n\n21%   3.74 KiB         57 KiB/s 0s\n100%  17.65 KiB       345 KiB/s 0s\n                                  \nok\nget results/group_mean_effect.nii.gz (from con-hub...) \n\n1%    7.7 KiB         120 KiB/s 8s\n89%   879.57 KiB        4 MiB/s 0s\n100%  988.46 KiB       19 MiB/s 0s\n                                  \nok\nget results/group_t_map.nii.gz (from con-hub...) \n\n1%    7.7 KiB         119 KiB/s 8s\n100%  990.03 KiB       20 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/LICENSE.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 13e25df86ce06eb6488e6a6bc5c5847f5dedc352\t.codex/skills/jupyter-notebook/LICENSE.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/SKILL.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob e1d1748cac9e9313c8229763751714628d1f6853\t.codex/skills/jupyter-notebook/SKILL.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/agents/openai.yaml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8832dea0a6e64f173f09e77f690dada6a5f73074\t.codex/skills/jupyter-notebook/agents/openai.yaml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/experiment-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a4a0323e567a772456395aee29494b1babee622c\t.codex/skills/jupyter-notebook/assets/experiment-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter-small.svg"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 472d07fdfca9a558325cc8eaf91e861a44843b3e\t.codex/skills/jupyter-notebook/assets/jupyter-small.svg\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 51cdf7d3bba730eda85a26a87d1ee65c14da97f0\t.codex/skills/jupyter-notebook/assets/jupyter.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/tutorial-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7001309593a8c10fa34d68870c3a558348f76216\t.codex/skills/jupyter-notebook/assets/tutorial-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/experiment-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2d5093b256f328dabb89de16822286c5f2f4dda4\t.codex/skills/jupyter-notebook/references/experiment-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/notebook-structure.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 681d36f53d55cb089b1d815bacaac9b363f76fa4\t.codex/skills/jupyter-notebook/references/notebook-structure.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/quality-checklist.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5482f282845271ac1614a33135000e18f54d95aa\t.codex/skills/jupyter-notebook/references/quality-checklist.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/tutorial-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2a360b089b904299f463f88b5cdae0ea9bdb1123\t.codex/skills/jupyter-notebook/references/tutorial-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/scripts/new_notebook.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 0aba209a63c9744e7eeca5a59a12135b387e5229\t.codex/skills/jupyter-notebook/scripts/new_notebook.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/group_analysis.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5bbb730a72394c6b30dab2802755690df5c162c6\tanalysis/group_analysis.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/report.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9fd51e6f9bb6ab40ee5da6f54f5deab611f185dc\tanalysis/report.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/figures/vmpfc_participant_effects.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 9a0287bfdb6ab01a37daadf8f40cee7198a042f9\tresults/figures/vmpfc_participant_effects.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/figures/whole_brain_fwe_t.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c4fa007b72ef149f39682e4e05415ce429e4503d\tresults/figures/whole_brain_fwe_t.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_bonferroni_fwe_p.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 16070e7c45fea2095f631295c21eac774162e96f\tresults/group_bonferroni_fwe_p.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mean_effect.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 615198dfc633d7d786aa743c11fcf20dbb9f0729\tresults/group_mean_effect.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_t_map.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 771aa7a862a1099fcdc2db48dc86ffd7748c4440\tresults/group_t_map.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/participant_qc.tsv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob b9caeec71e557b7de1038c96343cd76037612fcb\tresults/participant_qc.tsv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 42fa1a1b8722f0edc9bf84643ef0d2e9c724ab34\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "2660de9aeff8c313ab05d041dbe906a5c55faa09\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
