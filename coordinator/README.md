@@ -19,3 +19,7 @@ The [copy manifest](browsable-copy-01/manifest.json) records exact source hashes
 These are coordinator presentation copies; the complete archive remains authoritative.
 The input tree matches the [shared retrieval proof](browsable-copy-01/shared-input-route-proof.json); its 58 payloads were independently retrieved in the cited run 20 check.
 No scientific execution or worker credit is implied.
+
+## Completed support and assessment
+
+See the [complete support archive and evidence index](support-01/README.md), including the exact independent report and structured response.
