@@ -28,9 +28,11 @@ The explicit STAMPED condition directly tests the guidance we are improving.
 During preparation, the assessor and its runtime can improve alongside the other skills.
 Formal runs begin from a fresh clone with shallow history and keep their assessment version fixed.
 
-To start a coordinator, give it this repository and a request such as:
+To start or resume a coordinator, give it this repository and a request such as:
 
-> Follow `prompt.md` using `studies/narps`; select and seal a prospective registration before launching new workers.
+> Follow `prompt.md` using `studies/narps`.
+> First read the selected iteration's pinned `STATUS.md` and reconcile any active runs.
+> Continue its registered next step; select and seal a new registration only when no existing one applies.
 
 | Location | Purpose |
 | --- | --- |
@@ -61,4 +63,4 @@ The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practic
 The [first tool-neutral round](https://github.com/leej3/stamped-in-practice/blob/20917d21f5c698152b032ecff37374ab4e603a82/rounds/round-01/synthesis/README.md) completed 24 research workers and 32 assigned judgments.
 Only 21 judgments passed the frozen measurement gate; 11 were excluded because assessment changed annex database metadata.
 The linked findings and figures preserve those missing measurements and explain why a separate assessment boundary is needed before further research.
-Follow the [current status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) for the next step.
+The [latest online status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) may be newer than the iteration pinned in this checkout.
