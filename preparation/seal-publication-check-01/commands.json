@@ -1,0 +1,79 @@
+[
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "5056bebf6eb33c2b9b02262efc39d084259424ce"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            5056bebf6eb33c2b9b02262efc39d084259424ce -> FETCH_HEAD\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "HEAD is now at 5056beb docs(protocol): seal the neutral NARPS comparison\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n   e0dffae..4674388  git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "preparation/launcher-validation-01/implementation.patch"
+    ],
+    "returncode": 0,
+    "stdout": "get preparation/launcher-validation-01/implementation.patch (from con-hub...) \n\n5%    7.7 KiB          21 KiB/s 6s\n100%  142.02 KiB        1 MiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "5056bebf6eb33c2b9b02262efc39d084259424ce\n",
+    "stderr": ""
+  }
+]
