@@ -1,0 +1,64 @@
+diff --git a/scripts/assessment_procedure.py b/scripts/assessment_procedure.py
+index 35175ba..53af6be 100644
+--- a/scripts/assessment_procedure.py
++++ b/scripts/assessment_procedure.py
+@@ -417,7 +417,9 @@ def check_retained_target(manifest, seed, seed_commit, result_commit, stop_recei
+     research_procedure(manifest)
+     matched = False
+     for item in manifest["assessment_amendment"]["retained_objects"]:
+-        if (item["run"] != seed.get("run") and
++        # Neutral deliveries can share an untouched Git seed/HEAD. Version 4
++        # binds the allocated run to its exact stop and capture below instead.
++        if (manifest.get("version") != 4 and item["run"] != seed.get("run") and
+                 (item["seed_commit"] == seed_commit or
+                  (result_commit is not None and item["result_commit"] == result_commit))):
+             raise SystemExit("A retained object cannot be relabeled as a new run")
+diff --git a/tests/test_operational_assessment.py b/tests/test_operational_assessment.py
+index d1994a7..86f3266 100644
+--- a/tests/test_operational_assessment.py
++++ b/tests/test_operational_assessment.py
+@@ -194,6 +194,44 @@ def amended(original, allocation, run):
+     return updated
+ 
+ 
++@pytest.mark.parametrize('head', ['a' * 40, None])
++def test_v4_shared_git_identities_bind_each_original_capture(tmp_path, allocation, contract, head):
++    index, original = bundle(tmp_path, allocation, contract, head=head)
++    run = index['runs'][0]
++    seal = amended(full_original(json.loads(original)), allocation, run)
++    first = seal['assessment_amendment']['retained_objects'][0]
++    second_stop = tmp_path / 'second-stop.json'
++    second_stop.write_text('{"different_original_delivery": true}\n')
++    second = dict(first, run=allocation['rounds'][0]['launch_order'][1]['run'],
++        worker_end_state_sha256=agg.sha256(second_stop.read_bytes()), delivery_capture_sha256='b' * 64)
++    seal['assessment_amendment']['retained_objects'].append(second)
++    for row, stop in ((first, tmp_path / run['worker_end_state']['path']), (second, second_stop)):
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], stop, row['delivery_capture_sha256'])
++    # A shared seed does not permit one delivery to be attributed to its peer.
++    with pytest.raises(SystemExit, match='retained original stop receipt'):
++        procedure.check_retained_target(seal, {'run': second['run']}, first['seed_commit'],
++            first['result_commit'], tmp_path / run['worker_end_state']['path'], first['delivery_capture_sha256'])
++    with pytest.raises(SystemExit, match='retained original delivery capture'):
++        procedure.check_retained_target(seal, {'run': second['run']}, second['seed_commit'],
++            second['result_commit'], second_stop, first['delivery_capture_sha256'])
++    with pytest.raises(SystemExit, match='unregistered retained object'):
++        procedure.check_retained_target(seal, {'run': 'unregistered'}, first['seed_commit'],
++            first['result_commit'], tmp_path / run['worker_end_state']['path'], first['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('field', ['seed_commit', 'result_commit'])
++def test_v4_shared_git_identity_does_not_relax_exact_git_binding(tmp_path, allocation, contract, field):
++    index, original = bundle(tmp_path, allocation, contract, head='a' * 40)
++    run = index['runs'][0]
++    seal = amended(full_original(json.loads(original)), allocation, run)
++    row = dict(seal['assessment_amendment']['retained_objects'][0])
++    row[field] = 'c' * 40
++    with pytest.raises(SystemExit, match='retained worker seed|retained scientific result'):
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], tmp_path / run['worker_end_state']['path'], row['delivery_capture_sha256'])
++
++
+ def operational_bundle(tmp_path, allocation, contract, mutation='database'):
+     index, original_bytes = bundle(tmp_path, allocation, contract, head='a' * 40)
+     run = index['runs'][0]

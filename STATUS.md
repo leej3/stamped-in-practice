@@ -13,7 +13,9 @@ No skill-effect claim crosses that boundary silently.
 
 The [candidate research guidance and trial evidence](skill-reflection/research-skill-revision-01/README.md) are published on a separate development branch.
 The registered round-one skill pin remains unchanged.
-The final native assessment trial is under verification; no new assessment series or subsequent research round has launched.
+The final native assessment trial passed, but the [registered-object admission check](measurement-development/assessment-registration-admission-01/README.md) found that a legacy guard incorrectly rejects shared Git seeds.
+Its never-launched seal and failure evidence are retained while the narrow capture-identity correction is reviewed.
+No new assessment series or subsequent research round has launched.
 
 See the [completion ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [judgment dispatches](rounds/round-01/judging/), [sealed registration](registration.md) and [allocation](allocation.json).
 The registration's zero-start count describes its prelaunch state.
