@@ -1,0 +1,2192 @@
+[
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/browsable-publication-r1-14-01/fresh-check-01/recipient/.git/\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "e2eed86aa172b2ce2973c057e76d06b0be464f7c"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            e2eed86aa172b2ce2973c057e76d06b0be464f7c -> FETCH_HEAD\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "HEAD is now at e2eed86 feat(retention): expose original files for narps-neutral-r1-14\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e2eed86aa172b2ce2973c057e76d06b0be464f7c\n"
+  },
+  {
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "5f34fdf82c22f1973755b8f747bdd82a15e0e9a9",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD:input"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "a484f41db2095ef116f08d359f9b95ad41981698\n"
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "5f34fdf82c22f1973755b8f747bdd82a15e0e9a9",
+      "HEAD",
+      "--",
+      "input",
+      "coordinator/delivery-01",
+      "coordinator/original-manifest.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent browsable presentation receiver"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "init independent browsable presentation receiver ok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "returncode": 0,
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n",
+    "stdout": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-001_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1794522--baf3440fbc7f5f59dea28d231e9c5eb9cf00a15b6924342f4b79e7faf56a929a.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-003_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1762018--a8c9b6276d1597bc43695516c9ac5b2893a8d8408cd053161ceaddbd42dafb20.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-005_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1847315--415383874c65fd9e10bb03bf2aa59bfcd1d10650bc5d0560a249e85d52b7b205.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-009_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1737182--33af129d8ba13cd4b6175089706c531471be1e0bd7ccd43ece10751c8cc3254c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-011_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1828116--6f74dd449eefa6eff40ec00eb046ec7e8bb13c0b7c2ac1874155a9c166692352.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-013_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1760573--bfa79b82f931d81d6387e82b8413f1f889a06f36275ba510554669c84a3c026f.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-015_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1805181--5d98f6d74823516768659967f95ef43728584eab024c58af30987783515d7694.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-017_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1791857--dca9eac4d6f0ef4e2a3e631b2d10f89c5362863698cec4a7c7b9b14128ae96d9.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-019_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1788203--f9df911028e0ee06d230b097d8c7011b3c09f34df436e8854cd959145777533d.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-021_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1821886--7dd60d722e243f429633f1c63c9a810afd73d1ffd0e0e68fcdd2bf3790d78db1.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-025_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1805994--545945b0a5f7e51d65e2828e76e776fffcbb33b1635bb7272bc0948bfbc6b7b4.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-027_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1814109--dffa472f8cfe30b9c2025470924fceb23d30fb881db6b893d436faa8d8dcef2f.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-029_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1792367--0ed1be0ce40d1becaec5cf18487670822b8cb5fcbc5ad0ec2cb34d9a3ed7071b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-033_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1765631--04778467af0a6c93d531d30f73c5492384be59044ebd7be3e95862700e2e9117.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-035_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1768719--211fd859f33d69891531ad3e5dd66fe0c0891b20c58e6ef8aa21b4d49ff030c9.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-037_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1807410--a4d76561e8ba1848572a474afce754310f4ee101cfd99276eb3105289cc0934b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-039_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1775163--744df860cfb8410aae16bcb1742e7390c51306c66959bb19da9f5b57206bba7b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-041_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1801691--f93eeadcd3f57239e4c32c5df2ca2c4013bf424978701bd5beec535ace24669f.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-043_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1776243--520f19805c6c4358bc56e9bba290b9b79a80c14385bc7be90e4bd81b3e37e771.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-045_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1812100--3826c6daf5a7be7b03ae552847c4a8709a1b86c2498735e6ce80768cd5d0b88e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-047_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1762249--8585e8be8eebe84dd316eeb1f86090a8123f88a8b5d275bc2c39049a3bf4bf34.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-049_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1821174--e01dacebea8fa444b7696e90a53e9ab0b3543b0da780ba430875b3fde117e084.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-051_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1755787--74e2887ed9eb4252357cdce98eb53b5b8ab2620ee5ee57aee1bc677c0099b2ca.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-053_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1760465--a3b3509a0240c5b12a9c63f94f2913e69eeb7fab4fbe92ac1adc62eb45bdd0ba.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-055_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1790638--136983cd89668779e26eba6847653f1d765452f8a2d5675fce037f751edb0ea8.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-057_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1815775--aafa1a371d72e690f737d2507c9d7bbd20c620377cd294d44555c856a0566496.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-059_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1785421--0fa3da37a11640705014665f546ba86735472a8a2b7fdf1b37177a55abd0a65a.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-061_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1783701--cb8bc3bf4264fe156348d3c171335b84978eb8d32b0fd331db9f4661dad2bdff.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-063_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1786231--2a5458eb314441b01dacfa1bcea9e9a95f983d2994aa6b853ebe1a20b017a467.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-067_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1774136--9977321f1f775f04dab881d740ea5cc491dadda07405f2380c61c50e5c3a01fc.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-069_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1769792--bd22905ebe789319f082b0fdb6ba7cd5aaf6590fd8424d6c396cd54c0602a318.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-071_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1790405--7286639323904bfe851588ce06c68396d535fad2f7ac5de0de1b73c4c17494f4.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-073_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1786224--67086bf1f48b14bc095999f6535656649d01da82d1327715c5b3ab89ea6c5f7b.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-075_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1774130--b9151e72e3a8a609a23ac73dbd3d6ba8423f271ddd72149cf27c04e25bf9f980.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-077_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1754444--79aaf5add3d475590cb7fd82a7fbd32517dbde2cb859824864a2b10d6fafb9ed.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-079_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1770837--d505691fdcfa43ad709fca3803c954069afe4e2f2dc865edb5b0812562d1eb8c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-081_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1809179--a8a342b5e333dbff9776b5a4847929737144dc8029830036636eb86c566f4f76.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-083_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1770805--76a526c303c406342487da0e5deee5a6ca6b345e9b6ccb052149c4c32f0833ae.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-085_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1733793--74b1af4e4b667a70c79b54a10294be744da5538b814057186eae48710520b65a.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-087_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1826169--7ecb372d1249cd5368121b1e7b7f7ee33ef5430575097431dcd3f27dcdad7b04.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-089_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1742479--3b380ae44cdbf0171d9ec12ff9ecdb47227496cda5ccd5b5cfb09164c5d91846.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-093_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1784075--7802aea70713a4be7683921188b92a563d86f221f191a8bac4ee9c4decb33a1c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-095_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1735309--291760d6479e336093a651e33df20deab99e434cba5afbf31fc019c8d1fe816e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-099_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1823271--30b063515e6b538183fe37c561e87e47681756876a8f6a8a607839d8d3de0e42.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-103_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1814013--a088633f18ac3e35fc2512e9dc21ec3d92efd06749d4027338ccb448a635919c.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-105_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1795447--12a1b50eaa5be6983990c5e77f985f9750340204eaa3fff7e70829f07707e6a2.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-107_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1804121--4580aade93323d0d14f9a3a1932a428004a2f657980b5669f9274102bb370802.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-109_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1788268--931ba1128720bbaa99e7fce8f036a331581d6d07e00212a1f402eae7959299cb.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-113_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1819506--e5f81435ddc2d5703fa4ea37d6597601e71b50f8c53fb6047fb0067c17282c65.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-115_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1797041--5046f7c2fa1c5d1be6237d38f631beca13df8a3a8ded11121082838a533a44bf.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-117_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1741472--711159acfa23c45ab82903f658cafe0fa539f39e077e451f6b0728fdb359445f.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-119_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1752220--01738a10e34e46c5ea1a4a192b9484595ee352d62375095b76726347455aabd7.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-121_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1766758--94357665b89cfa1b9157e71aab10f78b49585a790a4a01d9e4693698e185d892.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "data/sub-123_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1745649--1219377e08c306753c1e382d431b1e7a55c7143cdc5f800fb65e92fa7e72f888.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1012185--efae119d23c1aa9338c965ecf23658584cb3c7b37a379bc956ba3512e575b723.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_p_fwe_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s70089--db0523fc95c50684fac6af7a114303364c2075b44e3bb9eb4f1b2a539bdce778.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_sig_fwe_p05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s31789--e545e554b1afeba98f5ebed95fd3b31bf63cc090e7d9353b4b6f2c990dede988.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "lookupkey",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "SHA256E-s1013790--818262bf4481df4ae3d73d41033953eb844772f9df8291ca7ebcc5a4bd088d1e.nii.gz\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "data/sub-001_hypo1_cope.nii.gz",
+      "data/sub-003_hypo1_cope.nii.gz",
+      "data/sub-005_hypo1_cope.nii.gz",
+      "data/sub-009_hypo1_cope.nii.gz",
+      "data/sub-011_hypo1_cope.nii.gz",
+      "data/sub-013_hypo1_cope.nii.gz",
+      "data/sub-015_hypo1_cope.nii.gz",
+      "data/sub-017_hypo1_cope.nii.gz",
+      "data/sub-019_hypo1_cope.nii.gz",
+      "data/sub-021_hypo1_cope.nii.gz",
+      "data/sub-025_hypo1_cope.nii.gz",
+      "data/sub-027_hypo1_cope.nii.gz",
+      "data/sub-029_hypo1_cope.nii.gz",
+      "data/sub-033_hypo1_cope.nii.gz",
+      "data/sub-035_hypo1_cope.nii.gz",
+      "data/sub-037_hypo1_cope.nii.gz",
+      "data/sub-039_hypo1_cope.nii.gz",
+      "data/sub-041_hypo1_cope.nii.gz",
+      "data/sub-043_hypo1_cope.nii.gz",
+      "data/sub-045_hypo1_cope.nii.gz",
+      "data/sub-047_hypo1_cope.nii.gz",
+      "data/sub-049_hypo1_cope.nii.gz",
+      "data/sub-051_hypo1_cope.nii.gz",
+      "data/sub-053_hypo1_cope.nii.gz",
+      "data/sub-055_hypo1_cope.nii.gz",
+      "data/sub-057_hypo1_cope.nii.gz",
+      "data/sub-059_hypo1_cope.nii.gz",
+      "data/sub-061_hypo1_cope.nii.gz",
+      "data/sub-063_hypo1_cope.nii.gz",
+      "data/sub-067_hypo1_cope.nii.gz",
+      "data/sub-069_hypo1_cope.nii.gz",
+      "data/sub-071_hypo1_cope.nii.gz",
+      "data/sub-073_hypo1_cope.nii.gz",
+      "data/sub-075_hypo1_cope.nii.gz",
+      "data/sub-077_hypo1_cope.nii.gz",
+      "data/sub-079_hypo1_cope.nii.gz",
+      "data/sub-081_hypo1_cope.nii.gz",
+      "data/sub-083_hypo1_cope.nii.gz",
+      "data/sub-085_hypo1_cope.nii.gz",
+      "data/sub-087_hypo1_cope.nii.gz",
+      "data/sub-089_hypo1_cope.nii.gz",
+      "data/sub-093_hypo1_cope.nii.gz",
+      "data/sub-095_hypo1_cope.nii.gz",
+      "data/sub-099_hypo1_cope.nii.gz",
+      "data/sub-103_hypo1_cope.nii.gz",
+      "data/sub-105_hypo1_cope.nii.gz",
+      "data/sub-107_hypo1_cope.nii.gz",
+      "data/sub-109_hypo1_cope.nii.gz",
+      "data/sub-113_hypo1_cope.nii.gz",
+      "data/sub-115_hypo1_cope.nii.gz",
+      "data/sub-117_hypo1_cope.nii.gz",
+      "data/sub-119_hypo1_cope.nii.gz",
+      "data/sub-121_hypo1_cope.nii.gz",
+      "data/sub-123_hypo1_cope.nii.gz",
+      "results/group_mean_cope.nii.gz",
+      "results/group_p_fwe_positive.nii.gz",
+      "results/group_sig_fwe_p05.nii.gz",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "get data/sub-001_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         50 KiB/s 34s\n24%   415.8 KiB         2 MiB/s 0s \n100%  1.71 MiB         15 MiB/s 0s \n                                   \nok\nget data/sub-003_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         59 KiB/s 29s\n100%  1.68 MiB         27 MiB/s 0s \n                                   \nok\nget data/sub-005_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         59 KiB/s 30s\n100%  1.76 MiB         32 MiB/s 0s \n                                   \nok\nget data/sub-009_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         63 KiB/s 27s\n100%  1.66 MiB         30 MiB/s 0s \n                                   \nok\nget data/sub-011_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 14s\n100%  1.74 MiB         32 MiB/s 0s \n                                   \nok\nget data/sub-013_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         122 KiB/s 14s\n100%  1.68 MiB         32 MiB/s 0s \n                                   \nok\nget data/sub-015_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         120 KiB/s 14s\n100%  1.72 MiB         32 MiB/s 0s \n                                   \nok\nget data/sub-017_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         123 KiB/s 14s\n100%  1.71 MiB         26 MiB/s 0s \n                                   \nok\nget data/sub-019_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.71 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-021_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         130 KiB/s 13s\n100%  1.74 MiB         31 MiB/s 0s \n                                   \nok\nget data/sub-025_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         121 KiB/s 14s\n100%  1.72 MiB         44 MiB/s 0s \n                                   \nok\nget data/sub-027_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         127 KiB/s 13s\n100%  1.73 MiB         31 MiB/s 0s \n                                   \nok\nget data/sub-029_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         123 KiB/s 14s\n100%  1.71 MiB         28 MiB/s 0s \n                                   \nok\nget data/sub-033_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         120 KiB/s 14s\n100%  1.68 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-035_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.69 MiB         34 MiB/s 0s \n                                   \nok\nget data/sub-037_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 14s\n100%  1.72 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-039_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         120 KiB/s 14s\n100%  1.69 MiB         29 MiB/s 0s \n                                   \nok\nget data/sub-041_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         123 KiB/s 14s\n100%  1.72 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-043_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         119 KiB/s 14s\n100%  1.69 MiB         32 MiB/s 0s \n                                   \nok\nget data/sub-045_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         119 KiB/s 14s\n100%  1.73 MiB         28 MiB/s 0s \n                                   \nok\nget data/sub-047_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         121 KiB/s 14s\n100%  1.68 MiB         29 MiB/s 0s \n                                   \nok\nget data/sub-049_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 14s\n100%  1.74 MiB         27 MiB/s 0s \n                                   \nok\nget data/sub-051_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         125 KiB/s 13s\n100%  1.67 MiB         30 MiB/s 0s \n                                   \nok\nget data/sub-053_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 13s\n100%  1.68 MiB         26 MiB/s 0s \n                                   \nok\nget data/sub-055_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         120 KiB/s 14s\n100%  1.71 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-057_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         124 KiB/s 14s\n100%  1.73 MiB         30 MiB/s 0s \n                                   \nok\nget data/sub-059_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.7 MiB          30 MiB/s 0s \n                                   \nok\nget data/sub-061_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.7 MiB          33 MiB/s 0s \n                                   \nok\nget data/sub-063_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         129 KiB/s 13s\n100%  1.7 MiB          41 MiB/s 0s \n                                   \nok\nget data/sub-067_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         120 KiB/s 14s\n100%  1.69 MiB         35 MiB/s 0s \n                                   \nok\nget data/sub-069_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         138 KiB/s 12s\n100%  1.69 MiB         38 MiB/s 0s \n                                   \nok\nget data/sub-071_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.71 MiB         31 MiB/s 0s \n                                   \nok\nget data/sub-073_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         126 KiB/s 13s\n100%  1.7 MiB          49 MiB/s 0s \n                                   \nok\nget data/sub-075_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         64 KiB/s 27s\n100%  1.69 MiB         45 MiB/s 0s \n                                   \nok\nget data/sub-077_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         109 KiB/s 15s\n100%  1.67 MiB         29 MiB/s 0s \n                                   \nok\nget data/sub-079_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         133 KiB/s 12s\n100%  1.69 MiB         42 MiB/s 0s \n                                   \nok\nget data/sub-081_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         115 KiB/s 15s\n100%  1.73 MiB         37 MiB/s 0s \n                                   \nok\nget data/sub-083_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         140 KiB/s 12s\n100%  1.69 MiB         55 MiB/s 0s \n                                   \nok\nget data/sub-085_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         134 KiB/s 12s\n100%  1.65 MiB         35 MiB/s 0s \n                                   \nok\nget data/sub-087_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         144 KiB/s 12s\n100%  1.74 MiB         47 MiB/s 0s \n                                   \nok\nget data/sub-089_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         137 KiB/s 12s\n100%  1.66 MiB         51 MiB/s 0s \n                                   \nok\nget data/sub-093_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         128 KiB/s 13s\n100%  1.7 MiB          42 MiB/s 0s \n                                   \nok\nget data/sub-095_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         135 KiB/s 12s\n100%  1.65 MiB         43 MiB/s 0s \n                                   \nok\nget data/sub-099_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         127 KiB/s 13s\n100%  1.74 MiB         33 MiB/s 0s \n                                   \nok\nget data/sub-103_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         135 KiB/s 13s\n100%  1.73 MiB         38 MiB/s 0s \n                                   \nok\nget data/sub-105_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         129 KiB/s 13s\n100%  1.71 MiB         50 MiB/s 0s \n                                   \nok\nget data/sub-107_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         144 KiB/s 12s\n100%  1.72 MiB         58 MiB/s 0s \n                                   \nok\nget data/sub-109_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         135 KiB/s 12s\n100%  1.71 MiB         41 MiB/s 0s \n                                   \nok\nget data/sub-113_hypo1_cope.nii.gz (from con-hub...) \n\n0%    3.74 KiB         56 KiB/s 31s\n100%  1.74 MiB         40 MiB/s 0s \n                                   \nok\nget data/sub-115_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         147 KiB/s 11s\n100%  1.71 MiB         61 MiB/s 0s \n                                   \nok\nget data/sub-117_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         135 KiB/s 12s\n100%  1.66 MiB         53 MiB/s 0s \n                                   \nok\nget data/sub-119_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         127 KiB/s 13s\n100%  1.67 MiB         49 MiB/s 0s \n                                   \nok\nget data/sub-121_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         141 KiB/s 12s\n100%  1.68 MiB         61 MiB/s 0s \n                                   \nok\nget data/sub-123_hypo1_cope.nii.gz (from con-hub...) \n\n0%    7.7 KiB         150 KiB/s 11s\n100%  1.66 MiB         53 MiB/s 0s \n                                   \nok\nget results/group_mean_cope.nii.gz (from con-hub...) \n\n1%    7.7 KiB         150 KiB/s 6s\n100%  988.46 KiB       45 MiB/s 0s\n                                  \nok\nget results/group_p_fwe_positive.nii.gz (from con-hub...) \n\n11%   7.7 KiB         136 KiB/s 0s\n100%  68.45 KiB        38 MiB/s 0s\n                                  \nok\nget results/group_sig_fwe_p05.nii.gz (from con-hub...) \n\n25%   7.7 KiB         143 KiB/s 0s\n100%  31.04 KiB        26 MiB/s 0s\n                                  \nok\nget results/group_t_positive.nii.gz (from con-hub...) \n\n1%    7.7 KiB         130 KiB/s 7s\n100%  990.03 KiB       46 MiB/s 0s\n                                  \nok\n(recording state in git...)\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/LICENSE.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 13e25df86ce06eb6488e6a6bc5c5847f5dedc352\t.codex/skills/jupyter-notebook/LICENSE.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/SKILL.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob e1d1748cac9e9313c8229763751714628d1f6853\t.codex/skills/jupyter-notebook/SKILL.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/agents/openai.yaml"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 8832dea0a6e64f173f09e77f690dada6a5f73074\t.codex/skills/jupyter-notebook/agents/openai.yaml\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/experiment-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a4a0323e567a772456395aee29494b1babee622c\t.codex/skills/jupyter-notebook/assets/experiment-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter-small.svg"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 472d07fdfca9a558325cc8eaf91e861a44843b3e\t.codex/skills/jupyter-notebook/assets/jupyter-small.svg\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/jupyter.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 51cdf7d3bba730eda85a26a87d1ee65c14da97f0\t.codex/skills/jupyter-notebook/assets/jupyter.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/assets/tutorial-template.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 7001309593a8c10fa34d68870c3a558348f76216\t.codex/skills/jupyter-notebook/assets/tutorial-template.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/experiment-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2d5093b256f328dabb89de16822286c5f2f4dda4\t.codex/skills/jupyter-notebook/references/experiment-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/notebook-structure.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 681d36f53d55cb089b1d815bacaac9b363f76fa4\t.codex/skills/jupyter-notebook/references/notebook-structure.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/quality-checklist.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 5482f282845271ac1614a33135000e18f54d95aa\t.codex/skills/jupyter-notebook/references/quality-checklist.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/references/tutorial-patterns.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 2a360b089b904299f463f88b5cdae0ea9bdb1123\t.codex/skills/jupyter-notebook/references/tutorial-patterns.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      ".codex/skills/jupyter-notebook/scripts/new_notebook.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 0aba209a63c9744e7eeca5a59a12135b387e5229\t.codex/skills/jupyter-notebook/scripts/new_notebook.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/narps_group_analysis.ipynb"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob f3be3a1ef41724a85415df7a849c787effc3861b\tanalysis/narps_group_analysis.ipynb\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/run_analysis.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c2e5e2997774c88b4388a6d2a4739fb08692e2ca\tanalysis/run_analysis.py\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "analysis/software.txt"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob b140c36896c85fc95fc32a50925ee5d6ecfc038a\tanalysis/software.txt\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-001_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7d0e7e6d51e5e38b8226424d02120aa7dbe54123\tdata/sub-001_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-003_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 02b4156494e6c88568c418949241ac33488fa54d\tdata/sub-003_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-005_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f151194faef9845e9c198fae4bd1acb1d4005d37\tdata/sub-005_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-009_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob ee50fe0a9693fc835beee44c1d26a9a73dc70988\tdata/sub-009_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-011_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 36e0b34b646665c84d9a20a9ece80b0cbce4084d\tdata/sub-011_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-013_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f5382b420599dd85613b74d125ddb7d7abe86ecc\tdata/sub-013_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-015_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob decc1352bfb5e12a23312a1e2d0ca36a46f9ce62\tdata/sub-015_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-017_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 0486203a0d69ecefb7f088a903718dffa4d8d4ca\tdata/sub-017_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-019_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6041d57aaec8f97539c69b1e48d6e592250ed9f8\tdata/sub-019_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-021_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e5028201c3e4a4a14e51713b40d5386fee597568\tdata/sub-021_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-025_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob d07005e69eeb94d1b5d9e8d14ddfeb4c279af84c\tdata/sub-025_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-027_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 14d0e04f18f0b506214050d7c416f20225b51746\tdata/sub-027_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-029_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 2e4f255db6c2929421cca20ca02936c5cc2e8786\tdata/sub-029_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-033_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob e32730816523e705146e7a49b57e94db8b3c4a9b\tdata/sub-033_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-035_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 10c18abbbe55997a99ee5df4df0f13f6d829d5c4\tdata/sub-035_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-037_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 75bad6b7f20141d9af02b8c4480823837b10e80b\tdata/sub-037_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-039_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob ae7f9c91b7a1f96d4675faa6ccb613427ef3f1b3\tdata/sub-039_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-041_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 1cb8c9748f1348944f830bfbad32f762fdaf8e8b\tdata/sub-041_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-043_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6b74b6825bceaaaf4036f5fed99bfb6ba9def27d\tdata/sub-043_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-045_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 0653848ef9b5e0443a511aedc28589f63f4346dc\tdata/sub-045_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-047_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 530ff33d8cb22c4b7683b9a9674535303404e3ca\tdata/sub-047_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-049_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 04ceac2433f2324335935cec536cb8df35e8569e\tdata/sub-049_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-051_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 9df4ff41c6c86d9424cf103b79d2370bbccb086b\tdata/sub-051_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-053_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob fecde427ec75dd081c836ad2fed01bd44a74d78f\tdata/sub-053_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-055_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 59434e71a63dd0d9910d73b6fb75ac3082e1e7aa\tdata/sub-055_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-057_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 769b04890cc6831f75f307e6a60e06170699b5bf\tdata/sub-057_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-059_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob b745e549524405aeb7a97e31dafc88f17c1a2521\tdata/sub-059_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-061_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob ca870f09f549da52c952531509b27d13a222315c\tdata/sub-061_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-063_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6593fadb1834f8c2db3efa09279516888d2197ff\tdata/sub-063_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-067_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 189540a2d45865ad5227b80af7a5b6ec326698f6\tdata/sub-067_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-069_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 971b7816c930f6353a383428bbb98d7da0ee87c0\tdata/sub-069_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-071_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 1146e0907946ba496ae7e315e37be6029e0cd2db\tdata/sub-071_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-073_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob cbdb761f6c6daf5d439b50f04739d80ecf821152\tdata/sub-073_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-075_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 767e3b76b49db7c99286aa73400b7c49943fc377\tdata/sub-075_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-077_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob fa5c1f5723a9d258d0100afc1d5ef587348a74cc\tdata/sub-077_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-079_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 5a5c9b9e0f4177b035defa4e0ffcf0749c906555\tdata/sub-079_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-081_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c55b48725e04a29f7dddf33bb642d1dc8885ece4\tdata/sub-081_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-083_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f66ee7e9412c27caec3b6df335577944d1a3b61e\tdata/sub-083_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-085_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob f925f6124f725d4d62b5eb66799d39c0b1c1e9eb\tdata/sub-085_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-087_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 6a081ea98159b3ad25aa25b003df329a7b977069\tdata/sub-087_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-089_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob cf515a485d4073e8cb3e253ae0c0b4f8c323053b\tdata/sub-089_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-093_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 3c3806862ba13c85b6e3a185d6622574a8434366\tdata/sub-093_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-095_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 39bb3bca777d52a2193fd520a46cd1788b50a3a1\tdata/sub-095_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-099_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 8b8bdc85c33449dccd1ae314b594bf90d7376124\tdata/sub-099_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-103_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 8cf64fe8830a8d2da3ce598d7802d63fe9ec102d\tdata/sub-103_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-105_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c1ffee73f4aa102444f10d928362c656f2415801\tdata/sub-105_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-107_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 37916bcdbd37794458f454228683cc9908c6f164\tdata/sub-107_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-109_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 22abb6c3404e87c2fc1c39097c9d98f083b114ad\tdata/sub-109_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-113_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob da80725587d84a6a058a9689c70037d73824fd61\tdata/sub-113_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-115_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 124ad113c4d74a2c759587178bafa8dfcf5cd701\tdata/sub-115_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-117_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c39ec3b2179d49bd781577a0a27ff3617ed269d4\tdata/sub-117_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-119_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 66209af5f7cc852280cee1db2f77dfd32cdc6eb0\tdata/sub-119_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-121_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob d549d8342637c3f28d6f34310bf413c9143ed45e\tdata/sub-121_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "data/sub-123_hypo1_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob c6ee03467ed75e8e5f342ac0dbd3bd3a2c0c3209\tdata/sub-123_hypo1_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/quality_and_null.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 307545b1aaa35fb9d033b3b6593148597701338b\tfigures/quality_and_null.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/vmPFC_participant_values.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob fc2f38ebc56f089eeaa52e696ad81806e2516dee\tfigures/vmPFC_participant_values.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/vmPFC_unthresholded.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 0b8c3dea203a68d97c703c2d5476314f43b02477\tfigures/vmPFC_unthresholded.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "figures/whole_brain_fwe.png"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob eaee6912f53f5df17f72e72bb64adfc85bfa492e\tfigures/whole_brain_fwe.png\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "report.md"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 337f0ab938c595ffdaa9d860aa91953ce563a4a6\treport.md\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/fwe_clusters.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 1a92861f6c4f5fb3365f705a786407ef996add17\tresults/fwe_clusters.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_mean_cope.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 615198dfc633d7d786aa743c11fcf20dbb9f0729\tresults/group_mean_cope.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_p_fwe_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob cfb64f7d039b3bee835d81762d3a694d673cbf80\tresults/group_p_fwe_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_sig_fwe_p05.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 7a47460f394fce518580d6fa59601a48b0fb2ddd\tresults/group_sig_fwe_p05.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/group_t_positive.nii.gz"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "120000 blob 771aa7a862a1099fcdc2db48dc86ffd7748c4440\tresults/group_t_positive.nii.gz\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/map_qc.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob c4dd102f5098e93d56c194ca563fce1d09c40392\tresults/map_qc.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/permutation_max_t.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob a256343b05cdcb58efadd91be8a4c541a6807ae1\tresults/permutation_max_t.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/summary.json"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 4fabe36fe6654aac3753d6846a15567f7b1176bb\tresults/summary.json\n"
+  },
+  {
+    "argv": [
+      "git",
+      "ls-tree",
+      "HEAD",
+      "--",
+      "results/vmPFC_participant_values.csv"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "100644 blob 93121ee7d2fcd9f3c0f9413a6e8986b597408190\tresults/vmPFC_participant_values.csv\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "e2eed86aa172b2ce2973c057e76d06b0be464f7c\n"
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ""
+  }
+]
