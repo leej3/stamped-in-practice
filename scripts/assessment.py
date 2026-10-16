@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run the pinned assessment helpers in their recorded Pixi environment."""
 import argparse
+from contextlib import chdir, nullcontext
 import hashlib
 import json
 import os
@@ -15,6 +16,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def git(*args, cwd=ROOT):
     return subprocess.check_output(["git", *args], cwd=cwd)
+
+
+def dispatch_directory(frozen):
+    """Keep v4 relative helper paths inside its existing judgment workspace."""
+    if not frozen or frozen.get("version") != 4:
+        return ROOT
+    value = os.environ.get("STAMPED_JUDGE_OUTPUT")
+    if not value or not Path(value).is_absolute() or not Path(value).is_dir():
+        raise SystemExit("Version 4 requires an existing absolute STAMPED_JUDGE_OUTPUT directory")
+    output = Path(value).resolve()
+    if output == ROOT.resolve():
+        raise SystemExit("Version 4 judgment output must be separate from the coordinator root")
+    target = os.environ.get("STAMPED_JUDGE_TARGET")
+    if target:
+        target = Path(target).resolve()
+        if output.is_relative_to(target) or target.is_relative_to(output):
+            raise SystemExit("Version 4 judgment output must be separate from the assessed target")
+    return output
 
 
 def captured_replay(arguments, helper, operational=False):
@@ -47,6 +66,14 @@ def captured_replay(arguments, helper, operational=False):
               "scope": "Complete stopped delivery copy; existing environment/cache bytes retained. "
                        "One documented entrypoint, no repair or automatic retrieval; selected outputs only.",
               "entry": args.entry, "outputs": args.outputs, "rtol": args.rtol}
+    if operational:
+        report["retrieval_scope"] = {
+            "adapter_input_retrieval": "none; uses captured inputs",
+            "entrypoint_network_byte_limit": None,
+            "entrypoint_downloads": "Documented dependency installs/downloads are not byte-metered",
+            "max_get_gb": args.max_get_gb,
+            "max_get_gb_scope": "Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch",
+        }
     def finish(status, reason):
         report.update(status=status, reason=reason)
         validate_capture(manifest_path, identity["capture"]["sha256"])
@@ -178,7 +205,11 @@ def main():
         procedure.require_equal(pin, frozen["assessment"], "assessment runner pin")
         procedure.require_equal(procedure.sha256(Path(__file__).read_bytes()),
                                 frozen["fixed_files"]["scripts/assessment.py"], "assessment runner source")
+    operational = bool(frozen and frozen.get("version") == 4)
+    dispatch_cwd = dispatch_directory(frozen)
     source = Path(os.environ.get("STAMPED_ASSESSMENT_SOURCE", ROOT / "assessment"))
+    if operational:
+        source = source.resolve()
     if git("rev-parse", "HEAD", cwd=source).decode().strip() != pin["source_commit"]:
         raise SystemExit("Assessment checkout differs from the frozen version")
     if git("status", "--porcelain", cwd=source).strip():
@@ -203,6 +234,8 @@ def main():
             raise SystemExit(f"Recorded environment was changed locally: {target}")
         target.write_bytes(content)
     manifest = runtime / "pixi.toml"
+    if operational:
+        manifest = manifest.resolve()
     subprocess.run(["pixi", "install", "--locked", "--manifest-path", manifest], check=True)
     if args.action == "check":
         if remaining:
@@ -219,18 +252,21 @@ def main():
     if frozen and args.action == "fresh-rerun":
         target = Path(os.environ["STAMPED_JUDGE_TARGET"])
         if procedure.is_neutral(frozen):
-            remaining = procedure.replay_arguments(frozen, remaining, target,
-                                                   Path(os.environ["STAMPED_JUDGE_OUTPUT"]))
+            # Validate relative replay paths in the same directory the adapter
+            # will use, even when the runner was invoked from the target.
+            with chdir(dispatch_cwd) if operational else nullcontext():
+                remaining = procedure.replay_arguments(frozen, remaining, target,
+                                                       Path(os.environ["STAMPED_JUDGE_OUTPUT"]))
             result = subprocess.run(["pixi", "run", "--locked", "--manifest-path", manifest,
                 "python", Path(__file__).resolve(), "--captured-replay", str(helper),
-                procedure.sha256(helper.read_bytes()), *remaining], cwd=ROOT)
+                procedure.sha256(helper.read_bytes()), *remaining], cwd=dispatch_cwd)
             raise SystemExit(result.returncode)
         procedure.require_equal(procedure.git(target, "rev-parse", "HEAD"),
                                 os.environ["STAMPED_JUDGE_COMMIT"], "replay target commit")
         remaining = procedure.replay_arguments(frozen, remaining, target,
                                                Path(os.environ["STAMPED_JUDGE_OUTPUT"]))
     result = subprocess.run(["pixi", "run", "--locked", "--manifest-path", manifest,
-                             "python", helper, *remaining], cwd=ROOT)
+                             "python", helper, *remaining], cwd=dispatch_cwd)
     raise SystemExit(result.returncode)
 
 

@@ -43,9 +43,25 @@ def test_no_git_replay_uses_ignored_untracked_original_bytes(captured):
     assert report["commit"] is None
     assert report["comparison"]["identical"] == ["result.csv"]
     assert report["replay_git_overlay"]["core.hooksPath"] == os.devnull
+    assert "retrieval_scope" not in report
     assert manifest.read_bytes() == before
     delivery.validate_capture(manifest)
     assert not (Path(report["workdir"]) / ".git").exists()
+
+
+def test_v4_replay_report_describes_unmetered_entrypoint_downloads(captured, monkeypatch):
+    _, manifest, args, output = captured
+    monkeypatch.setenv("STAMPED_JUDGE_TARGET", str(manifest.parent / "content/workspace"))
+    assert assessment.captured_replay(args, HELPER, operational=True) == 0
+    report = json.loads(output.read_text())
+    assert report["status"] == "met"
+    assert report["retrieval_scope"] == {
+        "adapter_input_retrieval": "none; uses captured inputs",
+        "entrypoint_network_byte_limit": None,
+        "entrypoint_downloads": "Documented dependency installs/downloads are not byte-metered",
+        "max_get_gb": 5.0,
+        "max_get_gb_scope": "Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch",
+    }
 
 
 @pytest.mark.parametrize("selection", ["input/*", "analysis.py"])
