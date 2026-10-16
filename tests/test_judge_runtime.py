@@ -32,9 +32,14 @@ def projected_judge(tmp_path, monkeypatch, frozen_runner):
     output, profile, target = (tmp_path / name for name in ('judgment', 'profile', 'operational'))
     for path in (output, profile, target):
         path.mkdir()
+    for name in ('assess-alignment-with-stamped-principles', 'stamped-conventions'):
+        skill = source / 'skills' / name
+        skill.mkdir(parents=True)
+        (skill / 'SKILL.md').write_text('---\nversion: 0.1.0\n---\n')
     pin_path = Path(os.environ['STAMPED_ASSESSMENT_PIN'])
     frozen = {'version': 4, 'protocol': procedure.NEUTRAL_PROTOCOL,
               'assessment': json.loads(pin_path.read_text()),
+              'settings': {'judge': {'model': 'fixture-model'}},
               'fixed_files': {'scripts/assessment.py': procedure.sha256(Path(assessment.__file__).read_bytes()),
                               'coordinator-only': 'UNRELATED_FIXED_FILE_SENTINEL'},
               'replay': copy.deepcopy(procedure.NEUTRAL_REPLAY),
@@ -190,3 +195,88 @@ def test_replay_path_preflight_preserves_evidence_and_attempt(projected_judge, m
     assert procedure.replay_arguments(runtime, arguments, Path(environment['STAMPED_JUDGE_TARGET']), output) == arguments
     with pytest.raises(SystemExit, match='already consumed'):
         procedure.replay_arguments(runtime, arguments, Path(environment['STAMPED_JUDGE_TARGET']), output)
+
+
+@pytest.mark.parametrize('field,value', [
+    ('capture', None), ('capture', {'uri': '/other-object', 'sha256': '0' * 64}),
+    ('commit', 'a' * 40), ('captured_at', '2000-01-01T00:00:00Z'),
+])
+def test_formal_response_requires_exact_capture_and_head(projected_judge, monkeypatch, field, value):
+    _, _, calls, _, output, _ = projected_judge
+    response = copy.deepcopy(assessment.runtime_context()['response_identity'])
+    response['responses'] = {'sentinel': {'status': 'unmet', 'reason': 'untouched'}}
+    if value is None:
+        del response['object'][field]
+    else:
+        response['object'][field] = value
+    path = output / 'response.json'
+    path.write_text(json.dumps(response))
+    before = path.read_bytes()
+    monkeypatch.setattr(sys, 'argv', ['assessment.py', 'validate', 'response.json'])
+    with pytest.raises(SystemExit, match='response'):
+        assessment.main()
+    assert calls == []
+    assert path.read_bytes() == before
+
+
+@pytest.mark.parametrize('field', ['skill', 'version', 'harness', 'model', 'date', 'dependencies'])
+def test_formal_response_requires_projected_assessor_metadata(projected_judge, field):
+    runtime = assessment.runtime_context()
+    response = copy.deepcopy(runtime['response_identity'])
+    response['assessor'].pop(field)
+    with pytest.raises(SystemExit, match='missing assessor'):
+        assessment.validate_response_identity(response, runtime)
+
+
+def test_metadata_template_keeps_frozen_verdicts_and_validates_identity(projected_judge, monkeypatch):
+    import importlib.util
+    _, environment, calls, source, output, _ = projected_judge
+    skill = Path(assessment.__file__).resolve().parents[1] / 'assessment/skills/stamped-conventions'
+    module_path = skill / 'scripts/encode_response.py'
+    spec = importlib.util.spec_from_file_location('actual_frozen_response', module_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    blank = module.template(module.Checklist())
+    original_run = assessment.subprocess.run
+    def run(command, **kwargs):
+        if command[:2] == ['pixi', 'run'] and command[-1] == 'template':
+            calls.append((command, kwargs))
+            return subprocess.CompletedProcess(command, 0, stdout=json.dumps(blank), stderr='')
+        return original_run(command, **kwargs)
+    monkeypatch.setattr(assessment.subprocess, 'run', run)
+    monkeypatch.setattr(sys, 'argv', ['assessment.py', 'template', '-o', 'response.json'])
+    with pytest.raises(SystemExit) as status:
+        assessment.main()
+    assert status.value.code == 0
+    response = json.loads((output / 'response.json').read_text())
+    assert response['responses'] == blank['responses']
+    assert response['scope'] is None
+    runtime = assessment.runtime_context()
+    assessment.validate_response_identity(response, runtime)
+    assert response['object'] == dict(blank['object'], **runtime['response_identity']['object'])
+    assert response['assessor']['version'] == '0.1.0'
+    assert response['assessor']['dependencies'][1].endswith(runtime['assessment']['source_commit'])
+    for action in (['validate'], ['response', 'validate']):
+        monkeypatch.setattr(sys, 'argv', ['assessment.py', *action, 'response.json'])
+        with pytest.raises(SystemExit) as status:
+            assessment.main()
+        assert status.value.code == 7  # Generic frozen validator still runs.
+    monkeypatch.setattr(sys, 'argv', ['assessment.py', 'template', '-o', 'response.json'])
+    before = (output / 'response.json').read_bytes()
+    with pytest.raises(SystemExit, match='new file'):
+        assessment.main()
+    assert (output / 'response.json').read_bytes() == before
+
+
+@pytest.mark.parametrize('kind', ['dangling-link', 'outside'])
+def test_metadata_template_rejects_unsafe_destination_before_helper(projected_judge, kind):
+    _, _, calls, _, output, _ = projected_judge
+    target = output / 'response.json'
+    if kind == 'dangling-link':
+        target.symlink_to(output / 'missing.json')
+    else:
+        target = output.parent / 'outside.json'
+    with pytest.raises(SystemExit, match='new file'):
+        assessment.response_template(['-o', str(target)], assessment.runtime_context(), [], output)
+    assert calls == []
+    assert not target.exists()

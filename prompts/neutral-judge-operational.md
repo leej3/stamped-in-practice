@@ -20,7 +20,8 @@ Record any mismatch and bound affected conclusions rather than repairing the evi
 
 Use the exact external assessor and runtime identified in `$STAMPED_ASSESSMENT_VERSION`, with the supplied runner at `$STAMPED_ASSESSMENT_RUNNER` and interpreter `$STAMPED_ASSESSMENT_PYTHON`.
 Run `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" check` with no additional arguments before using its probe or response actions.
-The runner executes helpers in `$STAMPED_JUDGE_OUTPUT`; relative response filenames and replay `--workdir`/`--output` paths resolve there regardless of your shell's current directory.
+The runner executes helpers in `$STAMPED_JUDGE_OUTPUT`; relative response filenames and replay `--workdir`/`--output` paths resolve there regardless of your shell's current directory. Initialize a new response with `"$STAMPED_ASSESSMENT_PYTHON" "$STAMPED_ASSESSMENT_RUNNER" template -o response.json`. This fills the exact canonical capture/HEAD and frozen assessor metadata while preserving every blank item verdict; complete the scope and assessments from your evidence.
+Formal `validate` (including `response validate`) checks those identity fields before the frozen checklist validator; it never repairs missing metadata or changes verdicts.
 Do not substitute target scripts for assessor code.
 Inspect meaningful evidence even if an automated probe does not recognize its tool or file format.
 A missing tool-specific mechanism does not by itself establish absence of an equivalent scientific practice.

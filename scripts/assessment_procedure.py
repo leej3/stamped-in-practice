@@ -7,6 +7,7 @@ Skills may change between rounds; the task, controls and assessment may not.
 """
 import argparse
 import copy
+from datetime import datetime, timezone
 import hashlib
 import json
 import os
@@ -337,6 +338,24 @@ def judge_runtime_projection(manifest, bindings):
         from delivery_snapshot import validate_capture
         identity = validate_capture(Path(bindings["STAMPED_DELIVERY_MANIFEST"]))
         projected["delivery_capture_sha256"] = identity["capture"]["sha256"]
+        source = Path(bindings["STAMPED_ASSESSMENT_SOURCE"])
+        def skill_version(name):
+            front = (source / "skills" / name / "SKILL.md").read_text().split("---", 2)[1]
+            version = re.search(r"(?m)^version: ([0-9]+\.[0-9]+\.[0-9]+)\s*$", front)
+            if not version:
+                raise SystemExit("Frozen assessor skill has no supported version")
+            return version[1]
+        skill = "assess-alignment-with-stamped-principles"
+        projected["response_identity"] = {
+            "object": {"capture": identity["capture"], "commit": identity["commit"],
+                       "captured_at": identity["captured_at"], "kind": "study"},
+            "assessor": {"skill": skill, "version": skill_version(skill),
+                "harness": "Codex CLI", "model": manifest["settings"]["judge"]["model"],
+                "date": datetime.now(timezone.utc).date().isoformat(),
+                "dependencies": ["stamped-conventions@" + skill_version("stamped-conventions"),
+                    "assessor-source@" + pin["source_commit"],
+                    "assessment-runtime@" + pin["environment_commit"]]},
+        }
     validate_judge_runtime(projected)
     return projected
 
@@ -347,7 +366,7 @@ def validate_judge_runtime(runtime):
     expected = {"kind", "schema_version", "role", "version", "assessment", "fixed_files",
                 "replay", "bindings", "worker_stop_receipt_sha256"}
     if neutral:
-        expected |= {"protocol", "delivery_capture_sha256"}
+        expected |= {"protocol", "delivery_capture_sha256", "response_identity"}
     require_equal(set(runtime), expected, "judge runtime fields")
     require_equal((runtime["kind"], runtime["schema_version"], runtime["role"]),
                   ("judge-runtime-projection", 1, "judge"), "judge runtime schema")
@@ -384,6 +403,27 @@ def validate_judge_runtime(runtime):
                 raise SystemExit("Invalid judge target commit")
         elif not isinstance(value, str) or not Path(value).is_absolute():
             raise SystemExit("Judge runtime paths must be absolute")
+    if neutral:
+        identity = runtime["response_identity"]
+        require_equal(set(identity), {"object", "assessor"}, "response identity fields")
+        obj, assessor = identity["object"], identity["assessor"]
+        require_equal(set(obj), {"capture", "commit", "captured_at", "kind"}, "response object fields")
+        require_equal(obj["capture"], {"uri": runtime["bindings"]["STAMPED_DELIVERY_MANIFEST"],
+            "sha256": runtime["delivery_capture_sha256"]}, "response capture identity")
+        require_equal(obj["commit"], runtime["bindings"]["STAMPED_JUDGE_COMMIT"] or None, "response HEAD")
+        require_equal(obj["kind"], "study", "response object kind")
+        require_equal(set(assessor), {"skill", "version", "harness", "model", "date", "dependencies"},
+                      "response assessor fields")
+        require_equal(assessor["skill"], "assess-alignment-with-stamped-principles", "response assessor skill")
+        if any(not isinstance(assessor[key], str) or not assessor[key].strip()
+               for key in ("version", "harness", "model", "date")):
+            raise SystemExit("Missing response assessor metadata")
+        deps = assessor["dependencies"]
+        if (not isinstance(deps, list) or len(deps) != 3 or
+                not isinstance(deps[0], str) or not re.fullmatch(r"stamped-conventions@[0-9]+\.[0-9]+\.[0-9]+", deps[0]) or
+                deps[1:] != ["assessor-source@" + pin["source_commit"],
+                             "assessment-runtime@" + pin["environment_commit"]]):
+            raise SystemExit("Invalid response assessor dependencies")
     return runtime
 
 
