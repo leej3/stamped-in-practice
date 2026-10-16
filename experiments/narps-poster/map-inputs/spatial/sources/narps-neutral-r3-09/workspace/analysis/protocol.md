@@ -1,0 +1,16 @@
+# Analysis protocol
+
+## Question and estimand
+Test whether the equal-indifference group has a positive mean gain-modulator contrast in vmPFC. The unit is a participant (N=54); the estimand is the across-participant mean of AO86's unthresholded gain-effect contrast estimates at each voxel. These maps are participant estimates, not standard errors, t statistics, or group maps. The coefficient is not per-currency-unit because the upstream gain modulator was mean-centered and variance-normalized before HRF convolution. The gain contrast is conditional on the upstream separate gain/loss models and the response-time-duration trial model.
+
+## Inputs and exclusions
+Use all 54 supplied maps, matched to `participants.tsv` and `sources.json`; no raw scans or time series. Include a voxel only if the estimate is finite and nonzero for every participant. This common-support mask avoids treating outside-brain zero padding as a measured zero and prevents unequal voxel sample sizes. Record all other zero/finite coverage as QC. No participant exclusion based on observed effect size. If an image has invalid dimensions/affine, missing participant mapping, or nonfinite data inside common support, stop and investigate rather than silently exclude.
+
+## Group model and inference
+At each voxel, calculate a one-sample group t statistic on participant contrast estimates. Primary inference is directional (positive) and uses a participant-level sign-flip permutation max-t test over the entire common-support mask (5,000 random sign patterns; fixed seed 20261016). The 95th percentile of each pattern's maximum positive t controls whole-brain family-wise error at alpha=.05. Sign flipping assumes independent participants and a symmetric null distribution of participant estimates; this is more robust to Gaussian-tail assumptions than a parametric voxelwise test but is not assumption-free. Report permutation resolution and the finite Monte Carlo uncertainty. Do not use ROI-only inference to establish support.
+
+## vmPFC localization
+Use MNI152NLin2009cAsym coordinates and describe vmPFC operationally as the broad medial ventral frontal region x=[-20,20], y=[20,60], z=[-20,5] mm. This transparent coordinate envelope is an approximate localization aid, not an independently validated atlas or an inferential shortcut. Determine whether any whole-brain max-t-significant voxels overlap this envelope; identify peaks and cluster sizes from the whole-brain result. Include a descriptive ROI mean across participant estimates with a two-sided 95% t interval, but do not treat that uncorrected summary as confirmatory.
+
+## Quality checks, outputs, and stopping
+Before full inference, inspect map shape, affine, finite values, nonzero coverage, participant correspondence, scales, and the pooled spatial distribution. Retain a pilot/QC record. After inference, inspect thresholded maps and figures, counts, cluster coordinates, and ROI overlap. Deliver the exact executable script, local pinned environment recipe, parameters/seed, machine/runtime versions, results, and a concise report. State that supplied inputs do not include participant variance maps or the complete upstream executable pipeline, so upstream model adequacy cannot be re-estimated here.

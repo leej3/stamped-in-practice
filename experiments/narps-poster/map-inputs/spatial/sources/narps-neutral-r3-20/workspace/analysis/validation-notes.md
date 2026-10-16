@@ -1,0 +1,8 @@
+# Analysis validation record
+
+- Pilot: verified 54 metadata rows in the equal-indifference group and 54 unique matching map files; the first three images had identical 97×115×81 grids, 2×2×2.4 mm voxels and finite values. The full run subsequently verified every image SHA-256 against `input/sources.json` and checked equal geometry across all participants.
+- Analysis domain: the intersection of nonzero finite voxels comprised 198,029 voxels; no map was excluded. Shared zero background was omitted rather than interpreted as measured zero.
+- Numerical check: the optimized sign-flip t-statistic formula was checked against direct SciPy one-sample t statistics at three voxels for three independently drawn sign patterns (nine checks; all agreed to 1e-10 relative/absolute tolerance). The observed t and uncorrected p calculations use SciPy's t distribution.
+- Failed attempt retained as process evidence: an expanded output pass initially referenced the voxel-coordinate array before assignment during cluster summarization. It stopped before producing a complete result; assignment order was corrected, and the complete workflow then finished. No scientific choices or data changed.
+- The rendered figures were visually inspected at display resolution. The group map shows the positive FWER-corrected signal in posterior/occipital slices; the vmPFC participant plot shows the full participant-level spread and interval.
+- The coordinate-defined vmPFC sphere was added after the primary whole-brain result as a post hoc descriptive summary because no ROI mask was supplied. It does not gate the hypothesis decision or introduce a regional corrected test.

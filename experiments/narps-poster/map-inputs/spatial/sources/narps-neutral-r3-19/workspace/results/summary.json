@@ -1,0 +1,95 @@
+{
+  "n_participants": 54,
+  "n_voxels_mask": 198029,
+  "roi_voxels": 428,
+  "mask_nonzero_subjects_rule": "finite and nonzero in all 54 participant maps",
+  "roi_definition": {
+    "center_mni_mm": [
+      0.0,
+      40.0,
+      -10.0
+    ],
+    "radius_mm": 10.0
+  },
+  "inference": {
+    "model": "one-sample group t test of participant contrast estimates against zero",
+    "alternative": "positive",
+    "permutation": "participant-level sign flips; maximum positive t across whole mask",
+    "n_random_sign_patterns": 9999,
+    "seed": 20261016,
+    "alpha": 0.05,
+    "fwe_t_threshold": 5.381128311157227,
+    "max_stat_fwe_p_at_peak": 0.0006,
+    "min_resolvable_empirical_p": 0.0001,
+    "peak_t": 6.617173246302241,
+    "peak_uncorrected_p": 9.311564027968496e-09,
+    "peak_mni_mm": [
+      -26.0,
+      -102.0,
+      -3.599997043609619
+    ],
+    "whole_brain_fwe_significant_voxels": 24,
+    "vmPFC_roi_has_fwe_significant_voxel": false,
+    "descriptive_26_connected_clusters": [
+      {
+        "cluster_26conn": 1,
+        "voxels": 17,
+        "peak_t": 6.617173194885254,
+        "peak_mni_mm": [
+          -26.0,
+          -102.0,
+          -3.599997043609619
+        ]
+      },
+      {
+        "cluster_26conn": 2,
+        "voxels": 2,
+        "peak_t": 5.760898590087891,
+        "peak_mni_mm": [
+          26.0,
+          -98.0,
+          -1.1999969482421875
+        ]
+      },
+      {
+        "cluster_26conn": 3,
+        "voxels": 5,
+        "peak_t": 6.1934027671813965,
+        "peak_mni_mm": [
+          30.0,
+          -94.0,
+          -8.399997234344482
+        ]
+      }
+    ]
+  },
+  "vmPFC_roi_summary": {
+    "mean_effect_estimate": -0.006060335319489241,
+    "sd_between_participants": 0.10310947895050049,
+    "ci95_t_based": [
+      -0.03420380548419023,
+      0.02208313484521175
+    ],
+    "one_sample_t_descriptive": -0.43191167351476917,
+    "uncorrected_one_sided_p_descriptive": 0.6662211475699259
+  },
+  "qc": {
+    "all_checksums_match": true,
+    "all_bytes_match": true,
+    "all_same_grid": true,
+    "all_finite": true,
+    "excluded_participants": [],
+    "independent_scipy_t_spotcheck_max_abs_difference": 2.7755575615628914e-17
+  },
+  "runtime": {
+    "python": "3.13.16 | packaged by conda-forge | (main, Oct 13 2026, 16:52:03) [Clang 21.1.8 ]",
+    "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+    "numpy": "2.5.4",
+    "nibabel": "5.4.2",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "nilearn": "0.14.1",
+    "elapsed_seconds": 41.84
+  }
+}

@@ -1,0 +1,16 @@
+# Analysis protocol (group stage only)
+
+## Question and estimand
+Test whether the mean participant-level AO86 gain-effect estimate is positive in the NARPS equal-indifference group. The 54 people are the units of analysis; each supplied image is the participant's across-run gain-modulator contrast estimate. The estimand is the population mean of those estimates at each voxel, with one participant given equal weight. Cope units are the upstream model's normalized gain-modulator units, not response change per ILS/₪.
+
+## Fixed inputs and exclusions
+Use all 54 images listed in `input/sources.json` and the matching rows in `input/participants.tsv`; no additional subjects, time-series scans, preprocessing, or first-level refitting. Before inference check image identities, checksums, dimensions, affine, finite values, and fitted-voxel coverage. Use the intersection of nonzero fitted support across all 54 maps as the common group mask, so no voxel's group estimate depends on a participant-specific zero outside fitted coverage. Exclude a participant only for an input integrity or image-QC failure documented before inference; otherwise retain all 54. Age and gender are descriptive metadata and are not covariates in this single-group hypothesis test.
+
+## Group model and inference
+At each common-support voxel, fit a one-sample intercept-only model to the 54 contrast estimates and test the directional alternative mean > 0. Report the mean effect and one-sample t statistic. Primary inference uses a one-sided, whole-brain maximum-t permutation test with participant-level sign flips (9,999 Monte Carlo permutations; seed 20261016), giving family-wise-error adjusted voxel p values over the full common-support mask at alpha=.05. This treats subjects as independent and relies on approximate symmetry of null contrast estimates for sign-flip validity. It avoids treating voxels as independent and does not require supplied participant variance maps. The conventional one-sample t test is retained as a descriptive parametric reference, not the primary corrected inference.
+
+## Anatomical interpretation and visualization
+The hypothesis concerns vmPFC, but inference remains whole-brain as required by NARPS. Identify vmPFC overlap after the whole-brain test using an independent Harvard-Oxford cortical atlas (2-mm, max-probability, 25% threshold), operationalized as the atlas's `Frontal Medial Cortex` and `Subcallosal Cortex` labels. This is an anatomical localization aid, not a small-volume correction or a result-selected ROI. Plot whole-brain evidence and the independent ROI's participant-level mean estimates.
+
+## Validity checks and stopping rule
+Confirm all 54 expected IDs are present once; all images share dimensions and affine; all values are finite; no input checksum or geometry mismatch; quantify per-subject fitted support and common-mask size. Inspect distributions and spatial maps, and report exclusions (if any), observed and corrected inference, and ROI summaries. A lack of whole-brain corrected support is not evidence of no effect; it means this analysis did not establish a positive population effect at the study's corrected threshold. No alternative thresholds or masks will be searched for significance.

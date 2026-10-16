@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "representative_map_run": "narps-neutral-r2-09",
+  "selection": "First STAMPED R2 delivery in run order with a saved analysis mask and anatomical vmPFC proxy.",
+  "native_support_voxels": 198029,
+  "native_positive_voxels": 24,
+  "map_display": {
+    "slice_centers_mni_mm": [
+      0,
+      40,
+      -4
+    ]
+  },
+  "sources": {
+    "maps/group_t.nii.gz": {
+      "sha256": "92b81dd579ac9b50a7869f2d7773139b5584067ff33ed6cf593ef0f9f1b9cba5",
+      "run": "narps-neutral-r2-09",
+      "path": "results/group_tstat.nii.gz"
+    },
+    "maps/analysis_mask.nii.gz": {
+      "sha256": "e72a50e0531fd4e353fff55c81b2790319aebe2cb30aba305fbf51b7394e5ff1",
+      "run": "narps-neutral-r2-09",
+      "path": "results/common_mask.nii.gz"
+    },
+    "maps/vmPFC_mask.nii.gz": {
+      "sha256": "c589d4e5fc474fc4a23d16bbac14e1fe52a4d5d3d34c2bcfa1eecf1e3b30700c",
+      "run": "narps-neutral-r2-09",
+      "path": "results/vmPFC_HO_proxy.nii.gz"
+    },
+    "maps/positive_fwe_mask.nii.gz": {
+      "sha256": "61c521906ce252976dcda96c789fc05a9cfe03d7b66bec2a4a197f754faff8f2",
+      "derivation": "Native R2-09 positive decision"
+    },
+    "maps/anatomical-context.nii.gz": {
+      "sha256": "1bab60bb89b32fab4750f004af07605d0cf327194c29c281c4e1c7062ab9ecd7",
+      "derivation": {
+        "run": "narps-neutral-r3-11",
+        "path": "results/mni152_template.nii.gz",
+        "sha256": "0d8b8f9574a88657bad490d7f64d804cb11ab77a339882990e8a3786e141c9f3",
+        "use": "Native retained MNI152 anatomy resampled for context only; never used to reconstruct analysis support."
+      }
+    }
+  },
+  "source_identity": {
+    "capture_sha256": "427104fd0fe3dc76fa4cb6bc017f1e7bfe618cc1709cd37c9a1ce9c875b0c7cf",
+    "end_state_sha256": "a9631f7d2444a4a5398d2f95105b851d14464b4522080cd2349ffdc40ab614f5",
+    "worker_head_commit": "a724b670072a95a253e752be8336783858df768a",
+    "condition_assignment_sha256": "cbc8fae0287927a1d03e579b3b32a09773fca40e09d6a573c48ae00acc01116d",
+    "package_index_sha256": "1d13ef69fdb7ce10fbf2648f2a138e9875a2e57c220d866f3dc6a20e298272b6",
+    "stop_validation_sha256": "a3a7fc754e807948191ecf9cad3b193df7a1b9cb9fe176b3ea3d1890597098f4",
+    "stop_validation_path": "rounds/round-02/research-closure-01/wave-07-stop-validation.json",
+    "package_url": "https://github.com/leej3/stamped-in-practice/tree/codex/iteration-narps-neutral-v1/rounds/round-02/research-closure-01/delivery-packages/narps-neutral-r2-09"
+  },
+  "spatial_provenance_sha256": "2e29a00885c5e9f8c946c8a8d28935701a83b5956559e08a4865c28066f076ac"
+}

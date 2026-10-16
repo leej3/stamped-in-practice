@@ -1,0 +1,74 @@
+{
+  "cohort_n": 54,
+  "excluded": [],
+  "map_shape": [
+    97,
+    115,
+    81
+  ],
+  "affine": [
+    [
+      2.0,
+      0.0,
+      0.0,
+      -96.0
+    ],
+    [
+      0.0,
+      2.0,
+      0.0,
+      -132.0
+    ],
+    [
+      0.0,
+      0.0,
+      2.4000000953674316,
+      -78.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "mask_definition": "intersection of nonzero support across all 54 cope maps",
+  "mask_voxels": 198029,
+  "map_sha256_all_match_manifest": true,
+  "model": "one-sample group t statistic of participant cope estimates; positive one-sided alternative",
+  "correction": "one-sided sign-flip permutation max-T over whole common-support mask; FWE alpha .05",
+  "permutations": 4999,
+  "seed": 20261016,
+  "maxT_critical_95": 5.396594960781008,
+  "significant_voxels_fwe05": 24,
+  "minimum_maxT_fwe_p": 0.001,
+  "peak": {
+    "t": 6.617173246302241,
+    "p_uncorrected": 9.311564027968496e-09,
+    "p_fwe": 0.001,
+    "mni_xyz": [
+      -26.0,
+      -102.0,
+      -3.599997043609619
+    ]
+  },
+  "vmPFC_descriptive_roi": {
+    "definition": "12-mm radius sphere centered MNI (0,42,-8), clipped to analysis mask",
+    "voxels": 750,
+    "mean_cope": -0.00679462547955358,
+    "sd_between_participants": 0.09412662412174862,
+    "mean_cope_ci95_t_based": [
+      -0.032486248254082195,
+      0.018896997294975033
+    ],
+    "t": -0.5304566770617081,
+    "p_one_sided_uncorrected_descriptive_only": 0.7009944915257913,
+    "n_voxels_fwe05": 0
+  },
+  "limitations": [
+    "cope coefficients are per normalized gain modulator, not per currency unit",
+    "participant variance maps are unavailable; group inference uses equal-weight participant effects",
+    "sign-flip inference assumes participant effects are sign-exchangeable under the null",
+    "whole-brain correction is limited to common nonzero map support"
+  ]
+}

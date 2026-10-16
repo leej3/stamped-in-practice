@@ -1,0 +1,165 @@
+{
+  "n_participants": 54,
+  "excluded": [],
+  "map_shape": [
+    97,
+    115,
+    81
+  ],
+  "source_checksum_validation": "all 54 maps match supplied SHA256 manifest",
+  "software": {
+    "python": "3.13.16",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "nibabel": "5.4.2",
+    "nilearn": "0.14.1"
+  },
+  "sample_demographics": {
+    "age_mean": 26.055555555555557,
+    "age_sd": 3.0493838948818466,
+    "age_range": [
+      21.0,
+      37.0
+    ],
+    "gender_counts_as_recorded": {
+      "F": 30,
+      "M": 24
+    }
+  },
+  "voxel_size_mm": [
+    2.0,
+    2.0,
+    2.4000000953674316
+  ],
+  "mask_voxels": 192339,
+  "mask_volume_mm3": 1846454.4733715057,
+  "coverage_voxels_before_template_intersection": 210968,
+  "mask_rule": "finite and nonzero cope in >=90% (49/54) of participants, intersected with nearest-neighbour-resampled MNI152 brain mask",
+  "model": "one-sample t test of participant cope maps against zero; df=53",
+  "primary_direction": "positive one-sided",
+  "permutation": {
+    "method": "whole-map sign flips; positive max-T across analysis mask",
+    "n": 10000,
+    "seed": 20261016,
+    "fwe_alpha": 0.05,
+    "critical_t95": 5.379505634307861,
+    "minimum_attainable_p": 9.999000099990002e-05
+  },
+  "positive_fwe_voxels": 23,
+  "positive_fwe_volume_mm3": 220.8000087738037,
+  "clusters": [
+    {
+      "voxels": 16,
+      "volume_mm3": 153.60000610351562,
+      "peak_t": 6.617173194885254,
+      "peak_p_fwe": 0.000599940016400069,
+      "peak_mni_mm": [
+        -26.0,
+        -102.0,
+        -3.599997043609619
+      ],
+      "overlaps_vmPFC_roi": false
+    },
+    {
+      "voxels": 5,
+      "volume_mm3": 48.0,
+      "peak_t": 6.1934027671813965,
+      "peak_p_fwe": 0.003299670061096549,
+      "peak_mni_mm": [
+        30.0,
+        -94.0,
+        -8.399997234344482
+      ],
+      "overlaps_vmPFC_roi": false
+    },
+    {
+      "voxels": 2,
+      "volume_mm3": 19.200000762939453,
+      "peak_t": 5.760898590087891,
+      "peak_p_fwe": 0.012398759834468365,
+      "peak_mni_mm": [
+        26.0,
+        -98.0,
+        -1.1999969482421875
+      ],
+      "overlaps_vmPFC_roi": false
+    }
+  ],
+  "vmPFC_roi": {
+    "atlas": "AAL3 (nilearn AAL3v1 map)",
+    "labels": [
+      "Frontal_Med_Orb_L",
+      "Frontal_Med_Orb_R",
+      "Rectus_L",
+      "Rectus_R",
+      "OFCmed_L",
+      "OFCmed_R",
+      "OFCant_L",
+      "OFCant_R",
+      "OFCpost_L",
+      "OFCpost_R"
+    ],
+    "voxels": 5332,
+    "mean_cope": -0.006388080772012472,
+    "sd_between_participants": 0.06866267323493958,
+    "ci95_t": [
+      -0.02512938354972838,
+      0.012353222005703435
+    ],
+    "t53": -0.6836699843406677,
+    "p_one_sided_uncorrected": 0.7514190867078481,
+    "p_two_sided_uncorrected": 0.4971616268157959,
+    "peak_fwe_cluster_overlap": false
+  },
+  "qc": {
+    "participant_brain_mean_range": [
+      -0.12701669001269725,
+      0.10287892470376056
+    ],
+    "participant_brain_sd_range": [
+      0.08770311224077479,
+      0.27305721415719697
+    ],
+    "spatial_correlation_range": [
+      -0.007255527102068905,
+      0.33730681947085295
+    ],
+    "lowest_spatial_correlations": [
+      {
+        "participant_id": "sub-113",
+        "brain_mean_cope": 0.0929164995956302,
+        "brain_sd_cope": 0.1686663248508539,
+        "brain_rms_cope": 0.19256598123388566,
+        "spatial_corr_with_group_mean": -0.007255527102068905
+      },
+      {
+        "participant_id": "sub-049",
+        "brain_mean_cope": 0.012278263444424283,
+        "brain_sd_cope": 0.12056559074475269,
+        "brain_rms_cope": 0.12118886850542894,
+        "spatial_corr_with_group_mean": -0.0018361588616228215
+      },
+      {
+        "participant_id": "sub-109",
+        "brain_mean_cope": 0.04600926215623268,
+        "brain_sd_cope": 0.12631962998450733,
+        "brain_rms_cope": 0.13443741355186997,
+        "spatial_corr_with_group_mean": 9.89448905598439e-05
+      },
+      {
+        "participant_id": "sub-037",
+        "brain_mean_cope": 0.01342267747818451,
+        "brain_sd_cope": 0.13194552929264647,
+        "brain_rms_cope": 0.13262616806535416,
+        "spatial_corr_with_group_mean": 0.026169564374172494
+      },
+      {
+        "participant_id": "sub-087",
+        "brain_mean_cope": -0.01669639857461227,
+        "brain_sd_cope": 0.2003247399162638,
+        "brain_rms_cope": 0.2010188113233324,
+        "spatial_corr_with_group_mean": 0.030379816900276777
+      }
+    ]
+  }
+}
