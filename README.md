@@ -26,7 +26,8 @@ These comparisons measure assistance strategies: wording can affect behavior eve
 The explicit STAMPED condition directly tests the guidance we are improving.
 
 During preparation, the assessor and its runtime can improve alongside the other skills.
-Formal runs begin from a fresh clone with shallow history and keep their assessment version fixed.
+Formal runs begin from a fresh clone with shallow history.
+Comparable assessment series keep their assessor and runtime fixed; necessary repairs define a separate series.
 
 To start or resume a coordinator, give it this repository and a request such as:
 
@@ -43,7 +44,7 @@ To start or resume a coordinator, give it this repository and a request such as:
 | `studies/<study>/input/` | The scientific prompt and verified data supplied to research workers |
 | `studies/<study>/coordinator-guidance/` | Evaluation guidance and reference material for the coordinator and judges |
 | `studies/<study>/results/<run>/` | An experiment submodule containing the worker's research object, assessments and execution records |
-| `skills/` | Evolving `con/skills`, pinned to [our development branch](https://github.com/con/skills/tree/codex/narps-round1-research-guidance) |
+| `skills/` | Evolving `con/skills`; each iteration records the exact tested revision and development branch |
 | `assessment/` | The selected assessor version, identified by `assessment-version.json` |
 
 Keep iteration, study and experiment submodules uninitialized until needed.
@@ -60,7 +61,8 @@ The tested source and preparation evidence are linked in [`source-version.json`]
 The [completed NARPS development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) contains twelve research workers, sixteen assigned judgments, figures and the resulting skill reflection.
 Its workflow mandates and assessment changes are disclosed.
 The [sealed tool-neutral comparison](https://github.com/leej3/stamped-in-practice/blob/5056bebf6eb33c2b9b02262efc39d084259424ce/registration.md) fixes 72 new workers and 96 judgments.
-The [first tool-neutral round](https://github.com/leej3/stamped-in-practice/blob/20917d21f5c698152b032ecff37374ab4e603a82/rounds/round-01/synthesis/README.md) completed 24 research workers and 32 assigned judgments.
-Only 21 judgments passed the frozen measurement gate; 11 were excluded because assessment changed annex database metadata.
-The linked findings and figures preserve those missing measurements and explain why a separate assessment boundary is needed before further research.
+The [completed round-one reassessment](https://github.com/leej3/stamped-in-practice/blob/a80890e1bce68a7d5bf62a09d3105bba21a3654b/assessment-series/narps-neutral-r1-operational-v4/synthesis/README.md) retains 32 scientific judgments of 24 research deliveries and 30 valid checklists, with figures and links to the unchanged original assessment.
+Duplicate judges disagreed on 67 of 248 checklist decisions and five of eight scientific categories; these results do not establish a skill benefit.
+The supplied assessment procedure also exposed treatment assignments, so further formal launches are held for a corrected context boundary.
+The [revised research skills and trials](https://github.com/leej3/stamped-in-practice/blob/a80890e1bce68a7d5bf62a09d3105bba21a3654b/skill-reflection/research-skill-revision-01/README.md) address environment reconstruction, complete deliveries and reference routing.
 The [latest online status](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/STATUS.md) may be newer than the iteration pinned in this checkout.
