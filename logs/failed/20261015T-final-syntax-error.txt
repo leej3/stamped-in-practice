@@ -1,0 +1,5 @@
+Attempt: 2026-10-15 23:50:26 America/New_York
+Command: pixi run duct --output-prefix logs/20261015T-final --capture-outputs all --sample-interval 1 --report-interval 10 --message 'NARPS H1 final artifact generation with improved localization figure; task commit a117218a7858beee91371a3744eafd4529ad24ee' pixi run group-analysis
+Outcome: exit status 1 before analysis startup; no measurements generated.
+Error: SyntaxError: unterminated f-string literal at scripts/group_analysis.py line 235.
+Duct removed its logs because this failed in under 3 seconds. The title's newline was embedded literally in the f-string; it is now escaped as \\n. This record preserves the command outcome and diagnosis.

@@ -232,8 +232,7 @@ def main() -> None:
     peak_cuts = tuple(float(round(v / 2) * 2) for v in peak_xyz)
     display = plotting.plot_stat_map(
         fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
-        colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05
-Peak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
+        colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05\nPeak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
         black_bg=False, annotate=True, draw_cross=True)
     display.figure.savefig(OUT / "corrected_peak_localization.png", dpi=180, bbox_inches="tight")
     plt.close(display.figure)
