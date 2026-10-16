@@ -1,10 +1,12 @@
 {
   "replay_checkout": "fresh clone of published con-hub codex/env-20261016",
-  "snapshot_commit": "c1ff222dc978e6389bb96813ef0771bac8cc72a2",
-  "task_commit": "4df68ee21e419a63464072cd4f3c842526a8dff6",
+  "snapshot_commit": "1a12948c5c7734a868d20abc80d24b11eaec8169",
+  "task_commit": "3527d894a64d5bbd1b2cd9bd2bdad0fd2554a973",
+  "replay_code_commit": "1a12948c5c7734a868d20abc80d24b11eaec8169",
+  "lock_sha256": "5884bb53a343659adce7759c1b48477e2cdffb71b4838e49d14810e75dc75f21",
   "execution": "pixi install --locked; pixi run analysis after removing generated results/final-v3 and matching duct logs",
   "platform": "macOS arm64, same host as original run",
-  "annex_retrieval": "all 54 input maps, atlas and prior final-v3 annex outputs retrieved successfully in fresh clone",
+  "annex_retrieval": "all 54 input maps and the atlas retrieved successfully in fresh clone",
   "summary_scientific_fields_exact": true,
   "artifacts": {
     "input-checksums.tsv": {
@@ -19,7 +21,7 @@
     },
     "permutation-max-t.tsv.gz": {
       "expected_sha256": "ba4efba297e9e4020deadecf1f0f6a54b68eeb7ebfd924709fc73551d892a126",
-      "replay_sha256": "e27ec720f419d423254049d6bf35cb44dd4d4fd7ecad6dbac26004b1454fbf49",
+      "replay_sha256": "ad32399fd4a9f3254fd679eb16da11335625d90226f181251ec1dd4df658d2cb",
       "exact_bytes": false,
       "uncompressed_sha256_expected": "59fbdd5f256afe5f74cf2adafc7c1908ea03fc3047199d2a17c1f75a89565660",
       "uncompressed_sha256_replay": "59fbdd5f256afe5f74cf2adafc7c1908ea03fc3047199d2a17c1f75a89565660",
@@ -62,5 +64,5 @@
     }
   },
   "all_artifacts_exact_or_semantically_exact": true,
-  "log_prefix": "logs/replay-group-analysis-*"
+  "log_prefix": "logs/final-snapshot-replay-*"
 }
