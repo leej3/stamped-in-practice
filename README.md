@@ -8,6 +8,7 @@ STAMPED describes research objects that are **self-contained, tracked, actionabl
 
 ## Start here
 
+- **Read the lessons:** [Lessons for AI-assisted science](LESSONS.md) describes what we learned and what the next study should do differently.
 - **Understand the findings:** [Results and their interpretation](docs/results.md) explains the completed comparison, the poster's measures and the main limitations.
 - **Find your way around:** [Repository map](docs/repository-map.md) explains why links open different branches and where to find inputs, original analyses and assessments.
 - **Explore the poster:** [Poster and figure guide](docs/poster.md) connects the presentation to readable explanations and the underlying evidence.
@@ -40,7 +41,7 @@ It preserves missing assessments and the original reporting failures.
 
 The main lessons concern how to design the whole research process: assessment that recognizes scientifically useful work, precise coordination rules that let rounds finish, capable judges, and shared guidance on dependencies and tools.
 John's experience also points to the difficulty of asking Luna to handle scientific reasoning and reproducibility practices together, and to the hidden effort of preparing tracking and cluster infrastructure.
-The [lessons for the next study](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) explain these observations and priorities for better benchmarking, isolation, capture and skill evolution.
+The [lessons for the next study](LESSONS.md) explain these observations and priorities for better benchmarking, isolation, capture and skill evolution.
 
 The approach is promising, but this small, adaptive study does not establish a causal skill benefit or transfer to other scientific tasks.
 Read [the results guide](docs/results.md) for the poster's measures and their interpretation.

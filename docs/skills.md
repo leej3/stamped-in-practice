@@ -34,7 +34,7 @@ The research skills were tested at three exact revisions:
 | 3 | [32660661](https://github.com/con/skills/tree/326606610af6c261876c92032ca1f89f6d3ad1f1/skills) | Final tested guidance, including a clarification to supply an executable setup recipe or retrievable pinned source |
 
 The [revision evidence](https://github.com/leej3/stamped-in-practice/tree/codex/iteration-narps-neutral-v1/skill-reflection) lives in the comparison dataset because it records why guidance changed.
-The [lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) provide the narrative before the detailed inspection records.
+The [lessons](../LESSONS.md) provide the narrative before the detailed inspection records.
 Exact revisions identify what was tested; browsing the latest branch is not a substitute for them when replaying an earlier round.
 
 ## Understand the assessor

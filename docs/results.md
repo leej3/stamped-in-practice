@@ -34,7 +34,7 @@ John's reflection is that the combined demands of science and STAMPED practices 
 The next study should use more capable, calibrated judges and give every worker explicit guidance on established scientific libraries and recoverable dependencies.
 Preparing tracking, directories and cluster access can help agents, but that coordinator effort is itself part of the cost of reusable science.
 
-Read [the full lessons and next-study priorities](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) for the implications for benchmarking, container isolation, comprehensive capture and skill evolution.
+Read [the full lessons and next-study priorities](../LESSONS.md) for the implications for benchmarking, container isolation, comprehensive capture and skill evolution.
 
 ## Why there are original and corrected reports
 
@@ -63,7 +63,7 @@ Replay evidence is also narrower than a blanket reproducibility claim.
 Among admitted primary judgments, 21 native entrypoint executions were observed: 13 complete selected-output matches, five partial matches and three nonzero exits.
 A selected-output match does not prove that every artifact can be recreated on another machine.
 
-The [methodological lessons](https://github.com/leej3/stamped-in-practice/blob/codex/iteration-narps-neutral-v1/final-synthesis/LESSONS.md) connect assessment design, model capability, coordination, dependency guidance and infrastructure support to the next experiment.
+The [methodological lessons](../LESSONS.md) connect assessment design, model capability, coordination, dependency guidance and infrastructure support to the next experiment.
 The [comparison plan](../comparison-plan.md) defines the intended distinctions between scientific outcomes, practices, effort and missing evidence.
 
 ## Completion and access
