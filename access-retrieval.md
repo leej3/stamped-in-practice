@@ -1,0 +1,9 @@
+# Access and remote retrieval record — 2026-10-16
+
+- **Intended recipient:** a researcher authorized to read the research object and its declared input sources. Anonymous access is not required.
+- **Git route:** `git@github.com:leej3/stamped-in-practice.git`, branch `codex/narps-r1-03`. `git clone --no-checkout --single-branch --branch codex/narps-r1-03 ...` succeeded from this host; `rev-parse HEAD` returned `abf95b00c02fb55d16c4d269926c1428cedc0574`.
+- **Annex route:** the source checkout records `con-hub` at `https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git`, with `annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp`. The replay's separate same-host clone fetched 58 annex payloads (54 input maps and four output payloads) successfully through the replay route derived from that configuration.
+- **Input source route:** all 54 map URLs in `input/sources.json` were retrieved directly from NeuroVault; downloaded byte counts and SHA-256 values matched the manifest (see `neurovault-retrieval-verified.stdout`).
+- **Required artifact coverage:** assessed Git revision and its tracked text, code, environment manifest and results; all 54 participant gain-effect maps and four annexed output payloads; input payload integrity checked against source-manifest hashes.
+- **Host scope:** all retrieval actions ran from this assessment host. The replay clone verifies the recorded retrieval route on this host; it does not establish cross-host portability. Credentials were those available to this authorized researcher context. No anonymous-access claim is made.
+- **Attribution limit:** the external worker-end-state receipt establishes the worker's committed clean stop and local inventory. These retrieval attempts were performed by the assessor after that stop and do not establish that the worker personally performed publication or retrieval verification.
