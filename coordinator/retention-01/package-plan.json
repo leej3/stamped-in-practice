@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-v1/narps-r1-06",
+  "worker_stop": "launch/native/worker-end-state.json",
+  "scientific_result": "32d9cabf7b5d041f9efb97830bf5279068809357",
+  "exclude": [
+    {
+      "path": "retention/recipient-check-01/recipient",
+      "reason": "Reconstructable independent recipient cache; initial retrieval failure, exact-byte coordinator publication repair, successful full retrieval and stopped-artifact validation are all retained. Repair is coordinator preservation only and earns no worker publication credit.",
+      "reconstruct_from": {
+        "repository": "git@github.com:leej3/stamped-in-practice.git",
+        "result_commit": "32d9cabf7b5d041f9efb97830bf5279068809357",
+        "environment_commit": "80d314409e0a531e69fcdeb8d0a4c6a92f963d28",
+        "annex_route": "con-hub as recorded in retained retrieval commands and receipts",
+        "coordinator_preservation_only": true,
+        "worker_credit": false
+      },
+      "evidence": [
+        "retention/recipient-check-01/result.json",
+        "retention/recipient-check-01/result-complete.json",
+        "retention/recipient-check-01/judge-source-check.json",
+        "retention/coordinator-publish-01/result.json",
+        "retention/coordinator-publish-01/receipt-hashes.json"
+      ]
+    },
+    {
+      "path": "retention/judgment-01-archives-restore-01",
+      "reason": "Duplicate restored trees; complete archives, original-path manifests and exact restore-verification evidence remain included.",
+      "reconstruct_from": {
+        "manifest": "retention/judgment-01-archives/manifest.json"
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/attempts",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/attempts.tar.gz",
+        "archive_sha256": "3985e483e7be4aea9b908d8018aa43c86e37886a28b93aa8ca074c87d1ad7a95",
+        "original_relative_path": "judgment-01/judgment/attempts",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/attempts.tar.gz"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/replay-work",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/replay-work.tar.gz",
+        "archive_sha256": "40d41cf81093280983f396af43e54ec90143d69ea2b9525bac6947458e4c6ffd",
+        "original_relative_path": "judgment-01/judgment/replay-work",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/replay-work.tar.gz"
+      ]
+    },
+    {
+      "path": "judgment-01/judgment/retrieval-check",
+      "reason": "Complete original attempt represented byte-for-byte by the retained archive, with every original path and restoration verification; omit only duplicate unpacked representation.",
+      "reconstruct_from": {
+        "archive": "retention/judgment-01-archives/retrieval-check.tar.gz",
+        "archive_sha256": "bcab38519d0bcc4b5f74d3cbf15d19b3fa045d7cc9f0146058611dd1976823ae",
+        "original_relative_path": "judgment-01/judgment/retrieval-check",
+        "exclusions": []
+      },
+      "evidence": [
+        "retention/judgment-01-archives/manifest.json",
+        "retention/judgment-01-archives/restore-test.json",
+        "retention/judgment-01-archives/retrieval-check.tar.gz"
+      ]
+    }
+  ]
+}
