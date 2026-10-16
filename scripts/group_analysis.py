@@ -158,21 +158,26 @@ def main() -> None:
     p_img_data = np.ones(reference_shape, dtype=np.float32)
     pu_img_data = np.ones(reference_shape, dtype=np.float32)
     thresh_img_data = np.zeros(reference_shape, dtype=np.float32)
+    bonf_img_data = np.zeros(reference_shape, dtype=np.float32)
     mean_img_data[mask] = mean
     t_img_data[mask] = t_obs
     p_img_data[mask] = p_fwe
     pu_img_data[mask] = p_unc
     thresh_img_data[mask] = np.where(p_fwe <= ALPHA, t_obs, 0)
+    bonf_img_data[mask] = np.where(p_unc <= ALPHA / nvox, t_obs, 0)
     affine = images[0][1].affine
     header = images[0][1].header.copy()
     header.set_data_dtype(np.float32)
     for name, array in [("mean_effect", mean_img_data), ("t_unthresholded", t_img_data),
                         ("p_fwe", p_img_data), ("p_uncorrected", pu_img_data),
-                        ("t_fwe05", thresh_img_data)]:
+                        ("t_fwe05", thresh_img_data), ("t_bonferroni05", bonf_img_data)]:
         nib.save(nib.Nifti1Image(array, affine, header), OUT / f"{name}.nii.gz")
 
     ijk = np.argwhere(mask)
     xyz = nib.affines.apply_affine(affine, ijk)
+    peak_vox = int(np.argmax(t_obs))
+    peak_xyz = xyz[peak_vox]
+    peak_cuts = tuple(float(round(v / 2) * 2) for v in peak_xyz)
     peak_indices = np.argsort(t_obs)[::-1][:20]
     peaks = []
     for idx in peak_indices:
@@ -183,7 +188,7 @@ def main() -> None:
                       "t": float(t_obs[idx]), "p_uncorrected_one_sided": float(p_unc[idx]),
                       "p_fwe_max_t": float(p_fwe[idx])})
     pd.DataFrame(peaks).to_csv(OUT / "top_voxels.tsv", sep="\t", index=False)
-    pd.DataFrame({"max_t_null": null_sorted}).to_csv(OUT / "permutation_max_t.tsv", sep="\t", index=False)
+    pd.DataFrame({"max_t_null": null_max}).to_csv(OUT / "permutation_max_t.tsv", sep="\t", index=False)
 
     # Coordinate-defined vmPFC box is used only for a descriptive participant
     # distribution; primary inference remains corrected across the whole mask.
@@ -200,6 +205,26 @@ def main() -> None:
     roi_ci = stats.t.interval(0.95, n - 1, loc=roi_mean, scale=roi_sd / np.sqrt(n))
     participant_summary = pd.DataFrame({"participant_id": [x[0] for x in images], "vmPFC_box_mean_effect": vm_effects})
     participant_summary.to_csv(OUT / "participant_vmPFC_summary.tsv", sep="\t", index=False)
+    roi_indices = np.flatnonzero(vm_roi[mask])
+    roi_peak_idx = int(roi_indices[np.argmax(t_obs[roi_indices])])
+    roi_peak_subject_values = x[:, roi_peak_idx]
+    roi_peak_mean = float(roi_peak_subject_values.mean())
+    roi_peak_sd = float(roi_peak_subject_values.std(ddof=1))
+    roi_peak_ci = stats.t.interval(0.95, n - 1, loc=roi_peak_mean, scale=roi_peak_sd / np.sqrt(n))
+    roi_peak_summary = {"selection": "maximum observed t within the descriptive coordinate box; post-selection summary",
+                        "x_mm": float(xyz[roi_peak_idx, 0]), "y_mm": float(xyz[roi_peak_idx, 1]),
+                        "z_mm": float(xyz[roi_peak_idx, 2]), "mean_effect": roi_peak_mean,
+                        "between_subject_sd": roi_peak_sd, "mean_95ci_t": [float(roi_peak_ci[0]), float(roi_peak_ci[1])],
+                        "t": float(t_obs[roi_peak_idx]), "p_uncorrected_one_sided": float(p_unc[roi_peak_idx]),
+                        "p_fwe_max_t": float(p_fwe[roi_peak_idx])}
+    (OUT / "selected_vmPFC_voxel.json").write_text(json.dumps(roi_peak_summary, indent=2) + "\n")
+    global_subject_means = x.mean(axis=1)
+    global_mean = float(global_subject_means.mean())
+    global_sd = float(global_subject_means.std(ddof=1))
+    global_ci = stats.t.interval(0.95, n - 1, loc=global_mean, scale=global_sd / np.sqrt(n))
+    pd.DataFrame({"participant_id": [x[0] for x in images],
+                  "mean_effect_across_brain_mask": global_subject_means}).to_csv(
+                      OUT / "participant_global_brain_summary.tsv", sep="\t", index=False)
     fig, ax = plt.subplots(figsize=(7.2, 4.2), constrained_layout=True)
     ax.scatter(np.arange(n) + 1, vm_effects, color="#356A8A", alpha=.8, s=24)
     ax.axhline(roi_mean, color="#B33C2E", lw=1.5, label=f"mean {roi_mean:.3g}")
@@ -220,9 +245,9 @@ def main() -> None:
                            cmap="cold_hot", colorbar=True, title="Group gain effect: unthresholded t map",
                            figure=fig, axes=(0.03, 0.10, 0.62, 0.78))
     if np.any(thresh_img_data):
-        plotting.plot_stat_map(fwe_img, display_mode="ortho", cut_coords=(0, 40, -8), threshold=0,
+        plotting.plot_stat_map(fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0,
                                cmap="cold_hot", colorbar=True,
-                               title="Positive voxels, whole-brain max-t FWE p ≤ .05",
+                               title=f"Max-t FWE positive voxels at peak cuts {peak_cuts}",
                                figure=fig, axes=(0.68, 0.10, 0.30, 0.78))
     else:
         ax = fig.add_axes((0.68, 0.2, 0.30, 0.55))
@@ -230,9 +255,6 @@ def main() -> None:
         ax.text(.5, .5, "No positive voxel passed\nwhole-brain max-t FWE p ≤ .05", ha="center", va="center", fontsize=13)
     fig.savefig(OUT / "whole_brain_results.png", dpi=180, bbox_inches="tight")
     plt.close(fig)
-    peak_vox = int(np.argmax(t_obs))
-    peak_xyz = xyz[peak_vox]
-    peak_cuts = tuple(float(round(v / 2) * 2) for v in peak_xyz)
     display = plotting.plot_stat_map(
         fwe_img, display_mode="ortho", cut_coords=peak_cuts, threshold=0, cmap="Reds",
         colorbar=True, title=(f"Whole-brain max-t FWE p ≤ .05\nPeak MNI {peak_xyz[0]:.1f}, {peak_xyz[1]:.1f}, {peak_xyz[2]:.1f}"),
@@ -249,9 +271,14 @@ def main() -> None:
         "permutation_method": "participant-level sign flips; one-sided max-t FWE",
         "permutations": N_PERM, "seed": SEED, "df": df,
         "n_fwe_positive_voxels": int(sig.sum()), "n_fwe_positive_voxels_in_vmPFC_box": int(vm_sig.sum()),
+        "n_bonferroni_positive_voxels": int(np.sum(p_unc <= ALPHA / nvox)),
+        "bonferroni_voxelwise_alpha": ALPHA / nvox,
         "vmPFC_box_definition_mni_mm": {"x": [-10, 10], "y": [20, 60], "z": [-20, 20]},
         "vmPFC_box_voxels": roi_nvox, "vmPFC_box_mean_effect": roi_mean,
         "vmPFC_box_between_subject_sd": roi_sd, "vmPFC_box_mean_95ci_t": [float(roi_ci[0]), float(roi_ci[1])],
+        "selected_vmPFC_voxel": roi_peak_summary,
+        "whole_brain_subject_average_mean": global_mean, "whole_brain_subject_average_sd": global_sd,
+        "whole_brain_subject_average_mean_95ci_t": [float(global_ci[0]), float(global_ci[1])],
         "maximum_observed_t": float(t_obs.max()), "minimum_fwe_p": float(p_fwe.min()),
         "runtime_seconds": round(time.time() - started, 3),
         "python": sys.version.split()[0], "platform": platform.platform(),

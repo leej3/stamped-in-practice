@@ -8,9 +8,11 @@ The root Pixi environment supplies dependencies and the task:
 
 ```sh
 pixi run group-analysis
+pixi run validate-results
+pixi run figures
 ```
 
-The task reads `input/participants.tsv`, `input/sources.json`, and the 54 annexed NIfTI maps under `input/data/`. It writes maps and tables under `results/`; duct records are retained under `logs/`. The analysis uses a one-sample group intercept and a positive-direction, whole-brain maximum-t sign-flip test. The coordinate-defined vmPFC box is descriptive only; it does not replace whole-brain correction.
+The task reads `input/participants.tsv`, `input/sources.json`, and the 54 annexed NIfTI maps under `input/data/`. It writes maps and tables under `results/`; validation independently checks group statistics and corrected maps, and `figures` renders the coordinate and participant summaries. Duct records are retained under `logs/`. The analysis uses a one-sample group intercept and a positive-direction, whole-brain maximum-t sign-flip test. The coordinate-defined vmPFC box is descriptive only; it does not replace whole-brain correction.
 
 ## Inputs and provenance
 
