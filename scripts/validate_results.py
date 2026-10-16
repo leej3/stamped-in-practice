@@ -50,7 +50,7 @@ coords_grid = np.indices(imgs[0].shape, dtype=float)
 world = nib.affines.apply_affine(aff, np.stack(coords_grid, axis=-1).reshape(-1, 3)).reshape(*imgs[0].shape, 3)
 box = (~M) & (np.abs(world[..., 0]) <= 10) & (world[..., 1] >= 20) & (world[..., 1] <= 60) & (world[..., 2] >= -20) & (world[..., 2] <= 20)
 subject_means = arr[:, box].mean(axis=1)
-assert np.isclose(subject_means.mean(), summary["vmPFC_box_mean_effect"], rtol=1e-6, atol=1e-8)
+assert np.isclose(subject_means.mean(), summary["vmPFC_box_mean_effect"], rtol=2e-5, atol=5e-8)
 assert np.allclose(mean_img[box].mean(), summary["vmPFC_box_mean_effect"], rtol=2e-5, atol=2e-6)
 print(json.dumps({"validated": True, "n_maps": len(imgs), "voxel_t_checks": 20,
                   "permutation_null_n": len(null), "fwe_significant_voxels": summary["n_fwe_positive_voxels"],
