@@ -21,7 +21,7 @@ from scipy.stats import t as t_dist
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "input/sources.json"
 PARTICIPANTS = ROOT / "input/participants.tsv"
-OUT = ROOT / "results"
+OUT = ROOT / "results/final"
 ATLAS_PATH = ROOT / "input/reference/HarvardOxford-cort-maxprob-thr25-2mm.nii.gz"
 N_PERM = 5000
 SEED = 20261016
@@ -169,7 +169,9 @@ def run():
                 "p_fwe_max_t": float(p_fwe[k])}
     roi_values = data[:, roi_support].mean(axis=1)
     roi_mean = float(roi_values.mean())
-    roi_se = float(roi_values.std(ddof=1) / np.sqrt(n))
+    roi_sd = float(roi_values.std(ddof=1))
+    roi_se = float(roi_sd / np.sqrt(n))
+    roi_t = roi_mean / roi_se
     roi_ci = [roi_mean - t_dist.ppf(.975, n - 1) * roi_se,
               roi_mean + t_dist.ppf(.975, n - 1) * roi_se]
     loo = [(roi_values.sum() - x) / (n - 1) for x in roi_values]
@@ -193,6 +195,8 @@ def run():
         "strongest_positive_voxel": peak_record(peak_index),
         "strongest_positive_vmpfc_fwe_voxel": peak_record(p_index) if p_index is not None else None,
         "vmpfc_participant_mean": roi_mean, "vmpfc_t_ci95": [float(x) for x in roi_ci],
+        "vmpfc_descriptive_t": float(roi_t), "vmpfc_descriptive_p_one_sided": float(t_dist.sf(roi_t, n - 1)),
+        "vmpfc_positive_participants": int((roi_values > 0).sum()),
         "vmpfc_leave_one_out_mean_range": [float(min(loo)), float(max(loo))],
         "vmpfc_participant_sd": float(roi_values.std(ddof=1)),
         "null_max_t_quantiles": {str(q): float(np.quantile(null_maxima, q)) for q in [.5, .95, .99]},
@@ -216,18 +220,21 @@ def run():
     fig.savefig(OUT / "vmpfc-participant-estimates.png", dpi=180)
     plt.close(fig)
 
-    # Display the t map with only whole-brain FWE-significant voxels retained.
+    # Display corrected voxels at the strongest peak and outline the prespecified ROI.
     display_stat = np.where(sig, tvol, 0)
     stat_img = nib.Nifti1Image(display_stat, ref.affine, ref.header)
+    roi_img = nib.Nifti1Image(roi.astype(np.uint8), ref.affine, ref.header)
     if sig.any():
-        display = plotting.plot_stat_map(stat_img, display_mode="ortho", cut_coords=(0, 35, -10),
+        peak_xyz = peak_record(peak_index)["mni_xyz_mm"]
+        display = plotting.plot_stat_map(stat_img, display_mode="ortho", cut_coords=peak_xyz,
                                          threshold=0, cmap="magma", colorbar=True,
-                                         title="Positive effects surviving whole-brain max-t FWE p < .05")
+                                         title="Whole-brain max-t FWE p < .05; cyan = vmPFC ROI")
     else:
         display = plotting.plot_stat_map(nib.Nifti1Image(tvol, ref.affine, ref.header),
                                          display_mode="ortho", cut_coords=(0, 35, -10),
                                          threshold=0, cmap="magma", colorbar=True,
                                          title="Group t map (no positive voxels survive whole-brain FWE p < .05)")
+    display.add_contours(roi_img, levels=[.5], colors=["cyan"], linewidths=0.8)
     display.savefig(OUT / "wholebrain-fwe-map.png", dpi=180)
     display.close()
 
