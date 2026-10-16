@@ -159,7 +159,7 @@ def run():
     roi_sig = sig & roi
     roi_sig_idx = np.flatnonzero((p_fwe < .05) & (observed > 0) & roi_support[support])
     p_index = int(roi_sig_idx[np.argmax(observed[roi_sig_idx])]) if len(roi_sig_idx) else None
-    peak_index = int(np.argmax(tvol))
+    peak_index = int(np.argmax(observed))
     flat_indices = np.flatnonzero(support)
     def peak_record(k):
         ijk = np.unravel_index(int(flat_indices[k]), ref.shape)
