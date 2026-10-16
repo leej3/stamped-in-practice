@@ -1,0 +1,17 @@
+{
+  "at": "2026-10-15T21:56:14.954073+00:00",
+  "argv": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=10",
+    "unity",
+    "sacct -n -P -j 65726805 --format=JobIDRaw,State,ExitCode,Elapsed,NodeList; cat /work/pi_d31548v_dartmouth_edu/stamped/readiness-20261015-1755/job-65726805.out; cat /work/pi_d31548v_dartmouth_edu/stamped/readiness-20261015-1755/job-65726805.err"
+  ],
+  "job_id": "65726805",
+  "returncode": 0,
+  "stdout": "65726805|COMPLETED|0:0|00:00:01|uri-cpu079\n65726805.batch|COMPLETED|0:0|00:00:01|uri-cpu079\n65726805.extern|COMPLETED|0:0|00:00:01|uri-cpu079\nuri-cpu079\nstamped-readiness-ok\n",
+  "stderr": "",
+  "passed": true
+}
