@@ -5,9 +5,9 @@ The earlier [original round-one assessment](rounds/round-01/synthesis/README.md)
 
 Round one’s operational reassessment has 32 scientific records and 30 valid checklists; its eight duplicate pairs disagree on 67 of 248 item decisions and on scientific adequacy in five pairs.
 The supplied procedure exposed the current assignment in documented judgment `04-j01`.
-All 32 judgments in each of rounds two and three fail the unchanged first provenance gate because truthful worker source revisions differ from the original seal.
-Their science/checklist measures and pair comparisons are unavailable, not zero scores or scientific failures.
-Later admission gates are unestablished.
+In the original frozen extraction, all 32 judgments in each of rounds two and three fail the unchanged first provenance gate because truthful worker source revisions differ from the original seal.
+Their science/checklist measures and pair comparisons are unavailable, not zero scores or scientific failures. Later admission gates are unestablished in that extraction. A [subsequent authorized reporting correction](final-synthesis/REPORTING-CORRECTION.md) admits 23 of 24 primary scientific records and checklists in each later round, preserving every original rejection and individual failure.
+No research or judging was repeated.
 This comparison does not establish a skill benefit, reduced variability or transfer to another study.
 
 The tested research-skill revisions are `f2e74ea3`, `d83d7d66` and `32660661`.

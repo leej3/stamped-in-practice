@@ -1,5 +1,8 @@
 # What this comparison can teach us
 
+These lessons describe the original frozen extraction.
+The [subsequent authorized reporting correction](REPORTING-CORRECTION.md) addresses the source-binding admission issue separately; the original rejection records and individual failures remain unchanged.
+
 The main measurement failure occurred between rounds.
 The launcher accepted the registered change to the research-skill source, but the frozen aggregator still required the original coordinator commit.
 All 32 judgments in each of rounds two and three were consequently rejected before later admission checks.

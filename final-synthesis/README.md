@@ -5,6 +5,10 @@ Round one below is the separate operational reassessment; its [earlier original 
 This is an adaptive measurement history, not an untouched preregistration.
 Formal measurement availability differs by round; completion alone does not make an outcome admissible.
 
+The tables and figures below preserve the **original frozen extraction**.
+A [subsequent authorized reporting correction](REPORTING-CORRECTION.md) admits 23 of 24 primary science records and checklists in each later round, while retaining all individual failures.
+The original zero-availability rows below remain unchanged; they are not the availability counts for that separate corrected readout.
+
 | Round | Workers closed / assigned | Judges closed / assigned | Admitted judges / 32 | Primary science available / 24 | Primary checklist valid / 24 |
 |---|---:|---:|---:|---:|---:|
 | 1 | 24 / 24 | 32 / 32 | 32 / 32 | 24 / 24 | 22 / 24 |

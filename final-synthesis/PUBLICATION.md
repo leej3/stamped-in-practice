@@ -8,9 +8,12 @@ The formal captures, original stopped sources and task-local logs remain locally
 | --- | --- | --- | --- | --- |
 | Round-one operational reassessment | 32 stopped judgments retained and audited | 32 native/proof branches verified, with series metadata | All 32 independently verified | Five full native closures; 27 partial. The native/proof-only pending index has 191 distinct keys / 145,367,830 bytes; full support archives are additional. |
 | Round two | 24 research and 32 judge captures verified; complete reporting and native archives locally verified | Frozen sources, registrations, reporting and archive pointers published | Not independently verified for this continuation | New archive/payload upload and independent remote retrieval pending |
-| Round three | 24 research and 32 judge captures verified; reporting archive verified; complete native archive verification in progress | Frozen sources, registrations and final reporting metadata published | Not independently verified for this continuation | New archive/payload upload and independent remote retrieval pending |
+| Round three | 24 research and 32 judge captures verified; complete reporting and native archives locally verified | Frozen sources, registrations, final reporting and archive pointers published | Not independently verified for this continuation | New archive/payload upload and independent remote retrieval pending |
 
 The Git column refers to the records expressly described, not a claim that every new experiment branch or payload is remotely available.
+
+The [subsequent authorized reporting correction](REPORTING-CORRECTION.md) has its own anonymous retrieval proof for 113 reporting and scientific-figure payloads / 120,782,071 bytes.
+That scoped proof does not close the pending full-archive, input or environment delivery recorded above.
 Native session capture is not hosted dashboard verification.
 Pending transport is a delivery limitation, not a missing native observation or a scientific verdict.
 No Hub or cluster diagnosis or new transport retry was performed during the bounded continuation.
