@@ -1,0 +1,26 @@
+{
+  "worktree": "/Users/johnlee/.local/share/wt-utils/worktrees/0741/stamped-in-practice",
+  "branch": "codex/retained-identity-repair",
+  "base_commit": "22bd357edca8095ef501cdc15f3b6d8884c2b40b",
+  "status": " M scripts/assessment_procedure.py\n M tests/test_operational_assessment.py\n",
+  "diff_stat": " scripts/assessment_procedure.py      |  4 +-\n tests/test_operational_assessment.py | 80 ++++++++++++++++++++++++++++++++++++\n 2 files changed, 83 insertions(+), 1 deletion(-)\n",
+  "changed_file_sha256": {
+    "scripts/assessment_procedure.py": "defff417f44314f7f840df945429ca9084650f6a869a70198942ccbf85c2e1e6",
+    "tests/test_operational_assessment.py": "01e085c7259436f5e3e65d9ddee0755964d0bd0090c333ddba3550350dbdfcb5"
+  },
+  "patch_sha256": "759357fe17ca9099267e1bd5a51becb5a989551cdd334b0c8183994faf84633c",
+  "focused_tests": {
+    "result": "passed",
+    "count": 107,
+    "duration_seconds": 35.84,
+    "command_record": "focused-tests-01.json"
+  },
+  "prepatch_regression": {
+    "expected_failure": true,
+    "failed": 4,
+    "command_record": "prepatch-regression-01.json"
+  },
+  "implementation": "Legacy cross-run seed/result collision rejection applies only to versions other than 4. Existing v4 validator enforces unique allocated retained runs; exact seed/result/stop/capture checks and mandatory retained registration remain unchanged.",
+  "commit_status": "uncommitted for root review",
+  "preservation": "No source artifacts, frozen seal, assay/rubric/prompt/settings, or submodule contents changed; no native or formal launches."
+}

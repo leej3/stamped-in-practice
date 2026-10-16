@@ -13,9 +13,11 @@ No skill-effect claim crosses that boundary silently.
 
 The [candidate research guidance and trial evidence](skill-reflection/research-skill-revision-01/README.md) are published on a separate development branch.
 The registered round-one skill pin remains unchanged.
-The final native assessment trial passed, but the [registered-object admission check](measurement-development/assessment-registration-admission-01/README.md) found that a legacy guard incorrectly rejects shared Git seeds.
-Its never-launched seal and failure evidence are retained while the narrow capture-identity correction is reviewed.
-No new assessment series or subsequent research round has launched.
+The separately registered [assessment-only series](assessment-series/narps-neutral-r1-operational-v4/README.md) reassesses all 24 original deliveries and the same eight duplicate slots under one reviewed procedure.
+Its identity-guard correction passed all 24 original bindings and rejected 1,752 substitutions; the never-launched preparation seal is retained.
+The finalized series is being published before dispatch.
+Further research remains held for measurement viability.
+
 
 See the [completion ledger](progress.json), [launch and stop receipts](rounds/round-01/launches/), [judgment dispatches](rounds/round-01/judging/), [sealed registration](registration.md) and [allocation](allocation.json).
 The registration's zero-start count describes its prelaunch state.

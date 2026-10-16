@@ -1,0 +1,106 @@
+diff --git a/scripts/assessment_procedure.py b/scripts/assessment_procedure.py
+index 35175ba..53af6be 100644
+--- a/scripts/assessment_procedure.py
++++ b/scripts/assessment_procedure.py
+@@ -417,7 +417,9 @@ def check_retained_target(manifest, seed, seed_commit, result_commit, stop_recei
+     research_procedure(manifest)
+     matched = False
+     for item in manifest["assessment_amendment"]["retained_objects"]:
+-        if (item["run"] != seed.get("run") and
++        # Neutral deliveries can share an untouched Git seed/HEAD. Version 4
++        # binds the allocated run to its exact stop and capture below instead.
++        if (manifest.get("version") != 4 and item["run"] != seed.get("run") and
+                 (item["seed_commit"] == seed_commit or
+                  (result_commit is not None and item["result_commit"] == result_commit))):
+             raise SystemExit("A retained object cannot be relabeled as a new run")
+diff --git a/tests/test_operational_assessment.py b/tests/test_operational_assessment.py
+index d1994a7..51844d6 100644
+--- a/tests/test_operational_assessment.py
++++ b/tests/test_operational_assessment.py
+@@ -194,6 +194,86 @@ def amended(original, allocation, run):
+     return updated
+ 
+ 
++def retained_pair(tmp_path, allocation, contract, head='a' * 40):
++    index, original = bundle(tmp_path, allocation, contract, head=head)
++    run = index['runs'][0]
++    seal = amended(full_original(json.loads(original)), allocation, run)
++    first = seal['assessment_amendment']['retained_objects'][0]
++    second_stop = tmp_path / 'second-stop.json'
++    second_stop.write_text('{"different_original_delivery": true}\n')
++    second = dict(first, run=allocation['rounds'][0]['launch_order'][1]['run'],
++        worker_end_state_sha256=agg.sha256(second_stop.read_bytes()), delivery_capture_sha256='b' * 64)
++    seal['assessment_amendment']['retained_objects'].append(second)
++    return seal, ((first, tmp_path / run['worker_end_state']['path']), (second, second_stop))
++
++
++@pytest.mark.parametrize('head', ['a' * 40, None])
++@pytest.mark.parametrize('reverse', [False, True])
++def test_v4_shared_git_identities_bind_each_original_capture(tmp_path, allocation, contract, head, reverse):
++    seal, pair = retained_pair(tmp_path, allocation, contract, head)
++    if reverse:
++        seal['assessment_amendment']['retained_objects'].reverse()
++    for row, stop in pair:
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], stop, row['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('head', ['a' * 40, None])
++@pytest.mark.parametrize('selected', [0, 1])
++@pytest.mark.parametrize('field', ['stop', 'capture'])
++def test_v4_shared_commits_do_not_allow_cross_run_delivery_swaps(tmp_path, allocation, contract, head, selected, field):
++    seal, pair = retained_pair(tmp_path, allocation, contract, head)
++    row, stop = pair[selected]
++    other, other_stop = pair[1 - selected]
++    # A shared seed does not permit one delivery to be attributed to its peer.
++    label = 'stop receipt' if field == 'stop' else 'delivery capture'
++    with pytest.raises(SystemExit, match='retained original ' + label):
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], other_stop if field == 'stop' else stop,
++            other['delivery_capture_sha256'] if field == 'capture' else row['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('head,field,value', [
++    ('a' * 40, 'seed_commit', 'c' * 40), ('a' * 40, 'result_commit', 'c' * 40),
++    ('a' * 40, 'result_commit', None), (None, 'result_commit', 'c' * 40),
++])
++def test_v4_shared_git_identity_does_not_relax_exact_git_binding(tmp_path, allocation, contract, head, field, value):
++    seal, pair = retained_pair(tmp_path, allocation, contract, head)
++    original, stop = pair[0]
++    row = dict(original, **{field: value})
++    with pytest.raises(SystemExit, match='retained worker seed|retained scientific result'):
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], stop, row['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('allocated', [False, True])
++def test_v4_unlisted_runs_cannot_reuse_registered_delivery(tmp_path, allocation, contract, allocated):
++    seal, pair = retained_pair(tmp_path, allocation, contract)
++    row, stop = pair[0]
++    run = allocation['rounds'][0]['launch_order'][2]['run'] if allocated else 'unregistered'
++    with pytest.raises(SystemExit, match='unregistered retained object'):
++        procedure.check_retained_target(seal, {'run': run}, row['seed_commit'],
++            row['result_commit'], stop, row['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('conflicting', [False, True])
++def test_v4_duplicate_run_identity_is_rejected_before_admission(tmp_path, allocation, contract, conflicting):
++    seal, pair = retained_pair(tmp_path, allocation, contract)
++    row, stop = pair[0]
++    duplicate = dict(row)
++    if conflicting:
++        duplicate['delivery_capture_sha256'] = 'c' * 64
++    seal['assessment_amendment']['retained_objects'].append(duplicate)
++    with pytest.raises(SystemExit, match='Retained run must be unique'):
++        procedure.check_retained_target(seal, {'run': row['run']}, row['seed_commit'],
++            row['result_commit'], stop, row['delivery_capture_sha256'])
++
++
++@pytest.mark.parametrize('version', [1, 3])
++def test_original_protocols_keep_retained_admission_passthrough(version):
++    procedure.check_retained_target({'version': version}, {}, None, None, None)
++
++
+ def operational_bundle(tmp_path, allocation, contract, mutation='database'):
+     index, original_bytes = bundle(tmp_path, allocation, contract, head='a' * 40)
+     run = index['runs'][0]
