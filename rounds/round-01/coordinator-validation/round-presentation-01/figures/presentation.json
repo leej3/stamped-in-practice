@@ -1,0 +1,1831 @@
+{
+  "scope": "Round-filtered presentation of validated tables; no regrading, imputation or changed admission.",
+  "round": 1,
+  "assigned_workers": 24,
+  "assigned_judgments": 32,
+  "source_aggregation": {
+    "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/aggregation.json",
+    "sha256": "14b7244c5d7bc5ed7610b65534fea7709b02a510c976eb21ba4c15da9253c97c"
+  },
+  "source_tables": [
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/cells.jsonl",
+      "sha256": "3c15c02ba4d60dfb079d9515b91290168e2932b036f04f7f4f310d37027442a4"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/comparable_counts.jsonl",
+      "sha256": "ecbfc00dec1a63f074882aa8d74356a1e96ecaea42b9a706b600b38a68d7825a"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/comparable_items.jsonl",
+      "sha256": "3d6ef090a7924030fe1daef83f327304c7941044fe25af6d421e21883dc48ecf"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/counts.jsonl",
+      "sha256": "264e2ac07dc9a9a090b8f00c9c7dc049237d911ea90bb3687c81565fd9eb0e4d"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/disagreement.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/effort.jsonl",
+      "sha256": "0ee7d07e2ad2036d7f64666fa5ff7e6fb1a724bae2a160e304c44f6da1c54215"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/excluded_attempts.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/issues.jsonl",
+      "sha256": "eba7262ce4c37fce258e2905f3a4bb5543a13321112a9e3549268acb51b91f8e"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/items.jsonl",
+      "sha256": "3d6ef090a7924030fe1daef83f327304c7941044fe25af6d421e21883dc48ecf"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/judgments.jsonl",
+      "sha256": "213b6f0a965dd072f720c4e5f5dca3d4469b6bc4c3f400894cfc44c24e922ebd"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/measure_validity.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/operations.jsonl",
+      "sha256": "44919fd2db061d4683fee59d924295e4b19179ef1e2f1611ed1db26ec47eda1e"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/pairs.jsonl",
+      "sha256": "27df5079e86f8eb66395f02ebf76527d641f94d083a24c74a07e8b7c7d943345"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/runs.jsonl",
+      "sha256": "42580f592b02ca01a6eaa4d0d472d66838deb23217e58857b05a6b0e876d3db0"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/supplementary_attempts.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/supplementary_items.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/version_cells.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/extraction-05/analysis/version_strata.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "renderer_sha256": "4167c0a08d9c03fa30db1651253b47410f52c03884baa7a8d4b2f518d144f55a",
+  "token_rows": [
+    {
+      "run_id": "narps-neutral-r1-20",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-20-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1887640
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1820928
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 25375
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11223
+        }
+      ],
+      "values": {
+        "input_tokens": 1887640,
+        "cached_input_tokens": 1820928,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25375,
+        "reasoning_output_tokens": 11223
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-20/native-result.json",
+          "sha256": "68bf90fb4a9db02685b8e925472356e98048489c2cb6da26a7b68fec43be1c8e"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-20/native-token-usage.json",
+          "sha256": "fa55d263befd5414087a72d243bb8235f2f6f41fe977253dd3e34d2570325308"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-08",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-08-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1124098
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1041152
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 14208
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 6212
+        }
+      ],
+      "values": {
+        "input_tokens": 1124098,
+        "cached_input_tokens": 1041152,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14208,
+        "reasoning_output_tokens": 6212
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-08/native-result.json",
+          "sha256": "7403e2466acd2546272213ae11da04ff6d83333c0be4cb6de598fedded4fe205"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-08/native-token-usage.json",
+          "sha256": "8cfe9c14a67674f89675463e811b392585cc7d71d67fc9bead8b85e47a947d4f"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-11",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-11-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2282671
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2208128
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 21643
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11219
+        }
+      ],
+      "values": {
+        "input_tokens": 2282671,
+        "cached_input_tokens": 2208128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 21643,
+        "reasoning_output_tokens": 11219
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-11/native-result.json",
+          "sha256": "3267f5c3be925f8552bb7c6e0ad585ca443a05bd51ee2ed1e707f56d852eb3fa"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-11/native-token-usage.json",
+          "sha256": "493276f606eb0da6ded4951984dc259f344870f12670ff38ff881e51f5c32f7f"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-01",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-01-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 962305
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 921984
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 11935
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 5161
+        }
+      ],
+      "values": {
+        "input_tokens": 962305,
+        "cached_input_tokens": 921984,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11935,
+        "reasoning_output_tokens": 5161
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-01/native-result.json",
+          "sha256": "4afccd46f59a30e140f356acc9bb5d9e88caa461d60ab02aecd7054d8cd72705"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-01/native-token-usage.json",
+          "sha256": "deae24ea760258c0add4d547d6e860aef8a14bb001129a4b5e7108bb76d9e7e8"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-17",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-17-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1997909
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1887360
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 20831
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 8279
+        }
+      ],
+      "values": {
+        "input_tokens": 1997909,
+        "cached_input_tokens": 1887360,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20831,
+        "reasoning_output_tokens": 8279
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-17/native-result.json",
+          "sha256": "8ab29601715b1b96f7c7417237bc90bae0f653dd52717e379d2e279da4c06e2a"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-17/native-token-usage.json",
+          "sha256": "a038931197628bf9df5e52e0eef822a3d3a30de46c0e2dd947005bf4c4769f05"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-12",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-12-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1782156
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1715072
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 23034
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 10715
+        }
+      ],
+      "values": {
+        "input_tokens": 1782156,
+        "cached_input_tokens": 1715072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23034,
+        "reasoning_output_tokens": 10715
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-12/native-result.json",
+          "sha256": "285521292318c8f2e59af6553544e45550b9dbc250e2a3784b212bc6efa88292"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-12/native-token-usage.json",
+          "sha256": "81d670405d4db21f2fd72ec9d4b32239a85401b81f6bd9cfe7130be1a6cd963e"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-03",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-03-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2816243
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2734336
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 27936
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 14454
+        }
+      ],
+      "values": {
+        "input_tokens": 2816243,
+        "cached_input_tokens": 2734336,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 27936,
+        "reasoning_output_tokens": 14454
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-03/native-result.json",
+          "sha256": "24489fd7419818b46018520feb38ad2d2e7b72eda393820c627c6f6ced0a564f"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-03/native-token-usage.json",
+          "sha256": "d7e30754d169eb99934e6b48cee994fb3db5faf61d6aa4b806f53b88984e2a57"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-15",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-15-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1604823
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1533056
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 18451
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 7289
+        }
+      ],
+      "values": {
+        "input_tokens": 1604823,
+        "cached_input_tokens": 1533056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18451,
+        "reasoning_output_tokens": 7289
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-15/native-result.json",
+          "sha256": "0cdc659a8cde5ae8b861e1dd5d43aa2464d24c5523707e2909454de8f8f6d769"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-15/native-token-usage.json",
+          "sha256": "4fbe92a5bf309b78d7a958f6ad377d17549dd9cbaa5182afab8f4602a6d970d3"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-07",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-07-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 3817224
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 3719936
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 32972
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 14635
+        }
+      ],
+      "values": {
+        "input_tokens": 3817224,
+        "cached_input_tokens": 3719936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 32972,
+        "reasoning_output_tokens": 14635
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-07/native-result.json",
+          "sha256": "800b302d508647ba5773f47ead35fd2583afa5f6cdad629ca71fbfffcdb35c49"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-07/native-token-usage.json",
+          "sha256": "7fe2c10ba174f21591785cf69c54c89cf85b30f30b90494d4ac775c0388724c9"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-10",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-10-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1876274
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1776768
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 23472
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11940
+        }
+      ],
+      "values": {
+        "input_tokens": 1876274,
+        "cached_input_tokens": 1776768,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 23472,
+        "reasoning_output_tokens": 11940
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-10/native-result.json",
+          "sha256": "becec367cdc4ade00b07967b4a9be050c4ebbbfe331a6168ec3a50a1dd406a1d"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-10/native-token-usage.json",
+          "sha256": "0884d5a490c226334abf2426272938377d6a8c61348934ae09a3ded2699c5fcd"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-22",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-22-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 5126564
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 5006720
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 34172
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 16479
+        }
+      ],
+      "values": {
+        "input_tokens": 5126564,
+        "cached_input_tokens": 5006720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 34172,
+        "reasoning_output_tokens": 16479
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-22/native-result.json",
+          "sha256": "10e3ea87d3b4a9033641185a0e5e553ed64105cba2859f29fb28e9f9d5b02187"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-22/native-token-usage.json",
+          "sha256": "2888c16eafc5b27bf278373e836c4f42e8c2708caf93af0f759229e96358d0fe"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-13",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-13-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 786341
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 711936
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 17416
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 7929
+        }
+      ],
+      "values": {
+        "input_tokens": 786341,
+        "cached_input_tokens": 711936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 17416,
+        "reasoning_output_tokens": 7929
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-13/native-result.json",
+          "sha256": "4cbff80219ad98e7b3f5c31adb541b1bf37a60061a5edd010135d3a25fdca216"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-13/native-token-usage.json",
+          "sha256": "1bbe351154ba37ef3cd63d5c22840bb03ca945c0931754271347707340dfa5aa"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-02",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-02-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1836689
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1780224
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 20383
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 9506
+        }
+      ],
+      "values": {
+        "input_tokens": 1836689,
+        "cached_input_tokens": 1780224,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20383,
+        "reasoning_output_tokens": 9506
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-02/native-result.json",
+          "sha256": "63afa6c01fde421353eff9156268726f877f248db1d8624ddf5b556baf3a3bc5"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-02/native-token-usage.json",
+          "sha256": "85bf5eeac675aac680b2eb29cf1665e6df5cf192b3b8132224a79d3bba075704"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-09",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-09-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1874165
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1800960
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 19912
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 9943
+        }
+      ],
+      "values": {
+        "input_tokens": 1874165,
+        "cached_input_tokens": 1800960,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19912,
+        "reasoning_output_tokens": 9943
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-09/native-result.json",
+          "sha256": "5c7e8975428c6689e26ff34a2d7e6492e725c1ec9b172f2628d8d92c55f70679"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-09/native-token-usage.json",
+          "sha256": "4a45f00a7880369d57a16421a7f901a731ec582efc28778bc27229502543d82a"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-14",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-14-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2659011
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2589184
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 25561
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11427
+        }
+      ],
+      "values": {
+        "input_tokens": 2659011,
+        "cached_input_tokens": 2589184,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25561,
+        "reasoning_output_tokens": 11427
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-14/native-result.json",
+          "sha256": "e2b54e3553b656649cc786f1c1e5556a1ade244ead9b8b6613d03116e21aee37"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-14/native-token-usage.json",
+          "sha256": "b86fed1922e93ed7de4ede9b92c596dbdd3e4b502a9b14ce6cfc8c9ff58fbfe0"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-23",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-23-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 3573144
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 3463040
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 28122
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11343
+        }
+      ],
+      "values": {
+        "input_tokens": 3573144,
+        "cached_input_tokens": 3463040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 28122,
+        "reasoning_output_tokens": 11343
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-23/native-result.json",
+          "sha256": "99715de2b12b579289c91b42f12291119b023a219600b0dfe62cca690289cb71"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-23/native-token-usage.json",
+          "sha256": "388018b5c7a44f2d2fca8b9e415235c51e187c2c65e0412e5ec2f8951057eed9"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-18",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-18-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2881915
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2792832
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 24799
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 12871
+        }
+      ],
+      "values": {
+        "input_tokens": 2881915,
+        "cached_input_tokens": 2792832,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24799,
+        "reasoning_output_tokens": 12871
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-18/native-result.json",
+          "sha256": "42bf1e0e77bd72549c3681757c8d1ac2596dc70e4021f701f252f51801f204d0"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-18/native-token-usage.json",
+          "sha256": "b5b62b0e852ebb9f435578873b972ebca10941a23a00e4884838dcd1a4138551"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-05",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-05-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2669728
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2608512
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 24127
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 9813
+        }
+      ],
+      "values": {
+        "input_tokens": 2669728,
+        "cached_input_tokens": 2608512,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24127,
+        "reasoning_output_tokens": 9813
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-05/native-result.json",
+          "sha256": "ea8dcb9648d960bf494c43e7d5883b60e969d7c82c5127a8ef07a97b5604cb40"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-05/native-token-usage.json",
+          "sha256": "673536d96e0fc859192b6860cbeaf27baedee77477509ebfb26bf83c5ebd8086"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-24",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-24-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 4387110
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 4284800
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 36051
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 16529
+        }
+      ],
+      "values": {
+        "input_tokens": 4387110,
+        "cached_input_tokens": 4284800,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 36051,
+        "reasoning_output_tokens": 16529
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-24/native-result.json",
+          "sha256": "d8a7214e746e0da62b04ded04ab936512ec87c30f5f3294eeff026c925846c31"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-24/native-token-usage.json",
+          "sha256": "c3ca9a30fa7d707fe447c00b3556bc11d7519244506a2eff69085d5e33878bb4"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-19",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-19-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 3501291
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 3415936
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 25481
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 13146
+        }
+      ],
+      "values": {
+        "input_tokens": 3501291,
+        "cached_input_tokens": 3415936,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25481,
+        "reasoning_output_tokens": 13146
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-19/native-result.json",
+          "sha256": "900a58d9819c1965526c826b441b73c91881a07653e12de463b089f4a72a51ed"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-19/native-token-usage.json",
+          "sha256": "08fde5d740901f2f2b7b2eaa6acb0bd965f5c2f889d2dfdacb0fe6b16c68cf4b"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-16",
+      "condition": "baseline",
+      "operation_id": "narps-neutral-r1-16-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1603592
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1473024
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 18863
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 8582
+        }
+      ],
+      "values": {
+        "input_tokens": 1603592,
+        "cached_input_tokens": 1473024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18863,
+        "reasoning_output_tokens": 8582
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-16/native-result.json",
+          "sha256": "0d35a4f1657f87caf0a36ec9802b25b6f6c0e3fb2f83176f39b11eb7b5f9153d"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-16/native-token-usage.json",
+          "sha256": "891abbabc781ae37d8c08c2339ab3b7a3f074e67936984ecd76bcc8b5c35f4f4"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-06",
+      "condition": "discover-general",
+      "operation_id": "narps-neutral-r1-06-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 1777291
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1709184
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 25201
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 12242
+        }
+      ],
+      "values": {
+        "input_tokens": 1777291,
+        "cached_input_tokens": 1709184,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 25201,
+        "reasoning_output_tokens": 12242
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-06/native-result.json",
+          "sha256": "66a81026722872f7ceefbf73c6460f27824df421567280bdc42cba7c5810d183"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-06/native-token-usage.json",
+          "sha256": "97308e279164ed9119463d37df29ab8655dca2ec49eb4ce94ce387f2c9da3975"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-21",
+      "condition": "stamped-explicit",
+      "operation_id": "narps-neutral-r1-21-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2128553
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 1994496
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 19779
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 7527
+        }
+      ],
+      "values": {
+        "input_tokens": 2128553,
+        "cached_input_tokens": 1994496,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 19779,
+        "reasoning_output_tokens": 7527
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-21/native-result.json",
+          "sha256": "375edd72f64ad05e7efc266ae62b61ea7fd910e61c8949c5a3ddb723e13ca0db"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-21/native-token-usage.json",
+          "sha256": "8de2b2d473d31d9bdbb43a0c1bdc4de6bbada96c5e4c0c5a7d096e2d2c54148f"
+        }
+      ]
+    },
+    {
+      "run_id": "narps-neutral-r1-04",
+      "condition": "discover-science",
+      "operation_id": "narps-neutral-r1-04-native-research",
+      "metrics": [
+        {
+          "name": "input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 2901055
+        },
+        {
+          "name": "cached_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of input_tokens",
+          "unit": "tokens",
+          "value": 2825856
+        },
+        {
+          "name": "cache_write_input_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 0
+        },
+        {
+          "name": "output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing",
+          "unit": "tokens",
+          "value": 24256
+        },
+        {
+          "name": "reasoning_output_tokens",
+          "scope": "parent native session completed-turn reported tokens; excludes separate child sessions; not billing; subset of output_tokens",
+          "unit": "tokens",
+          "value": 11386
+        }
+      ],
+      "values": {
+        "input_tokens": 2901055,
+        "cached_input_tokens": 2825856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 24256,
+        "reasoning_output_tokens": 11386
+      },
+      "evidence": [
+        {
+          "path": "evidence/narps-neutral-r1-04/native-result.json",
+          "sha256": "2801072cf65514e20c3b10a39e7e4d7bc29c0f0dbc6b2b5b52c7834e62929c49"
+        },
+        {
+          "path": "evidence/narps-neutral-r1-04/native-token-usage.json",
+          "sha256": "9b238f5c6be60e422e54d8165fe6f4ad90a5fdb6d20224b3c98a930f808145e2"
+        }
+      ]
+    }
+  ],
+  "skill_observations": [
+    {
+      "run_id": "narps-neutral-r1-01",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "not observed",
+        "notes": [
+          "No skill discovery, installation, entrypoint load or application command was observed in the complete native event stream. Runtime skill availability and its feature warning are not use."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-01.json",
+      "sha256": "55ff099401f4504ed8c2f1d4617e27f04c59ce703e9ce9c2a2beae9bfb1b23e6"
+    },
+    {
+      "run_id": "narps-neutral-r1-02",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "not observed",
+        "notes": [
+          "No skill discovery, installation, entrypoint read or application command observed in the complete native stream. Availability is separate."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-02.json",
+      "sha256": "9263674f9deda861481c22bafcd7b03018e4c49f135c908933f38e1ff00e9fa3"
+    },
+    {
+      "run_id": "narps-neutral-r1-03",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold generated then removed; guidance read and script delivery observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook into .codex/skills, read its entrypoint and experiment/quality references, and successfully invoked its scaffold helper.",
+          "The generated notebook was later removed; the final worker statement describes a script delivery informed by experiment-structure guidance. This does not establish a delivered or successfully executed notebook.",
+          "Source revision unresolved in observed installation; exact installed bytes remain in original capture."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-03.json",
+      "sha256": "73c67a8ed4899c899f82be7364592e052d649d8858c40ebf1f549542e7a16a9d"
+    },
+    {
+      "run_id": "narps-neutral-r1-04",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook entrypoint loaded; no scaffold or notebook execution observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Listed curated skills, installed jupyter-notebook into .codex/skills and read the entrypoint.",
+          "No notebook scaffold or notebook execution was observed; the visible file changes concern a Python script and reports. Do not equate installation or reading with completed notebook application."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-04.json",
+      "sha256": "89542bdd5eab1aa490caa1e61496264d90273204eb87f2887bf8b910fcb2f4a9"
+    },
+    {
+      "run_id": "narps-neutral-r1-05",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied loop, conventions and validation instructions loaded",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "Loaded do-full-research-loop, stamped-conventions and validation guidance, then re-read validation and enumerated its reference directory.",
+          "No worker skill installation was observed; supplied link targets are preserved separately by the availability supplement. Procedural reads are not evidence of causal benefit."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-05.json",
+      "sha256": "a28b853ae48f76372b1c4d64432f4ee7445c98c844ae108a4fd530ec5bf4bf88"
+    },
+    {
+      "run_id": "narps-neutral-r1-06",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "PDF entrypoint loaded; no PDF rendering or extraction observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Listed the curated catalog, installed pdf into .codex/skills, and loaded its instructions.",
+          "No PDF rendering/extraction command was observed after loading. Installation and instruction loading alone do not establish completed PDF review or benefit."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-06.json",
+      "sha256": "bfb7a2d2e11313c3930d62c41fbc654ae3d6215749940789b615e215fb511446"
+    },
+    {
+      "run_id": "narps-neutral-r1-07",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied workflow invocation and instruction reads observed; procedural benefit not assessed",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "Explicitly invoked do-full-research-loop and loaded its entrypoint, stamped-conventions and validation reference.",
+          "An attempted stack-reference read used do-full-research-loop/references/stacks/python.md and the combined command exited 1.",
+          "Supplied entrypoints were profile symlinks; exact targets are separately preserved in skill-availability-01."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-07.json",
+      "sha256": "1b18a6318eec4f0b9e75791645ba731ad392ed4ce950233a6e35596a3ec3fefb"
+    },
+    {
+      "run_id": "narps-neutral-r1-08",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "no observed skill application in completed native event stream",
+        "notes": [
+          "No observed skill discovery, worker installation or skill-file loading in the complete native event stream. Scientific web searches and PDF tool attempts are not labeled skill use.",
+          "Common builtin availability, including runtime-added review-agent, does not establish use."
+        ],
+        "source_repository": null,
+        "source_revision": null
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-08.json",
+      "sha256": "a0f2b2bdb1ba6f28909f01304a6436d2e6e126de13cd1fc06d736213c1e4de8c"
+    },
+    {
+      "run_id": "narps-neutral-r1-09",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold and editing observed; notebook execution not observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook in .codex/skills and read its entrypoint and experiment reference.",
+          "Direct execution of its nonexecutable scaffold failed with exit126; invoking through Python succeeded.",
+          "The analysis script executed, but nbclient and ipykernel checks in the common environment failed; available host kernels were listed. No subsequent notebook-execution command was observed. This is a procedural description, not an adequacy grade."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-09.json",
+      "sha256": "a46ff3a2a2808f1a9e1fa655c6bfc07f71edf3ac9b59771fd253e33ff54fef03"
+    },
+    {
+      "run_id": "narps-neutral-r1-10",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold and successful nbconvert execution observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook in .task-skills, read its entrypoint and experiment reference, and ran its scaffold script.",
+          "Executed the notebook successfully to /tmp/narps_group_analysis.executed.ipynb. That external file was outside original capture roots; separately preserved current bytes and precise limits appear in external-output-01.",
+          "Original captured workspace notebook and post-stop external output remain distinct."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-10.json",
+      "sha256": "ac15cb4c069d1e8989acbc5ea2e8d795dcac34855950ac971bf17d5094445940"
+    },
+    {
+      "run_id": "narps-neutral-r1-11",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "observed git annex fsck --fast input/data after loading datalad-fsck",
+        "notes": [
+          "Loaded datalad-fsck and the first80 lines of datalad-status from community source; installed datalad-fsck locally.",
+          "Observed --fast integrity check verifies presence/size, not payload checksums; no stronger checksum claim is credited by this observation.",
+          "The temporary community clone was removed by the worker before stop; installed skill/license bytes and exact observed source revision remain retained.",
+          "Supplying annex-backed inputs was coordinator infrastructure; the observed integrity check is an action, not an inferred scientific benefit."
+        ],
+        "source_repository": "https://github.com/nipreps/skills-comm",
+        "source_revision": "82edd77ab47a86fece1a901f57851b76f4dcd8eb"
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-11.json",
+      "sha256": "b6d16f6ecf24d49c5836a8ab7e52c9f7359b62548507848bdb1c96c088e7d63c"
+    },
+    {
+      "run_id": "narps-neutral-r1-12",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold and execution observed, including failed then successful executions",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook into .task_skills, loaded its entrypoint and two references, and invoked its scaffold script.",
+          "Notebook execution first failed twice; subsequent nbconvert commands exited 0 and the worker checked error outputs. All failed attempts remain evidence.",
+          "The installer did not resolve an upstream commit in the observed stream; exact installed bytes are retained in the original delivery.",
+          "Host annex executable discovery and input retrieval are procedural observations, not skill benefit or scientific adequacy."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-12.json",
+      "sha256": "00c43730c565c8037a102355b475151a2f505993ed6e61f22ac57c33e671bb52"
+    },
+    {
+      "run_id": "narps-neutral-r1-13",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied workflow and validation guidance loaded after path corrections",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "An initial guessed absolute skill path failed; rg did not follow supplied profile links. The worker then listed the profile and read loop and conventions successfully.",
+          "An incorrect upstream-methods path stopped an && chain before validation was read; the next command corrected the path and loaded validation.",
+          "Supplied skill targets are preserved by the separate availability supplement; no worker installation occurred."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-13.json",
+      "sha256": "edb44af704cff99b7f4d3aa08aa344077a3cfd797cb2bcb148076450ef6c99a7"
+    },
+    {
+      "run_id": "narps-neutral-r1-14",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold and successful notebook executions observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook in .codex/skills and read entrypoint, experiment and quality references.",
+          "Direct scaffold execution failed with exit126; Python invocation succeeded.",
+          "Notebook execution commands exited0, including execution after a scientific code change. Their scientific adequacy is not assessed here.",
+          "Source commit unresolved in observed installation; exact installed contents remain in original capture."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-14.json",
+      "sha256": "fa199becbc332977c36b33f7247d719828647450cd852b0da324dc4133b034ff"
+    },
+    {
+      "run_id": "narps-neutral-r1-15",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": false,
+        "loaded": true,
+        "application": "installer catalog listing only; no research skill installation observed",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Read skill-installer and listed 39 curated entries after an initial scientific computation. No research skill was selected or installed.",
+          "An incomplete shell command failed with syntax error, then was corrected.",
+          "A broad fallback find returned ten other or prior profile paths, including research and judge profile names. The returned output contained skill-installer paths, not their contents or scientific results. This is observed residual same-user visibility; influence is not inferred."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-15.json",
+      "sha256": "2c3b87470d04372c62f910ab7d6312b32ce46d0d72bc4f16ed86525fde260030"
+    },
+    {
+      "run_id": "narps-neutral-r1-16",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "no skill discovery, installation, load or application observed",
+        "notes": [
+          "The complete reduced native event stream contains no observed research-skill use; runtime skill availability is recorded separately."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-16.json",
+      "sha256": "e29c301f905c1ed6bceb488d405ed21a7fa9fd5a075c33c6967c8e5cab43fa43"
+    },
+    {
+      "run_id": "narps-neutral-r1-17",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied workflow invocation and instruction reads observed; procedural benefit not assessed",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "Loaded do-full-research-loop, stamped-conventions and the validation reference.",
+          "Two attempted reads used a nonexistent references/stacks/python.md path; the later command exited 1. No corrective instruction was given.",
+          "Supplied entrypoints were profile symlinks; exact target bytes are separately preserved in skill-availability-01, outside the original literal-link capture."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-17.json",
+      "sha256": "934e5f143d6a508e91607c0b44dd3e4903ab5ac581265288aa91d8288668baa7"
+    },
+    {
+      "run_id": "narps-neutral-r1-18",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "notebook scaffold and executions observed; intermediate execution failure retained",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "Installed jupyter-notebook in .skills, read entrypoint and experiment/quality references, checked helper usage and scaffolded a notebook.",
+          "Notebook execution to workspace tmp/ first succeeded; a later modified execution failed, then a corrected command succeeded. All variants remain in native evidence.",
+          "Source commit unresolved in observed installation; exact installed bytes and workspace outputs are retained."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-18.json",
+      "sha256": "0a9ea068fa571ac5a0c79c259a44ef5891552c66cf9f2eb7f8e6aed19cf85767"
+    },
+    {
+      "run_id": "narps-neutral-r1-19",
+      "condition": "discover-science",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "PDF extraction attempted but download failed; notebook instructions loaded and runtime availability checked",
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39,
+        "notes": [
+          "The initial repeated --path command installed only jupyter-notebook; a directory check then a separate command installed pdf. Exact captured skill directories are indexed separately.",
+          "Both entrypoints were loaded. PDF download returned HTTP522/exit22 before the &&-linked pdftotext command could run.",
+          "No notebook scaffold or notebook execution was observed. The common interpreter lacked nbformat, nbclient and jupyter in the recorded check. Availability and reading are not completed application or causal benefit."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-19.json",
+      "sha256": "51fb770eaa95240edc071aed8c6267a903193bd423ba350bc9c0cd9f517c2476"
+    },
+    {
+      "run_id": "narps-neutral-r1-20",
+      "condition": "discover-general",
+      "observations": {
+        "discovery": true,
+        "installation": true,
+        "loaded": true,
+        "application": "attempted; external PDF acquisition failed before chained text extraction",
+        "notes": [
+          "Curated catalog returned39 entries; worker selected PDF to inspect cited instructions, not a neuroimaging analysis skill.",
+          "Installed PDF entrypoint hash and complete directory are retained in original delivery; upstream commit was not resolved in observed installation evidence.",
+          "The PDF download command exited22; its &&-linked text extraction did not execute. Installation and loading do not establish completed PDF review."
+        ],
+        "source_repository": "https://github.com/openai/skills",
+        "source_revision": null,
+        "catalog_count": 39
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-20.json",
+      "sha256": "bd81d70bd329a1484b4d721bad20fb56b56af4aa3e630f0b7b4f1585fe41dbd3"
+    },
+    {
+      "run_id": "narps-neutral-r1-21",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied loop, conventions and validation instructions loaded",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "Loaded the supplied loop, conventions and validation instructions.",
+          "Attempted a nonexistent loop references/stacks/python.md with stderr suppressed and true fallback; its combined exit0 does not establish a successful read. Later enumerated the real references directory.",
+          "No worker installation observed. Availability of supplied targets and procedural reads are not causal benefit."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-21.json",
+      "sha256": "f416916498d8178e3c36d85da0af4719600903fc51f18c6db4d132e5b254e676"
+    },
+    {
+      "run_id": "narps-neutral-r1-22",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "not observed",
+        "notes": [
+          "No skill discovery, installation, entrypoint read or application command observed in the complete native stream. Availability is separate."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-22.json",
+      "sha256": "f6ed9b42390b03389280e887d2f4c1a4bc13bc7302071885396fadf86f9fb583"
+    },
+    {
+      "run_id": "narps-neutral-r1-23",
+      "condition": "baseline",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": false,
+        "application": "no successful skill use observed",
+        "notes": [
+          "One command attempted the path skills/.system/../x with stderr suppressed and an unconditional true fallback. The combined exit0 is not evidence that this path existed or executed.",
+          "No catalog listing, installed skill, entrypoint load or subsequent application was observed. The path probe remains recorded as ambiguous attempted activity."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-23.json",
+      "sha256": "e644383e459450f93dd1c3e6f511e1f824d29977b196e3410fc03350c35a4831"
+    },
+    {
+      "run_id": "narps-neutral-r1-24",
+      "condition": "stamped-explicit",
+      "observations": {
+        "discovery": false,
+        "installation": false,
+        "loaded": true,
+        "application": "supplied loop, conventions, validation and project-creation instructions loaded",
+        "source_repository": "https://github.com/con/skills",
+        "source_revision": "f2e74ea3ed372f966c95692cb0826d56ad5e6a6c",
+        "notes": [
+          "Loaded the loop, validation and conventions; later loaded create-stamped-project and principles/project-kind references.",
+          "Attempted a nonexistent stacks/python.md reference, then later enumerated the actual stacks directory. Supplied target bytes are separately retained; instruction reads do not establish causal benefit."
+        ]
+      },
+      "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/dataset/rounds/round-01/skill-observations/narps-neutral-r1-24.json",
+      "sha256": "eca177a0b373a77989fba980e3d7d6139da3228dc98bac0695930762359e9be3"
+    }
+  ]
+}
