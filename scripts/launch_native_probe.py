@@ -296,8 +296,14 @@ def main():
                 raise SystemExit("Formal judge target must have one input-seed root")
             seed = json.loads(procedure.blob(args.checkout, roots[0], "worker-input.json"))
         procedure.check_seed(frozen, seed)
-        procedure.check_sources(frozen, Path(__file__).resolve().parents[1], args.procedure_study,
-                                seed["coordinator_commit"])
+        coordinator = Path(__file__).resolve().parents[1]
+        procedure.check_sources(frozen, coordinator, args.procedure_study)
+        procedure.check_worker_sources(frozen, coordinator, args.procedure_study,
+                                       seed["coordinator_commit"])
+        if args.role == "judge":
+            procedure.check_retained_target(frozen, seed, roots[0],
+                                            procedure.git(args.checkout, "rev-parse", "HEAD"),
+                                            args.worker_end_state)
         procedure.check_settings(frozen, args)
         procedure.check_readiness(frozen, args.resource_readiness)
         if args.role == "judge":
@@ -327,6 +333,8 @@ def main():
                                         "rendered judge instructions")
         status.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                       comparison_id=frozen["comparison_id"])
+        if frozen["version"] == 2:
+            status["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     elif args.procedure or args.procedure_sha256 or args.procedure_study or args.resource_readiness:
         parser.error("Procedure flags require --run-mode formal")
     output = args.output.resolve()

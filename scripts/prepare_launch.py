@@ -219,6 +219,8 @@ def main():
         (evidence / "resource-readiness.json").write_bytes(args.resource_readiness.read_bytes())
         procedure_receipt.update(status="formal-verified", procedure_sha256=args.procedure_sha256,
                                  comparison_id=frozen["comparison_id"])
+        if frozen["version"] == 2:
+            procedure_receipt["research_procedure_sha256"] = frozen["assessment_amendment"]["research_procedure_sha256"]
     (evidence / "procedure-status.json").write_text(json.dumps(procedure_receipt, indent=2) + "\n")
     if not args.branch.startswith("codex/"):
         parser.error("Use a codex/ branch")
@@ -264,7 +266,8 @@ def main():
         origin_seed = json.loads(blob(checkout, roots[0], "worker-input.json"))
         if frozen:
             procedure.check_seed(frozen, origin_seed)
-            procedure.check_sources(frozen, coordinator, args.study, origin_seed["coordinator_commit"])
+            procedure.check_worker_sources(frozen, coordinator, args.study, origin_seed["coordinator_commit"])
+            procedure.check_retained_target(frozen, origin_seed, roots[0], base_commit, args.worker_end_state)
         study_commit = origin_seed["study_commit"]
         original_brief = blob(args.study, study_commit, "input/study-task.md")
         if original_brief != blob(checkout, roots[0], "input/study-task.md"):
