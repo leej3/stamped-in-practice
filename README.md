@@ -55,8 +55,11 @@ NARPS is the first formal study.
 The tested source and preparation evidence are linked in [`source-version.json`](source-version.json); formal trials and skill iterations are recorded here.
 
 Round 1 is completing its original **12 research workers and 16 assigned judgments**; it is not restarting the science.
-Eight workers have finished, two are active, and two await their first launch.
-Three assigned primaries have finished and the next is starting; one supplementary repair attempt is retained separately.
+Nine workers have finished, two are active, and one awaits its first launch.
+Four assigned primaries have finished and another is running; one supplementary repair attempt is retained separately.
 The [current status](iterations/narps-v1/assessment-hold.md) and [ledger](iterations/narps-v1/round-1.json) track progress.
 The [measurement disposition](iterations/narps-v1/measurement-disposition-01.md) preserves first-assigned judgments and marks infrastructure-affected measures unavailable.
 Successful replay is not a completion gate.
+
+The [common-workflow limitation](iterations/narps-v1/common-workflow-limitation-01.md) records that all round-one conditions were required to use Pixi, a fixed output location, duct and annex.
+The baseline tests added assistance within that supplied workflow; scientific adequacy remains separate from tool and format conformity.

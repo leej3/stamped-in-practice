@@ -31,3 +31,7 @@ Current run status and immutable launch identities are recorded in `round-1.json
 The first three formal workers started from coordinator commit `e86a968be5a03114a279985fadd7ce7274f235aa`; subsequent coordinator record commits do not change their matched base.
 An independent initial-launch audit verified the three input boundaries, isolated profiles, frozen identities and live native capture; its source and results are retained in `initial-launch-audit-01/`.
 The audit examines launch context and does not assess scientific results.
+
+Current execution follows the [first-assigned measurement disposition](measurement-disposition-01.md); the [status page](assessment-hold.md) supersedes earlier replay holds.
+The original research seal remains fixed for round one; remaining assigned judgments use the explicitly recorded assessment-only amendment.
+The [common-workflow limitation](common-workflow-limitation-01.md) qualifies the baseline and sets the between-round design review.
