@@ -28,7 +28,12 @@ Existing outputs are never overwritten.
 Exit 2 means malformed inputs or evidence errors; generated `issues` tables preserve artifact errors alongside valid independent observations.
 
 An empty index, `{"schema_version": 3, "runs": []}`, honestly reports every assignment as pending.
-As evidence arrives, add `comparison_provenance` with `research_procedure_sha256` and an `assessment_seal` artifact referencing the same sealed procedure bytes.
+As evidence arrives, add `comparison_provenance` with `research_procedure_sha256` and an `assessment_seal` artifact.
+The original series uses the same research and assessment seal.
+A separately registered version 4 assessment series uses its own assessment digest and embeds the exact original research procedure and allocation with the unchanged assessor pin.
+Pass that assessment digest to the command above, retaining the original allocation and research procedure.
+Keep each series' extraction index and outputs separate; never substitute or pool repeated measurements with the original series.
+For a round-one report, distinguish its 24 workers and 32 assigned judgments from the full 72/96 allocation: later, unlaunched rounds remain pending, outside that series.
 Every artifact reference is `{ "path": "relative/or/absolute/path", "sha256": "<exact bytes>" }`; relative paths resolve against the containing index or disposition.
 Unknown fields, duplicate JSON keys, nonfinite numbers, unknown runs and repeated judgment IDs are errors.
 The full machine-readable contracts are `INDEX_SCHEMA`, `DISPOSITION_SCHEMA` and their component schemas in [the script](aggregate_comparison.py).
@@ -78,6 +83,8 @@ Cite the judge's classification rather than a rubric listing possible answers.
 Use `extraction_status: "missing"` or `"ambiguous"` with `category: null` when no unique category is available; missing classification is not `unable to assess`.
 An explicit leading “Scientific adequacy:” label takes precedence over a separate statement that a positive scientific hypothesis is not supported.
 If scientific assessment is in another file, provide its hashed `scientific_report` and include it in the output binding.
+Version 4 instead requires the judge's `scientific-judgment.json` through a hashed `structured_scientific` artifact, binding the delivery capture, report hash, category and exact quoted lines.
+An invalid scientific record leaves that measure unavailable without automatically discarding an otherwise valid checklist response; do not reconstruct a grade from prose.
 
 ## Measurements and limitations
 
@@ -99,7 +106,7 @@ Bind each affected assigned judgment to its procedure, native result and output-
 Mark only the exact affected `replay` or `stamped-checklist:<item-id>` measure `unavailable` or `invalid`, with a factual reason and hashed evidence.
 Keep raw verdicts and unaffected evidence.
 Scientific dependency may be `independent` or `uncertain`; uncertainty affects duplicate comparison, not the retained label.
-The neutral comparison uses the same research and assessment digest throughout.
+A disposition preserves the selected series' research and assessment digests; it does not authorize an assessment amendment.
 
 Retain additional assessments in `supplementary_attempts` and explicitly excluded attempts in `excluded_attempts`, each with its reason and evidence.
 Neither replaces an assigned slot or contributes to worker summaries.
