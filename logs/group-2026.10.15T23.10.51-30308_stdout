@@ -1,0 +1,75 @@
+[non_parametric_inference] Fitting second level model...
+[non_parametric_inference] 
+Computation of second level model done in 00 HR 00 MIN 00 SEC
+
+{
+  "analysis": "One-sample intercept-only group model of participant gain-effect maps",
+  "n_participants_input": 54,
+  "n_participants_included": 54,
+  "exclusions": [],
+  "image_shape": [
+    97,
+    115,
+    81
+  ],
+  "voxel_size_mm": [
+    2.0,
+    2.0,
+    2.4000000953674316
+  ],
+  "mask_voxels_common_nonzero": 198029,
+  "vmPFC_roi_definition": {
+    "type": "independent spherical ROI in MNI space",
+    "center_mni_mm": [
+      0.0,
+      46.0,
+      -6.0
+    ],
+    "radius_mm": 10.0,
+    "source": "Bartra, McGuire & Kable (2013) valuation meta-analysis-informed canonical vmPFC location; see report",
+    "voxels_in_common_mask": 413
+  },
+  "test": {
+    "direction": "positive one-sided",
+    "method": "Nilearn non_parametric_inference; max-t permutation FWER across common whole-brain mask",
+    "permutations": 10000,
+    "random_seed": 20261015,
+    "alpha": 0.05,
+    "whole_brain_support": true,
+    "max_group_t": 6.617175366830268,
+    "max_group_t_mni_mm": [
+      -26.0,
+      -102.0,
+      -3.599997043609619
+    ],
+    "max_voxel_fwe_p": 0.0008999099956057294,
+    "vmPFC_max_t": 1.2987258503381318,
+    "vmPFC_peak_mni_mm": [
+      0.0,
+      42.0,
+      -8.399997234344482
+    ],
+    "vmPFC_peak_whole_brain_fwe_p": 1.0,
+    "roi_mean_effect": -0.011330806650221348,
+    "roi_sd_between_subjects": 0.10848882049322128,
+    "roi_mean_effect_95pct_t_ci": [
+      -0.04094255441417176,
+      0.01828094111372906
+    ],
+    "roi_one_sample_t_descriptive": -0.7674899697303772,
+    "roi_one_sample_p_two_sided_descriptive_not_support_test": 0.4461957812309265,
+    "uncorrected_voxels_p_lt_0_001": 620
+  },
+  "software": {
+    "python": "3.13.16",
+    "nilearn": "0.14.1",
+    "nibabel": "5.4.2",
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6"
+  },
+  "created_utc": "2026-10-16T03:14:59.653739+00:00",
+  "script_sha256": "3b0f63b7962a87a73165e58bb47a782eb40d782a725a143d47f5ec45fe0cb11e",
+  "platform": "macOS-27.0.1-arm64-arm-64bit-Mach-O",
+  "python_executable": "/Users/johnlee/code/CON/stamped-in-practice-workers/codex/narps-r1-05/.pixi/envs/default/bin/python"
+}
