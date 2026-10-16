@@ -199,7 +199,10 @@ def main() -> None:
     sig_img = nib.Nifti1Image(t_sig, affine)
     display = plotting.plot_stat_map(sig_img, bg_img=datasets.load_mni152_template(resolution=2),
                                     threshold=0.01, display_mode="ortho", cut_coords=(0, 30, -8),
-                                    cmap="cold_hot", colorbar=True, title="Positive gain effect: whole-brain max-T FWE p <= .05")
+                                    cmap="cold_hot", colorbar=True,
+                                    title="Positive gain effect: whole-brain max-T FWE p <= .05; vmPFC outline")
+    roi_img = nib.Nifti1Image(roi.astype(np.uint8), affine)
+    display.add_contours(roi_img, levels=[0.5], colors="#00d7d7", linewidths=1.3)
     display.savefig(OUT / "whole_brain_fwe.png", dpi=180)
     display.close()
     print(json.dumps(summary, indent=2))
