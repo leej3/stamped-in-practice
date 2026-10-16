@@ -1,0 +1,10 @@
+[workspace]
+name = "study-task-fmri"
+channels = ["conda-forge"]
+platforms = ["osx-arm64", "linux-64"]
+
+[dependencies]
+python = "3.12.*"
+
+[tasks]
+verify-design = "python coordinator-guidance/verify_design.py"
