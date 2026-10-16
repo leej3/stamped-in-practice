@@ -100,3 +100,34 @@ For round one, omit the two round-binding options.
 For round three, use its closed input archive and separate output/scratch paths.
 The runner validates the archive and original index, uses only packaged registration and evidence, and retains the command, streams and return status in `analysis-execution/`.
 An exit status of 2 from the reporter can represent retained admission failures; it is preserved, together with the reporting output, for review.
+
+## Retained data and pooled results
+
+The [pooled condition table](pooled/README.md) gives each original research run one observation.
+It selects the operational round-one assessment and corrected round-two assessment, with six assigned runs per condition in each round.
+Duplicate judgments remain in the round reports and never replace unavailable primaries.
+Round three can be added to `poster-pool.json` after its original assigned judgments close and the same reporting checks complete.
+Run `pixi run poster-outcomes` to regenerate the pooled table, every run's measurements, round-specific summaries, source hashes and revision identities.
+
+| Round | Portable inputs | Corrected report | Preserved issues |
+| --- | --- | --- | --- |
+| 1 | [Archive identity](round-01/input.json), [archive](round-01/input.tar.gz) | [Judgments](round-01/analysis/judgments.tsv) | [Two invalid primary checklist responses](round-01/analysis/issues.tsv) |
+| 2 | [Archive identity](round-02/input.json), [archive](round-02/input.tar.gz) | [Judgments](round-02/analysis/judgments.tsv) | [Two protected-copy failures for run 05](round-02/analysis/issues.tsv) |
+
+Each archive includes the untouched original report under `analysis/`, all original rejection records, native judgment output and its extraction evidence.
+The separately published `round-NN/analysis/` is the corrected report; its `analysis-execution/` sibling retains the exact reporting command and outcome.
+Both reporting commands exit 2 because the individual failures remain present.
+This is distinct from a reporting execution error: both produced complete tables with empty standard error, and all 2,164 packaged input files still matched their hashes after reporting.
+
+Round one retains 24 primary scientific judgments and 22 valid primary checklists.
+Round two retains 23 primary scientific judgments and 23 valid primary checklists.
+The two run-05 judgments are not converted into negative scientific results or zero checklist scores.
+The round-two whitespace-link correction recovers an existing duplicate checklist and report, without changing any answer, grade or original file.
+
+The replay summary uses [round one's final native audit](round-01/final-replay-audit-01/result.json) and [round two's native observations](round-02/replay-native-observations.json).
+All retained replay events and support files are in the input archives.
+A native entrypoint execution, a partial selected-output match and a complete selected-output match are separate observations.
+The checklist mean gives equal weight to each run's fraction `met / (met + partial + unmet)`; not-checked and not-applicable items remain explicit, and evaluated-item coverage is recorded alongside the mean.
+
+Retrieve annexed archives and tables with the root Pixi environment, following [the retrieval guide](../../RETRIEVAL.md).
+The small pooled JSON and TSV reports are ordinary Git content.
