@@ -3,6 +3,9 @@
 This registered DataLad dataset contains the completed twelve-worker, sixteen-assessment development comparison and its retained supplementary repair attempt.
 Read the [findings and figures](replay/RESULTS.md); the [original registration](README.md), [frozen procedure](procedure.json) and [historical synthesis](synthesis/README.md) remain unchanged.
 
+The [skill-development record](skill-reflection/README.md) links the revised research guidance, independently versioned assessor and their closed followability trials.
+[Migration verification](migration/VERIFICATION.md) retains independent reconstruction and selective retrieval proofs.
+
 The prefix history was split from coordinator commit `ffc236c5ad2946d93a2de327ec6833f800c3f7ac`.
 The original complete coordinator history remains at `codex/narps-v1-before-migration` in `git@github.com:leej3/stamped-in-practice.git`.
 [The complete path manifest](migration/original-manifest.json) identifies every original Git blob and annex key; payload bytes are unchanged.
