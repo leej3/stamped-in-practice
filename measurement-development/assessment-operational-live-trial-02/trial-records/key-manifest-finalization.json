@@ -1,0 +1,9 @@
+{
+  "scope": "Coordinator evidence packaging correction only. Native/trial outcome unchanged.",
+  "first_manifest": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/key-artifact-manifest-inflight.json",
+  "stale_entries": [
+    "commands/summarize-trial-01/stdout.txt"
+  ],
+  "reason": "First key manifest was generated inside the summarizer while its stdout log was still open; that command output changed on print/exit. Preserve first manifest, then hash completed command records.",
+  "current_finalizer_command_excluded": "commands/key-manifest-finalization-01 (still in flight); full command record is retained separately after this script exits."
+}

@@ -7,6 +7,7 @@ The final round evaluates the final guidance without further tuning.
 **Round one is complete: 24 research deliveries and 32 assigned judgments.** Read the [round-one synthesis and figures](rounds/round-01/synthesis/README.md) and [current status](STATUS.md).
 Eleven metadata-related assessment exclusions limit the condition comparison; the [viability disposition](rounds/round-01/synthesis/viability.md) records the prospective measurement boundary.
 The subsequent [research-guidance cold trial](skill-reflection/research-skill-revision-01/README.md) and [native assessment engineering trial](measurement-development/assessment-operational-live-trial-01/README.md) retain candidate improvements, failures and exact version limits separately from those outcomes.
+The [final-source native follow-up](measurement-development/assessment-operational-live-trial-02/README.md) and [predispatch admission hold](measurement-development/assessment-registration-admission-01/README.md) document the remaining measurement boundary.
 The [registration](registration.md), [allocation](allocation.json), [procedure](procedure.json) and [round-one plan](rounds/round-01/plan.json) remain unchanged.
 The completed [development comparison](https://github.com/leej3/stamped-in-practice/blob/851f3905ab26d0a9ac6deb7c52f85bd085cc54ff/DATASET.md) remains separate evidence.
 Its mandated workflow and earlier assessment versions prevent pooling it with this tool-neutral design as a clean skill progression.

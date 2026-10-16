@@ -1,0 +1,547 @@
+[
+  {
+    "argv": [
+      "git",
+      "show",
+      "3b263a0c58cc565d67e9092911086ecba4e8381e:input/paired-assay.csv"
+    ],
+    "cwd": "/Users/johnlee/.local/share/wt-utils/worktrees/1887/stamped-in-practice/studies/assessment-fixture",
+    "returncode": 0,
+    "stdout": "../.git/annex/objects/fJ/0P/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "preserve-fixture"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "set-url",
+      "--push",
+      "origin",
+      "git@github.com:leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "/Users/johnlee/.local/share/wt-utils/worktrees/1887/stamped-in-practice/studies/assessment-fixture",
+      "3b263a0c58cc565d67e9092911086ecba4e8381e"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From /Users/johnlee/.local/share/wt-utils/worktrees/1887/stamped-in-practice/studies/assessment-fixture\n * branch            3b263a0c58cc565d67e9092911086ecba4e8381e -> FETCH_HEAD\n"
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "HEAD is now at 3b263a0 test(assessment): add an isolated synthetic paired-assay fixture\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "coordinator synthetic fixture publication"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "init coordinator synthetic fixture publication ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "setkey",
+      "SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv",
+      "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/payload-copy.csv"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "setkey /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/payload-copy.csv (checksum...) ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "copy",
+      "--to",
+      "con-hub",
+      "--",
+      "input/paired-assay.csv"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "copy input/paired-assay.csv (to con-hub...) \n\n100%  167 B           647 KiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "-v"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "con-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (fetch)\ncon-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (push)\norigin\tgit@github.com:leej3/stamped-in-practice.git (fetch)\norigin\tgit@github.com:leej3/stamped-in-practice.git (push)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "git@github.com:leej3/stamped-in-practice.git",
+      "1ba07b6a7bee8f88694f68cffca95442d16971ff:refs/heads/codex/assessment-operational-live-trial"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "remote: \nremote: Create a pull request for 'codex/assessment-operational-live-trial' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/assessment-operational-live-trial        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      1ba07b6a7bee8f88694f68cffca95442d16971ff -> codex/assessment-operational-live-trial\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "-v"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "con-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (fetch)\ncon-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (push)\norigin\tgit@github.com:leej3/stamped-in-practice.git (fetch)\norigin\tgit@github.com:leej3/stamped-in-practice.git (push)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "git@github.com:leej3/stamped-in-practice.git",
+      "09e8f45333d6dc9dfe010c3a79c89cd69bcdd9ea:refs/heads/codex/assessment-operational-live-trial-02"
+    ],
+    "cwd": "/Users/johnlee/code/CON/stamped-in-practice",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "remote: \nremote: Create a pull request for 'codex/assessment-operational-live-trial-02' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/assessment-operational-live-trial-02        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      09e8f45333d6dc9dfe010c3a79c89cd69bcdd9ea -> codex/assessment-operational-live-trial-02\n"
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "-v"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "con-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (fetch)\ncon-hub\thttps://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git (push)\norigin\thttps://github.com/leej3/stamped-in-practice.git (fetch)\norigin\tgit@github.com:leej3/stamped-in-practice.git (push)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "git@github.com:leej3/stamped-in-practice.git",
+      "3b263a0c58cc565d67e9092911086ecba4e8381e:refs/heads/codex/study-assessment-fixture"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "remote: \nremote: Create a pull request for 'codex/study-assessment-fixture' on GitHub by visiting:        \nremote:      https://github.com/leej3/stamped-in-practice/pull/new/codex/study-assessment-fixture        \nremote: \nTo github.com:leej3/stamped-in-practice.git\n * [new branch]      3b263a0c58cc565d67e9092911086ecba4e8381e -> codex/study-assessment-fixture\n"
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "git-annex:git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/publisher",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "To github.com:leej3/stamped-in-practice.git\n   e48c921..d140a24  git-annex -> git-annex\n"
+  },
+  {
+    "argv": [
+      "git",
+      "init",
+      "--initial-branch",
+      "received"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "Initialized empty Git repository in /Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient/.git/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "origin",
+      "https://github.com/leej3/stamped-in-practice.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.origin.annex-ignore",
+      "true"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "refs/heads/codex/assessment-operational-live-trial"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            codex/assessment-operational-live-trial -> FETCH_HEAD\n * [new branch]      codex/assessment-operational-live-trial -> origin/codex/assessment-operational-live-trial\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "1ba07b6a7bee8f88694f68cffca95442d16971ff\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "cat-file",
+      "-t",
+      "1ba07b6a7bee8f88694f68cffca95442d16971ff"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "commit\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "refs/heads/codex/assessment-operational-live-trial-02"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            codex/assessment-operational-live-trial-02 -> FETCH_HEAD\n * [new branch]      codex/assessment-operational-live-trial-02 -> origin/codex/assessment-operational-live-trial-02\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "09e8f45333d6dc9dfe010c3a79c89cd69bcdd9ea\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "cat-file",
+      "-t",
+      "09e8f45333d6dc9dfe010c3a79c89cd69bcdd9ea"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "commit\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "--no-tags",
+      "origin",
+      "refs/heads/codex/study-assessment-fixture"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * branch            codex/study-assessment-fixture -> FETCH_HEAD\n * [new branch]      codex/study-assessment-fixture -> origin/codex/study-assessment-fixture\n"
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "FETCH_HEAD"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "3b263a0c58cc565d67e9092911086ecba4e8381e\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "cat-file",
+      "-t",
+      "3b263a0c58cc565d67e9092911086ecba4e8381e"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "commit\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "checkout",
+      "--detach",
+      "3b263a0c58cc565d67e9092911086ecba4e8381e"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "HEAD is now at 3b263a0 test(assessment): add an isolated synthetic paired-assay fixture\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "init",
+      "independent synthetic fixture recipient"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "init independent synthetic fixture recipient ok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "remote",
+      "add",
+      "con-hub",
+      "https://hub.centerforopenneuroscience.org/leej3/stamped-ai-research-next.git"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "config",
+      "remote.con-hub.annexurl",
+      "annex+https://hub.centerforopenneuroscience.org:443/git-annex-p2phttp"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "git-annex:refs/remotes/origin/git-annex"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "From https://github.com/leej3/stamped-in-practice\n * [new branch]      git-annex  -> origin/git-annex\n"
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "merge"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "merge git-annex (merging origin/git-annex into git-annex...)\n(recording state in git...)\nok\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pixi",
+      "run",
+      "--manifest-path",
+      "/Users/johnlee/code/CON/stamped-in-practice/pixi.toml",
+      "--locked",
+      "git",
+      "annex",
+      "get",
+      "--from",
+      "con-hub",
+      "--",
+      "input/paired-assay.csv"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "get input/paired-assay.csv (from con-hub...) \n\n100%  167 B             2 KiB/s 0s\n                                  \nok\n(recording state in git...)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "1ba07b6a7bee8f88694f68cffca95442d16971ff:studies/assessment-fixture"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "3b263a0c58cc565d67e9092911086ecba4e8381e\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "09e8f45333d6dc9dfe010c3a79c89cd69bcdd9ea:studies/assessment-fixture"
+    ],
+    "cwd": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/synthetic-setup-publication-01/fresh-recipient",
+    "returncode": 0,
+    "stdout": "3b263a0c58cc565d67e9092911086ecba4e8381e\n",
+    "stderr": ""
+  }
+]

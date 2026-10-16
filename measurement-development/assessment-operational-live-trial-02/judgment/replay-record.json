@@ -1,0 +1,61 @@
+{
+  "probe": "fresh-rerun",
+  "source": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/judge-copies-01/canonical/content/workspace",
+  "capture": {
+    "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/judge-copies-01/canonical/manifest.json",
+    "sha256": "5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5"
+  },
+  "commit": "20171384fc05892008d889ed7440d7646eef6c5b",
+  "captured_at": "2026-10-16T09:47:52.982419+00:00",
+  "scope": "Complete stopped delivery copy; existing environment/cache bytes retained. One documented entrypoint, no repair or automatic retrieval; selected outputs only.",
+  "entry": "python -m venv .venv && . .venv/bin/activate && python -m pip install -r requirements.txt && python analysis/run_analysis.py",
+  "outputs": [
+    "results/paired-differences.csv",
+    "results/summary.json",
+    "results/report.md",
+    "figures/paired-changes.png"
+  ],
+  "rtol": 1e-06,
+  "retrieval_scope": {
+    "adapter_input_retrieval": "none; uses captured inputs",
+    "entrypoint_network_byte_limit": null,
+    "entrypoint_downloads": "Documented dependency installs/downloads are not byte-metered",
+    "max_get_gb": 5.0,
+    "max_get_gb_scope": "Frozen helper-prefetch compatibility parameter; this adapter performs no prefetch"
+  },
+  "observation_only_capture_issues": [],
+  "workdir": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/judgment-01/replay-copy/content/workspace",
+  "original_output_sha256": {
+    "results/paired-differences.csv": "6cf9c5c1e4ffab016b32c14d51ad29f05321c4dbcfa3eb742adcbeab87f5d4f7",
+    "results/summary.json": "b74d2626065e11798dbd10720e5d1a1fc760c3ea115bfb2f332d302b39830563",
+    "results/report.md": "baf255a903d472221d3b09e92d78a6924bf3dde8d6b9580af5fa336233a0df52",
+    "figures/paired-changes.png": "05a10e935cfbfcb5614ffe0675283646ee01b1af86d53af11a2dd7d995da67b3"
+  },
+  "removed_outputs": [
+    "figures/paired-changes.png",
+    "results/paired-differences.csv",
+    "results/report.md",
+    "results/summary.json"
+  ],
+  "replay_git_overlay": {
+    "core.hooksPath": "/dev/null",
+    "reason": "Disable original checkout hooks in the replay copy; captured config bytes unchanged"
+  },
+  "returncode": 0,
+  "elapsed_seconds": 25.50533404201269,
+  "stdout": "replay-copy/replay.stdout",
+  "stderr": "replay-copy/replay.stderr",
+  "comparison": {
+    "identical": [
+      "results/paired-differences.csv",
+      "results/summary.json",
+      "results/report.md",
+      "figures/paired-changes.png"
+    ],
+    "within_tolerance": [],
+    "differing": [],
+    "missing_after_rerun": []
+  },
+  "status": "met",
+  "reason": "All selected generated outputs were recreated within the frozen comparison tolerance."
+}

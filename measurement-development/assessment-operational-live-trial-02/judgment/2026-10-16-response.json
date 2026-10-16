@@ -1,0 +1,467 @@
+{
+  "checklist_version": "0.3.1",
+  "responses": {
+    "stamped-checklist:must/001": {
+      "status": "met",
+      "reason": "All project materials and the annex payload sit within the delivered workspace root.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: common workspace includes the documented project and local annex payload.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/002": {
+      "status": "met",
+      "reason": "The CSV is an internal relative annex link and its payload is inside the common root.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "input/paired-assay.csv",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: relative symlink resolves to .git/annex/objects/... inside the workspace; payload hash 7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/003": {
+      "status": "met",
+      "reason": "requirements.txt declares the external Python packages used by the analysis.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: pins numpy, scipy, pandas, and matplotlib; analysis imports these packages.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/004": {
+      "status": "unmet",
+      "reason": "The worker stopped with the report, code, outputs, and environment file uncommitted.",
+      "source": "probe:tree-clean",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: README.md, analysis/, figures/, protocol.md, requirements.txt, results/, and validation/ are present in the complete stop state but absent from the worker Git commit.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/005": {
+      "status": "not-applicable",
+      "reason": "N/A: the supplied CSV and generated figures are small; no large binary data is present.",
+      "source": "probe:large-in-annex+judgement",
+      "evidence": [
+        {
+          "uri": ".git/annex/objects/fJ/0P/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv/SHA256E-s167--7cfc112a3d6a3922c347695e62bdb9ad2b92c0265c7bb18c7fd50eed2763050b.csv",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: annex object is 167 bytes, below the large-data threshold.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/006": {
+      "status": "partial",
+      "reason": "summary.json records input hash and package versions, but no code identity or complete run record links the actions to the exact environment.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "results/summary.json",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: output summary records input SHA-256, Python and package versions, results, and cross-checks; no source revision or run identifier is recorded.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/007": {
+      "status": "met",
+      "reason": "README documents Python setup, installation, and usage.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: Run section documents Python 3.13, venv creation, requirements installation, and script command.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/008": {
+      "status": "met",
+      "reason": "analysis/run_analysis.py is a clear executable starting point.",
+      "source": "probe:entry-point+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: delivered script validates input and regenerates the selected result artifacts.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/009": {
+      "status": "met",
+      "reason": "The analysis uses relative input and output paths, with CLI overrides.",
+      "source": "probe:no-abs-paths+judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: defaults use relative Path values for input, results, and figure.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/010": {
+      "status": "met",
+      "reason": "All direct nonstandard imports are pinned in the delivered requirements file.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: pins all imported third-party packages; the analysis otherwise uses Python standard-library modules.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/011": {
+      "status": "met",
+      "reason": "README states Python 3.13 and gives the POSIX shell activation and run commands; no additional host service or hardware is needed.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: Python version and shell commands define the documented host assumptions.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/012": {
+      "status": "met",
+      "reason": "README and requirements.txt list Python and package prerequisites.",
+      "source": "probe:platform-assumptions+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: Python 3.13 and requirements.txt are named in setup instructions.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/013": {
+      "status": "unmet",
+      "reason": "requirements.txt is part of the stopped delivery but was not tracked at worker stop.",
+      "source": "probe:env-spec-tracked",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: present in the complete delivery, absent from the worker Git commit.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/014": {
+      "status": "unmet",
+      "reason": "No command or policy for updating dependency specifications is documented.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: README provides installation instructions but no environment update procedure; requirements.txt has no worker history.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:must/015": {
+      "status": "partial",
+      "reason": "Direct package versions are pinned and recorded, but transitive resolution and an exact Python patch/platform environment are not frozen.",
+      "source": "probe:run-env-linked+judgement",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: direct packages are pinned; README specifies Python 3.13 only and no complete lock or platform image is supplied.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:must/016": {
+      "status": "unmet",
+      "reason": "No worker-declared authorized retrieval route or Git remote makes the environment specification accessible to intended recipients.",
+      "source": "probe:env-spec-tracked+judgement",
+      "evidence": [
+        {
+          "uri": ".git/config",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: no remote is configured.",
+          "sha256": null
+        },
+        {
+          "uri": "results/report.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: reproduction starts from a received directory but gives no authorized retrieval route.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:must/017": {
+      "status": "met",
+      "reason": "README explains how to obtain packages and run the analysis from the delivered directory.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: setup and use instructions are explicit.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/001": {
+      "status": "partial",
+      "reason": "Git contains the supplied inputs, but the worker code, report, outputs, and requirements remain untracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": ".git/index",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: worker stop state has seven untracked project paths; input files are Git/annex managed.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/002": {
+      "status": "not-checked",
+      "reason": "A replay is documented, but the delivery does not establish a recurring testing cadence.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "validation/replay.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: records a second run; no recurring schedule or repeated history is present. Further run history would establish regular testing.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/003": {
+      "status": "partial",
+      "reason": "Input, code, and generated results have distinct directories; requirements.txt remains at the project root.",
+      "source": "probe:modules-separated+judgement",
+      "evidence": [
+        {
+          "uri": "input",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: input/, analysis/, results/, and figures/ separate content classes, while the environment declaration is at root.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:should/009": {
+      "status": "not-applicable",
+      "reason": "N/A: this synthetic teaching project contains no restricted data or software.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "input/sources.json",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: identifies coordinator-generated synthetic values and no restricted source.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/004": {
+      "status": "met",
+      "reason": "A fresh copied delivery and new virtual environment reproduced every selected output exactly.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "../replay-record.json",
+          "description": "Assessment replay record: one fresh venv from delivered requirements; all selected artifacts byte-identical.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/005": {
+      "status": "unmet",
+      "reason": "The documented workflow creates a persistent .venv for reuse rather than a disposable environment per run.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: venv setup is manual and subsequent script runs use the same environment.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/006": {
+      "status": "not-checked",
+      "reason": "The delivered replay evidence and this successful replay are isolated checks, but no regular cadence is established.",
+      "source": "probe:ci-present+judgement",
+      "evidence": [
+        {
+          "uri": "validation/replay.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: one prior repeat is recorded; ongoing environment reconstruction history would establish regular testing.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/007": {
+      "status": "unmet",
+      "reason": "No package archive, executable environment, or container image is retained with the project.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: only an install specification is supplied; no environment artifacts are archived.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:should/008": {
+      "status": "unmet",
+      "reason": "No environment update process is documented or tracked.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "requirements.txt",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: dependency pins exist without a declared update/regeneration process or worker history. Duplicate of must/014.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "upstream-duplicate"
+      ]
+    },
+    "stamped-checklist:may/001": {
+      "status": "not-applicable",
+      "reason": "N/A: this study has no independently maintained project components; Python packages are runtime dependencies.",
+      "source": "probe:subdatasets-resolvable+judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: one project analysis, inputs, and outputs; no separately maintained component is identified.",
+          "sha256": null
+        }
+      ],
+      "flags": [
+        "probe-overridden"
+      ]
+    },
+    "stamped-checklist:may/002": {
+      "status": "met",
+      "reason": "README and protocol describe the input, analysis, outputs, and how they connect.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: links to input/ and report; protocol documents the analysis method and generated artifacts.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/003": {
+      "status": "partial",
+      "reason": "Directories give basic boundaries, but no interface or policy promises independent component updates.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "protocol.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: data schema and output paths are documented; module independence guarantees are absent.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/004": {
+      "status": "met",
+      "reason": "The analysis script composes the input data with the computation and writes the declared outputs.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "analysis/run_analysis.py",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: one executable analysis reads the input and produces the result table, summary, report, and figure.",
+          "sha256": null
+        }
+      ]
+    },
+    "stamped-checklist:may/005": {
+      "status": "met",
+      "reason": "README and protocol provide navigation and explain the project layout.",
+      "source": "judgement",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: identifies scope, report, protocol, setup, and entrypoint.",
+          "sha256": null
+        }
+      ]
+    }
+  },
+  "schema_version": "0.2.0",
+  "principles_version": "0.2.0",
+  "checklist_source": {
+    "repo": "https://github.com/stamped-principles/stamped-checklist-schema",
+    "tag": "v0.3.1",
+    "commit": "af259bad237fa57b856417db8dba45a1b283a527"
+  },
+  "extra_items": [
+    {
+      "key": "license-declared",
+      "status": "unmet",
+      "reason": "No license or reuse terms are declared in the complete worker delivery.",
+      "evidence": [
+        {
+          "uri": "README.md",
+          "description": "capture 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5: no reuse or licensing terms are stated."
+        },
+        {
+          "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/judge-copies-01/canonical/manifest.json",
+          "description": "canonical original manifest (SHA-256 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5) inventories the complete workspace; it contains no LICENSE/REUSE declaration."
+        }
+      ]
+    }
+  ],
+  "object": {
+    "url": null,
+    "commit": "20171384fc05892008d889ed7440d7646eef6c5b",
+    "captured_at": "2026-10-16T09:47:52.982419+00:00",
+    "kind": "study",
+    "capture": {
+      "uri": "/Users/johnlee/.local/state/stamped-in-practice/narps-neutral-v1/assessment-operational-live-trial-02/judge-copies-01/canonical/manifest.json",
+      "sha256": "5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5"
+    }
+  },
+  "assessor": {
+    "skill": "assess-alignment-with-stamped-principles",
+    "version": "0.1.0",
+    "harness": "frozen assessment.py runner",
+    "model": "not supplied by the harness",
+    "date": "2026-10-16",
+    "dependencies": [
+      "stamped-conventions@0.1.0"
+    ],
+    "note": "Model identity was not supplied by the harness; frozen runner and runtime were used."
+  },
+  "scope": "Complete worker stop capture (SHA-256 5a695edf17e525c1cdbfa1767bcee2e1356c4df20bc2df27b3f5c57536c5a6b5), assessed through the operational copy with integrity audit; original HEAD 20171384fc05892008d889ed7440d7646eef6c5b. One captured-delivery replay; worker publication route not declared."
+}
