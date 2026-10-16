@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Aggregate coordinator extractions without evaluating or changing research objects."""
 import argparse
+from contextvars import ContextVar
 import csv
 from dataclasses import dataclass
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import re
 import statistics
@@ -14,6 +16,7 @@ import subprocess
 from jsonschema import Draft202012Validator, FormatChecker
 
 ROOT = Path(__file__).resolve().parents[1]
+ARTIFACT_LOCATIONS = ContextVar("artifact_locations", default=None)
 STATUSES = ("met", "partial", "unmet", "not-checked", "not-applicable")
 ADEQUACY = ("supported", "qualified", "not supported", "unable to assess")
 DIMENSIONS = tuple("STAMPED")
@@ -277,11 +280,45 @@ def allocated_judgments(allocation, runs):
 
 def artifact(reference, base):
     path = Path(reference["path"])
+    locations = ARTIFACT_LOCATIONS.get()
+    if path.is_absolute() and locations is not None:
+        mapped = locations.get(os.path.abspath(path))
+        if mapped is None:
+            raise ValueError("Absolute artifact missing from source manifest: " + str(path))
+        require_equal(reference["sha256"], mapped["sha256"], "relocated artifact identity")
+        path = mapped["path"]
     path = (base / path).resolve() if not path.is_absolute() else path.resolve()
     raw = path.read_bytes()
     if sha256(raw) != reference["sha256"]:
         raise ValueError("Artifact SHA-256 mismatch: " + str(path))
     return raw
+
+
+def source_locations(manifest):
+    """Resolve retained copies by original path and digest, without rewriting receipts."""
+    raw = manifest.read_bytes()
+    rows = parse_json(raw)
+    if not isinstance(rows, list):
+        raise ValueError("Source manifest must be a list of retained artifact copies")
+    locations = {}
+    for row in rows:
+        required_fields(row, {"source_path": TEXT, "sha256": SHA, "copy": ARTIFACT})
+        if not Path(row["source_path"]).is_absolute():
+            raise ValueError("Source manifest requires absolute original paths")
+        if Path(row["copy"]["path"]).is_absolute():
+            raise ValueError("Source manifest requires relative retained-copy paths")
+        require_equal(row["sha256"], row["copy"]["sha256"], "retained copy identity")
+        # Validate every supplied copy, including repeated identical references.
+        artifact(row["copy"], manifest.resolve().parent)
+        original = os.path.abspath(row["source_path"])
+        location = {"path": manifest.resolve().parent / row["copy"]["path"],
+                    "sha256": row["sha256"]}
+        if original in locations:
+            require_equal(locations[original]["sha256"], row["sha256"], "unique source identity")
+        else:
+            locations[original] = location
+    return locations, {"manifest_sha256": sha256(raw), "mapped_paths": len(locations),
+                       "scope": "Explicit byte-location map; original receipt bytes and required digests unchanged"}
 
 
 def require_equal(actual, expected, label):
@@ -1230,8 +1267,15 @@ def main(argv=None):
                         help="Independently approved assessment seal digest (original for neutral-v1)")
     parser.add_argument("--disposition", type=Path, help="Coordinator measurement disposition (analysis record)")
     parser.add_argument("--disposition-sha256", help="Expected exact measurement disposition bytes")
+    parser.add_argument("--source-manifest", type=Path,
+                        help="Retained source-path/copy manifest for relocated evidence; every copy is hash-checked")
     args = parser.parse_args(argv)
+    location_token = ARTIFACT_LOCATIONS.set(None)
     try:
+        resolution = None
+        if args.source_manifest:
+            locations, resolution = source_locations(args.source_manifest)
+            ARTIFACT_LOCATIONS.set(locations)
         allocation_bytes, index_bytes = args.allocation.read_bytes(), args.index.read_bytes()
         research_bytes = (args.research_procedure or args.allocation.with_name("procedure.json")).read_bytes()
         registration_bytes = (args.registration or args.allocation.with_name("registration.json")).read_bytes()
@@ -1282,11 +1326,15 @@ def main(argv=None):
                       "Duplicates compare same-version mutually valid items; supplementary attempts never "
                       "replace slots. Raw grades remain retained; version strata and evidence-based validity "
                       "are separate. Missing observations are not verdicts; replay success is not required."}
+        if resolution is not None:
+            provenance["artifact_resolution"] = resolution
         (args.output / "aggregation.json").write_text(json.dumps(provenance, indent=2) + "\n")
         print(f"{len(tables['runs'])} assigned workers; {len(tables['issues'])} issues; {args.output}")
         return 2 if tables["issues"] else 0
     except (OSError, ValueError, KeyError, TypeError, subprocess.CalledProcessError) as error:
         parser.exit(2, f"Aggregation failed: {error}\n")
+    finally:
+        ARTIFACT_LOCATIONS.reset(location_token)
 
 
 if __name__ == "__main__":

@@ -38,6 +38,14 @@ Every artifact reference is `{ "path": "relative/or/absolute/path", "sha256": "<
 Unknown fields, duplicate JSON keys, nonfinite numbers, unknown runs and repeated judgment IDs are errors.
 The full machine-readable contracts are `INDEX_SCHEMA`, `DISPOSITION_SCHEMA` and their component schemas in [the script](aggregate_comparison.py).
 
+For retained receipts containing old absolute paths, add `--source-manifest /path/to/source-manifest.json`.
+This list maps each absolute `source_path` and `sha256` to a `copy` artifact with a relative path; the copies resolve beside the manifest.
+Every supplied copy is hash-checked, and referenced bytes must still match the original receipt's digest.
+With a map, an unmapped absolute artifact is an error even when the old path exists; ordinary relative references remain relative to their containing index or disposition.
+Keep native receipts unchanged and retain the map alongside the copied evidence.
+The report records the map and reporting-tool hashes separately from the frozen assessment identity.
+When updating reporting code for a sealed series, retain its original outputs and verify agreement before using the new report; relocated table reproduction alone does not establish cross-host scientific replay.
+
 ## Bind the original delivery
 
 Keep these identities distinct in each run record:
